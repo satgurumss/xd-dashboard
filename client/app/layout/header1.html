@@ -1,0 +1,39 @@
+<header class="top_header navbar-inverse clearfix">
+  <div class="container">
+    <div class="navbar navbar-static-top margin-b0 navbar-home">
+      <div class="logo-container">
+        <a href="#/" class="logo">{{main.brand}}</a>
+      </div>
+      <div class="nav-container text-right">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" ng-click="showDropDown()" data-toggle="collapse" id="navbar-bars" data-target="#navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <ul class="nav top-nav nav-justified pull-right collapse navbar-collapse" ng-class="showClass" id="navbar-collapse">
+          <li ng-click="hideDropDown(); loadFirmsListing();"><a>DASHBOARD</a></li>
+          <li ng-click="hideDropDown(); loadLawyersListing();"><a>SEARCH</a></li>
+
+          <li><div class="v-devider">&nbsp;</div></li>
+
+          <li>
+            <span class="user-name hidden">{{'navBar.welcome.label'| translate}}</span>
+            <div class="btn-group" dropdown is-open="status.isopen1">
+              <button type="button" class="dropdown-toggle btn btn-noline">Admin <span class="caret"></span></button>
+              <ul class="dropdown-menu menu-right" role="menu">
+                <li ng-if="!newUser"><a href="#/change-password" ng-click="hideDropDown()">{{'navBar.changePasswordBtn.label'| translate}}</a></li>
+                <li ng-if="newUser"><a  href="">{{'navBar.changePasswordBtn.label'| translate}}</a></li>
+                <li ng-click="hideDropDown(); adminPanel.logOut()"><a  href="javascript:;" class="btn-signout">{{'navBar.signOutBtn.label'| translate}}</a></li>
+              </ul>
+            </div>
+       </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Header Ends -->

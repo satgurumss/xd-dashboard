@@ -1,0 +1,38 @@
+<div class="page page-dashboard" data-ng-controller="DashboardCtrl">
+
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-default panel-minimal">
+                <div class="divider divider-md"></div>
+                <div class="panel-body" data-ng-controller="TypeaheadCtrl">
+                  <div class="row">
+                        <div class="col-lg-4">
+                            <div class="ui-typeahead">
+                                <input type="text"
+                                       ng-model="selected"
+                                       uib-typeahead="state for state in states | filter:$viewValue | limitTo:8"
+                                       class="form-control"
+                                       placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome">
+                            </div>
+                        </div>
+                        <div class="col-lg-1">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <section>
+      <div class="panel panel-default">
+      </div>
+    </section>
+
+
+
+
+</div>
