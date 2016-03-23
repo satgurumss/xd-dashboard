@@ -30,3 +30,51 @@
 }
 
 /*-------*/
+
+body {
+  background: none;
+  background-color: #EAEAEA;
+
+}
+
+ul.list-unstyled {
+  width: 100%;
+  display: block;
+}
+
+.app-footer {
+  background-color: #242633;
+  border-top: 1px solid #242633;
+}
+
+.app-footer .span {
+  font-size: 14px;
+  color: 'white';
+}
+
+.panel-heading {
+  background-color: #f6f6f6;
+  border-color: #e9e9e9;
+}
+
+.callout-success {
+  margin: 0 0 5px 0;
+  padding: 5px;
+  border-left: 3px solid #60CD9B;
+}
+
+.callout-date {
+  font-size: 12px;
+}
+
+.callout-heading {
+  font-weight: bold;
+}
+
+.search-description-wrapper {
+  line-height: 1.6;
+  max-height: 70px;
+  overflow: hidden;
+  /*padding: 0 25px 0 0;*/
+  word-wrap: break-word;
+}

@@ -23,7 +23,6 @@ html {
 .app {
     position: relative;
     min-height: 100%; // important!
-    height: 100%; // important!
 
     > .header-container {
         &.header-fixed {
@@ -47,7 +46,6 @@ html {
     > .main-container {
         position: relative;
         min-height: 100%; // important!
-        padding-bottom: 50px;
         &:before { // content container background for boxed layout
             content: " ";
             line-height: 0;
@@ -112,9 +110,9 @@ html {
             min-height: 100%;
             margin-left: 0;
             // @include transition(none);
-            @media (min-width:$screen-sm) {
-                margin-left: 220px;
-            }
+            //@media (min-width:$screen-sm) {
+            //   margin-left: 220px;
+            //}
         }
 
     }
