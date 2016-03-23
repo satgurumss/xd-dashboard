@@ -1,0 +1,32 @@
+/*UTIL CLASSES*/
+.pad-b-20{
+  padding-bottom: 20px;
+}
+
+.pad-l-0{
+	padding-left: 0;
+}
+
+/*-------*/
+
+/*SEARCH PAGE STYLES*/
+.results-section{
+	margin-top: 20px;
+}
+
+.results-container{
+	border: 1px solid #DCDCDC;
+}
+
+.search-result{
+  margin: 10px 0 10px 0;
+}
+
+.search-result:not(:last-child) > .desc-col .optional-links{
+  border-bottom: 1px solid #DCDCDC;
+}
+.result-arrow i{
+	font-size:110px;
+}
+
+/*-------*/

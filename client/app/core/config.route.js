@@ -34,7 +34,7 @@
             $routeProvider
                 .when('/', {redirectTo: 'page/signin'})
                 .when('/dashboard', {templateUrl: 'app/dashboard/dashboard.html'})
-                .when('/search-result', {templateUrl: 'app/page/search-result.html'})
+                .when('/search-result', {templateUrl: 'app/search/search-result.html'})
                 .when('/404', {templateUrl: 'app/page/404.html'})
                 .otherwise({ redirectTo: '/404'});
 

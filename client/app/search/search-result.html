@@ -1,0 +1,89 @@
+<div class="page page-dashboard" data-ng-controller="SearchCtrl">
+	
+	<div class="panel panel-default">
+		
+		<div class="panel-body">
+			
+			<div class="row" >
+				
+				<div class="adv-search col-md-2">
+					<div is-open="status.isopen1" dropdown="" class="btn-group">
+						<button dropdown-toggle="" class="btn btn-default dropdown-toggle" 
+						type="button" aria-haspopup="true" aria-expanded="false"> 
+						Advanced Search&nbsp;<span class="caret"></span> 
+						</button>
+						<ul role="menu" class="dropdown-menu">
+							<li><a href="javascript:;">Action</a></li>
+							<li><a href="javascript:;">Another action</a></li>
+							<li><a href="javascript:;">Something else here</a></li>
+							<li class="divider"></li>
+							<li><a href="javascript:;">Separated link</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="search-bar col-md-6" data-ng-controller="TypeaheadCtrl">
+					<input type="text"
+					ng-model="selected"
+					uib-typeahead="state for state in states | filter:$viewValue | limitTo:8"
+					class="form-control"
+					placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome">
+				</div>
+			</div>
+		
+			<div class="row results-section">
+				<div class="col-md-offset-2 col-md-10">
+					<span class="ui-select pull-right">
+            <select>
+          		<option class="hidden" value="">Sort By Relevance</option>
+              <option ng-repeat="opt in sortOptions" value ="{{opt.value}}"> 
+              	{{opt.name}}
+              </option>
+            </select>
+          </span>
+				</div>
+
+				<div class="col-md-offset-2 col-md-10 results-container">
+					<div class="col-md-11">
+						<div class="search-result row pad-l-0" 
+							data-ng-repeat="result in searchResults">
+							<div class="desc-col col-md-10">
+
+								<div class="row">
+									<div class="result-title col-md-10">
+										{{result.title}}
+									</div>
+									<div class="result-created-date col-md-2">
+										{{result.creationDate}}
+									</div>
+								</div>
+								<div class="row">
+									<div class="result-doc-link col-md-10">
+										<a href="{{result.docURL}}">{{result.docURL}}</a>
+									</div>
+								</div>
+								<div class="result-desc row">
+										<div class="col-md-12">
+											<p>{{result.description}}</p>
+										</div>
+								</div>
+								<div class="row optional-links pad-b-20">
+									<div class="col-md-12">
+										<span class="result-optional-links" 
+										data-ng-repeat="link in result.optionalLinks">
+											<a href="{{link.URL}}">{{link.linkTitle}}</a>{{$last ? '' : ' | '}}
+										</span> 
+									</div>								
+								</div>
+							</div>
+
+							<div class="result-arrow col-md-2 ">
+								<i class="fa fa-angle-right"></i>
+							</div>
+							<!--result row end-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
