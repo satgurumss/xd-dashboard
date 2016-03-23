@@ -1,12 +1,11 @@
 
 // When Nav is vertical
 .app-footer {
-    position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     //margin-left: 220px; // Nav width
-    font-size: $font-size-small;
+    font-size: 14px;
     padding: $padding-large-horizontal;
     background-color: darken($main_container_bg, 2%);
     border-top: 1px solid darken($main_container_bg, 5%);
