@@ -2,16 +2,29 @@
   'use strict';
 
   angular.module('app')
-    .controller('DashboardCtrl', ['$scope', DashboardCtrl])
+    .controller('DashboardCtrl', ['$scope', '$http', DashboardCtrl])
 
-  function DashboardCtrl($scope) {
+  function DashboardCtrl($scope, $http) {
 
     $scope.line2 = {};
     $scope.radar1 = {};
+    $scope.deals = [];
+    $scope.pie2 = {
+      title: "Pie Chart",
+      iconUrl: "images/widgets/placeholder.png"
+    };
+    $scope.bar3 = {
+      title: "Bar Chart",
+      iconUrl: "images/widgets/icon_top-categories.png",
+    };
 
-    $scope.widgets = [
-    {
-      title: "Widget 1",
+    $http.get('/app/sampleData/deal.json').then(function(deals) {
+      $scope.deals = deals.data.documents;
+      console.log($scope.deals);
+    });
+
+    $scope.widgets = [{
+      title: "My Deals",
       iconUrl: "images/widgets/icon_area-chart.png",
       searches: [{
         title: "Search 1_1",
@@ -26,7 +39,7 @@
         date: new Date(),
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
       }]
-      }, {
+    }, {
       title: "Widget 2",
       iconUrl: "images/widgets/icon_cpu-usage.png",
       searches: [{
@@ -91,6 +104,117 @@
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
       }]
     }]
+
+     $scope.bar3.options = {
+      title: {
+        text: '',
+        subtext: ''
+      },
+      tooltip: {
+        trigger: 'axis'
+      },
+      legend: {
+        data: ['2011', '2012']
+      },
+      toolbox: {
+        show: true,
+        feature: {
+          restore: {
+            show: true,
+            title: "restore"
+          },
+          saveAsImage: {
+            show: true,
+            title: "save as image"
+          }
+        }
+      },
+      calculable: true,
+      xAxis: [{
+        type: 'value',
+        boundaryGap: [0, 0.01]
+      }],
+      yAxis: [{
+        type: 'category',
+        data: ['Brazil', 'Indonesia', 'USA', 'India', 'China', 'World Population (10k)']
+      }],
+      series: [{
+        name: '2011',
+        type: 'bar',
+        data: [18203, 23489, 29034, 104970, 131744, 630230]
+      }, {
+        name: '2012',
+        type: 'bar',
+        data: [19325, 23438, 31000, 121594, 134141, 681807]
+      }]
+    };
+
+    $scope.pie2.options = {
+      tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+      },
+      legend: {
+        orient: 'vertical',
+        x: 'left',
+        data: ['Direct', 'Email', 'Affiliate', 'Video Ads', 'Search']
+      },
+      toolbox: {
+        show: true,
+        feature: {
+          restore: {
+            show: true,
+            title: "restore"
+          },
+          saveAsImage: {
+            show: true,
+            title: "save as image"
+          }
+        }
+      },
+      calculable: true,
+      series: [{
+        name: 'Traffic source',
+        type: 'pie',
+        radius: ['50%', '70%'],
+        itemStyle: {
+          normal: {
+            label: {
+              show: false
+            },
+            labelLine: {
+              show: false
+            }
+          },
+          emphasis: {
+            label: {
+              show: true,
+              position: 'center',
+              textStyle: {
+                fontSize: '30',
+                fontWeight: 'bold'
+              }
+            }
+          }
+        },
+        data: [{
+          value: 335,
+          name: 'Direct'
+        }, {
+          value: 310,
+          name: 'Email'
+        }, {
+          value: 234,
+          name: 'Affiliate'
+        }, {
+          value: 135,
+          name: 'Video Ads'
+        }, {
+          value: 1548,
+          name: 'Search'
+        }]
+      }]
+    };
 
     $scope.removeWidget = function(widget) {
       widget.isHide = true;
@@ -236,7 +360,6 @@ angular.module('app')
       jQuery.keyframe.debug = false;
       return {
         leave: function(element, doneFn) {
-          debugger;
           var elemHeight, elemScaledHeight, elemScaledWidth, elemWidth, firstFrame, scaledLeftOffset, scaledTopOffset, secondFrame, widgetControlWidth;
           elemHeight = parseInt(element.css('height'));
           elemWidth = parseInt(element.css('width'));
@@ -269,13 +392,11 @@ angular.module('app')
             '-o-transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)',
             'transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)'
           };
-          jQuery.keyframe.define([
-            {
-              name: 'onMove',
-              '40%': firstFrame,
-              '100%': secondFrame
-            }
-          ]);
+          jQuery.keyframe.define([{
+            name: 'onMove',
+            '40%': firstFrame,
+            '100%': secondFrame
+          }]);
           element.resetKeyframe(function() {
             return element.playKeyframe({
               name: 'onMove',
