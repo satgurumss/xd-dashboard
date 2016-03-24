@@ -1,309 +1,333 @@
 <div class="page page-dashboard" data-ng-controller="DashboardCtrl">
 
 
-    <div class="row">
-        <div class="col-md-12">
 
-            <div class="panel panel-default panel-minimal">
-                <div class="panel-body" data-ng-controller="TypeaheadCtrl">
+
+            <div class="search-panel">
                   <div class="row">
-                        <div class="col-lg-4">
-                            <div class="ui-typeahead">
-                                <input type="text"
-                                       ng-model="selected"
-                                       uib-typeahead="state for state in states | filter:$viewValue | limitTo:8"
-                                       class="form-control"
-                                       placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome">
-                            </div>
-                        </div>
-                        <div class="col-lg-1">
-
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <div class="ui-typeahead">
+                            <input type="text" ng-model="selected" uib-typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control" placeholder="&#xF002; Search" style="font-family:FontAwesome;">
                         </div>
                     </div>
-                </div>
+                    <div class="col-lg-1">
+
+                    </div>
+                  </div>
             </div>
 
-        </div>
+
+
+    <div class="row">
+      <div class="search-widget col-md-4 col-sm-4">
+        <section class="panel panel-default"  ng-mouseenter="shMenu1=true;" ng-mouseleave="shMenu1=false;">
+          <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu1 , 'animated slideOutLeft' : !shMenu1 }" ng-show="shMenu1" >
+              <div class="remove"><i class="fa fa-times"></i></div>
+              <div class="expand"><i class="fa fa-expand"></i></div>
+          </div>
+          <div class="panel-container">
+            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Deal flow</strong></div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="search-widget col-md-4 col-sm-4">
+        <section class="panel panel-default"  ng-mouseenter="shMenu2=true;" ng-mouseleave="shMenu2=false;">
+          <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu2 , 'animated slideOutLeft' : !shMenu2 }" ng-show="shMenu2" >
+              <div class="remove"><i class="fa fa-times"></i></div>
+              <div class="expand"><i class="fa fa-expand"></i></div>
+          </div>
+          <div class="panel-container">
+            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Deal flow</strong></div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="search-widget col-md-4 col-sm-4">
+        <section class="panel panel-default"  ng-mouseenter="shMenu3=true;" ng-mouseleave="shMenu3=false;">
+          <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu3 , 'animated slideOutLeft' : !shMenu3 }" ng-show="shMenu3" >
+              <div class="remove"><i class="fa fa-times"></i></div>
+              <div class="expand"><i class="fa fa-expand"></i></div>
+          </div>
+          <div class="panel-container">
+            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Deal flow</strong></div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
 
     <div class="row">
       <div class="search-widget col-md-4 col-sm-4">
-        <section class="panel panel-default">
-          <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Deal flow</strong></div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
-                </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+        <section class="panel panel-default"  ng-mouseenter="shMenu4=true;" ng-mouseleave="shMenu4=false;">
+          <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu4 , 'animated slideOutLeft' : !shMenu4 }" ng-show="shMenu4" >
+              <div class="remove"><i class="fa fa-times"></i></div>
+              <div class="expand"><i class="fa fa-expand"></i></div>
+          </div>
+          <div class="panel-container">
+            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Deal flow</strong></div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
 
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
-                </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
-
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+
+                  </div>
                 </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+              </div>
 
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
         </section>
       </div>
       <div class="search-widget col-md-4 col-sm-4">
-        <section class="panel panel-default">
-          <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Deal flow</strong></div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
-                </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+        <section class="panel panel-default"  ng-mouseenter="shMenu5=true;" ng-mouseleave="shMenu5=false;">
+          <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu5 , 'animated slideOutLeft' : !shMenu5 }" ng-show="shMenu5" >
+              <div class="remove"><i class="fa fa-times"></i></div>
+              <div class="expand"><i class="fa fa-expand"></i></div>
+          </div>
+          <div class="panel-container">
+            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Deal flow</strong></div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
 
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
-                </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
-
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+
+                  </div>
                 </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+              </div>
 
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
         </section>
       </div>
       <div class="search-widget col-md-4 col-sm-4">
-        <section class="panel panel-default">
-          <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Deal flow</strong></div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
-                </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+        <section class="panel panel-default" ng-mouseenter="shMenu6=true;" ng-mouseleave="shMenu6=false;">
+          <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu6 , 'animated slideOutLeft' : !shMenu6 }" ng-show="shMenu6" >
+              <div class="remove"><i class="fa fa-times"></i></div>
+              <div class="expand"><i class="fa fa-expand"></i></div>
+          </div>
+          <div class="panel-container">
+            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Deal flow</strong></div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
 
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
-                </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
-
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+
+                  </div>
                 </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+              </div>
 
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="callout callout-success">
+                    <span class="callout-heading">Callout heading</span>
+                    <span class="callout-date pull-right">31 Dec 2015</span>
+                  </div>
+                  <div class="search-description-wrapper">
+                    <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
+
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-        </section>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="search-widget col-md-4 col-sm-4">
-        <section class="panel panel-default">
-          <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Deal flow</strong></div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
-                </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
-                </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
-                </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </section>
-      </div>
-      <div class="search-widget col-md-4 col-sm-4">
-        <section class="panel panel-default">
-          <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Deal flow</strong></div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
-                </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
-                </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
-                </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </section>
-      </div>
-      <div class="search-widget col-md-4 col-sm-4">
-        <section class="panel panel-default">
-          <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Deal flow</strong></div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
-                </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
-                </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="callout callout-success">
-                  <span class="callout-heading">Callout heading</span>
-                  <span class="callout-date pull-right">31 Dec 2015</span>
-                </div>
-                <div class="search-description-wrapper">
-                  <p class="search-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?</p>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
         </section>
       </div>
     </div>

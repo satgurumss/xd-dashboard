@@ -3,7 +3,7 @@
     var LIVERELOAD_PORT, lrSnippet, mountFolder;
     var serveStatic = require('serve-static');
 
-    LIVERELOAD_PORT = 35728;
+    LIVERELOAD_PORT = 35720;
 
     lrSnippet = require("connect-livereload")({
         port: LIVERELOAD_PORT
@@ -75,7 +75,7 @@
             },
             connect: {
                 options: {
-                    port: 9009,
+                    port: 9000,
                     hostname: "localhost"
                 },
                 livereload: {
@@ -377,7 +377,7 @@
 
         grunt.registerTask("lessServer", function(target) {
             grunt.log.warn('The `lessServer` task has been deprecated. Use `grunt lessServe` to start a server.');
-        });  
+        });
         grunt.registerTask("lessServe", function(target) {
             if (target === "dist") {
                 return grunt.task.run(["lessBuild", "open", "connect:dist:keepalive"]);
