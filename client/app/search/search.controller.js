@@ -11,12 +11,16 @@
         $scope.currentPageItems = []
         $scope.filteredItems = []
 
-        $http.get('/app/sampleData/deal.json').then(function(deals){
-            console.log(deals)
+        $http.get('/app/sampleData/news.json').then(function(deals){
+            $scope.searchResults = deals.data.documents;
+
+            $scope.filteredItems = angular.copy($scope.searchResults)
+            $scope.currentPageItems = angular.copy($scope.searchResults)
+            $scope.select(1);
         });
 
         //models for the page
-        $scope.searchResults = [
+        /*$scope.searchResults = [
                 {
                     "title":"Document Title 1 - Limited by number of characters [PDF]",
                     "creationDate": "31 Dec 2015",
@@ -437,13 +441,14 @@
                         ],
                     "type":"template4"
                 },
-            ]
+            ]*/
 
         $scope.sortOptions=[
                 {"name":"Relevance","value":"relevance"},
                 {"name":"Date","value":"date"},
                 {"name":"Value","value":"value"}
             ]
+        
         $scope.locations=[
                 {
                     "loc_id":"0",
@@ -469,9 +474,6 @@
         $scope.filterYears = [2016,2015,2014,2013,2012,2010,2009,2008]
         $scope.doctypes = ["All","PDF", "Presentation"]
 
-        $scope.filteredItems = angular.copy($scope.searchResults)
-        $scope.currentPageItems = angular.copy($scope.searchResults)
-
         $scope.select = function(page) {
           var end, start;
          
@@ -481,9 +483,10 @@
 
           return $scope.currentPageItems;
         };
-        //initialize paginated results
-        $scope.select(1);
-    }
 
+        /*$scope.filteredItems = angular.copy($scope.searchResults)
+        $scope.currentPageItems = angular.copy($scope.searchResults)
+        $scope.select(1);*/
+    }
 
 })(); 
