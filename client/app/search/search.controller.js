@@ -11,6 +11,7 @@
         $scope.currentPageItems = []
         $scope.filteredItems = []
 
+        //models for the page
         $scope.searchResults = [
                 {
                     "title":"Document Title 1 - Limited by number of characters [PDF]",
@@ -415,9 +416,9 @@
             ]
 
         $scope.sortOptions=[
-                {"name":"Sort by Relevance","value":"relevance"},
-                {"name":"Sort by Date","value":"date"},
-                {"name":"Sort by Value","value":"value"}
+                {"name":"Relevance","value":"relevance"},
+                {"name":"Date","value":"date"},
+                {"name":"Value","value":"value"}
             ]
         $scope.locations=[
                 {
@@ -442,8 +443,8 @@
                 }
             ]
         $scope.filterYears = [2016,2015,2014,2013,2012,2010,2009,2008]
-        
-        $scope.doctypes = ["All","PDF", "Presentation"]    
+        $scope.doctypes = ["All","PDF", "Presentation"]
+
         $scope.filteredItems = angular.copy($scope.searchResults)
         $scope.currentPageItems = angular.copy($scope.searchResults)
 

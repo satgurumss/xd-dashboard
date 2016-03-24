@@ -14,6 +14,14 @@
 	padding: 25px;
 }
 
+.grey-text{
+  color: #767676;
+}
+
+.light-grey{
+  color: #ccc;
+}
+
 a {
 	word-wrap: break-word;
 }

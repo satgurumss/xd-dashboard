@@ -6,9 +6,11 @@
 			
 			<div class="row search-section" >
 				
-				<div class="adv-search col-md-2">
+				<div class="adv-search col-md-2 col-sm-2">
 					<div class="btn-group" uib-dropdown is-open="status.isopen1" auto-close="disabled">
-            <button type="button" class="btn btn-default dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled"> Advanced Search &nbsp;<span class="fa fa-bars"></span> </button>
+            <button type="button" class="btn btn-default dropdown-toggle grey-text" uib-dropdown-toggle ng-disabled="disabled"> Advanced Search &nbsp;
+            	<span class="fa fa-bars light-grey"></span>
+            </button>
             <ul class="dropdown-menu" role="menu">
               <li>
               	<div class="text-uppercase menu-title">time</div>
@@ -56,10 +58,10 @@
             </ul>
           </div>
 				</div>
-				<div class="search-bar col-md-6" data-ng-controller="TypeaheadCtrl">
+				<div class="search-bar col-md-6 col-sm-offset-1 col-sm-9">
 					<input type="text"
 					ng-model="selected"
-					uib-typeahead="state for state in states | filter:$viewValue | limitTo:8"
+					uib-typeahead="result.title for result in searchResults | filter:$viewValue | limitTo:8"
 					class="form-control"
 					placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome">
 				</div>
@@ -70,7 +72,7 @@
 					<span class="ui-select pull-right relevance-filter">
             <select>
               <option ng-selected="opt.value == 'relevance'" ng-repeat="opt in sortOptions" value ="{{opt.value}}"> 
-              	{{opt.name}}
+              	Sort by {{opt.name}}
               </option>
             </select>
           </span>
@@ -79,19 +81,19 @@
 				<div class="col-md-offset-2 col-md-10 col-xs-12 results-container">
 
 					<div class="search-result row pad-l-0" data-ng-repeat="result in currentPageItems">
-						<div class="desc-col col-md-10 col-xs-12">
+						<div class="desc-col col-md-10 col-sm-10 col-xs-12">
 
 							<div class="result-heading row">
-								<div class="result-title text-justify col-md-10">
+								<div class="result-title text-justify col-md-9 col-sm-10">
 									{{result.title}}
 								</div>
-								<div class="result-created-date col-md-2">
+								<div class="result-created-date col-md-3 text-right">
 									{{result.creationDate}}
 								</div>
 							</div>
 
 							<div class="result-url row">
-								<div class="result-doc-link col-md-10">
+								<div class="result-doc-link col-md-10 col-sm-10">
 									<a href="{{result.docURL}}">{{result.docURL}}</a>
 								</div>
 							</div>
@@ -112,13 +114,13 @@
 							</div>
 						</div>
 
-						<div class="result-arrow col-md-2 hidden-xs">
+						<div class="result-arrow col-md-2 col-sm-2 hidden-xs">
 							<i class="fa fa-angle-right"></i>
 						</div>
 						<!--result row end-->
 					</div>
 					
-          <div class="text-right">
+          <div class="col-md-12 text-right">
             <uib-pagination class="pagination-sm"
               ng-model="currentPage"
               total-items="searchResults.length"
