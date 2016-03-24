@@ -17,9 +17,10 @@
                   <div class="col-xs-4 col-sm-3 col-lg-1 pl-0">
                     <span class="ui-select">
                         <select>
-                            <option value="All">ALL</option>
-                            <option value="Water">WATER</option>
-                            <option value="Power">POWER</option>
+                            <option value="All">All</option>
+                            <option value="Water">Investments/Deals</option>
+                            <option value="Power">People</option>
+                            <option value="Power">Knowledge</option>
                         </select>
                     </span>
                   </div>
@@ -112,10 +113,11 @@
           <div class="panel-container">
             <div class="panel-heading widget-hading">
               <span class="ui-select">
-                  <select>
-                      <option value="Widget">{{widget.title}}</option>
-                      <option value="Water">MY DEAL ONE</option>
-                      <option value="Power">MY DEAL TWO</option>
+                  <select ng-options="filter as filter.label for filter in widget.filters track by filter.id" ng-model="widget.filters[0]">
+                      <!-- <option value="Widget">MY DEALS</option>
+                      <option value="Water">MY INVESTMENTS</option>
+                      <option value="Power">MY REGION</option>
+                      <option value="Power">MY INTREST</option> -->
                   </select>
               </span><strong hidden>{{widget.title}}</strong></div>
             <div class="panel-body">

@@ -1,4 +1,4 @@
-<header class="top-header clearfix">
+<header class="top-header clearfix" data-ng-controller = "HeaderCtrl">
 
     <!-- Logo -->
     <div class="logo"
@@ -24,8 +24,8 @@
 
     <div class="top-nav">
         <ul class="nav-left list-unstyled">
-            <li class="center active"><a href="#/dashboard">DASHBOARD</a></li>
-            <li class="center"><a href="#/search-result">SEARCH</a></li>
+            <li class="center" ng-class="{ active: isActive('/dashboard')}"><a href="#/dashboard">DASHBOARD</a></li>
+            <li class="center" ng-class="{ active: isActive('/search-result')}"><a href="#/search-result">SEARCH</a></li>
             <li class="dropdown text-normal nav-profile pull-right" uib-dropdown is-open="status.isopenProfile">
                 <a href="javascript:;" uib-dropdown-toggle ng-disabled="disabled">
                     <img src="images/g1.jpg" alt="" class="img-circle img30_30">
