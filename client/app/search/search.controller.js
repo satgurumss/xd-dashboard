@@ -2,14 +2,18 @@
     'use strict';
 
     angular.module('app')
-        .controller('SearchCtrl', ['$scope', SearchCtrl])
+        .controller('SearchCtrl', ['$scope','$http', SearchCtrl])
 
-    function SearchCtrl($scope) {
+    function SearchCtrl($scope,$http) {
         $scope.numPerPageOpt = [3, 5, 10]
         $scope.numPerPage = $scope.numPerPageOpt[1]
         $scope.currentPage = 1
         $scope.currentPageItems = []
         $scope.filteredItems = []
+
+        $http.get('/app/sampleData/deal.json').then(function(deals){
+            console.log(deals)
+        });
 
         //models for the page
         $scope.searchResults = [
@@ -31,7 +35,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template1"
                 },
                 {
                     "title":"Document Title 1 - Limited by number of characters [PDF]",
@@ -51,7 +56,8 @@
                                 "link" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template1"
                 },
                 {
                     "title":"Document Title 1 - Limited by number of characters [PDF]",
@@ -71,7 +77,8 @@
                                 "link" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template1"
                 },
                 {
                     "title":"Document Title 1 - Limited by number of characters [PDF]",
@@ -91,7 +98,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template1"
                 },
                 {
                     "title":"Document Title 1 - Limited by number of characters [PDF]",
@@ -111,7 +119,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template1"
                 },
                 {
                     "title":"Document Title 2 - Limited by number of characters [PDF]",
@@ -131,7 +140,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template2"
                 },
                 {
                     "title":"Document Title 2 - Limited by number of characters [PDF]",
@@ -151,7 +161,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template2"
                 },
                 {
                     "title":"Document Title 2 - Limited by number of characters [PDF]",
@@ -171,7 +182,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template2"
                 },
                 {
                     "title":"Document Title 2 - Limited by number of characters [PDF]",
@@ -191,7 +203,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template2"
                 },
                 {
                     "title":"Document Title 2 - Limited by number of characters [PDF]",
@@ -211,7 +224,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template2"
                 },
                 {
                     "title":"Document Title 3 - Limited by number of characters [PDF]",
@@ -231,7 +245,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template3"
                 },
                 {
                     "title":"Document Title 3 - Limited by number of characters [PDF]",
@@ -251,7 +266,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template3"
                 },
                 {
                     "title":"Document Title 3 - Limited by number of characters [PDF]",
@@ -271,7 +287,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template3"
                 },
                 {
                     "title":"Document Title 3 - Limited by number of characters [PDF]",
@@ -291,7 +308,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template3"
                 },
                 {
                     "title":"Document Title 3 - Limited by number of characters [PDF]",
@@ -311,7 +329,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template3"
                 },
                 {
                     "title":"Document Title 3 - Limited by number of characters [PDF]",
@@ -331,7 +350,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template3"
                 },
                 {
                     "title":"Document Title - Limited by number of characters [PDF]",
@@ -351,7 +371,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template4"
                 },
                 {
                     "title":"Document Title - Limited by number of characters [PDF]",
@@ -371,7 +392,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template4"
                 },
                 {
                     "title":"Document Title - Limited by number of characters [PDF]",
@@ -391,7 +413,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template4"
                 },
                 {
                     "title":"Document Title - Limited by number of characters [PDF]",
@@ -411,7 +434,8 @@
                                 "URL" :"www.optionallink.com",
                                 "linkTitle": "OptionalLink 3"
                             }
-                        ]
+                        ],
+                    "type":"template4"
                 },
             ]
 
