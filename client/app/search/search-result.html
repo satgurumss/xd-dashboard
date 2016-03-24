@@ -2,24 +2,59 @@
 	
 	<div class="panel panel-default">
 		
-		<div class="panel-body">
+		<div class="panel-body pad-25">
 			
-			<div class="row" >
+			<div class="row search-section" >
 				
 				<div class="adv-search col-md-2">
-					<div is-open="status.isopen1" dropdown="" class="btn-group">
-						<button dropdown-toggle="" class="btn btn-default dropdown-toggle" 
-						type="button" aria-haspopup="true" aria-expanded="false"> 
-						Advanced Search&nbsp;<span class="caret"></span> 
-						</button>
-						<ul role="menu" class="dropdown-menu">
-							<li><a href="javascript:;">Action</a></li>
-							<li><a href="javascript:;">Another action</a></li>
-							<li><a href="javascript:;">Something else here</a></li>
-							<li class="divider"></li>
-							<li><a href="javascript:;">Separated link</a></li>
-						</ul>
-					</div>
+					<div class="btn-group" uib-dropdown is-open="status.isopen1" auto-close="disabled">
+            <button type="button" class="btn btn-default dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled"> Advanced Search &nbsp;<span class="fa fa-bars"></span> </button>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+              	<div class="text-uppercase menu-title">time</div>
+              	<ul class="sub-menu">
+              		<li><a class="text-uppercase">All</a></li>
+              		<li><a class="text-uppercase">last 6 months</a></li>
+              		<li><a class="text-uppercase">last 12 months</a></li>
+              		<li><a class="text-uppercase">last 2 years</a></li>
+              		<li>
+              			<span class="ui-select year-filter">
+					            <select>
+					            	<option value="">Year</option>
+					              <option ng-repeat="year in filterYears" value ="{{year}}"> 
+					              	{{year}}
+					              </option>
+					            </select>
+					          </span>
+					        </li>
+              	</ul>
+              </li>
+              <li>
+              	<div class="text-uppercase menu-title">geography</div>
+              	<ul class="sub-menu">
+              		<li ng-repeat="loc in locations">
+              			<label class="ui-checkbox text-uppercase">
+              				<input type="checkbox" value="{{loc.loc_name}}" 
+              					ng-checked="{{loc.loc_name == 'All'}}">
+              				<span>{{loc.loc_name}}</span>
+              			</label>
+              		</li>
+              	</ul>
+              </li>
+              <li>
+              	<div class="text-uppercase menu-title">document</div>
+              	<ul class="sub-menu">
+              		<li ng-repeat="doctype in doctypes">
+              			<label class="ui-checkbox text-uppercase">
+              				<input type="checkbox" value="{{doctype}}"
+              					ng-checked="{{doctype == 'All'}}">
+              				<span>{{doctype}}</span>
+              			</label>
+              		</li>
+              	</ul>
+              </li>
+            </ul>
+          </div>
 				</div>
 				<div class="search-bar col-md-6" data-ng-controller="TypeaheadCtrl">
 					<input type="text"
@@ -31,57 +66,69 @@
 			</div>
 		
 			<div class="row results-section">
-				<div class="col-md-offset-2 col-md-10">
-					<span class="ui-select pull-right">
+				<div class="col-md-offset-2 col-md-10 col-xs-12 pad-r-0">
+					<span class="ui-select pull-right relevance-filter">
             <select>
-          		<option class="hidden" value="">Sort By Relevance</option>
-              <option ng-repeat="opt in sortOptions" value ="{{opt.value}}"> 
+              <option ng-selected="opt.value == 'relevance'" ng-repeat="opt in sortOptions" value ="{{opt.value}}"> 
               	{{opt.name}}
               </option>
             </select>
           </span>
 				</div>
 
-				<div class="col-md-offset-2 col-md-10 results-container">
-					<div class="col-md-11">
-						<div class="search-result row pad-l-0" 
-							data-ng-repeat="result in searchResults">
-							<div class="desc-col col-md-10">
+				<div class="col-md-offset-2 col-md-10 col-xs-12 results-container">
 
-								<div class="row">
-									<div class="result-title col-md-10">
-										{{result.title}}
-									</div>
-									<div class="result-created-date col-md-2">
-										{{result.creationDate}}
-									</div>
+					<div class="search-result row pad-l-0" data-ng-repeat="result in currentPageItems">
+						<div class="desc-col col-md-10 col-xs-12">
+
+							<div class="result-heading row">
+								<div class="result-title text-justify col-md-10">
+									{{result.title}}
 								</div>
-								<div class="row">
-									<div class="result-doc-link col-md-10">
-										<a href="{{result.docURL}}">{{result.docURL}}</a>
-									</div>
+								<div class="result-created-date col-md-2">
+									{{result.creationDate}}
 								</div>
-								<div class="result-desc row">
-										<div class="col-md-12">
-											<p>{{result.description}}</p>
-										</div>
+							</div>
+
+							<div class="result-url row">
+								<div class="result-doc-link col-md-10">
+									<a href="{{result.docURL}}">{{result.docURL}}</a>
 								</div>
-								<div class="row optional-links pad-b-20">
+							</div>
+
+							<div class="result-desc row">
 									<div class="col-md-12">
-										<span class="result-optional-links" 
-										data-ng-repeat="link in result.optionalLinks">
-											<a href="{{link.URL}}">{{link.linkTitle}}</a>{{$last ? '' : ' | '}}
-										</span> 
-									</div>								
-								</div>
+										<p class="text-justify">{{result.description}}</p>
+									</div>
 							</div>
 
-							<div class="result-arrow col-md-2 ">
-								<i class="fa fa-angle-right"></i>
+							<div class="row optional-links pad-b-20">
+								<div class="col-md-12">
+									<span class="result-optional-links" 
+									data-ng-repeat="link in result.optionalLinks">
+										<a href="{{link.URL}}">{{link.linkTitle}}</a>{{$last ? '' : ' | '}}
+									</span> 
+								</div>								
 							</div>
-							<!--result row end-->
 						</div>
+
+						<div class="result-arrow col-md-2 hidden-xs">
+							<i class="fa fa-angle-right"></i>
+						</div>
+						<!--result row end-->
 					</div>
+					
+          <div class="text-right">
+            <uib-pagination class="pagination-sm"
+              ng-model="currentPage"
+              total-items="searchResults.length"
+              max-size="4"
+              ng-change="select(currentPage)"
+              items-per-page="numPerPage"
+              rotate="false"
+              boundary-links="true">
+            </uib-pagination>
+          </div>
 				</div>
 			</div>
 		</div>
