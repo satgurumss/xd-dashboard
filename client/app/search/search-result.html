@@ -1,4 +1,4 @@
-<div class="page page-dashboard" data-ng-controller="SearchCtrl">
+<div class="page page-search" data-ng-controller="SearchCtrl">
 	
 	<div class="panel panel-default">
 		
@@ -61,7 +61,7 @@
 				<div class="search-bar col-md-6 col-sm-offset-1 col-sm-9">
 					<input type="text"
 					ng-model="selected"
-					uib-typeahead="result.title for result in searchResults | filter:$viewValue | limitTo:8"
+					uib-typeahead="result.fields.title[0] for result in searchResults | filter:$viewValue | limitTo:8"
 					class="form-control"
 					placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome">
 				</div>
@@ -82,21 +82,20 @@
 
 					<div class="search-result row pad-l-0" data-ng-repeat="result in currentPageItems">
 						<div 
-							ng-if="result.type == 'template1'" 
 							ng-include src="'app/search/result-template1.html'">
 						</div>
-						<div 
-							ng-if="result.type == 'template2'" 
+						<!-- <div 
+							ng-if="result.fields.type == 'template2'" 
 							ng-include src="'app/search/result-template2.html'">
 						</div>
 						<div 
-							ng-if="result.type == 'template3'" 
+							ng-if="result.fields.type == 'template3'" 
 							ng-include src="'app/search/result-template3.html'">
 						</div>
 						<div 
-							ng-if="result.type == 'template4'" 
+							ng-if="result.fields.type == 'template4'" 
 							ng-include src="'app/search/result-template4.html'">
-						</div>
+						</div> -->
 
 						<!--result row end-->
 					</div>

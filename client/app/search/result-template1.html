@@ -1,36 +1,30 @@
 <!-- Result template for type1 -->
-<div class="desc-col col-md-10 col-sm-10 col-xs-12">
+<div class="desc-col col-md-10">
 
 	<div class="result-heading row">
 		<div class="result-title text-justify col-md-9 col-sm-10">
-			{{result.title}}
+			{{result.fields.title[0]}}
 		</div>
 		<div class="result-created-date col-md-3 text-right">
-			{{result.creationDate}}
+			{{result.fields.date[0]|date:"mediumDate"}}
 		</div>
 	</div>
 
 	<div class="result-url row">
 		<div class="result-doc-link col-md-10 col-sm-10">
-			<a href="{{result.docURL}}">{{result.docURL}}</a>
+			<a href="#">www.detailedURLofTheDocument.com{{result.fields.sourcepath[0]}}</a>
 		</div>
 	</div>
 
 	<div class="result-desc row">
 			<div class="col-md-12">
-				<p class="text-justify">{{result.description}}</p>
+				<p class="text-justify">{{result.fields.teaser[0]}}</p>
 			</div>
 	</div>
 
 	<div class="row optional-links pad-b-20">
 		<div class="col-md-12">
-			<span class="result-optional-links" 
-			data-ng-repeat="link in result.optionalLinks">
-				<a href="{{link.URL}}">{{link.linkTitle}}</a>{{$last ? '' : ' | '}}
-			</span> 
+			<a href="#">more like this</a>
 		</div>								
 	</div>
-</div>
-<div class="result-arrow col-md-2 col-sm-2 hidden-xs">
-	<i class="fa fa-angle-right"></i>
 </div>
