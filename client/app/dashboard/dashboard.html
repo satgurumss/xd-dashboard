@@ -90,5 +90,40 @@
           </div>
         </section>
       </li>
+
+      <li class="slide search-widget col-md-4 col-sm-4" ng-controller="EChartsCtrl">
+        <section class="panel panel-default"  ng-mouseenter="shMenu1=true;" ng-mouseleave="shMenu1=false;">
+          <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu1 , 'animated slideOutLeft' : !shMenu1 }" ng-show="shMenu1" >
+              <div class="remove" ng-click="removeWidget(widget);"><i class="fa fa-times"></i></div>
+              <div class="expand"><i class="fa fa-expand"></i></div>
+          </div>
+          <div class="panel-container">
+            <div class="panel-heading"><strong>BAR CHART</strong></div>
+            <div class="panel-body">
+              <div class="row">
+                <div data-echarts data-options="bar3.options" style="height: 312px;"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </li>
+
+      <li class="slide search-widget col-md-4 col-sm-4" ng-controller="EChartsCtrl">
+        <section class="panel panel-default"  ng-mouseenter="shMenu1=true;" ng-mouseleave="shMenu1=false;">
+          <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu1 , 'animated slideOutLeft' : !shMenu1 }" ng-show="shMenu1" >
+              <div class="remove" ng-click="removeWidget(widget);"><i class="fa fa-times"></i></div>
+              <div class="expand"><i class="fa fa-expand"></i></div>
+          </div>
+          <div class="panel-container">
+            <div class="panel-heading"><strong>PIE CHART</strong></div>
+            <div class="panel-body">
+              <div class="row">
+                <div data-echarts data-options="pie2.options" style="height: 313px;"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </li>
     </ul>
+
 </div>

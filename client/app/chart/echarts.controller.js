@@ -431,8 +431,8 @@
         };
         $scope.bar3.options = {
             title : {
-                text: 'World Population',
-                subtext: 'From the Internet'
+                text: '',
+                subtext: ''
             },
             tooltip : {
                 trigger: 'axis'
@@ -476,7 +476,7 @@
         $scope.bar4.options = {
             tooltip : {
                 trigger: 'axis',
-                axisPointer : {            
+                axisPointer : {
                     type : 'shadow'
                 }
             },
@@ -543,7 +543,7 @@
         $scope.bar5.options = {
             tooltip : {
                 trigger: 'axis',
-                axisPointer : {         
+                axisPointer : {
                     type : 'shadow'
                 }
             },
@@ -785,7 +785,7 @@
                 formatter : function (params) {
                     if (params.value.length > 1) {
                         return params.seriesName + ' :<br/>'
-                           + params.value[0] + 'cm ' 
+                           + params.value[0] + 'cm '
                            + params.value[1] + 'kg ';
                     }
                     else {
@@ -793,7 +793,7 @@
                            + params.name + ' : '
                            + params.value + 'kg ';
                     }
-                },  
+                },
                 axisPointer:{
                     show: true,
                     type : 'cross',
@@ -983,7 +983,7 @@
                 ]);
             }
             return d;
-        }        
+        }
         $scope.scatter2.options = {
             tooltip : {
                 trigger: 'axis',
@@ -1280,5 +1280,5 @@
                 }
             ]
         };
-    }    
-})(); 
+    }
+})();
