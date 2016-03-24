@@ -25,6 +25,19 @@
 
     $scope.widgets = [{
       title: "My Deals",
+      filters: [{
+        id: 1,
+        label: 'my deals'
+      }, {
+        id: 2,
+        label: 'my investments'
+      }, {
+        id: 3,
+        label: 'my region'
+      }, {
+        id: 4,
+        label: 'my interests'
+      }],
       iconUrl: "images/widgets/icon_area-chart.png",
       searches: [{
         title: "Search 1_1",
@@ -41,6 +54,19 @@
       }]
     }, {
       title: "Widget 2",
+      filters: [{
+        id: 1,
+        label: 'recent deals'
+      }, {
+        id: 2,
+        label: 'recent investments'
+      }, {
+        id: 3,
+        label: 'recent region'
+      }, {
+        id: 4,
+        label: 'recent interests'
+      }],
       iconUrl: "images/widgets/icon_cpu-usage.png",
       searches: [{
         title: "Search 2_1",
@@ -57,6 +83,16 @@
       }]
     }, {
       title: "Widget 3",
+      filters: [{
+        id: 1,
+        label: 'total investments'
+      }, {
+        id: 2,
+        label: 'enterprise value'
+      }, {
+        id: 3,
+        label: 'number of employees'
+      }],
       iconUrl: "images/widgets/icon_map.png",
       searches: [{
         title: "Search 3_1",
@@ -73,6 +109,16 @@
       }]
     }, {
       title: "Widget 4",
+      filters: [{
+        id: 1,
+        label: 'total invested'
+      }, {
+        id: 2,
+        label: 'carrying value'
+      }, {
+        id: 3,
+        label: 'equity value'
+      }],
       iconUrl: "images/widgets/icon_memory-usage.png",
       searches: [{
         title: "Search 4_1",
@@ -87,25 +133,9 @@
         date: new Date(),
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
       }]
-    }, {
-      title: "Widget 5",
-      iconUrl: "images/widgets/icon_top-categories.png",
-      searches: [{
-        title: "Search 5_1",
-        date: new Date(),
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
-      }, {
-        title: "Search 5_2",
-        date: new Date(),
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
-      }, {
-        title: "Search 5_3",
-        date: new Date(),
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
-      }]
     }]
 
-     $scope.bar3.options = {
+    $scope.bar3.options = {
       title: {
         text: '',
         subtext: ''
@@ -114,7 +144,7 @@
         trigger: 'axis'
       },
       legend: {
-        data: ['2011', '2012']
+        data: ['2011', '2012', '2013']
       },
       toolbox: {
         show: true,
@@ -136,7 +166,7 @@
       }],
       yAxis: [{
         type: 'category',
-        data: ['Brazil', 'Indonesia', 'USA', 'India', 'China', 'World Population (10k)']
+        data: ['Brazil', 'Indonesia', 'USA', 'India', 'China', 'Population']
       }],
       series: [{
         name: '2011',
@@ -146,6 +176,10 @@
         name: '2012',
         type: 'bar',
         data: [19325, 23438, 31000, 121594, 134141, 681807]
+      }, {
+        name: '2013',
+        type: 'bar',
+        data: [17325, 21438, 35000, 100000, 134141, 581807]
       }]
     };
 
