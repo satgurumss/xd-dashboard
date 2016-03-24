@@ -7,15 +7,38 @@
 	padding-left: 0;
 }
 
+.pad-r-0{
+	padding-right: 0;
+}
+.pad-25{
+	padding: 25px;
+}
+
+.grey-text{
+  color: #767676;
+}
+
+.light-grey{
+  color: #ccc;
+}
+
+a {
+	word-wrap: break-word;
+}
+
+a:hover {
+	cursor: pointer;
+}
 /*-------*/
 
 /*SEARCH PAGE STYLES*/
 .results-section{
-	margin-top: 20px;
+	margin-top: 10px;
 }
 
 .results-container{
 	border: 1px solid #DCDCDC;
+	margin-top:10px;
 }
 
 .search-result{
@@ -28,9 +51,57 @@
 .result-arrow i{
 	font-size:110px;
 }
+.adv-search .dropdown-menu{
+	min-width: 185px;
+}
 
+.sub-menu{
+	list-style: none !important;
+	padding-left: 11px;
+  margin: 5px 0 20px 0;
+}
+
+.sub-menu label{
+	 margin: 0 10px 10px 20px;
+}
+
+.menu-title{
+  padding-left: 10px;
+  border-bottom: 1px solid #DCDCDC;
+}
+
+.year-filter{
+	margin:7px 0 0 0;
+}
+
+.year-filter select{
+	min-width: 158px;
+  height: 35px;
+  width:auto;
+}
+.relevance-filter select{
+  width: auto;
+}
+
+@media only screen and (max-device-width : 667px) {
+ .search-bar{
+ 	margin-top:10px;
+ }
+ .relevance-filter{
+ 	margin:0;
+ }
+
+}
 /*-------*/
+/*MEDIA QUERIES*/
 
+/*up to iPhone 6*/
+@media only screen and (max-device-width : 667px) {
+	.pull-right{
+	 	float:left !important;
+	 }
+}
+/*-------*/
 body {
   background: none;
   background-color: #EAEAEA;
