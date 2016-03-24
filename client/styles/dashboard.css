@@ -1,0 +1,167 @@
+.page-dashboard { min-height: 590px; }
+
+.page-dashboard .widget-control .caret {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid;
+  margin-left: 30px;
+}
+.page-dashboard .dropdown-menu { margin : 0 0 0 20px ; }
+.widget-filter-container {
+  padding: 15px 15px 10px 15px;
+  width: 862px;
+  background-color: #FFF;
+  box-shadow: 0 3px 3px #999;
+}
+.item {width: auto;height: auto;float: left;}
+/* Filter (custom Check Boxes)  - widget Control + chart options */
+.sort-wo-list { margin-bottom : 10px;}
+.custom-charts-filters {padding-right: 32px;}
+.sort-wo-list input[type=checkbox],
+.custom-charts-filters input[type=radio]{ display:none; }
+.sort-wo-list input[type=checkbox] + label,
+.custom-charts-filters input[type=radio] + label {
+  background-color: #FFF;
+  border: 1px solid #FFF;
+  cursor: pointer;
+  position :relative;
+  font-size: 11px;
+  display: inline-block;
+  font-weight: normal;
+  margin: 0 5px 0 0;
+  padding: 4px 10px;
+  text-align: center;
+  border-radius: 6px;}
+.sort-wo-list input[type=checkbox] + label{
+  border: 1px solid #CCC;
+  padding: 6px 0;
+  font-size: 12px;
+  border-radius: 3px;
+  width: 80px;}
+
+
+.custom-charts-filters input[type=radio] + label:hover {border: 1px solid #E6E6E6;}
+.custom-charts-filters input[type=radio]:checked + label {border: 1px solid #D8D8D8;}
+
+.sort-wo-list input[type=checkbox] + label:hover   { background-color: #EEE; }
+.sort-wo-list input[type=checkbox]:checked + label { background-color: #66B5D7; border: 1px solid #66B5D7; color: #FFF;}
+
+
+/* --------------End---------- */
+
+/* individual widget container */
+.widget-option-list {
+  position: relative;
+  width: 206px;
+  height: 209px;
+  float: left;
+  padding: 10px;
+  margin: 0 -1px -1px 0;
+  border: 1px solid #bbb;
+}
+
+.widget-option-list:hover { background-color: #EAF7FF; }
+
+.widget-filter-container .mini-box { min-height: 190px; padding: 0px;text-align: center;}
+.widget-filter-container .mini-box .box-icon{
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  float :none;
+  margin: 0;}
+
+.widget-text {color: #555;text-align: center;}
+.widget-text h4 { font-size : 12px; font-weight: bold;}
+
+.check-mark {
+  background-color: #BBB;
+  border-radius: 15px;
+  color: #FFF;
+  padding: 3px 4px;
+  margin-left: 5px;}
+
+.action-control{
+  position: relative;
+  border-radius: 3px;
+  padding: 3px;
+  z-index: 10;
+  top: 15px;
+  left: 0px;
+  width: 77px;
+  height: 25px;}
+
+.close-menu { text-align: center; margin-top: 10px;}
+
+
+/* Widgets on Dashboard */
+.widget-container{
+  background-color: #FFF;
+  border: 1px solid #E9E9E9;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.widget-container .widget-title { font-size: 14px;font-weight: bold; padding: 15px;}
+.textual-widget-container .row {padding : 8px 0;}
+.textual-widget-container .highlight-row{background-color: #F5F5F5; margin:0;}
+
+.page-dashboard .btn-settings .glyphicon-cog{ right : 27px; }
+
+.text-sysinfo .row:nth-child(odd),
+.text-deviceinfo .row:nth-child(odd){background-color: #EEE;}
+
+/* Widget Control Animations */
+.dropdown.ng-animate-start {
+  border-spacing: 0;
+}
+.open-add > .dropdown-menu,
+.open-remove > .dropdown-menu {
+  display: block !important;
+}
+.open-add > .dropdown-menu {
+  opacity: 0;
+
+  -webkit-transition: opacity .3s ease-in;
+  -moz-transition: opacity .3s ease-in;
+  -ms-transition: opacity .3s ease-in;
+  -o-transition: opacity .3s ease-in;
+  transition: opacity .3s ease-in;
+}
+.open-add.open-add-active > .dropdown-menu {
+  opacity: 1;
+}
+.open-remove > .dropdown-menu {
+  opacity: 1;
+
+  -webkit-transition: opacity .3s ease-out;
+  -moz-transition: opacity .3s ease-out;
+  -ms-transition: opacity .3s ease-out;
+  -o-transition: opacity .3s ease-out;
+  transition: opacity .3s ease-out;
+}
+.open-remove.open-remove-active > .dropdown-menu {
+  opacity: 0;
+}
+.animate-enter {
+    -webkit-transition: 1s linear all; /* Chrome */
+    transition: 1s linear all;
+    opacity: 0;
+}
+.animate-enter.animate-enter-active {
+    opacity: 1;
+}
+.widget-option-list.widget-selected {
+  background-color: #EEE;
+}
+.widget-option-list:hover.widget-selected, .widget-option-list.widget-selected:hover {
+  background-color: #EEE !important;
+}
+
+.widget-filter-container .widget-option-list.widget-selected .mini-box .box-icon {
+    opacity: .5;
+}
+.widget-option-list.widget-selected .widget-text {
+  color: #999;
+}
+
+
+
