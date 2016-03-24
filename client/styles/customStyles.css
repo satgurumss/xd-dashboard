@@ -415,7 +415,7 @@ body{
 .widget-hading .ui-select > select {
     z-index: 99;
     display: inline-block;
-    padding: 0;
+    padding: 0 10px 0 0;
     min-width: auto;
     font-size: 14px;
 }
@@ -426,7 +426,35 @@ body{
 .dropdown-menu {
   left: -323px;
 }
+.results-container {
+    border: 0;
+    border-left: 1px solid #DCDCDC;
+}
+.result-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+a {
+    color: #0079c1;
+}
+a:hover {
+    color: #6D8594;
+}
 
+.ui-checkbox input[type="checkbox"]:checked + span:before {
+    border: 1px solid #0079c1;
+}
+.ui-checkbox input[type="checkbox"]:checked + span:after {
+    background-color: #0079c1;
+  }
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+    z-index: 3;
+    color: #fff;
+    background-color: #0079c1;
+    border-color: #0079c1;
+    cursor: default;
+}
 
 
 
@@ -464,5 +492,14 @@ body{
   .header-container > .top-header .logo .img-responsive {
     display: inline-block;
     height: 30px;
+  }
+  .header-container > .top-header .top-nav .nav-left > li > a {
+    padding: 15px 9px;
+  }
+  .pb-15{
+    padding-bottom: 15px;
+  }
+  .pr-15 {
+    padding-right: 15px;
   }
 }
