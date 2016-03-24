@@ -32,10 +32,11 @@
                                   <input type="checkbox" id="All" name="All" value=".All" checked>
                                   <label for="All" class="first">All</label>
 
+<<<<<<< HEAD
                                 </div> -->
                                 <div data-slim-scroll data-scroll-height="417px">
                                   <div id="container">
-                                    <section ng-repeat="widget in widgets" class="item animated fadeIn {{widget.class}} widget-option-list" ng-class="{'widget-selected':!widget.added}">
+                                    <section ng-repeat="widget in widgets" class="item animated fadeIn {{widget.class}} widget-option-list" ng-class="{'widget-selected':widget.isHide}">
                                       <div class="mini-box" ng-mouseenter="showAdded = true" ng-mouseleave="showAdded = !showAdded">
                                         <span class="box-icon">
                                           <img ng-src="{{widget.iconUrl}}" wdith="100" height="100">
@@ -52,6 +53,41 @@
                                         </div>
                                       </div>
                                     </section>
+                                    <section class="item animated fadeIn {{bar3.class}} widget-option-list" ng-class="{'widget-selected':bar3.isHide}">
+                                            <div class="mini-box" ng-mouseenter="showAdded = true" ng-mouseleave="showAdded = !showAdded">
+                                              <span class="box-icon">
+                                                <img ng-src="{{bar3.iconUrl}}" wdith="100" height="100">
+                                              </span>
+                                              <div class="widget-text text-left">
+                                                <h4 class="text-center">{{bar3.title}}
+                                                  <span class="check-mark" ng-show="!bar3.isHide">
+                                                    <span class="fa fa-check"></span>
+                                                  </span>
+                                                </h4>
+                                                <span ng-hide="showAdded">{{bar3.title}}</span>
+                                                <button class="btn btn-danger action-control" ng-show="showAdded && bar3.isHide" ng-click="bar3.isHide = false">Add</button>
+                                                <button class="btn btn-danger action-control" ng-show="showAdded && !bar3.isHide" ng-click="bar3.isHide = true">Remove</button>
+                                              </div>
+                                            </div>
+                                          </section>
+
+                                          <section class="item animated fadeIn {{pie2.class}} widget-option-list" ng-class="{'widget-selected':pie2.isHide}">
+                                            <div class="mini-box" ng-mouseenter="showAdded = true" ng-mouseleave="showAdded = !showAdded">
+                                              <span class="box-icon">
+                                                <img ng-src="{{pie2.iconUrl}}" wdith="100" height="100">
+                                              </span>
+                                              <div class="widget-text text-left">
+                                                <h4 class="text-center">{{pie2.title}}
+                                                  <span class="check-mark" ng-show="!pie2.isHide">
+                                                    <span class="fa fa-check"></span>
+                                                  </span>
+                                                </h4>
+                                                <span ng-hide="showAdded">{{pie2.title}}</span>
+                                                <button class="btn btn-danger action-control" ng-show="showAdded && pie2.isHide" ng-click="pie2.isHide = false">Add</button>
+                                                <button class="btn btn-danger action-control" ng-show="showAdded && !pie2.isHide" ng-click="pie2.isHide = true">Remove</button>
+                                              </div>
+                                            </div>
+                                          </section>
                                   </div>
                                 </div>
                               </section>
@@ -66,11 +102,10 @@
           </div>
       </div>
 
-
     <ul class="list-unstyled">
-      <li ng-repeat = "widget in widgets" ng-if = "!widget.isHide" class="slide search-widget col-md-4 col-sm-4">
-        <section class="panel panel-default"  ng-mouseenter="shMenu1=true;" ng-mouseleave="shMenu1=false;">
-          <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu1 , 'animated slideOutLeft' : !shMenu1 }" ng-show="shMenu1" >
+      <li ng-repeat = "widget in widgets" ng-if = "!widget.isHide" class="slide search-widget col-md-4 col-sm-6">
+        <section class="panel panel-default"  ng-mouseenter="widget.shMenu1=true;" ng-mouseleave="widget.shMenu1=false;">
+          <div class="widget-menu" ng-class="{'animated slideInLeft' : widget.shMenu1 , 'animated slideOutLeft' : !widget.shMenu1 }" ng-show="widget.shMenu1" >
               <div class="remove" ng-click="removeWidget(widget);"><i class="fa fa-times"></i></div>
               <div class="expand"><i class="fa fa-expand"></i></div>
           </div>
@@ -84,17 +119,51 @@
                   </select>
               </span><strong hidden>{{widget.title}}</strong></div>
             <div class="panel-body">
-              <div class="row" ng-repeat = "search in widget.searches">
+              <div class="row" ng-repeat = "deal in deals | limitTo: 3">
                 <div class="col-md-12">
                   <div class="callout callout-success">
-                    <span class="callout-heading">{{search.title}}</span>
-                    <span class="callout-date pull-right">{{search.date | date: 'MMMM dd yyyy'}}</span>
+                    <span class="callout-heading">{{deal.fields.company_name_s[0]}}</span>
+                    <span class="callout-date pull-right">{{deal.fields.date[0] | date: 'MMMM dd yyyy'}}</span>
                   </div>
                   <div class="search-description-wrapper">
-                    <p class="search-description">{{search.description}}</p>
+                    <p class="search-description">{{deal.fields.company_description_s[0]}}</p>
 
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </li>
+
+      <li class="slide search-widget col-md-4 col-sm-6"  ng-if = "!bar3.isHide">
+        <section class="panel panel-default" ng-mouseenter="shMenu1=true;" ng-mouseleave="shMenu1=false;">
+          <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu1 , 'animated slideOutLeft' : !shMenu1 }" ng-show="shMenu1" >
+              <div class="remove" ng-click="removeWidget(bar3);"><i class="fa fa-times"></i></div>
+              <div class="expand"><i class="fa fa-expand"></i></div>
+          </div>
+          <div class="panel-container">
+            <div class="panel-heading"><strong>BAR CHART</strong></div>
+            <div class="panel-body">
+              <div class="row">
+                <div data-echarts data-options="bar3.options" style="height: 312px;"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </li>
+
+      <li class="slide search-widget col-md-4 col-sm-6" ng-if = "!pie2.isHide">
+        <section class="panel panel-default"  ng-mouseenter="shMenu2=true;" ng-mouseleave="shMenu2=false;">
+          <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu2 , 'animated slideOutLeft' : !shMenu2 }" ng-show="shMenu2" >
+              <div class="remove" ng-click="removeWidget(pie2);"><i class="fa fa-times"></i></div>
+              <div class="expand"><i class="fa fa-expand"></i></div>
+          </div>
+          <div class="panel-container">
+            <div class="panel-heading"><strong>PIE CHART</strong></div>
+            <div class="panel-body">
+              <div class="row">
+                <div data-echarts data-options="pie2.options" style="height: 313px;"></div>
               </div>
             </div>
           </div>

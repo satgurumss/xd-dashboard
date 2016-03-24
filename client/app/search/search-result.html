@@ -1,4 +1,4 @@
-<div class="page page-dashboard" data-ng-controller="SearchCtrl">
+<div class="page page-search" data-ng-controller="SearchCtrl">
 	
 	<div class="panel panel-default">
 		
@@ -61,7 +61,7 @@
 				<div class="search-bar col-md-6 col-sm-offset-1 col-sm-9">
 					<input type="text"
 					ng-model="selected"
-					uib-typeahead="result.title for result in searchResults | filter:$viewValue | limitTo:8"
+					uib-typeahead="result.fields.title[0] for result in searchResults | filter:$viewValue | limitTo:8"
 					class="form-control"
 					placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome">
 				</div>
@@ -81,42 +81,22 @@
 				<div class="col-md-offset-2 col-md-10 col-xs-12 results-container">
 
 					<div class="search-result row pad-l-0" data-ng-repeat="result in currentPageItems">
-						<div class="desc-col col-md-10 col-sm-10 col-xs-12">
-
-							<div class="result-heading row">
-								<div class="result-title text-justify col-md-9 col-sm-10">
-									{{result.title}}
-								</div>
-								<div class="result-created-date col-md-3 text-right">
-									{{result.creationDate}}
-								</div>
-							</div>
-
-							<div class="result-url row">
-								<div class="result-doc-link col-md-10 col-sm-10">
-									<a href="{{result.docURL}}">{{result.docURL}}</a>
-								</div>
-							</div>
-
-							<div class="result-desc row">
-									<div class="col-md-12">
-										<p class="text-justify">{{result.description}}</p>
-									</div>
-							</div>
-
-							<div class="row optional-links pad-b-20">
-								<div class="col-md-12">
-									<span class="result-optional-links" 
-									data-ng-repeat="link in result.optionalLinks">
-										<a href="{{link.URL}}">{{link.linkTitle}}</a>{{$last ? '' : ' | '}}
-									</span> 
-								</div>								
-							</div>
+						<div 
+							ng-include src="'app/search/result-template1.html'">
 						</div>
-
-						<div class="result-arrow col-md-2 col-sm-2 hidden-xs">
-							<i class="fa fa-angle-right"></i>
+						<!-- <div 
+							ng-if="result.fields.type == 'template2'" 
+							ng-include src="'app/search/result-template2.html'">
 						</div>
+						<div 
+							ng-if="result.fields.type == 'template3'" 
+							ng-include src="'app/search/result-template3.html'">
+						</div>
+						<div 
+							ng-if="result.fields.type == 'template4'" 
+							ng-include src="'app/search/result-template4.html'">
+						</div> -->
+
 						<!--result row end-->
 					</div>
 					
