@@ -7,6 +7,7 @@
           <div data-ng-include="'app/shared/searchbar.html'"></div>
 
           <div class="col-xs-12 col-sm-3 col-lg-2">
+            
             <span class="ui-select pull-right relevance-filter">
               <select>
                 <option ng-selected="opt.value == 'relevance'" ng-repeat="opt in sortOptions" value ="{{opt.value}}">
@@ -24,8 +25,9 @@
 		<div class="panel-body pad-25">
 
 			<div class="row results-section">
-
-        <div class="clearfix visible-xs" style="padding: 0 30px;">
+        <!-- ###mobile advanced search drop down### -->
+        <div class="clearfix visible-xs" style="padding: 0 30px;" 
+          ng-if = "searchResults.data.facets.length > 0">
           <div class="row">
             <div class="col-xs-12">
               <div class="btn-group" uib-dropdown is-open="status.isopen1" auto-close="disabled">
@@ -33,48 +35,16 @@
                  <span class="fa fa-bars light-grey"></span>
                 </button>
                 <ul uib-dropdown-menu role="menu">
-                  <li>
-                   <div class="text-uppercase menu-title">time</div>
-                   <ul class="sub-menu">
-                    <li><a class="text-uppercase">All</a></li>
-                    <li><a class="text-uppercase">last 6 months</a></li>
-                    <li><a class="text-uppercase">last 12 months</a></li>
-                    <li><a class="text-uppercase">last 2 years</a></li>
-                    <li>
-                      <span class="ui-select year-filter">
-                        <select>
-                          <option value="">Year</option>
-                           <option ng-repeat="year in filterYears" value ="{{year}}">
-                            {{year}}
-                           </option>
-                        </select>
-                      </span>
-                    </li>
-                   </ul>
-                  </li>
-                  <li>
-                   <div class="text-uppercase menu-title">geography</div>
-                   <ul class="sub-menu">
-                    <li ng-repeat="loc in locations">
-                     <label class="ui-checkbox text-uppercase">
-                      <input type="checkbox" value="{{loc.loc_name}}"
-                       ng-checked="{{loc.loc_name == 'All'}}">
-                      <span>{{loc.loc_name}}</span>
-                     </label>
-                    </li>
-                   </ul>
-                  </li>
-                  <li>
-                   <div class="text-uppercase menu-title">document</div>
-                   <ul class="sub-menu">
-                    <li ng-repeat="doctype in doctypes">
-                     <label class="ui-checkbox text-uppercase">
-                      <input type="checkbox" value="{{doctype}}"
-                       ng-checked="{{doctype == 'All'}}">
-                      <span>{{doctype}}</span>
-                     </label>
-                    </li>
-                   </ul>
+                  <li  ng-repeat = "facet in searchResults.data.facets">
+                    <div class="text-uppercase menu-title">{{facet.label}}</div>
+                    <ul class="sub-menu">
+                      <li  ng-repeat= 'opt in facet.buckets'>
+                       <label class="ui-checkbox">
+                        <input type="checkbox" value="{{opt.filter}}">
+                        <span>{{opt.label}}</span>
+                       </label>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </div>
@@ -82,79 +52,59 @@
           </div>
         </div>
 
-        <div class="adv-search  col-lg-2 col-md-3 col-sm-4 hidden-xs">
-          <div>
-            <h4>Advanced Search</h4>
-            <ul class="list-unstyled">
-              <li>
-               <div class="text-uppercase menu-title">time</div>
-               <ul class="sub-menu" style="line-height: 1.7;">
-                <li><a class="text-uppercase">All</a></li>
-                <li><a class="text-uppercase">last 6 months</a></li>
-                <li><a class="text-uppercase">last 12 months</a></li>
-                <li><a class="text-uppercase">last 2 years</a></li>
-                <li>
-                  <span class="ui-select year-filter">
-                    <select>
-                      <option value="">Year</option>
-                      <option ng-repeat="year in filterYears" value ="{{year}}">
-                        {{year}}
-                      </option>
-                    </select>
-                  </span>
-                </li>
-               </ul>
-              </li>
-              <li>
-               <div class="text-uppercase menu-title">geography</div>
-               <ul class="sub-menu">
-                <li ng-repeat="loc in locations">
-                 <label class="ui-checkbox text-uppercase">
-                  <input type="checkbox" value="{{loc.loc_name}}"
-                   ng-checked="{{loc.loc_name == 'All'}}">
-                  <span>{{loc.loc_name}}</span>
-                 </label>
-                </li>
-               </ul>
-              </li>
-              <li>
-               <div class="text-uppercase menu-title">document</div>
-               <ul class="sub-menu">
-                <li ng-repeat="doctype in doctypes">
-                 <label class="ui-checkbox text-uppercase">
-                  <input type="checkbox" value="{{doctype}}"
-                   ng-checked="{{doctype == 'All'}}">
-                  <span>{{doctype}}</span>
-                 </label>
-                </li>
-               </ul>
+        <!-- ###desktop advanced search section### -->
+        <div class="adv-search  col-lg-3 col-md-3 col-sm-4 hidden-xs" >
+          <div ng-if = "searchResults.data.facets.length > 0">
+            <span class="h4">Advanced Search</span>
+            <span>
+              <button class="btn btn-xs btn-line-info pull-right" ng-click="advSearch()">
+                <i class="fa fa-search"/>
+              </button>
+            </span>
+            <ul class="list-unstyled margin-t20">
+              <li  ng-repeat = "facet in searchResults.data.facets">
+                <div class="text-uppercase menu-title">{{facet.label}}</div>
+                <ul class="sub-menu" >
+                  <li ng-repeat= 'opt in facet.buckets'>
+                   <label class="ui-checkbox">
+                    <input type="checkbox" value="{{opt.filter}}" 
+                      ng-click="setAdvFilter($event,opt.filter)">
+                    <span>{{opt.label}}</span>
+                   </label>
+                  </li>
+                </ul>
               </li>
             </ul>
+            <div>
+              <button class="btn btn-sm btn-line-info pull-right" ng-click="advSearch()">
+                <i class="fa fa-search"/> Search
+              </button>
+            </div>
           </div>
         </div>
 
-				<div class="col-lg-10 col-md-9 col-sm-8 results-container">
+				<div class="col-lg-9 col-md-9 col-sm-8 results-container">
 
 					<div ng-show = "currentPageItems.length == 0" >
-            <h4>{{blankslateMsg}}</h4>
+            <h4 class="mobile-center">{{blankslateMsg}}</h4>
           </div>
 
           <div class="search-result row pad-l-0" data-ng-repeat="result in currentPageItems">
             <div
               ng-if="result.fields.table == 'news' || result.fields.table == 'knowledge' "
-							ng-include src="'app/search/result-template1.html'">
+							ng-include="'app/search/result-template1.html'">
 						</div>
 						<div
 							ng-if="result.fields.table == 'profile'"
-							ng-include src="'app/search/result-template2.html'">
+							ng-include="'app/search/result-template2.html'">
 						</div>
 						<div
 							ng-if="result.fields.table == 'deal'"
-							ng-include src="'app/search/result-template3.html'">
+							ng-include="'app/search/result-template3.html'">
 						</div>
 						<div
 							ng-if="result.fields.table == 'km'"
-							ng-include src="'app/search/result-template4.html'">
+							ng-include="'app/search/result-template4.html'">
 						</div>
 
 						<!--result row end-->
@@ -163,7 +113,7 @@
           <div class="col-md-12 text-right" ng-show="currentPageItems.length > 0">
             <uib-pagination class="pagination-sm"
               ng-model="currentPage"
-              total-items="searchResults.length"
+              total-items="searchResults.data.documents.length"
               max-size="4"
               ng-change="select(currentPage)"
               items-per-page="numPerPage"
