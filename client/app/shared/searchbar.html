@@ -1,22 +1,31 @@
-<div class="col-xs-6 col-sm-6 col-lg-4 col-lg-offset-3 pr-0">
-  <div class="ui-typeahead">
+<!-- &#xF002;  -->
+<div class="{{searchbarWidth}} col-sm-6 col-lg-4 col-lg-offset-3 pr-0 pb-15">
+  <div class="ui-typeahead input-group">
     <input
       type="text"
       uib-typeahead="deal.fields.company_name_s[0] for deal in deals | filter:$viewValue | limitTo:8"
       class="form-control"
       ng-model = "queryText"
-      ng-change = "search(queryText)"
-      placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome"
-      ng-model-options="{debounce:500}">
+      placeholder="Search" style="font-family:Arial, FontAwesome"
+      ng-change="updateCtrlModel(queryText)"
+      ng-model-options="{debounce:500}"
+      >
+      <!-- my-enter-press="queryText && search(queryText)" -->
+      
+      <span class="input-group-btn">
+        <button class="btn btn-md btn-default" ng-click="search(queryText)" ng-disabled="!queryText">
+          <i class="fa fa-search"/>
+        </button>
+      </span>
   </div>
 </div>
 <div class="col-xs-4 col-sm-3 col-lg-1 pl-0">
   <span class="ui-select">
-    <select>
-      <option value="All">All</option>
-      <option value="Water">Investments/Deals</option>
-      <option value="Power">People</option>
-      <option value="Power">Knowledge</option>
+    <select ng-model="filterType" ng-change="setFilter(filterType)">
+      <option value="abraajSearch" ng-selected="true">All</option>
+      <option value="abraajSearchInvestments">Investments/Deals</option>
+      <option value="abraajSearchPeople">Knowledge</option>
+      <option value="abraajSearchKnowledge">People</option>
     </select>
   </span>
 </div>
