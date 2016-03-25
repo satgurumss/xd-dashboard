@@ -8,7 +8,7 @@
               <div class="ui-typeahead">
                 <input type="text"
                  ng-model="selected"
-                 uib-typeahead="result.fields.title[0] for result in searchResult | filter:$viewValue | limitTo:8"
+                 uib-typeahead="result.fields.title[0] for result in searchResults | filter:$viewValue | limitTo:8"
                  class="form-control"
                  placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome">
               </div>
@@ -35,11 +35,11 @@
         <div class="clearfix visible-xs" style="padding: 0 30px;">
           <div class="row">
             <div class="col-xs-12">
-              <div class="btn-group" uib-dropdown is-open="status.isopen1" auto-close="outsideClick">
+              <div class="btn-group" uib-dropdown is-open="status.isopen1" auto-close="disabled">
                 <button type="button" class="btn btn-default dropdown-toggle grey-text" uib-dropdown-toggle ng-disabled="disabled"> Advanced Search &nbsp;
                  <span class="fa fa-bars light-grey"></span>
                 </button>
-                <ul class="dropdown-menu" role="menu">
+                <ul uib-dropdown-menu role="menu">
                   <li>
                    <div class="text-uppercase menu-title">time</div>
                    <ul class="sub-menu">
@@ -48,15 +48,15 @@
                     <li><a class="text-uppercase">last 12 months</a></li>
                     <li><a class="text-uppercase">last 2 years</a></li>
                     <li>
-                     <span class="ui-select year-filter">
-                     <select>
-                      <option value="">Year</option>
-                       <option ng-repeat="year in filterYears" value ="{{year}}">
-                        {{year}}
-                       </option>
-                     </select>
-                   </span>
-                 </li>
+                      <span class="ui-select year-filter">
+                        <select>
+                          <option value="">Year</option>
+                           <option ng-repeat="year in filterYears" value ="{{year}}">
+                            {{year}}
+                           </option>
+                        </select>
+                      </span>
+                    </li>
                    </ul>
                   </li>
                   <li>
@@ -101,15 +101,15 @@
                 <li><a class="text-uppercase">last 12 months</a></li>
                 <li><a class="text-uppercase">last 2 years</a></li>
                 <li>
-                 <span class="ui-select year-filter">
-                 <select>
-                  <option value="">Year</option>
-                   <option ng-repeat="year in filterYears" value ="{{year}}">
-                    {{year}}
-                   </option>
-                 </select>
-               </span>
-             </li>
+                  <span class="ui-select year-filter">
+                    <select>
+                      <option value="">Year</option>
+                      <option ng-repeat="year in filterYears" value ="{{year}}">
+                        {{year}}
+                      </option>
+                    </select>
+                  </span>
+                </li>
                </ul>
               </li>
               <li>
