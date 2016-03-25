@@ -30,7 +30,7 @@
 
                     }
 
-        //backendApi.search( data).then(function(res){console.log(res)});
+        backendApi.search( data).then(function(res){console.log(res)});
 
         //models for the page
         /*$scope.searchResults = [
