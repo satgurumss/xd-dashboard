@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('app')
-        .controller('SearchCtrl', ['$scope','$http', SearchCtrl])
+        .controller('SearchCtrl', ['$scope','$http','backendApi', SearchCtrl])
 
-    function SearchCtrl($scope,$http) {
+    function SearchCtrl($scope,$http, backendApi) {
         $scope.numPerPageOpt = [3, 5, 10]
         $scope.numPerPage = $scope.numPerPageOpt[1]
         $scope.currentPage = 1
@@ -18,6 +18,19 @@
             $scope.currentPageItems = angular.copy($scope.searchResults)
             $scope.select(1);
         });
+
+
+        var data = {
+                      "workflow": "abraajSearch",
+                      "query": "deal 1",
+                      "rows": 2,
+                      "username": "Administrator",
+                      "realm": "Anonymous",
+                      "queryLanguage": "simple"
+
+                    }
+
+        //backendApi.search( data).then(function(res){console.log(res)});
 
         //models for the page
         /*$scope.searchResults = [
@@ -448,7 +461,7 @@
                 {"name":"Date","value":"date"},
                 {"name":"Value","value":"value"}
             ]
-        
+
         $scope.locations=[
                 {
                     "loc_id":"0",
@@ -476,7 +489,7 @@
 
         $scope.select = function(page) {
           var end, start;
-         
+
           start = (page - 1) * $scope.numPerPage;
           end = start + $scope.numPerPage;
           $scope.currentPageItems = $scope.filteredItems.slice(start, end);
@@ -489,4 +502,4 @@
         $scope.select(1);*/
     }
 
-})(); 
+})();
