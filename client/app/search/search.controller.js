@@ -77,7 +77,6 @@
 
                         $scope.filteredItems = angular.copy($scope.searchResults)
                         $scope.currentPageItems = angular.copy($scope.searchResults)
-                        console.log($scope.currentPageItems)
                         $scope.select(1);
                     }
                     else {
