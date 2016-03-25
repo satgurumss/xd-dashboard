@@ -362,5 +362,5 @@
         $interval($scope.GenerateMapMarkers, 2000);
 
     }
-    
-})(); 
+
+})();
