@@ -1,36 +1,35 @@
-<!-- Result template for type3 -->
-<div class="desc-col col-md-10 col-sm-10 col-xs-12">
+<!-- Result template for type1 -->
+<div class="desc-col col-md-12">
 
 	<div class="result-heading row">
 		<div class="result-title text-justify col-md-9 col-sm-10">
-			{{result.title}}
+			{{result.fields.company_name_s[0]}}
 		</div>
 		<div class="result-created-date col-md-3 text-right">
-			{{result.creationDate}}
+			{{result.fields.origination_date_t[0]|date:'MMMM dd, yyyy'}}
 		</div>
 	</div>
 
-	<!-- <div class="result-url row">
+	<div class="result-url row">
 		<div class="result-doc-link col-md-10 col-sm-10">
-			<a href="{{result.docURL}}">{{result.docURL}}</a>
+			{{result.fields.project_name_s[0]}}
 		</div>
 	</div>
- -->
+
 	<div class="result-desc row">
 			<div class="col-md-12">
-				<p class="text-justify">{{result.description}}</p>
+				<strong> Team Lead:</strong>&nbsp;{{result.fields.deal_lead_s[0]}}
+				<br>
+				<strong> Team Members:</strong>
+				<p class="text-justify">
+					{{result.fields.deal_team_members_s[0]}}
+				</p>
 			</div>
 	</div>
 
 	<div class="row optional-links pad-b-20">
 		<div class="col-md-12">
-			<span class="result-optional-links" 
-			data-ng-repeat="link in result.optionalLinks">
-				<a href="{{link.URL}}">{{link.linkTitle}}</a>{{$last ? '' : ' | '}}
-			</span> 
-		</div>								
+			<a href="#">more like this</a>
+		</div>
 	</div>
-</div>
-<div class="result-arrow col-md-2 col-sm-2 hidden-xs">
-	<i class="fa fa-angle-right"></i>
 </div>

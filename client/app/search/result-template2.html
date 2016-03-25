@@ -1,33 +1,33 @@
-<!-- Result template for type2 -->
-<div class="desc-col col-md-10 col-sm-10 col-xs-12">
+<!-- Result template for type1 -->
+<div class="desc-col col-md-12">
 
 	<div class="result-heading row">
-		<div class="result-title text-justify col-md-9 col-sm-10">
-			{{result.title}}
+		<div class="result-title text-justify col-md-6 col-sm-6">
+			{{result.fields.name_s[0]}}
 		</div>
-		<div class="result-created-date col-md-3 text-right">
-			{{result.creationDate}}
+		<div class="result-created-date col-md-6 text-right">
+			<i>Work Phone:</i> {{result.fields.phone_work_s[0]}}
+			&nbsp; &nbsp;
+			<i>Mobile Phone:</i> {{result.fields.phone_mobile_s[0]}}
 		</div>
 	</div>
 
 	<div class="result-url row">
 		<div class="result-doc-link col-md-10 col-sm-10">
-			<a href="{{result.docURL}}">{{result.docURL}}</a>
+			<a href="#">{{result.fields.email_s[0]}}</a>
 		</div>
 	</div>
 
 	<div class="result-desc row">
 			<div class="col-md-12">
-				<p class="text-justify">{{result.description}}</p>
-			</div>
-	</div>
+				<strong>Interests:</strong> 
+				<p class="text-justify">{{result.fields.interests_s[0]}}</p>
+				
+				<strong>Experience Skills:</strong> 
+				<p class="text-justify">{{result.fields.experience_skills_s[0]}}</p>
 
-	<div class="row optional-links pad-b-20">
-		<div class="col-md-12">
-			<span class="result-optional-links" 
-			data-ng-repeat="link in result.optionalLinks">
-				<a href="{{link.URL}}">{{link.linkTitle}}</a>{{$last ? '' : ' | '}}
-			</span> 
-		</div>								
+				<strong>Expertise Skills:</strong> 
+				<p class="text-justify">{{result.fields.expertise_skills_s[0]}}</p>
+			</div>
 	</div>
 </div>

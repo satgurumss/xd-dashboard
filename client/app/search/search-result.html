@@ -1,10 +1,11 @@
-<div class="page page-search" data-ng-controller="SearchCtrl">
+<div class="page page-search" data-ng-controller="SearchCtrl" ng-init="init()">
 
   <div class="row search-section" >
     <div class="search-panel">
       <div class="panel-body">
         <div class="row">
           <div data-ng-include="'app/shared/searchbar.html'"></div>
+
           <div class="col-xs-12 col-sm-3 col-lg-2">
             <span class="ui-select pull-right relevance-filter">
               <select>
@@ -82,12 +83,12 @@
         </div>
 
         <div class="adv-search  col-lg-2 col-md-3 col-sm-4 hidden-xs">
-          <div class="">
+          <div>
             <h4>Advanced Search</h4>
             <ul class="list-unstyled">
               <li>
                <div class="text-uppercase menu-title">time</div>
-               <ul class="sub-menu">
+               <ul class="sub-menu" style="line-height: 1.7;">
                 <li><a class="text-uppercase">All</a></li>
                 <li><a class="text-uppercase">last 6 months</a></li>
                 <li><a class="text-uppercase">last 12 months</a></li>
@@ -134,27 +135,32 @@
 
 				<div class="col-lg-10 col-md-9 col-sm-8 results-container">
 
-					<div class="search-result row pad-l-0" data-ng-repeat="result in currentPageItems">
-						<div
+					<div ng-show = "currentPageItems.length == 0" >
+            <h4>{{blankslateMsg}}</h4>
+          </div>
+
+          <div class="search-result row pad-l-0" data-ng-repeat="result in currentPageItems">
+            <div
+              ng-if="result.fields.table == 'news' || result.fields.table == 'knowledge' "
 							ng-include src="'app/search/result-template1.html'">
 						</div>
-						<!-- <div
-							ng-if="result.fields.type == 'template2'"
+						<div
+							ng-if="result.fields.table == 'profile'"
 							ng-include src="'app/search/result-template2.html'">
 						</div>
 						<div
-							ng-if="result.fields.type == 'template3'"
+							ng-if="result.fields.table == 'deal'"
 							ng-include src="'app/search/result-template3.html'">
 						</div>
 						<div
-							ng-if="result.fields.type == 'template4'"
+							ng-if="result.fields.table == 'km'"
 							ng-include src="'app/search/result-template4.html'">
-						</div> -->
+						</div>
 
 						<!--result row end-->
 					</div>
 
-          <div class="col-md-12 text-right">
+          <div class="col-md-12 text-right" ng-show="currentPageItems.length > 0">
             <uib-pagination class="pagination-sm"
               ng-model="currentPage"
               total-items="searchResults.length"

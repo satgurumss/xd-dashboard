@@ -2,9 +2,9 @@
   'use strict';
 
   angular.module('app')
-    .controller('DashboardCtrl', ['$scope', '$http', 'backendApi', DashboardCtrl])
+    .controller('DashboardCtrl', ['$scope', '$http', '$location', 'backendApi', DashboardCtrl])
 
-  function DashboardCtrl($scope, $http, backendApi) {
+  function DashboardCtrl($scope, $http, $location, backendApi) {
 
     $scope.line2 = {};
     $scope.radar1 = {};
@@ -434,6 +434,10 @@
         }]
       }]
     };
+
+    $scope.search = function(queryText){
+       $location.url("/search-result?queryText=" + queryText)
+    }
 
   }
 

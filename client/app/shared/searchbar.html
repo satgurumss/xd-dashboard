@@ -5,8 +5,9 @@
       uib-typeahead="deal.fields.company_name_s[0] for deal in deals | filter:$viewValue | limitTo:8"
       class="form-control"
       ng-model = "queryText"
-      ng-change = "search();"
-      placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome">
+      ng-change = "search(queryText)"
+      placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome"
+      ng-model-options="{debounce:500}">
   </div>
 </div>
 <div class="col-xs-4 col-sm-3 col-lg-1 pl-0">
