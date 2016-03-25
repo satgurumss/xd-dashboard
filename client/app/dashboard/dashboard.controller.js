@@ -2,14 +2,48 @@
   'use strict';
 
   angular.module('app')
-    .controller('DashboardCtrl', ['$scope', '$http', DashboardCtrl])
+    .controller('DashboardCtrl', ['$scope', '$http', 'backendApi', DashboardCtrl])
 
-  function DashboardCtrl($scope, $http) {
+  function DashboardCtrl($scope, $http, backendApi) {
 
     $scope.line2 = {};
     $scope.radar1 = {};
     $scope.deals = [];
     $scope.queryText = "";
+    $scope.showChart = false;
+
+    var data = {
+      "workflow": "dealReport",
+      "query": "*",
+      "username": "Administrator",
+      "realm": "Anonymous",
+      "restParams": {
+        "metric": ["total_investment_d"],
+        "grouping": ["deal_type_s"]
+      }
+    };
+
+    backendApi.search(data).then(function(res) {
+      console.log(res);
+      $scope.reportData = res.data.documents;
+      for(let i = 0 ; i < res.data.documents.length; i++) {
+        // console.log(key, index);
+        // key: the name of the object key
+        // index: the ordinal position of the key within the object ['AVG', 'MAX', 'MIN', 'STDEV', 'SUM', 'COUNT']
+        $scope.bar3.options.series[0].data.push(parseInt(res.data.documents[i].fields.AVG[0]));
+        $scope.bar3.options.series[1].data.push(parseInt(res.data.documents[i].fields.MAX[0]));
+        $scope.bar3.options.series[2].data.push(parseInt(res.data.documents[i].fields.MIN[0]));
+        $scope.bar3.options.series[3].data.push(parseInt(res.data.documents[i].fields.STDEV[0]));
+        $scope.bar3.options.series[4].data.push(parseInt(res.data.documents[i].fields.SUM[0]));
+        $scope.bar3.options.series[5].data.push(parseInt(res.data.documents[i].fields.count[0]));
+
+        if(i === res.data.documents.length - 1)
+        {
+          $scope.showChart = true;
+        }
+      }
+      console.log($scope.bar3.options);
+    });
 
     $scope.search = function() {
       console.log($scope.queryText);
@@ -94,6 +128,53 @@
       }]
     }]
 
+    // $scope.bar3.options = {
+    //   title: {
+    //     text: '',
+    //     subtext: ''
+    //   },
+    //   tooltip: {
+    //     trigger: 'axis'
+    //   },
+    //   legend: {
+    //     data: ['2011', '2012', '2013']
+    //   },
+    //   toolbox: {
+    //     show: true,
+    //     feature: {
+    //       restore: {
+    //         show: true,
+    //         title: "restore"
+    //       saveAsImage: {
+    //         show: true,
+    //         title: "save as image"
+    //       }
+    //     }
+    //   },
+    //   calculable: true,
+    //   xAxis: [{
+    //     type: 'value',
+    //     boundaryGap: [0, 0.01]
+    //   }],
+    //   yAxis: [{
+    //     type: 'category',
+    //     data: ['Brazil', 'Indonesia', 'USA', 'India', 'China', 'Population']
+    //   }],
+    //   series: [{
+    //     name: '2011',
+    //     type: 'bar',
+    //     data: [18203, 23489, 29034, 104970, 131744, 630230]
+    //   }, {
+    //     name: '2012',
+    //     type: 'bar',
+    //     data: [19325, 23438, 31000, 121594, 134141, 681807
+    //   }, {
+    //     name: '2013',
+    //     type: 'bar',
+    //     data: [17325, 21438, 35000, 100000, 134141, 581807]
+    //   }]
+    // };
+
     $scope.bar3.options = {
       title: {
         text: '',
@@ -103,10 +184,10 @@
         trigger: 'axis'
       },
       legend: {
-        data: ['2011', '2012', '2013']
+        data: ['AVG', 'MAX', 'MIN', 'STDEV', 'SUM', 'COUNT']
       },
       toolbox: {
-        show: true,
+        show: false,
         feature: {
           restore: {
             show: true,
@@ -125,22 +206,35 @@
       }],
       yAxis: [{
         type: 'category',
-        data: ['Brazil', 'Indonesia', 'USA', 'India', 'China', 'Population']
+        data: ['Change of Control', 'Growth Capital', 'LBO', 'MBO', 'Replacement Capital']
       }],
       series: [{
-        name: '2011',
+        name: 'AVG',
         type: 'bar',
-        data: [18203, 23489, 29034, 104970, 131744, 630230]
+        data: []
       }, {
-        name: '2012',
+        name: 'MAX',
         type: 'bar',
-        data: [19325, 23438, 31000, 121594, 134141, 681807]
+        data: []
       }, {
-        name: '2013',
+        name: 'MIN',
         type: 'bar',
-        data: [17325, 21438, 35000, 100000, 134141, 581807]
+        data: []
+      }, {
+        name: 'STDEV',
+        type: 'bar',
+        data: []
+      }, {
+        name: 'SUM',
+        type: 'bar',
+        data: []
+      }, {
+        name: 'COUNT',
+        type: 'bar',
+        data: []
       }]
     };
+
 
     $scope.pie2.options = {
       tooltip: {
@@ -359,15 +453,9 @@ angular.module('app')
           widgetControlWidth = angular.element('.widget-control').width();
           elemScaledHeight = elemHeight * 0.1;
           elemScaledWidth = elemWidth * 0.1;
-          console.log("widget control width", widgetControlWidth);
-          console.log("elemHeight", elemHeight);
-          console.log("elemWidth", elemWidth);
-          console.log("elementTop", element.css('top'));
 
           scaledTopOffset = ((elemHeight - elemScaledHeight) / 2) + 20;
           scaledLeftOffset = ((elemWidth - elemScaledWidth) / 2) - (widgetControlWidth / 2);
-          console.log("scaledTopOffset", scaledTopOffset);
-          console.log("scaledLeftOffset", scaledLeftOffset);
           secondFrame = {
             'opacity': '0.8',
             'z-index': '5',
