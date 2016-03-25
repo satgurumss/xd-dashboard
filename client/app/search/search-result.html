@@ -1,99 +1,98 @@
 <div class="page page-search" data-ng-controller="SearchCtrl">
 
-    <div class="row search-section" >
-      <div class="search-panel">
-        <div class="panel-body" data-ng-controller="TypeaheadCtrl">
-          <div class="row">
-                <div class="col-xs-12 col-sm-6 col-lg-4 col-lg-offset-3 pr-0 pr-15 pb-15">
-                    <div class="ui-typeahead">
-                        <input type="text"
-                               ng-model="selected"
-                               uib-typeahead="widget.title for widget in widgets | filter:$viewValue | limitTo:8"
-                               class="form-control"
-                               placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-3 col-lg-2">
-                  <span class="ui-select pull-right relevance-filter">
-                    <select>
-                      <option ng-selected="opt.value == 'relevance'" ng-repeat="opt in sortOptions" value ="{{opt.value}}">
-                        Sort by {{opt.name}}
-                      </option>
-                    </select>
-                  </span>
-                </div>
-            </div>
+  <div class="row search-section" >
+    <div class="search-panel">
+      <div class="panel-body" data-ng-controller="TypeaheadCtrl">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-lg-4 col-lg-offset-3 pr-0 pr-15 pb-15">
+              <div class="ui-typeahead">
+                <input type="text"
+                 ng-model="selected"
+                 uib-typeahead="result.fields.title[0] for result in searchResults | filter:$viewValue | limitTo:8"
+                 class="form-control"
+                 placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome">
+              </div>
+          </div>
+          <div class="col-xs-12 col-sm-3 col-lg-2">
+            <span class="ui-select pull-right relevance-filter">
+              <select>
+                <option ng-selected="opt.value == 'relevance'" ng-repeat="opt in sortOptions" value ="{{opt.value}}">
+                  Sort by {{opt.name}}
+                </option>
+              </select>
+            </span>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 	<div class="panel panel-default">
 
 		<div class="panel-body pad-25">
 
-
 			<div class="row results-section">
 
-<div class="clearfix visible-xs" style="    padding: 0 30px;">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="btn-group" uib-dropdown is-open="status.isopen1" auto-close="disabled">
-                  <button type="button" class="btn btn-default dropdown-toggle grey-text" uib-dropdown-toggle ng-disabled="disabled"> Advanced Search &nbsp;
-                   <span class="fa fa-bars light-grey"></span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
+        <div class="clearfix visible-xs" style="padding: 0 30px;">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="btn-group" uib-dropdown is-open="status.isopen1" auto-close="disabled">
+                <button type="button" class="btn btn-default dropdown-toggle grey-text" uib-dropdown-toggle ng-disabled="disabled"> Advanced Search &nbsp;
+                 <span class="fa fa-bars light-grey"></span>
+                </button>
+                <ul uib-dropdown-menu role="menu">
+                  <li>
+                   <div class="text-uppercase menu-title">time</div>
+                   <ul class="sub-menu">
+                    <li><a class="text-uppercase">All</a></li>
+                    <li><a class="text-uppercase">last 6 months</a></li>
+                    <li><a class="text-uppercase">last 12 months</a></li>
+                    <li><a class="text-uppercase">last 2 years</a></li>
                     <li>
-                     <div class="text-uppercase menu-title">time</div>
-                     <ul class="sub-menu">
-                      <li><a class="text-uppercase">All</a></li>
-                      <li><a class="text-uppercase">last 6 months</a></li>
-                      <li><a class="text-uppercase">last 12 months</a></li>
-                      <li><a class="text-uppercase">last 2 years</a></li>
-                      <li>
-                       <span class="ui-select year-filter">
-                       <select>
-                        <option value="">Year</option>
-                         <option ng-repeat="year in filterYears" value ="{{year}}">
-                          {{year}}
-                         </option>
-                       </select>
-                     </span>
-                   </li>
-                     </ul>
+                      <span class="ui-select year-filter">
+                        <select>
+                          <option value="">Year</option>
+                           <option ng-repeat="year in filterYears" value ="{{year}}">
+                            {{year}}
+                           </option>
+                        </select>
+                      </span>
                     </li>
-                    <li>
-                     <div class="text-uppercase menu-title">geography</div>
-                     <ul class="sub-menu">
-                      <li ng-repeat="loc in locations">
-                       <label class="ui-checkbox text-uppercase">
-                        <input type="checkbox" value="{{loc.loc_name}}"
-                         ng-checked="{{loc.loc_name == 'All'}}">
-                        <span>{{loc.loc_name}}</span>
-                       </label>
-                      </li>
-                     </ul>
+                   </ul>
+                  </li>
+                  <li>
+                   <div class="text-uppercase menu-title">geography</div>
+                   <ul class="sub-menu">
+                    <li ng-repeat="loc in locations">
+                     <label class="ui-checkbox text-uppercase">
+                      <input type="checkbox" value="{{loc.loc_name}}"
+                       ng-checked="{{loc.loc_name == 'All'}}">
+                      <span>{{loc.loc_name}}</span>
+                     </label>
                     </li>
-                    <li>
-                     <div class="text-uppercase menu-title">document</div>
-                     <ul class="sub-menu">
-                      <li ng-repeat="doctype in doctypes">
-                       <label class="ui-checkbox text-uppercase">
-                        <input type="checkbox" value="{{doctype}}"
-                         ng-checked="{{doctype == 'All'}}">
-                        <span>{{doctype}}</span>
-                       </label>
-                      </li>
-                     </ul>
+                   </ul>
+                  </li>
+                  <li>
+                   <div class="text-uppercase menu-title">document</div>
+                   <ul class="sub-menu">
+                    <li ng-repeat="doctype in doctypes">
+                     <label class="ui-checkbox text-uppercase">
+                      <input type="checkbox" value="{{doctype}}"
+                       ng-checked="{{doctype == 'All'}}">
+                      <span>{{doctype}}</span>
+                     </label>
                     </li>
-                  </ul>
-      </div>
-    </div>
-  </div>
-</div>
+                   </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<div class="adv-search  col-lg-2 col-md-3 col-sm-4 hidden-xs">
-      <div class="">
-        <h4>Advanced Search</h4>
-        <ul class="list-unstyled">
+        <div class="adv-search  col-lg-2 col-md-3 col-sm-4 hidden-xs">
+          <div class="">
+            <h4>Advanced Search</h4>
+            <ul class="list-unstyled">
               <li>
                <div class="text-uppercase menu-title">time</div>
                <ul class="sub-menu">
@@ -102,15 +101,15 @@
                 <li><a class="text-uppercase">last 12 months</a></li>
                 <li><a class="text-uppercase">last 2 years</a></li>
                 <li>
-                 <span class="ui-select year-filter">
-                 <select>
-                  <option value="">Year</option>
-                   <option ng-repeat="year in filterYears" value ="{{year}}">
-                    {{year}}
-                   </option>
-                 </select>
-               </span>
-             </li>
+                  <span class="ui-select year-filter">
+                    <select>
+                      <option value="">Year</option>
+                      <option ng-repeat="year in filterYears" value ="{{year}}">
+                        {{year}}
+                      </option>
+                    </select>
+                  </span>
+                </li>
                </ul>
               </li>
               <li>
@@ -137,10 +136,9 @@
                 </li>
                </ul>
               </li>
-        </ul>
-      </div>
-</div>
-
+            </ul>
+          </div>
+        </div>
 
 				<div class="col-lg-10 col-md-9 col-sm-8 results-container">
 
