@@ -8,8 +8,6 @@
     console.log("header ctrl")
 
     $scope.isActive = function (viewLocation) {
-      console.log("viewLocation", viewLocation);
-      console.log($location.path());
       return viewLocation === $location.path();
     }
   }
