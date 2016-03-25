@@ -1,0 +1,21 @@
+<div class="col-xs-6 col-sm-6 col-lg-4 col-lg-offset-3 pr-0">
+  <div class="ui-typeahead">
+    <input
+      type="text"
+      uib-typeahead="deal.fields.company_name_s[0] for deal in deals | filter:$viewValue | limitTo:8"
+      class="form-control"
+      ng-model = "queryText"
+      ng-change = "search();"
+      placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome">
+  </div>
+</div>
+<div class="col-xs-4 col-sm-3 col-lg-1 pl-0">
+  <span class="ui-select">
+    <select>
+      <option value="All">All</option>
+      <option value="Water">Investments/Deals</option>
+      <option value="Power">People</option>
+      <option value="Power">Knowledge</option>
+    </select>
+  </span>
+</div>

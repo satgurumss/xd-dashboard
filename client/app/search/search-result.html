@@ -2,17 +2,9 @@
 
   <div class="row search-section" >
     <div class="search-panel">
-      <div class="panel-body" data-ng-controller="TypeaheadCtrl">
+      <div class="panel-body">
         <div class="row">
-          <div class="col-xs-12 col-sm-6 col-lg-4 col-lg-offset-3 pr-0 pr-15 pb-15">
-              <div class="ui-typeahead">
-                <input type="text"
-                 ng-model="selected"
-                 uib-typeahead="result.fields.title[0] for result in searchResults | filter:$viewValue | limitTo:8"
-                 class="form-control"
-                 placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome">
-              </div>
-          </div>
+          <div data-ng-include="'app/shared/searchbar.html'"></div>
           <div class="col-xs-12 col-sm-3 col-lg-2">
             <span class="ui-select pull-right relevance-filter">
               <select>
