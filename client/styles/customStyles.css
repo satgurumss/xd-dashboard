@@ -503,3 +503,7 @@ a:hover {
     padding-right: 15px;
   }
 }
+
+.ui-select select {
+  text-transform: none;
+}

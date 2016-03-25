@@ -9,6 +9,11 @@
     $scope.line2 = {};
     $scope.radar1 = {};
     $scope.deals = [];
+    $scope.queryText = "";
+
+    $scope.search = function() {
+      console.log($scope.queryText);
+    }
     $scope.pie2 = {
       title: "Pie Chart",
       iconUrl: "images/widgets/placeholder.png"
@@ -25,19 +30,6 @@
 
     $scope.widgets = [{
       title: "My Deals",
-      filters: [{
-        id: 1,
-        label: 'my deals'
-      }, {
-        id: 2,
-        label: 'my investments'
-      }, {
-        id: 3,
-        label: 'my region'
-      }, {
-        id: 4,
-        label: 'my interests'
-      }],
       iconUrl: "images/widgets/icon_area-chart.png",
       searches: [{
         title: "Search 1_1",
@@ -53,20 +45,7 @@
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
       }]
     }, {
-      title: "Widget 2",
-      filters: [{
-        id: 1,
-        label: 'recent deals'
-      }, {
-        id: 2,
-        label: 'recent investments'
-      }, {
-        id: 3,
-        label: 'recent region'
-      }, {
-        id: 4,
-        label: 'recent interests'
-      }],
+      title: "My Investments",
       iconUrl: "images/widgets/icon_cpu-usage.png",
       searches: [{
         title: "Search 2_1",
@@ -82,17 +61,7 @@
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
       }]
     }, {
-      title: "Widget 3",
-      filters: [{
-        id: 1,
-        label: 'total investments'
-      }, {
-        id: 2,
-        label: 'enterprise value'
-      }, {
-        id: 3,
-        label: 'number of employees'
-      }],
+      title: "My Region",
       iconUrl: "images/widgets/icon_map.png",
       searches: [{
         title: "Search 3_1",
@@ -108,17 +77,7 @@
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
       }]
     }, {
-      title: "Widget 4",
-      filters: [{
-        id: 1,
-        label: 'total invested'
-      }, {
-        id: 2,
-        label: 'carrying value'
-      }, {
-        id: 3,
-        label: 'equity value'
-      }],
+      title: "My Interests",
       iconUrl: "images/widgets/icon_memory-usage.png",
       searches: [{
         title: "Search 4_1",

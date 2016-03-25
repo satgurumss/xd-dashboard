@@ -8,9 +8,10 @@
                   <div class="col-xs-6 col-sm-6 col-lg-4 col-lg-offset-3 pr-0">
                       <div class="ui-typeahead">
                           <input type="text"
-                                 ng-model="selected"
-                                 uib-typeahead="widget.title for widget in widgets | filter:$viewValue | limitTo:8"
+                                 uib-typeahead="deal.fields.company_name_s[0] for deal in deals | filter:$viewValue | limitTo:8"
                                  class="form-control"
+                                 ng-model = "queryText"
+                                 ng-change = "search();"
                                  placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome">
                       </div>
                   </div>
@@ -109,15 +110,7 @@
               <div class="expand"><i class="fa fa-expand"></i></div>
           </div>
           <div class="panel-container">
-            <div class="panel-heading widget-hading">
-              <span class="ui-select">
-                  <select ng-options="filter as filter.label for filter in widget.filters track by filter.id" ng-model="widget.filters[0]">
-                      <!-- <option value="Widget">MY DEALS</option>
-                      <option value="Water">MY INVESTMENTS</option>
-                      <option value="Power">MY REGION</option>
-                      <option value="Power">MY INTREST</option> -->
-                  </select>
-              </span><strong hidden>{{widget.title}}</strong></div>
+            <div class="panel-heading widget-hading"><strong>{{widget.title}}</strong></div>
             <div class="panel-body">
               <div class="row" ng-repeat = "deal in deals | limitTo: 3">
                 <div class="col-md-12">
