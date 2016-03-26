@@ -90,18 +90,11 @@
           </div>
           <div class="panel-container">
             <div class="panel-heading widget-hading"><strong>{{widget.title}}</strong></div>
-            <div class="panel-body">
-              <div class="row" ng-repeat = "deal in deals | limitTo: 3">
-                <div class="col-md-12">
-                  <div class="callout callout-success">
-                    <span class="callout-heading">{{deal.fields.company_name_s[0]}}</span>
-                    <span class="callout-date pull-right">{{deal.fields.date[0] | date: 'MMMM dd yyyy'}}</span>
-                  </div>
-                  <div class="search-description-wrapper">
-                    <p class="search-description">{{deal.fields.company_description_s[0]}}</p>
-
-                  </div>
-                </div>
+            <div class="panel-body" data-slim-scroll data-scroll-height="310px">
+              <div class="row" ng-repeat = "data in widget.data">
+                <div ng-if = "data.fields.table[0] === 'deal'" class="col-md-12" ng-include="'app/dashboard/templates/deals.html'"></div>
+                <div ng-if = "data.fields.table[0] === 'investment'" class="col-md-12" ng-include="'app/dashboard/templates/investments.html'"></div>
+                <div ng-if = "data.fields.table[0] === 'news'" class="col-md-12" ng-include="'app/dashboard/templates/news.html'"></div>
               </div>
             </div>
           </div>
@@ -116,7 +109,7 @@
           </div>
           <div class="panel-container">
             <div class="panel-heading"><strong>BAR CHART</strong></div>
-            <div class="panel-body">
+            <div class="panel-body" data-slim-scroll data-scroll-height="310px">
               <div class="row" ng-if="showChart">
                 <div data-echarts data-options="bar3.options" style="height: 312px;"></div>
               </div>
@@ -133,7 +126,7 @@
           </div>
           <div class="panel-container">
             <div class="panel-heading"><strong>PIE CHART</strong></div>
-            <div class="panel-body">
+            <div class="panel-body" data-slim-scroll data-scroll-height="310px">
               <div class="row">
                 <div data-echarts data-options="pie2.options" style="height: 313px;"></div>
               </div>
