@@ -5,7 +5,7 @@
     .controller('DashboardCtrl', ['$scope', '$http', '$location', 'backendApi', DashboardCtrl])
 
   function DashboardCtrl($scope, $http, $location, backendApi) {
-
+    $scope.searchbarWidth = "col-xs-6"
     $scope.line2 = {};
     $scope.radar1 = {};
     $scope.deals = [];
