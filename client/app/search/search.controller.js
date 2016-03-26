@@ -94,8 +94,9 @@
         };
 
         $scope.advSearch = function() {
-            searchData.filters = advFilters;
-            //$scope.search($scope.queryText);
+            searchData['restParams'] ={}
+            searchData.restParams['facet.filter'] = advFilters;
+            $scope.search($scope.queryText);
         };
     }
 
