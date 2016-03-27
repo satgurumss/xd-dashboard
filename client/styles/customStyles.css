@@ -535,3 +535,8 @@ a:hover {
 .ui-select select {
   text-transform: none;
 }
+
+th, td {
+  padding: 5px !important;
+  font-size: 12px;
+}

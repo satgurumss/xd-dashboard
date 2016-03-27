@@ -3,6 +3,12 @@
 
   angular.module('app')
     .controller('DashboardCtrl', ['$scope', '$http', '$location', 'backendApi', DashboardCtrl])
+    .filter('singleDecimal', function ($filter) {
+        return function (input) {
+            if (isNaN(input)) return input;
+            return Math.round(input * 10) / 10;
+        };
+    });
 
   function DashboardCtrl($scope, $http, $location, backendApi) {
     $scope.searchbarWidth = "col-xs-6"
@@ -12,7 +18,89 @@
     $scope.queryText = "";
     $scope.showChart = false;
 
-    var data = {
+    $scope.widgets = [{
+      title: "My Deals",
+      iconUrl: "images/widgets/icon_area-chart.png",
+      searches: [],
+      query: {
+        "workflow": "myDeals",
+        "query": "*",
+        "username": "Administrator",
+        "realm": "Anonymous"
+      }
+    }, {
+      title: "My Investments",
+      iconUrl: "images/widgets/icon_cpu-usage.png",
+      searches: [],
+      query: {
+        "workflow": "myInvestments",
+        "query": "*",
+        "username": "Administrator",
+        "realm": "Anonymous"
+      }
+    }, {
+      title: "My Region",
+      iconUrl: "images/widgets/icon_map.png",
+      searches: [],
+      query: {
+        "workflow": "myRegion",
+        "query": "*",
+        "username": "Administrator",
+        "realm": "Anonymous"
+      }
+    }, {
+      title: "My Interests",
+      iconUrl: "images/widgets/icon_memory-usage.png",
+      searches: [],
+      query: {
+        "workflow": "myInterests",
+        "query": "*",
+        "username": "Administrator",
+        "realm": "Anonymous"
+      }
+    }, {
+      title: "Recent Deals",
+      iconUrl: "images/widgets/icon_cpu-usage.png",
+      searches: [],
+      query: {
+        "workflow": "recentDeals",
+        "query": "*",
+        "username": "Administrator",
+        "realm": "Anonymous"
+      }
+    }, {
+      title: "Recent Investments",
+      iconUrl: "images/widgets/icon_cpu-usage.png",
+      searches: [],
+      query: {
+        "workflow": "recentInvestments",
+        "query": "*",
+        "username": "Administrator",
+        "realm": "Anonymous"
+      }
+    }, {
+      title: "Recent News",
+      iconUrl: "images/widgets/icon_cpu-usage.png",
+      searches: [],
+      query: {
+        "workflow": "recentNews",
+        "query": "*",
+        "username": "Administrator",
+        "realm": "Anonymous"
+      }
+    }, {
+      title: "Recent Documents",
+      iconUrl: "images/widgets/icon_cpu-usage.png",
+      searches: [],
+      query: {
+        "workflow": "recentDocuments",
+        "query": "*",
+        "username": "Administrator",
+        "realm": "Anonymous"
+      }
+    }];
+
+    var dealReport = {
       "workflow": "dealReport",
       "query": "*",
       "username": "Administrator",
@@ -23,13 +111,21 @@
       }
     };
 
-    backendApi.search(data).then(function(res) {
+    $scope.widgets.forEach(function(widget, index, array) {
+      backendApi.search(widget.query).then(function(res) {
+        widget.data = res.data.documents;
+        // console.log(res);
+      });
+    })
+
+    console.log("----widgets----");
+    console.log($scope.widgets);
+
+    backendApi.search(dealReport).then(function(res) {
+      console.log("report data");
       console.log(res);
       $scope.reportData = res.data.documents;
-      for(let i = 0 ; i < res.data.documents.length; i++) {
-        // console.log(key, index);
-        // key: the name of the object key
-        // index: the ordinal position of the key within the object ['AVG', 'MAX', 'MIN', 'STDEV', 'SUM', 'COUNT']
+      for (let i = 0; i < res.data.documents.length; i++) {
         $scope.bar3.options.series[0].data.push(parseInt(res.data.documents[i].fields.AVG[0]));
         $scope.bar3.options.series[1].data.push(parseInt(res.data.documents[i].fields.MAX[0]));
         $scope.bar3.options.series[2].data.push(parseInt(res.data.documents[i].fields.MIN[0]));
@@ -37,17 +133,13 @@
         $scope.bar3.options.series[4].data.push(parseInt(res.data.documents[i].fields.SUM[0]));
         $scope.bar3.options.series[5].data.push(parseInt(res.data.documents[i].fields.count[0]));
 
-        if(i === res.data.documents.length - 1)
-        {
+        if (i === res.data.documents.length - 1) {
           $scope.showChart = true;
         }
       }
       console.log($scope.bar3.options);
     });
 
-    $scope.search = function() {
-      console.log($scope.queryText);
-    }
     $scope.pie2 = {
       title: "Pie Chart",
       iconUrl: "images/widgets/placeholder.png"
@@ -56,77 +148,6 @@
       title: "Bar Chart",
       iconUrl: "images/widgets/icon_top-categories.png",
     };
-
-    $http.get('/app/sampleData/deal.json').then(function(deals) {
-      $scope.deals = deals.data.documents;
-      console.log($scope.deals);
-    });
-
-    $scope.widgets = [{
-      title: "My Deals",
-      iconUrl: "images/widgets/icon_area-chart.png",
-      searches: [{
-        title: "Search 1_1",
-        date: new Date(),
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
-      }, {
-        title: "Search 1_2",
-        date: new Date(),
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
-      }, {
-        title: "Search 1_3",
-        date: new Date(),
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
-      }]
-    }, {
-      title: "My Investments",
-      iconUrl: "images/widgets/icon_cpu-usage.png",
-      searches: [{
-        title: "Search 2_1",
-        date: new Date(),
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
-      }, {
-        title: "Search 2_2",
-        date: new Date(),
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
-      }, {
-        title: "Search 2_3",
-        date: new Date(),
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
-      }]
-    }, {
-      title: "My Region",
-      iconUrl: "images/widgets/icon_map.png",
-      searches: [{
-        title: "Search 3_1",
-        date: new Date(),
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
-      }, {
-        title: "Search 3_2",
-        date: new Date(),
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
-      }, {
-        title: "Search 3_3",
-        date: new Date(),
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
-      }]
-    }, {
-      title: "My Interests",
-      iconUrl: "images/widgets/icon_memory-usage.png",
-      searches: [{
-        title: "Search 4_1",
-        date: new Date(),
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
-      }, {
-        title: "Search 4_2",
-        date: new Date(),
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
-      }, {
-        title: "Search 4_3",
-        date: new Date(),
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, alias, in accusantium totam adipisci vel et suscipit quidem libero pariatur minus ratione quo doloremque error at nemo incidunt dicta quia?"
-      }]
-    }]
 
     // $scope.bar3.options = {
     //   title: {
@@ -319,124 +340,8 @@
       }
     };
 
-    $scope.line2.options = {
-      tooltip: {
-        trigger: 'axis'
-      },
-      legend: {
-        data: ['Email', 'Affiliate', 'Video Ads', 'Direct', 'Search']
-      },
-      toolbox: {
-        show: false,
-        feature: {
-          restore: {
-            show: true,
-            title: "restore"
-          },
-          saveAsImage: {
-            show: true,
-            title: "save as image"
-          }
-        }
-      },
-      calculable: true,
-      xAxis: [{
-        type: 'category',
-        boundaryGap: false,
-        data: ['Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.', 'Sun.']
-      }],
-      yAxis: [{
-        type: 'value'
-      }],
-      series: [{
-        name: 'Email',
-        type: 'line',
-        stack: 'Sum',
-        data: [120, 132, 101, 134, 90, 230, 210]
-      }, {
-        name: 'Affiliate',
-        type: 'line',
-        stack: 'Sum',
-        data: [220, 182, 191, 234, 290, 330, 310]
-      }, {
-        name: 'Video Ads',
-        type: 'line',
-        stack: 'Sum',
-        data: [150, 232, 201, 154, 190, 330, 410]
-      }, {
-        name: 'Direct',
-        type: 'line',
-        stack: 'Sum',
-        data: [320, 332, 301, 334, 390, 330, 320]
-      }, {
-        name: 'Search',
-        type: 'line',
-        stack: 'Sum',
-        data: [820, 932, 901, 934, 1290, 1330, 1320]
-      }]
-    };
-
-    $scope.radar1.options = {
-      animation: false,
-      tooltip: {
-        trigger: 'axis'
-      },
-      legend: {
-        orient: 'vertical',
-        x: 'right',
-        y: 'bottom',
-        data: ['Allocated Budget', 'Actual Spending']
-      },
-      toolbox: {
-        show: false,
-        feature: {
-          restore: {
-            show: true,
-            title: "restore"
-          },
-          saveAsImage: {
-            show: true,
-            title: "save as image"
-          }
-        }
-      },
-      polar: [{
-        indicator: [{
-          text: 'sales',
-          max: 6000
-        }, {
-          text: 'dministration',
-          max: 16000
-        }, {
-          text: 'Information Techology',
-          max: 30000
-        }, {
-          text: 'Customer Support',
-          max: 38000
-        }, {
-          text: 'Development',
-          max: 52000
-        }, {
-          text: 'Marketing',
-          max: 25000
-        }]
-      }],
-      calculable: true,
-      series: [{
-        name: 'Budget vs spending',
-        type: 'radar',
-        data: [{
-          value: [4300, 10000, 28000, 35000, 50000, 19000],
-          name: 'Allocated Budget'
-        }, {
-          value: [5000, 14000, 28000, 31000, 42000, 21000],
-          name: 'Actual Spending'
-        }]
-      }]
-    };
-
-    $scope.search = function(queryText){
-       $location.url("/search-result?queryText=" + queryText)
+    $scope.search = function(queryText) {
+      $location.url("/search-result?queryText=" + queryText)
     }
     
     $scope.onSelect = function($item, $model, $label){
