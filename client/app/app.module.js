@@ -6,6 +6,7 @@
         'ngRoute',
         'ngAnimate',
         'ngAria',
+        'ngCookies',
 
         // 3rd Party Modules
         'ui.bootstrap',
