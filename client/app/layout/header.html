@@ -1,4 +1,4 @@
-<header class="top-header clearfix" data-ng-controller = "HeaderCtrl">
+<header class="top-header clearfix" data-ng-controller = "HeaderCtrl" ng-init="init()">
 
     <!-- Logo -->
     <div class="logo"
@@ -11,7 +11,7 @@
                      'bg-danger': ['16','26','36'].indexOf(main.skin) >= 0,
                     }">
         <a href="#/">
-            <img src="images/abraaj-logo.jpg" alt="The Abraaj Group" class="img-responsive">
+            <img src="images/abraaj-logo.jpg" alt="user" class="img-responsive">
         </a>
     </div>
 
@@ -28,9 +28,9 @@
             <li class="center" ng-class="{ active: isActive('/search-result')}"><a href="#/search-result">SEARCH</a></li>
             <li class="dropdown text-normal nav-profile pull-right" uib-dropdown is-open="status.isopenProfile">
                 <a href="javascript:;" uib-dropdown-toggle ng-disabled="disabled">
-                    <img src="images/g1.jpg" alt="" class="img-circle img30_30">
+                    <img src="{{currentUser.picture_s}}" alt="{{currentUser.account_s[0]}}" class="img-circle img30_30">
                     <span class="hidden-xs">
-                        &nbsp;<span data-translate="LISA"> </span>
+                        &nbsp;<span data-translate="{{currentUser.name_s[0]}}"> </span>
                         &nbsp;<i class="fa fa-caret-down"></i>
                     </span>
                 </a>
@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#/page/signin">
+                        <a ng-click="logOut()">
                             <i class="fa fa-sign-out"></i>
                             <span data-translate="LOG_OUT"></span>
                         </a>
