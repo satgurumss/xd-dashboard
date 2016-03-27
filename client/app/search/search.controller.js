@@ -11,8 +11,7 @@
                 "query": "",
                 "username": "Administrator",
                 "realm": "Anonymous",
-                "queryLanguage": "simple",
-                "sort" : ['date']
+                "queryLanguage": "simple"
             },
             advFilters = [];
 

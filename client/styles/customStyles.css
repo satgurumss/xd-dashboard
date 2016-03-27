@@ -65,8 +65,9 @@ a:hover {
 .result-arrow i{
 	font-size:110px;
 }
-.adv-search .dropdown-menu{
+.adv-search-mobile .dropdown-menu{
 	min-width: 185px;
+  left:auto;
 }
 
 .sub-menu{
