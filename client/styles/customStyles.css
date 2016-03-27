@@ -69,7 +69,7 @@ a:hover {
   margin: 5px 0 20px 0;
   max-height: 140px;
   overflow-y:auto;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 .sub-menu label{
@@ -526,4 +526,9 @@ a:hover {
 
 .ui-select select {
   text-transform: none;
+}
+
+th, td {
+  padding: 5px !important;
+  font-size: 12px;
 }

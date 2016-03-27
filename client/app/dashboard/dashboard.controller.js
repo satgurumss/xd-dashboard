@@ -3,6 +3,12 @@
 
   angular.module('app')
     .controller('DashboardCtrl', ['$scope', '$http', '$location', 'backendApi', DashboardCtrl])
+    .filter('singleDecimal', function ($filter) {
+        return function (input) {
+            if (isNaN(input)) return input;
+            return Math.round(input * 10) / 10;
+        };
+    });
 
   function DashboardCtrl($scope, $http, $location, backendApi) {
     $scope.searchbarWidth = "col-xs-6"
@@ -108,7 +114,7 @@
     $scope.widgets.forEach(function(widget, index, array) {
       backendApi.search(widget.query).then(function(res) {
         widget.data = res.data.documents;
-        console.log(res);
+        // console.log(res);
       });
     })
 
@@ -116,6 +122,7 @@
     console.log($scope.widgets);
 
     backendApi.search(dealReport).then(function(res) {
+      console.log("report data");
       console.log(res);
       $scope.reportData = res.data.documents;
       for (let i = 0; i < res.data.documents.length; i++) {
