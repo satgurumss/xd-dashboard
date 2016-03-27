@@ -2,11 +2,12 @@
     'use strict';
 
     angular.module('app')
-        .controller('SearchCtrl', ['$scope', '$http', 'backendApi', '$location', '$uibModal', SearchCtrl])
+        .controller('SearchCtrl', ['$scope', '$http', 'backendApi', '$location', '$uibModal', 'loggedInUser', SearchCtrl])
         .controller('advSearchModalCtrl', ['$scope', '$uibModalInstance', 'data', AdvSearchCtrl])
 
-    function SearchCtrl($scope, $http, backendApi, $location, $modal) {
-        var searchData = {
+    function SearchCtrl($scope, $http, backendApi, $location, $modal, loggedInUser) {
+        var currentUser = {},
+            searchData = {
                 "workflow": "abraajSearch",
                 "query": "",
                 "username": "Administrator",
@@ -40,6 +41,9 @@
                 $scope.queryText = $location.search().queryText;
                 $scope.search();
             }
+            //use this to get current user
+            currentUser = loggedInUser.getCurrentUser();
+            searchData.username = currentUser.account_s[0];
         }
 
         $scope.select = function(page) {
