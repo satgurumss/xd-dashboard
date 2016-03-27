@@ -390,7 +390,8 @@ body{
 .search-panel .row{
   margin: 0 -25px;
 }
-.search-panel input.form-control {
+.search-panel input.form-control,
+.search-panel .search-btn {
   border-width: 0;
   height: 37px;
 }
