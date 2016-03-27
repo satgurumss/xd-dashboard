@@ -14,7 +14,8 @@
                 "queryLanguage": "simple"
             },
             advFilters = [];
-
+        //"sort":['date']
+        $scope.queryText = "";
         $scope.searchbarWidth = "col-xs-8"
         $scope.blankslateMsg = "Please enter search keywords above to begin";
         $scope.numPerPageOpt = [3, 5, 10];

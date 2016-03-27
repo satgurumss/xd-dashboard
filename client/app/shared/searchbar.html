@@ -16,7 +16,7 @@
       
       <span class="input-group-btn">
         <button class="btn btn-md btn-default search-btn" 
-          ng-click="queryText && search(queryText)" >
+          ng-click="search(queryText)" ng-disabled="!queryText">
           <i class="fa fa-search"/>
         </button>
       </span>
