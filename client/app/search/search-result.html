@@ -9,8 +9,8 @@
           <div class="col-xs-12 col-sm-3 col-lg-2">
             
             <span class="ui-select pull-right relevance-filter">
-              <select>
-                <option ng-selected="opt.value == 'relevance'" ng-repeat="opt in sortOptions" value ="{{opt.value}}">
+              <select ng-model='sortOrder'ng-change="sortResults()">
+                <option ng-repeat="opt in sortOptions" value ="{{opt.value}}">
                   Sort by {{opt.name}}
                 </option>
               </select>
@@ -27,10 +27,10 @@
 			<div class="row results-section">
         <!-- ###mobile advanced search drop down### -->
         <div class="clearfix visible-xs" style="padding: 0 30px;" 
-          ng-if = "searchResults.data.facets.length > 0">
+          ng-show = "searchResults.data.facets.length > 0 && queryText">
           <div class="row">
             <div class="col-xs-12">
-              <div class="btn-group" uib-dropdown is-open="status.isopen1" auto-close="disabled">
+              <!-- <div class="btn-group" uib-dropdown is-open="status.isopen1" auto-close="disabled">
                 <button type="button" class="btn btn-default dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled"> Advanced Search &nbsp;
                  <span class="fa fa-bars light-grey"></span>
                 </button>
@@ -38,23 +38,28 @@
                   <li  ng-repeat = "facet in searchResults.data.facets">
                     <div class="text-uppercase menu-title">{{facet.label}}</div>
                     <ul class="sub-menu">
-                      <li  ng-repeat= 'opt in facet.buckets'>
+                      <div data-slim-scroll data-scroll-height="140px">
+                        <li  ng-repeat= 'opt in facet.buckets'>
                        <label class="ui-checkbox">
                         <input type="checkbox" value="{{opt.filter}}">
                         <span>{{opt.label}}</span>
                        </label>
-                      </li>
+                        </li>
+                      </div>
                     </ul>
                   </li>
                 </ul>
-              </div>
+              </div> -->
+              <button class="btn btn-line-default btn-block" ng-click="openAdvSearchModal()">
+                Advanced Search
+              </button>
             </div>
           </div>
         </div>
 
         <!-- ###desktop advanced search section### -->
         <div class="adv-search  col-lg-3 col-md-3 col-sm-4 hidden-xs" >
-          <div ng-if = "searchResults.data.facets.length > 0">
+          <div ng-show = "searchResults.data.facets.length > 0">
             <span class="h4">Advanced Search</span>
             <span>
               <button class="btn btn-sm btn-line-primary pull-right" ng-click="advSearch()">
@@ -65,13 +70,15 @@
               <li  ng-repeat = "facet in searchResults.data.facets">
                 <div class="text-uppercase menu-title">{{facet.label}}</div>
                 <ul class="sub-menu" >
-                  <li ng-repeat= 'opt in facet.buckets'>
+                  <div data-slim-scroll data-scroll-height="140px">
+                    <li ng-repeat= 'opt in facet.buckets'>
                    <label class="ui-checkbox">
                     <input type="checkbox" value="{{opt.filter}}" 
                       ng-click="setAdvFilter($event,opt.filter)">
                     <span>{{opt.label}}</span>
                    </label>
-                  </li>
+                    </li>
+                  </div>
                 </ul>
               </li>
             </ul>
