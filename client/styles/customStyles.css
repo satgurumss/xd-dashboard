@@ -36,6 +36,12 @@ a:hover {
 
 .btn[disabled]{
   cursor:default;
+  opacity: 0.9;
+}
+
+.custom-modal-body{
+  max-height:490px;
+  overflow-y:scroll;
 }
 /*-------*/
 
@@ -59,17 +65,18 @@ a:hover {
 .result-arrow i{
 	font-size:110px;
 }
-.adv-search .dropdown-menu{
+.adv-search-mobile .dropdown-menu{
 	min-width: 185px;
+  left:auto;
 }
 
 .sub-menu{
 	list-style: none !important;
 	padding-left: 11px;
   margin: 5px 0 20px 0;
-  max-height: 140px;
+  /*max-height: 140px;
   overflow-y:auto;
-  overflow-x: hidden;
+  overflow-x: hidden; */
 }
 
 .sub-menu label{

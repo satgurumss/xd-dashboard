@@ -343,7 +343,10 @@
     $scope.search = function(queryText) {
       $location.url("/search-result?queryText=" + queryText)
     }
-
+    
+    $scope.onSelect = function($item, $model, $label){
+      $scope.search($model)
+    }
   }
 
 })();

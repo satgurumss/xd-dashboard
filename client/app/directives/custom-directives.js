@@ -10,7 +10,6 @@
                 if (event.which === 13) {
                     scope.$apply(function() {
                         scope.$eval(attrs.myEnterPress);
-                        console.log(attrs)
                     });
 
                     event.preventDefault();

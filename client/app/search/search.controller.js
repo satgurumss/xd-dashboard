@@ -2,9 +2,10 @@
     'use strict';
 
     angular.module('app')
-        .controller('SearchCtrl', ['$scope', '$http', 'backendApi', '$location', SearchCtrl])
+        .controller('SearchCtrl', ['$scope', '$http', 'backendApi', '$location', '$uibModal', SearchCtrl])
+        .controller('advSearchModalCtrl', ['$scope', '$uibModalInstance', 'data', AdvSearchCtrl])
 
-    function SearchCtrl($scope, $http, backendApi, $location) {
+    function SearchCtrl($scope, $http, backendApi, $location, $modal) {
         var searchData = {
                 "workflow": "abraajSearch",
                 "query": "",
@@ -21,6 +22,7 @@
         $scope.currentPage = 1;
         $scope.currentPageItems = [];
         $scope.filteredItems = [];
+        $scope.sortOrder = "date";
 
         $scope.sortOptions = [
             {
@@ -29,16 +31,13 @@
             }, {
                 "name": "Date",
                 "value": "date"
-            }, {
-                "name": "Value",
-                "value": "value"
             }
         ];
 
         $scope.init = function() {
             if (typeof $location.search().queryText != "undefined" && $location.search().queryText != null) {
                 $scope.queryText = $location.search().queryText;
-                $scope.search($scope.queryText);
+                $scope.search();
             }
         }
 
@@ -52,19 +51,20 @@
             return $scope.currentPageItems;
         };
 
-        $scope.updateCtrlModel = function(queryText){
+        $scope.updateCtrlModel = function(queryText) {
             $scope.queryText = queryText;
         }
 
         $scope.search = function() {
-            if ( $scope.queryText != "" ) {
+            if ($scope.queryText != "") {
                 searchData.query = $scope.queryText;
-                
-                if( advFilters.length > 0 )
-                    searchData.filters = advFilters
+
+                if (advFilters.length > 0){
+                    searchData['restParams'] = {}
+                    searchData.restParams['facet.filter'] = advFilters;
+                }
 
                 backendApi.search(searchData).then(function(res) {
-                    console.log(res);
                     if (typeof res.data.documents != "undefined" && res.data.documents.length > 0) {
                         $scope.searchResults = res;
 
@@ -80,24 +80,71 @@
             }
         };
 
+        $scope.sortResults = function(){
+            searchData.sort = [];
+            searchData.sort.push($scope.sortOrder);
+            $scope.search();
+        }
+
         $scope.setFilter = function(filter) {
             searchData.workflow = filter;
-            console.log(searchData);
         };
 
         $scope.setAdvFilter = function(event, filter) {
-            console.log("setting filter" + filter)
-            if( event.target.checked )
+            if (event.target.checked)
                 advFilters.push(filter)
             else
-                advFilters.splice(advFilters.indexOf(filter),1)
+                advFilters.splice(advFilters.indexOf(filter), 1)
         };
 
         $scope.advSearch = function() {
-            searchData['restParams'] ={}
+            searchData['restParams'] = {}
             searchData.restParams['facet.filter'] = advFilters;
-            $scope.search($scope.queryText);
+            $scope.search();
         };
+
+        $scope.openAdvSearchModal = function() {
+            var modalInstance;
+            modalInstance = $modal.open({
+                templateUrl: "app/search/adv-search-modal.html",
+                controller: 'advSearchModalCtrl',
+                resolve: {
+                    data: function() {
+                        return $scope.searchResults.data.facets;
+                    }
+                }
+            });
+
+            modalInstance.result.then((function(selectedFilters) {
+                advFilters = selectedFilters;
+                $scope.advSearch()
+            }));
+        };
+
+        $scope.onSelect = function($item, $model, $label){
+            $scope.queryText = $model;
+            $scope.search();
+        }
     }
 
+    function AdvSearchCtrl($scope, $modalInstance, data) {
+        var advFilters = [];
+        $scope.facets = angular.copy(data);
+
+        $scope.setAdvFilter = function(event, filter) {
+            if (event.target.checked)
+                advFilters.push(filter);
+            else
+                advFilters.splice(advFilters.indexOf(filter), 1);
+        };
+
+        $scope.ok = function() {
+            $modalInstance.close(advFilters);
+        };
+
+        $scope.cancel = function() {
+            $modalInstance.dismiss("cancel");
+        };
+
+    }
 })();

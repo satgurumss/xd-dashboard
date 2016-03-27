@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <h3>Advanced Search</h3>
+</div>
+<div class="modal-body custom-modal-body">
+  <ul class="list-unstyled margin-t20">
+    <li  ng-repeat = "facet in facets" class="row">
+      <div class="text-uppercase col-xs-12">{{facet.label}}</div>
+      <ul class="sub-menu col-xs-9 col-xs-offset-3" >
+        <div data-slim-scroll data-scroll-height="140px">
+          <li ng-repeat= 'opt in facet.buckets'>
+         <label class="ui-checkbox">
+          <input type="checkbox" value="{{opt.filter}}" 
+            ng-click="setAdvFilter($event,opt.filter)">
+          <span>{{opt.label}}</span>
+         </label>
+          </li>
+        </div>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div class="modal-footer">
+  <center>
+    <button class="btn btn-primary" ng-click="ok()">Search</button>
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+  </center>
+</div>

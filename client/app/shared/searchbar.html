@@ -4,16 +4,19 @@
     <input
       type="text"
       uib-typeahead="deal.fields.company_name_s[0] for deal in deals | filter:$viewValue | limitTo:8"
+      typeahead-focus-first = "false"
+      typeahead-on-select = "onSelect($item, $model, $label)"
       class="form-control"
       ng-model = "queryText"
       placeholder="Search" style="font-family:Arial, FontAwesome"
       ng-change="updateCtrlModel(queryText)"
-      ng-model-options="{debounce:500}"
+      my-enter-press="queryText && search(queryText)" 
       >
       <!-- my-enter-press="queryText && search(queryText)" -->
       
       <span class="input-group-btn">
-        <button class="btn btn-md btn-primary search-btn" ng-click="search(queryText)" ng-disabled="!queryText">
+        <button class="btn btn-md btn-default search-btn" 
+          ng-click="queryText && search(queryText)" >
           <i class="fa fa-search"/>
         </button>
       </span>
