@@ -162,5 +162,38 @@
   color: #999;
 }
 
+@media (max-width: 1024px ) and (orientation: landscape) {
+  .dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+}
 
+@media (max-width: 1024px) and (orientation: portrait) {
+  .dropdown-menu {
+    width: 445px;
+    left: auto;
+    right: 0;
+  }
+}
 
+.dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+
+@media (max-width: 767px ) and (orientation: landscape) {
+  .dropdown-menu {
+    width: 445px;
+    left: auto;
+    right: 0;
+  }
+}
+
+@media (max-width: 767px) and (orientation: portrait) {
+  .dropdown-menu {
+    width: 240px;
+    left: auto;
+    right: 0;
+  }
+}
