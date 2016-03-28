@@ -22,7 +22,7 @@
             </div>
             <div class="form-container">
 
-                <form class="form-horizontal" name="loginForm" ng-submit="loginForm.$valid && doLogin()">
+                <form class="form-horizontal login-form" name="loginForm" ng-submit="loginForm.$valid && doLogin()">
                     <fieldset>
                         <div class="form-group">
                             <div class="input-group input-group-lg">
@@ -39,14 +39,14 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-info btn-lg btn-block" 
+                            <button class="btn btn-info btn-lg btn-block"
                                 type="submit">Log in
                             </button>
                         </div>
                     </fieldset>
                 </form>
 
-                <section>
+                <section hidden>
                     <p class="text-center"><a href="#/page/forgot-password">Forgot your username?</a></p>
                 </section>
 

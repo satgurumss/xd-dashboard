@@ -1,4 +1,4 @@
-<div class="page page-dashboard" data-ng-controller="DashboardCtrl">
+<div class="page page-dashboard" data-ng-controller="DashboardCtrl" ng-init="init();">
   <div class="row">
     <div class="search-panel">
       <div class="panel-body">
@@ -13,7 +13,7 @@
                   <input type="checkbox" id="All" name="All" value=".All" checked>
                   <label for="All" class="first">All</label>
                 </div> -->
-                <div data-slim-scroll data-scroll-height="400px">
+                <div data-slim-scroll data-scroll-height="340px">
                   <div id="container">
                     <section ng-repeat="widget in widgets" class="item animated fadeIn {{widget.class}} widget-option-list" ng-class="{'widget-selected':widget.isHide}">
                       <div class="mini-box" ng-mouseenter="widget.showAdded = true" ng-mouseleave="widget.showAdded = false">
@@ -156,7 +156,7 @@
             <div class="panel-heading"><strong>PIE CHART</strong></div>
             <div class="panel-body" data-slim-scroll data-scroll-height="320px">
               <div class="row">
-                <div data-echarts data-options="pie2.options" style="height: 313px;"></div>
+                <div data-echarts data-options="pie2.options" style="height: 300px;"></div>
               </div>
             </div>
           </div>
