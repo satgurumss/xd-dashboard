@@ -16,9 +16,9 @@
                 <div data-slim-scroll data-scroll-height="400px">
                   <div id="container">
                     <section ng-repeat="widget in widgets" class="item animated fadeIn {{widget.class}} widget-option-list" ng-class="{'widget-selected':widget.isHide}">
-                      <div class="mini-box" ng-mouseenter="showAdded = true" ng-mouseleave="showAdded = !showAdded">
+                      <div class="mini-box" ng-mouseenter="widget.showAdded = true" ng-mouseleave="widget.showAdded = false">
                         <span class="box-icon">
-                          <img ng-src="{{widget.iconUrl}}" wdith="100" height="100">
+                          <img ng-src="{{widget.iconUrl}}" width="90" height="90">
                         </span>
                         <div class="widget-text text-left">
                           <h4 class="text-center">{{widget.title}}
@@ -26,16 +26,19 @@
                             <span class="fa fa-check"></span>
                           </span>
                           </h4>
-                          <span ng-hide="showAdded">{{widget.title}}</span>
-                          <button class="btn btn-danger action-control" ng-show="showAdded && widget.isHide" ng-click="widget.isHide = false">Add</button>
-                          <button class="btn btn-danger action-control" ng-show="showAdded && !widget.isHide" ng-click="widget.isHide = true">Remove</button>
+                          <!-- <span ng-hide="widget.showAdded">{{widget.title}}</span> -->
+                          <button class="btn btn-danger action-control" ng-show="widget.showAdded" ng-click="widget.isHide = !widget.isHide">
+                            <span ng-show="widget.isHide">Add</span>
+                            <span ng-show="!widget.isHide">Remove</span>
+                          </button>
+                          <!-- <button class="btn btn-danger action-control" ng-show="widget.showAdded && !widget.isHide" ng-click="widget.isHide = true">Remove</button> -->
                         </div>
                       </div>
                     </section>
                     <section class="item animated fadeIn {{bar3.class}} widget-option-list" ng-class="{'widget-selected':bar3.isHide}">
-                      <div class="mini-box" ng-mouseenter="showAdded = true" ng-mouseleave="showAdded = !showAdded">
+                      <div class="mini-box" ng-mouseenter="bar3.showAdded = true" ng-mouseleave="bar3.showAdded = !bar3.showAdded">
                         <span class="box-icon">
-                          <img ng-src="{{bar3.iconUrl}}" wdith="100" height="100">
+                          <img ng-src="{{bar3.iconUrl}}" wdith="90" height="90">
                         </span>
                         <div class="widget-text text-left">
                           <h4 class="text-center">{{bar3.title}}
@@ -43,16 +46,19 @@
                             <span class="fa fa-check"></span>
                           </span>
                           </h4>
-                          <span ng-hide="showAdded">{{bar3.title}}</span>
-                          <button class="btn btn-danger action-control" ng-show="showAdded && bar3.isHide" ng-click="bar3.isHide = false">Add</button>
-                          <button class="btn btn-danger action-control" ng-show="showAdded && !bar3.isHide" ng-click="bar3.isHide = true">Remove</button>
+                          <!-- <span ng-hide="widget.showAdded">{{bar3.title}}</span> -->
+                          <button class="btn btn-danger action-control" ng-show="bar3.showAdded" ng-click="bar3.isHide = !bar3.isHide">
+                            <span ng-show="bar3.isHide">Add</span>
+                            <span ng-show="!bar3.isHide">Remove</span>
+                          </button>
+                          <!-- <button class="btn btn-danger action-control" ng-show="bar3.showAdded && !bar3.isHide" ng-click="bar3.isHide = true">Remove</button> -->
                         </div>
                       </div>
                     </section>
                     <section class="item animated fadeIn {{pie2.class}} widget-option-list" ng-class="{'widget-selected':pie2.isHide}">
-                      <div class="mini-box" ng-mouseenter="showAdded = true" ng-mouseleave="showAdded = !showAdded">
+                      <div class="mini-box" ng-mouseenter="pie2.showAdded = true" ng-mouseleave="pie2.showAdded = !pie2.showAdded">
                         <span class="box-icon">
-                          <img ng-src="{{pie2.iconUrl}}" wdith="100" height="100">
+                          <img ng-src="{{pie2.iconUrl}}" wdith="90" height="90">
                         </span>
                         <div class="widget-text text-left">
                           <h4 class="text-center">{{pie2.title}}
@@ -60,9 +66,12 @@
                             <span class="fa fa-check"></span>
                           </span>
                           </h4>
-                          <span ng-hide="showAdded">{{pie2.title}}</span>
-                          <button class="btn btn-danger action-control" ng-show="showAdded && pie2.isHide" ng-click="pie2.isHide = false">Add</button>
-                          <button class="btn btn-danger action-control" ng-show="showAdded && !pie2.isHide" ng-click="pie2.isHide = true">Remove</button>
+                          <!-- <span ng-hide="pie2.showAdded">{{pie2.title}}</span> -->
+                          <button class="btn btn-danger action-control" ng-show="pie2.showAdded" ng-click="pie2.isHide = !pie2.isHide">
+                            <span ng-show="pie2.isHide">Add</span>
+                            <span ng-show="!pie2.isHide">Remove</span>
+                          </button>
+                          <!-- <button class="btn btn-danger action-control" ng-show="pie2.showAdded && !pie2.isHide" ng-click="pie2.isHide = true">Remove</button> -->
                         </div>
                       </div>
                     </section>
