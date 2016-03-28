@@ -32,7 +32,7 @@
       getCurrentUser : function(){
         console.log("getCurrentUser");
         var user = $cookies.getObject("abraajLogin");
-        return typeof user != "undefined" ? user.fields : "";
+        return typeof user != "undefined" ? user.fields : {};
       },
       logOutUser : function(){
         console.log("logOutUser");
