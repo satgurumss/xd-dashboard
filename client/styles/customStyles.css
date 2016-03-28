@@ -544,3 +544,7 @@ th, td {
 p.search-description {
   border-bottom: 1px dashed #eee;
 }
+
+.panel .panel-heading {
+  font-size: 17px;
+}
