@@ -43,6 +43,16 @@ a:hover {
   max-height:490px;
   overflow-y:scroll;
 }
+
+.signin-header.backgroud-white{
+  background-color:#fff;
+}
+
+.btn-info {
+    color: #fff;
+    background-color: #0079c1;
+    border-color: #0079c1;
+}
 /*-------*/
 
 /*SEARCH PAGE STYLES*/
@@ -106,6 +116,9 @@ a:hover {
 .relevance-filter select{
   width: auto;
 }
+.search-type {
+  padding-left: 0;
+}
 
 @media only screen and (max-device-width : 667px) {
  .search-bar{
@@ -124,9 +137,13 @@ a:hover {
 	.pull-right{
 	 	float:left !important;
 	 }
-   .mobile-center{
-    text-align:center;
-   }
+  .mobile-center{
+  text-align:center;
+  }
+
+  .search-type {
+    padding-left: 15px;
+  }
 }
 /*-------*/
 body {
@@ -414,7 +431,7 @@ body{
     z-index: 99;
     display: block;
     position: relative;
-    padding: 10px 15px 10px 10px;
+    padding: 10px 22px 10px 8px;
     min-width: 100%;
     width: 100%;
 }

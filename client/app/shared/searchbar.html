@@ -1,5 +1,5 @@
 <!-- &#xF002;  -->
-<div class="{{searchbarWidth}} col-sm-6 col-lg-4 col-lg-offset-3 pr-0 pb-15">
+<div class="{{searchbarWidth}} col-sm-6 col-lg-4 col-lg-offset-3 pb-15">
   <div class="ui-typeahead input-group">
     <input
       type="text"
@@ -16,13 +16,13 @@
       
       <span class="input-group-btn">
         <button class="btn btn-md btn-default search-btn" 
-          ng-click="search(queryText)" ng-disabled="!queryText">
+          ng-click="search(queryText)">
           <i class="fa fa-search"/>
         </button>
       </span>
   </div>
 </div>
-<div class="col-xs-4 col-sm-3 col-lg-1 pl-0">
+<div class="{{searchTypeWidth}} col-sm-3 col-lg-1 search-type">
   <span class="ui-select">
     <select ng-model="filterType" ng-change="setFilter(filterType)">
       <option value="abraajSearch" ng-selected="true">All</option>

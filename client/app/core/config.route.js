@@ -32,7 +32,9 @@
             });
 
             $routeProvider
-                .when('/', {redirectTo: 'page/signin'})
+                // .when('/', {redirectTo: 'page/signin'})
+                .when('/', {redirectTo: 'signin'})
+                .when('/signin', {templateUrl: 'app/page/signin.html'})
                 .when('/dashboard', {templateUrl: 'app/dashboard/dashboard.html'})
                 .when('/search-result', {templateUrl: 'app/search/search-result.html'})
                 .when('/404', {templateUrl: 'app/page/404.html'})

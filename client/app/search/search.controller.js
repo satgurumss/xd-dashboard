@@ -17,7 +17,8 @@
             advFilters = [];
         //"sort":['date']
         $scope.queryText = "";
-        $scope.searchbarWidth = "col-xs-8"
+        $scope.searchbarWidth = "col-xs-12"
+        $scope.searchTypeWidth = "col-xs-6" 
         $scope.blankslateMsg = "Please enter search keywords above to begin";
         $scope.numPerPageOpt = [3, 5, 10];
         $scope.numPerPage = $scope.numPerPageOpt[1];
@@ -25,6 +26,7 @@
         $scope.currentPageItems = [];
         $scope.filteredItems = [];
         $scope.sortOrder = "date";
+        $scope.facets = [];
 
         $scope.sortOptions = [
             {
@@ -37,13 +39,16 @@
         ];
 
         $scope.init = function() {
+            //use this to get current user
+            currentUser = loggedInUser.getCurrentUser();
+            if(typeof currentUser != "undefined" || currentUser != "")
+                searchData.username = currentUser.account_s[0];
+            
             if (typeof $location.search().queryText != "undefined" && $location.search().queryText != null) {
                 $scope.queryText = $location.search().queryText;
                 $scope.search();
             }
-            //use this to get current user
-            currentUser = loggedInUser.getCurrentUser();
-            searchData.username = currentUser.account_s[0];
+
         }
 
         $scope.select = function(page) {
@@ -72,6 +77,7 @@
                 backendApi.search(searchData).then(function(res) {
                     if (typeof res.data.documents != "undefined" && res.data.documents.length > 0) {
                         $scope.searchResults = res;
+                        $scope.facets = res.data.facets;
 
                         $scope.filteredItems = angular.copy($scope.searchResults.data.documents);
                         $scope.currentPageItems = angular.copy($scope.searchResults.data.documents);
@@ -96,18 +102,33 @@
         };
 
         $scope.setAdvFilter = function(event, filter) {
-            if (event.target.checked)
+            if (event.target.checked) {
                 advFilters.push(filter)
-            else
+                updateSelectedFilters(filter, true);
+            }
+            else{
                 advFilters.splice(advFilters.indexOf(filter), 1)
+                updateSelectedFilters(filter, false);
+            }
         };
+
+        var updateSelectedFilters = function( filter, isSelected ) {
+            var filter = _.find( $scope.facets, function(facet){
+            
+                return _.find(facet.buckets, function(option){
+                    
+                    return option.filter === filter;
+                });
+            });
+
+            filter.isSelected = isSelected;
+        }
 
         $scope.advSearch = function() {
             searchData['restParams'] = {}
             searchData.restParams['facet.filter'] = advFilters;
             $scope.search();
         };
-
         $scope.openAdvSearchModal = function() {
             var modalInstance;
             modalInstance = $modal.open({
