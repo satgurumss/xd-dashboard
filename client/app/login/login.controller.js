@@ -9,7 +9,7 @@
         $scope.errorAlert = false;
 
         $scope.doLogin = function() {
-            var res = backendApi.doLogin()
+            backendApi.doLogin()
                 .then(
                     function(res) {
                         console.log(res);

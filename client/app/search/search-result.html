@@ -6,7 +6,7 @@
         <div class="row">
           <div data-ng-include="'app/shared/searchbar.html'"></div>
 
-          <div class="col-xs-12 col-sm-3 col-lg-2">
+          <div class="col-xs-6 col-sm-3 col-lg-2">
             
             <span class="ui-select pull-right relevance-filter">
               <select ng-model='sortOrder'ng-change="sortResults()">
@@ -25,6 +25,9 @@
 		<div class="panel-body pad-25">
 
 			<div class="row results-section">
+        <div ng-show = "currentPageItems.length == 0" >
+          <h4 class="text-center">{{blankslateMsg}}</h4>
+        </div>
         <!-- ###mobile advanced search drop down### -->
         <div class="clearfix visible-xs adv-search-mobile" style="padding: 0 30px;" 
           ng-show = "searchResults.data.facets.length > 0 && queryText">
@@ -39,14 +42,12 @@
                     ng-if="facet.buckets.length > 0">
                     <div class="text-uppercase menu-title">{{facet.label}}</div>
                     <ul class="sub-menu">
-                      <div data-slim-scroll data-scroll-height="140px">
                         <li  ng-repeat= 'opt in facet.buckets'>
                          <label class="ui-checkbox">
                           <input type="checkbox" value="{{opt.filter}}">
                           <span>{{opt.label}}</span>
                          </label>
                         </li>
-                      </div>
                     </ul>
                   </li>
                   <div>
@@ -99,10 +100,6 @@
         </div>
 
 				<div class="col-lg-9 col-md-9 col-sm-8 results-container">
-
-					<div ng-show = "currentPageItems.length == 0" >
-            <h4 class="mobile-center">{{blankslateMsg}}</h4>
-          </div>
 
           <div class="search-result row pad-l-0" data-ng-repeat="result in currentPageItems">
             <div

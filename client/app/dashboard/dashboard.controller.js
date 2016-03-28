@@ -11,7 +11,8 @@
     });
 
   function DashboardCtrl($scope, $http, $location, backendApi) {
-    $scope.searchbarWidth = "col-xs-6"
+    $scope.searchbarWidth = "col-xs-12"
+    $scope.searchTypeWidth = "col-xs-10" 
     $scope.line2 = {};
     $scope.radar1 = {};
     $scope.deals = [];
@@ -353,7 +354,8 @@
     };
 
     $scope.search = function(queryText) {
-      $location.url("/search-result?queryText=" + queryText)
+      if(queryText != "")
+        $location.url("/search-result?queryText=" + queryText)
     }
 
     $scope.onSelect = function($item, $model, $label){
