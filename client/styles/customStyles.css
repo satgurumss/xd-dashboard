@@ -585,3 +585,7 @@ p.search-description {
     margin-top:5%;
   }
 }
+
+.panel .panel-heading {
+  font-size: 17px;
+}

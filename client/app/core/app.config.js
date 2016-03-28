@@ -23,7 +23,7 @@
         var date = new Date();
         var year = date.getFullYear();
         var main = {
-            brand: 'abraaj',
+            brand: 'THE ABRAAJ GROUP',
             name: 'Lisa',
             year: year,
             layout: 'wide',                                 // 'boxed', 'wide'

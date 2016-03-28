@@ -18,11 +18,13 @@
     $scope.deals = [];
     $scope.queryText = "";
     $scope.showChart = false;
+    $scope.showAdded = false;
 
     $scope.widgets = [{
       title: "My Deals",
       iconUrl: "images/widgets/icon_area-chart.png",
       searches: [],
+      isHide: false,
       query: {
         "workflow": "myDeals",
         "query": "*",
@@ -33,6 +35,7 @@
       title: "My Investments",
       iconUrl: "images/widgets/icon_cpu-usage.png",
       searches: [],
+      isHide: false,
       query: {
         "workflow": "myInvestments",
         "query": "*",
@@ -43,6 +46,7 @@
       title: "My Region",
       iconUrl: "images/widgets/icon_map.png",
       searches: [],
+      isHide: false,
       query: {
         "workflow": "myRegion",
         "query": "*",
@@ -53,6 +57,7 @@
       title: "My Interests",
       iconUrl: "images/widgets/icon_memory-usage.png",
       searches: [],
+      isHide: false,
       query: {
         "workflow": "myInterests",
         "query": "*",
@@ -63,6 +68,7 @@
       title: "Recent Deals",
       iconUrl: "images/widgets/icon_cpu-usage.png",
       searches: [],
+      isHide: false,
       query: {
         "workflow": "recentDeals",
         "query": "*",
@@ -73,6 +79,7 @@
       title: "Recent Investments",
       iconUrl: "images/widgets/icon_cpu-usage.png",
       searches: [],
+      isHide: false,
       query: {
         "workflow": "recentInvestments",
         "query": "*",
@@ -83,6 +90,7 @@
       title: "Recent News",
       iconUrl: "images/widgets/icon_cpu-usage.png",
       searches: [],
+      isHide: false,
       query: {
         "workflow": "recentNews",
         "query": "*",
@@ -93,6 +101,7 @@
       title: "Recent Documents",
       iconUrl: "images/widgets/icon_cpu-usage.png",
       searches: [],
+      isHide: false,
       query: {
         "workflow": "recentDocuments",
         "query": "*",
@@ -143,11 +152,14 @@
 
     $scope.pie2 = {
       title: "Pie Chart",
-      iconUrl: "images/widgets/placeholder.png"
+      iconUrl: "images/widgets/placeholder.png",
+      isHide: false
     };
+
     $scope.bar3 = {
-      title: "Bar Chart",
+      title: "Deal Report",
       iconUrl: "images/widgets/icon_top-categories.png",
+      isHide: false
     };
 
     // $scope.bar3.options = {
@@ -330,22 +342,22 @@
       console.log(widget);
       var storeIndex;
       storeIndex = -1;
-      angular.forEach($scope.widgets, function(value, key) {
-        if (value.title === widget.title) {
-          storeIndex = key;
-          return false;
-        }
-      });
-      if (storeIndex > -1) {
-        $scope.widgets[storeIndex].added = false;
-      }
+      // angular.forEach($scope.widgets, function(value, key) {
+      //   if (value.title === widget.title) {
+      //     storeIndex = key;
+      //     return false;
+      //   }
+      // });
+      // if (storeIndex > -1) {
+      //   $scope.widgets[storeIndex].added = false;
+      // }
     };
 
     $scope.search = function(queryText) {
       if(queryText != "")
         $location.url("/search-result?queryText=" + queryText)
     }
-    
+
     $scope.onSelect = function($item, $model, $label){
       $scope.search($model)
     }
@@ -368,13 +380,23 @@ angular.module('app')
           elemScaledHeight = elemHeight * 0.1;
           elemScaledWidth = elemWidth * 0.1;
 
+          console.log("elemHeight: ", elemHeight);
+          console.log("elemWidth: ", elemWidth);
+          console.log("widgetControlWidth: ", widgetControlWidth);
+          console.log("elemScaledHeight: ", elemScaledHeight);
+          console.log("elemScaledWidth: ", elemScaledWidth);
+
           scaledTopOffset = ((elemHeight - elemScaledHeight) / 2) + 20;
           scaledLeftOffset = ((elemWidth - elemScaledWidth) / 2) - (widgetControlWidth / 2);
+
+          console.log("scaledTopOffset: ", scaledTopOffset);
+          console.log("scaledLeftOffset: ", scaledLeftOffset);
+
           secondFrame = {
             'opacity': '0.8',
             'z-index': '5',
             'top': '-' + scaledTopOffset + 'px',
-            'left': '-' + scaledLeftOffset + 'px',
+            'left': + scaledLeftOffset + 'px',
             '-webkit-transform': 'scale3d(.1,.1,.1)',
             '-moz-transform': 'scale3d(.1,.1,.1)',
             '-o-transform': 'scale3d(.1,.1,.1)',
@@ -395,7 +417,7 @@ angular.module('app')
           element.resetKeyframe(function() {
             return element.playKeyframe({
               name: 'onMove',
-              duration: '1s',
+              duration: '4s',
               delay: '0s',
               timingFunction: 'ease-in-out',
               complete: doneFn
