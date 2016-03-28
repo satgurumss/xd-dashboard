@@ -2,23 +2,32 @@
   'use strict';
 
   angular.module('app')
-    .controller('DashboardCtrl', ['$scope', '$http', '$location', 'backendApi', DashboardCtrl])
-    .filter('singleDecimal', function ($filter) {
-        return function (input) {
-            if (isNaN(input)) return input;
-            return Math.round(input * 10) / 10;
-        };
+    .controller('DashboardCtrl', ['$scope', '$http', '$location', 'backendApi', 'loggedInUser', DashboardCtrl])
+    .filter('singleDecimal', function($filter) {
+      return function(input) {
+        if (isNaN(input)) return input;
+        return Math.round(input * 10) / 10;
+      };
     });
 
-  function DashboardCtrl($scope, $http, $location, backendApi) {
+  function DashboardCtrl($scope, $http, $location, backendApi, loggedInUser) {
     $scope.searchbarWidth = "col-xs-12"
-    $scope.searchTypeWidth = "col-xs-10" 
+    $scope.searchTypeWidth = "col-xs-10"
     $scope.line2 = {};
     $scope.radar1 = {};
     $scope.deals = [];
     $scope.queryText = "";
     $scope.showChart = false;
     $scope.showAdded = false;
+    var currentUser;
+
+    $scope.init = function() {
+      //use this to get current user
+      currentUser = loggedInUser.getCurrentUser();
+      if (typeof currentUser != "undefined" || currentUser != "")
+        $scope.userName = currentUser.account_s[0];
+
+    }
 
     $scope.widgets = [{
       title: "My Deals",
@@ -28,7 +37,7 @@
       query: {
         "workflow": "myDeals",
         "query": "*",
-        "username": "Administrator",
+        "username": $scope.userName,
         "realm": "Anonymous"
       }
     }, {
@@ -39,7 +48,7 @@
       query: {
         "workflow": "myInvestments",
         "query": "*",
-        "username": "Administrator",
+        "username": $scope.userName,
         "realm": "Anonymous"
       }
     }, {
@@ -50,7 +59,7 @@
       query: {
         "workflow": "myRegion",
         "query": "*",
-        "username": "Administrator",
+        "username": $scope.userName,
         "realm": "Anonymous"
       }
     }, {
@@ -61,7 +70,7 @@
       query: {
         "workflow": "myInterests",
         "query": "*",
-        "username": "Administrator",
+        "username": $scope.userName,
         "realm": "Anonymous"
       }
     }, {
@@ -72,7 +81,7 @@
       query: {
         "workflow": "recentDeals",
         "query": "*",
-        "username": "Administrator",
+        "username": $scope.userName,
         "realm": "Anonymous"
       }
     }, {
@@ -83,7 +92,7 @@
       query: {
         "workflow": "recentInvestments",
         "query": "*",
-        "username": "Administrator",
+        "username": $scope.userName,
         "realm": "Anonymous"
       }
     }, {
@@ -94,7 +103,7 @@
       query: {
         "workflow": "recentNews",
         "query": "*",
-        "username": "Administrator",
+        "username": $scope.userName,
         "realm": "Anonymous"
       }
     }, {
@@ -105,7 +114,7 @@
       query: {
         "workflow": "recentDocuments",
         "query": "*",
-        "username": "Administrator",
+        "username": $scope.userName,
         "realm": "Anonymous"
       }
     }];
@@ -113,7 +122,7 @@
     var dealReport = {
       "workflow": "dealReport",
       "query": "*",
-      "username": "Administrator",
+      "username": $scope.userName,
       "realm": "Anonymous",
       "restParams": {
         "metric": ["total_investment_d"],
@@ -354,11 +363,11 @@
     };
 
     $scope.search = function(queryText) {
-      if(queryText != "")
+      if (queryText != "")
         $location.url("/search-result?queryText=" + queryText)
     }
 
-    $scope.onSelect = function($item, $model, $label){
+    $scope.onSelect = function($item, $model, $label) {
       $scope.search($model)
     }
   }
@@ -370,7 +379,7 @@ angular.module('app')
     function() {
       var support;
       support = jQuery.keyframe.isSupported();
-      jQuery.keyframe.debug = false;
+      jQuery.keyframe.debug = true;
       return {
         leave: function(element, doneFn) {
           var elemHeight, elemScaledHeight, elemScaledWidth, elemWidth, firstFrame, scaledLeftOffset, scaledTopOffset, secondFrame, widgetControlWidth;
@@ -396,7 +405,7 @@ angular.module('app')
             'opacity': '0.8',
             'z-index': '5',
             'top': '-' + scaledTopOffset + 'px',
-            'left': + scaledLeftOffset + 'px',
+            'left': +scaledLeftOffset + 'px',
             '-webkit-transform': 'scale3d(.1,.1,.1)',
             '-moz-transform': 'scale3d(.1,.1,.1)',
             '-o-transform': 'scale3d(.1,.1,.1)',
