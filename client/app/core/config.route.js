@@ -2,9 +2,10 @@
     'use strict';
 
     angular.module('app')
-        .config(['$routeProvider', function($routeProvider) {
+        .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
             var routes, setRoutes;
 
+            console.log($locationProvider);
             routes = [
                 'dashboard',
                 'search-result',
@@ -16,6 +17,11 @@
                 'mail/compose', 'mail/inbox', 'mail/single',
                 'app/tasks', 'app/calendar'
             ]
+
+            // $locationProvider.html5Mode(true);
+            // enable html5Mode for pushstate ('#'-less URLs)
+            // $locationProvider.html5Mode(true);
+            // $locationProvider.hashPrefix('!');
 
             setRoutes = function(route) {
                 var config, url;
