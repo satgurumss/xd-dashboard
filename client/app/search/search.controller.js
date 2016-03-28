@@ -41,7 +41,7 @@
         $scope.init = function() {
             //use this to get current user
             currentUser = loggedInUser.getCurrentUser();
-            if(typeof currentUser != "undefined" || currentUser != "")
+            if( ! _.isEmpty( currentUser ) )
                 searchData.username = currentUser.account_s[0];
             
             if (typeof $location.search().queryText != "undefined" && $location.search().queryText != null) {
