@@ -565,13 +565,3 @@ p.search-description {
 .panel .panel-heading {
   font-size: 17px;
 }
-
-
-/*Signin Page Styling Start he*/
-.page-signin {
-  min-height: 570px;
-}
-
-.login-form {
-  padding-top: 10%;
-}
