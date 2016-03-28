@@ -4,9 +4,9 @@
       <div class="panel-body">
         <div class="row">
           <div data-ng-include="'app/shared/searchbar.html'"></div>
-          <div class="col-xs-2 col-sm-2 pl-0">
+          <div class="col-xs-2 col-sm-2 pl-0 widget-control">
             <div class="btn-group" uib-dropdown is-open="status.isopen">
-              <button type="button" class="btn-widget dropdown-toggle widget-control" uib-dropdown-toggle ng-disable="disabled"><i class="fa fa-th fa-1"></i></button>
+              <button type="button" class="btn-widget dropdown-toggle " uib-dropdown-toggle ng-disable="disabled"><i class="fa fa-th fa-1"></i></button>
               <menu class="dropdown-menu animated fadein widget-filter-container" ng-click="$event.stopPropagation()" role="menu">
               <section>
                 <!-- <div id="filters" class="sort-wo-list clearfix">
@@ -92,7 +92,7 @@
       <li ng-repeat = "widget in widgets" ng-if = "!widget.isHide" class="slide search-widget col-md-4 col-sm-6">
         <section class="panel panel-default"  ng-mouseenter="widget.shMenu1=true;" ng-mouseleave="widget.shMenu1=false;">
           <div class="widget-menu" ng-class="{'animated slideInLeft' : widget.shMenu1 , 'animated slideOutLeft' : !widget.shMenu1 }" ng-show="widget.shMenu1" >
-            <div class="remove" ng-click="removeWidget(widget);"><i class="fa fa-times"></i></div>
+            <div class="remove" ng-click="removeWidget(widget, $event);"><i class="fa fa-times"></i></div>
             <div class="expand"><i class="fa fa-expand"></i></div>
           </div>
           <div class="panel-container">
@@ -165,3 +165,7 @@
     </ul>
   </div>
 </div>
+
+<style type="text/css">
+  .slide.ng-enter { transition:0.5s linear all; }
+</style>

@@ -24,7 +24,7 @@
     $scope.init = function() {
       //use this to get current user
       currentUser = loggedInUser.getCurrentUser();
-      if (typeof currentUser != "undefined" || currentUser != "")
+      if (!_.isEmpty(currentUser))
         $scope.userName = currentUser.account_s[0];
 
     }
@@ -37,7 +37,7 @@
       query: {
         "workflow": "myDeals",
         "query": "*",
-        "username": $scope.userName,
+        "username": "Administrator",
         "realm": "Anonymous"
       }
     }, {
@@ -48,7 +48,7 @@
       query: {
         "workflow": "myInvestments",
         "query": "*",
-        "username": $scope.userName,
+        "username": "Administrator",
         "realm": "Anonymous"
       }
     }, {
@@ -59,7 +59,7 @@
       query: {
         "workflow": "myRegion",
         "query": "*",
-        "username": $scope.userName,
+        "username": "Administrator",
         "realm": "Anonymous"
       }
     }, {
@@ -70,7 +70,7 @@
       query: {
         "workflow": "myInterests",
         "query": "*",
-        "username": $scope.userName,
+        "username": "Administrator",
         "realm": "Anonymous"
       }
     }, {
@@ -81,7 +81,7 @@
       query: {
         "workflow": "recentDeals",
         "query": "*",
-        "username": $scope.userName,
+        "username": "Administrator",
         "realm": "Anonymous"
       }
     }, {
@@ -92,7 +92,7 @@
       query: {
         "workflow": "recentInvestments",
         "query": "*",
-        "username": $scope.userName,
+        "username": "Administrator",
         "realm": "Anonymous"
       }
     }, {
@@ -103,7 +103,7 @@
       query: {
         "workflow": "recentNews",
         "query": "*",
-        "username": $scope.userName,
+        "username": "Administrator",
         "realm": "Anonymous"
       }
     }, {
@@ -114,7 +114,7 @@
       query: {
         "workflow": "recentDocuments",
         "query": "*",
-        "username": $scope.userName,
+        "username": "Administrator",
         "realm": "Anonymous"
       }
     }];
@@ -122,7 +122,7 @@
     var dealReport = {
       "workflow": "dealReport",
       "query": "*",
-      "username": $scope.userName,
+      "username": "Administrator",
       "realm": "Anonymous",
       "restParams": {
         "metric": ["total_investment_d"],
@@ -346,7 +346,7 @@
       }]
     };
 
-    $scope.removeWidget = function(widget) {
+    $scope.removeWidget = function(widget, $event) {
       widget.isHide = true;
       console.log(widget);
       var storeIndex;
