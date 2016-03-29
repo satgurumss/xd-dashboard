@@ -16,8 +16,10 @@
     $scope.init = function(){
     	$scope.currentUser = loggedInUser.getCurrentUser();
     	
-    	if($scope.currentUser != "")
+    	if( ! _.isEmpty( $scope.currentUser ) )
     		$scope.currentUser.picture_s = picURL + $scope.currentUser.picture_s; 
+      else
+        loggedInUser.logOutUser();
     }
 
     $scope.isActive = function (viewLocation) {
@@ -26,7 +28,6 @@
 
     $scope.logOut = function() {
     	loggedInUser.logOutUser();
-    	$location.url("/page/signin");
     }
   }
 

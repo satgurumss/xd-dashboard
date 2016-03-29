@@ -82,7 +82,7 @@
                   <div data-slim-scroll data-scroll-height="140px">
                     <li ng-repeat= 'opt in facet.buckets'>
                    <label class="ui-checkbox">
-                    <input type="checkbox" value="{{opt.filter}}" 
+                    <input type="checkbox" ng-checked="isChecked(opt.filter)" value="{{opt.filter}}" 
                       ng-click="setAdvFilter($event,opt.filter)">
                     <span>{{opt.label}}</span>
                    </label>

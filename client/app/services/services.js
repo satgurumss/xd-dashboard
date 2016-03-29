@@ -23,7 +23,7 @@
     };
   }
 
-  function loggedInUser($cookies){
+  function loggedInUser($cookies, $location){
     console.log("loggedInUser")
     return{
       setCurrentUser : function(data){
@@ -38,6 +38,7 @@
       logOutUser : function(){
         console.log("logOutUser");
         $cookies.remove("abraajLogin");
+        $location.url("/signin");
       }
 
     };
