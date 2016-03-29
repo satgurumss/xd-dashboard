@@ -12,13 +12,20 @@
 
 	<div class="result-url row">
 		<div class="result-doc-link col-md-10 col-sm-10">
-			<a href="#">www.detailedURLofTheDocument.com{{result.fields.sourcepath[0]}}</a>
+			{{result.fields.description_s[0]}}
 		</div>
 	</div>
 
 	<div class="result-desc row">
 			<div class="col-md-12">
 				<p class="text-justify">{{result.fields.teaser[0]}}</p>
+			</div>
+			<div class="col-md-12">
+				<strong>News Type:</strong>&nbsp;{{result.fields.news_type_s[0]}}</p>
+			</div>
+			<br>
+			<div class="col-md-12">
+				<strong>Key Phrases:</strong><p class="text-justify"><i>{{result.fields.keyphrases[0]}}</i></p>
 			</div>
 	</div>
 
