@@ -20,14 +20,15 @@
     $scope.showChart = false;
     $scope.showAdded = false;
     var currentUser;
+    $scope.userName = "Administrator"
 
     $scope.init = function() {
       //use this to get current user
       currentUser = loggedInUser.getCurrentUser();
       console.log("currentUser ", currentUser)
       if (!_.isEmpty(currentUser))
-      // $scope.userName = currentUser.account_s[0];
-        $scope.userName = "Administrator"
+        $scope.userName = currentUser.account_s[0];
+        // $scope.userName = "Administrator"
 
       $scope.widgets = [{
         title: "My Deals",
