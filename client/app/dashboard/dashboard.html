@@ -4,9 +4,9 @@
       <div class="panel-body">
         <div class="row">
           <div data-ng-include="'app/shared/searchbar.html'"></div>
-          <div class="col-xs-2 col-sm-2 pl-0 widget-control">
+          <div class="col-xs-2 col-sm-2 pl-0">
             <div class="btn-group" uib-dropdown is-open="status.isopen">
-              <button type="button" class="btn-widget dropdown-toggle " uib-dropdown-toggle ng-disable="disabled"><i class="fa fa-th fa-1"></i></button>
+              <button type="button" class="btn-widget dropdown-toggle widget-control" uib-dropdown-toggle ng-disable="disabled"><i class="fa fa-th fa-1"></i></button>
               <menu class="dropdown-menu animated fadein widget-filter-container" ng-click="$event.stopPropagation()" role="menu">
               <section>
                 <!-- <div id="filters" class="sort-wo-list clearfix">

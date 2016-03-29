@@ -1,3 +1,4 @@
+var clickEvent;
 (function() {
   'use strict';
 
@@ -28,7 +29,7 @@
       console.log("currentUser ", currentUser)
       if (!_.isEmpty(currentUser))
         $scope.userName = currentUser.account_s[0];
-        // $scope.userName = "Administrator"
+      // $scope.userName = "Administrator"
 
       $scope.widgets = [{
         title: "My Deals",
@@ -357,25 +358,7 @@
     $scope.groupingChanged = function(widget) {
       widget.query.restParams.grouping[0] = widget.selectedOption.value;
       console.log(widget);
-      if (widget.selectedOption.value === 'region_s') {
-        if (widget.query.workflow === 'dealReport')
-          widget.query.workflow = 'dealReportByRegion';
-        if (widget.query.workflow === 'investmentReport')
-          widget.query.workflow = 'investmentReportByRegion';
-      } else if (widget.selectedOption.value === 'sector_s') {
-        if (widget.query.workflow === 'dealReport')
-          widget.query.workflow = 'dealReportBySector';
-        if (widget.query.workflow === 'investmentReport')
-          widget.query.workflow = 'investmentReportBySector';
-      } else {
-        if (widget.query.workflow === 'dealReportByRegion' || widget.query.workflow === 'dealReportBySector') {
-          widget.query.workflow = 'dealReport';
-        }
-
-        if (widget.query.workflow === 'investmentReportByRegion' || widget.query.workflow === 'investmentReportBySector') {
-          widget.query.workflow = 'investmentReport';
-        }
-      }
+      widget = $scope.updateQuery(widget);
       console.log(widget);
 
       backendApi.search(widget.query).then(function(res) {
@@ -396,6 +379,30 @@
       iconUrl: "images/widgets/icon_top-categories.png",
       isHide: false
     };
+
+    $scope.updateQuery = function(widget) {
+      if (widget.selectedOption.value === 'region_s') {
+        if (widget.query.workflow === 'dealReport')
+          widget.query.workflow = 'dealReportByRegion';
+        if (widget.query.workflow === 'investmentReport')
+          widget.query.workflow = 'investmentReportByRegion';
+      } else if (widget.selectedOption.value === 'sector_s') {
+        if (widget.query.workflow === 'dealReport')
+          widget.query.workflow = 'dealReportBySector';
+        if (widget.query.workflow === 'investmentReport')
+          widget.query.workflow = 'investmentReportBySector';
+      } else {
+        if (widget.query.workflow === 'dealReportByRegion' || widget.query.workflow === 'dealReportBySector') {
+          widget.query.workflow = 'dealReport';
+        }
+
+        if (widget.query.workflow === 'investmentReportByRegion' || widget.query.workflow === 'investmentReportBySector') {
+          widget.query.workflow = 'investmentReport';
+        }
+      }
+
+      return widget;
+    }
 
     // $scope.bar3.options = {
     //   title: {
@@ -573,6 +580,10 @@
     };
 
     $scope.removeWidget = function(widget, $event) {
+      clickEvent = $event;
+
+      console.log("sdhfsdlfbjsdlkbf ", $event);
+      console.log("cksfdjfdnsd ", clickEvent);
       widget.isHide = true;
       console.log(widget);
       var storeIndex;
@@ -601,19 +612,79 @@
 })();
 
 angular.module('app')
-  .animation('.slide', ['$animateCss', function($animateCss) {
+.animation('.slide', [
+  function() {
+    var support;
+    support = jQuery.keyframe.isSupported();
+    jQuery.keyframe.debug = true;
     return {
-      leave: function(element) {
-        return $animateCss(element, {
-          event: 'leave',
-          structural: true,
-          from: {
-            height: 0
-          },
-          to: {
-            height: 30
-          }
+      leave: function(element, doneFn) {
+        // console.log("$event:  ", $event);
+        console.log("clickEvent ", clickEvent);
+        var elemHeight, elemScaledHeight, elemScaledWidth, elemWidth, firstFrame, scaledLeftOffset, scaledTopOffset, secondFrame, widgetControlWidth;
+        elemHeight = parseInt(element.css('height'));
+        elemWidth = parseInt(element.css('width'));
+        elemX = parseInt(clickEvent.clientX);
+        elemY = parseInt(clickEvent.clientY);
+        typeAheadWidthPx = angular.element('.search-field').width();
+        searchTypeWidthPx = angular.element('.search-type').width();
+
+
+        fieldLeftMargin = parseInt(angular.element('.search-field-wrapper').css('margin-left').replace("px", "").trim());
+        console.log("fieldLeftMargin", fieldLeftMargin)
+        widgetControlWidth = angular.element('.widget-control').width();
+        console.log("widget left: ", angular.element('.widget-control').css('left'))
+        elemScaledHeight = elemHeight * 0.1;
+        elemScaledWidth = elemWidth * 0.1;
+
+        buttonOffset = typeAheadWidthPx + searchTypeWidthPx + 60 + fieldLeftMargin;
+        console.log(buttonOffset);
+
+        console.log("elemHeight: ", elemHeight);
+        console.log("elemWidth: ", elemWidth);
+        console.log("widgetControlWidth: ", widgetControlWidth);
+        console.log("elemScaledHeight: ", elemScaledHeight);
+        console.log("elemScaledWidth: ", elemScaledWidth);
+        console.log("elemY: ", elemY);
+
+        scaledTopOffset = ((elemHeight - elemScaledHeight) / 2) + elemY - 90;
+        scaledLeftOffset = buttonOffset - (((elemWidth - elemScaledWidth) / 10) - (widgetControlWidth / 10) + elemX);
+
+        console.log("scaledTopOffset: ", scaledTopOffset);
+        console.log("scaledLeftOffset: ", scaledLeftOffset);
+
+        secondFrame = {
+          'opacity': '0.8',
+          'z-index': '5',
+          'top': '-' + scaledTopOffset + 'px',
+          'left': scaledLeftOffset + 'px',
+          '-webkit-transform': 'scale3d(.1,.1,.1)',
+          '-moz-transform': 'scale3d(.1,.1,.1)',
+          '-o-transform': 'scale3d(.1,.1,.1)',
+          'transform': 'scale3d(.1,.1,.1)'
+        };
+        firstFrame = {
+          'opacity': '1',
+          '-webkit-transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)',
+          '-moz-transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)',
+          '-o-transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)',
+          'transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)'
+        };
+        jQuery.keyframe.define([{
+          name: 'onMove',
+          '40%': firstFrame,
+          '100%': secondFrame
+        }]);
+        element.resetKeyframe(function() {
+          return element.playKeyframe({
+            name: 'onMove',
+            duration: '4s',
+            delay: '0s',
+            timingFunction: 'ease-in-out',
+            complete: doneFn
+          });
         });
       }
-    }
-  }]);
+    };
+  }
+]);

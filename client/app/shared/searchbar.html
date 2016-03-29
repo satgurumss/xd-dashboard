@@ -1,6 +1,6 @@
 <!-- &#xF002;  -->
-<div class="{{searchbarWidth}} col-sm-6 col-lg-4 col-lg-offset-3 pb-15">
-  <div class="ui-typeahead input-group">
+<div class="{{searchbarWidth}} col-sm-6 col-lg-4 col-lg-offset-3 pb-15 search-field-wrapper">
+  <div class="ui-typeahead input-group search-field">
     <input
       type="text"
       uib-typeahead="deal.fields.company_name_s[0] for deal in deals | filter:$viewValue | limitTo:8"
@@ -10,12 +10,12 @@
       ng-model = "queryText"
       placeholder="Search" style="font-family:Arial, FontAwesome"
       ng-change="updateCtrlModel(queryText)"
-      my-enter-press="queryText && search(queryText)" 
+      my-enter-press="queryText && search(queryText)"
       >
       <!-- my-enter-press="queryText && search(queryText)" -->
-      
+
       <span class="input-group-btn">
-        <button class="btn btn-md btn-default search-btn" 
+        <button class="btn btn-md btn-default search-btn"
           ng-click="search(queryText)">
           <i class="fa fa-search"/>
         </button>
