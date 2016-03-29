@@ -28,8 +28,8 @@
                           </h4>
                           <!-- <span ng-hide="widget.showAdded">{{widget.title}}</span> -->
                           <button class="btn btn-danger action-control" ng-show="widget.showAdded" ng-click="widget.isHide = !widget.isHide">
-                            <span ng-show="widget.isHide">Add</span>
-                            <span ng-show="!widget.isHide">Remove</span>
+                          <span ng-show="widget.isHide">Add</span>
+                          <span ng-show="!widget.isHide">Remove</span>
                           </button>
                           <!-- <button class="btn btn-danger action-control" ng-show="widget.showAdded && !widget.isHide" ng-click="widget.isHide = true">Remove</button> -->
                         </div>
@@ -48,8 +48,8 @@
                           </h4>
                           <!-- <span ng-hide="widget.showAdded">{{bar3.title}}</span> -->
                           <button class="btn btn-danger action-control" ng-show="bar3.showAdded" ng-click="bar3.isHide = !bar3.isHide">
-                            <span ng-show="bar3.isHide">Add</span>
-                            <span ng-show="!bar3.isHide">Remove</span>
+                          <span ng-show="bar3.isHide">Add</span>
+                          <span ng-show="!bar3.isHide">Remove</span>
                           </button>
                           <!-- <button class="btn btn-danger action-control" ng-show="bar3.showAdded && !bar3.isHide" ng-click="bar3.isHide = true">Remove</button> -->
                         </div>
@@ -68,8 +68,8 @@
                           </h4>
                           <!-- <span ng-hide="pie2.showAdded">{{pie2.title}}</span> -->
                           <button class="btn btn-danger action-control" ng-show="pie2.showAdded" ng-click="pie2.isHide = !pie2.isHide">
-                            <span ng-show="pie2.isHide">Add</span>
-                            <span ng-show="!pie2.isHide">Remove</span>
+                          <span ng-show="pie2.isHide">Add</span>
+                          <span ng-show="!pie2.isHide">Remove</span>
                           </button>
                           <!-- <button class="btn btn-danger action-control" ng-show="pie2.showAdded && !pie2.isHide" ng-click="pie2.isHide = true">Remove</button> -->
                         </div>
@@ -96,7 +96,13 @@
             <div class="expand"><i class="fa fa-expand"></i></div>
           </div>
           <div class="panel-container">
-            <div class="panel-heading widget-hading"><strong>{{widget.title}}</strong></div>
+            <div class="panel-heading widget-hading">
+              <strong>{{widget.title}}</strong>
+              <span class="ui-select pull-right" ng-if="widget.options">
+                <select ng-options="group as group.label for group in widget.options track by group.value" ng-model="widget.selectedOption" ng-change="groupingChanged(widget)">
+                </select>
+              </span>
+            </div>
             <div class="panel-body" data-slim-scroll data-scroll-height="320px">
               <div class="row" ng-repeat = "data in widget.data">
                 <div ng-if = "data.fields.table[0] === 'deal'" class="col-md-12" ng-include="'app/dashboard/templates/deals.html'"></div>
@@ -165,7 +171,6 @@
     </ul>
   </div>
 </div>
-
 <style type="text/css">
-  .slide.ng-enter { transition:0.5s linear all; }
+.slide.ng-enter { transition:0.5s linear all; }
 </style>

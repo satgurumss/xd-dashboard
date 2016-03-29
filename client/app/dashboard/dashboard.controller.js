@@ -24,140 +24,365 @@
     $scope.init = function() {
       //use this to get current user
       currentUser = loggedInUser.getCurrentUser();
+      console.log("currentUser ", currentUser)
       if (!_.isEmpty(currentUser))
-        $scope.userName = currentUser.account_s[0];
+      // $scope.userName = currentUser.account_s[0];
+        $scope.userName = "Administrator"
 
+      $scope.widgets = [{
+        title: "My Deals",
+        iconUrl: "images/widgets/icon_area-chart.png",
+        searches: [],
+        isHide: false,
+        query: {
+          "workflow": "myDeals",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous"
+        }
+      }, {
+        title: "My Investments",
+        iconUrl: "images/widgets/icon_cpu-usage.png",
+        searches: [],
+        isHide: false,
+        query: {
+          "workflow": "myInvestments",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous"
+        }
+      }, {
+        title: "My Region",
+        iconUrl: "images/widgets/icon_map.png",
+        searches: [],
+        isHide: false,
+        query: {
+          "workflow": "myRegion",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous"
+        }
+      }, {
+        title: "My Interests",
+        iconUrl: "images/widgets/icon_memory-usage.png",
+        searches: [],
+        isHide: false,
+        query: {
+          "workflow": "myInterests",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous"
+        }
+      }, {
+        title: "Recent Deals",
+        iconUrl: "images/widgets/icon_cpu-usage.png",
+        searches: [],
+        isHide: false,
+        query: {
+          "workflow": "recentDeals",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous"
+        }
+      }, {
+        title: "Recent Investments",
+        iconUrl: "images/widgets/icon_cpu-usage.png",
+        searches: [],
+        isHide: false,
+        query: {
+          "workflow": "recentInvestments",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous"
+        }
+      }, {
+        title: "Recent News",
+        iconUrl: "images/widgets/icon_cpu-usage.png",
+        searches: [],
+        isHide: false,
+        query: {
+          "workflow": "recentNews",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous"
+        }
+      }, {
+        title: "Recent Documents",
+        iconUrl: "images/widgets/icon_cpu-usage.png",
+        searches: [],
+        isHide: false,
+        query: {
+          "workflow": "recentDocuments",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous"
+        }
+      }, {
+        title: "Total Investments",
+        iconUrl: "images/widgets/icon_area-chart.png",
+        searches: [],
+        options: [{
+          value: "deal_type_s",
+          label: "Deal Type"
+        }, {
+          value: "deal_stage_s",
+          label: "Deal Stage"
+        }, {
+          value: "deal_status_s",
+          label: "Deal Status"
+        }, {
+          value: "region_s",
+          label: "Region"
+        }, {
+          value: "sector_s",
+          label: "Sector"
+        }],
+        selectedOption: {
+          value: "deal_type_s",
+          label: "Deal Type"
+        },
+        isHide: false,
+        query: {
+          "workflow": "dealReport",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous",
+          "restParams": {
+            "metric": ["total_investment_d"],
+            "grouping": ["deal_type_s"]
+          }
+        }
+      }, {
+        title: "Enterprise Value",
+        iconUrl: "images/widgets/icon_area-chart.png",
+        searches: [],
+        options: [{
+          value: "deal_type_s",
+          label: "Deal Type"
+        }, {
+          value: "deal_stage_s",
+          label: "Deal Stage"
+        }, {
+          value: "deal_status_s",
+          label: "Deal Status"
+        }, {
+          value: "region_s",
+          label: "Region"
+        }, {
+          value: "sector_s",
+          label: "Sector"
+        }],
+        selectedOption: {
+          value: "deal_type_s",
+          label: "Deal Type"
+        },
+        isHide: false,
+        query: {
+          "workflow": "dealReport",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous",
+          "restParams": {
+            "metric": ["enterprise_value_d"],
+            "grouping": ["deal_type_s"]
+          }
+        }
+      }, {
+        title: "Employees",
+        iconUrl: "images/widgets/icon_area-chart.png",
+        searches: [],
+        options: [{
+          value: "deal_type_s",
+          label: "Deal Type"
+        }, {
+          value: "deal_stage_s",
+          label: "Deal Stage"
+        }, {
+          value: "deal_status_s",
+          label: "Deal Status"
+        }, {
+          value: "region_s",
+          label: "Region"
+        }, {
+          value: "sector_s",
+          label: "Sector"
+        }],
+        selectedOption: {
+          value: "deal_type_s",
+          label: "Deal Type"
+        },
+        isHide: false,
+        query: {
+          "workflow": "dealReport",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous",
+          "restParams": {
+            "metric": ["number_of_employees_i"],
+            "grouping": ["deal_type_s"]
+          }
+        }
+      }, {
+        title: "Total Investments",
+        iconUrl: "images/widgets/icon_area-chart.png",
+        searches: [],
+        options: [{
+          value: "fund_s",
+          label: "Fund"
+        }, {
+          value: "region_s",
+          label: "Region"
+        }, {
+          value: "sector_s",
+          label: "Sector"
+        }],
+        selectedOption: {
+          value: "fund_s",
+          label: "Fund"
+        },
+        isHide: false,
+        query: {
+          "workflow": "investmentReport",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous",
+          "restParams": {
+            "metric": ["total_investment_d"],
+            "grouping": ["fund_s"]
+          }
+        }
+      }, {
+        title: "Carrying Value",
+        iconUrl: "images/widgets/icon_area-chart.png",
+        searches: [],
+        options: [{
+          value: "fund_s",
+          label: "Fund"
+        }, {
+          value: "region_s",
+          label: "Region"
+        }, {
+          value: "sector_s",
+          label: "Sector"
+        }],
+        selectedOption: {
+          value: "fund_s",
+          label: "Fund"
+        },
+        isHide: false,
+        query: {
+          "workflow": "investmentReport",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous",
+          "restParams": {
+            "metric": ["carrying_value_d"],
+            "grouping": ["fund_s"]
+          }
+        }
+      }, {
+        title: "Equity Value",
+        iconUrl: "images/widgets/icon_area-chart.png",
+        searches: [],
+        options: [{
+          value: "fund_s",
+          label: "Fund"
+        }, {
+          value: "region_s",
+          label: "Region"
+        }, {
+          value: "sector_s",
+          label: "Sector"
+        }],
+        selectedOption: {
+          value: "fund_s",
+          label: "Fund"
+        },
+        isHide: false,
+        query: {
+          "workflow": "investmentReport",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous",
+          "restParams": {
+            "metric": ["equity_value_d"],
+            "grouping": ["fund_s"]
+          }
+        }
+      }];
+
+      $scope.widgets.forEach(function(widget, index, array) {
+        backendApi.search(widget.query).then(function(res) {
+          // console.log(widget.title, res.data.documents);
+          widget.data = res.data.documents;
+          // console.log(res);
+        });
+      })
+      var dealReport = {
+        "workflow": "dealReport",
+        "query": "*",
+        "username": $scope.userName,
+        "realm": "Anonymous",
+        "restParams": {
+          "metric": ["total_investment_d"],
+          "grouping": ["deal_type_s"]
+        }
+      };
+
+      console.log("----widgets----");
+      console.log($scope.widgets);
+
+      backendApi.search(dealReport).then(function(res) {
+        console.log("report data");
+        console.log(res);
+        $scope.reportData = res.data.documents;
+        // for (let i = 0; i < res.data.documents.length; i++) {
+        //   $scope.bar3.options.series[0].data.push(parseInt(res.data.documents[i].fields.AVG[0]));
+        //   $scope.bar3.options.series[1].data.push(parseInt(res.data.documents[i].fields.MAX[0]));
+        //   $scope.bar3.options.series[2].data.push(parseInt(res.data.documents[i].fields.MIN[0]));
+        //   $scope.bar3.options.series[3].data.push(parseInt(res.data.documents[i].fields.STDEV[0]));
+        //   $scope.bar3.options.series[4].data.push(parseInt(res.data.documents[i].fields.SUM[0]));
+        //   $scope.bar3.options.series[5].data.push(parseInt(res.data.documents[i].fields.count[0]));
+
+        //   if (i === res.data.documents.length - 1) {
+        //     $scope.showChart = true;
+        //   }
+        // }
+        console.log($scope.bar3.options);
+      });
     }
 
-    $scope.widgets = [{
-      title: "My Deals",
-      iconUrl: "images/widgets/icon_area-chart.png",
-      searches: [],
-      isHide: false,
-      query: {
-        "workflow": "myDeals",
-        "query": "*",
-        "username": "Administrator",
-        "realm": "Anonymous"
-      }
-    }, {
-      title: "My Investments",
-      iconUrl: "images/widgets/icon_cpu-usage.png",
-      searches: [],
-      isHide: false,
-      query: {
-        "workflow": "myInvestments",
-        "query": "*",
-        "username": "Administrator",
-        "realm": "Anonymous"
-      }
-    }, {
-      title: "My Region",
-      iconUrl: "images/widgets/icon_map.png",
-      searches: [],
-      isHide: false,
-      query: {
-        "workflow": "myRegion",
-        "query": "*",
-        "username": "Administrator",
-        "realm": "Anonymous"
-      }
-    }, {
-      title: "My Interests",
-      iconUrl: "images/widgets/icon_memory-usage.png",
-      searches: [],
-      isHide: false,
-      query: {
-        "workflow": "myInterests",
-        "query": "*",
-        "username": "Administrator",
-        "realm": "Anonymous"
-      }
-    }, {
-      title: "Recent Deals",
-      iconUrl: "images/widgets/icon_cpu-usage.png",
-      searches: [],
-      isHide: false,
-      query: {
-        "workflow": "recentDeals",
-        "query": "*",
-        "username": "Administrator",
-        "realm": "Anonymous"
-      }
-    }, {
-      title: "Recent Investments",
-      iconUrl: "images/widgets/icon_cpu-usage.png",
-      searches: [],
-      isHide: false,
-      query: {
-        "workflow": "recentInvestments",
-        "query": "*",
-        "username": "Administrator",
-        "realm": "Anonymous"
-      }
-    }, {
-      title: "Recent News",
-      iconUrl: "images/widgets/icon_cpu-usage.png",
-      searches: [],
-      isHide: false,
-      query: {
-        "workflow": "recentNews",
-        "query": "*",
-        "username": "Administrator",
-        "realm": "Anonymous"
-      }
-    }, {
-      title: "Recent Documents",
-      iconUrl: "images/widgets/icon_cpu-usage.png",
-      searches: [],
-      isHide: false,
-      query: {
-        "workflow": "recentDocuments",
-        "query": "*",
-        "username": "Administrator",
-        "realm": "Anonymous"
-      }
-    }];
 
-    var dealReport = {
-      "workflow": "dealReport",
-      "query": "*",
-      "username": "Administrator",
-      "realm": "Anonymous",
-      "restParams": {
-        "metric": ["total_investment_d"],
-        "grouping": ["deal_type_s"]
-      }
-    };
+    $scope.groupingChanged = function(widget) {
+      widget.query.restParams.grouping[0] = widget.selectedOption.value;
+      console.log(widget);
+      if (widget.selectedOption.value === 'region_s') {
+        if (widget.query.workflow === 'dealReport')
+          widget.query.workflow = 'dealReportByRegion';
+        if (widget.query.workflow === 'investmentReport')
+          widget.query.workflow = 'investmentReportByRegion';
+      } else if (widget.selectedOption.value === 'sector_s') {
+        if (widget.query.workflow === 'dealReport')
+          widget.query.workflow = 'dealReportBySector';
+        if (widget.query.workflow === 'investmentReport')
+          widget.query.workflow = 'investmentReportBySector';
+      } else {
+        if (widget.query.workflow === 'dealReportByRegion' || widget.query.workflow === 'dealReportBySector') {
+          widget.query.workflow = 'dealReport';
+        }
 
-    $scope.widgets.forEach(function(widget, index, array) {
+        if (widget.query.workflow === 'investmentReportByRegion' || widget.query.workflow === 'investmentReportBySector') {
+          widget.query.workflow = 'investmentReport';
+        }
+      }
+      console.log(widget);
+
       backendApi.search(widget.query).then(function(res) {
+        // console.log(widget.title, res.data.documents);
         widget.data = res.data.documents;
         // console.log(res);
       });
-    })
-
-    console.log("----widgets----");
-    console.log($scope.widgets);
-
-    backendApi.search(dealReport).then(function(res) {
-      console.log("report data");
-      console.log(res);
-      $scope.reportData = res.data.documents;
-      for (let i = 0; i < res.data.documents.length; i++) {
-        $scope.bar3.options.series[0].data.push(parseInt(res.data.documents[i].fields.AVG[0]));
-        $scope.bar3.options.series[1].data.push(parseInt(res.data.documents[i].fields.MAX[0]));
-        $scope.bar3.options.series[2].data.push(parseInt(res.data.documents[i].fields.MIN[0]));
-        $scope.bar3.options.series[3].data.push(parseInt(res.data.documents[i].fields.STDEV[0]));
-        $scope.bar3.options.series[4].data.push(parseInt(res.data.documents[i].fields.SUM[0]));
-        $scope.bar3.options.series[5].data.push(parseInt(res.data.documents[i].fields.count[0]));
-
-        if (i === res.data.documents.length - 1) {
-          $scope.showChart = true;
-        }
-      }
-      console.log($scope.bar3.options);
-    });
+    }
 
     $scope.pie2 = {
       title: "Pie Chart",
@@ -375,64 +600,19 @@
 })();
 
 angular.module('app')
-  .animation('.slide', [
-    function() {
-      var support;
-      support = jQuery.keyframe.isSupported();
-      jQuery.keyframe.debug = true;
-      return {
-        leave: function(element, doneFn) {
-          var elemHeight, elemScaledHeight, elemScaledWidth, elemWidth, firstFrame, scaledLeftOffset, scaledTopOffset, secondFrame, widgetControlWidth;
-          elemHeight = parseInt(element.css('height'));
-          elemWidth = parseInt(element.css('width'));
-          widgetControlWidth = angular.element('.widget-control').width();
-          elemScaledHeight = elemHeight * 0.1;
-          elemScaledWidth = elemWidth * 0.1;
-
-          console.log("elemHeight: ", elemHeight);
-          console.log("elemWidth: ", elemWidth);
-          console.log("widgetControlWidth: ", widgetControlWidth);
-          console.log("elemScaledHeight: ", elemScaledHeight);
-          console.log("elemScaledWidth: ", elemScaledWidth);
-
-          scaledTopOffset = ((elemHeight - elemScaledHeight) / 2) + 20;
-          scaledLeftOffset = ((elemWidth - elemScaledWidth) / 2) - (widgetControlWidth / 2);
-
-          console.log("scaledTopOffset: ", scaledTopOffset);
-          console.log("scaledLeftOffset: ", scaledLeftOffset);
-
-          secondFrame = {
-            'opacity': '0.8',
-            'z-index': '5',
-            'top': '-' + scaledTopOffset + 'px',
-            'left': +scaledLeftOffset + 'px',
-            '-webkit-transform': 'scale3d(.1,.1,.1)',
-            '-moz-transform': 'scale3d(.1,.1,.1)',
-            '-o-transform': 'scale3d(.1,.1,.1)',
-            'transform': 'scale3d(.1,.1,.1)'
-          };
-          firstFrame = {
-            'opacity': '1',
-            '-webkit-transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)',
-            '-moz-transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)',
-            '-o-transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)',
-            'transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)'
-          };
-          jQuery.keyframe.define([{
-            name: 'onMove',
-            '40%': firstFrame,
-            '100%': secondFrame
-          }]);
-          element.resetKeyframe(function() {
-            return element.playKeyframe({
-              name: 'onMove',
-              duration: '4s',
-              delay: '0s',
-              timingFunction: 'ease-in-out',
-              complete: doneFn
-            });
-          });
-        }
-      };
+  .animation('.slide', ['$animateCss', function($animateCss) {
+    return {
+      leave: function(element) {
+        return $animateCss(element, {
+          event: 'leave',
+          structural: true,
+          from: {
+            height: 0
+          },
+          to: {
+            height: 30
+          }
+        });
+      }
     }
-  ]);
+  }]);
