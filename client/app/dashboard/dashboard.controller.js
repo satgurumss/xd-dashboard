@@ -27,9 +27,6 @@ var clickEvent;
       //use this to get current user
       currentUser = loggedInUser.getCurrentUser();
       console.log("currentUser ", currentUser)
-      if (!_.isEmpty(currentUser))
-        $scope.userName = currentUser.account_s[0];
-      // $scope.userName = "Administrator"
 
       $scope.widgets = [{
         title: "My Deals",
@@ -313,13 +310,6 @@ var clickEvent;
         }
       }];
 
-      $scope.widgets.forEach(function(widget, index, array) {
-        backendApi.search(widget.query).then(function(res) {
-          // console.log(widget.title, res.data.documents);
-          widget.data = res.data.documents;
-          // console.log(res);
-        });
-      })
       var dealReport = {
         "workflow": "dealReport",
         "query": "*",
@@ -333,25 +323,38 @@ var clickEvent;
 
       console.log("----widgets----");
       console.log($scope.widgets);
+      if (!_.isEmpty(currentUser)){
+        $scope.userName = currentUser.account_s[0];
 
-      backendApi.search(dealReport).then(function(res) {
-        console.log("report data");
-        console.log(res);
-        $scope.reportData = res.data.documents;
-        // for (let i = 0; i < res.data.documents.length; i++) {
-        //   $scope.bar3.options.series[0].data.push(parseInt(res.data.documents[i].fields.AVG[0]));
-        //   $scope.bar3.options.series[1].data.push(parseInt(res.data.documents[i].fields.MAX[0]));
-        //   $scope.bar3.options.series[2].data.push(parseInt(res.data.documents[i].fields.MIN[0]));
-        //   $scope.bar3.options.series[3].data.push(parseInt(res.data.documents[i].fields.STDEV[0]));
-        //   $scope.bar3.options.series[4].data.push(parseInt(res.data.documents[i].fields.SUM[0]));
-        //   $scope.bar3.options.series[5].data.push(parseInt(res.data.documents[i].fields.count[0]));
+        $scope.widgets.forEach(function(widget, index, array) {
+          backendApi.search(widget.query).then(function(res) {
+            // console.log(widget.title, res.data.documents);
+            widget.data = res.data.documents;
+            // console.log(res);
+          });
+        })
 
-        //   if (i === res.data.documents.length - 1) {
-        //     $scope.showChart = true;
-        //   }
-        // }
-        console.log($scope.bar3.options);
-      });
+        backendApi.search(dealReport).then(function(res) {
+          console.log("report data");
+          console.log(res);
+          $scope.reportData = res.data.documents;
+          // for (let i = 0; i < res.data.documents.length; i++) {
+          //   $scope.bar3.options.series[0].data.push(parseInt(res.data.documents[i].fields.AVG[0]));
+          //   $scope.bar3.options.series[1].data.push(parseInt(res.data.documents[i].fields.MAX[0]));
+          //   $scope.bar3.options.series[2].data.push(parseInt(res.data.documents[i].fields.MIN[0]));
+          //   $scope.bar3.options.series[3].data.push(parseInt(res.data.documents[i].fields.STDEV[0]));
+          //   $scope.bar3.options.series[4].data.push(parseInt(res.data.documents[i].fields.SUM[0]));
+          //   $scope.bar3.options.series[5].data.push(parseInt(res.data.documents[i].fields.count[0]));
+
+          //   if (i === res.data.documents.length - 1) {
+          //     $scope.showChart = true;
+          //   }
+          // }
+          console.log($scope.bar3.options);
+        });
+      }
+      else
+        loggedInUser.logOutUser();
     }
 
 

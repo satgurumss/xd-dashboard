@@ -82,7 +82,7 @@
                   <div data-slim-scroll data-scroll-height="140px">
                     <li ng-repeat= 'opt in facet.buckets'>
                    <label class="ui-checkbox">
-                    <input type="checkbox" value="{{opt.filter}}" 
+                    <input type="checkbox" ng-checked="isChecked(opt.filter)" value="{{opt.filter}}" 
                       ng-click="setAdvFilter($event,opt.filter)">
                     <span>{{opt.label}}</span>
                    </label>
@@ -103,21 +103,25 @@
 
           <div class="search-result row pad-l-0" data-ng-repeat="result in currentPageItems">
             <div
-              ng-if="result.fields.table == 'news' || result.fields.table == 'knowledge' "
-							ng-include="'app/search/result-template1.html'">
+              ng-if="result.fields.table == 'news' "
+							ng-include="'app/search/search-templates/result-news.html'">
 						</div>
 						<div
 							ng-if="result.fields.table == 'profile'"
-							ng-include="'app/search/result-template2.html'">
+							ng-include="'app/search/search-templates/result-person.html'">
 						</div>
 						<div
 							ng-if="result.fields.table == 'deal'"
-							ng-include="'app/search/result-template3.html'">
+							ng-include="'app/search/search-templates/result-deal.html'">
 						</div>
 						<div
 							ng-if="result.fields.table == 'km'"
-							ng-include="'app/search/result-template4.html'">
+							ng-include="'app/search/search-templates/result-knowledge.html'">
 						</div>
+            <div
+              ng-if="result.fields.table == 'investment'"
+              ng-include="'app/search/search-templates/result-investment.html'">
+            </div>
 
 						<!--result row end-->
 					</div>
