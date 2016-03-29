@@ -17,6 +17,7 @@
       },
       search: function ( data ) {
         console.log("inside function");
+        //$http.get( "app/sampleData/news.json" );
         return $http.post( url, JSON.stringify( data ) );
       }
     };
