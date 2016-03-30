@@ -82,6 +82,7 @@
 
             $scope.filteredItems = angular.copy($scope.searchResults.data.documents);
             $scope.currentPageItems = angular.copy($scope.searchResults.data.documents);
+            $scope.currentPage = 1;
             $scope.select(1);
           } else {
             $scope.blankslateMsg = "No result found. Please try again.";
@@ -103,7 +104,6 @@
     };
 
     $scope.setAdvFilter = function(event, filter) {
-      debugger;
       if (event.target.checked) {
         advFilters.push(filter);
         selectedAdvFilters.push(filter);
@@ -116,7 +116,6 @@
     };
 
     $scope.isChecked = function(filter) {
-      debugger;
       var foundFilter = false;
 
       selectedAdvFilters.forEach( function( setFilter, index, array ){
