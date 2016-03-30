@@ -8,7 +8,9 @@
       typeahead-on-select = "onSelect($item, $model, $label)"
       class="form-control"
       ng-model = "queryText"
-      placeholder="Search" style="font-family:Arial, FontAwesome"
+      ng-model-options = "{debounce: 500}"
+      placeholder="Search" 
+      style="font-family:Arial, FontAwesome"
       ng-change="updateCtrlModel(queryText)"
       my-enter-press="queryText && search(queryText)"
       >

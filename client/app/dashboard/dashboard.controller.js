@@ -21,6 +21,7 @@ var clickEvent;
     $scope.showChart = false;
     $scope.showAdded = false;
     var currentUser;
+    $scope.bar1 = {};
     $scope.userName = "Administrator"
 
     $scope.init = function() {
@@ -455,6 +456,79 @@ var clickEvent;
     //   }]
     // };
 
+    $scope.bar1.options = {
+      tooltip: {
+        trigger: 'axis'
+      },
+      legend: {
+        data: ['Evaporation']
+      },
+      toolbox: {
+        show: true,
+        feature: {
+          restore: {
+            show: true,
+            title: "restore"
+          },
+          saveAsImage: {
+            show: true,
+            title: "save as image"
+          }
+        }
+      },
+      calculable: true,
+      xAxis: [{
+        type: 'category',
+        data: ['2', '1', '3', '4']
+      }],
+      yAxis: [{
+        type: 'value'
+      }],
+      series: [{
+        name: 'Evaporation',
+        type: 'bar',
+        data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+        markPoint: {
+          data: [{
+            type: 'max',
+            name: 'Max'
+          }, {
+            type: 'min',
+            name: 'Min'
+          }]
+        },
+        markLine: {
+          data: [{
+            type: 'average',
+            name: 'Average'
+          }]
+        }
+      }, {
+        name: 'Precipitation',
+        type: 'bar',
+        data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+        markPoint: {
+          data: [{
+            name: 'Highest',
+            value: 182.2,
+            xAxis: 7,
+            yAxis: 183,
+            symbolSize: 18
+          }, {
+            name: 'Lowest',
+            value: 2.3,
+            xAxis: 11,
+            yAxis: 3
+          }]
+        },
+        markLine: {
+          data: [{
+            type: 'average',
+            name: 'Average'
+          }]
+        }
+      }]
+    };
     $scope.bar3.options = {
       title: {
         text: '',

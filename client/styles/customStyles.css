@@ -624,9 +624,9 @@ p.search-description {
 }
 
 @media only screen and (max-width: 768px) {
-  .person-info {
+  /*.person-info {
     padding-left: 0;
-  }
+  }*/
   .person-info .other-info {
     display: block;
     border-right: 0;
@@ -638,7 +638,7 @@ p.search-description {
     border-bottom: 0;
   }
 }
-
+/*
 @media only screen and (max-width: 767px) {
   .person-info {
     padding-left: 0;
@@ -656,4 +656,4 @@ p.search-description {
     border-right: 0;
     border-bottom: 0;
   }
-}
+}*/

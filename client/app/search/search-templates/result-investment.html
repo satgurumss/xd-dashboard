@@ -3,10 +3,18 @@
 
 	<div class="row">
 		<div class="profile-img col-md-2 col-xs-3 ">
-			<img src="images/img-placeholder.png" alt="{{result.fields.account_s[0]}}" class="img-responsive">
+				
+			<img ng-if= "result.fields.picture_s[0]"
+					src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{result.fields.picture_s[0]}}"
+					alt="{{result.fields.account_s[0]}}" class="img-responsive">
+
+			<img ng-if= "! result.fields.picture_s[0]"
+					src="images/img-placeholder.png"
+					alt="{{result.fields.account_s[0]}}" class="img-responsive">
+
 		</div>
 
-		<div class="person-info col-md-10 col-xs-9">
+		<div class="person-info col-md-10 col-xs-12">
 			<span class="pull-right">
 				{{result.fields.date[0]|date:'MMMM dd, yyyy'}}
 			</span>
@@ -14,22 +22,22 @@
 			<h5>{{result.fields.company_description_s[0]}}</h5>
 
 			<div class="person-info">
-				<span class="other-info">
+				<span class="other-info" ng-if="result.fields.team_s[0]">
 					<span>Deal Team:</span> &nbsp;
 					{{result.fields.team_s[0]}}
 				</span>
 
-				<span class="other-info">
+				<span class="other-info" ng-if="result.fields.fund_s[0]">
 					<span>Fund:</span> &nbsp;
 					{{result.fields.fund_s[0] | currency:"$"}}
 				</span>
 
-				<span class="other-info">
+				<span class="other-info" ng-if="result.fields.equity_value_d[0]">
 					<span>Equity Value:</span> &nbsp;
 					{{result.fields.equity_value_d[0] | currency:"$"}}
 				</span>
 
-				<span class="other-info">
+				<span class="other-info" ng-if="result.fields.invested_total_d[0]">
 					<span>Invested Total:</span> &nbsp;
 					{{result.fields.invested_total_d[0] | currency:"$"}}
 				</sapn>
