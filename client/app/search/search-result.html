@@ -42,12 +42,14 @@
                   </li>
                   <li  ng-repeat = "facet in searchResults.data.facets"
                     ng-if="facet.buckets.length > 0">
-                    <div class="text-uppercase menu-title">{{formatFilterLabel(facet.label)}}</div>
+                    <div class="text-uppercase menu-title">
+                      {{formatFilterLabel(facet.label)}}&nbsp;({{facet.buckets.length}})
+                    </div>
                     <ul class="sub-menu">
                         <li  ng-repeat= 'opt in facet.buckets'>
                          <label class="ui-checkbox">
                           <input type="checkbox" value="{{opt.filter}}">
-                          <span>{{opt.label}}</span>
+                          <span>{{formatFilterCheckboxLabels(opt.label)}}</span>
                          </label>
                         </li>
                     </ul>
@@ -81,14 +83,16 @@
             <ul class="list-unstyled margin-t20">
               <li  ng-repeat = "facet in searchResults.data.facets"
                 ng-if="facet.buckets.length > 0">
-                <div class="text-uppercase menu-title">{{formatFilterLabel(facet.label)}}</div>
+                <div class="text-uppercase menu-title">
+                  {{formatFilterLabel(facet.label)}}&nbsp;({{facet.buckets.length}})
+                </div>
                 <ul class="sub-menu" >
                   <div data-slim-scroll data-scroll-height="140px">
                     <li ng-repeat= 'opt in facet.buckets'>
                    <label class="ui-checkbox">
                     <input type="checkbox" ng-checked="isChecked(opt.filter)" value="{{opt.filter}}"
                       ng-click="setAdvFilter($event,opt.filter)">
-                    <span>{{opt.label}}</span>
+                    <span>{{formatFilterCheckboxLabels(opt.label)}}</span>
                    </label>
                     </li>
                   </div>

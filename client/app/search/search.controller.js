@@ -12,10 +12,12 @@
         "username": "Administrator",
         "realm": "Anonymous",
         "queryLanguage": "simple",
-        "sort":[".score"]
+        "sort":[".score"],
+        "restParams":{}
       },
       advFilters = [],
       selectedAdvFilters = [];
+    //"highlight" : ["true"]
 
     $scope.queryText = "";
     $scope.searchbarWidth = "col-xs-12"
@@ -67,10 +69,11 @@
         searchData.query = $scope.queryText;
 
         if (advFilters.length > 0) {
-          searchData['restParams'] = {}
-          searchData.restParams['facet.filter'] = advFilters;
+          searchData.restParams['q.filter'] = advFilters;
+          searchData.restParams['q.filter.type'] = ['advanced'];
         } else {
-          delete searchData['restParams'];
+          delete searchData.restParams['q.filter'];
+          delete searchData.restParams['q.filter.type'];
         }
 
         backendApi.search(searchData).then(function(res) {
@@ -100,26 +103,34 @@
     };
 
     $scope.setAdvFilter = function(event, filter) {
+      debugger;
       if (event.target.checked) {
-        advFilters.push(filter)
-        selectedAdvFilters.push(filter)
+        advFilters.push(filter);
+        selectedAdvFilters.push(filter);
       } else {
-        advFilters.splice(advFilters.indexOf(filter), 1)
-        selectedAdvFilters.splice(selectedAdvFilters.indexOf(filter), 1)
+        advFilters.splice(advFilters.indexOf(filter), 1);
+        selectedAdvFilters.splice(selectedAdvFilters.indexOf(filter), 1);
       }
 
       $scope.advSearch();
     };
 
     $scope.isChecked = function(filter) {
-      var filter = _.find(selectedAdvFilters, filter);
+      debugger;
+      var foundFilter = false;
 
-      return typeof filter != "undefined" ? true : false;
+      selectedAdvFilters.forEach( function( setFilter, index, array ){
+        if ( filter === setFilter ){
+          foundFilter = true;
+        }
+      } );
+
+      return foundFilter;
     }
 
     $scope.advSearch = function() {
-      searchData['restParams'] = {}
-      searchData.restParams['facet.filter'] = advFilters;
+      searchData.restParams['q.filter'] = advFilters;
+      searchData.restParams['q.filter.type'] = ['advanced'];
       $scope.search();
     };
 
@@ -152,6 +163,42 @@
         label = label.substring(0, label.lastIndexOf(" "));
 
       return label;
+    }
+
+    $scope.formatFilterCheckboxLabels = function(label){
+      var newLabel = "";
+      
+      switch(label){
+        case "gics":
+          newLabel = "GICS";
+          break;
+        case "investment":
+          newLabel = "Investment";
+          break;
+        case "news":
+          newLabel = "News";
+          break;
+        case "hr":
+          newLabel = "Human Resources";
+          break;
+        case "deal":
+          newLabel = "Deals";
+          break;
+        case "region":
+          newLabel = "Region";
+          break;
+        case "km":
+          newLabel = "Knowledge Management";
+          break;
+        case "profile":
+          newLabel = "Profiles";
+          break;
+        default:
+          newLabel = label;
+          break;
+      }
+
+      return newLabel;
     }
   }
 })();
