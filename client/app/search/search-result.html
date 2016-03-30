@@ -82,7 +82,7 @@
             <ul class="list-unstyled margin-t20">
               <li  ng-repeat = "facet in searchResults.data.facets" 
                 ng-if="facet.buckets.length > 0">
-                <div class="text-uppercase menu-title">{{facet.label}}</div>
+                <div class="text-uppercase menu-title">{{formatFilterLabel(facet.label)}}</div>
                 <ul class="sub-menu" >
                   <div data-slim-scroll data-scroll-height="140px">
                     <li ng-repeat= 'opt in facet.buckets'>

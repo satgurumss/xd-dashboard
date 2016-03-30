@@ -11,11 +11,11 @@
         "query": "",
         "username": "Administrator",
         "realm": "Anonymous",
-        "queryLanguage": "simple"
+        "queryLanguage": "simple",
+        "sort":[".score"]
       },
       advFilters = [],
       selectedAdvFilters = [];
-    //"sort":['date']
 
     $scope.queryText = "";
     $scope.searchbarWidth = "col-xs-12"
@@ -143,6 +143,13 @@
       return backendApi.getAutocompleteData(queryText).then(function(res) {
         return res.data;
       });
+    }
+
+    $scope.formatFilterLabel = function(label){
+      console.log("format string")
+      label = label.replace(/(_s)/g, "");
+      label = label.replace(/_/g, " ");
+      return label;
     }
   }
 })();
