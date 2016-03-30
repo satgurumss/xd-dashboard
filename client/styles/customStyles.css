@@ -591,8 +591,6 @@ p.search-description {
 .panel .panel-heading {
   font-size: 17px;
 }
-
-
 .person-info h4 {
   margin: 0;
   color: #333;
@@ -615,6 +613,14 @@ p.search-description {
 }
 .page-person .other-info span {
   color: #777;
+}
+
+.widget-single-row:hover {
+  background-color: #eee;
+}
+.badge {
+    top: -2px;
+    position: relative;
 }
 
 @media only screen and (max-width: 768px) {

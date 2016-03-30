@@ -76,7 +76,7 @@ var clickEvent;
         }
       }, {
         title: "My Region",
-        iconUrl: "images/widgets/icon_map.png",
+        iconUrl: "images/icons/location.png",
         searches: [],
         isHide: false,
         query: {
@@ -87,7 +87,7 @@ var clickEvent;
         }
       }, {
         title: "My Interests",
-        iconUrl: "images/widgets/icon_memory-usage.png",
+        iconUrl: "images/icons/interests.png",
         searches: [],
         isHide: false,
         query: {
@@ -142,7 +142,7 @@ var clickEvent;
         }
       }, {
         title: "Total Investments",
-        iconUrl: "images/icons/investment.png",
+        iconUrl: "images/icons/equity.png",
         searches: [],
         options: [{
           value: "deal_type_s",
@@ -177,7 +177,7 @@ var clickEvent;
         }
       }, {
         title: "Enterprise Value",
-        iconUrl: "images/widgets/icon_area-chart.png",
+        iconUrl: "images/icons/values.png",
         searches: [],
         options: [{
           value: "deal_type_s",
@@ -247,7 +247,7 @@ var clickEvent;
         }
       }, {
         title: "Total Investments",
-        iconUrl: "images/widgets/icon_area-chart.png",
+        iconUrl: "images/icons/equity.png",
         searches: [],
         options: [{
           value: "fund_s",
@@ -276,7 +276,7 @@ var clickEvent;
         }
       }, {
         title: "Carrying Value",
-        iconUrl: "images/widgets/icon_area-chart.png",
+        iconUrl: "images/icons/value2.png",
         searches: [],
         options: [{
           value: "fund_s",
