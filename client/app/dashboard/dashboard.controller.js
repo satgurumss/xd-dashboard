@@ -676,7 +676,7 @@ angular.module('app')
           element.resetKeyframe(function() {
             return element.playKeyframe({
               name: 'onMove',
-              duration: '3s',
+              duration: '2s',
               delay: '0s',
               timingFunction: 'ease-in-out',
               complete: doneFn
