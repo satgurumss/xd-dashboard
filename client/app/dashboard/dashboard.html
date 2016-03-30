@@ -104,7 +104,8 @@
               </span>
             </div>
             <div class="panel-body" data-slim-scroll data-scroll-height="320px">
-              <div ng-if = "widget.query.workflow === 'dealReport'" class="col-md-12" ng-include="'app/dashboard/templates/table.html'"></div>
+              <div ng-if = "widget.query.workflow === 'dealReport'" class="col-md-12" ng-include="'app/dashboard/templates/deal-report.html'"></div>
+              <div ng-if = "widget.query.workflow === 'investmentReport'" class="col-md-12" ng-include="'app/dashboard/templates/investment-report.html'"></div>
               <div class="row" ng-if = "widget.query.workflow !== 'dealReport'" ng-repeat = "data in widget.data">
                 <div ng-if = "data.fields.table[0] === 'deal'" class="col-md-12" ng-include="'app/dashboard/templates/deals.html'"></div>
                 <div ng-if = "data.fields.table[0] === 'investment'" class="col-md-12" ng-include="'app/dashboard/templates/investments.html'"></div>
@@ -114,7 +115,7 @@
           </div>
         </section>
       </li>
-      <li class="slide search-widget col-md-4 col-sm-6"  ng-if = "!bar3.isHide">
+      <!-- <li class="slide search-widget col-md-4 col-sm-6"  ng-if = "!bar3.isHide">
         <section class="panel panel-default" class="panel panel-default" ng-mouseenter="shMenu1=true;" ng-mouseleave="shMenu1=false;">
           <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu1 , 'animated slideOutLeft' : !shMenu1 }" ng-show="shMenu1" >
             <div class="remove" ng-click="removeWidget(bar3);"><i class="fa fa-times"></i></div>
@@ -152,7 +153,7 @@
             </div>
           </div>
         </section>
-      </li>
+      </li> -->
       <li class="slide search-widget col-md-4 col-sm-6" ng-if = "!pie2.isHide">
         <section class="panel panel-default"  ng-mouseenter="shMenu2=true;" ng-mouseleave="shMenu2=false;">
           <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu2 , 'animated slideOutLeft' : !shMenu2 }" ng-show="shMenu2" >
