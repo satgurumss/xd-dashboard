@@ -709,8 +709,8 @@ angular.module('app')
           elemWidth = parseInt(element.css('width'));
           elemScaledHeight = elemHeight * 0.08;
           elemScaledWidth = elemWidth * 0.08;
-          elemX = parseInt(clickEvent.pageX);
-          elemY = parseInt(clickEvent.pageY);
+          elemX = parseInt(typeof clickEvent != "undefined" ? clickEvent.pageX : 0);
+          elemY = parseInt(typeof clickEvent != "undefined" ? clickEvent.pageY : 0);
 
           typeAheadWidthPx = angular.element('.search-field-wrapper').outerWidth(true);
           searchTypeWidthPx = angular.element('.search-type').outerWidth(true);

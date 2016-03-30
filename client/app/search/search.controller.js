@@ -24,7 +24,7 @@
     $scope.searchTypeWidth = "col-xs-6"
     $scope.blankslateMsg = "Please enter search keywords above to begin";
     $scope.numPerPageOpt = [3, 5, 10];
-    $scope.numPerPage = $scope.numPerPageOpt[1];
+    $scope.numPerPage = $scope.numPerPageOpt[2];
     $scope.currentPage = 1;
     $scope.currentPageItems = [];
     $scope.filteredItems = [];
