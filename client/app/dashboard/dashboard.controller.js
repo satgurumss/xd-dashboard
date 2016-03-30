@@ -651,26 +651,27 @@ angular.module('app')
           scaledLeftOffset = buttonOffset - wigdetButtonOffset;
 
           secondFrame = {
-            'opacity': '0.8',
-            'z-index': '5',
+            'opacity': '0.1',
+            // 'z-index': '5',
             'top': '-' + scaledTopOffset + 'px',
             'left': scaledLeftOffset + 'px',
-            '-webkit-transform': 'scale3d(.08,.08,.08)',
-            '-moz-transform': 'scale3d(.08,.08,.08)',
-            '-o-transform': 'scale3d(.08,.08,.08)',
-            'transform': 'scale3d(.08,.08,.08)'
+            '-webkit-transform': 'scale3d(.001,.001,.001)',
+            '-moz-transform': 'scale3d(.001,.001,.001)',
+            '-o-transform': 'scale3d(.001,.001,.001)',
+            'transform': 'scale3d(.001,.001,.001)'
           };
+
           firstFrame = {
             'opacity': '1',
-            '-webkit-transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)',
-            '-moz-transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)',
-            '-o-transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)',
-            'transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)'
+            '-webkit-transform': 'scale3d( 0.600 , 0.600 , 0.600 ) translate3d(0px , 60px ,50px)',
+            '-moz-transform': 'scale3d( 0.600 , 0.600 , 0.600 ) translate3d(0px , 60px ,50px)',
+            '-o-transform': 'scale3d( 0.600 , 0.600 , 0.600 ) translate3d(0px , 60px ,50px)',
+            'transform': 'scale3d( 0.600 , 0.600 , 0.600 ) translate3d(0px , 60px ,50px)'
           };
 
           jQuery.keyframe.define([{
             name: 'onMove',
-            // '30%': firstFrame,
+            '10%': firstFrame,
             '100%': secondFrame
           }]);
           element.resetKeyframe(function() {
@@ -678,7 +679,7 @@ angular.module('app')
               name: 'onMove',
               duration: '2s',
               delay: '0s',
-              timingFunction: 'ease-in-out',
+              timingFunction: 'linear',
               complete: doneFn
             });
           });
