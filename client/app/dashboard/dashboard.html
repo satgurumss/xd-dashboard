@@ -35,26 +35,6 @@
                         </div>
                       </div>
                     </section>
-                    <section class="item animated fadeIn {{bar3.class}} widget-option-list" ng-class="{'widget-selected':bar3.isHide}">
-                      <div class="mini-box" ng-mouseenter="bar3.showAdded = true" ng-mouseleave="bar3.showAdded = !bar3.showAdded">
-                        <span class="box-icon">
-                          <img ng-src="{{bar3.iconUrl}}" wdith="90" height="90">
-                        </span>
-                        <div class="widget-text text-left">
-                          <h4 class="text-center">{{bar3.title}}
-                          <span class="check-mark" ng-show="!bar3.isHide">
-                            <span class="fa fa-check"></span>
-                          </span>
-                          </h4>
-                          <!-- <span ng-hide="widget.showAdded">{{bar3.title}}</span> -->
-                          <button class="btn btn-danger action-control" ng-show="bar3.showAdded" ng-click="bar3.isHide = !bar3.isHide">
-                          <span ng-show="bar3.isHide">Add</span>
-                          <span ng-show="!bar3.isHide">Remove</span>
-                          </button>
-                          <!-- <button class="btn btn-danger action-control" ng-show="bar3.showAdded && !bar3.isHide" ng-click="bar3.isHide = true">Remove</button> -->
-                        </div>
-                      </div>
-                    </section>
                     <section class="item animated fadeIn {{pie2.class}} widget-option-list" ng-class="{'widget-selected':pie2.isHide}">
                       <div class="mini-box" ng-mouseenter="pie2.showAdded = true" ng-mouseleave="pie2.showAdded = !pie2.showAdded">
                         <span class="box-icon">
@@ -116,45 +96,6 @@
           </div>
         </section>
       </li>
-      <!-- <li class="slide search-widget col-md-4 col-sm-6"  ng-if = "!bar3.isHide">
-        <section class="panel panel-default" class="panel panel-default" ng-mouseenter="shMenu1=true;" ng-mouseleave="shMenu1=false;">
-          <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu1 , 'animated slideOutLeft' : !shMenu1 }" ng-show="shMenu1" >
-            <div class="remove" ng-click="removeWidget(bar3);"><i class="fa fa-times"></i></div>
-            <div class="expand"><i class="fa fa-expand"></i></div>
-          </div>
-          <div class="panel-container">
-            <div class="panel-heading"><strong>deal report</strong></div>
-            <div class="panel-body" data-slim-scroll data-scroll-height="320px">
-              <div class="table-responsive">
-                <table class="table table-striped table-bordered">
-                  <thead>
-                    <tr>
-                      <th>DEAL</th>
-                      <th>AVG</th>
-                      <th>MAX</th>
-                      <th>MIN</th>
-                      <th>STDEV</th>
-                      <th>SUM</th>
-                      <th>COUNT</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr ng-repeat = "data in reportData">
-                      <td>{{data.fields.label[0]}}</td>
-                      <td>{{data.fields.AVG[0] | number:0}}</td>
-                      <td>{{data.fields.MAX[0] | number:0}}</td>
-                      <td>{{data.fields.MIN[0] | number:0}}</td>
-                      <td>{{data.fields.STDEV[0] | number:0}}</td>
-                      <td>{{data.fields.SUM[0] | number:0}}</td>
-                      <td>{{data.fields.count[0] | number:0}}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </section>
-      </li> -->
       <li class="slide search-widget col-md-4 col-sm-6" ng-if = "!pie2.isHide">
         <section class="panel panel-default"  ng-mouseenter="shMenu2=true;" ng-mouseleave="shMenu2=false;">
           <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu2 , 'animated slideOutLeft' : !shMenu2 }" ng-show="shMenu2" >
