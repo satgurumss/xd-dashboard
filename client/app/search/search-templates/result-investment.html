@@ -3,7 +3,7 @@
 
 	<div class="result-heading row">
 		<div class="result-title text-justify col-md-10 col-sm-10">
-			{{result.fields.title[0]}}
+			{{result.fields.company_name_s[0]}}
 		</div>
 		<div class="result-created-date col-md-2 text-right">
 			{{result.fields.date[0]|date:'MMMM dd, yyyy'}}
@@ -12,14 +12,20 @@
 
 	<div class="result-url row">
 		<div class="result-doc-link col-md-10 col-sm-10">
-			<a href="#">www.detailedURLofTheDocument.com{{result.fields.sourcepath[0]}}</a>
+			{{result.fields.company_description_s[0]}}
 		</div>
 	</div>
 
 	<div class="result-desc row">
-			<div class="col-md-12">
-				<p class="text-justify">{{result.fields.teaser[0]}}</p>
-			</div>
+		<div class="col-md-12">
+			<strong> Deal Team:</strong>&nbsp;{{result.fields.team_s[0]}}
+			<br>
+			<strong> Fund:</strong> &nbsp;{{result.fields.fund_s[0] | currency:"$"}}
+			<br>
+			<strong> Equity Value:</strong> &nbsp;{{result.fields.equity_value_d[0] | currency:"$"}}
+			<br>
+			<strong> Invested Total:</strong> &nbsp;{{result.fields.invested_total_d[0] | currency:"$"}}
+		</div>
 	</div>
 
 	<div class="row optional-links pad-b-20">
@@ -27,4 +33,5 @@
 			<a href="#">more like this</a>
 		</div>
 	</div>
+	<hr>
 </div>
