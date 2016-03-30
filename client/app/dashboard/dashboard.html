@@ -104,7 +104,8 @@
               </span>
             </div>
             <div class="panel-body" data-slim-scroll data-scroll-height="320px">
-              <div class="row" ng-repeat = "data in widget.data">
+              <div ng-if = "widget.query.workflow === 'dealReport'" class="col-md-12" ng-include="'app/dashboard/templates/table.html'"></div>
+              <div class="row" ng-if = "widget.query.workflow !== 'dealReport'" ng-repeat = "data in widget.data">
                 <div ng-if = "data.fields.table[0] === 'deal'" class="col-md-12" ng-include="'app/dashboard/templates/deals.html'"></div>
                 <div ng-if = "data.fields.table[0] === 'investment'" class="col-md-12" ng-include="'app/dashboard/templates/investments.html'"></div>
                 <div ng-if = "data.fields.table[0] === 'news'" class="col-md-12" ng-include="'app/dashboard/templates/news.html'"></div>
