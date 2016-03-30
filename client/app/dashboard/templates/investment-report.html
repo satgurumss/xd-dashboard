@@ -1,0 +1,16 @@
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>DEAL</th>
+        <th>AVG</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat = "data in widget.data">
+        <td>{{data.fields.label[0]}}</td>
+        <td>{{data.fields.AVG[0] | number:0}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
