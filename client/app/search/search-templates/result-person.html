@@ -5,11 +5,17 @@
 
 		<div class="result-title text-justify col-md-12 col-sm-12">
 			<span> 
-				<img 
-					src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{currentUser.picture_s}}" 
-					alt="{{currentUser.account_s[0]}}" class="img-circle img40_40">
+				<img ng-if= "result.fields.picture_s[0]"
+					src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{result.fields.picture_s[0]}}" 
+					alt="{{result.fields.account_s[0]}}" class="img-circle img40_40">
+
+					<img ng-if= "! result.fields.picture_s[0]" 
+					src="images/defaultPic.jpg" 
+					alt="{{result.fields.account_s[0]}}" class="img-circle img40_40">
 			</span>
-			{{result.fields.name_s[0]}} - <small>{{result.fields.job_title_s[0]}}</small>
+			<span>
+				{{result.fields.name_s[0]}} - <small>{{result.fields.job_title_s[0]}}</small>
+			</span>
 		</div>
 	</div>
 

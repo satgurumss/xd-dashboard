@@ -3,7 +3,7 @@
   <div class="ui-typeahead input-group">
     <input
       type="text"
-      uib-typeahead="deal.fields.company_name_s[0] for deal in deals | filter:$viewValue | limitTo:8"
+      uib-typeahead="entry for entry in fetchAutoComplete($viewValue)"
       typeahead-focus-first = "false"
       typeahead-on-select = "onSelect($item, $model, $label)"
       class="form-control"

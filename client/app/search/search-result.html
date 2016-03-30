@@ -25,9 +25,7 @@
 		<div class="panel-body pad-25">
 
 			<div class="row results-section">
-        <div ng-show = "currentPageItems.length == 0" >
-          <h4 class="text-center">{{blankslateMsg}}</h4>
-        </div>
+
         <!-- ###mobile advanced search drop down### -->
         <div class="clearfix visible-xs adv-search-mobile" style="padding: 0 30px;" 
           ng-show = "searchResults.data.facets.length > 0 && queryText">
@@ -38,6 +36,11 @@
                  <span class="fa fa-bars light-grey"></span>
                 </button>
                 <ul uib-dropdown-menu>
+                  <li>
+                    <button class="btn btn-xs btn-link" ng-click="resetAdvSearch()">
+                      Reset All
+                    </button>
+                  </li>
                   <li  ng-repeat = "facet in searchResults.data.facets" 
                     ng-if="facet.buckets.length > 0">
                     <div class="text-uppercase menu-title">{{facet.label}}</div>
@@ -51,13 +54,12 @@
                     </ul>
                   </li>
                   <div>
-                  <button class="btn btn-sm btn-block btn-line-primary" ng-click="advSearch()">
+                  <button class="btn btn-sm btn-block btn-line-primary hidden" ng-click="advSearch()">
                     <i class="fa fa-search"/> Search
                   </button>
                 </div>
                 </ul>
               </div>
-
               <!-- <button class="btn btn-line-default btn-block" ng-click="openAdvSearchModal()">
                 Advanced Search
               </button> -->
@@ -69,8 +71,11 @@
         <div class="adv-search  col-lg-3 col-md-3 col-sm-4 hidden-xs" >
           <div ng-show = "searchResults.data.facets.length > 0">
             <span class="h4">Advanced Search</span>
-            <span>
-              <button class="btn btn-sm btn-line-primary pull-right" ng-click="advSearch()">
+            <span >
+              <button class="btn btn-sm btn-link pull-right" ng-click="resetAdvSearch()">
+                Reset All
+              </button>
+              <button hidden class="btn btn-sm btn-line-primary pull-right hidden" ng-click="advSearch()">
                 <i class="fa fa-search"/> Search
               </button>
             </span>
@@ -92,7 +97,10 @@
               </li>
             </ul>
             <div>
-              <button class="btn btn-sm btn-line-primary pull-right" ng-click="advSearch()">
+              <button class="btn btn-sm btn-link pull-right" ng-click="resetAdvSearch()">
+                Reset All
+              </button>
+              <button  class="btn btn-sm btn-line-primary pull-right hidden" ng-click="advSearch()">
                 <i class="fa fa-search"/> Search
               </button>
             </div>
@@ -100,26 +108,29 @@
         </div>
 
 				<div class="col-lg-9 col-md-9 col-sm-8 results-container">
+          <div ng-show = "currentPageItems.length == 0" >
+            <h4>{{blankslateMsg}}</h4>
+          </div>
 
           <div class="search-result row pad-l-0" data-ng-repeat="result in currentPageItems">
             <div
-              ng-if="result.fields.table == 'news' "
+              ng-if="result.fields.table[0] == 'news' "
 							ng-include="'app/search/search-templates/result-news.html'">
 						</div>
 						<div
-							ng-if="result.fields.table == 'profile'"
+							ng-if="result.fields.table[0] == 'profile'"
 							ng-include="'app/search/search-templates/result-person.html'">
 						</div>
 						<div
-							ng-if="result.fields.table == 'deal'"
+							ng-if="result.fields.table[0] == 'deal'"
 							ng-include="'app/search/search-templates/result-deal.html'">
 						</div>
 						<div
-							ng-if="result.fields.table == 'km'"
+							ng-if="result.fields.table[0] == 'km'"
 							ng-include="'app/search/search-templates/result-knowledge.html'">
 						</div>
             <div
-              ng-if="result.fields.table == 'investment'"
+              ng-if='result.fields.table[0] == "investment"'
               ng-include="'app/search/search-templates/result-investment.html'">
             </div>
 
