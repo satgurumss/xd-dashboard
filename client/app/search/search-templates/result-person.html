@@ -1,35 +1,36 @@
 <!-- Result template for type1 -->
-<div class="desc-col col-md-12">
+<div class="desc-col page-person">
 
-	<div class="result-heading row">
-
-		<div class="result-title text-justify col-md-12 col-sm-12">
-			<span> 
+		<div class="result-heading row">
+			<div class="profile-img col-md-2 col-xs-3 ">
 				<img ng-if= "result.fields.picture_s[0]"
-					src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{result.fields.picture_s[0]}}" 
-					alt="{{result.fields.account_s[0]}}" class="img-circle img40_40">
+					src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{result.fields.picture_s[0]}}"
+					alt="{{result.fields.account_s[0]}}" class="img-responsive">
 
-					<img ng-if= "! result.fields.picture_s[0]" 
-					src="images/defaultPic.jpg" 
-					alt="{{result.fields.account_s[0]}}" class="img-circle img40_40">
-			</span>
-			<span>
-				{{result.fields.name_s[0]}} - <small>{{result.fields.job_title_s[0]}}</small>
-			</span>
-		</div>
-	</div>
-
-	<div class="result-desc row">
-			<div class="col-md-12">
-				<strong>Email:</strong>
-				<a href="#">{{result.fields.email_s[0]}}</a>
-				<br>
-				<strong>Work Phone:</strong> 
-				{{result.fields.phone_work_s[0]}}
-				<br>
-				<strong>Mobile Phone:</strong> 
-				{{result.fields.phone_mobile_s[0]}}
+					<img ng-if= "! result.fields.picture_s[0]"
+					src="images/defaultPic.jpg"
+					alt="{{result.fields.account_s[0]}}" class="img-responsive">
 			</div>
+			<div class="person-info col-md-10 col-xs-9">
+				<h4>{{result.fields.name_s[0]}}&nbsp;</h4>
+				<h5>{{result.fields.job_title_s[0]}}</h5>
+
+					<span class="other-info">
+						<span>Email:&nbsp;</span>
+						<a href="#">{{result.fields.email_s[0]}}</a>
+					</span>
+
+					<span class="other-info">
+						<span>Work Phone:&nbsp;</span>
+						{{result.fields.phone_work_s[0]}}
+					</span>
+
+					<span class="other-info">
+						<span>Mobile Phone:&nbsp;</span>
+						{{result.fields.phone_mobile_s[0]}}
+					</span>
+			</div>
+
 	</div>
 	<hr>
 </div>
