@@ -2,6 +2,7 @@
 <div class="desc-col page-person">
 
 	<div class="result-heading row">
+		
 		<div class="profile-img col-md-2 col-xs-3 ">
 			<img ng-if= "result.fields.picture_s[0]"
 					src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{result.fields.picture_s[0]}}"
@@ -12,7 +13,7 @@
 					alt="{{result.fields.account_s[0]}}" class="img-responsive">
 		</div>
 
-		<div class="person-info col-md-10 col-xs-9">
+		<div class="person-info col-md-10 col-xs-12">
 			<span class="pull-right">
 				{{result.fields.date[0]|date:'MMMM dd, yyyy'}}
 			</span>

@@ -29,6 +29,7 @@
     $scope.currentPageItems = [];
     $scope.filteredItems = [];
     $scope.sortOrder = ".score";
+    $scope.firstSearch = true;
     $scope.autoCompeleteData = [];
 
     $scope.sortOptions = [{
@@ -83,6 +84,7 @@
             $scope.filteredItems = angular.copy($scope.searchResults.data.documents);
             $scope.currentPageItems = angular.copy($scope.searchResults.data.documents);
             $scope.currentPage = 1;
+            $scope.firstSearch = false;
             $scope.select(1);
           } else {
             $scope.blankslateMsg = "No result found. Please try again.";
