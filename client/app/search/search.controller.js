@@ -146,9 +146,11 @@
     }
 
     $scope.formatFilterLabel = function(label){
-      console.log("format string")
-      label = label.replace(/(_s)/g, "");
       label = label.replace(/_/g, " ");
+      
+      if(label.lastIndexOf(" ") != -1)
+        label = label.substring(0, label.lastIndexOf(" "));
+
       return label;
     }
   }

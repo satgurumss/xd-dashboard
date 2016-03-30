@@ -43,7 +43,7 @@
                   </li>
                   <li  ng-repeat = "facet in searchResults.data.facets" 
                     ng-if="facet.buckets.length > 0">
-                    <div class="text-uppercase menu-title">{{facet.label}}</div>
+                    <div class="text-uppercase menu-title">{{formatFilterLabel(facet.label)}}</div>
                     <ul class="sub-menu">
                         <li  ng-repeat= 'opt in facet.buckets'>
                          <label class="ui-checkbox">
