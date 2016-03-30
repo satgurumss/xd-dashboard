@@ -610,6 +610,12 @@ var clickEvent;
     $scope.onSelect = function($item, $model, $label) {
       $scope.search($model)
     }
+    
+    $scope.fetchAutoComplete = function(queryText) {
+      return backendApi.getAutocompleteData(queryText).then(function(res) {
+        return res.data;
+      });
+    }
   }
 
 })();

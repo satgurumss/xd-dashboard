@@ -62,6 +62,10 @@ a:hover {
   height: 40px;
   width: 40px;
 }
+
+.align-bottom{
+  vertical-align: bottom;
+}
 /*-------*/
 
 /*SEARCH PAGE STYLES*/
@@ -127,6 +131,10 @@ a:hover {
 }
 .search-type {
   padding-left: 0;
+}
+
+.adv-search-mobile .sub-menu li span {
+    white-space: normal !important;
 }
 
 @media only screen and (max-device-width : 667px) {
