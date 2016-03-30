@@ -28,9 +28,33 @@ var clickEvent;
       currentUser = loggedInUser.getCurrentUser();
       console.log("currentUser ", currentUser)
 
+      if (!_.isEmpty(currentUser)) {
+        $scope.userName = currentUser.account_s[0];
+
+        backendApi.search(dealReport).then(function(res) {
+          console.log("report data");
+          console.log(res);
+          $scope.reportData = res.data.documents;
+          // for (let i = 0; i < res.data.documents.length; i++) {
+          //   $scope.bar3.options.series[0].data.push(parseInt(res.data.documents[i].fields.AVG[0]));
+          //   $scope.bar3.options.series[1].data.push(parseInt(res.data.documents[i].fields.MAX[0]));
+          //   $scope.bar3.options.series[2].data.push(parseInt(res.data.documents[i].fields.MIN[0]));
+          //   $scope.bar3.options.series[3].data.push(parseInt(res.data.documents[i].fields.STDEV[0]));
+          //   $scope.bar3.options.series[4].data.push(parseInt(res.data.documents[i].fields.SUM[0]));
+          //   $scope.bar3.options.series[5].data.push(parseInt(res.data.documents[i].fields.count[0]));
+
+          //   if (i === res.data.documents.length - 1) {
+          //     $scope.showChart = true;
+          //   }
+          // }
+          console.log($scope.bar3.options);
+        });
+      } else
+        loggedInUser.logOutUser();
+
       $scope.widgets = [{
         title: "My Deals",
-        iconUrl: "images/widgets/icon_area-chart.png",
+        iconUrl: "images/icons/deals.png",
         searches: [],
         isHide: false,
         query: {
@@ -41,7 +65,7 @@ var clickEvent;
         }
       }, {
         title: "My Investments",
-        iconUrl: "images/widgets/icon_cpu-usage.png",
+        iconUrl: "images/icons/investment.png",
         searches: [],
         isHide: false,
         query: {
@@ -74,7 +98,7 @@ var clickEvent;
         }
       }, {
         title: "Recent Deals",
-        iconUrl: "images/widgets/icon_cpu-usage.png",
+        iconUrl: "images/icons/recent-deals.png",
         searches: [],
         isHide: false,
         query: {
@@ -85,7 +109,7 @@ var clickEvent;
         }
       }, {
         title: "Recent Investments",
-        iconUrl: "images/widgets/icon_cpu-usage.png",
+        iconUrl: "images/icons/investment_recent.png",
         searches: [],
         isHide: false,
         query: {
@@ -96,7 +120,7 @@ var clickEvent;
         }
       }, {
         title: "Recent News",
-        iconUrl: "images/widgets/icon_cpu-usage.png",
+        iconUrl: "images/icons/recent-news.png",
         searches: [],
         isHide: false,
         query: {
@@ -107,7 +131,7 @@ var clickEvent;
         }
       }, {
         title: "Recent Documents",
-        iconUrl: "images/widgets/icon_cpu-usage.png",
+        iconUrl: "images/icons/documents-recent.png",
         searches: [],
         isHide: false,
         query: {
@@ -118,7 +142,7 @@ var clickEvent;
         }
       }, {
         title: "Total Investments",
-        iconUrl: "images/widgets/icon_area-chart.png",
+        iconUrl: "images/icons/investment.png",
         searches: [],
         options: [{
           value: "deal_type_s",
@@ -188,7 +212,7 @@ var clickEvent;
         }
       }, {
         title: "Employees",
-        iconUrl: "images/widgets/icon_area-chart.png",
+        iconUrl: "images/icons/employe-icon.png",
         searches: [],
         options: [{
           value: "deal_type_s",
@@ -281,7 +305,7 @@ var clickEvent;
         }
       }, {
         title: "Equity Value",
-        iconUrl: "images/widgets/icon_area-chart.png",
+        iconUrl: "images/icons/equity.png",
         searches: [],
         options: [{
           value: "fund_s",
@@ -323,38 +347,15 @@ var clickEvent;
 
       console.log("----widgets----");
       console.log($scope.widgets);
-      if (!_.isEmpty(currentUser)){
-        $scope.userName = currentUser.account_s[0];
 
-        $scope.widgets.forEach(function(widget, index, array) {
-          backendApi.search(widget.query).then(function(res) {
-            // console.log(widget.title, res.data.documents);
-            widget.data = res.data.documents;
-            // console.log(res);
-          });
-        })
-
-        backendApi.search(dealReport).then(function(res) {
-          console.log("report data");
-          console.log(res);
-          $scope.reportData = res.data.documents;
-          // for (let i = 0; i < res.data.documents.length; i++) {
-          //   $scope.bar3.options.series[0].data.push(parseInt(res.data.documents[i].fields.AVG[0]));
-          //   $scope.bar3.options.series[1].data.push(parseInt(res.data.documents[i].fields.MAX[0]));
-          //   $scope.bar3.options.series[2].data.push(parseInt(res.data.documents[i].fields.MIN[0]));
-          //   $scope.bar3.options.series[3].data.push(parseInt(res.data.documents[i].fields.STDEV[0]));
-          //   $scope.bar3.options.series[4].data.push(parseInt(res.data.documents[i].fields.SUM[0]));
-          //   $scope.bar3.options.series[5].data.push(parseInt(res.data.documents[i].fields.count[0]));
-
-          //   if (i === res.data.documents.length - 1) {
-          //     $scope.showChart = true;
-          //   }
-          // }
-          console.log($scope.bar3.options);
+      $scope.widgets.forEach(function(widget, index, array) {
+        backendApi.search(widget.query).then(function(res) {
+          // console.log(widget.title, res.data.documents);
+          widget.data = res.data.documents;
+          // console.log(res);
         });
-      }
-      else
-        loggedInUser.logOutUser();
+      })
+
     }
 
 
@@ -615,79 +616,67 @@ var clickEvent;
 })();
 
 angular.module('app')
-.animation('.slide', [
-  function() {
-    var support;
-    support = jQuery.keyframe.isSupported();
-    jQuery.keyframe.debug = true;
-    return {
-      leave: function(element, doneFn) {
-        // console.log("$event:  ", $event);
-        console.log("clickEvent ", clickEvent);
-        var elemHeight, elemScaledHeight, elemScaledWidth, elemWidth, firstFrame, scaledLeftOffset, scaledTopOffset, secondFrame, widgetControlWidth;
-        elemHeight = parseInt(element.css('height'));
-        elemWidth = parseInt(element.css('width'));
-        elemX = parseInt(clickEvent.clientX);
-        elemY = parseInt(clickEvent.clientY);
-        typeAheadWidthPx = angular.element('.search-field').width();
-        searchTypeWidthPx = angular.element('.search-type').width();
+  .animation('.slide', [
+    function() {
+      var support;
+      support = jQuery.keyframe.isSupported();
+      jQuery.keyframe.debug = true;
+      return {
+        leave: function(element, doneFn) {
+          var elemHeight, elemScaledHeight, elemScaledWidth, elemWidth, firstFrame, scaledLeftOffset, scaledTopOffset, secondFrame, widgetControlWidth;
 
+          elemHeight = parseInt(element.css('height'));
+          elemWidth = parseInt(element.css('width'));
+          elemScaledHeight = elemHeight * 0.08;
+          elemScaledWidth = elemWidth * 0.08;
+          elemX = parseInt(clickEvent.pageX);
+          elemY = parseInt(clickEvent.pageY);
 
-        fieldLeftMargin = parseInt(angular.element('.search-field-wrapper').css('margin-left').replace("px", "").trim());
-        console.log("fieldLeftMargin", fieldLeftMargin)
-        widgetControlWidth = angular.element('.widget-control').width();
-        console.log("widget left: ", angular.element('.widget-control').css('left'))
-        elemScaledHeight = elemHeight * 0.1;
-        elemScaledWidth = elemWidth * 0.1;
+          typeAheadWidthPx = angular.element('.search-field-wrapper').outerWidth(true);
+          searchTypeWidthPx = angular.element('.search-type').outerWidth(true);
+          searchPanelHeightPx = angular.element('.search-panel').outerHeight(true);
+          widgetControlWidth = angular.element('.widget-control').width();
 
-        buttonOffset = typeAheadWidthPx + searchTypeWidthPx + 60 + fieldLeftMargin;
-        console.log(buttonOffset);
+          buttonOffset = typeAheadWidthPx + searchTypeWidthPx;
+          //12 has been added because of container's extreme left padding
+          wigdetButtonOffset = (elemX - ((elemWidth - elemScaledWidth) / 2) - (widgetControlWidth + 12));
 
-        console.log("elemHeight: ", elemHeight);
-        console.log("elemWidth: ", elemWidth);
-        console.log("widgetControlWidth: ", widgetControlWidth);
-        console.log("elemScaledHeight: ", elemScaledHeight);
-        console.log("elemScaledWidth: ", elemScaledWidth);
-        console.log("elemY: ", elemY);
+          scaledTopOffset = ((elemHeight - elemScaledHeight) / 2) + elemY - searchPanelHeightPx;
+          scaledLeftOffset = buttonOffset - wigdetButtonOffset;
 
-        scaledTopOffset = ((elemHeight - elemScaledHeight) / 2) + elemY - 90;
-        scaledLeftOffset = buttonOffset - (((elemWidth - elemScaledWidth) / 10) - (widgetControlWidth / 10) + elemX);
+          secondFrame = {
+            'opacity': '0.8',
+            'z-index': '5',
+            'top': '-' + scaledTopOffset + 'px',
+            'left': scaledLeftOffset + 'px',
+            '-webkit-transform': 'scale3d(.08,.08,.08)',
+            '-moz-transform': 'scale3d(.08,.08,.08)',
+            '-o-transform': 'scale3d(.08,.08,.08)',
+            'transform': 'scale3d(.08,.08,.08)'
+          };
+          firstFrame = {
+            'opacity': '1',
+            '-webkit-transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)',
+            '-moz-transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)',
+            '-o-transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)',
+            'transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)'
+          };
 
-        console.log("scaledTopOffset: ", scaledTopOffset);
-        console.log("scaledLeftOffset: ", scaledLeftOffset);
-
-        secondFrame = {
-          'opacity': '0.8',
-          'z-index': '5',
-          'top': '-' + scaledTopOffset + 'px',
-          'left': scaledLeftOffset + 'px',
-          '-webkit-transform': 'scale3d(.1,.1,.1)',
-          '-moz-transform': 'scale3d(.1,.1,.1)',
-          '-o-transform': 'scale3d(.1,.1,.1)',
-          'transform': 'scale3d(.1,.1,.1)'
-        };
-        firstFrame = {
-          'opacity': '1',
-          '-webkit-transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)',
-          '-moz-transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)',
-          '-o-transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)',
-          'transform': 'scale3d(.475,.475,.475) translate3d(0px , 60px ,50px)'
-        };
-        jQuery.keyframe.define([{
-          name: 'onMove',
-          '40%': firstFrame,
-          '100%': secondFrame
-        }]);
-        element.resetKeyframe(function() {
-          return element.playKeyframe({
+          jQuery.keyframe.define([{
             name: 'onMove',
-            duration: '4s',
-            delay: '0s',
-            timingFunction: 'ease-in-out',
-            complete: doneFn
+            // '30%': firstFrame,
+            '100%': secondFrame
+          }]);
+          element.resetKeyframe(function() {
+            return element.playKeyframe({
+              name: 'onMove',
+              duration: '3s',
+              delay: '0s',
+              timingFunction: 'ease-in-out',
+              complete: doneFn
+            });
           });
-        });
-      }
-    };
-  }
-]);
+        }
+      };
+    }
+  ]);

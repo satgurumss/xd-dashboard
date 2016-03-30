@@ -1,0 +1,26 @@
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>DEAL</th>
+        <th>AVG</th>
+        <th>MAX</th>
+        <th>MIN</th>
+        <th>STDEV</th>
+        <th>SUM</th>
+        <th>COUNT</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat = "data in reportData">
+        <td>{{data.fields.label[0]}}</td>
+        <td>{{data.fields.AVG[0] | number:0}}</td>
+        <td>{{data.fields.MAX[0] | number:0}}</td>
+        <td>{{data.fields.MIN[0] | number:0}}</td>
+        <td>{{data.fields.STDEV[0] | number:0}}</td>
+        <td>{{data.fields.SUM[0] | number:0}}</td>
+        <td>{{data.fields.count[0] | number:0}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
