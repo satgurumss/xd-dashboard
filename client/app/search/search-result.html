@@ -7,7 +7,6 @@
           <div data-ng-include="'app/shared/searchbar.html'"></div>
 
           <div class="col-xs-6 col-sm-3 col-lg-2">
-            
             <span class="ui-select pull-right relevance-filter">
               <select ng-model='sortOrder'ng-change="sortResults()">
                 <option ng-repeat="opt in sortOptions" value ="{{opt.value}}">
@@ -25,9 +24,11 @@
 		<div class="panel-body pad-25">
 
 			<div class="row results-section">
-
+        <div ng-show = "currentPageItems.length == 0 && firstSearch" >
+          <h4 class="text-center">{{blankslateMsg}}</h4>
+        </div>
         <!-- ###mobile advanced search drop down### -->
-        <div class="clearfix visible-xs adv-search-mobile" style="padding: 0 30px;" 
+        <div class="clearfix visible-xs adv-search-mobile" style="padding: 0 30px;"
           ng-show = "searchResults.data.facets.length > 0 && queryText">
           <div class="row">
             <div class="col-xs-12">
@@ -41,14 +42,16 @@
                       Reset All
                     </button>
                   </li>
-                  <li  ng-repeat = "facet in searchResults.data.facets" 
+                  <li  ng-repeat = "facet in searchResults.data.facets"
                     ng-if="facet.buckets.length > 0">
-                    <div class="text-uppercase menu-title">{{formatFilterLabel(facet.label)}}</div>
+                    <div class="text-uppercase menu-title">
+                      {{formatFilterLabel(facet.label)}}&nbsp;({{facet.buckets.length}})
+                    </div>
                     <ul class="sub-menu">
                         <li  ng-repeat= 'opt in facet.buckets'>
                          <label class="ui-checkbox">
                           <input type="checkbox" value="{{opt.filter}}">
-                          <span>{{opt.label}}</span>
+                          <span>{{formatFilterCheckboxLabels(opt.label)}}</span>
                          </label>
                         </li>
                     </ul>
@@ -80,16 +83,18 @@
               </button>
             </span>
             <ul class="list-unstyled margin-t20">
-              <li  ng-repeat = "facet in searchResults.data.facets" 
+              <li  ng-repeat = "facet in searchResults.data.facets"
                 ng-if="facet.buckets.length > 0">
-                <div class="text-uppercase menu-title">{{formatFilterLabel(facet.label)}}</div>
+                <div class="text-uppercase menu-title">
+                  {{formatFilterLabel(facet.label)}}&nbsp;({{facet.buckets.length}})
+                </div>
                 <ul class="sub-menu" >
                   <div data-slim-scroll data-scroll-height="140px">
                     <li ng-repeat= 'opt in facet.buckets'>
                    <label class="ui-checkbox">
-                    <input type="checkbox" ng-checked="isChecked(opt.filter)" value="{{opt.filter}}" 
+                    <input type="checkbox" ng-checked="isChecked(opt.filter)" value="{{opt.filter}}"
                       ng-click="setAdvFilter($event,opt.filter)">
-                    <span>{{opt.label}}</span>
+                    <span>{{formatFilterCheckboxLabels(opt.label)}}</span>
                    </label>
                     </li>
                   </div>
@@ -108,7 +113,7 @@
         </div>
 
 				<div class="col-lg-9 col-md-9 col-sm-8 results-container">
-          <div ng-show = "currentPageItems.length == 0" >
+          <div ng-show = "currentPageItems.length == 0 && !firstSearch" >
             <h4>{{blankslateMsg}}</h4>
           </div>
 

@@ -163,11 +163,6 @@ a:hover {
   }
 }
 /*-------*/
-body {
-  background: none;
-  background-color: #EAEAEA;
-
-}
 
 ul.list-unstyled {
   width: 100%;
@@ -360,19 +355,13 @@ ul.list-unstyled {
 
 
 
-
-
-
-
-
-
-
-
-body{
-  background-color: #CCC;
+body {
+  background-color: transparent !important;
+  background: url(../images/page-bg.jpg) repeat;
 }
 .app > .main-container:before {
-  background-color: #CCC;
+  background-color: transparent !important;
+  background: url(../images/page-bg.jpg) repeat;
 }
 .header-container > .top-header .logo {
     position: absolute;
@@ -602,3 +591,63 @@ p.search-description {
 .panel .panel-heading {
   font-size: 17px;
 }
+
+
+.person-info h4 {
+  margin: 0;
+  color: #333;
+  font-weight: normal;
+}
+.person-info h5 {
+    color: #777;
+    font-weight: normal;
+    margin: 8px 0;
+  }
+.page-person .other-info {
+  color: #333;
+  font-size: 14px;
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: 1px solid #ccc;
+}
+.page-person .other-info:last-child {
+  border-right: 0;
+}
+.page-person .other-info span {
+  color: #777;
+}
+
+@media only screen and (max-width: 768px) {
+  /*.person-info {
+    padding-left: 0;
+  }*/
+  .person-info .other-info {
+    display: block;
+    border-right: 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
+  .page-person .other-info:last-child {
+    border-right: 0;
+    border-bottom: 0;
+  }
+}
+/*
+@media only screen and (max-width: 767px) {
+  .person-info {
+    padding-left: 0;
+  }
+  .person-info .other-info {
+    display: block;
+    border-right: 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
+  .person-info .other-info span {
+    display: block;
+  }
+  .page-person .other-info:last-child {
+    border-right: 0;
+    border-bottom: 0;
+  }
+}*/

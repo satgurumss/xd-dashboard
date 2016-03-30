@@ -1,39 +1,49 @@
 <!-- Result template for type1 -->
-<div class="desc-col col-md-12">
+<div class="desc-col page-person">
 
 	<div class="result-heading row">
-		<div class="result-title text-justify col-md-9 col-sm-10">
-			{{result.fields.company_name_s[0]}}
-		</div>
-		<div class="result-created-date col-md-3 text-right">
-			{{result.fields.origination_date_t[0]|date:'MMMM dd, yyyy'}}
-		</div>
-	</div>
+		<div class="profile-img col-md-2 col-xs-3 ">
+			<img ng-if= "result.fields.picture_s[0]"
+					src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{result.fields.picture_s[0]}}"
+					alt="{{result.fields.account_s[0]}}" class="img-responsive">
 
-	<div class="result-url row">
-		<div class="result-doc-link col-md-10 col-sm-10">
-			{{result.fields.company_description_s[0]}}
+			<img ng-if= "! result.fields.picture_s[0]"
+					src="images/img-placeholder.png"
+					alt="{{result.fields.account_s[0]}}" class="img-responsive">
 		</div>
-	</div>
-	
-	<div class="result-desc row">
-			<div class="col-md-12">
-				<strong> Company Type:</strong>&nbsp;{{result.fields.company_type_s[0]}}
-				<br>
-				<strong> Deal Type:</strong> &nbsp;{{result.fields.deal_type_s[0]}}
-				<br>
-				<strong> Project:</strong> &nbsp;{{result.fields.project_name_s[0]}}
-				<br>
-				<strong> Status:</strong> &nbsp;{{result.fields.status_s[0]}}
-				<br>
-				<strong> Stage:</strong> &nbsp;{{result.fields.stage_s[0]}}
+
+		<div class="person-info col-md-10 col-xs-12">
+			<span class="pull-right">{{result.fields.origination_date_t[0]|date:'MMMM dd, yyyy'}}</span>
+			<h4>{{result.fields.company_name_s[0]}}&nbsp;</h4>
+			<h5>{{result.fields.company_description_s[0]}}</h5>
+
+			<div class="person-info">
+				<span class="other-info" ng-if="result.fields.company_type_s[0]">
+					<span> Company Type: &nbsp;</span>
+					{{result.fields.company_type_s[0]}}
+				</span>
+				<span class="other-info" ng-if="result.fields.deal_type_s[0]">
+					<span> Deal Type: &nbsp;</span>
+					{{result.fields.deal_type_s[0]}}
+				</span>
+				<span class="other-info" ng-if="result.fields.project_name_s[0]">
+					<span> Project: &nbsp;</span>
+					{{result.fields.project_name_s[0]}}
+				</span>
+				<span class="other-info" ng-if="result.fields.company_type_s[0]">
+					<span> Status: &nbsp;</span>
+					{{result.fields.status_s[0]}}
+				</span>
+				<span class="other-info" ng-if="result.fields.fields.stage_s[0]">
+					<span> Stage: &nbsp;</span>
+					{{result.fields.stage_s[0]}}
+				</span>
 			</div>
-	</div>
 
-	<div class="row optional-links pad-b-20">
-		<div class="col-md-12">
-			<a href="#">more like this</a>
+			<div class="profile-link" style="margin-top: 5px;">
+				<a href="javascript:;">more like this</a>
+			</div>
 		</div>
 	</div>
-<hr>
+	<hr>
 </div>

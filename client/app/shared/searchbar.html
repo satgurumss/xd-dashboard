@@ -1,5 +1,5 @@
 <!-- &#xF002;  -->
-<div class="{{searchbarWidth}} col-sm-6 col-lg-4 col-lg-offset-3 pb-15 search-field-wrapper">
+<div class="{{searchbarWidth}} col-sm-6 col-lg-3 col-lg-offset-3 pb-15 search-field-wrapper">
   <div class="ui-typeahead input-group search-field">
     <input
       type="text"
@@ -8,7 +8,9 @@
       typeahead-on-select = "onSelect($item, $model, $label)"
       class="form-control"
       ng-model = "queryText"
-      placeholder="Search" style="font-family:Arial, FontAwesome"
+      ng-model-options = "{debounce: 500}"
+      placeholder="Search" 
+      style="font-family:Arial, FontAwesome"
       ng-change="updateCtrlModel(queryText)"
       my-enter-press="queryText && search(queryText)"
       >
@@ -22,7 +24,7 @@
       </span>
   </div>
 </div>
-<div class="{{searchTypeWidth}} col-sm-3 col-lg-1 search-type">
+<div class="{{searchTypeWidth}} col-sm-3 col-lg-1">
   <span class="ui-select">
     <select ng-model="filterType" ng-change="setFilter(filterType)">
       <option value="abraajSearch" ng-selected="true">All</option>

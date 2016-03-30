@@ -1,36 +1,50 @@
 <!-- Result template for type1 -->
-<div class="desc-col col-md-12">
+<div class="desc-col page-person">
 
-	<div class="result-heading row">
-		<div class="result-title text-justify col-md-10 col-sm-10">
-			{{result.fields.company_name_s[0]}}
-		</div>
-		<div class="result-created-date col-md-2 text-right">
-			{{result.fields.date[0]|date:'MMMM dd, yyyy'}}
-		</div>
-	</div>
+	<div class="row">
+		<div class="profile-img col-md-2 col-xs-3 ">
+				
+			<img ng-if= "result.fields.picture_s[0]"
+					src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{result.fields.picture_s[0]}}"
+					alt="{{result.fields.account_s[0]}}" class="img-responsive">
 
-	<div class="result-url row">
-		<div class="result-doc-link col-md-10 col-sm-10">
-			{{result.fields.company_description_s[0]}}
-		</div>
-	</div>
+			<img ng-if= "! result.fields.picture_s[0]"
+					src="images/img-placeholder.png"
+					alt="{{result.fields.account_s[0]}}" class="img-responsive">
 
-	<div class="result-desc row">
-		<div class="col-md-12">
-			<strong> Deal Team:</strong>&nbsp;{{result.fields.team_s[0]}}
-			<br>
-			<strong> Fund:</strong> &nbsp;{{result.fields.fund_s[0] | currency:"$"}}
-			<br>
-			<strong> Equity Value:</strong> &nbsp;{{result.fields.equity_value_d[0] | currency:"$"}}
-			<br>
-			<strong> Invested Total:</strong> &nbsp;{{result.fields.invested_total_d[0] | currency:"$"}}
 		</div>
-	</div>
 
-	<div class="row optional-links pad-b-20">
-		<div class="col-md-12">
-			<a href="#">more like this</a>
+		<div class="person-info col-md-10 col-xs-12">
+			<span class="pull-right">
+				{{result.fields.date[0]|date:'MMMM dd, yyyy'}}
+			</span>
+			<h4>{{result.fields.company_name_s[0]}}&nbsp;</h4>
+			<h5>{{result.fields.company_description_s[0]}}</h5>
+
+			<div class="person-info">
+				<span class="other-info" ng-if="result.fields.team_s[0]">
+					<span>Deal Team:</span> &nbsp;
+					{{result.fields.team_s[0]}}
+				</span>
+
+				<span class="other-info" ng-if="result.fields.fund_s[0]">
+					<span>Fund:</span> &nbsp;
+					{{result.fields.fund_s[0] | currency:"$"}}
+				</span>
+
+				<span class="other-info" ng-if="result.fields.equity_value_d[0]">
+					<span>Equity Value:</span> &nbsp;
+					{{result.fields.equity_value_d[0] | currency:"$"}}
+				</span>
+
+				<span class="other-info" ng-if="result.fields.invested_total_d[0]">
+					<span>Invested Total:</span> &nbsp;
+					{{result.fields.invested_total_d[0] | currency:"$"}}
+				</sapn>
+			</div>
+			<div class="profile-link" style="margin-top: 5px;">
+				<a href="javascript:;">more like this</a>
+			</div>
 		</div>
 	</div>
 	<hr>
