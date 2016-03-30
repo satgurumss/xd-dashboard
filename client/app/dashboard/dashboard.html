@@ -97,7 +97,7 @@
           </div>
           <div class="panel-container">
             <div class="panel-heading widget-hading">
-              <strong>{{widget.title}}</strong>
+              <strong>{{widget.title}} ({{widget.data.length}})</strong>
               <span class="ui-select pull-right" ng-if="widget.options">
                 <select ng-options="group as group.label for group in widget.options track by group.value" ng-model="widget.selectedOption" ng-change="groupingChanged(widget)">
                 </select>
@@ -110,6 +110,7 @@
                 <div ng-if = "data.fields.table[0] === 'deal'" class="col-md-12" ng-include="'app/dashboard/templates/deals.html'"></div>
                 <div ng-if = "data.fields.table[0] === 'investment'" class="col-md-12" ng-include="'app/dashboard/templates/investments.html'"></div>
                 <div ng-if = "data.fields.table[0] === 'news'" class="col-md-12" ng-include="'app/dashboard/templates/news.html'"></div>
+                <div ng-if = "data.fields.table[0] === 'metadata'" class="col-md-12" ng-include="'app/dashboard/templates/metadata.html'"></div>
               </div>
             </div>
           </div>
