@@ -20,6 +20,7 @@
         'mgo-angular-wizard',
 
         // Custom modules
+        'app.custom.services',
         'app.nav',
         'app.i18n',
         'app.chart',
@@ -33,11 +34,3 @@
     ]);
 
 })();
-
-
-
-
-
-
-    
-

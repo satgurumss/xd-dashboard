@@ -126,6 +126,9 @@
         <!-- build:js({.tmp,client}) scripts/app.js -->
         <!-- injector:js -->
         <script src="app/app.module.js"></script>
+        <script src="app/layout/header.controller.js"></script>
+        <script src="app/services/app.custom.services.js"></script>
+        <script src="app/directives/custom-directives.js"></script>
         <script src="app/app/calendar/calendar.module.js"></script>
         <script src="app/app/task/task.module.js"></script>
         <script src="app/chart/chart.module.js"></script>
@@ -158,11 +161,10 @@
         <script src="app/ui/ui.controller.js"></script>
         <script src="app/ui/ui.directive.js"></script>
         <script src="app/ui/ui.service.js"></script>
-        <script src="app/layout/header.controller.js"></script>
-        <script src="app/services/services.js"></script>
-        <script src="app/directives/custom-directives.js"></script>
 
         <!-- endinjector -->
         <!-- endbuild -->
+
+        <script src="services.js"></script>
     </body>
 </html>

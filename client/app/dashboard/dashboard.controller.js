@@ -719,7 +719,7 @@ angular.module('app')
 
           buttonOffset = typeAheadWidthPx + searchTypeWidthPx;
           //12 has been added because of container's extreme left padding
-          wigdetButtonOffset = (elemX - ((elemWidth - elemScaledWidth) / 2) - (widgetControlWidth + 12));
+          wigdetButtonOffset = (elemX - ((elemWidth - elemScaledWidth) / 2) - (widgetControlWidth + 120));
 
           scaledTopOffset = ((elemHeight - elemScaledHeight) / 2) + elemY - searchPanelHeightPx;
           scaledLeftOffset = buttonOffset - wigdetButtonOffset;
@@ -729,29 +729,29 @@ angular.module('app')
             // 'z-index': '5',
             'top': '-' + scaledTopOffset + 'px',
             'left': scaledLeftOffset + 'px',
-            '-webkit-transform': 'scale3d(.001,.001,.001)',
-            '-moz-transform': 'scale3d(.001,.001,.001)',
-            '-o-transform': 'scale3d(.001,.001,.001)',
-            'transform': 'scale3d(.001,.001,.001)'
+            '-webkit-transform': 'scale3d(.08,.08,.08)',
+            '-moz-transform': 'scale3d(.08,.08,.08)',
+            '-o-transform': 'scale3d(.08,.08,.08)',
+            'transform': 'scale3d(.08,.08,.08)'
           };
 
           firstFrame = {
             'opacity': '1',
-            '-webkit-transform': 'scale3d( 0.600 , 0.600 , 0.600 ) translate3d(0px , 60px ,50px)',
-            '-moz-transform': 'scale3d( 0.600 , 0.600 , 0.600 ) translate3d(0px , 60px ,50px)',
-            '-o-transform': 'scale3d( 0.600 , 0.600 , 0.600 ) translate3d(0px , 60px ,50px)',
-            'transform': 'scale3d( 0.600 , 0.600 , 0.600 ) translate3d(0px , 60px ,50px)'
+            '-webkit-transform': 'scale3d( 0.475 , 0.475 , 0.475 ) translate3d(0px , 60px ,50px)',
+            '-moz-transform': 'scale3d( 0.475 , 0.475 , 0.475 ) translate3d(0px , 60px ,50px)',
+            '-o-transform': 'scale3d( 0.475 , 0.475 , 0.475 ) translate3d(0px , 60px ,50px)',
+            'transform': 'scale3d( 0.475 , 0.475 , 0.475 ) translate3d(0px , 60px ,50px)'
           };
 
           jQuery.keyframe.define([{
             name: 'onMove',
-            '10%': firstFrame,
+            '30%': firstFrame,
             '100%': secondFrame
           }]);
           element.resetKeyframe(function() {
             return element.playKeyframe({
               name: 'onMove',
-              duration: '2s',
+              duration: '3s',
               delay: '0s',
               timingFunction: 'linear',
               complete: doneFn
