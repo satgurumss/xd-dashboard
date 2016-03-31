@@ -23,7 +23,9 @@ var clickEvent;
     var currentUser;
     $scope.bar1 = {};
     $scope.userName = "Administrator"
-
+    $scope.setColClass = function(widget){
+      return widget.mapData ? 'col-md-8 col-sm-12' : 'col-md-4 col-sm-6';
+    }
     $scope.init = function() {
       //use this to get current user
       currentUser = loggedInUser.getCurrentUser();
@@ -31,6 +33,7 @@ var clickEvent;
 
       if (!_.isEmpty(currentUser)) {
         $scope.userName = currentUser.account_s[0];
+        $scope.name_s = currentUser.name_s[0]
 
         backendApi.search(dealReport).then(function(res) {
           console.log("report data");
@@ -53,6 +56,32 @@ var clickEvent;
       } else
         loggedInUser.logOutUser();
 
+      $scope.valueRange = [0, 100];
+      $scope.colorRange = ["#F03B20", "#FFEDA0"];
+      $scope.dimension = 300;
+      $scope.mapWidth = 600;
+      // $scope.descriptiveText = 'failure %';
+      $scope.countryFillColor = "#aaa";
+      $scope.countryBorderColor = "#fff";
+      $scope.worldData = [{
+        "countryCode": "PAK",
+        "value": 100
+      }, {
+        "countryCode": "AFG",
+        "value": 10
+      }, {
+        "countryCode": "USA",
+        "value": 99
+      }, {
+        "countryCode": "CAN",
+        "value": 50
+      }, {
+        "countryCode": "ISR",
+        "value": 2
+      }, {
+        "countryCode": "NLD",
+        "value": 30
+      }];
       $scope.widgets = [{
         title: "My Deals",
         iconUrl: "images/icons/deals.png",
@@ -61,7 +90,7 @@ var clickEvent;
         query: {
           "workflow": "myDeals",
           "query": "*",
-          "username": $scope.userName,
+          "username": $scope.name_s,
           "realm": "Anonymous"
         }
       }, {
@@ -72,7 +101,7 @@ var clickEvent;
         query: {
           "workflow": "myInvestments",
           "query": "*",
-          "username": $scope.userName,
+          "username": $scope.name_s,
           "realm": "Anonymous"
         }
       }, {
@@ -82,6 +111,44 @@ var clickEvent;
         isHide: false,
         query: {
           "workflow": "myRegion",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous"
+        }
+      }, {
+        title: "MAP",
+        iconUrl: "images/icons/icon_map.png",
+        isHide: false,
+        mapData: {
+          valueRange: [0, 100],
+          colorRange: ["#F03B20", "#FFEDA0"],
+          dimension: 1000,
+          mapWidth: 1000,
+          // descriptiveText: 'failure %',
+          countryFillColor: "#aaa",
+          countryBorderColor: "#fff",
+          worldData: [{
+            "countryCode": "PAK",
+            "value": 100
+          }, {
+            "countryCode": "AFG",
+            "value": 10
+          }, {
+            "countryCode": "USA",
+            "value": 99
+          }, {
+            "countryCode": "CAN",
+            "value": 50
+          }, {
+            "countryCode": "ISR",
+            "value": 2
+          }, {
+            "countryCode": "NLD",
+            "value": 30
+          }]
+        },
+        query: {
+          "workflow": "myDeals",
           "query": "*",
           "username": $scope.userName,
           "realm": "Anonymous"
@@ -358,7 +425,6 @@ var clickEvent;
       })
 
     }
-
 
     $scope.groupingChanged = function(widget) {
       widget.query.restParams.grouping[0] = widget.selectedOption.value;

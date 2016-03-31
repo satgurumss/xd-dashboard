@@ -22,7 +22,7 @@
       // $locationProvider.html5Mode(true)
       // $locationProvider.hashPrefix('!');
 
-/*      setRoutes = function(route) {
+      setRoutes = function(route) {
         var config, url;
         url = '/' + route;
         config = {
@@ -35,7 +35,7 @@
       routes.forEach(function(route) {
         return setRoutes(route);
       });
-*/
+
       $routeProvider
       // .when('/', {redirectTo: 'page/signin'})
         .when('/', {
