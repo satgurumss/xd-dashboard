@@ -30,17 +30,17 @@
                 <a href="javascript:;" uib-dropdown-toggle ng-disabled="disabled">
                     <img src="{{currentUser.picture_s}}" alt="{{currentUser.account_s[0]}}" class="img-circle img30_30">
                     <span class="hidden-xs">
-                        &nbsp;<span data-translate="{{currentUser.name_s[0]}}"> </span>
+                        &nbsp;<span>{{currentUser.name_s[0]}}</span>
                         &nbsp;<i class="fa fa-caret-down"></i>
                     </span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-scaleIn" uib-dropdown-menu>
-                    <!-- <li>
-                        <a href="#/page/profile">
+                    <li>
+                        <a href="#/my-profile">
                             <i class="fa fa-user"></i>
                             <span data-translate="MY_PROFILE"></span>
                         </a>
-                    </li> -->
+                    </li>
                     <li>
                         <a ng-click="logOut()">
                             <i class="fa fa-sign-out"></i>

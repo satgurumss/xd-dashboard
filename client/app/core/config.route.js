@@ -5,7 +5,6 @@
     .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
       var routes, setRoutes;
 
-      console.log($locationProvider);
       routes = [
         'dashboard',
         'search-result',
@@ -23,7 +22,7 @@
       // $locationProvider.html5Mode(true)
       // $locationProvider.hashPrefix('!');
 
-      setRoutes = function(route) {
+/*      setRoutes = function(route) {
         var config, url;
         url = '/' + route;
         config = {
@@ -36,14 +35,17 @@
       routes.forEach(function(route) {
         return setRoutes(route);
       });
-
+*/
       $routeProvider
       // .when('/', {redirectTo: 'page/signin'})
         .when('/', {
-          redirectTo: 'signin'
+          redirectTo: '/signin'
         })
         .when('/signin', {
-          templateUrl: 'app/page/signin.html'
+          templateUrl: 'app/login/signin.html'
+        })
+        .when('/my-profile', {
+          templateUrl: 'app/profile/my-profile.html'
         })
         .when('/dashboard', {
           templateUrl: 'app/dashboard/dashboard.html'
