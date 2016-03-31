@@ -5,7 +5,6 @@
     .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
       var routes, setRoutes;
 
-      console.log($locationProvider);
       routes = [
         'dashboard',
         'search-result',
@@ -40,10 +39,13 @@
       $routeProvider
       // .when('/', {redirectTo: 'page/signin'})
         .when('/', {
-          redirectTo: 'signin'
+          redirectTo: '/signin'
         })
         .when('/signin', {
-          templateUrl: 'app/page/signin.html'
+          templateUrl: 'app/login/signin.html'
+        })
+        .when('/my-profile', {
+          templateUrl: 'app/profile/my-profile.html'
         })
         .when('/dashboard', {
           templateUrl: 'app/dashboard/dashboard.html'

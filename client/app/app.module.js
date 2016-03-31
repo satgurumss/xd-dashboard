@@ -20,6 +20,7 @@
         'mgo-angular-wizard',
 
         // Custom modules
+        'app.custom.services',
         'app.nav',
         'app.i18n',
         'app.chart',
@@ -29,15 +30,8 @@
         'app.page',
         'app.table',
         'app.task',
-        'app.calendar'
+        'app.calendar',
+        'angular-maps'
     ]);
 
 })();
-
-
-
-
-
-
-    
-

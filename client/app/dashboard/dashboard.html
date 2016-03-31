@@ -69,8 +69,8 @@
       </div>
     </div>
     <ul class="list-unstyled">
-      <li ng-repeat = "widget in widgets" ng-if = "!widget.isHide" class="slide search-widget col-md-4 col-sm-6">
-        <section class="panel panel-default"  ng-mouseenter="widget.shMenu1=true;" ng-mouseleave="widget.shMenu1=false;">
+      <li ng-repeat = "widget in widgets" ng-if = "!widget.isHide" class="slide search-widget" ng-class="setColClass(widget)">
+        <section class="panel panel-default" ng-mouseenter="widget.shMenu1=true;" ng-mouseleave="widget.shMenu1=false;">
           <div class="widget-menu" ng-class="{'animated slideInLeft' : widget.shMenu1 , 'animated slideOutLeft' : !widget.shMenu1 }" ng-show="widget.shMenu1" >
             <div class="remove" ng-click="removeWidget(widget, $event);"><i class="fa fa-times"></i></div>
             <div class="expand"><i class="fa fa-expand"></i></div>
@@ -85,13 +85,25 @@
               </span>
             </div>
             <div class="panel-body" data-slim-scroll data-scroll-height="320px">
+              <div ng-if="(!widget.data || widget.data.length == 0) && !widget.mapData">
+                <h5 class="text-center"> No Result Found</h5>
+              </div>
+
               <div ng-if = "widget.query.workflow === 'dealReport'" class="col-md-12" ng-include="'app/dashboard/templates/deal-report.html'"></div>
+
               <div ng-if = "widget.query.workflow === 'investmentReport'" class="col-md-12" ng-include="'app/dashboard/templates/investment-report.html'"></div>
+
+              <div ng-if = "widget.mapData" class="col-md-12" ng-include="'app/dashboard/templates/map.html'"></div>
+
               <div class="row widget-single-row" ng-if = "widget.query.workflow !== 'dealReport'" ng-repeat = "data in widget.data">
                 <div ng-if = "data.fields.table[0] === 'deal'" class="col-md-12" ng-include="'app/dashboard/templates/deals.html'"></div>
+
                 <div ng-if = "data.fields.table[0] === 'investment'" class="col-md-12" ng-include="'app/dashboard/templates/investments.html'"></div>
+
                 <div ng-if = "data.fields.table[0] === 'news'" class="col-md-12" ng-include="'app/dashboard/templates/news.html'"></div>
-                <div ng-if = "data.fields.table[0] === 'metadata'" class="col-md-12" ng-include="'app/dashboard/templates/metadata.html'"></div>
+
+                <div ng-if = "data.fields.table[0] === 'km'" class="col-md-12" ng-include="'app/dashboard/templates/km.html'"></div>
+
               </div>
             </div>
           </div>
@@ -116,6 +128,7 @@
     </ul>
   </div>
 </div>
+
 <style type="text/css">
 .slide.ng-enter { transition:0.5s linear all; }
 </style>
