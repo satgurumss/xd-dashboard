@@ -13,7 +13,8 @@
         "realm": "Anonymous",
         "queryLanguage": "simple",
         "sort":[".score"],
-        "restParams":{}
+        "restParams":{},
+        "fields": ["*", "SCOPETEASER(text, fragmentSize=100, fragment=true, numFragments=1, fragmentScope=sentence, scopeMode=HTML) as teaser"]
       },
       advFilters = [],
       selectedAdvFilters = [];
@@ -44,10 +45,11 @@
       //use this to get current user
       currentUser = loggedInUser.getCurrentUser();
       if (!_.isEmpty(currentUser)) {
-
+        var qboost = loggedInUser.getQBoost()
+        console.log("qboost in search controller")
+        console.log(qboost)
         searchData.username = currentUser.account_s[0];
-        searchData.restParams["q.boost"] = []
-        searchData.restParams["q.boost"]  = loggedInUser.getQBoost().split(",");
+        searchData.restParams["q.boost"]  = qboost;
 
         if (typeof $location.search().queryText != "undefined" && $location.search().queryText != null) {
           $scope.queryText = $location.search().queryText;
@@ -80,13 +82,13 @@
         }
 
         backendApi.search(searchData).then(function(res) {
+          $scope.firstSearch = false;
           if (typeof res.data.documents != "undefined" && res.data.documents.length > 0) {
             $scope.searchResults = res;
 
             $scope.filteredItems = angular.copy($scope.searchResults.data.documents);
             $scope.currentPageItems = angular.copy($scope.searchResults.data.documents);
             $scope.currentPage = 1;
-            $scope.firstSearch = false;
             $scope.select(1);
           } else {
             $scope.blankslateMsg = "No result found. Please try again.";

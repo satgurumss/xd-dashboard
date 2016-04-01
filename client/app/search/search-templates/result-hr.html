@@ -10,12 +10,12 @@
 
 		<div class="person-info col-md-10 col-xs-12">
 			<span class="pull-right">
-				{{result.fields.date[0]|date:'MMMM dd, yyyy'}}
+				{{result.fields.creationdate[0]|date:'MMMM dd, yyyy'}}
 			</span>
 			<a ng-if="result.fields.uri[0]" href="{{result.fields.uri[0]}}" target="_blank">
-				<span class="h4">{{result.fields.title[0]}}&nbsp;</span>
+				<span class="h4">{{result.fields.filename[0]}}&nbsp;</span>
 			</a>
-			<h4 ng-if="!result.fields.uri[0]">{{result.fields.title[0]}}&nbsp;</h4>
+			<h4 ng-if="!result.fields.uri[0]">{{result.fields.filename[0]}}&nbsp;</h4>
 			<h5>{{result.fields.description_s[0]}}</h5>
 			<h5 ng-bind-html="result.fields.teaser[0]"></h5>
 
@@ -24,13 +24,17 @@
 					<span>Author &nbsp;</span>
 					{{result.fields.author[0]}}
 				</span>
+				<span class="other-info" ng-if="result.fields.type_s[0]">
+					<span>Document Type &nbsp;</span>
+					<i>{{result.fields.type_s[0]}} &nbsp;</i>
+				</span>
+				<span class="other-info" ng-if="result.fields.language[0]">
+					<span>Language &nbsp;</span>
+					<i>{{result.fields.language[0]}} &nbsp;</i>
+				</span>
 				<span class="other-info" ng-if="result.fields.mimetype[0]">
 					<span>Mime Type &nbsp;</span>
 					{{result.fields.mimetype[0]}}
-				</span>
-				<span class="other-info" ng-if="result.fields.keyphrases[0]">
-					<span>Key Phrases &nbsp;</span>
-					<i>{{result.fields.keyphrases[0]}} &nbsp;</i>
 				</span>
 
 			</div>

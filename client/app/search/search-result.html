@@ -20,13 +20,11 @@
   </div>
   <div class="container">
   	<div class="panel panel-default">
-
-  		<div class="panel-body pad-25">
+      <div class="panel-body blank-panel" ng-show = "firstSearch" style="background: url('images/abraaj-empty-search.jpg')" >
+      </div>
+  		<div class="panel-body pad-25 results-panel" ng-show = "!firstSearch">
 
   			<div class="row results-section">
-          <div ng-show = "currentPageItems.length == 0 && firstSearch" class="search-empty" style = "background: url('images/abraaj-empty-search.jpg') no-repeat; height: 345px; margin: -37px -13px; background-size: 100%;" >
-            <!-- <h4 class="text-center">{{blankslateMsg}}</h4> -->
-          </div>
           <!-- ###mobile advanced search drop down### -->
           <div class="clearfix visible-xs adv-search-mobile" style="padding: 0 30px;"
             ng-show = "searchResults.data.facets.length > 0 && queryText">
@@ -113,7 +111,7 @@
           </div>
 
   				<div class="col-lg-9 col-md-9 col-sm-8 results-container">
-            <div ng-show = "currentPageItems.length == 0 && !firstSearch" >
+            <div ng-show = "currentPageItems.length == 0" >
               <h4>{{blankslateMsg}}</h4>
             </div>
 
@@ -126,6 +124,10 @@
   							ng-if="result.fields.table[0] == 'profile'"
   							ng-include="'app/search/search-templates/result-person.html'">
   						</div>
+              <div
+                ng-if="result.fields.table[0] == 'hr'"
+                ng-include="'app/search/search-templates/result-hr.html'">
+              </div>
   						<div
   							ng-if="result.fields.table[0] == 'deal'"
   							ng-include="'app/search/search-templates/result-deal.html'">
