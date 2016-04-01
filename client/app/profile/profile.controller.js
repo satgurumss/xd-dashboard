@@ -105,7 +105,6 @@
 			
 			regionsList.forEach( function(data, i, array){
 				var region = {};
-				debugger;
 				/*region*/
 				if(! _.has(nestedList,data.fields.region_s[0])){
 					console.log("new region" + data.fields.region_s[0])
