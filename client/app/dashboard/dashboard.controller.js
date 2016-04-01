@@ -3,7 +3,7 @@ var clickEvent;
   'use strict';
 
   angular.module('app')
-    .controller('DashboardCtrl', ['$scope', '$http', '$location', 'backendApi', 'loggedInUser', DashboardCtrl])
+    .controller('DashboardCtrl', ['$scope', '$http', '$location', 'backendApi', 'loggedInUser', '$timeout', DashboardCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
         if (isNaN(input)) return input;
@@ -11,7 +11,7 @@ var clickEvent;
       };
     });
 
-  function DashboardCtrl($scope, $http, $location, backendApi, loggedInUser) {
+  function DashboardCtrl($scope, $http, $location, backendApi, loggedInUser, $timeout) {
     $scope.searchbarWidth = "col-xs-12"
     $scope.searchTypeWidth = "col-xs-10"
     $scope.line2 = {};
@@ -23,7 +23,7 @@ var clickEvent;
     var currentUser;
     $scope.bar1 = {};
     $scope.userName = "Administrator"
-    $scope.setColClass = function(widget){
+    $scope.setColClass = function(widget) {
       return widget.mapData ? 'col-md-8 col-sm-12' : 'col-md-4 col-sm-6';
     }
     $scope.init = function() {
@@ -56,35 +56,198 @@ var clickEvent;
       } else
         loggedInUser.logOutUser();
 
-      $scope.valueRange = [0, 100];
+      $scope.valueRange = [0, 10000000];
       $scope.colorRange = ["#F03B20", "#FFEDA0"];
-      $scope.dimension = 300;
-      $scope.mapWidth = 600;
+      $scope.dimension = 600;
+      $scope.mapWidth = 300;
       // $scope.descriptiveText = 'failure %';
-      $scope.countryFillColor = "#aaa";
+      $scope.countryFillColor = "#0079c1";
       $scope.countryBorderColor = "#fff";
-      $scope.worldData = [{
-        "countryCode": "PAK",
-        "value": 100
-      }, {
-        "countryCode": "AFG",
-        "value": 10
-      }, {
-        "countryCode": "USA",
-        "value": 99
-      }, {
-        "countryCode": "CAN",
-        "value": 50
-      }, {
-        "countryCode": "ISR",
-        "value": 2
-      }, {
-        "countryCode": "NLD",
-        "value": 30
-      }];
+
+      $scope.isoCountries = {
+        "Afghanistan": "AFG",
+        "Albania": "ALB",
+        "Algeria": "DZA",
+        "Angola": "AGO",
+        "Antarctica": "ATA",
+        "Argentina": "ARG",
+        "Armenia": "ARM",
+        "Australia": "AUS",
+        "Austria": "AUT",
+        "Azerbaijan": "AZE",
+        "Bangladesh": "BGD",
+        "Belarus": "BLR",
+        "Belgium": "BEL",
+        "Belize": "BLZ",
+        "Benin": "BEN",
+        "Bhutan": "BTN",
+        "Bolivia": "BOL",
+        "Bosnia and Herzegovina": "BIH",
+        "Botswana": "BWA",
+        "Brazil": "BRA",
+        "Brunei": "BRN",
+        "Bulgaria": "BGR",
+        "Burkina Faso": "BFA",
+        "Burundi": "BDI",
+        "Cambodia": "KHM",
+        "Cameroon": "CMR",
+        "Canada": "CAN",
+        "Central African Republic": "CAF",
+        "Chad": "TCD",
+        "Chile": "CHL",
+        "China": "CHN",
+        "Colombia": "COL",
+        "Costa Rica": "CRI",
+        "Croatia": "HRV",
+        "Cuba": "CUB",
+        "Cyprus": "CYP",
+        "Czech Republic": "CZE",
+        "Democratic Republic of the Congo": "COD",
+        "Denmark": "DNK",
+        "Djibouti": "DJI",
+        "Dominican Republic": "DOM",
+        "East Timor": "TLS",
+        "Ecuador": "ECU",
+        "Egypt": "EGY",
+        "El Salvador": "SLV",
+        "Equatorial Guinea": "GNQ",
+        "Eritrea": "ERI",
+        "Estonia": "EST",
+        "Ethiopia": "ETH",
+        "Falkland Islands": "FLK",
+        "Fiji": "FJI",
+        "Finland": "FIN",
+        "France": "FRA",
+        "French Southern and Antarctic Lands": "ATF",
+        "Gabon": "GAB",
+        "Gambia": "GMB",
+        "Georgia": "GEO",
+        "Germany": "DEU",
+        "Ghana": "GHA",
+        "Greece": "GRC",
+        "Greenland": "GRL",
+        "Guatemala": "GTM",
+        "Guinea": "GIN",
+        "Guinea Bissau": "GNB",
+        "Guyana": "GUY",
+        "Haiti": "HTI",
+        "Honduras": "HND",
+        "Hungary": "HUN",
+        "Iceland": "ISL",
+        "India": "IND",
+        "Indonesia": "IDN",
+        "Iran": "IRN",
+        "Iraq": "IRQ",
+        "Ireland": "IRL",
+        "Israel": "ISR",
+        "Italy": "ITA",
+        "Ivory Coast": "CIV",
+        "Jamaica": "JAM",
+        "Japan": "JPN",
+        "Jordan": "JOR",
+        "Kazakhstan": "KAZ",
+        "Kenya": "KEN",
+        "Kosovo": "-99",
+        "Kuwait": "KWT",
+        "Kyrgyzstan": "KGZ",
+        "Laos": "LAO",
+        "Latvia": "LVA",
+        "Lebanon": "LBN",
+        "Lesotho": "LSO",
+        "Liberia": "LBR",
+        "Libya": "LBY",
+        "Lithuania": "LTU",
+        "Luxembourg": "LUX",
+        "Macedonia": "MKD",
+        "Madagascar": "MDG",
+        "Malawi": "MWI",
+        "Malaysia": "MYS",
+        "Mali": "MLI",
+        "Mauritania": "MRT",
+        "Mexico": "MEX",
+        "Moldova": "MDA",
+        "Mongolia": "MNG",
+        "Montenegro": "MNE",
+        "Morocco": "MAR",
+        "Mozambique": "MOZ",
+        "Myanmar": "MMR",
+        "Namibia": "NAM",
+        "Nepal": "NPL",
+        "Netherlands": "NLD",
+        "New Caledonia": "NCL",
+        "New Zealand": "NZL",
+        "Nicaragua": "NIC",
+        "Niger": "NER",
+        "Nigeria": "NGA",
+        "North Korea": "PRK",
+        "Northern Cyprus": "-99",
+        "Norway": "NOR",
+        "Oman": "OMN",
+        "Pakistan": "PAK",
+        "Panama": "PAN",
+        "Papua New Guinea": "PNG",
+        "Paraguay": "PRY",
+        "Peru": "PER",
+        "Philippines": "PHL",
+        "Poland": "POL",
+        "Portugal": "PRT",
+        "Puerto Rico": "PRI",
+        "Qatar": "QAT",
+        "Republic of Serbia": "SRB",
+        "Republic of the Congo": "COG",
+        "Romania": "ROU",
+        "Russia": "RUS",
+        "Rwanda": "RWA",
+        "Saudi Arabia": "SAU",
+        "Senegal": "SEN",
+        "Sierra Leone": "SLE",
+        "Slovakia": "SVK",
+        "Slovenia": "SVN",
+        "Solomon Islands": "SLB",
+        "Somalia": "SOM",
+        "Somaliland": "-99",
+        "South Africa": "ZAF",
+        "South Korea": "KOR",
+        "South Sudan": "SDS",
+        "Spain": "ESP",
+        "Sri Lanka": "LKA",
+        "Sudan": "SDN",
+        "Suriname": "SUR",
+        "Swaziland": "SWZ",
+        "Sweden": "SWE",
+        "Switzerland": "CHE",
+        "Syria": "SYR",
+        "Taiwan": "TWN",
+        "Tajikistan": "TJK",
+        "Thailand": "THA",
+        "The Bahamas": "BHS",
+        "Togo": "TGO",
+        "Trinidad and Tobago": "TTO",
+        "Tunisia": "TUN",
+        "Turkey": "TUR",
+        "Turkmenistan": "TKM",
+        "Uganda": "UGA",
+        "Ukraine": "UKR",
+        "United Arab Emirates": "ARE",
+        "United Kingdom": "GBR",
+        "United Republic of Tanzania": "TZA",
+        "United States of America": "USA",
+        "Uruguay": "URY",
+        "Uzbekistan": "UZB",
+        "Vanuatu": "VUT",
+        "Venezuela": "VEN",
+        "Vietnam": "VNM",
+        "West Bank": "PSE",
+        "Western Sahara": "-99",
+        "Yemen": "YEM",
+        "Zambia": "ZMB",
+        "Zimbabwe": "ZWE"
+      };
+
       $scope.widgets = [{
         title: "My Deals",
         iconUrl: "images/icons/deals.png",
+        smallIconUrl: "images/icons-small/icon_deals.png",
         searches: [],
         isHide: false,
         query: {
@@ -96,6 +259,7 @@ var clickEvent;
       }, {
         title: "My Investments",
         iconUrl: "images/icons/investment.png",
+        smallIconUrl: "images/icons-small/icon_investment.png",
         searches: [],
         isHide: false,
         query: {
@@ -107,6 +271,7 @@ var clickEvent;
       }, {
         title: "My Region",
         iconUrl: "images/icons/location.png",
+        smallIconUrl: "images/icons-small/icon_location.png",
         searches: [],
         isHide: false,
         query: {
@@ -118,44 +283,67 @@ var clickEvent;
       }, {
         title: "MAP",
         iconUrl: "images/icons/icon_map.png",
+        smallIconUrl: "images/icons-small/icon_map.png",
         isHide: false,
+        dealTypes: [{
+          'label': 'All Deal Types',
+          'value': 'all'
+        }, {
+          'label': 'Change of Control',
+          'value': 'Change of Control'
+        }, {
+          'label': 'Growth Capital',
+          'value': 'Growth Capital'
+        }, {
+          'label': 'LBO',
+          'value': 'LBO'
+        }, {
+          'label': 'MBO',
+          'value': 'MBO'
+        }, {
+          'label': 'Replacement Capital',
+          'value': 'Replacement Capital'
+        }],
+        selectedDealType: {
+          'label': 'All Deal Types',
+          'value': 'all'
+        },
+        metrics: [{
+          'label': 'Total Investment',
+          'value': 'total_investment_d'
+        }, {
+          'label': 'Number of Employees',
+          'value': 'number_of_employees_i'
+        }],
+        selectedMetric: {
+          'label': 'Total Investment',
+          'value': 'total_investment_d'
+        },
         mapData: {
-          valueRange: [0, 100],
-          colorRange: ["#F03B20", "#FFEDA0"],
-          dimension: 1000,
-          mapWidth: 1000,
+          valueRange: [0, 10000],
+          colorRange: ["#C4D3BF", "#F56505"],
+          dimension: 1400,
+          mapWidth: 800,
           // descriptiveText: 'failure %',
           countryFillColor: "#aaa",
           countryBorderColor: "#fff",
-          worldData: [{
-            "countryCode": "PAK",
-            "value": 100
-          }, {
-            "countryCode": "AFG",
-            "value": 10
-          }, {
-            "countryCode": "USA",
-            "value": 99
-          }, {
-            "countryCode": "CAN",
-            "value": 50
-          }, {
-            "countryCode": "ISR",
-            "value": 2
-          }, {
-            "countryCode": "NLD",
-            "value": 30
-          }]
+          worldData: []
         },
         query: {
-          "workflow": "myDeals",
-          "query": "*",
-          "username": $scope.userName,
-          "realm": "Anonymous"
+          "workflow": "abraajSearch",
+          "query": "table:deal",
+          "username": $scope.name_s,
+          "realm": "Anonymous",
+          "rows": 100,
+          "queryLanguage": "simple",
+          "restParams": {
+            "highlight": ["true"]
+          }
         }
       }, {
         title: "My Interests",
         iconUrl: "images/icons/interests.png",
+        smallIconUrl: "images/icons-small/icon_interests.png",
         searches: [],
         isHide: false,
         query: {
@@ -167,6 +355,7 @@ var clickEvent;
       }, {
         title: "Recent Deals",
         iconUrl: "images/icons/recent-deals.png",
+        smallIconUrl: "images/icons-small/icon_deals.png",
         searches: [],
         isHide: false,
         query: {
@@ -178,6 +367,7 @@ var clickEvent;
       }, {
         title: "Recent Investments",
         iconUrl: "images/icons/investment_recent.png",
+        smallIconUrl: "images/icons-small/icon_investment.png",
         searches: [],
         isHide: false,
         query: {
@@ -189,6 +379,7 @@ var clickEvent;
       }, {
         title: "Recent News",
         iconUrl: "images/icons/recent-news.png",
+        smallIconUrl: "images/icons-small/icon_news.png",
         searches: [],
         isHide: false,
         query: {
@@ -200,6 +391,7 @@ var clickEvent;
       }, {
         title: "Recent Documents",
         iconUrl: "images/icons/documents-recent.png",
+        smallIconUrl: "images/icons-small/icon_documents.png",
         searches: [],
         isHide: false,
         query: {
@@ -211,15 +403,16 @@ var clickEvent;
       }, {
         title: "Total Investments",
         iconUrl: "images/icons/equity.png",
+        smallIconUrl: "images/icons-small/icon_equity.png",
         searches: [],
         options: [{
           value: "deal_type_s",
           label: "Deal Type"
         }, {
-          value: "deal_stage_s",
+          value: "stage_s",
           label: "Deal Stage"
         }, {
-          value: "deal_status_s",
+          value: "status_s",
           label: "Deal Status"
         }, {
           value: "region_s",
@@ -246,15 +439,16 @@ var clickEvent;
       }, {
         title: "Enterprise Value",
         iconUrl: "images/icons/values.png",
+        smallIconUrl: "images/icons-small/icon_values.png",
         searches: [],
         options: [{
           value: "deal_type_s",
           label: "Deal Type"
         }, {
-          value: "deal_stage_s",
+          value: "stage_s",
           label: "Deal Stage"
         }, {
-          value: "deal_status_s",
+          value: "status_s",
           label: "Deal Status"
         }, {
           value: "region_s",
@@ -281,15 +475,16 @@ var clickEvent;
       }, {
         title: "Employees",
         iconUrl: "images/icons/employe-icon.png",
+        smallIconUrl: "images/icons-small/icon_employee.png",
         searches: [],
         options: [{
           value: "deal_type_s",
           label: "Deal Type"
         }, {
-          value: "deal_stage_s",
+          value: "stage_s",
           label: "Deal Stage"
         }, {
-          value: "deal_status_s",
+          value: "status_s",
           label: "Deal Status"
         }, {
           value: "region_s",
@@ -316,6 +511,7 @@ var clickEvent;
       }, {
         title: "Total Investments",
         iconUrl: "images/icons/equity.png",
+        smallIconUrl: "images/icons-small/icon_equity.png",
         searches: [],
         options: [{
           value: "fund_s",
@@ -345,6 +541,7 @@ var clickEvent;
       }, {
         title: "Carrying Value",
         iconUrl: "images/icons/value2.png",
+        smallIconUrl: "images/icons-small/icon_value2.png",
         searches: [],
         options: [{
           value: "fund_s",
@@ -374,6 +571,7 @@ var clickEvent;
       }, {
         title: "Equity Value",
         iconUrl: "images/icons/equity.png",
+        smallIconUrl: "images/icons-small/icon_equity.png",
         searches: [],
         options: [{
           value: "fund_s",
@@ -400,7 +598,48 @@ var clickEvent;
             "grouping": ["fund_s"]
           }
         }
+      }, {
+        title: "Total Investments Bar Chart",
+        iconUrl: "images/icons/equity.png",
+        smallIconUrl: "images/icons-small/icon_equity.png",
+        searches: [],
+        isHide: false,
+        showBar: true,
+        query: {
+          "workflow": "investmentReport",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous",
+          "restParams": {
+            "metric": ["total_investment_d"],
+            "grouping": ["fund_s"]
+          }
+        }
       }];
+
+      $scope.chartConfig = {
+        options: {
+            chart: {
+                type: 'bar'
+            }
+        },
+        series: [{
+            name: 'counts',
+            data: []
+        }],
+        title: {
+            text: 'Funds'
+        },
+        xAxis: {
+        categories: []
+        },
+        size: {
+          width: 400,
+          height: 300
+        },
+
+        loading: false
+    }
 
       var dealReport = {
         "workflow": "dealReport",
@@ -420,10 +659,83 @@ var clickEvent;
         backendApi.search(widget.query).then(function(res) {
           // console.log(widget.title, res.data.documents);
           widget.data = res.data.documents;
+          if (widget.mapData) {
+            $scope.formatMapData(widget);
+          }
+
+          if(widget.showBar) {
+            $scope.setBarData(widget);
+          }
           // console.log(res);
         });
       })
 
+    }
+
+    $scope.setBarData = function (widget) {
+      console.log('bar data');
+      console.log(widget.data);
+      widget.data.forEach(function(data) {
+        $scope.chartConfig.series[0].data.push(data.fields.count);
+        $scope.chartConfig.xAxis.categories.push(data.fields.label[0])
+      });
+      // angular.element('tspan')[0].innerHTML('Funds');
+    }
+
+    $scope.mapOptionChanged = function(widget) {
+      console.log("----map option changed----");
+      console.log(widget);
+
+      $scope.showMap = false;
+      widget.mapData.worldData.forEach(function(country) {
+        country.value = 0;
+        widget.data.forEach(function(data, index, array) {
+          if(country.countryCode === $scope.getCountryCode(data.fields.country_s) && (data.fields.deal_type_s[0] === widget.selectedDealType.value || widget.selectedDealType.value === 'all' )) {
+            country.value = typeof data.fields[widget.selectedMetric.value] !== 'undefined' ?  country.value + data.fields[widget.selectedMetric.value][0] : country.value;
+          }
+        })
+      });
+      console.log(widget);
+      $timeout(function() {
+        $scope.showMap = true;
+    }, 200);
+    }
+
+    $scope.formatMapData = function(widget) {
+      console.log("----map data----");
+      console.log(widget);
+
+      widget.data.forEach(function(data, index, array) {
+        widget.mapData.worldData.push({
+          'countryCode': $scope.getCountryCode(data.fields.country_s),
+          'value': 0
+        });
+      });
+
+      widget.mapData.worldData = _.uniq(widget.mapData.worldData, function(item, key, a) {
+        return item.countryCode;
+      });
+
+      $scope.mapOptionChanged(widget);
+
+      // widget.data.forEach(function(data, index, array) {
+      //   widget.mapData.worldData.forEach(function(country) {
+      //     //if (data.fields.deal_type_s === 'MBO') {
+      //     if(country.countryCode === $scope.getCountryCode(data.fields.country_s)) {
+      //       country.value = country.value + data.fields['total_investment_d'][0];
+      //     }
+      //   })
+      // });
+      // $scope.showMap = true;
+      console.log(widget.mapData);
+    }
+
+    $scope.getCountryCode = function(country) {
+      if ($scope.isoCountries.hasOwnProperty(country)) {
+        return $scope.isoCountries[country];
+      } else {
+        return country;
+      }
     }
 
     $scope.groupingChanged = function(widget) {
@@ -827,3 +1139,15 @@ angular.module('app')
       };
     }
   ]);
+
+Array.prototype.getUnique = function(){
+   var u = {}, a = [];
+   for(var i = 0, l = this.length; i < l; ++i){
+      if(u.hasOwnProperty(this[i])) {
+         continue;
+      }
+      a.push(this[i]);
+      u[this[i]] = 1;
+   }
+   return a;
+}
