@@ -401,14 +401,12 @@ body {
 }
 
 
-
 .pl-0 {
   padding-left: 0;
 }
 .pr-0 {
   padding-right: 0;
 }
-
 
 
 .page {
@@ -459,7 +457,7 @@ body {
 .search-panel .btn-widget {
     border-radius: 50%;
     padding: 0px;
-    background: #66B5D7;
+    background: #FFF;
     color: #FFF;
     height: 37px;
     line-height: 43px;
@@ -469,6 +467,7 @@ body {
 }
 .search-panel .btn-widget .fa {
   font-size: 22px;
+  color: #0079c1;
 }
 
 .widget-hading .ui-select {
@@ -488,10 +487,6 @@ body {
 }
 .dropdown-menu {
   left: -323px;
-}
-.results-container {
-    border: 0;
-    border-left: 1px solid #DCDCDC;
 }
 .result-title {
     font-size: 18px;
@@ -558,11 +553,11 @@ body {
   .header-container > .top-header .top-nav .nav-left > li > a {
     padding: 15px 9px;
   }
-  .pb-15{
-    padding-bottom: 15px;
-  }
   .pr-15 {
     padding-right: 15px;
+  }
+  .page-search .container {
+    margin: 0 -22px;
   }
 }
 
@@ -638,6 +633,14 @@ p.search-description {
     position: relative;
 }
 
+.results-container {
+    border: 0;
+    border-left: 0;
+    margin-top: -10px;
+    box-shadow: -5px 0 7px -5px #333;
+}
+
+
 @media only screen and (max-width: 768px) {
   /*.person-info {
     padding-left: 0;
@@ -652,6 +655,12 @@ p.search-description {
     border-right: 0;
     border-bottom: 0;
   }
+  .results-container {
+  border: 0;
+  border-left: 0;
+  margin-top: 10px;
+  box-shadow: none;
+}
 }
 /*
 @media only screen and (max-width: 767px) {
@@ -701,7 +710,17 @@ p.search-description {
   -webkit-transition:color .2s ease-out, background .5s ease-in;
   transition:color .2s ease-out, background .5s ease-in;
 }
-.widget-single-row:hover {
+
+.table-striped > tbody > tr {
+  -o-transition:color .2s ease-out, background .5s ease-in;
+  -ms-transition:color .2s ease-out, background .5s ease-in;
+  -moz-transition:color .2s ease-out, background .5s ease-in;
+  -webkit-transition:color .2s ease-out, background .5s ease-in;
+  transition:color .2s ease-out, background .5s ease-in;
+}
+
+.widget-single-row:hover,
+.table-striped > tbody > tr:hover {
   color: #333;
   background-color: #EFF6FF;
 }
@@ -791,13 +810,6 @@ ul.dropdown-menu {
     background-color: #66B5D7;
 }
 
-.search-result > div {
-  box-shadow: 0 9px 10px -9px #ccc;
-}
-.search-result hr {
-    border-top: 1px solid transparent;
-}
-
 .pagination > li > a,
 .pagination > li > span {
   margin-left: 2px;
@@ -865,3 +877,60 @@ table {
 .table-nested .opened > .children {
   display: table-row;
 }
+
+ul.dropdown-menu {
+  padding: 0;
+}
+ul.dropdown-menu li a {
+  color: #555;
+  border-bottom: 1px dotted #66B5D7 !important;
+  padding: 7px 10px;
+}
+ul.dropdown-menu li:last-child a {
+  border-bottom: 0 !important;
+}
+
+.page-profile .profile-img {
+    float: left;
+}
+.page-profile .profile-header {
+  background: url("../images/background/8.jpg") no-repeat center center fixed;
+}
+.profile-header.custom-profile-header {
+  padding: 30px 30px 30px;
+  margin: 0 0 15px;
+}
+.profile-social h1 { margin-top: 0px; }
+
+.profile-social .profile-icon {
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+}
+.profile-social .profile-icon.fs-16 {
+  font-size: 16px;
+}
+.profile-social .profile-icon.fs-18 {
+  font-size: 18px;
+}
+.page-profile .btn-icon-lg-alt i {
+    line-height: 50px;
+}
+.page-profile .mini-box .btn-icon {
+    font-size: 24px;
+}
+.page-profile .btn-icon-lg-alt {
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+}
+.page-profile .mini-box .bg-info {
+    background-color: #0079c1;
+}
+
+@media only screen and (max-width: 760px) {
+  .pb-15{
+    padding-bottom: 15px;
+  }
+}
+

@@ -19,14 +19,11 @@
     </div>
   </div>
   <div class="container">
-  	<div class="panel panel-default">
+    <div class="panel panel-default">
+      <div class="panel-body blank-panel search-empty-img" ng-show = "firstSearch"> </div>
+      <div class="panel-body pad-25 results-panel" ng-show = "!firstSearch">
 
-  		<div class="panel-body pad-25">
-
-  			<div class="row results-section">
-          <div ng-show = "currentPageItems.length == 0 && firstSearch" >
-            <h4 class="text-center">{{blankslateMsg}}</h4>
-          </div>
+        <div class="row results-section">
           <!-- ###mobile advanced search drop down### -->
           <div class="clearfix visible-xs adv-search-mobile" style="padding: 0 30px;"
             ng-show = "searchResults.data.facets.length > 0 && queryText">
@@ -112,35 +109,35 @@
             </div>
           </div>
 
-  				<div class="col-lg-9 col-md-9 col-sm-8 results-container">
-            <div ng-show = "currentPageItems.length == 0 && !firstSearch" >
+          <div class="col-lg-9 col-md-9 col-sm-8 results-container">
+            <div ng-show = "currentPageItems.length == 0" >
               <h4>{{blankslateMsg}}</h4>
             </div>
 
             <div class="search-result row pad-l-0" data-ng-repeat="result in currentPageItems">
               <div
                 ng-if="result.fields.table[0] == 'news' "
-  							ng-include="'app/search/search-templates/result-news.html'">
-  						</div>
-  						<div
-  							ng-if="result.fields.table[0] == 'profile'"
-  							ng-include="'app/search/search-templates/result-person.html'">
-  						</div>
-  						<div
-  							ng-if="result.fields.table[0] == 'deal'"
-  							ng-include="'app/search/search-templates/result-deal.html'">
-  						</div>
-  						<div
-  							ng-if="result.fields.table[0] == 'km'"
-  							ng-include="'app/search/search-templates/result-knowledge.html'">
-  						</div>
+                ng-include="'app/search/search-templates/result-news.html'">
+              </div>
+              <div
+                ng-if="result.fields.table[0] == 'profile'"
+                ng-include="'app/search/search-templates/result-person.html'">
+              </div>
+              <div
+                ng-if="result.fields.table[0] == 'deal'"
+                ng-include="'app/search/search-templates/result-deal.html'">
+              </div>
+              <div
+                ng-if="result.fields.table[0] == 'km'"
+                ng-include="'app/search/search-templates/result-knowledge.html'">
+              </div>
               <div
                 ng-if='result.fields.table[0] == "investment"'
                 ng-include="'app/search/search-templates/result-investment.html'">
               </div>
 
-  						<!--result row end-->
-  					</div>
+              <!--result row end-->
+            </div>
 
             <div class="col-md-12 text-right" ng-show="currentPageItems.length > 0">
               <uib-pagination class="pagination-sm"
@@ -153,14 +150,37 @@
                 boundary-links="true">
               </uib-pagination>
             </div>
-  				</div>
-  			</div>
-  		</div>
-  	</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <style type="text/css">
 
+  @media screen and (min-width: 1200px) and (max-width: 1600px) {
+
+  .page-search .search-section .col-lg-2 {
+    width:  13%;
+  }
+
+  .page-search .search-section .col-lg-offset-2 {
+      margin-left: 20.66667%;
+  }
+
+}
+
+
+.search-empty-img {
+  background: url('images/abraaj-empty-search.jpg') no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+@media screen and (min-width: 768px) {
+  .search-empty-img {
+    background-position: 29% center;
+  }
+}
 
 </style>
