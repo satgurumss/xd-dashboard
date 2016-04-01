@@ -35,6 +35,10 @@ var clickEvent;
         $scope.userName = currentUser.account_s[0];
         $scope.name_s = currentUser.name_s[0]
 
+        $scope.qBoost = loggedInUser.getQBoost().split(",");
+        console.log('qboost:: ', $scope.qBoost);
+        // $scope.qBoost = loggedInUser.getQBoost().then(function());
+
         backendApi.search(dealReport).then(function(res) {
           console.log("report data");
           console.log(res);
@@ -254,7 +258,10 @@ var clickEvent;
           "workflow": "myDeals",
           "query": "*",
           "username": $scope.name_s,
-          "realm": "Anonymous"
+          "realm": "Anonymous",
+          "restParams": {
+            "q.boost": $scope.qBoost
+          }
         }
       }, {
         title: "My Investments",
@@ -266,7 +273,10 @@ var clickEvent;
           "workflow": "myInvestments",
           "query": "*",
           "username": $scope.name_s,
-          "realm": "Anonymous"
+          "realm": "Anonymous",
+          "restParams": {
+            "q.boost": $scope.qBoost
+          }
         }
       }, {
         title: "My Region",
@@ -278,7 +288,10 @@ var clickEvent;
           "workflow": "myRegion",
           "query": "*",
           "username": $scope.userName,
-          "realm": "Anonymous"
+          "realm": "Anonymous",
+          "restParams": {
+            "q.boost": $scope.qBoost
+          }
         }
       }, {
         title: "MAP",
@@ -314,6 +327,15 @@ var clickEvent;
         }, {
           'label': 'Number of Employees',
           'value': 'number_of_employees_i'
+        }, {
+          'label': 'Enterprise Value',
+          'value': 'enterprise_value_d'
+        }, {
+          'label': 'Coinvestment Ammount',
+          'value': 'available_coinvestment_amount_d'
+        }, {
+          'label': 'Acquisition Debt',
+          'value': 'acquisition_debt_d'
         }],
         selectedMetric: {
           'label': 'Total Investment',
@@ -337,7 +359,8 @@ var clickEvent;
           "rows": 100,
           "queryLanguage": "simple",
           "restParams": {
-            "highlight": ["true"]
+            "highlight": ["true"],
+            "q.boost": $scope.qBoost
           }
         }
       }, {
@@ -350,7 +373,66 @@ var clickEvent;
           "workflow": "myInterests",
           "query": "*",
           "username": $scope.userName,
-          "realm": "Anonymous"
+          "realm": "Anonymous",
+          "restParams": {
+            "q.boost": $scope.qBoost
+          }
+        }
+      }, {
+        title: "Carrying Value Bar Chart",
+        iconUrl: "images/icons/value2.png",
+        smallIconUrl: "images/icons-small/icon_value2.png",
+        searches: [],
+        showBar: true,
+        chartOptions: [{
+          value: "SUM",
+          label: "SUM"
+        }, {
+          value: "AVG",
+          label: "AVERAGE"
+        }, {
+          value: "count",
+          label: "count"
+        }],
+        selectedOption: {
+          value: "SUM",
+          label: "SUM"
+        },
+        isHide: false,
+        query: {
+          "workflow": "investmentReport",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous",
+          "restParams": {
+            "metric": ["carrying_value_d"],
+            "grouping": ["fund_s"],
+            "q.boost": $scope.qBoost
+          }
+        },
+        chartConfig: {
+          options: {
+            chart: {
+               type: 'bar'
+            }
+          },
+          cursor: 'pointer',
+          series: [{
+            name: 'count',
+            data: []
+          }],
+          title: {
+            text: 'Funds'
+          },
+          xAxis: {
+            categories: []
+          },
+          size: {
+            width: 400,
+            height: 300
+          },
+
+          loading: false
         }
       }, {
         title: "Recent Deals",
@@ -362,7 +444,10 @@ var clickEvent;
           "workflow": "recentDeals",
           "query": "*",
           "username": $scope.userName,
-          "realm": "Anonymous"
+          "realm": "Anonymous",
+          "restParams": {
+            "q.boost": $scope.qBoost
+          }
         }
       }, {
         title: "Recent Investments",
@@ -374,7 +459,10 @@ var clickEvent;
           "workflow": "recentInvestments",
           "query": "*",
           "username": $scope.userName,
-          "realm": "Anonymous"
+          "realm": "Anonymous",
+          "restParams": {
+            "q.boost": $scope.qBoost
+          }
         }
       }, {
         title: "Recent News",
@@ -386,7 +474,10 @@ var clickEvent;
           "workflow": "recentNews",
           "query": "*",
           "username": $scope.userName,
-          "realm": "Anonymous"
+          "realm": "Anonymous",
+          "restParams": {
+            "q.boost": $scope.qBoost
+          }
         }
       }, {
         title: "Recent Documents",
@@ -398,7 +489,68 @@ var clickEvent;
           "workflow": "recentDocuments",
           "query": "*",
           "username": $scope.userName,
-          "realm": "Anonymous"
+          "realm": "Anonymous",
+          "restParams": {
+            "q.boost": $scope.qBoost
+          }
+        }
+      }, {
+        title: "Equity Value Pie Chart (fund)",
+        iconUrl: "images/widgets/placeholder.png",
+        smallIconUrl: "images/icons-small/icon_pie.png",
+        searches: [],
+        showBar: true,
+        showPie: true,
+        chartOptions: [{
+          value: "SUM",
+          label: "SUM"
+        }, {
+          value: "AVG",
+          label: "AVERAGE"
+        }, {
+          value: "count",
+          label: "count"
+        }],
+        selectedOption: {
+          value: "SUM",
+          label: "SUM"
+        },
+        isHide: false,
+        query: {
+          "workflow": "investmentReport",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous",
+          "restParams": {
+            "metric": ["equity_value_d"],
+            "grouping": ["fund_s"],
+            "q.boost": $scope.qBoost
+          }
+        },
+        chartConfig: {
+          options: {
+            chart: {
+              type: 'pie'
+            },
+            colors: ['#E03274', '#4D7AF3', '#792E6D', '#689477']
+          },
+          series: [{
+            name: 'count',
+            data: []
+          }],
+          sliced: true,
+          title: {
+            text: ''
+          },
+          xAxis: {
+            categories: []
+          },
+          size: {
+            width: 450,
+            height: 300
+          },
+
+          loading: false
         }
       }, {
         title: "Total Investments",
@@ -433,7 +585,8 @@ var clickEvent;
           "realm": "Anonymous",
           "restParams": {
             "metric": ["total_investment_d"],
-            "grouping": ["deal_type_s"]
+            "grouping": ["deal_type_s"],
+            "q.boost": $scope.qBoost
           }
         }
       }, {
@@ -469,7 +622,8 @@ var clickEvent;
           "realm": "Anonymous",
           "restParams": {
             "metric": ["enterprise_value_d"],
-            "grouping": ["deal_type_s"]
+            "grouping": ["deal_type_s"],
+            "q.boost": $scope.qBoost
           }
         }
       }, {
@@ -505,7 +659,8 @@ var clickEvent;
           "realm": "Anonymous",
           "restParams": {
             "metric": ["number_of_employees_i"],
-            "grouping": ["deal_type_s"]
+            "grouping": ["deal_type_s"],
+            "q.boost": $scope.qBoost
           }
         }
       }, {
@@ -535,7 +690,8 @@ var clickEvent;
           "realm": "Anonymous",
           "restParams": {
             "metric": ["total_investment_d"],
-            "grouping": ["fund_s"]
+            "grouping": ["fund_s"],
+            "q.boost": $scope.qBoost
           }
         }
       }, {
@@ -565,7 +721,8 @@ var clickEvent;
           "realm": "Anonymous",
           "restParams": {
             "metric": ["carrying_value_d"],
-            "grouping": ["fund_s"]
+            "grouping": ["fund_s"],
+            "q.boost": $scope.qBoost
           }
         }
       }, {
@@ -595,52 +752,50 @@ var clickEvent;
           "realm": "Anonymous",
           "restParams": {
             "metric": ["equity_value_d"],
-            "grouping": ["fund_s"]
-          }
-        }
-      }, {
-        title: "Total Investments Bar Chart",
-        iconUrl: "images/icons/equity.png",
-        smallIconUrl: "images/icons-small/icon_equity.png",
-        searches: [],
-        isHide: false,
-        showBar: true,
-        query: {
-          "workflow": "investmentReport",
-          "query": "*",
-          "username": $scope.userName,
-          "realm": "Anonymous",
-          "restParams": {
-            "metric": ["total_investment_d"],
-            "grouping": ["fund_s"]
+            "grouping": ["fund_s"],
+            "q.boost": $scope.qBoost
           }
         }
       }];
 
-      $scope.chartConfig = {
-        options: {
-            chart: {
-                type: 'bar'
-            }
-        },
-        series: [{
-            name: 'count',
-            data: []
-        }],
-        title: {
-            text: 'Funds'
-        },
-        xAxis: {
-        categories: []
-        },
-        size: {
-          width: 400,
-          height: 300
-        },
+      // $scope.chartConfig = {
+      //   options: {
+      //     chart: {
+      //       type: 'bar'
+      //     },
+      //     colors: ['red'],
+      //   },
+      //   series: [{
+      //     name: 'count',
+      //     data: []
+      //   }],
+      //   title: {
+      //     text: 'Funds'
+      //   },
+      //   xAxis: {
+      //     categories: []
+      //   },
+      //   size: {
+      //     width: 400,
+      //     height: 300
+      //   },
 
-        loading: false
-    }
+      //   loading: false
+      // }
 
+
+      $scope.chartOptionChanged = function (widget) {
+        console.log("===chart option changed===");
+        console.log(widget);
+        if (widget.showBar && !widget.showPie) {
+          $scope.setBarData(widget);
+        }
+
+        if(widget.showBar && widget.showPie) {
+          $scope.setPieData(widget);
+        }
+        // $scope.chartConfig.series = [];
+      }
       var dealReport = {
         "workflow": "dealReport",
         "query": "*",
@@ -663,8 +818,12 @@ var clickEvent;
             $scope.formatMapData(widget);
           }
 
-          if(widget.showBar) {
+          if (widget.showBar && !widget.showPie) {
             $scope.setBarData(widget);
+          }
+
+          if(widget.showBar && widget.showPie) {
+            $scope.setPieData(widget);
           }
           // console.log(res);
         });
@@ -672,12 +831,29 @@ var clickEvent;
 
     }
 
-    $scope.setBarData = function (widget) {
-      console.log('bar data');
-      console.log(widget.data);
+    $scope.setPieData = function(widget) {
+      widget.chartConfig.series[0].data = [];
+
+      widget.chartConfig.series[0].name = widget.selectedOption.label;
+      console.log('pie data');
+      console.log(widget);
       widget.data.forEach(function(data) {
-        $scope.chartConfig.series[0].data.push(data.fields.count);
-        $scope.chartConfig.xAxis.categories.push(data.fields.label[0])
+        var pieData = [data.fields.label[0], data.fields[widget.selectedOption.value][0]]
+        widget.chartConfig.series[0].data.push(pieData);
+      });
+      // angular.element('tspan')[0].innerHTML('Funds');
+    }
+
+    $scope.setBarData = function(widget) {
+      widget.chartConfig.series[0].data = [];
+
+      widget.chartConfig.series[0].name = widget.selectedOption.label;
+      console.log('bar data');
+      console.log(widget);
+      widget.data.forEach(function(data) {
+        // var pieData = [data.fields.label[0], data.fields[widget.selectedOption.value]]
+        widget.chartConfig.series[0].data.push(data.fields[widget.selectedOption.value]);
+        widget.chartConfig.xAxis.categories.push(data.fields.label[0])
       });
       // angular.element('tspan')[0].innerHTML('Funds');
     }
@@ -690,15 +866,15 @@ var clickEvent;
       widget.mapData.worldData.forEach(function(country) {
         country.value = 0;
         widget.data.forEach(function(data, index, array) {
-          if(country.countryCode === $scope.getCountryCode(data.fields.country_s) && (data.fields.deal_type_s[0] === widget.selectedDealType.value || widget.selectedDealType.value === 'all' )) {
-            country.value = typeof data.fields[widget.selectedMetric.value] !== 'undefined' ?  country.value + data.fields[widget.selectedMetric.value][0] : country.value;
+          if (country.countryCode === $scope.getCountryCode(data.fields.country_s) && (data.fields.deal_type_s[0] === widget.selectedDealType.value || widget.selectedDealType.value === 'all')) {
+            country.value = typeof data.fields[widget.selectedMetric.value] !== 'undefined' ? country.value + data.fields[widget.selectedMetric.value][0] : country.value;
           }
         })
       });
       console.log(widget);
       $timeout(function() {
         $scope.showMap = true;
-    }, 200);
+      }, 200);
     }
 
     $scope.formatMapData = function(widget) {
@@ -1140,14 +1316,15 @@ angular.module('app')
     }
   ]);
 
-Array.prototype.getUnique = function(){
-   var u = {}, a = [];
-   for(var i = 0, l = this.length; i < l; ++i){
-      if(u.hasOwnProperty(this[i])) {
-         continue;
-      }
-      a.push(this[i]);
-      u[this[i]] = 1;
-   }
-   return a;
+Array.prototype.getUnique = function() {
+  var u = {},
+    a = [];
+  for (var i = 0, l = this.length; i < l; ++i) {
+    if (u.hasOwnProperty(this[i])) {
+      continue;
+    }
+    a.push(this[i]);
+    u[this[i]] = 1;
+  }
+  return a;
 }

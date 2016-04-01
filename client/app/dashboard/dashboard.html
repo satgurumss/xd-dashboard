@@ -84,6 +84,11 @@
                 <select ng-options="group as group.label for group in widget.options track by group.value" ng-model="widget.selectedOption" ng-change="groupingChanged(widget)">
                 </select>
               </span>
+              <!-- chart option dropdowns -->
+              <span class="ui-select pull-right" ng-if="widget.chartOptions">
+                <select ng-options="group as group.label for group in widget.chartOptions track by group.value" ng-model="widget.selectedOption" ng-change="chartOptionChanged(widget)">
+                </select>
+              </span>
               <!-- maps dropdowns -->
               <span class="ui-select pull-right" ng-if="widget.mapData">
                 <select ng-options="metric as metric.label for metric in widget.metrics track by metric.value" ng-model="widget.selectedMetric" ng-change="mapOptionChanged(widget)">
@@ -121,7 +126,7 @@
           </div>
         </section>
       </li>
-      <li class="slide search-widget col-md-4 col-sm-6" ng-if = "!pie2.isHide">
+      <!-- <li class="slide search-widget col-md-4 col-sm-6" ng-if = "!pie2.isHide">
         <section class="panel panel-default"  ng-mouseenter="shMenu2=true;" ng-mouseleave="shMenu2=false;">
           <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu2 , 'animated slideOutLeft' : !shMenu2 }" ng-show="shMenu2" >
             <div class="remove" ng-click="removeWidget(pie2);"><i class="fa fa-times"></i></div>
@@ -136,7 +141,7 @@
             </div>
           </div>
         </section>
-      </li>
+      </li> -->
     </ul>
   </div>
 </div>

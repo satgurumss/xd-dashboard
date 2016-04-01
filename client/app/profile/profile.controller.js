@@ -16,13 +16,13 @@
 			console.log("profile init");
 			//use this to get current user
 			$scope.currentUser = loggedInUser.getCurrentUser();
-			
+
 			if (!_.isEmpty($scope.currentUser)) {
 				$scope.currentUser.account_s[0];
 				$scope.regionsList =[]
 				$scope.gicsList = []
 				$scope.selectedQboost = loggedInUser.getQBoost();
-				
+
 				backendApi.getUserProfile($scope.currentUser).then(function(res){
 					$scope.profileInfo = res.data.documents[0].fields;
 					console.log("profile")
@@ -34,7 +34,7 @@
 			} else
 				loggedInUser.logOutUser();
 		}
-		
+
 		$scope.isRegionSelected = function(title){
 			var selected = "\"" +title + "\"~200";
 			return $scope.selectedQboost.indexOf(selected) > 0 ? true : false;
@@ -145,7 +145,7 @@
         $scope.qBoost.splice($scope.qBoost.indexOf(selected), 1);
       }
 
-      loggedInUser.updateQBoost($scope.qBoost); 
+      loggedInUser.updateQBoost($scope.qBoost);
     }
 
 	}
