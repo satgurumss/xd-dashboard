@@ -29,7 +29,8 @@
     "angular-wizard": "^0.6.1",
     "angular-cookies": "~1.5.3",
     "angular-heatmap": "~0.1.202",
-    "angular-map-it": "~0.0.1"
+    "angular-map-it": "~0.0.1",
+    "highcharts-ng": "~0.0.11"
   },
   "devDependencies": {
     "bourbon": "~4.2.0",

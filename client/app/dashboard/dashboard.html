@@ -77,11 +77,16 @@
           </div>
           <div class="panel-container">
             <div class="panel-heading widget-hading">
-              <img src="images/icons-small/icon_deals.png" />
+              <img src="{{widget.smallIconUrl}}" />
               <strong>{{widget.title}}</strong>
               <span class="badge badge-warning">{{widget.data.length}}</span>
               <span class="ui-select pull-right" ng-if="widget.options">
                 <select ng-options="group as group.label for group in widget.options track by group.value" ng-model="widget.selectedOption" ng-change="groupingChanged(widget)">
+                </select>
+              </span>
+              <!-- chart option dropdowns -->
+              <span class="ui-select pull-right" ng-if="widget.chartOptions">
+                <select ng-options="group as group.label for group in widget.chartOptions track by group.value" ng-model="widget.selectedOption" ng-change="chartOptionChanged(widget)">
                 </select>
               </span>
               <!-- maps dropdowns -->
@@ -101,7 +106,9 @@
 
               <div ng-if = "widget.query.workflow === 'dealReport'" class="col-md-12" ng-include="'app/dashboard/templates/deal-report.html'"></div>
 
-              <div ng-if = "widget.query.workflow === 'investmentReport'" class="col-md-12" ng-include="'app/dashboard/templates/investment-report.html'"></div>
+              <div ng-if = "widget.query.workflow === 'investmentReport' && !widget.showBar" class="col-md-12" ng-include="'app/dashboard/templates/investment-report.html'"></div>
+
+              <div ng-if = "widget.query.workflow === 'investmentReport' && widget.showBar" class="col-md-12" ng-include="'app/dashboard/templates/bar.html'"></div>
 
               <div ng-if = "widget.mapData && showMap" class="col-md-12" ng-include="'app/dashboard/templates/map.html'"></div>
 
@@ -119,7 +126,7 @@
           </div>
         </section>
       </li>
-      <li class="slide search-widget col-md-4 col-sm-6" ng-if = "!pie2.isHide">
+      <!-- <li class="slide search-widget col-md-4 col-sm-6" ng-if = "!pie2.isHide">
         <section class="panel panel-default"  ng-mouseenter="shMenu2=true;" ng-mouseleave="shMenu2=false;">
           <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu2 , 'animated slideOutLeft' : !shMenu2 }" ng-show="shMenu2" >
             <div class="remove" ng-click="removeWidget(pie2);"><i class="fa fa-times"></i></div>
@@ -134,7 +141,7 @@
             </div>
           </div>
         </section>
-      </li>
+      </li> -->
     </ul>
   </div>
 </div>

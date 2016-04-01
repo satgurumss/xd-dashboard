@@ -18,6 +18,7 @@
         'ui.calendar',
         'duScroll',
         'mgo-angular-wizard',
+        "highcharts-ng",
 
         // Custom modules
         'app.custom.services',

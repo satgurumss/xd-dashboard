@@ -39,6 +39,10 @@ a {
   color: #0079c1;
 }
 
+.highlight{
+  background-color: #0079c1;
+}
+
 a:hover {
 	cursor: pointer;
   color: #6D8594;
@@ -480,6 +484,7 @@ body {
     padding: 0 10px 0 0;
     min-width: auto;
     font-size: 14px;
+    font-weight: normal;
 }
 .widget-filter-container {
     padding: 15px 15px 10px 15px;
