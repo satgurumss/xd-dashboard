@@ -83,6 +83,15 @@
                 <select ng-options="group as group.label for group in widget.options track by group.value" ng-model="widget.selectedOption" ng-change="groupingChanged(widget)">
                 </select>
               </span>
+              <!-- maps dropdowns -->
+              <span class="ui-select pull-right" ng-if="widget.mapData">
+                <select ng-options="metric as metric.label for metric in widget.metrics track by metric.value" ng-model="widget.selectedMetric" ng-change="mapOptionChanged(widget)">
+                </select>
+              </span>
+              <span class="ui-select pull-right" ng-if="widget.mapData">
+                <select ng-options="deal as deal.label for deal in widget.dealTypes track by deal.value" ng-model="widget.selectedDealType" ng-change="mapOptionChanged(widget)">
+                </select>
+              </span>
             </div>
             <div class="panel-body" data-slim-scroll data-scroll-height="320px">
               <div ng-if="(!widget.data || widget.data.length == 0) && !widget.mapData">
@@ -93,9 +102,9 @@
 
               <div ng-if = "widget.query.workflow === 'investmentReport'" class="col-md-12" ng-include="'app/dashboard/templates/investment-report.html'"></div>
 
-              <div ng-if = "widget.mapData" class="col-md-12" ng-include="'app/dashboard/templates/map.html'"></div>
+              <div ng-if = "widget.mapData && showMap" class="col-md-12" ng-include="'app/dashboard/templates/map.html'"></div>
 
-              <div class="row widget-single-row" ng-if = "widget.query.workflow !== 'dealReport'" ng-repeat = "data in widget.data">
+              <div class="row widget-single-row" ng-if = "widget.query.workflow !== 'dealReport' && !widget.mapData" ng-repeat = "data in widget.data">
                 <div ng-if = "data.fields.table[0] === 'deal'" class="col-md-12" ng-include="'app/dashboard/templates/deals.html'"></div>
 
                 <div ng-if = "data.fields.table[0] === 'investment'" class="col-md-12" ng-include="'app/dashboard/templates/investments.html'"></div>
