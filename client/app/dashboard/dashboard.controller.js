@@ -247,6 +247,7 @@ var clickEvent;
       $scope.widgets = [{
         title: "My Deals",
         iconUrl: "images/icons/deals.png",
+        smallIconUrl: "images/icons-small/icon_deals.png",
         searches: [],
         isHide: false,
         query: {
@@ -258,6 +259,7 @@ var clickEvent;
       }, {
         title: "My Investments",
         iconUrl: "images/icons/investment.png",
+        smallIconUrl: "images/icons-small/icon_investment.png",
         searches: [],
         isHide: false,
         query: {
@@ -269,6 +271,7 @@ var clickEvent;
       }, {
         title: "My Region",
         iconUrl: "images/icons/location.png",
+        smallIconUrl: "images/icons-small/icon_location.png",
         searches: [],
         isHide: false,
         query: {
@@ -280,6 +283,7 @@ var clickEvent;
       }, {
         title: "MAP",
         iconUrl: "images/icons/icon_map.png",
+        smallIconUrl: "images/icons-small/icon_map.png",
         isHide: false,
         dealTypes: [{
           'label': 'Change of Control',
@@ -336,6 +340,7 @@ var clickEvent;
       }, {
         title: "My Interests",
         iconUrl: "images/icons/interests.png",
+        smallIconUrl: "images/icons-small/icon_interests.png",
         searches: [],
         isHide: false,
         query: {
@@ -347,6 +352,7 @@ var clickEvent;
       }, {
         title: "Recent Deals",
         iconUrl: "images/icons/recent-deals.png",
+        smallIconUrl: "images/icons-small/icon_deals.png",
         searches: [],
         isHide: false,
         query: {
@@ -358,6 +364,7 @@ var clickEvent;
       }, {
         title: "Recent Investments",
         iconUrl: "images/icons/investment_recent.png",
+        smallIconUrl: "images/icons-small/icon_investment.png",
         searches: [],
         isHide: false,
         query: {
@@ -369,6 +376,7 @@ var clickEvent;
       }, {
         title: "Recent News",
         iconUrl: "images/icons/recent-news.png",
+        smallIconUrl: "images/icons-small/icon_news.png",
         searches: [],
         isHide: false,
         query: {
@@ -380,6 +388,7 @@ var clickEvent;
       }, {
         title: "Recent Documents",
         iconUrl: "images/icons/documents-recent.png",
+        smallIconUrl: "images/icons-small/icon_documents.png",
         searches: [],
         isHide: false,
         query: {
@@ -391,6 +400,7 @@ var clickEvent;
       }, {
         title: "Total Investments",
         iconUrl: "images/icons/equity.png",
+        smallIconUrl: "images/icons-small/icon_equity.png",
         searches: [],
         options: [{
           value: "deal_type_s",
@@ -426,6 +436,7 @@ var clickEvent;
       }, {
         title: "Enterprise Value",
         iconUrl: "images/icons/values.png",
+        smallIconUrl: "images/icons-small/icon_values.png",
         searches: [],
         options: [{
           value: "deal_type_s",
@@ -461,6 +472,7 @@ var clickEvent;
       }, {
         title: "Employees",
         iconUrl: "images/icons/employe-icon.png",
+        smallIconUrl: "images/icons-small/icon_employee.png",
         searches: [],
         options: [{
           value: "deal_type_s",
@@ -496,6 +508,7 @@ var clickEvent;
       }, {
         title: "Total Investments",
         iconUrl: "images/icons/equity.png",
+        smallIconUrl: "images/icons-small/icon_equity.png",
         searches: [],
         options: [{
           value: "fund_s",
@@ -525,6 +538,7 @@ var clickEvent;
       }, {
         title: "Carrying Value",
         iconUrl: "images/icons/value2.png",
+        smallIconUrl: "images/icons-small/icon_value2.png",
         searches: [],
         options: [{
           value: "fund_s",
@@ -554,6 +568,7 @@ var clickEvent;
       }, {
         title: "Equity Value",
         iconUrl: "images/icons/equity.png",
+        smallIconUrl: "images/icons-small/icon_equity.png",
         searches: [],
         options: [{
           value: "fund_s",
