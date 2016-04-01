@@ -286,6 +286,9 @@ var clickEvent;
         smallIconUrl: "images/icons-small/icon_map.png",
         isHide: false,
         dealTypes: [{
+          'label': 'All Deal Types',
+          'value': 'all'
+        }, {
           'label': 'Change of Control',
           'value': 'Change of Control'
         }, {
@@ -302,8 +305,8 @@ var clickEvent;
           'value': 'Replacement Capital'
         }],
         selectedDealType: {
-          'label': 'Change of Control',
-          'value': 'Change of Control'
+          'label': 'All Deal Types',
+          'value': 'all'
         },
         metrics: [{
           'label': 'Total Investment',
@@ -318,7 +321,7 @@ var clickEvent;
         },
         mapData: {
           valueRange: [0, 10000],
-          colorRange: ["red", "green"],
+          colorRange: ["#C4D3BF", "#F56505"],
           dimension: 1400,
           mapWidth: 800,
           // descriptiveText: 'failure %',
@@ -595,6 +598,22 @@ var clickEvent;
             "grouping": ["fund_s"]
           }
         }
+      }, {
+        title: "Total Investments Bar Chart",
+        iconUrl: "images/icons/equity.png",
+        smallIconUrl: "images/icons-small/icon_equity.png",
+        searches: [],
+        isHide: false,
+        query: {
+          "workflow": "investmentReport",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous",
+          "restParams": {
+            "metric": ["total_investment_d"],
+            "grouping": ["fund_s"]
+          }
+        }
       }];
 
       var dealReport = {
@@ -632,7 +651,7 @@ var clickEvent;
       widget.mapData.worldData.forEach(function(country) {
         country.value = 0;
         widget.data.forEach(function(data, index, array) {
-          if(country.countryCode === $scope.getCountryCode(data.fields.country_s) && data.fields.deal_type_s[0] === widget.selectedDealType.value) {
+          if(country.countryCode === $scope.getCountryCode(data.fields.country_s) && (data.fields.deal_type_s[0] === widget.selectedDealType.value || widget.selectedDealType.value === 'all' )) {
             country.value = typeof data.fields[widget.selectedMetric.value] !== 'undefined' ?  country.value + data.fields[widget.selectedMetric.value][0] : country.value;
           }
         })
