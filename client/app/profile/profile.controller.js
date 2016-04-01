@@ -8,67 +8,10 @@
 		$scope.currentUser = {};
 		$scope.profileInfo = {};
 		$scope.qBoost = [];
-		$scope.selectedQboost = [];
 
-		$scope.list1 = [{
-			id: 1,
-			title: "middle east",
-			items: [{
-				id: 21,
-				title: "uae",
-				items: [{
-					id: 211,
-					title: "dubai",
-					items: []
-				}]
-			}]
-		}, {
-			id: 1,
-			title: "asia",
-			items: [{
-				id: 211,
-				title: "china",
-				items: [{
-					id: 21,
-					title: "shenzen",
-					items: []
-				}, {
-					id: 21,
-					title: "shanghai",
-					items: []
-				}]
-			}]
-		}];
+		$scope.list1 = [];
 
-		$scope.list2 = [{
-			id: 1,
-			title: "middle east",
-			items: [{
-				id: 21,
-				title: "uae",
-				items: [{
-					id: 211,
-					title: "dubai",
-					items: []
-				}]
-			}]
-		}, {
-			id: 1,
-			title: "asia",
-			items: [{
-				id: 211,
-				title: "china",
-				items: [{
-					id: 21,
-					title: "shenzen",
-					items: []
-				}, {
-					id: 21,
-					title: "shanghai",
-					items: []
-				}]
-			}]
-		}];
+		$scope.list2 = [];
 
 		$scope.init = function() {
 			console.log("profile init");
@@ -80,6 +23,7 @@
 				$scope.regionsList;
 				$scope.gicsList;
 				$scope.selectedQboost = loggedInUser.getQBoost();
+				console.log($scope.selectedQboost)
 
 				backendApi.getUserProfile($scope.currentUser).then(function(res) {
 					$scope.profileInfo = res.data.documents[0].fields;
@@ -100,7 +44,7 @@
 
 		$scope.isRegionSelected = function(title) {
 			var selected = "\"" + title + "\"~200";
-			return $scope.selectedQboost.indexOf(selected) > 0 ? true : false;
+			return $scope.selectedQboost.length > 0 && $scope.selectedQboost.indexOf(selected) > 0 ? true : false;
 		}
 
 		$scope.selectedItem = {};
@@ -116,6 +60,7 @@
 		};
 
 		$scope.setPref = function(title, event) {
+			debugger;
 			var selected = "\"" + title + "\"~200";
 
 			if (event.target.checked) {

@@ -45,10 +45,11 @@
       //use this to get current user
       currentUser = loggedInUser.getCurrentUser();
       if (!_.isEmpty(currentUser)) {
-
+        var qboost = loggedInUser.getQBoost()
+        console.log("qboost in search controller")
+        console.log(qboost)
         searchData.username = currentUser.account_s[0];
-        searchData.restParams["q.boost"] = []
-        searchData.restParams["q.boost"]  = loggedInUser.getQBoost().split(",");
+        searchData.restParams["q.boost"]  = qboost;
 
         if (typeof $location.search().queryText != "undefined" && $location.search().queryText != null) {
           $scope.queryText = $location.search().queryText;

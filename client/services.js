@@ -66,12 +66,16 @@
       },
       updateQBoost : function(data){
         console.log("updateQBoost");
+        console.log(data)
         $cookies.remove("abraajQBoost");
-        $cookies.put("abraajQBoost", data);
+        var qboost = {"qboost":data}
+        $cookies.putObject("abraajQBoost", qboost);
       },
       getQBoost : function(data){
-        console.log("updateQBoost");
-        return $cookies.get("abraajQBoost");
+        console.log("getQBoost");
+        var abraajQBoost = $cookies.getObject("abraajQBoost");
+        console.log(abraajQBoost)
+        return  typeof abraajQBoost != "undefined" ? abraajQBoost.qboost : [];
       }
 
     };
