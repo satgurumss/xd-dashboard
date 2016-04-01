@@ -3,7 +3,7 @@
 
 	<div class="row">
 		<div class="profile-img col-md-2 col-xs-3 ">
-				
+
 			<img ng-if= "result.fields.filename[0]"
 					src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{result.fields.filename[0]}}.png"
 					alt="{{result.fields.filename}}" class="img-responsive">
@@ -23,22 +23,22 @@
 
 			<div class="person-info">
 				<span class="other-info" ng-if="result.fields.team_s[0]">
-					<span>Deal Team:</span> &nbsp;
+					<span>Deal Team &nbsp;</span>
 					{{result.fields.team_s[0]}}
 				</span>
 
 				<span class="other-info" ng-if="result.fields.fund_s[0]">
-					<span>Fund:</span> &nbsp;
+					<span>Fund &nbsp;</span>
 					{{result.fields.fund_s[0] | currency:"$"}}
 				</span>
 
 				<span class="other-info" ng-if="result.fields.equity_value_d[0]">
-					<span>Equity Value:</span> &nbsp;
+					<span>Equity Value &nbsp;</span>
 					{{result.fields.equity_value_d[0] | currency:"$"}}
 				</span>
 
 				<span class="other-info" ng-if="result.fields.invested_total_d[0]">
-					<span>Invested Total:</span> &nbsp;
+					<span>Invested Total &nbsp;</span>
 					{{result.fields.invested_total_d[0] | currency:"$"}}
 				</sapn>
 			</div>

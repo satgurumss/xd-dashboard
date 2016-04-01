@@ -2,7 +2,7 @@
 <div class="desc-col page-person">
 
 	<div class="result-heading row">
-		
+
 		<div class="profile-img col-md-2 col-xs-3 ">
 			<img ng-if= "result.fields.filename[0]"
 					src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{result.fields.filename[0]}}.png"
@@ -23,15 +23,15 @@
 
 			<div class="person-info">
 				<span class="other-info" ng-if="result.fields.author[0]">
-					<span>Author:&nbsp;</span>
+					<span>Author &nbsp;</span>
 					{{result.fields.author[0]}}
 				</span>
 				<span class="other-info" ng-if="result.fields.mimetype[0]">
-					<span>Mime Type:&nbsp;</span>
+					<span>Mime Type &nbsp;</span>
 					{{result.fields.mimetype[0]}}
 				</span>
 				<span class="other-info" ng-if="result.fields.keyphrases[0]">
-					<span>Key Phrases:&nbsp;</span>
+					<span>Key Phrases &nbsp;</span>
 					<i>{{result.fields.keyphrases[0]}} &nbsp;</i>
 				</span>
 

@@ -14,6 +14,10 @@
 	padding: 25px;
 }
 
+.padding-t10 {
+  padding-top: 10px;
+}
+
 .margin-t20{
   margin-top: 20px;
 }
@@ -505,6 +509,11 @@ a:hover {
 .ui-checkbox input[type="checkbox"]:checked + span:after {
     background-color: #0079c1;
   }
+.ui-checkbox input[type="checkbox"] + span:hover:before {
+    border-color: #0079c1;
+}
+
+
 .pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
     z-index: 3;
     color: #fff;
@@ -618,10 +627,6 @@ p.search-description {
 .page-person .other-info span {
   color: #777;
 }
-
-.widget-single-row:hover {
-  background-color: #eee;
-}
 .badge {
     top: -2px;
     position: relative;
@@ -661,3 +666,134 @@ p.search-description {
     border-bottom: 0;
   }
 }*/
+
+
+
+.panel .panel-heading {
+  font-size: 14px;
+  padding: 7px 15px;
+}
+.panel .panel-heading strong {
+  padding: 0 5px;
+  position: relative;
+  top: 3px;
+}
+.panel .panel-heading .badge {
+    top: 1px;
+  }
+.widget-hading .ui-select > select {
+    padding: 0 14px 0 0;
+    font-size: 13px;
+    color: #777;
+}
+
+.widget-single-row {
+  padding: 7px 0 0;
+
+  -o-transition:color .2s ease-out, background .5s ease-in;
+  -ms-transition:color .2s ease-out, background .5s ease-in;
+  -moz-transition:color .2s ease-out, background .5s ease-in;
+  -webkit-transition:color .2s ease-out, background .5s ease-in;
+  transition:color .2s ease-out, background .5s ease-in;
+}
+.widget-single-row:hover {
+  color: #333;
+  background-color: #EFF6FF;
+}
+p.search-description {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.search-description-wrapper {
+  padding: 0px 0 7px 0;
+  border-bottom: 1px dashed #DDD;
+}
+.search-widget .panel-body {
+  padding: 0 15px;
+}
+.search-widget .table-responsive {
+  padding: 15px 0;
+}
+
+.search-panel .ui-select > select {
+  padding: 9px 22px 9px 8px;
+  font-size: 13px;
+}
+.action-control {
+  padding: 0 !important;
+  top: 3px !important;
+  line-height: 22px !important;
+  height: 26px !important;
+  text-transform: uppercase;
+}
+ul.dropdown-menu {
+  padding: 0;
+}
+.header-container > .top-header .dropdown-menu li > a {
+  color: #555;
+  border-bottom: 1px dashed #66B5D7;
+  padding: 7px 10px;
+}
+.header-container > .top-header .dropdown-menu  li > a:last-child {
+  border-bottom: 0;
+}
+.header-container > .top-header .top-nav .nav-left > li ul.dropdown-menu a:hover,
+.header-container > .top-header .top-nav .nav-right > li ul.dropdown-menu a:hover {
+  background-color: #66B5D7;
+  color: #FFF;
+}
+.app-footer {
+  background: rgba(0,0,0,.1);
+  border-top: 0;
+  color: #555;
+  position: absolute;
+  text-align: center;
+  z-index: 4;
+}
+.app-footer .sep-pipe {
+  color: #777;
+  padding: 0 10px;
+}
+.page-search .panel {
+    box-shadow: 4px 4px 7px -3px rgba(0,0,0,0.9);
+}
+.btn-restall {
+  color: #0079c1;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+  top: -1px;
+  position: relative;
+}
+.btn-restall:hover {
+  color: #0079c1;
+}
+.page-search .menu-title {
+  padding-left: 0px;
+  padding-bottom: 5px;
+}
+.page-search .sub-menu {
+  padding-left: 0px;
+}
+.page-search .person-info h5 {
+    line-height: 1.45;
+}
+
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+    background-color: #66B5D7;
+}
+
+.search-result > div {
+  box-shadow: 0 9px 10px -9px #ccc;
+}
+.search-result hr {
+    border-top: 1px solid transparent;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  margin-left: 2px;
+}
