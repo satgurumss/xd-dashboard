@@ -21,27 +21,6 @@
       getAutocompleteData: function ( queryText ){
         var url = "http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/rest/autocompleteApi/simple/dictionaryProvider?term="+ queryText;
         return $http.get(url);
-      },
-      getRegionsList: function(){
-        return $http.get("http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/rest/searchApi/simpleCgi?restOutputFormat=json&hits=100&workflows=search&q=table:region&q.type=advanced&security.principalid=Administrator&security.realmid=Anonymous");
-      },
-      getGICSList: function(){
-        return $http.get("http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/rest/searchApi/simpleCgi?restOutputFormat=json&hits=200&workflows=search&q=table:gics&q.type=advanced&security.principalid=Administrator&security.realmid=Anonymous");
-      },
-      getUserProfile: function(data){
-        console.log("getting profile")
-        var profilePaylod ={
-            "workflow": "abraajSearch",
-            "query": "table:profile name_s:" + data.name_s[0],
-            "username": data.account_s[0],
-            "realm": "Anonymous",
-            "queryLanguage": "simple",
-            "restParams": {
-              "highlight":["true"]
-            }
-           }
-        console.log(profilePaylod)
-        return $http.post(url, JSON.stringify(profilePaylod) );
       }
     };
   }

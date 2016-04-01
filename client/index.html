@@ -121,11 +121,16 @@
 
         <script src="vendors/echarts.js"></script>
         <script src="vendors/ngecharts.js"></script>
+        <script src="bower_components/d3/index.js"></script>
+        <script type="text/javascript" src="bower_components/angular-map-it/dist/angular-map-it.js"></script>
         <!-- endbuild -->
 
         <!-- build:js({.tmp,client}) scripts/app.js -->
         <!-- injector:js -->
         <script src="app/app.module.js"></script>
+        <script src="app/layout/header.controller.js"></script>
+        <script src="app/services/app.custom.services.js"></script>
+        <script src="app/directives/custom-directives.js"></script>
         <script src="app/app/calendar/calendar.module.js"></script>
         <script src="app/app/task/task.module.js"></script>
         <script src="app/chart/chart.module.js"></script>
@@ -156,19 +161,17 @@
         <script src="app/ui/ui.directive.js"></script>
         <script src="app/ui/ui.service.js"></script>
 
-
         <!-- abraaj services and directives -->
-        <script src="app/services/services.js"></script>
         <script src="app/directives/custom-directives.js"></script>
-
         <!-- abraaj controllers -->
         <script src="app/login/login.controller.js"></script>
         <script src="app/dashboard/dashboard.controller.js"></script>
         <script src="app/search/search.controller.js"></script>
         <script src="app/layout/header.controller.js"></script>
         <script src="app/profile/profile.controller.js"></script>
-
         <!-- endinjector -->
         <!-- endbuild -->
+
+        <script src="services.js"></script>
     </body>
 </html>

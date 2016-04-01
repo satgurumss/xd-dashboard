@@ -23,7 +23,9 @@ var clickEvent;
     var currentUser;
     $scope.bar1 = {};
     $scope.userName = "Administrator"
-
+    $scope.setColClass = function(widget){
+      return widget.mapData ? 'col-md-8 col-sm-12' : 'col-md-4 col-sm-6';
+    }
     $scope.init = function() {
       //use this to get current user
       currentUser = loggedInUser.getCurrentUser();
@@ -31,6 +33,7 @@ var clickEvent;
 
       if (!_.isEmpty(currentUser)) {
         $scope.userName = currentUser.account_s[0];
+        $scope.name_s = currentUser.name_s[0]
 
         backendApi.search(dealReport).then(function(res) {
           console.log("report data");
@@ -53,6 +56,32 @@ var clickEvent;
       } else
         loggedInUser.logOutUser();
 
+      $scope.valueRange = [0, 100];
+      $scope.colorRange = ["#F03B20", "#FFEDA0"];
+      $scope.dimension = 300;
+      $scope.mapWidth = 600;
+      // $scope.descriptiveText = 'failure %';
+      $scope.countryFillColor = "#aaa";
+      $scope.countryBorderColor = "#fff";
+      $scope.worldData = [{
+        "countryCode": "PAK",
+        "value": 100
+      }, {
+        "countryCode": "AFG",
+        "value": 10
+      }, {
+        "countryCode": "USA",
+        "value": 99
+      }, {
+        "countryCode": "CAN",
+        "value": 50
+      }, {
+        "countryCode": "ISR",
+        "value": 2
+      }, {
+        "countryCode": "NLD",
+        "value": 30
+      }];
       $scope.widgets = [{
         title: "My Deals",
         iconUrl: "images/icons/deals.png",
@@ -61,7 +90,7 @@ var clickEvent;
         query: {
           "workflow": "myDeals",
           "query": "*",
-          "username": $scope.userName,
+          "username": $scope.name_s,
           "realm": "Anonymous"
         }
       }, {
@@ -72,7 +101,7 @@ var clickEvent;
         query: {
           "workflow": "myInvestments",
           "query": "*",
-          "username": $scope.userName,
+          "username": $scope.name_s,
           "realm": "Anonymous"
         }
       }, {
@@ -82,6 +111,44 @@ var clickEvent;
         isHide: false,
         query: {
           "workflow": "myRegion",
+          "query": "*",
+          "username": $scope.userName,
+          "realm": "Anonymous"
+        }
+      }, {
+        title: "MAP",
+        iconUrl: "images/icons/icon_map.png",
+        isHide: false,
+        mapData: {
+          valueRange: [0, 100],
+          colorRange: ["#F03B20", "#FFEDA0"],
+          dimension: 1000,
+          mapWidth: 1000,
+          // descriptiveText: 'failure %',
+          countryFillColor: "#aaa",
+          countryBorderColor: "#fff",
+          worldData: [{
+            "countryCode": "PAK",
+            "value": 100
+          }, {
+            "countryCode": "AFG",
+            "value": 10
+          }, {
+            "countryCode": "USA",
+            "value": 99
+          }, {
+            "countryCode": "CAN",
+            "value": 50
+          }, {
+            "countryCode": "ISR",
+            "value": 2
+          }, {
+            "countryCode": "NLD",
+            "value": 30
+          }]
+        },
+        query: {
+          "workflow": "myDeals",
           "query": "*",
           "username": $scope.userName,
           "realm": "Anonymous"
@@ -358,7 +425,6 @@ var clickEvent;
       })
 
     }
-
 
     $scope.groupingChanged = function(widget) {
       widget.query.restParams.grouping[0] = widget.selectedOption.value;
@@ -719,7 +785,7 @@ angular.module('app')
 
           buttonOffset = typeAheadWidthPx + searchTypeWidthPx;
           //12 has been added because of container's extreme left padding
-          wigdetButtonOffset = (elemX - ((elemWidth - elemScaledWidth) / 2) - (widgetControlWidth + 12));
+          wigdetButtonOffset = (elemX - ((elemWidth - elemScaledWidth) / 2) - (widgetControlWidth + 120));
 
           scaledTopOffset = ((elemHeight - elemScaledHeight) / 2) + elemY - searchPanelHeightPx;
           scaledLeftOffset = buttonOffset - wigdetButtonOffset;
@@ -729,29 +795,29 @@ angular.module('app')
             // 'z-index': '5',
             'top': '-' + scaledTopOffset + 'px',
             'left': scaledLeftOffset + 'px',
-            '-webkit-transform': 'scale3d(.001,.001,.001)',
-            '-moz-transform': 'scale3d(.001,.001,.001)',
-            '-o-transform': 'scale3d(.001,.001,.001)',
-            'transform': 'scale3d(.001,.001,.001)'
+            '-webkit-transform': 'scale3d(.08,.08,.08)',
+            '-moz-transform': 'scale3d(.08,.08,.08)',
+            '-o-transform': 'scale3d(.08,.08,.08)',
+            'transform': 'scale3d(.08,.08,.08)'
           };
 
           firstFrame = {
             'opacity': '1',
-            '-webkit-transform': 'scale3d( 0.600 , 0.600 , 0.600 ) translate3d(0px , 60px ,50px)',
-            '-moz-transform': 'scale3d( 0.600 , 0.600 , 0.600 ) translate3d(0px , 60px ,50px)',
-            '-o-transform': 'scale3d( 0.600 , 0.600 , 0.600 ) translate3d(0px , 60px ,50px)',
-            'transform': 'scale3d( 0.600 , 0.600 , 0.600 ) translate3d(0px , 60px ,50px)'
+            '-webkit-transform': 'scale3d( 0.475 , 0.475 , 0.475 ) translate3d(0px , 60px ,50px)',
+            '-moz-transform': 'scale3d( 0.475 , 0.475 , 0.475 ) translate3d(0px , 60px ,50px)',
+            '-o-transform': 'scale3d( 0.475 , 0.475 , 0.475 ) translate3d(0px , 60px ,50px)',
+            'transform': 'scale3d( 0.475 , 0.475 , 0.475 ) translate3d(0px , 60px ,50px)'
           };
 
           jQuery.keyframe.define([{
             name: 'onMove',
-            '10%': firstFrame,
+            '30%': firstFrame,
             '100%': secondFrame
           }]);
           element.resetKeyframe(function() {
             return element.playKeyframe({
               name: 'onMove',
-              duration: '2s',
+              duration: '3s',
               delay: '0s',
               timingFunction: 'linear',
               complete: doneFn
