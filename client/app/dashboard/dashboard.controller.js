@@ -331,7 +331,7 @@ var clickEvent;
           'label': 'Enterprise Value',
           'value': 'enterprise_value_d'
         }, {
-          'label': 'Coinvestment Ammount',
+          'label': 'Coinvestment Amount',
           'value': 'available_coinvestment_amount_d'
         }, {
           'label': 'Acquisition Debt',
