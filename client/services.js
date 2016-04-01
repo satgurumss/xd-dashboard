@@ -62,6 +62,15 @@
         console.log("logOutUser");
         $cookies.remove("abraajLogin");
         $location.url("/signin");
+      },
+      updateQBoost : function(data){
+        console.log("updateQBoost");
+        $cookies.remove("abraajQBoost");
+        $cookies.put("abraajQBoost", data);
+      },
+      getQBoost : function(data){
+        console.log("updateQBoost");
+        return $cookies.get("abraajQBoost");
       }
 
     };
