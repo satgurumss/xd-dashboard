@@ -3,8 +3,6 @@
 
 	angular.module('app')
 		.controller('ProfileCtrl', ['$scope', '$rootScope', '$http', 'backendApi', '$location', 'loggedInUser', '$filter', ProfileCtrl])
-		.controller('TreeTableCtrl',['$scope', '$filter', 'backendApi', TreeTableCtrl])
-		.filter("selectedFilter", ['$filter',selectedFilter])
 
 	function ProfileCtrl($scope, $rootScope, $http, backendApi, $location, loggedInUser, $filter) {
 		$scope.currentUser = {};
@@ -12,270 +10,316 @@
 		$scope.qBoost = [];
 		$scope.selectedQboost = [];
 
+		$scope.list1 = [{
+			id: 1,
+			title: "middle east",
+			items: [{
+				id: 21,
+				title: "uae",
+				items: [{
+					id: 211,
+					title: "dubai",
+					items: []
+				}]
+			}]
+		}, {
+			id: 1,
+			title: "asia",
+			items: [{
+				id: 211,
+				title: "china",
+				items: [{
+					id: 21,
+					title: "shenzen",
+					items: []
+				}, {
+					id: 21,
+					title: "shanghai",
+					items: []
+				}]
+			}]
+		}];
+
+		$scope.list2 = [{
+			id: 1,
+			title: "middle east",
+			items: [{
+				id: 21,
+				title: "uae",
+				items: [{
+					id: 211,
+					title: "dubai",
+					items: []
+				}]
+			}]
+		}, {
+			id: 1,
+			title: "asia",
+			items: [{
+				id: 211,
+				title: "china",
+				items: [{
+					id: 21,
+					title: "shenzen",
+					items: []
+				}, {
+					id: 21,
+					title: "shanghai",
+					items: []
+				}]
+			}]
+		}];
+
 		$scope.init = function() {
 			console.log("profile init");
 			//use this to get current user
 			$scope.currentUser = loggedInUser.getCurrentUser();
-			
+
 			if (!_.isEmpty($scope.currentUser)) {
 				$scope.currentUser.account_s[0];
-				$scope.regionsList =[]
-				$scope.gicsList = []
+				$scope.regionsList;
+				$scope.gicsList;
 				$scope.selectedQboost = loggedInUser.getQBoost();
-				
-				backendApi.getUserProfile($scope.currentUser).then(function(res){
+
+				backendApi.getUserProfile($scope.currentUser).then(function(res) {
 					$scope.profileInfo = res.data.documents[0].fields;
 					console.log("profile")
-					$scope.qBoost.push($scope.profileInfo.account_s+"~200")
-
-					console.log($scope.profileInfo)
-
+					$scope.qBoost.push($scope.profileInfo.account_s + "~200")
 				});
+
+				backendApi.getRegionsList().then(function(res) {
+					$scope.list1 = nestRegions(res.data);
+				})
+
+				backendApi.getGICSList().then(function(res) {
+					$scope.list2 = nestSectors(res.data);
+				})
 			} else
 				loggedInUser.logOutUser();
 		}
-		
-		$scope.isRegionSelected = function(title){
-			var selected = "\"" +title + "\"~200";
+
+		$scope.isRegionSelected = function(title) {
+			var selected = "\"" + title + "\"~200";
 			return $scope.selectedQboost.indexOf(selected) > 0 ? true : false;
 		}
 
-		$scope.list1 = [
-        {
-            id: 1,
-            title: "middle east",
-            items: [
-                {
-                    id: 21,
-                    title: "uae",
-                    items: [
-                        {
-                            id: 211,
-                            title: "dubai",
-                            items: []
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            id: 1,
-            title: "asia",
-            items: [
-                {
-                    id: 211,
-                    title: "china",
-                    items: [
-	                    {
-			                    id: 21,
-			                    title: "shenzen",
-			                    items: []
-			                },
-			                {
-			                    id: 21,
-			                    title: "shanghai",
-			                    items: []
-			                }
-		                ]
-                }
-            ]
-        }
-    ];
+		$scope.selectedItem = {};
 
-    $scope.list2 = [
-        {
-            id: 1,
-            title: "middle east",
-            items: [
-                {
-                    id: 21,
-                    title: "uae",
-                    items: [
-                        {
-                            id: 211,
-                            title: "dubai",
-                            items: []
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            id: 1,
-            title: "asia",
-            items: [
-                {
-                    id: 211,
-                    title: "china",
-                    items: [
-	                    {
-			                    id: 21,
-			                    title: "shenzen",
-			                    items: []
-			                },
-			                {
-			                    id: 21,
-			                    title: "shanghai",
-			                    items: []
-			                }
-		                ]
-                }
-            ]
-        }
-    ];
+		$scope.options = {};
 
-    $scope.selectedItem = {};
+		$scope.remove = function(scope) {
+			scope.remove();
+		};
 
-    $scope.options = {};
+		$scope.toggle = function(scope) {
+			scope.toggle();
+		};
 
-    $scope.remove = function(scope) {
-        scope.remove();
-    };
+		$scope.setPref = function(title, event) {
+			var selected = "\"" + title + "\"~200";
 
-    $scope.toggle = function(scope) {
-        scope.toggle();
-    };
-
-    $scope.setPref = function(title, event){
-    	var selected = "\"" +title + "\"~200";
-
-    	if (event.target.checked) {
-        $scope.qBoost.push(selected);
-      } else {
-        $scope.qBoost.splice($scope.qBoost.indexOf(selected), 1);
-      }
-
-      loggedInUser.updateQBoost($scope.qBoost); 
-    }
-
-	}
-
-	function TreeTableCtrl($scope, $filter, backendApi) {
-		$scope.list = [{
-			"name": 'Developer',
-			"opened": true,
-			"children": [{
-				"name": 'Front-End',
-				"children": [{
-					"name": 'Jack',
-					"title": 'Leader'
-				}, {
-					"name": 'John',
-					"title": 'Senior F2E'
-				}, {
-					"name": 'Jason',
-					"title": 'Junior F2E'
-				}]
-			}, {
-				"name": 'Back-End',
-				"children": [{
-					"name": 'Mary',
-					"title": 'Leader'
-				}, {
-					"name": 'Gary',
-					"title": 'Intern'
-				}, ]
-			}]
-		}, {
-			"name": 'Design',
-			"children": [{
-				"name": 'Freeman',
-				"title": 'Designer'
-			}]
-		}, {
-			"name": 'S&S',
-			"children": [{
-				"name": 'Nikky',
-				"title": 'Robot'
-			}]
-		}];
-
-		$scope.regionsList = [];
-		$scope.gicsList = [];
-
-		$scope.initTable = function(listId) {
-			console.log("init table")
-			if (listId == "regions") {
-				console.log("init regions")
-				backendApi.getRegionsList().then(function(res) {
-					$scope.regionsList = res.data.documents;
-					console.log($scope.regionsList)
-				});
+			if (event.target.checked) {
+				$scope.qBoost.push(selected);
+			} else {
+				$scope.qBoost.splice($scope.qBoost.indexOf(selected), 1);
 			}
 
-			if (listId == "gics") {
-				console.log("init gics")
-				backendApi.getGICSList().then(function(res) {
-					$scope.gicsList = res.data.documents;
-					//console.log($scope.gicsList)
-				});
-			}
+			loggedInUser.updateQBoost($scope.qBoost);
 		}
 
-		$scope.toggleAllCheckboxes = function(list, $event) {
-			$scope.list = list;
-			var i, item, len, ref, results, selected;
-			selected = $event.target.checked;
-			ref = $scope.list;
-			results = [];
-			for (i = 0, len = ref.length; i < len; i++) {
-				item = ref[i];
-				item.selected = selected;
-				if (item.children != null) {
-					results.push($scope.$broadcast('changeChildren', item));
+		/*----------NESTING REGIONS FUNCTIONS-------------*/
+		function nestRegions(listOfRegions) {
+			var regionList = [],
+				subRegionList = [],
+				countriesList = [],
+				locationsList = [],
+				region,
+				subRegion,
+				country,
+				location;
+
+			_.each(listOfRegions.documents, function(document, index) {
+				var regionTitle = document.fields.region_id[0],
+					countryTitle = document.fields.region_id[1],
+					locationTitle = document.fields.region_id[2],
+					subRegionTitle = document.fields.region_id[3];
+
+				if (!locationTitle || !countryTitle || !subRegionTitle || !regionTitle) return;
+
+				region = findObject(regionList, regionTitle);
+
+				if (region) {
+					subRegionList = region.items || [];
+
+					subRegion = findObject(subRegionList, subRegionTitle);
+
+					if (subRegion) {
+						countriesList = subRegion.items || [];
+
+						country = findObject(countriesList, countryTitle);
+
+						if (country) {
+							locationsList = country.items || [];
+
+							location = findObject(locationsList, locationTitle);
+
+							if (!location) {
+								locationsList.push(makeLocation(locationTitle));
+							}
+						} else {
+							countriesList.push(makeCountry(countryTitle, locationTitle));
+						}
+					} else {
+						subRegionList.push(makeSubRegion(subRegionTitle, countryTitle, locationTitle));
+					}
 				} else {
-					results.push(void 0);
+					regionList.push(makeRegion(regionTitle, subRegionTitle, countryTitle, locationTitle));
 				}
-			}
-			return results;
-		};
-
-		$scope.initCheckbox = function(item, parentItem) {
-			return item.selected = parentItem && parentItem.selected || item.selected || false;
-		};
-
-		$scope.toggleCheckbox = function(item, parentScope) {
-			if (item.children != null) {
-				$scope.$broadcast('changeChildren', item);
-			}
-			if (parentScope.item != null) {
-				return $scope.$emit('changeParent', parentScope);
-			}
-		};
-
-		$scope.$on('changeChildren', function(event, parentItem) {
-			var child, i, len, ref, results;
-			ref = parentItem.children;
-			results = [];
-			for (i = 0, len = ref.length; i < len; i++) {
-				child = ref[i];
-				child.selected = parentItem.selected;
-				if (child.children != null) {
-					results.push($scope.$broadcast('changeChildren', child));
-				} else {
-					results.push(void 0);
-				}
-			}
-			return results;
-		});
-
-		return $scope.$on('changeParent', function(event, parentScope) {
-			var children;
-			children = parentScope.item.children;
-			parentScope.item.selected = $filter('selected')(children).length === children.length;
-			parentScope = parentScope.$parent.$parent;
-			if (parentScope.item != null) {
-				return $scope.$broadcast('changeParent', parentScope);
-			}
-		});
-	}
-
-	function selectedFilter($filter) {
-		return function(files) {
-			return $filter('filter')(files, {
-				selected: true
 			});
-		};
+
+			return regionList;
+		}
+
+		function findObject(list, findString) {
+			return _.find(list, function(item) {
+				return item.title === findString;
+			});
+		}
+
+		function makeRegion(regionTitle, subRegionTitle, countryTitle, locationTitle) {
+			var region = {
+				title: regionTitle,
+				items: [makeSubRegion(subRegionTitle, countryTitle, locationTitle)]
+			};
+
+			return region;
+		}
+
+		function makeSubRegion(subRegionTitle, countryTitle, locationTitle) {
+			var subRegion = {
+				title: subRegionTitle,
+				items: [makeCountry(countryTitle, locationTitle)]
+			}
+
+			return subRegion;
+		}
+
+		function makeCountry(countryTitle, locationTitle) {
+			var country = {
+				title: countryTitle,
+				items: [makeLocation(locationTitle)]
+			};
+
+			return country;
+		}
+
+		function makeLocation(locationTitle) {
+			var location = {
+				title: locationTitle
+			};
+
+			return location;
+		}
+
+		// --------------------------------------------------------------
+
+		/*----------NESTING GICS FUNCTIONS-------------*/
+		function nestSectors(list) {
+			var sectorsList = [],
+				industryGroupList = [],
+				industryList = [],
+				subIndustryList = [],
+				sector,
+				industryGroup,
+				industry,
+				subIndustry;
+
+			_.each(list.documents, function(document, index) {
+				var sectorTitle = document.fields.sector_s[0],
+					industryGroupTitle = document.fields.industry_group_s[0],
+					industryTitle = document.fields.industry_s[0],
+					subIndustryTitle = document.fields.sub_industry_s[0];
+
+				if (!subIndustryTitle || !industryTitle || !industryGroupTitle || !sectorTitle) return;
+
+				sector = findObject(sectorsList, sectorTitle);
+
+				if (sector) {
+					industryGroupList = sector.items || [];
+
+					industryGroup = findObject(industryGroupList, industryGroupTitle);
+
+					if (industryGroup) {
+						industryList = industryGroup.items || [];
+
+						industry = findObject(industryList, industryTitle);
+
+						if (industry) {
+							subIndustryList = industry.items || [];
+
+							subIndustry = findObject(subIndustryList, subIndustryTitle);
+
+							if (!subIndustry) {
+								subIndustryList.push(makeSubIndustry(subIndustryTitle));
+							}
+						} else {
+							industryList.push(makeIndustry(industryTitle, subIndustryTitle));
+						}
+					} else {
+						industryGroupList.push(makeIndustryGroup(industryGroupTitle, industryTitle, subIndustryTitle));
+					}
+				} else {
+					sectorsList.push(makeSector(sectorTitle, industryGroupTitle, industryTitle, subIndustryTitle));
+				}
+			});
+
+			return sectorsList;
+		}
+
+		function findObject(list, findString) {
+			return _.find(list, function(item) {
+				return item.title === findString;
+			});
+		}
+
+		function makeSector(sectorTitle, industryGroupTitle, industryTitle, subIndustryTitle) {
+			var sector = {
+				title: sectorTitle,
+				items: [makeIndustryGroup(industryGroupTitle, industryTitle, subIndustryTitle)]
+			};
+
+			return sector;
+		}
+
+		function makeIndustryGroup(industryGroupTitle, industryTitle, subIndustryTitle) {
+			var industryGroup = {
+				title: industryGroupTitle,
+				items: [makeIndustry(industryTitle, subIndustryTitle)]
+			}
+
+			return industryGroup;
+		}
+
+		function makeIndustry(industryTitle, subIndustryTitle) {
+			var industry = {
+				title: industryTitle,
+				items: [makeSubIndustry(subIndustryTitle)]
+			};
+
+			return industry;
+		}
+
+		function makeSubIndustry(subIndustryTitle) {
+			var subIndustry = {
+				title: subIndustryTitle
+			};
+
+			return subIndustry;
+		}
+
+		// --------------------------------------------------------------
+
 	}
+
 
 })();

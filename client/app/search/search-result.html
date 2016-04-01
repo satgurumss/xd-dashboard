@@ -20,13 +20,11 @@
   </div>
   <div class="container">
   	<div class="panel panel-default">
-
-  		<div class="panel-body pad-25">
+      <div class="panel-body blank-panel" ng-show = "firstSearch" style="background: url('images/abraaj-empty-search.jpg')" >
+      </div>
+  		<div class="panel-body pad-25 results-panel" ng-show = "!firstSearch">
 
   			<div class="row results-section">
-          <div ng-show = "currentPageItems.length == 0 && firstSearch" >
-            <h4 class="text-center">{{blankslateMsg}}</h4>
-          </div>
           <!-- ###mobile advanced search drop down### -->
           <div class="clearfix visible-xs adv-search-mobile" style="padding: 0 30px;"
             ng-show = "searchResults.data.facets.length > 0 && queryText">
@@ -113,7 +111,7 @@
           </div>
 
   				<div class="col-lg-9 col-md-9 col-sm-8 results-container">
-            <div ng-show = "currentPageItems.length == 0 && !firstSearch" >
+            <div ng-show = "currentPageItems.length == 0" >
               <h4>{{blankslateMsg}}</h4>
             </div>
 

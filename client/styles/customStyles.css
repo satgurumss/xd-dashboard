@@ -39,6 +39,10 @@ a {
   color: #0079c1;
 }
 
+.highlight{
+  background-color: #0079c1;
+}
+
 a:hover {
 	cursor: pointer;
   color: #6D8594;

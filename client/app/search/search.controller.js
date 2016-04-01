@@ -13,7 +13,8 @@
         "realm": "Anonymous",
         "queryLanguage": "simple",
         "sort":[".score"],
-        "restParams":{}
+        "restParams":{},
+        "fields": ["*", "SCOPETEASER(text, fragmentSize=100, fragment=true, numFragments=1, fragmentScope=sentence, scopeMode=HTML) as teaser"]
       },
       advFilters = [],
       selectedAdvFilters = [];
@@ -80,13 +81,13 @@
         }
 
         backendApi.search(searchData).then(function(res) {
+          $scope.firstSearch = false;
           if (typeof res.data.documents != "undefined" && res.data.documents.length > 0) {
             $scope.searchResults = res;
 
             $scope.filteredItems = angular.copy($scope.searchResults.data.documents);
             $scope.currentPageItems = angular.copy($scope.searchResults.data.documents);
             $scope.currentPage = 1;
-            $scope.firstSearch = false;
             $scope.select(1);
           } else {
             $scope.blankslateMsg = "No result found. Please try again.";

@@ -61,6 +61,7 @@
       logOutUser : function(){
         console.log("logOutUser");
         $cookies.remove("abraajLogin");
+        $cookies.remove("abraajQBoost");
         $location.url("/signin");
       },
       updateQBoost : function(data){
