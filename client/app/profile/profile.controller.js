@@ -59,7 +59,6 @@
     };
 
     $scope.setPref = function(title, event) {
-      debugger;
       var selected = "\"" + title + "\"~200";
 
       if (event.target.checked) {
