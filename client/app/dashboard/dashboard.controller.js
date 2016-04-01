@@ -624,7 +624,7 @@ var clickEvent;
             }
         },
         series: [{
-            name: 'counts',
+            name: 'count',
             data: []
         }],
         title: {
