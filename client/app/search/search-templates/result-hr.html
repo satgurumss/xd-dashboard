@@ -1,0 +1,47 @@
+<!-- Result template for type1 -->
+<div class="desc-col page-person">
+
+	<div class="result-heading row">
+
+		<div class="profile-img col-md-2 col-xs-3 ">
+			<img src="images/thumb-knowledge.png"
+					alt="{{result.fields.filename[0]}}" class="img-responsive">
+		</div>
+
+		<div class="person-info col-md-10 col-xs-12">
+			<span class="pull-right">
+				{{result.fields.creationdate[0]|date:'MMMM dd, yyyy'}}
+			</span>
+			<a ng-if="result.fields.uri[0]" href="{{result.fields.uri[0]}}" target="_blank">
+				<span class="h4">{{result.fields.filename[0]}}&nbsp;</span>
+			</a>
+			<h4 ng-if="!result.fields.uri[0]">{{result.fields.filename[0]}}&nbsp;</h4>
+			<h5>{{result.fields.description_s[0]}}</h5>
+			<h5 ng-bind-html="result.fields.teaser[0]"></h5>
+
+			<div class="person-info">
+				<span class="other-info" ng-if="result.fields.author[0]">
+					<span>Author &nbsp;</span>
+					{{result.fields.author[0]}}
+				</span>
+				<span class="other-info" ng-if="result.fields.type_s[0]">
+					<span>Document Type &nbsp;</span>
+					<i>{{result.fields.type_s[0]}} &nbsp;</i>
+				</span>
+				<span class="other-info" ng-if="result.fields.language[0]">
+					<span>Language &nbsp;</span>
+					<i>{{result.fields.language[0]}} &nbsp;</i>
+				</span>
+				<span class="other-info" ng-if="result.fields.mimetype[0]">
+					<span>Mime Type &nbsp;</span>
+					{{result.fields.mimetype[0]}}
+				</span>
+
+			</div>
+			<div class="profile-link" style="margin-top: 5px;">
+				<a href="javascript:;">more like this</a>
+			</div>
+		</div>
+	</div>
+	<hr>
+</div>

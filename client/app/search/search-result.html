@@ -124,6 +124,10 @@
   							ng-if="result.fields.table[0] == 'profile'"
   							ng-include="'app/search/search-templates/result-person.html'">
   						</div>
+              <div
+                ng-if="result.fields.table[0] == 'hr'"
+                ng-include="'app/search/search-templates/result-hr.html'">
+              </div>
   						<div
   							ng-if="result.fields.table[0] == 'deal'"
   							ng-include="'app/search/search-templates/result-deal.html'">
