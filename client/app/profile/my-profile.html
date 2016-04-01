@@ -143,10 +143,15 @@
           <div class="divider divider-md"></div>
           <div class="panel-heading">GICS Preferences</div>
           <div class="panel-body">
-            <!-- <div class="wrapper" ng-controller="TreeTableCtrl" ng-init="initTable('gics')">
+            <div ui-tree="options">
+                <ol ui-tree-nodes ng-model="list2" >
+                    <li ng-repeat="item in list2" ui-tree-node ng-include="'items_renderer.html'"></li>
+                </ol>
+            </div>
+
+            <!-- <div class="wrapper" ng-app="testApp" ng-controller="TreeTableCtrl">
               <table class="table-nested">
-                <tbody ng-class="{opened: item.opened}" ng-include="'table_tree.html'"
-                 ng-repeat="item in list"></tbody>
+                <tbody ng-class="{opened: item.opened}" ng-include="&#39;table_tree.html&#39;" ng-repeat="item in list"></tbody>
               </table>
             </div> -->
           </div>
@@ -160,11 +165,10 @@
           <div class="divider divider-md"></div>
           <div class="panel-heading">Region Preferences</div>
           <div class="panel-body">
-            <div class="wrapper" ng-controller="TreeTableCtrl" ng-init="initTable('regions')">
-              <table class="table-nested">
-                <tbody ng-class="{opened: item.opened}" ng-include="'table_tree.html'"
-                 ng-repeat="item in list"></tbody>
-              </table>
+           <div ui-tree="options">
+              <ol ui-tree-nodes ng-model="list1" >
+                <li ng-repeat="item in list1" ui-tree-node ng-include="'regions_items_renderer.html'"></li>
+              </ol>
             </div>
           </div>
         </div>
@@ -197,4 +201,51 @@
       </table>
     </td>
   </tr>
+</script>
+
+<script type="text/ng-template" id="regions_items_renderer.html">
+    <div class="angular-ui-tree-handle">
+        <span>{{item.items}}</span>
+    </div>
+</script>
+
+<script type="text/ng-template" id="regions_items_renderer.html">
+    <div class="angular-ui-tree-handle" data-nodrag>
+        <span data-ng-show="item.items.length > 0"><a class="angular-ui-tree-icon" data-nodrag ng-click="toggle(this)">
+            <span class="angular-ui-tree-icon-collapse" ng-class="{'collapsed': collapsed, 'uncollapsed': !collapsed}"></span>
+        </a></span>
+        <label class="ui-checkbox">
+        <input type="checkbox" value="{{item.title}}" ng-click="setRegionPref(item.title, $event)" 
+          ng-checked="isRegionSelected(item.title)">
+        <span class="text-uppercase">{{item.title}}</span>
+       </label>
+
+    </div>
+    <ol ui-tree-nodes="options" ng-model="item.items" ng-class="{hidden: collapsed}">
+        <li ng-repeat="item in item.items" ui-tree-node ng-include="'regions_items_renderer.html'">
+        </li>
+    </ol>
+</script>
+
+<script type="text/ng-template" id="items_renderer.html">
+    <div class="angular-ui-tree-handle">
+        <span>{{item.items}}</span>
+    </div>
+</script>
+
+<script type="text/ng-template" id="items_renderer.html">
+    <div class="angular-ui-tree-handle" data-nodrag>
+        <span data-ng-show="item.items.length > 0"><a class="angular-ui-tree-icon" data-nodrag ng-click="toggle(this)">
+            <span class="angular-ui-tree-icon-collapse" ng-class="{'collapsed': collapsed, 'uncollapsed': !collapsed}"></span>
+        </a></span>
+        <label class="ui-checkbox">
+        <input type="checkbox" value="{{item.title}}" ng-click="setRegionPref(item.title, $event)" >
+        <span class="text-uppercase">{{item.title}}</span>
+       </label>
+
+    </div>
+    <ol ui-tree-nodes="options" ng-model="item.items" ng-class="{hidden: collapsed}">
+        <li ng-repeat="item in item.items" ui-tree-node ng-include="'items_renderer.html'">
+        </li>
+    </ol>
 </script>

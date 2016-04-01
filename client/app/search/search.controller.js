@@ -46,6 +46,8 @@
       if (!_.isEmpty(currentUser)) {
 
         searchData.username = currentUser.account_s[0];
+        searchData.restParams["q.boost"] = []
+        searchData.restParams["q.boost"]  = loggedInUser.getQBoost().split(",");
 
         if (typeof $location.search().queryText != "undefined" && $location.search().queryText != null) {
           $scope.queryText = $location.search().queryText;

@@ -3,30 +3,150 @@
 
 	angular.module('app')
 		.controller('ProfileCtrl', ['$scope', '$rootScope', '$http', 'backendApi', '$location', 'loggedInUser', '$filter', ProfileCtrl])
-		.controller('TreeTableCtrl', ['$scope', '$filter', 'backendApi', TreeTableCtrl])
-		.filter('selected', ['$filter', selectedFilter])
+		.controller('TreeTableCtrl',['$scope', '$filter', 'backendApi', TreeTableCtrl])
+		.filter("selectedFilter", ['$filter',selectedFilter])
 
 	function ProfileCtrl($scope, $rootScope, $http, backendApi, $location, loggedInUser, $filter) {
 		$scope.currentUser = {};
 		$scope.profileInfo = {};
+		$scope.qBoost = [];
+		$scope.selectedQboost = [];
 
 		$scope.init = function() {
 			console.log("profile init");
 			//use this to get current user
 			$scope.currentUser = loggedInUser.getCurrentUser();
+			
 			if (!_.isEmpty($scope.currentUser)) {
 				$scope.currentUser.account_s[0];
-
+				$scope.regionsList =[]
+				$scope.gicsList = []
+				$scope.selectedQboost = loggedInUser.getQBoost();
+				
 				backendApi.getUserProfile($scope.currentUser).then(function(res){
 					$scope.profileInfo = res.data.documents[0].fields;
 					console.log("profile")
-					console.log($scope.profileInfo)
-				});
+					$scope.qBoost.push($scope.profileInfo.account_s+"~200")
 
+					console.log($scope.profileInfo)
+
+				});
 			} else
 				loggedInUser.logOutUser();
-
 		}
+		
+		$scope.isRegionSelected = function(title){
+			var selected = "\"" +title + "\"~200";
+			return $scope.selectedQboost.indexOf(selected) > 0 ? true : false;
+		}
+
+		$scope.list1 = [
+        {
+            id: 1,
+            title: "middle east",
+            items: [
+                {
+                    id: 21,
+                    title: "uae",
+                    items: [
+                        {
+                            id: 211,
+                            title: "dubai",
+                            items: []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 1,
+            title: "asia",
+            items: [
+                {
+                    id: 211,
+                    title: "china",
+                    items: [
+	                    {
+			                    id: 21,
+			                    title: "shenzen",
+			                    items: []
+			                },
+			                {
+			                    id: 21,
+			                    title: "shanghai",
+			                    items: []
+			                }
+		                ]
+                }
+            ]
+        }
+    ];
+
+    $scope.list2 = [
+        {
+            id: 1,
+            title: "middle east",
+            items: [
+                {
+                    id: 21,
+                    title: "uae",
+                    items: [
+                        {
+                            id: 211,
+                            title: "dubai",
+                            items: []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 1,
+            title: "asia",
+            items: [
+                {
+                    id: 211,
+                    title: "china",
+                    items: [
+	                    {
+			                    id: 21,
+			                    title: "shenzen",
+			                    items: []
+			                },
+			                {
+			                    id: 21,
+			                    title: "shanghai",
+			                    items: []
+			                }
+		                ]
+                }
+            ]
+        }
+    ];
+
+    $scope.selectedItem = {};
+
+    $scope.options = {};
+
+    $scope.remove = function(scope) {
+        scope.remove();
+    };
+
+    $scope.toggle = function(scope) {
+        scope.toggle();
+    };
+
+    $scope.setPref = function(title, event){
+    	var selected = "\"" +title + "\"~200";
+
+    	if (event.target.checked) {
+        $scope.qBoost.push(selected);
+      } else {
+        $scope.qBoost.splice($scope.qBoost.indexOf(selected), 1);
+      }
+
+      loggedInUser.updateQBoost($scope.qBoost); 
+    }
 
 	}
 
@@ -80,10 +200,6 @@
 				backendApi.getRegionsList().then(function(res) {
 					$scope.regionsList = res.data.documents;
 					console.log($scope.regionsList)
-					$scope.nestedRegions = nestRegions($scope.regionsList);
-
-					/*console.log("nestedRegions");
-					console.log($scope.nestedRegions);*/
 				});
 			}
 
@@ -95,94 +211,6 @@
 				});
 			}
 		}
-
-
-		function nestRegions(regionsList) {
-			console.log("nestRegions")
-			console.log("regionsList")
-			console.log(regionsList)
-			var nestedList = {};
-			
-			regionsList.forEach( function(data, i, array){
-				var region = {};
-				/*region*/
-				if(! _.has(nestedList,data.fields.region_s[0])){
-					console.log("new region" + data.fields.region_s[0])
-					region[data.fields.region_s[0]]={}
-					region[data.fields.region_s[0]][data.fields.subregion_s[0]] = {}
-					region[data.fields.region_s[0]][data.fields.subregion_s[0]][data.fields.country_s[0]] = {}
-					
-					if( typeof data.fields.location_s !== "undefined")
-						region[data.fields.region_s[0]][data.fields.subregion_s[0]][data.fields.country_s[0]][data.fields.location_s[0]] = {}
-					
-					_.extend(nestedList, region);
-				}
-				else{
-					console.log("old region")
-					var oldregion = nestedList[data.fields.region_s[0]]
-					oldregion[data.fields.subregion_s[0]] = {}
-					oldregion[data.fields.subregion_s[0]][data.fields.country_s[0]] = {}
-					
-					if( typeof data.fields.location_s !== "undefined")
-						oldregion[data.fields.subregion_s[0]][data.fields.country_s[0]][data.fields.location_s[0]] = {}
-				}
-				/*subregion*/
-				if(findDeep(nestedList,data.fields.subregion_s[0]) === false){
-					console.log("new subregion" + data.fields.subregion_s[0])
-
-					var subregion = {}
-					subregion[data.fields.subregion_s[0]] = {}
-					subregion[data.fields.subregion_s[0]][data.fields.country_s[0]] = {}
-
-					if( typeof data.fields.location_s !== "undefined")
-						subregion[data.fields.subregion_s[0]][data.fields.country_s[0]][data.fields.location_s[0]] = {}
-
-					_.extend(nestedList[data.fields.region_s[0]], subregion);
-				}
-				else{
-					console.log("old subregion")
-					var oldSubregion = nestedList[data.fields.region_s[0]][data.fields.subregion_s[0]]
-					oldSubregion[data.fields.country_s[0]] = {}
-
-					if( typeof data.fields.location_s !== "undefined")
-						oldSubregion[data.fields.country_s[0]][data.fields.location_s[0]] = {}
-				}
-				
-				if(findDeep(nestedList,data.fields.country_s[0]) === false){
-					console.log("new country" + data.fields.country_s[0])
-
-					var country = {}
-					country[data.fields.country_s[0]] ={}
-					
-					if( typeof data.fields.location_s !== "undefined")
-						country[data.fields.location_s[0]] = {}
-
-					_.extend(nestedList[data.fields.region_s[0]][data.fields.subregion_s[0]], country);	
-				}
-				else{
-					console.log("old country")
-					var oldCountry = nestedList[data.fields.region_s[0]][data.fields.subregion_s[0]][data.fields.country_s[0]]
-					
-					if( typeof data.fields.location_s !== "undefined")
-						oldCountry[data.fields.location_s[0]] = {}
-				}
-				
-				if(  typeof data.fields.location_s !== "undefined" && findDeep(nestedList,data.fields.location_s[0]) === false){
-					console.log("new location" + data.fields.location_s[0])
-
-						var newLocation = {}
-						newLocation[data.fields.location_s[0]] = {}
-
-					_.extend(nestedList[data.fields.region_s[0]][data.fields.subregion_s[0]][data.fields.country_s[0]], newLocation);	
-				}
-
-			});
-
-			console.log("nestedList")
-			console.log(nestedList);
-
-		}
-
 
 		$scope.toggleAllCheckboxes = function(list, $event) {
 			$scope.list = list;
@@ -248,45 +276,6 @@
 				selected: true
 			});
 		};
-	}
-
-	function findDeep (items, attrs) {
-
-	  function match(value) {
-	    for (var key in attrs) {
-	      if(!_.isUndefined(value)) {
-	        if (attrs[key] !== value[key]) {
-	          return false;
-	        }
-	      }
-	    }
-
-	    return true;
-	  }
-
-	  function traverse(value) {
-	    var result;
-
-	    _.forEach(value, function (val) {
-	      if (match(val)) {
-	        result = val;
-	        return false;
-	      }
-
-	      if (_.isObject(val) || _.isArray(val)) {
-	        result = traverse(val);
-	      }
-
-	      if (result) {
-	        return false;
-	      }
-	    });
-
-	    return result;
-	  }
-
-	  return traverse(items);
-
 	}
 
 })();
