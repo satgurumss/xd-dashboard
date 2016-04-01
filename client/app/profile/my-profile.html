@@ -1,90 +1,196 @@
 
 <div class="page page-profile" ng-controller="ProfileCtrl" ng-init="init()">
 
-    <header class="profile-header">
+    <header class="profile-header custom-profile-header">
         <div class="profile-img">
             <img alt="{{currentUser.account_s[0]}}" 
-                src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{currentUser.picture_s[0]}}"
+                src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{profileInfo.picture_s[0]}}"
                 class="img-reponsive">
         </div>
 
-        <div class="profile-social">
-            <h1 class="white-text">{{currentUser.name_s[0]}}</h1>
-            <a href="javascript:;" class="btn-icon btn-icon-round btn-facebook"><i class="fa fa-facebook"></i></a>
+        <div class="profile-social align-bottom">
+            <h1 class="white-text">{{profileInfo.name_s[0]}}</h1>
+            <h4 class="white-text"><span><i class="fa fa-briefcase"/></span>&nbsp;&nbsp;{{profileInfo.job_title_s[0]}}</h4>
+            <h5 class="white-text"><span><i class="fa fa-envelope"/></span>&nbsp;&nbsp;{{profileInfo.email_s[0]}}</h5>
+            <h5 class="white-text"><span><i class="fa fa-mobile"/></span>&nbsp;&nbsp;{{profileInfo.phone_mobile_s[0]}}</h5>
+            <h5 class="white-text"><span><i class="fa fa-phone"/></span>&nbsp;&nbsp;{{profileInfo.phone_work_s[0]}}</h5>
+
+            <!-- <a href="javascript:;" class="btn-icon btn-icon-round btn-facebook"><i class="fa fa-facebook"></i></a>
             <a href="javascript:;" class="btn-icon btn-icon-round btn-twitter"><i class="fa fa-twitter"></i></a>
-            <a href="javascript:;" class="btn-icon btn-icon-round btn-instagram"><i class="fa fa-instagram"></i></a>
+            <a href="javascript:;" class="btn-icon btn-icon-round btn-instagram"><i class="fa fa-instagram"></i></a> -->
         </div>
 
-        <div class="profile-info">
+       <!--  <div class="profile-info">
             <ul class="list-unstyled list-inline">
                 <li><i class="fa fa-video-camera"></i> Films <span class="text-muted">(39)</span></li>
                 <li><i class="fa fa-camera"></i> Photos <span class="text-muted">(63)</span</li>
                 <li><i class="fa fa-bookmark"></i> Collections <span class="text-muted">(55)</span</li>
                 <li><i class="fa fa-check"></i> Tasks <span class="text-muted">(34)</span</li>
             </ul>
-        </div>
+        </div> -->
     </header>
-
-
     <div class="row">
-        <div class="col-sm-3">
-            <div class="panel mini-box">
-                <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-danger">
-                    <i class="fa fa-video-camera"></i>
-                </span>
-                <div class="box-info">
-                    <p class="size-h2">39</p>
-                    <p class="text-muted">Amazing Films</p>
-                </div>
-            </div>                    
-        </div>
-        <div class="col-sm-3">
-            <div class="panel mini-box">
-                <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-warning">
-                    <i class="fa fa-camera"></i>
-                </span>
-                <div class="box-info">
-                    <p class="size-h2">63</p>
-                    <p class="text-muted">Wonderful Photos</p>
-                </div>
-            </div>                    
-        </div>
-        <div class="col-sm-3">
-            <div class="panel mini-box">
-                <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-success">
-                    <i class="fa fa-bookmark"></i>
-                </span>
-                <div class="box-info">
-                    <p class="size-h2">55</p>
-                    <p class="text-muted">New Collections</p>
-                </div>
+        <!-- About -->
+        <div class="col-sm-12">
+          <div class="panel mini-box custom-minibox">
+            <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-info">
+                <i class="fa fa-info"></i>
+            </span>
+            <div class="box-info" style=" max-width: 90%; text-align: justify;">
+                <p class="size-h2">About Me</p>
+                <p class="text-muted">
+                    {{profileInfo.bio_s[0]}}
+                </p>
             </div>
+          </div>                    
         </div>
-        <div class="col-sm-3">
-            <div class="panel mini-box">
-                <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-info">
-                    <i class="fa fa-check"></i>
-                </span>
-                <div class="box-info">
-                    <p class="size-h2">34</p>
-                    <p class="text-muted">Tasks Finised</p>
-                </div>
+
+        <!-- Expertise Sectors -->
+        <div class="col-sm-12">
+          <div class="panel mini-box custom-minibox">
+              <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-info">
+                  <i class="fa fa-industry"></i>
+              </span>
+              <div class="box-info">
+                  <p class="size-h2">Expertise Sectors</p>
+                  <p class="text-muted">
+                    <span ng-repeat = "sector in profileInfo.expertise_sector_s">
+                      {{sector}}{{$last ? '' : ', '}}
+                    </span>
+                  </p>
+              </div>
+          </div>                    
+        </div>
+
+        <!-- Expertise -->
+        <div class="col-sm-6">
+          <div class="panel mini-box custom-minibox">
+              <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-info">
+                  <i class="fa fa-star"></i>
+              </span>
+              <div class="box-info">
+                  <p class="size-h2">Expertise</p>
+                  <p class="text-muted">
+                    <span ng-repeat = "skill in profileInfo.expertise_skills_s">
+                      {{skill}}{{$last ? '' : ', '}}
+                    </span>
+                  </p>
+              </div>
+          </div>                    
+        </div>
+        
+        <!-- Regions -->
+        <div class="col-sm-6">
+          <div class="panel mini-box custom-minibox">
+              <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-info">
+                  <i class="fa fa-globe"></i>
+              </span>
+              <div class="box-info">
+                  <p class="size-h2">Regions</p>
+                  <p class="text-muted">
+                    <span ng-repeat = "region in profileInfo.expertise_region_s">
+                      {{region}}{{$last ? '' : ', '}}
+                    </span>
+                  </p>
+              </div>
+          </div>
+        </div>
+
+        <!-- Employment History -->
+        <div class="col-sm-6">
+          <div class="panel mini-box custom-minibox">
+            <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-info">
+                <i class="fa fa-briefcase"></i>
+            </span>
+            <div class="box-info">
+                <p class="size-h2">Employment History</p>
+                <p class="text-muted">
+                  <span ng-repeat = "history in profileInfo.employment_history_s">
+                    {{history}}{{$last ? '' : ', '}}
+                  </span>
+                </p>
             </div>
+          </div>                    
+        </div>
+        
+        <!-- Interests -->
+        <div class="col-sm-6">
+          <div class="panel mini-box custom-minibox">
+            <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-info">
+                <i class="fa fa-heart"></i>
+            </span>
+            <div class="box-info">
+                <p class="size-h2">Interests</p>
+                <p class="text-muted">
+                  <span ng-repeat = "interest in profileInfo.interests_s">
+                    {{interest}}
+                  </span>
+                </p>
+            </div>
+          </div>                    
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-12" ng-controller="EChartsCtrl">
 
-            <div class="panel panel-default panel-minimal">
-                <div class="divider divider-md"></div>
-                <div class="panel-heading">Traffic</div>
-                <div class="panel-body">
-                    <div data-echarts data-options="line2.options" style="height: 400px;"></div>
-                </div>
-            </div>
+      <div class="col-md-6">
 
+        <div class="panel panel-default panel-minimal">
+          <div class="divider divider-md"></div>
+          <div class="panel-heading">GICS Preferences</div>
+          <div class="panel-body">
+            <!-- <div class="wrapper" ng-controller="TreeTableCtrl" ng-init="initTable('gics')">
+              <table class="table-nested">
+                <tbody ng-class="{opened: item.opened}" ng-include="'table_tree.html'"
+                 ng-repeat="item in list"></tbody>
+              </table>
+            </div> -->
+          </div>
         </div>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="panel panel-default panel-minimal">
+          <div class="divider divider-md"></div>
+          <div class="panel-heading">Region Preferences</div>
+          <div class="panel-body">
+            <div class="wrapper" ng-controller="TreeTableCtrl" ng-init="initTable('regions')">
+              <table class="table-nested">
+                <tbody ng-class="{opened: item.opened}" ng-include="'table_tree.html'"
+                 ng-repeat="item in list"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
 </div>
+
+<script id="table_tree.html" type="text/ng-template">
+  <tr ng-class="{parent: item.children}" ng-init="parentScope = $parent.$parent; initCheckbox(item, parentScope.item)">
+    <td class="cell-input">
+      <input ng-change="toggleCheckbox(item, parentScope)" ng-model="item.selected" type="checkbox" />
+    </td>
+    <td class="cell-name" ng-click="item.opened = !item.opened">
+      <div class="indent" style="padding-left: {{15*level}}px"></div>
+      {{item.name}}
+    </td>
+    <td class="cell-members">
+      {{item.children.length}}
+    </td>
+    <td>
+      {{item.title}}
+    </td>
+  </tr>
+  <tr class="children" ng-if="item.children && item.children.length > 0">
+    <td colspan="4">
+      <table>
+        <tbody ng-class="{opened: item.opened}" ng-include="'table_tree.html'" ng-init="level = level + 1" ng-repeat="item in item.children"></tbody>
+      </table>
+    </td>
+  </tr>
+</script>
