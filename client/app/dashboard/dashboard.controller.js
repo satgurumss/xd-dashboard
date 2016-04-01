@@ -379,7 +379,7 @@ var clickEvent;
           }
         }
       }, {
-        title: "Carrying Value Bar Chart",
+        title: "Carrying Value",
         iconUrl: "images/icons/value2.png",
         smallIconUrl: "images/icons-small/icon_value2.png",
         searches: [],
@@ -413,7 +413,7 @@ var clickEvent;
         chartConfig: {
           options: {
             chart: {
-               type: 'bar'
+              type: 'bar'
             }
           },
           cursor: 'pointer',
@@ -495,7 +495,7 @@ var clickEvent;
           }
         }
       }, {
-        title: "Equity Value Pie Chart (fund)",
+        title: "Equity Value",
         iconUrl: "images/widgets/placeholder.png",
         smallIconUrl: "images/icons-small/icon_pie.png",
         searches: [],
@@ -532,7 +532,16 @@ var clickEvent;
             chart: {
               type: 'pie'
             },
-            colors: ['#E03274', '#4D7AF3', '#792E6D', '#689477']
+            colors: ['#B6A2DE', '#D87A80', '#2EC7C9', '#FFB980'],
+            plotOptions: {
+              pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                  enabled: false
+                }
+              }
+            },
           },
           series: [{
             name: 'count',
@@ -546,7 +555,7 @@ var clickEvent;
             categories: []
           },
           size: {
-            width: 450,
+            width: 340,
             height: 300
           },
 
@@ -784,14 +793,14 @@ var clickEvent;
       // }
 
 
-      $scope.chartOptionChanged = function (widget) {
+      $scope.chartOptionChanged = function(widget) {
         console.log("===chart option changed===");
         console.log(widget);
         if (widget.showBar && !widget.showPie) {
           $scope.setBarData(widget);
         }
 
-        if(widget.showBar && widget.showPie) {
+        if (widget.showBar && widget.showPie) {
           $scope.setPieData(widget);
         }
         // $scope.chartConfig.series = [];
@@ -822,7 +831,7 @@ var clickEvent;
             $scope.setBarData(widget);
           }
 
-          if(widget.showBar && widget.showPie) {
+          if (widget.showBar && widget.showPie) {
             $scope.setPieData(widget);
           }
           // console.log(res);

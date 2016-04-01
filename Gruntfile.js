@@ -388,8 +388,14 @@
       return grunt.task.run(["jade:landing", "compass:landing", "connect:landing", "open", "watch"]);
     });
 
+    grunt.registerTask("run-server", function(target) {
+        return grunt.task.run([ "open", "connect:dist:keepalive"]);
+      //return grunt.task.run(["clean:server", "concurrent:server", "connect:livereload", "open", "watch"]);
+    });
+
     grunt.registerTask("build", ["clean:dist", "useminPrepare", "concurrent:dist", "copy:dist", "cssmin", "concat", "uglify", "usemin"]);
     grunt.registerTask("lessBuild", ["clean:dist", "useminPrepare", "concurrent:lessDist", "copy:dist", "cssmin", "concat", "uglify", "usemin"]);
     return grunt.registerTask("default", ["serve"]);
+
   };
 })();
