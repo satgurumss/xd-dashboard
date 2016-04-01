@@ -194,8 +194,8 @@
             <span class="angular-ui-tree-icon-collapse" ng-class="{'collapsed': collapsed, 'uncollapsed': !collapsed}"></span>
         </a></span>
         <label class="ui-checkbox">
-        <input type="checkbox" value="{{item.title}}" ng-click="setPref(item.title, $event)"
-          ng-checked="isRegionSelected(item.title)">
+        <input type="checkbox" value="{{item.title}}" ng-click="setPref(item, $event)"
+          ng-checked="isRegionSelected(item) || item.isChecked">
         <span class="text-uppercase">{{item.title}}</span>
        </label>
 

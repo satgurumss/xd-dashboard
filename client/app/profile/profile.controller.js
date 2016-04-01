@@ -36,13 +36,15 @@
 
         backendApi.getGICSList().then(function(res) {
           $scope.list2 = nestSectors(res.data);
+          console.log("list2")
+          console.log($scope.list2);
         })
       } else
         loggedInUser.logOutUser();
     }
 
-    $scope.isRegionSelected = function(title) {
-      var selected = "\"" + title + "\"~200";
+    $scope.isRegionSelected = function(item) {
+      var selected = "\"" + item.title + "\"~200";
       return $scope.selectedQboost.length > 0 && $scope.selectedQboost.indexOf(selected) > 0 ? true : false;
     }
 
@@ -58,18 +60,54 @@
       scope.toggle();
     };
 
-    $scope.setPref = function(title, event) {
-      var selected = "\"" + title + "\"~200";
+    $scope.setPref = function(item, event) {
+      var selected = "\"" + item.title + "\"~200";
 
       if (event.target.checked) {
-        $scope.qBoost.push(selected);
+        if(_.isUndefined(item.items))
+          $scope.qBoost.push(selected);
+        else{
+          traverse(item,check);
+        }
       } else {
-        $scope.qBoost.splice($scope.qBoost.indexOf(selected), 1);
+        
+        if(_.isUndefined(item.items))
+          $scope.qBoost.splice($scope.qBoost.indexOf(selected), 1);
+        else{
+          traverse(item,uncheck);
+        }
       }
 
       loggedInUser.updateQBoost($scope.qBoost);
     }
 
+    function check(item) {
+      var title = "\"" + item.title + "\"~200";
+      item.isChecked = true
+      $scope.qBoost.push(title);
+    }
+
+    function uncheck(item) {
+      var title = "\"" + item.title + "\"~200";
+      item.isChecked = false
+      $scope.qBoost.splice($scope.qBoost.indexOf(title), 1);
+    }
+
+    function traverse(tree, func){
+      var i;
+      var items = tree.items;
+      func(tree);
+      for( i = 0; i < items.length; i++){
+
+        var item = items[i];
+        if(item.items !== undefined) {
+          traverse(item,func);
+        } else {
+          func(item);
+        }
+      }
+    }
+    
     /*----------NESTING REGIONS FUNCTIONS-------------*/
     function nestRegions(listOfRegions) {
       var regionList = [],
