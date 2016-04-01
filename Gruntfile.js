@@ -311,7 +311,8 @@
               "app/**/*.html",
               "services.js",
               "jquery.keyframes.js",
-              "prefixfree.min.js"
+              "prefixfree.min.js",
+              "vendors/echarts.js"
             ]
           }, {
             expand: true,

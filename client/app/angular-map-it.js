@@ -1113,7 +1113,7 @@ function d3_geo_greatArcInterpolate(a, b) {
 d3.geo.greatCircle = d3.geo.circle;
 })();
 
-angularMaps.directive('globeTouch', function ($parse) {
+angularMaps.directive('globeTouch', ['$parse', function ($parse) {
   var directiveDefinitionObject = {
     //We restrict its use to an element
     //as usually  <globe> is semantically
@@ -1288,9 +1288,9 @@ angularMaps.directive('globeTouch', function ($parse) {
   };
 
   return directiveDefinitionObject;
-});
+}]);
 
-angularMaps.directive('globe', function ($parse) {
+angularMaps.directive('globe', ['$parse', function ($parse) {
   var directiveDefinitionObject = {
     //We restrict its use to an element
     //as usually  <globe> is semantically
@@ -1478,9 +1478,9 @@ angularMaps.directive('globe', function ($parse) {
   };
 
   return directiveDefinitionObject;
-});
+}]);
 
-angularMaps.directive('worldMap', function ($parse) {
+angularMaps.directive('worldMap', ['$parse',function ($parse) {
   var directiveDefinitionObject = {
     //We restrict its use to an element
     //as usually  <globe> is semantically
@@ -1658,4 +1658,4 @@ angularMaps.directive('worldMap', function ($parse) {
   };
 
   return directiveDefinitionObject;
-});
+}]);
