@@ -10,7 +10,6 @@
     $scope.qBoost = [];
 
     $scope.list1 = [];
-
     $scope.list2 = [];
 
     $scope.init = function() {

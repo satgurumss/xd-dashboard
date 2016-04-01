@@ -35,7 +35,7 @@ var clickEvent;
         $scope.userName = currentUser.account_s[0];
         $scope.name_s = currentUser.name_s[0]
 
-        $scope.qBoost = loggedInUser.getQBoost().split(",");
+        $scope.qBoost = loggedInUser.getQBoost();
         console.log('qboost:: ', $scope.qBoost);
         // $scope.qBoost = loggedInUser.getQBoost().then(function());
 
