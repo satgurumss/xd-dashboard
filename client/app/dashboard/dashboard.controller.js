@@ -604,6 +604,7 @@ var clickEvent;
         smallIconUrl: "images/icons-small/icon_equity.png",
         searches: [],
         isHide: false,
+        showBar: true,
         query: {
           "workflow": "investmentReport",
           "query": "*",
@@ -615,6 +616,30 @@ var clickEvent;
           }
         }
       }];
+
+      $scope.chartConfig = {
+        options: {
+            chart: {
+                type: 'bar'
+            }
+        },
+        series: [{
+            name: 'counts',
+            data: []
+        }],
+        title: {
+            text: 'Funds'
+        },
+        xAxis: {
+        categories: []
+        },
+        size: {
+          width: 400,
+          height: 300
+        },
+
+        loading: false
+    }
 
       var dealReport = {
         "workflow": "dealReport",
@@ -637,10 +662,24 @@ var clickEvent;
           if (widget.mapData) {
             $scope.formatMapData(widget);
           }
+
+          if(widget.showBar) {
+            $scope.setBarData(widget);
+          }
           // console.log(res);
         });
       })
 
+    }
+
+    $scope.setBarData = function (widget) {
+      console.log('bar data');
+      console.log(widget.data);
+      widget.data.forEach(function(data) {
+        $scope.chartConfig.series[0].data.push(data.fields.count);
+        $scope.chartConfig.xAxis.categories.push(data.fields.label[0])
+      });
+      // angular.element('tspan')[0].innerHTML('Funds');
     }
 
     $scope.mapOptionChanged = function(widget) {

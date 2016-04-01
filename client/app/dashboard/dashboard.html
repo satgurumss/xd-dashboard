@@ -101,7 +101,9 @@
 
               <div ng-if = "widget.query.workflow === 'dealReport'" class="col-md-12" ng-include="'app/dashboard/templates/deal-report.html'"></div>
 
-              <div ng-if = "widget.query.workflow === 'investmentReport'" class="col-md-12" ng-include="'app/dashboard/templates/investment-report.html'"></div>
+              <div ng-if = "widget.query.workflow === 'investmentReport' && !widget.showBar" class="col-md-12" ng-include="'app/dashboard/templates/investment-report.html'"></div>
+
+              <div ng-if = "widget.query.workflow === 'investmentReport' && widget.showBar" class="col-md-12" ng-include="'app/dashboard/templates/bar.html'"></div>
 
               <div ng-if = "widget.mapData && showMap" class="col-md-12" ng-include="'app/dashboard/templates/map.html'"></div>
 
