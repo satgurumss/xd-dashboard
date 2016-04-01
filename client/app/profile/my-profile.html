@@ -2,6 +2,9 @@
 <div class="page page-profile" ng-controller="ProfileCtrl" ng-init="init()">
 
     <header class="profile-header custom-profile-header">
+        <div>
+          <h1 class="white-text">{{profileInfo.name_s[0]}}</h1>
+        </div>
         <div class="profile-img">
             <img alt="{{currentUser.account_s[0]}}" 
                 src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{profileInfo.picture_s[0]}}"
@@ -9,11 +12,12 @@
         </div>
 
         <div class="profile-social align-bottom">
-            <h1 class="white-text">{{profileInfo.name_s[0]}}</h1>
             <h4 class="white-text"><span><i class="fa fa-briefcase"/></span>&nbsp;&nbsp;{{profileInfo.job_title_s[0]}}</h4>
             <h5 class="white-text"><span><i class="fa fa-envelope"/></span>&nbsp;&nbsp;{{profileInfo.email_s[0]}}</h5>
             <h5 class="white-text"><span><i class="fa fa-mobile"/></span>&nbsp;&nbsp;{{profileInfo.phone_mobile_s[0]}}</h5>
             <h5 class="white-text"><span><i class="fa fa-phone"/></span>&nbsp;&nbsp;{{profileInfo.phone_work_s[0]}}</h5>
+            <h5 class="white-text"><span><i class="fa fa-map-marker"/></span>&nbsp;&nbsp;{{profileInfo.location[0]}}</h5>
+            <h5 class="white-text"><span><i class="fa fa-university"/></span>&nbsp;&nbsp;{{profileInfo.alumni_s[0]}}</h5>
 
             <!-- <a href="javascript:;" class="btn-icon btn-icon-round btn-facebook"><i class="fa fa-facebook"></i></a>
             <a href="javascript:;" class="btn-icon btn-icon-round btn-twitter"><i class="fa fa-twitter"></i></a>
