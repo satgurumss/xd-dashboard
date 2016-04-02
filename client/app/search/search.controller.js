@@ -61,7 +61,10 @@
       } else
         loggedInUser.logOutUser();
     }
-
+    $scope.searchBar = function(){
+      $scope.currentPage = 1;
+      $scope.search();
+    }
     $scope.search = function() {
       $scope.numberToFetch[0] = ($scope.currentPage-1) * $scope.numPerPage;
       $scope.sendSearchRequest();

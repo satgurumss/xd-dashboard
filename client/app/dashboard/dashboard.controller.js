@@ -1240,7 +1240,7 @@ var clickEvent;
       // }
     };
 
-    $scope.search = function(queryText) {
+    $scope.searchBar = function(queryText) {
       if (queryText != "")
         $location.url("/search-result?queryText=" + queryText)
     }
