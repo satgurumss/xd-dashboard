@@ -4,8 +4,10 @@
 	<div class="result-heading row">
 
 		<div class="profile-img col-md-2 col-xs-3 ">
-			<img src="images/thumb-knowledge.png"
-					alt="{{result.fields.filename[0]}}" class="img-responsive">
+			<img 
+				src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{result.fields.filename[0]}}.png"
+				onError="this.onerror=null;this.src='images/thumb-knowledge.png'"
+				alt="{{result.fields.filename[0]}}" class="img-responsive">
 		</div>
 
 		<div class="person-info col-md-10 col-xs-12">

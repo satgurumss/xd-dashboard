@@ -12,10 +12,10 @@
     <tbody>
       <tr ng-repeat = "data in widget.data">
         <td>{{data.fields.label[0]}}</td>
-        <td>{{data.fields.AVG[0] | number:0}}</td>
-        <td>{{data.fields.MAX[0] | number:0}}</td>
-        <td>{{data.fields.MIN[0] | number:0}}</td>
-        <td>{{data.fields.SUM[0] | number:0}}</td>
+        <td>{{abbreviateNumber(data.fields.AVG[0],2)}}</td>
+        <td>{{abbreviateNumber(data.fields.MAX[0],2)}}</td>
+        <td>{{abbreviateNumber(data.fields.MIN[0],2)}}</td>
+        <td>{{abbreviateNumber(data.fields.SUM[0],2)}}</td>
       </tr>
     </tbody>
   </table>
