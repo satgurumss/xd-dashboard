@@ -5,20 +5,6 @@
     .controller('SearchCtrl', ['$scope', '$http', 'backendApi', '$location', 'loggedInUser', SearchCtrl])
 
   function SearchCtrl($scope, $http, backendApi, $location, loggedInUser) {
-    var currentUser = {},
-      searchData = {
-        "workflow": "abraajSearch",
-        "query": "",
-        "username": "Administrator",
-        "realm": "Anonymous",
-        "queryLanguage": "simple",
-        "sort":[".score"],
-        "restParams":{},
-        "fields": ["*", "SCOPETEASER(text, fragmentSize=100, fragment=true, numFragments=1, fragmentScope=sentence, scopeMode=HTML) as teaser"]
-      },
-      advFilters = [],
-      selectedAdvFilters = [];
-    //"highlight" : ["true"]
 
     $scope.queryText = "";
     $scope.searchbarWidth = "col-xs-12"
@@ -26,6 +12,7 @@
     $scope.blankslateMsg = "Please enter search keywords above to begin";
     $scope.numPerPageOpt = [3, 5, 10];
     $scope.numPerPage = $scope.numPerPageOpt[2];
+    $scope.numberToFetch = [0];
     $scope.currentPage = 1;
     $scope.currentPageItems = [];
     $scope.filteredItems = [];
@@ -41,6 +28,22 @@
       "value": "date"
     }];
 
+    var currentUser = {},
+      searchData = {
+        "workflow": "abraajSearch",
+        "query": "",
+        "username": "Administrator",
+        "realm": "Anonymous",
+        "queryLanguage": "simple",
+        "sort":[".score"],
+        "restParams":{
+          "offset": $scope.numberToFetch
+        },
+        "fields": ["*", "SCOPETEASER(text, fragmentSize=100, fragment=true, numFragments=1, fragmentScope=sentence, scopeMode=HTML) as teaser"]
+      },
+      advFilters = [],
+      selectedAdvFilters = [];
+    //"highlight" : ["true"]
     $scope.init = function() {
       //use this to get current user
       currentUser = loggedInUser.getCurrentUser();
@@ -59,17 +62,12 @@
         loggedInUser.logOutUser();
     }
 
-    $scope.select = function(page) {
-      var end, start;
-
-      start = (page - 1) * $scope.numPerPage;
-      end = start + $scope.numPerPage;
-      $scope.currentPageItems = $scope.filteredItems.slice(start, end);
-
-      return $scope.currentPageItems;
+    $scope.search = function() {
+      $scope.numberToFetch[0] = ($scope.currentPage-1) * $scope.numPerPage;
+      $scope.sendSearchRequest();
     };
 
-    $scope.search = function() {
+    $scope.sendSearchRequest = function() {
       if ($scope.queryText != "") {
         searchData.query = $scope.queryText;
 
@@ -83,13 +81,12 @@
 
         backendApi.search(searchData).then(function(res) {
           $scope.firstSearch = false;
+         
           if (typeof res.data.documents != "undefined" && res.data.documents.length > 0) {
             $scope.searchResults = res;
 
-            $scope.filteredItems = angular.copy($scope.searchResults.data.documents);
+            //$scope.filteredItems = angular.copy($scope.searchResults.data.documents);
             $scope.currentPageItems = angular.copy($scope.searchResults.data.documents);
-            $scope.currentPage = 1;
-            $scope.select(1);
           } else {
             $scope.blankslateMsg = "No result found. Please try again.";
             $scope.currentPageItems = [];

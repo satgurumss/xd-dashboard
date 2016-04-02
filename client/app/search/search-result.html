@@ -143,11 +143,12 @@
             </div>
 
             <div class="col-md-12 text-right" ng-show="currentPageItems.length > 0">
+              <span class="pull-left total-records">Total&nbsp;{{searchResults.data.totalHits}}&nbsp;Records</span>
               <uib-pagination class="pagination-sm"
                 ng-model="currentPage"
-                total-items="searchResults.data.documents.length"
+                total-items="searchResults.data.totalHits"
                 max-size="4"
-                ng-change="select(currentPage)"
+                ng-change="search()"
                 items-per-page="numPerPage"
                 rotate="false"
                 boundary-links="true">
@@ -184,6 +185,17 @@
   .search-empty-img {
     background-position: 29% center;
   }
+}
+
+.total-records{
+  margin:20px 0 0 0;
+}
+
+@media only screen and (max-device-width : 667px) {
+  .total-records{
+    margin:0;
+  }
+  
 }
 
 </style>
