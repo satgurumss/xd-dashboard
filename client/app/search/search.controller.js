@@ -134,6 +134,7 @@
     }
 
     $scope.advSearch = function() {
+      $scope.currentPage = 1;
       searchData.restParams['q.filter'] = advFilters;
       searchData.restParams['q.filter.type'] = ['advanced'];
       $scope.search();
@@ -142,12 +143,13 @@
     $scope.resetAdvSearch = function() {
       advFilters = [];
       selectedAdvFilters = [];
-
+      $scope.currentPage = 1;
       $scope.search();
     }
 
     $scope.onSelect = function($item, $model, $label) {
       $scope.queryText = $model;
+      $scope.currentPage = 1;
       $scope.search();
     }
 
