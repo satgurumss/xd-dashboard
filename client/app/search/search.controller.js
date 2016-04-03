@@ -102,6 +102,7 @@
     $scope.sortResults = function() {
       searchData.sort = [];
       searchData.sort.push($scope.sortOrder);
+      $scope.currentPage = 1;
       $scope.search();
     }
 
