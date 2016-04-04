@@ -106,6 +106,7 @@ a:hover {
 .adv-search-mobile .dropdown-menu{
 	min-width: 185px;
   left:auto;
+  padding: 0 10px 0 10px;
 }
 
 .sub-menu{

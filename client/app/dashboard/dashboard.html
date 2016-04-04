@@ -27,7 +27,7 @@
                           </span>
                           </h4>
                           <!-- <span ng-hide="widget.showAdded">{{widget.title}}</span> -->
-                          <button class="btn btn-danger action-control" ng-show="widget.showAdded" ng-click="widget.isHide = !widget.isHide">
+                          <button class="btn btn-danger action-control" ng-show="widget.showAdded" ng-click="showWidget(widget)">
                           <span ng-show="widget.isHide">Add</span>
                           <span ng-show="!widget.isHide">Remove</span>
                           </button>
@@ -35,7 +35,7 @@
                         </div>
                       </div>
                     </section>
-                    <section class="item animated fadeIn {{pie2.class}} widget-option-list" ng-class="{'widget-selected':pie2.isHide}">
+                    <section class="hide item animated fadeIn {{pie2.class}} widget-option-list" ng-class="{'widget-selected':pie2.isHide}">
                       <div class="mini-box" ng-mouseenter="pie2.showAdded = true" ng-mouseleave="pie2.showAdded = !pie2.showAdded">
                         <span class="box-icon">
                           <img ng-src="{{pie2.iconUrl}}" wdith="90" height="90">
@@ -73,7 +73,7 @@
         <section class="panel panel-default" ng-mouseenter="widget.shMenu1=true;" ng-mouseleave="widget.shMenu1=false;">
           <div class="widget-menu" ng-class="{'animated slideInLeft' : widget.shMenu1 , 'animated slideOutLeft' : !widget.shMenu1 }" ng-show="widget.shMenu1" >
             <div class="remove" ng-click="removeWidget(widget, $event);"><i class="fa fa-times"></i></div>
-            <div class="expand"><i class="fa fa-expand"></i></div>
+<!--             <div class="expand"><i class="fa fa-expand"></i></div> -->
           </div>
           <div class="panel-container">
             <div class="panel-heading widget-hading">

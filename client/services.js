@@ -61,21 +61,28 @@
       logOutUser : function(){
         console.log("logOutUser");
         $cookies.remove("abraajLogin");
-        $cookies.remove("abraajQBoost");
         $location.url("/signin");
       },
-      updateQBoost : function(data){
+      updateQBoost : function(data , userName){
         console.log("updateQBoost");
-        console.log(data)
-        $cookies.remove("abraajQBoost");
+        $cookies.remove("abraajQBoost" + userName);
         var qboost = {"qboost":data}
-        $cookies.putObject("abraajQBoost", qboost);
+        $cookies.putObject("abraajQBoost" + userName, qboost);
       },
-      getQBoost : function(data){
+      getQBoost : function(userName){
         console.log("getQBoost");
-        var abraajQBoost = $cookies.getObject("abraajQBoost");
+        var abraajQBoost = $cookies.getObject("abraajQBoost" + userName);
         console.log(abraajQBoost)
         return  typeof abraajQBoost != "undefined" ? abraajQBoost.qboost : [];
+      },
+      updateWidgetStates : function(widgetsList , userName){
+        $cookies.remove("abraajWidgets" + userName);
+        $cookies.putObject("abraajWidgets" + userName, widgetsList);
+      },
+      getWidgetStates : function(userName){
+        var widgetsState = $cookies.getObject("abraajWidgets" + userName);
+        console.log(widgetsState)
+        return  typeof widgetsState != "undefined" ? widgetsState : [];
       }
 
     };

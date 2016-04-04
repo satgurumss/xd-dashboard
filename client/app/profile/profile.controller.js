@@ -18,10 +18,7 @@
       $scope.currentUser = loggedInUser.getCurrentUser();
 
       if (!_.isEmpty($scope.currentUser)) {
-        $scope.currentUser.account_s[0];
-        $scope.regionsList;
-        $scope.gicsList;
-        $scope.selectedQboost = loggedInUser.getQBoost();
+        $scope.selectedQboost = loggedInUser.getQBoost($scope.currentUser.account_s[0]);
         console.log($scope.selectedQboost)
 
         backendApi.getUserProfile($scope.currentUser).then(function(res) {
@@ -36,8 +33,6 @@
 
         backendApi.getGICSList().then(function(res) {
           $scope.list2 = nestSectors(res.data);
-          console.log("list2")
-          console.log($scope.list2);
         })
       } else
         loggedInUser.logOutUser();
@@ -78,7 +73,7 @@
         }
       }
 
-      loggedInUser.updateQBoost($scope.qBoost);
+      loggedInUser.updateQBoost($scope.qBoost, $scope.currentUser.account_s[0]);
     }
 
     function check(item) {

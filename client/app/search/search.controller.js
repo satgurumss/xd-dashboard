@@ -43,14 +43,12 @@
       },
       advFilters = [],
       selectedAdvFilters = [];
-    //"highlight" : ["true"]
+
     $scope.init = function() {
       //use this to get current user
       currentUser = loggedInUser.getCurrentUser();
       if (!_.isEmpty(currentUser)) {
-        var qboost = loggedInUser.getQBoost()
-        console.log("qboost in search controller")
-        console.log(qboost)
+        var qboost = loggedInUser.getQBoost(currentUser.account_s[0]);
         searchData.username = currentUser.account_s[0];
         searchData.restParams["q.boost"]  = qboost;
 
