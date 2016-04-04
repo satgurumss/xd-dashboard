@@ -7,6 +7,7 @@
   function SearchCtrl($scope, $http, backendApi, $location, loggedInUser) {
 
     $scope.queryText = "";
+    $scope.moreLikeThis = "";
     $scope.searchbarWidth = "col-xs-12"
     $scope.searchTypeWidth = "col-xs-6"
     $scope.blankslateMsg = "Please enter search keywords above to begin";
@@ -71,8 +72,11 @@
     };
 
     $scope.sendSearchRequest = function() {
-      if ($scope.queryText != "") {
-        searchData.query = $scope.queryText;
+      if ($scope.queryText != "" || $scope.moreLikeThis != "") {
+        if($scope.moreLikeThis != "")
+          searchData.query = $scope.moreLikeThis;
+        else
+          searchData.query = $scope.queryText;
 
         if (advFilters.length > 0) {
           searchData.restParams['q.filter'] = advFilters;
@@ -84,7 +88,7 @@
 
         backendApi.search(searchData).then(function(res) {
           $scope.firstSearch = false;
-         
+          $scope.moreLikeThis = "";
           if (typeof res.data.documents != "undefined" && res.data.documents.length > 0) {
             $scope.searchResults = res;
             $scope.promotions =  $scope.searchResults.data.placements;
@@ -223,8 +227,8 @@
           queryString += index < array.length-2 ? str + " OR " : " " + str;
         })
         
-        $scope.queryText = queryString.replace(/"/g,"");
-        //$scope.queryText = queryString;
+        $scope.moreLikeThis = queryString.replace(/"/g,"");
+        //$scope.moreLikeThis = queryString;
 
         $scope.currentPage = 1;
         $scope.search();
