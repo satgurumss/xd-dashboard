@@ -227,8 +227,8 @@
           queryString += index < array.length-2 ? str + " OR " : " " + str;
         })
         
-        //$scope.moreLikeThis = queryString.replace(/"/g,"");
-        $scope.moreLikeThis = queryString;
+        $scope.moreLikeThis = queryString.replace(/"/g,"");
+        //$scope.moreLikeThis = queryString;
 
         $scope.currentPage = 1;
         $scope.search();
