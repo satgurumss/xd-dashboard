@@ -37,7 +37,11 @@
 			</div>
 
 			<div class="profile-link" style="margin-top: 5px;">
-				<a href="javascript:;">more like this</a>
+				<a ng-if="result.fields.morelikethisquery[0]"
+					href="javascript:;" 
+					ng-click="fetchMoreLikeThis(result.fields.morelikethisquery[0])">
+					more like this
+				</a>
 			</div>
 		</div>
 	</div>

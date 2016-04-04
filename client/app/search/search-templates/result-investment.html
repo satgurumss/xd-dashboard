@@ -10,7 +10,7 @@
 
 		<div class="person-info col-md-10 col-xs-12">
 			<span class="pull-right">
-				{{result.fields.date[0]|date:'MMMM dd, yyyy'}}
+				{{result.fields.origination_date[0]|date:'MMMM dd, yyyy'}}
 			</span>
 			<h4>{{result.fields.company_name_s[0]}}&nbsp;</h4>
 			<h5>{{result.fields.company_description_s[0]}}</h5>
@@ -37,7 +37,11 @@
 				</sapn>
 			</div>
 			<div class="profile-link" style="margin-top: 5px;">
-				<a href="javascript:;">more like this</a>
+				<a ng-if="result.fields.morelikethisquery[0]"
+					href="javascript:;" 
+					ng-click="fetchMoreLikeThis(result.fields.morelikethisquery[0])">
+					more like this
+				</a>
 			</div>
 		</div>
 	</div>

@@ -59,10 +59,12 @@
       } else
         loggedInUser.logOutUser();
     }
+
     $scope.searchBar = function(){
       $scope.currentPage = 1;
       $scope.search();
     }
+
     $scope.search = function() {
       $scope.numberToFetch[0] = ($scope.currentPage-1) * $scope.numPerPage;
       $scope.sendSearchRequest();
@@ -85,6 +87,7 @@
          
           if (typeof res.data.documents != "undefined" && res.data.documents.length > 0) {
             $scope.searchResults = res;
+            $scope.promotions =  $scope.searchResults.data.placements;
 
             //$scope.filteredItems = angular.copy($scope.searchResults.data.documents);
             $scope.currentPageItems = angular.copy($scope.searchResults.data.documents);
@@ -205,6 +208,27 @@
       }
 
       return newLabel;
+    }
+
+    $scope.fetchMoreLikeThis = function(moreLikeThisQuery){
+      console.log(moreLikeThisQuery);
+      if( ! _.isUndefined(moreLikeThisQuery) && ! _.isEmpty(moreLikeThisQuery) ){
+        
+        moreLikeThisQuery = moreLikeThisQuery.substring(moreLikeThisQuery.indexOf("(")+1, moreLikeThisQuery.indexOf(")"));
+
+        moreLikeThisQuery = moreLikeThisQuery.split(",");
+        var queryString = "";
+
+        moreLikeThisQuery.forEach( function(str, index, array){
+          queryString += index < array.length-2 ? str + " OR " : " " + str;
+        })
+        
+        $scope.queryText = queryString.replace(/"/g,"");
+        //$scope.queryText = queryString;
+
+        $scope.currentPage = 1;
+        $scope.search();
+      }
     }
   }
 })();

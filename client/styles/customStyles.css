@@ -6,7 +6,12 @@
 .pad-l-0{
 	padding-left: 0;
 }
-
+.pad-t-0{
+  padding-top: 0;
+}
+.pad-b-0{
+  padding-bottom: 0;
+}
 .pad-r-0{
 	padding-right: 0;
 }
@@ -131,10 +136,6 @@ a:hover {
 .menu-title{
   padding-left: 10px;
   border-bottom: 1px solid #DCDCDC;
-}
-
-.year-filter{
-	margin:7px 0 0 0;
 }
 
 .year-filter select{

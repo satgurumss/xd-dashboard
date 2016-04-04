@@ -112,7 +112,13 @@
             <div ng-show = "currentPageItems.length == 0" >
               <h4>{{blankslateMsg}}</h4>
             </div>
-
+            <div class="promotions">
+             <div 
+                data-ng-repeat="promotion in promotions" 
+                ng-if="promotions.length>0"
+                ng-include="'app/search/search-templates/promotion-template.html'">
+              </div>
+            </div>
             <div class="search-result row pad-l-0" data-ng-repeat="result in currentPageItems">
               <div
                 ng-if="result.fields.table[0] == 'news' "
@@ -191,11 +197,38 @@
   margin:20px 0 0 0;
 }
 
+.promotions{
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee;
+}
+
+.promotion-container{
+  padding:10px 0 5px 0;
+}
+
+.promotion:not(:first-child){
+  margin:5px 0 0 0;
+}
+
+.promotion-container h4{
+  margin:0;
+}
+
+.truncate {
+  width: 99%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media only screen and (max-device-width : 667px) {
   .total-records{
     margin:0;
   }
-  
+
+  .promotion-container{
+    margin-bottom: 10px;
+  }
 }
 
 </style>
