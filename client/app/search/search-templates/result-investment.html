@@ -2,9 +2,9 @@
 <div class="desc-col page-person">
 	<div class="row">
 		<div class="profile-img col-md-2 col-xs-3 ">
-			<img 
+			<img
 			src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{result.fields.filename[0]}}.png"
-			onerror="this.onerror=null;this.src='images/thumb-investment.png'" 
+			onerror="this.onerror=null;this.src='images/thumb-investment.png'"
 			alt="{{result.fields.filename[0]}}" class="img-responsive">
 		</div>
 
@@ -21,25 +21,29 @@
 					{{result.fields.team_s[0]}}
 				</span>
 
-				<span class="other-info" ng-if="result.fields.fund_s[0]">
+				<span class="other-info" ng-if="result.fields.fund_s">
 					<span>Fund &nbsp;</span>
-					{{result.fields.fund_s[0] | currency:"$"}}
+					{{result.fields.fund_s[0]}}
 				</span>
 
 				<span class="other-info" ng-if="result.fields.equity_value_d[0]">
 					<span>Equity Value &nbsp;</span>
-					{{result.fields.equity_value_d[0] | currency:"$"}}
+					${{abbreviateNumber(result.fields.equity_value_d[0], 2, "money")}}
 				</span>
 
 				<span class="other-info" ng-if="result.fields.invested_total_d[0]">
 					<span>Invested Total &nbsp;</span>
-					{{result.fields.invested_total_d[0] | currency:"$"}}
-				</sapn>
+					${{abbreviateNumber(result.fields.invested_total_d[0], 2, "money")}}
+				</span>
 			</div>
 			<div class="profile-link" style="margin-top: 5px;">
-				<a href="javascript:;">more like this</a>
+				<a href="javascript:;" class="mobile-right">more like this </a>
+				<a href="javascript:;" ng-click="result.isFirstOpen = !result.isFirstOpen" ng-show="!result.isFirstOpen"> Show More</a>
+				<a href="javascript:;" ng-click="result.isFirstOpen = !result.isFirstOpen" ng-show="result.isFirstOpen"> Show Less</a>
 			</div>
 		</div>
 	</div>
-	<hr>
+	<div ng-include="'app/search/search-templates/additional-info.html'">
+	</div>
 </div>
+<hr>

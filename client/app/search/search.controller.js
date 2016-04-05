@@ -82,9 +82,10 @@
 
         backendApi.search(searchData).then(function(res) {
           $scope.firstSearch = false;
-         
+
           if (typeof res.data.documents != "undefined" && res.data.documents.length > 0) {
             $scope.searchResults = res;
+            console.log("$scope.searchResults ", $scope.searchResults);
 
             //$scope.filteredItems = angular.copy($scope.searchResults.data.documents);
             $scope.currentPageItems = angular.copy($scope.searchResults.data.documents);
@@ -164,7 +165,7 @@
 
     $scope.formatFilterLabel = function(label){
       label = label.replace(/_/g, " ");
-      
+
       if(label.lastIndexOf(" ") != -1)
         label = label.substring(0, label.lastIndexOf(" "));
 
@@ -173,7 +174,7 @@
 
     $scope.formatFilterCheckboxLabels = function(label){
       var newLabel = "";
-      
+
       switch(label){
         case "gics":
           newLabel = "GICS";
@@ -205,6 +206,42 @@
       }
 
       return newLabel;
+    }
+
+    $scope.abbreviateNumber = function(num, digits, type) {
+      var si = [{
+          value: 1E18,
+          symbol: type === 'money' ? "E" : "EB"
+        }, {
+          value: 1E15,
+          symbol: type === 'money' ? "P" : "PB"
+        }, {
+          value: 1E12,
+          symbol: type === 'money' ? "T" : "TB"
+        }, {
+          value: 1E9,
+          symbol: type === 'money' ? "B" : "GB"
+        }, {
+          value: 1E6,
+          symbol: type === 'money' ? "M" : "MB"
+        }, {
+          value: 1E3,
+          symbol: type === 'money' ? "K" : "KB"
+        }],
+        i;
+
+      num = typeof num !== "undefined" ? parseInt(num) : "";
+      if (num > 0 && num != "") {
+
+        for (i = 0; i < si.length; i++) {
+          if (num >= si[i].value) {
+            return (num / si[i].value).toFixed(digits).replace(/\.0+$|(\.[0-9]*[1-9])0+$/, "$1") + si[i].symbol;
+          }
+        }
+        return num.toString();
+      } else {
+        return num;
+      }
     }
   }
 })();

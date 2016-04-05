@@ -1,18 +1,15 @@
 <!-- Result template for type1 -->
 <div class="desc-col page-person">
-
 	<div class="result-heading row">
-
 		<div class="profile-img col-md-2 col-xs-3 ">
-			<img 
-				src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{result.fields.filename[0]}}.png" 
-				onerror="this.onerror=null;this.src='images/thumb-knowledge.png'"
-				alt="{{result.fields.filename[0]}}" class="img-responsive">
+			<img
+			src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{result.fields.filename[0]}}.png"
+			onerror="this.onerror=null;this.src='images/thumb-knowledge.png'"
+			alt="{{result.fields.filename[0]}}" class="img-responsive">
 		</div>
-
 		<div class="person-info col-md-10 col-xs-12">
 			<span class="pull-right">
-				{{result.fields.date[0]|date:'MMMM dd, yyyy'}}
+				{{result.fields.creationdate[0]|date:'MMMM dd, yyyy'}}
 			</span>
 			<a ng-if="result.fields.uri[0]" href="{{result.fields.uri[0]}}" target="_blank">
 				<span class="h4">{{result.fields.title[0]}}&nbsp;</span>
@@ -20,7 +17,6 @@
 			<h4 ng-if="!result.fields.uri[0]">{{result.fields.title[0]}}&nbsp;</h4>
 			<h5>{{result.fields.description_s[0]}}</h5>
 			<h5 ng-bind-html="result.fields.teaser[0]"></h5>
-
 			<div class="person-info">
 				<span class="other-info" ng-if="result.fields.author[0]">
 					<span>Author &nbsp;</span>
@@ -34,12 +30,15 @@
 					<span>Key Phrases &nbsp;</span>
 					<i>{{result.fields.keyphrases[0]}} &nbsp;</i>
 				</span>
-
 			</div>
 			<div class="profile-link" style="margin-top: 5px;">
-				<a href="javascript:;">more like this</a>
+				<a href="javascript:;" class="mobile-right">more like this </a>
+				<a href="javascript:;" ng-click="result.isFirstOpen = !result.isFirstOpen" ng-show="!result.isFirstOpen"> Show More</a>
+				<a href="javascript:;" ng-click="result.isFirstOpen = !result.isFirstOpen" ng-show="result.isFirstOpen"> Show Less</a>
 			</div>
 		</div>
 	</div>
-	<hr>
+	<div ng-include="'app/search/search-templates/additional-info.html'">
+	</div>
 </div>
+<hr>

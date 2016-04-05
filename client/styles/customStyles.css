@@ -1,4 +1,8 @@
 /*UTIL CLASSES*/
+
+.mobile-right {
+  float: right;
+}
 .pad-b-20{
   padding-bottom: 20px;
 }
@@ -153,6 +157,10 @@ a:hover {
     white-space: normal !important;
 }
 
+.page-search .ui-accordion .panel-group .panel-heading + .panel-collapse .panel-body {
+  border: none;
+}
+
 @media only screen and (max-device-width : 667px) {
  .search-bar{
  	margin-top:10px;
@@ -167,7 +175,7 @@ a:hover {
 
 /*up to iPhone 6*/
 @media only screen and (max-device-width : 667px) {
-	.pull-right{
+	.pull-right {
 	 	float:left !important;
 	 }
   .mobile-center{
@@ -177,6 +185,11 @@ a:hover {
   .search-type {
     padding-left: 15px;
   }
+}
+
+/*up to iPad*/
+@media only screen and (max-device-width : 768px) {
+
 }
 /*-------*/
 
@@ -941,3 +954,19 @@ ul.dropdown-menu li:last-child a {
   }
 }
 
+.ui-accordion .panel-heading {
+  text-transform: none;
+  font-weight: normal;
+  background-color: white;
+  border: none;
+  padding-left: 0px;
+}
+
+.ui-accordion .panel {
+  border: none;
+  box-shadow: none;
+}
+
+.ui-accordion .panel-heading .panel-title > a {
+  padding: 0;
+}

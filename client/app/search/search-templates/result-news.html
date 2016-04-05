@@ -2,7 +2,7 @@
 <div class="desc-col page-person">
 	<div class="result-heading row">
 		<div class="profile-img col-md-2 col-xs-3 ">
-			<img 
+			<img
 				src="http://ec2-54-229-163-11.eu-west-1.compute.amazonaws.com:18000/{{result.fields.filename[0]}}.png"
 				onerror="this.onerror=null;this.src='images/thumbs-news.png'"
 				alt="{{result.fields.filename[0]}}" class="img-responsive">
@@ -28,9 +28,30 @@
 			</div>
 
 			<div class="profile-link" style="margin-top: 5px;">
-				<a href="javascript:;">more like this</a>
+				<a href="javascript:;" class="mobile-right">more like this </a>
+				<a href="javascript:;" ng-click="result.isFirstOpen = !result.isFirstOpen" ng-show="!result.isFirstOpen"> Show More</a>
+				<a href="javascript:;" ng-click="result.isFirstOpen = !result.isFirstOpen" ng-show="result.isFirstOpen"> Show Less</a>
 			</div>
-
 		</div>
-	<hr>
 </div>
+<uib-accordion close-others="true" class="ui-accordion">
+  <uib-accordion-group is-open="widget.isFirstOpen">
+  <div class="row">
+  	<div class="col-md-10 col-md-offset-2">
+  		<div class="">
+				<strong> Company &nbsp;</strong>
+				{{result.fields.company[0]}}
+			</div>
+			<div class="">
+				<strong> Location &nbsp;</strong>
+				{{result.fields.location[0]}}
+			</div>
+			<div class="">
+				<strong> Published Date &nbsp;</strong>
+				{{result.fields.published_date_t[0]}}
+			</div>
+  	</div>
+  </div>
+  </uib-accordion-group>
+</uib-accordion>
+<hr>

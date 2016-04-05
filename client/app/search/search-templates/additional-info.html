@@ -1,0 +1,321 @@
+<uib-accordion close-others="true" class="ui-accordion">
+  <uib-accordion-group is-open="result.isFirstOpen">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-2" data-slim-scroll data-scroll-height="500px">
+        <div class="row" ng-if="result.fields.invested_date_t[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Invested Date</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">{{result.fields.invested_date_t[0] | date:'MMMM dd, yyyy'}}</div>
+        </div>
+        <div class="row" ng-if="result.fields.region_id">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Region</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span ng-repeat="region in result.fields.region_id">{{region}} {{!$last ? ", " : ""}}</span>
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.country_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Country</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">{{result.fields.country_s[0]}}</div>
+        </div>
+        <div class="row" ng-if="result.fields.deal_source_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Deal Source</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">{{result.fields.deal_source_s[0]}}</div>
+        </div>
+        <div class="row" ng-if="result.fields.deal_lead_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Deal Lead</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">{{result.fields.deal_lead_s[0]}}</div>
+        </div>
+        <div class="row" ng-if="result.fields.deal_team_members_s">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Deal Team</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span  ng-repeat="teamMember in result.fields.deal_team_members_s">{{teamMember}} {{!$last ? ", " : ""}}</span>
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.investment_team_s">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap" >Investment Team</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span  ng-repeat="iteam in result.fields.investment_team_s">{{iteam}} {{!$last ? ", " : ""}}</span>
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.first_fund_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">First Fund</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            {{result.fields.first_fund_s[0]}}
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.fund_region_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Fund Region</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            {{result.fields.fund_region_s[0]}}
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.team_s">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Team</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span  ng-repeat="iteam in result.fields.team_s">{{iteam}} {{!$last ? ", " : ""}}</span>
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.ownership_percent_f[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Ownership</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">{{result.fields.ownership_percent_f[0]}}%</div>
+        </div>
+        <div class="row" ng-if="result.fields.gross_irr_percent_f[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Gross IRR</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            {{result.fields.gross_irr_percent_f[0]}}%
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.gross_moc_percent_f[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Gross MOC</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            {{result.fields.gross_moc_percent_f[0]}}%
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.holding_period_f[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Holding Period</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            {{result.fields.holding_period_f[0]}}
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.gics_id">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">GICS</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span ng-repeat="gics in result.fields.gics_id track by $index">{{gics}} {{!$last ? ", " : ""}}</span>
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.industry_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Industry</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            {{result.fields.industry_s[0]}}
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.text[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Text</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            {{result.fields.text[0]}}
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.filename[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">File Name</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            {{result.fields.filename[0]}}
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.size[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Size</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            {{abbreviateNumber(result.fields.size[0], 2)}}
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.stage_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Stage</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            {{result.fields.stage_s[0]}}
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.stage_date_t[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Stage Date</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            {{result.fields.stage_date_t[0] | date:'MMMM dd, yyyy'}}
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.doctype[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Document Type</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            {{result.fields.doctype[0]}}
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.application[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Application(s)</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span  ng-repeat="app in result.fields.application">{{app}} {{!$last ? ", " : ""}}</span>
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.languages[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Language(s)</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span  ng-repeat="language in result.fields.languages">{{language}} {{!$last ? ", " : ""}}</span>
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.company[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Copmany(s)</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span  ng-repeat="cmp in result.fields.company | limitTo: '100'">{{cmp}} {{!$last ? ", " : ""}}</span>
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.location[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Location(s)</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span  ng-repeat="loc in result.fields.location | limitTo: '100'">{{loc}} {{!$last ? ", " : ""}}</span>
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.people[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">People</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span  ng-repeat="person in result.fields.people | limitTo: '100'">{{person}} {{!$last ? ", " : ""}}</span>
+          </div>
+        </div>
+
+
+        <div class="row" ng-if="result.fields.alumni_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Alumni</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            {{result.fields.alumni_s[0]}}
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.assistant_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Assistant</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            {{result.fields.assistant_s[0]}}
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.bio_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Bio</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            {{result.fields.bio_s[0]}}
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.interests_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Interest(s)</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span  ng-repeat="loc in result.fields.interests_s | limitTo: '100'">{{loc}} {{!$last ? ", " : ""}}</span>
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.employment_history_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Employment History</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            {{result.fields.employment_history_s[0]}}
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.project_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Project</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            {{result.fields.project_s[0]}}
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.experience_region_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Experience Region(s)</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span  ng-repeat="loc in result.fields.experience_region_s | limitTo: '100'">{{loc}} {{!$last ? ", " : ""}}</span>
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.experience_sector_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Experience Sector(s)</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span  ng-repeat="loc in result.fields.experience_sector_s | limitTo: '100'">{{loc}} {{!$last ? ", " : ""}}</span>
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.experience_skills_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Experience Skill(s)</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span  ng-repeat="loc in result.fields.experience_skills_s | limitTo: '100'">{{loc}} {{!$last ? ", " : ""}}</span>
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.expertise_region_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Expertise Region(s)</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span  ng-repeat="loc in result.fields.expertise_region_s | limitTo: '100'">{{loc}} {{!$last ? ", " : ""}}</span>
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.expertise_sector_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Expertise Sector(s)</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span  ng-repeat="loc in result.fields.expertise_sector_s | limitTo: '100'">{{loc}} {{!$last ? ", " : ""}}</span>
+          </div>
+        </div>
+        <div class="row" ng-if="result.fields.expertise_skills_s[0]">
+          <div class="col-md-2 col-sm-3 col-xs-12">
+            <strong class="pull-right nowrap">Expertise Skill(s)</strong>
+          </div>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <span  ng-repeat="loc in result.fields.expertise_skills_s | limitTo: '100'">{{loc}} {{!$last ? ", " : ""}}</span>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </uib-accordion-group>
+</uib-accordion>
+
+
+<style type="text/css">
+.nowrap{
+  white-space: nowrap;
+}
+</style>
