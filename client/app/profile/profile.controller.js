@@ -7,7 +7,7 @@
   function ProfileCtrl($scope, $rootScope, $http, backendApi, $location, loggedInUser, $filter) {
     $scope.currentUser = {};
     $scope.profileInfo = {};
-    $scope.qBoost = [];
+    var qBoost = [];
 
     $scope.list1 = [];
     $scope.list2 = [];
@@ -18,13 +18,14 @@
       $scope.currentUser = loggedInUser.getCurrentUser();
 
       if (!_.isEmpty($scope.currentUser)) {
-        $scope.selectedQboost = loggedInUser.getQBoost($scope.currentUser.account_s[0]);
-        console.log($scope.selectedQboost)
+        qBoost = loggedInUser.getQBoost($scope.currentUser.account_s[0]);
+        console.log(qBoost)
 
         backendApi.getUserProfile($scope.currentUser).then(function(res) {
           $scope.profileInfo = res.data.documents[0].fields;
           console.log("profile")
-          $scope.qBoost.push($scope.profileInfo.account_s + "~200")
+          if(qBoost.length == 0)
+            qBoost.push($scope.profileInfo.account_s + "~200")
         });
 
         backendApi.getRegionsList().then(function(res) {
@@ -40,7 +41,7 @@
 
     $scope.isRegionSelected = function(item) {
       var selected = "\"" + item.title + "\"~200";
-      return $scope.selectedQboost.length > 0 && $scope.selectedQboost.indexOf(selected) > 0 ? true : false;
+      return qBoost.length > 0 && qBoost.indexOf(selected) > 0 ? true : false;
     }
 
     $scope.selectedItem = {};
@@ -60,32 +61,36 @@
 
       if (event.target.checked) {
         if(_.isUndefined(item.items))
-          $scope.qBoost.push(selected);
+          qBoost.push(selected);
         else{
           traverse(item,check);
         }
       } else {
         
         if(_.isUndefined(item.items))
-          $scope.qBoost.splice($scope.qBoost.indexOf(selected), 1);
+          qBoost.splice(qBoost.indexOf(selected), 1);
         else{
           traverse(item,uncheck);
         }
       }
-
-      loggedInUser.updateQBoost($scope.qBoost, $scope.currentUser.account_s[0]);
+      console.log(qBoost);
+      loggedInUser.updateQBoost(qBoost, $scope.currentUser.account_s[0]);
     }
 
     function check(item) {
       var title = "\"" + item.title + "\"~200";
       item.isChecked = true
-      $scope.qBoost.push(title);
+      qBoost.push(title);
     }
 
     function uncheck(item) {
+      debugger
       var title = "\"" + item.title + "\"~200";
       item.isChecked = false
-      $scope.qBoost.splice($scope.qBoost.indexOf(title), 1);
+      if(qBoost.indexOf(title) !== -1)
+        qBoost.splice(qBoost.indexOf(title), 1);
+      console.log("spliced")
+      console.log(qBoost);
     }
 
     function traverse(tree, func){
