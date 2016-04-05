@@ -65,6 +65,7 @@
       },
       updateQBoost : function(data , userName){
         console.log("updateQBoost");
+        console.log(data)
         $cookies.remove("abraajQBoost" + userName);
         var qboost = {"qboost":data}
         $cookies.putObject("abraajQBoost" + userName, qboost);

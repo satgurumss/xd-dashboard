@@ -7,6 +7,7 @@
   function SearchCtrl($scope, $http, backendApi, $location, loggedInUser) {
 
     $scope.queryText = "";
+    $scope.moreLikeThis = "";
     $scope.searchbarWidth = "col-xs-12"
     $scope.searchTypeWidth = "col-xs-6"
     $scope.blankslateMsg = "Please enter search keywords above to begin";
@@ -35,8 +36,8 @@
         "username": "Administrator",
         "realm": "Anonymous",
         "queryLanguage": "simple",
-        "sort":[".score"],
-        "restParams":{
+        "sort": [".score"],
+        "restParams": {
           "offset": $scope.numberToFetch
         },
         "fields": ["*", "SCOPETEASER(text, fragmentSize=100, fragment=true, numFragments=1, fragmentScope=sentence, scopeMode=HTML) as teaser"]
@@ -50,7 +51,7 @@
       if (!_.isEmpty(currentUser)) {
         var qboost = loggedInUser.getQBoost(currentUser.account_s[0]);
         searchData.username = currentUser.account_s[0];
-        searchData.restParams["q.boost"]  = qboost;
+        searchData.restParams["q.boost"] = qboost;
 
         if (typeof $location.search().queryText != "undefined" && $location.search().queryText != null) {
           $scope.queryText = $location.search().queryText;
@@ -59,18 +60,23 @@
       } else
         loggedInUser.logOutUser();
     }
-    $scope.searchBar = function(){
+
+    $scope.searchBar = function() {
       $scope.currentPage = 1;
       $scope.search();
     }
+
     $scope.search = function() {
-      $scope.numberToFetch[0] = ($scope.currentPage-1) * $scope.numPerPage;
+      $scope.numberToFetch[0] = ($scope.currentPage - 1) * $scope.numPerPage;
       $scope.sendSearchRequest();
     };
 
     $scope.sendSearchRequest = function() {
-      if ($scope.queryText != "") {
-        searchData.query = $scope.queryText;
+      if ($scope.queryText != "" || $scope.moreLikeThis != "") {
+        if ($scope.moreLikeThis != "")
+          searchData.query = $scope.moreLikeThis;
+        else
+          searchData.query = $scope.queryText;
 
         if (advFilters.length > 0) {
           searchData.restParams['q.filter'] = advFilters;
@@ -82,9 +88,10 @@
 
         backendApi.search(searchData).then(function(res) {
           $scope.firstSearch = false;
-
+          $scope.moreLikeThis = "";
           if (typeof res.data.documents != "undefined" && res.data.documents.length > 0) {
             $scope.searchResults = res;
+            $scope.promotions = $scope.searchResults.data.placements;
             console.log("$scope.searchResults ", $scope.searchResults);
 
             //$scope.filteredItems = angular.copy($scope.searchResults.data.documents);
@@ -124,11 +131,11 @@
     $scope.isChecked = function(filter) {
       var foundFilter = false;
 
-      selectedAdvFilters.forEach( function( setFilter, index, array ){
-        if ( filter === setFilter ){
+      selectedAdvFilters.forEach(function(setFilter, index, array) {
+        if (filter === setFilter) {
           foundFilter = true;
         }
-      } );
+      });
 
       return foundFilter;
     }
@@ -163,19 +170,19 @@
       });
     }
 
-    $scope.formatFilterLabel = function(label){
+    $scope.formatFilterLabel = function(label) {
       label = label.replace(/_/g, " ");
 
-      if(label.lastIndexOf(" ") != -1)
+      if (label.lastIndexOf(" ") != -1)
         label = label.substring(0, label.lastIndexOf(" "));
 
       return label;
     }
 
-    $scope.formatFilterCheckboxLabels = function(label){
+    $scope.formatFilterCheckboxLabels = function(label) {
       var newLabel = "";
 
-      switch(label){
+      switch (label) {
         case "gics":
           newLabel = "GICS";
           break;
@@ -207,6 +214,7 @@
 
       return newLabel;
     }
+
 
     $scope.abbreviateNumber = function(num, digits, type) {
       var si = [{
@@ -241,6 +249,27 @@
         return num.toString();
       } else {
         return num;
+      }
+    }
+
+    $scope.fetchMoreLikeThis = function(moreLikeThisQuery) {
+      console.log(moreLikeThisQuery);
+      if (!_.isUndefined(moreLikeThisQuery) && !_.isEmpty(moreLikeThisQuery)) {
+
+        moreLikeThisQuery = moreLikeThisQuery.substring(moreLikeThisQuery.indexOf("(") + 1, moreLikeThisQuery.indexOf(")"));
+
+        moreLikeThisQuery = moreLikeThisQuery.split(",");
+        var queryString = "";
+
+        moreLikeThisQuery.forEach(function(str, index, array) {
+          queryString += index < array.length - 2 ? str + " OR " : " " + str;
+        })
+
+        $scope.moreLikeThis = queryString.replace(/"/g, "");
+        //$scope.moreLikeThis = queryString;
+
+        $scope.currentPage = 1;
+        $scope.search();
       }
     }
   }

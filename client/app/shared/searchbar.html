@@ -11,12 +11,12 @@
       placeholder="Search"
       style="font-family:Arial, FontAwesome"
       ng-change="updateCtrlModel(queryText)"
-      my-enter-press="queryText && searchBar(queryText);"
+      my-enter-press="updateCtrlModel(queryText); queryText && searchBar(queryText);"
       >
 
       <span class="input-group-btn">
         <button class="btn btn-md btn-default search-btn"
-          ng-click="searchBar(queryText);">
+          ng-click="updateCtrlModel(queryText); searchBar(queryText);">
           <i class="fa fa-search"/>
         </button>
       </span>

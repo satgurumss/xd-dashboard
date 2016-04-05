@@ -45,7 +45,7 @@
 			</div>
 
 			<div class="profile-link" style="margin-top: 5px;">
-				<a href="javascript:;" class="mobile-right">more like this </a>
+				<a href="javascript:;" class="mobile-right" ng-if="result.fields.morelikethisquery[0]" ng-click="fetchMoreLikeThis(result.fields.morelikethisquery[0])">more like this </a>
 				<a href="javascript:;" ng-click="result.isFirstOpen = !result.isFirstOpen" ng-show="!result.isFirstOpen"> Show More</a>
 				<a href="javascript:;" ng-click="result.isFirstOpen = !result.isFirstOpen" ng-show="result.isFirstOpen"> Show Less</a>
 			</div>
