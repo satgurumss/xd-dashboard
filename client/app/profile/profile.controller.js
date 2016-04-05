@@ -66,7 +66,7 @@
           traverse(item,check);
         }
       } else {
-        
+
         if(_.isUndefined(item.items))
           qBoost.splice(qBoost.indexOf(selected), 1);
         else{
@@ -84,7 +84,6 @@
     }
 
     function uncheck(item) {
-      debugger
       var title = "\"" + item.title + "\"~200";
       item.isChecked = false
       if(qBoost.indexOf(title) !== -1)
@@ -107,7 +106,7 @@
         }
       }
     }
-    
+
     /*----------NESTING REGIONS FUNCTIONS-------------*/
     function nestRegions(listOfRegions) {
       var regionList = [],
