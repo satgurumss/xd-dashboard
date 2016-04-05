@@ -383,7 +383,7 @@ var clickEvent;
           label: "AVERAGE"
         }, {
           value: "count",
-          label: "count"
+          label: "COUNT"
         }],
         selectedOption: {
           value: "SUM",
@@ -489,7 +489,7 @@ var clickEvent;
           label: "AVERAGE"
         }, {
           value: "count",
-          label: "count"
+          label: "COUNT"
         }],
         selectedOption: {
           value: "SUM",
@@ -559,9 +559,27 @@ var clickEvent;
         }, {
           value: "region_s",
           label: "Region"
+        },{
+          value: "subregion_s",
+          label: "Sub Region"
+        },{
+          value: "country_s",
+          label: "Country"
+        },{
+          value: "location_s",
+          label: "Location"
         }, {
           value: "sector_s",
           label: "Sector"
+        },{
+          value: "industry_group_s",
+          label: "Industry Group"
+        },{
+          value: "industry_s",
+          label: "Industry"
+        },{
+          value: "sub_industry_s",
+          label: "Sub Industry"
         }],
         selectedOption: {
           value: "deal_type_s",
@@ -597,9 +615,27 @@ var clickEvent;
         }, {
           value: "region_s",
           label: "Region"
+        },{
+          value: "subregion_s",
+          label: "Sub Region"
+        },{
+          value: "country_s",
+          label: "Country"
+        },{
+          value: "location_s",
+          label: "Location"
         }, {
           value: "sector_s",
           label: "Sector"
+        },{
+          value: "industry_group_s",
+          label: "Industry Group"
+        },{
+          value: "industry_s",
+          label: "Industry"
+        },{
+          value: "sub_industry_s",
+          label: "Sub Industry"
         }],
         selectedOption: {
           value: "deal_type_s",
@@ -629,9 +665,27 @@ var clickEvent;
         }, {
           value: "region_s",
           label: "Region"
+        },{
+          value: "subregion_s",
+          label: "Sub Region"
+        },{
+          value: "country_s",
+          label: "Country"
+        },{
+          value: "location_s",
+          label: "Location"
         }, {
           value: "sector_s",
           label: "Sector"
+        },{
+          value: "industry_group_s",
+          label: "Industry Group"
+        },{
+          value: "industry_s",
+          label: "Industry"
+        },{
+          value: "sub_industry_s",
+          label: "Sub Industry"
         }],
         selectedOption: {
           value: "fund_s",
@@ -661,9 +715,27 @@ var clickEvent;
         }, {
           value: "region_s",
           label: "Region"
+        },{
+          value: "subregion_s",
+          label: "Sub Region"
+        },{
+          value: "country_s",
+          label: "Country"
+        },{
+          value: "location_s",
+          label: "Location"
         }, {
           value: "sector_s",
           label: "Sector"
+        },{
+          value: "industry_group_s",
+          label: "Industry Group"
+        },{
+          value: "industry_s",
+          label: "Industry"
+        },{
+          value: "sub_industry_s",
+          label: "Sub Industry"
         }],
         selectedOption: {
           value: "fund_s",
@@ -829,8 +901,8 @@ var clickEvent;
     $scope.groupingChanged = function(widget) {
       widget.query.restParams.grouping[0] = widget.selectedOption.value;
       console.log(widget);
-      widget = $scope.updateQuery(widget);
-      console.log(widget);
+/*      widget = $scope.updateQuery(widget);
+      console.log(widget);*/
 
       backendApi.search(widget.query).then(function(res) {
         // console.log(widget.title, res.data.documents);

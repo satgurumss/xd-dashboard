@@ -22,9 +22,9 @@
 				</span>
 
 				<span class="other-info" ng-if="result.fields.keyphrases[0]">
-				<span>Key Phrases &nbsp;</span>
+				<!-- <span>Key Phrases &nbsp;</span>
 					<i>{{result.fields.keyphrases[0]}} &nbsp;</i>
-				</span>
+				</span> -->
 			</div>
 
 			<div class="profile-link" style="margin-top: 5px;">
@@ -36,25 +36,8 @@
 				<a href="javascript:;" ng-click="result.isFirstOpen = !result.isFirstOpen" ng-show="result.isFirstOpen"> Show Less</a>
 			</div>
 		</div>
+	</div>
+	<div ng-include="'app/search/search-templates/additional-info.html'">
+	</div>
 </div>
-<uib-accordion close-others="true" class="ui-accordion">
-  <uib-accordion-group is-open="widget.isFirstOpen">
-  <div class="row">
-  	<div class="col-md-10 col-md-offset-2">
-  		<div class="">
-				<strong> Company &nbsp;</strong>
-				{{result.fields.company[0]}}
-			</div>
-			<div class="">
-				<strong> Location &nbsp;</strong>
-				{{result.fields.location[0]}}
-			</div>
-			<div class="">
-				<strong> Published Date &nbsp;</strong>
-				{{result.fields.published_date_t[0]}}
-			</div>
-  	</div>
-  </div>
-  </uib-accordion-group>
-</uib-accordion>
 <hr>

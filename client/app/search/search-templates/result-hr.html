@@ -1,6 +1,5 @@
 <!-- Result template for type1 -->
 <div class="desc-col page-person">
-
 	<div class="result-heading row">
 		<div class="profile-img col-md-2 col-xs-3 ">
 			<img 
@@ -17,7 +16,6 @@
 				<span class="h4">{{result.fields.filename[0]}}&nbsp;</span>
 			</a>
 			<h4 ng-if="!result.fields.uri[0]">{{result.fields.filename[0]}}&nbsp;</h4>
-			<h5>{{result.fields.description_s[0]}}</h5>
 			<h5 ng-bind-html="result.fields.teaser[0]"></h5>
 
 			<div class="person-info">
@@ -29,10 +27,6 @@
 					<span>Document Type &nbsp;</span>
 					<i>{{result.fields.type_s[0]}} &nbsp;</i>
 				</span>
-				<span class="other-info" ng-if="result.fields.language[0]">
-					<span>Language &nbsp;</span>
-					<i>{{result.fields.language[0]}} &nbsp;</i>
-				</span>
 				<span class="other-info" ng-if="result.fields.mimetype[0]">
 					<span>Mime Type &nbsp;</span>
 					{{result.fields.mimetype[0]}}
@@ -40,13 +34,13 @@
 
 			</div>
 			<div class="profile-link" style="margin-top: 5px;">
-				<a ng-if="result.fields.morelikethisquery[0]"
-					href="javascript:;" 
-					ng-click="fetchMoreLikeThis(result.fields.morelikethisquery[0])">
-					more like this
-				</a>
+				<a href="javascript:;" class="mobile-right" ng-if="result.fields.morelikethisquery[0]" ng-click="fetchMoreLikeThis(result.fields.morelikethisquery[0])">more like this </a>
+				<a href="javascript:;" ng-click="result.isFirstOpen = !result.isFirstOpen" ng-show="!result.isFirstOpen"> Show More</a>
+				<a href="javascript:;" ng-click="result.isFirstOpen = !result.isFirstOpen" ng-show="result.isFirstOpen"> Show Less</a>
 			</div>
 		</div>
 	</div>
-	<hr>
+	<div ng-include="'app/search/search-templates/additional-info.html'">
+	</div>
 </div>
+<hr>
