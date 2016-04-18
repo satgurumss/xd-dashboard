@@ -1020,7 +1020,12 @@ body {
   background-color: #555f67;
   border: 1px solid #555f67;
 }
-
+.ui-tab-container .nav-tabs > li.active > a {
+    color: #222;
+}
+.ui-tab-container .tab-content {
+  background: #FFF;
+}
 
 @media only screen and (max-width: 760px) {
   .page-signin .logo, .page-signup .logo, .page-forgot .logo {
