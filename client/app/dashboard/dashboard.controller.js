@@ -127,6 +127,9 @@ var clickEvent;
     //This is not a highcharts object. It just looks a little like one!
     $scope.chartConfig = {
       options: {
+        colors: ["#28bdc6", "#90e4ad", "#cce679", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+          "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"
+        ],
         chart: {
           type: 'spline',
           backgroundColor: {
@@ -137,33 +140,26 @@ var clickEvent;
               y2: 1
             },
             stops: [
-              [0, '#222222'],
-              [1, '#222222']
+              [0, '#2a2a2b'],
+              [1, '#3e3e40']
             ]
           },
           style: {
-            fontFamily: "'Unica One', sans-serif"
+            fontFamily: "sans-serif"
           },
           plotBorderColor: '#606063'
         },
-        colors: ["#18bfcd", "#90ee7e", "#f45b5b", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
-          "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"
-        ],
+
         tooltip: {
           headerFormat: '<b>{series.name}</b><br>',
-          pointFormat: '{point.x:%e. %b}: {point.y:.2f} m',
           backgroundColor: 'rgba(0, 0, 0, 0.85)',
           style: {
             color: '#F0F0F0'
-          }
+          },
+          valueSuffix: '°C'
         },
 
         plotOptions: {
-          spline: {
-            marker: {
-              enabled: true
-            }
-          },
           series: {
             dataLabels: {
               color: '#B0B0B3'
@@ -182,6 +178,7 @@ var clickEvent;
             color: 'white'
           }
         },
+
         legend: {
           itemStyle: {
             color: '#E0E0E3'
@@ -191,13 +188,21 @@ var clickEvent;
           },
           itemHiddenStyle: {
             color: '#606063'
-          }
+          },
+          layout: 'horizontal',
+          align: 'left',
+          verticalAlign: 'top',
+          padding: 50,
+          floating: true,
+          borderWidth: 0
         },
+
         credits: {
           style: {
             color: '#666'
           }
         },
+
         labels: {
           style: {
             color: '#707073'
@@ -296,13 +301,23 @@ var clickEvent;
       //The below properties are watched separately for changes.
       //Title configuration (optional)
       title: {
-        text: 'Statistics',
+        text: 'Revenue, Target & Net Revenue',
+        align: 'left',
+        x: 30,
         style: {
           color: '#E0E0E3',
           textTransform: 'uppercase',
           fontSize: '20px'
         }
       },
+
+      subtitle: {
+        style: {
+          color: '#E0E0E3',
+          textTransform: 'uppercase'
+        }
+      },
+
       yAxis: {
         gridLineColor: '#707073',
         labels: {
@@ -315,21 +330,22 @@ var clickEvent;
         tickColor: '#707073',
         tickWidth: 1,
         title: {
-          text: 'Monthly Status',
+          text: 'Millions ($)',
           style: {
             color: '#A0A0A3'
           }
         },
-        min: 0
+        plotLines: [{
+          value: 0,
+          width: 1,
+          color: '#808080'
+        }]
       },
+
       xAxis: {
-        type: 'datetime',
-        dateTimeLabelFormats: { // don't display the dummy year
-          month: '%e. %b',
-          year: '%b'
-        },
+        categories: ['', '', 'Mar 15', '', '', 'Jun 15', '', '', 'Sep 15', '', '', 'Dec 15'],
+        tickWidth: 0,
         title: {
-          text: 'Date',
           style: {
             color: '#A0A0A3'
           }
@@ -344,17 +360,34 @@ var clickEvent;
         minorGridLineColor: '#505053',
         tickColor: '#707073'
       },
+
       series: [{
-        name: 'Winter 2013-2014',
-        data: [
-          [Date.UTC(1970, 9, 29), 0],
-          [Date.UTC(1970, 10, 9), 0.4],
-          [Date.UTC(1970, 11, 1), 0.25],
-          [Date.UTC(1971, 0, 1), 1.66],
-          [Date.UTC(1971, 0, 10), 1.8],
-          [Date.UTC(1971, 1, 19), 1.76],
-          [Date.UTC(1971, 5, 10), 0]
-        ]
+        name: 'Revenue',
+        data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
+        marker: {
+          symbol: 'circle',
+          fillColor: '#303031',
+          lineWidth: 1,
+          lineColor: '#28bdc6'
+        }
+      }, {
+        name: 'Target',
+        data: [2.2, 4.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5],
+        marker: {
+          symbol: 'circle',
+          fillColor: '#303031',
+          lineWidth: 1,
+          lineColor: '#90e4ad'
+        }
+      }, {
+        name: 'Last Year',
+        data: [3.9, 3.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0],
+        marker: {
+          symbol: 'circle',
+          fillColor: '#303031',
+          lineWidth: 1,
+          lineColor: '#cce679'
+        }
       }]
     };
 
