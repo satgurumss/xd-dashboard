@@ -176,9 +176,6 @@ a:hover {
 
 /*up to iPhone 6*/
 @media only screen and (max-device-width : 667px) {
-	.pull-right {
-	 	float:left !important;
-	 }
   .mobile-center{
   text-align:center;
   }
@@ -1030,5 +1027,11 @@ body {
 @media only screen and (max-width: 760px) {
   .page-signin .logo, .page-signup .logo, .page-forgot .logo {
     margin: 7% 0 2%;
+  }
+}
+
+@media only screen and (max-device-width :767px) and (orientation :landscape) {
+  .app-footer {
+    position: static;
   }
 }
