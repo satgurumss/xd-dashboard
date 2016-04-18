@@ -80,11 +80,7 @@ a:hover {
   background-color:#fff;
 }
 
-.btn-info {
-    color: #fff;
-    background-color: #0079c1;
-    border-color: #0079c1;
-}
+
 
 .img40_40{
   height: 40px;
@@ -387,16 +383,6 @@ ul.list-unstyled {
   -webkit-animation-duration: 1.5s;
 }
 
-
-
-body {
-  background-color: transparent !important;
-  background: url(../images/page-bg.jpg) repeat;
-}
-.app > .main-container:before {
-  background-color: transparent !important;
-  background: url(../images/page-bg.jpg) repeat;
-}
 .header-container > .top-header .logo {
     position: absolute;
     width: 100%;
@@ -974,4 +960,70 @@ ul.dropdown-menu li:last-child a {
 
 .ui-accordion .panel-heading .panel-title > a {
   padding: 0;
+}
+
+
+
+/* XDensity */
+
+
+body {
+  background-color: #464646 !important;
+  background: #464646;
+}
+.app > .main-container:before {
+  background-color: #464646 !important;
+  background: #464646;
+}
+.body-auth #content {
+    background-color: #464646;
+}
+
+.btn-info {
+    color: #FFF;
+    background-color: #50A5EE;
+    border-color: #50A5EE;
+}
+.btn-info:hover {
+    background-color: #4A96D8;
+    border-color: #4A96D8;
+}
+
+.page-signin .main-body, .page-signup .main-body, .page-forgot .main-body {
+  border-top: 0;
+}
+.page-signin .logo img, .page-signup .logo img, .page-forgot .logo img {
+  display: inline-block;
+}
+.page-signin .logo, .page-signup .logo, .page-forgot .logo {
+    margin: 5% 0 2%;
+}
+.page-signin a, .page-signup a, .page-forgot a {
+    color: #FFF;
+}
+.page-signin a:hover, .page-signup a:hover, .page-forgot a:hover {
+    color: #DDD;
+}
+.form-control:focus {
+    border-color: #555f67;
+    box-shadow: none;
+}
+
+.input-group-addon {
+  color: #A09FA4;
+  background-color: #292c31;
+  border: 1px solid #292c31;
+}
+
+.form-control {
+  color: #A0A1A5;
+  background-color: #555f67;
+  border: 1px solid #555f67;
+}
+
+
+@media only screen and (max-width: 760px) {
+  .page-signin .logo, .page-signup .logo, .page-forgot .logo {
+    margin: 7% 0 2%;
+  }
 }
