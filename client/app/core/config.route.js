@@ -50,9 +50,6 @@
         .when('/dashboard', {
           templateUrl: 'app/dashboard/dashboard.html'
         })
-        .when('/search-result', {
-          templateUrl: 'app/search/search-result.html'
-        })
         .when('/404', {
           templateUrl: 'app/page/404.html'
         })

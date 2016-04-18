@@ -23,7 +23,7 @@
             </div>
             <div class="form-container">
 
-                <form class="form-horizontal login-form" name="loginForm" ng-submit="loginForm.$valid && doLogin()">
+                <form class="form-horizontal login-form" name="loginForm" ng-submit="doLogin()">
                     <fieldset>
                         <div class="form-group">
                             <div class="input-group input-group-lg">
@@ -32,23 +32,35 @@
                                 </span>
                                 <input type="text"
                                        class="form-control"
-                                       placeholder="Username"
-                                       required
+                                       placeholder="username"
                                        ng-model="userName"
                                        ng-change="errorAlert = false"
                                        >
                             </div>
                         </div>
                         <div class="form-group">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-lock"></span>
+                                </span>
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="password"
+                                       ng-model="password"
+                                       ng-change="errorAlert = false"
+                                       >
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <button class="btn btn-info btn-lg btn-block"
-                                type="submit">Log in
+                                type="submit">Sign in
                             </button>
                         </div>
                     </fieldset>
                 </form>
 
-                <section hidden>
-                    <p class="text-center"><a href="#/page/forgot-password">Forgot your username?</a></p>
+                <section>
+                    Not a memeber?<p class="text-center"><a href="#/page/signup">Sign up now</a></p>
                 </section>
 
             </div>
