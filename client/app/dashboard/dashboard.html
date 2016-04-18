@@ -1,148 +1,52 @@
 <div class="page page-dashboard" data-ng-controller="DashboardCtrl" ng-init="init();">
-  <div class="row search-section">
-    <div class="search-panel">
+  <div class="row">
+    <div class="panel-container">
       <div class="panel-body">
         <div class="row">
-          <div data-ng-include="'app/shared/searchbar.html'"></div>
-          <div class="col-xs-2 col-sm-2 pl-0">
-            <div class="btn-group" uib-dropdown is-open="status.isopen">
-              <button type="button" class="btn-widget dropdown-toggle widget-control" uib-dropdown-toggle ng-disable="disabled"><i class="fa fa-th fa-1"></i></button>
-              <menu class="dropdown-menu animated fadein widget-filter-container" ng-click="$event.stopPropagation()" role="menu">
-              <section>
-                <!-- <div id="filters" class="sort-wo-list clearfix">
-                  <input type="checkbox" id="All" name="All" value=".All" checked>
-                  <label for="All" class="first">All</label>
-                </div> -->
-                <div data-slim-scroll data-scroll-height="340px">
-                  <div id="container">
-                    <section ng-repeat="widget in widgets" class="item animated fadeIn {{widget.class}} widget-option-list" ng-class="{'widget-selected':widget.isHide}">
-                      <div class="mini-box" ng-mouseenter="widget.showAdded = true" ng-mouseleave="widget.showAdded = false">
-                        <span class="box-icon">
-                          <img ng-src="{{widget.iconUrl}}" width="90" height="90">
-                        </span>
-                        <div class="widget-text text-left">
-                          <h4 class="text-center">{{widget.title}}
-                          <span class="check-mark" ng-show="!widget.isHide">
-                            <span class="fa fa-check"></span>
-                          </span>
-                          </h4>
-                          <!-- <span ng-hide="widget.showAdded">{{widget.title}}</span> -->
-                          <button class="btn btn-danger action-control" ng-show="widget.showAdded" ng-click="showWidget(widget)">
-                          <span ng-show="widget.isHide">Add</span>
-                          <span ng-show="!widget.isHide">Remove</span>
-                          </button>
-                          <!-- <button class="btn btn-danger action-control" ng-show="widget.showAdded && !widget.isHide" ng-click="widget.isHide = true">Remove</button> -->
-                        </div>
-                      </div>
-                    </section>
-                    <section class="hide item animated fadeIn {{pie2.class}} widget-option-list" ng-class="{'widget-selected':pie2.isHide}">
-                      <div class="mini-box" ng-mouseenter="pie2.showAdded = true" ng-mouseleave="pie2.showAdded = !pie2.showAdded">
-                        <span class="box-icon">
-                          <img ng-src="{{pie2.iconUrl}}" wdith="90" height="90">
-                        </span>
-                        <div class="widget-text text-left">
-                          <h4 class="text-center">{{pie2.title}}
-                          <span class="check-mark" ng-show="!pie2.isHide">
-                            <span class="fa fa-check"></span>
-                          </span>
-                          </h4>
-                          <!-- <span ng-hide="pie2.showAdded">{{pie2.title}}</span> -->
-                          <button class="btn btn-danger action-control" ng-show="pie2.showAdded" ng-click="pie2.isHide = !pie2.isHide">
-                          <span ng-show="pie2.isHide">Add</span>
-                          <span ng-show="!pie2.isHide">Remove</span>
-                          </button>
-                          <!-- <button class="btn btn-danger action-control" ng-show="pie2.showAdded && !pie2.isHide" ng-click="pie2.isHide = true">Remove</button> -->
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </div>
-              </section>
-              <section class="close-menu">
-                <button class="btn btn-danger text-uppercase btn-sm btn-w-sm"
-                ng-click="status.isopen = false">Done</button>
-              </section>
-              </menu>
-            </div>
+          <div data-echarts data-options="lineOptions" style="height: 350px;"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            guage chart
+          </div>
+
+          <div class="col-md-4">
+            guage chart
+          </div>
+
+          <div class="col-md-4">
+            guage chart
           </div>
         </div>
       </div>
     </div>
-    <ul class="list-unstyled">
-      <li ng-repeat = "widget in widgets" ng-if = "!widget.isHide" class="slide search-widget" ng-class="setColClass(widget)">
-        <section class="panel panel-default" ng-mouseenter="widget.shMenu1=true;" ng-mouseleave="widget.shMenu1=false;">
-          <div class="widget-menu" ng-class="{'animated slideInLeft' : widget.shMenu1 , 'animated slideOutLeft' : !widget.shMenu1 }" ng-show="widget.shMenu1" >
-            <div class="remove" ng-click="removeWidget(widget, $event);"><i class="fa fa-times"></i></div>
-<!--             <div class="expand"><i class="fa fa-expand"></i></div> -->
-          </div>
-          <div class="panel-container">
-            <div class="panel-heading widget-hading">
-              <img src="{{widget.smallIconUrl}}" />
-              <strong>{{widget.title}}</strong>
-              <span class="badge badge-warning">{{widget.data.length}}</span>
-              <span class="ui-select pull-right" ng-if="widget.options">
-                <select ng-options="group as group.label for group in widget.options track by group.value" ng-model="widget.selectedOption" ng-change="groupingChanged(widget)">
-                </select>
-              </span>
-              <!-- chart option dropdowns -->
-              <span class="ui-select pull-right" ng-if="widget.chartOptions">
-                <select ng-options="group as group.label for group in widget.chartOptions track by group.value" ng-model="widget.selectedOption" ng-change="chartOptionChanged(widget)">
-                </select>
-              </span>
-              <!-- maps dropdowns -->
-              <span class="ui-select pull-right" ng-if="widget.mapData">
-                <select ng-options="metric as metric.label for metric in widget.metrics track by metric.value" ng-model="widget.selectedMetric" ng-change="mapOptionChanged(widget)">
-                </select>
-              </span>
-              <span class="ui-select pull-right" ng-if="widget.mapData">
-                <select ng-options="deal as deal.label for deal in widget.dealTypes track by deal.value" ng-model="widget.selectedDealType" ng-change="mapOptionChanged(widget)">
-                </select>
-              </span>
+  </div>
+  <div class="row">
+    <section class="panel panel-default">
+        <div class="panel-body" data-ng-controller="TabsDemoCtrl">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="ui-tab-container ui-tab-horizontal">
+                        <uib-tabset justified="false" class="ui-tab">
+                            <uib-tab heading="Home dolor">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                                <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
+                            </uib-tab>
+                            <uib-tab heading="Quod ea">
+                                <p>Quod ea vel dolores earum veritatis quae sunt tempore odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                            </uib-tab>
+                            <uib-tab heading="Earum sequi">
+                                <p>Blanditiis tenetur harum distinctio voluptate asperiores non magnam delectus. Consequatur, deleniti rem magnam possimus necessitatibus iusto suscipit mollitia rerum.</p>
+                                <p>Quod ea vel dolores earum veritatis quae sunt tempore odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
+                            </uib-tab>
+                        </uib-tabset>
+                    </div>                     
+                </div>
             </div>
-            <div class="panel-body" data-slim-scroll data-scroll-height="360px">
-              <div ng-if="(!widget.data || widget.data.length == 0) && !widget.mapData">
-                <h5 class="text-center padding-t10"> No Result Found</h5>
-              </div>
-
-              <div ng-if = "widget.query.workflow === 'dealReport'" class="col-md-12" ng-include="'app/dashboard/templates/deal-report.html'"></div>
-
-              <div ng-if = "widget.query.workflow === 'investmentReport' && !widget.showBar" class="col-md-12" ng-include="'app/dashboard/templates/investment-report.html'"></div>
-
-              <div ng-if = "widget.query.workflow === 'investmentReport' && widget.showBar" class="col-md-12" ng-include="'app/dashboard/templates/bar.html'"></div>
-
-              <div ng-if = "widget.mapData && showMap" class="col-md-12" ng-include="'app/dashboard/templates/map.html'"></div>
-
-              <div class="row widget-single-row" ng-if = "widget.query.workflow !== 'dealReport' && !widget.mapData" ng-repeat = "data in widget.data">
-                <div ng-if = "data.fields.table[0] === 'deal'" class="col-md-12" ng-include="'app/dashboard/templates/deals.html'"></div>
-
-                <div ng-if = "data.fields.table[0] === 'investment'" class="col-md-12" ng-include="'app/dashboard/templates/investments.html'"></div>
-
-                <div ng-if = "data.fields.table[0] === 'news'" class="col-md-12" ng-include="'app/dashboard/templates/news.html'"></div>
-
-                <div ng-if = "data.fields.table[0] === 'km'" class="col-md-12" ng-include="'app/dashboard/templates/km.html'"></div>
-
-              </div>
-            </div>
-          </div>
-        </section>
-      </li>
-      <!-- <li class="slide search-widget col-md-4 col-sm-6" ng-if = "!pie2.isHide">
-        <section class="panel panel-default"  ng-mouseenter="shMenu2=true;" ng-mouseleave="shMenu2=false;">
-          <div class="widget-menu" ng-class="{'animated slideInLeft' : shMenu2 , 'animated slideOutLeft' : !shMenu2 }" ng-show="shMenu2" >
-            <div class="remove" ng-click="removeWidget(pie2);"><i class="fa fa-times"></i></div>
-            <div class="expand"><i class="fa fa-expand"></i></div>
-          </div>
-          <div class="panel-container">
-            <div class="panel-heading"><img src="images/icons-small/icon_pie.png"><strong>PIE CHART</strong></div>
-            <div class="panel-body" data-slim-scroll data-scroll-height="320px">
-              <div class="row">
-                <div data-echarts data-options="pie2.options" style="height: 300px; padding: 15px;"></div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </li> -->
-    </ul>
+        </div>
+    </section>
   </div>
 </div>
 
@@ -157,7 +61,7 @@
   }
 
   .page-dashboard .search-section .col-lg-offset-2 {
-      margin-left: 25%;
+    margin-left: 25%;
   }
   .page-dashboard td{
     word-wrap: break-word;
