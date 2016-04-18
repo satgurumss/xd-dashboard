@@ -3,7 +3,7 @@ var clickEvent;
   'use strict';
 
   angular.module('app')
-    .controller('DashboardCtrl', 
+    .controller('DashboardCtrl',
       ['$scope', '$http', '$location', 'backendApi', 'loggedInUser', '$timeout', DashboardCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
@@ -13,7 +13,7 @@ var clickEvent;
     });
 
   function DashboardCtrl($scope, $http, $location, backendApi, loggedInUser, $timeout) {
-    
+
     /*$scope.lineOptions = {
       options:{chart: {
         type: 'spline'
@@ -134,8 +134,8 @@ var clickEvent;
           type: 'spline',
           backgroundColor: {
             linearGradient: {
-              x1: 0,
-              y1: 0,
+              x1: 1,
+              y1: 1,
               x2: 1,
               y2: 1
             },
