@@ -1,9 +1,9 @@
 <div class="page page-dashboard" data-ng-controller="DashboardCtrl" ng-init="init();">
   <div class="row">
     <div class="panel-container">
-      <div class="panel-body">
+      <div class="panel-body" style="padding: 0 15px 0 15px;">
         <div class="row">
-          <div data-echarts data-options="lineOptions" style="height: 350px;"></div>
+          <highchart id="chart1" config="chartConfig" class="span10"></highchart>
         </div>
 
         <div class="row">
