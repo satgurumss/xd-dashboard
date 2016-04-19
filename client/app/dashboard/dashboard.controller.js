@@ -186,7 +186,7 @@ var clickEvent;
       //The below properties are watched separately for changes.
       //Title configuration (optional)
       title: {
-        text: '<center><span class="h4">$100,000</span><br><span class="h6">Current Revenue</span></center>',
+        text: '',
         style: {
           color: '#E0E0E3',
           textTransform: 'uppercase',
