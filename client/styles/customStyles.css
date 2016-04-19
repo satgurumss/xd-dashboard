@@ -1191,6 +1191,13 @@ body {
   color: #FFF;
 }
 
+.chartHeading {
+  margin: 0;
+  padding: 15px 0 15px 0;
+  background: #2A2A2B;
+  color: rgb(224, 224, 227);
+}
+
 @media only screen and (max-width: 767px) {
   .page-signin .logo, .page-signup .logo, .page-forgot .logo {
     margin: 22% 0 14%;
