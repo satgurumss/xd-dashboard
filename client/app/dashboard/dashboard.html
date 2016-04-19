@@ -1,13 +1,30 @@
 <div class="page page-dashboard" data-ng-controller="DashboardCtrl" ng-init="init();">
   <div class="row">
     <div class="panel-container">
+
       <div class="panel-body" style="padding: 0 15px 0 15px;">
+        <div class="row revenue-container">
+          <div class="col-xs-12 text-center">
+            <h3>REVENUE, 2015</h3>
+            <h1>5,616</h1>
+            <h4>Current Revenue</h4>
+          </div>
+        </div>
+        <div class="row">
+          <h4 class="chartHeading text-center">Revenue, 2015</h4>
+        </div>
         <div class="row">
           <highchart id="chart1" config="chartConfig" class="span10"></highchart>
         </div>
 
+        <div class="row range-container">
+          <div class="col-xs-12 text-center">
+            <img src="images/range-slider.png" alt="Select Range">
+          </div>
+        </div>
+
         <div class="row dcharts-container">
-          <div class="col-xs-4">
+          <div class="col-xs-4 text-center">
             <div class="card">
               <div class="donut-chart chart1">
                 <div class="slice one"></div>
@@ -16,10 +33,11 @@
                   <span></span>
                 </div>
               </div>
+              <h5>Energy</h5>
             </div>
           </div>
 
-          <div class="col-xs-4">
+          <div class="col-xs-4 text-center">
             <div class="card">
               <div class="donut-chart chart2">
                 <div class="slice one"></div>
@@ -28,10 +46,11 @@
                   <span></span>
                 </div>
               </div>
+              <h5>Transport</h5>
             </div>
           </div>
 
-          <div class="col-xs-4">
+          <div class="col-xs-4 text-center">
             <div class="card">
               <div class="donut-chart chart3">
                 <div class="slice one"></div>
@@ -40,6 +59,7 @@
                   <span></span>
                 </div>
               </div>
+              <h5>Devices</h5>
             </div>
           </div>
         </div>
@@ -75,162 +95,6 @@
 </div>
 
 <style type="text/css">
-
-.dcharts-container {
-  background: #3e3e40;
-}
-
-.card {
-  padding:15px 0 15px 0;
-  margin: 0;
-  box-shadow: none;
-}
-
-.donut-chart {
-  position: relative;
-  border-radius: 50%;
-  overflow: hidden;
-}
-.donut-chart .slice {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.donut-chart .chart-center {
-  position: absolute;
-  border-radius: 50%;
-}
-.donut-chart .chart-center span {
-  display: block;
-  text-align: center;
-}
-
-
-.donut-chart.chart1 {
-  width: 75px;
-  height: 75px;
-  background: #3e3e40;
-  margin: 0 auto;
-}
-.donut-chart.chart1 .slice.one {
-  clip: rect(0 150px 16px 0);
-  -webkit-transform: rotate(340deg);
-  transform: rotate(340deg);
-  background: #28bdc6;
-}
-.donut-chart.chart1 .slice.two {
-  clip: rect(100px 0px 0px 0px);
-  -webkit-transform: rotate(260deg);
-  transform: rotate(260deg);
-  background: #28bdc6;
-}
-.donut-chart.chart1 .chart-center {
-  top: 5px;
-  left: 5px;
-  width: 65px;
-  height: 65px;
-  background: #3e3e40;
-}
-.donut-chart.chart1 .chart-center span {
-  font-size: 24px;
-  line-height: 60px;
-  color: #28bdc6;
-}
-.donut-chart.chart1 .chart-center span:after {
-  content: "89";
-}
-
-
-
-.donut-chart.chart2 {
-  width: 75px;
-  height: 75px;
-  background: #3e3e40;
-  margin: 0 auto;
-}
-.donut-chart.chart2 .slice.one {
-  clip: rect(0 100px 50px 0);
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
-  background: #90e4ad;
-}
-.donut-chart.chart2 .slice.two {
-  clip: rect(0 50px 100px 0);
-  -webkit-transform: rotate(300deg);
-  transform: rotate(300deg);
-  background: #90e4ad;
-}
-
-
-.donut-chart.chart2 .chart-center {
-  top: 5px;
-  left: 5px;
-  width: 65px;
-  height: 65px;
-  background: #3e3e40;
-}
-.donut-chart.chart2 .chart-center span {
-  font-size: 24px;
-  line-height: 60px;
-  color: #90e4ad;
-}
-.donut-chart.chart2 .chart-center span:after {
-  content: "60";
-}
-
-
-
-.donut-chart.chart3 {
-  width: 75px;
-  height: 75px;
-  background: #3e3e40;
-  margin: 0 auto;
-}
-.donut-chart.chart3 .slice.one {
-  clip: rect(0 100px 50px 0);
-  -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
-  background: #cce679;
-}
-.donut-chart.chart3 .slice.two {
-  clip: rect(0 50px 100px 0);
-  -webkit-transform: rotate(270deg);
-  transform: rotate(270deg);
-  background: #cce679;
-}
-
-
-.donut-chart.chart3 .chart-center {
-  top: 5px;
-  left: 5px;
-  width: 65px;
-  height: 65px;
-  background: #3e3e40;
-}
-.donut-chart.chart3 .chart-center span {
-  font-size: 24px;
-  line-height: 60px;
-  color: #cce679;
-}
-.donut-chart.chart3 .chart-center span:after {
-  content: "15";
-}
-
-
-.ui-tab-horizontal .nav-tabs {
-
-}
-
-.nav-justified > li, .nav-tabs.nav-justified > li {
-  float: left;
-  width: 33.33%;
-}
-
-
-
-
 
 
 

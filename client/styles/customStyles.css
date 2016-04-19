@@ -1,5 +1,7 @@
 /*UTIL CLASSES*/
 
+@import url(https://fonts.googleapis.com/css?family=Teko:400,500);
+
 .mobile-right {
   float: right;
 }
@@ -1019,10 +1021,182 @@ body {
 .ui-tab-container .tab-content {
   background: #FFF;
 }
+.bg-white {
+  background: rgba(255,255,255, 0.8);
+}
+.header-container > .top-header .logo > a {
+  background: transparent;
+}
 
-@media only screen and (max-width: 760px) {
+.dcharts-container {
+  background: #3e3e40;
+}
+
+.card {
+  padding:15px 0 15px 0;
+  margin: 0;
+  box-shadow: none;
+}
+.card h5 {
+  margin-bottom: 0;
+}
+
+.donut-chart {
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.donut-chart .slice {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.donut-chart .chart-center {
+  position: absolute;
+  border-radius: 50%;
+}
+.donut-chart .chart-center span {
+  display: block;
+  text-align: center;
+}
+
+
+.donut-chart.chart1,
+.donut-chart.chart2,
+.donut-chart.chart3 {
+  width: 75px;
+  height: 75px;
+  background: #666;
+  margin: 0 auto;
+}
+.donut-chart.chart1 .slice.one {
+  clip: rect(0 150px 16px 0);
+  -webkit-transform: rotate(340deg);
+  transform: rotate(340deg);
+  background: #28bdc6;
+}
+.donut-chart.chart1 .slice.two {
+  clip: rect(100px 0px 0px 0px);
+  -webkit-transform: rotate(260deg);
+  transform: rotate(260deg);
+  background: #28bdc6;
+}
+.donut-chart.chart1 .chart-center,
+.donut-chart.chart2 .chart-center,
+.donut-chart.chart3 .chart-center {
+  top: 5px;
+  left: 5px;
+  width: 65px;
+  height: 65px;
+  background: #3e3e40;
+}
+.donut-chart.chart1 .chart-center span,
+.donut-chart.chart2 .chart-center span,
+.donut-chart.chart3 .chart-center span  {
+  font-size: 21px;
+  line-height: 65px;
+  color: #28bdc6;
+}
+.donut-chart.chart1 .chart-center span:after {
+  content: "10%";
+}
+
+
+.donut-chart.chart2 .slice.one {
+  clip: rect(0 100px 50px 0);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  background: #90e4ad;
+}
+.donut-chart.chart2 .slice.two {
+  clip: rect(0 50px 100px 0);
+  -webkit-transform: rotate(300deg);
+  transform: rotate(300deg);
+  background: #90e4ad;
+}
+
+.donut-chart.chart2 .chart-center span {
+  color: #90e4ad;
+}
+.donut-chart.chart2 .chart-center span:after {
+  content: "30%";
+}
+
+
+.donut-chart.chart3 {
+  width: 75px;
+  height: 75px;
+  background: #666;
+  margin: 0 auto;
+}
+.donut-chart.chart3 .slice.one {
+  clip: rect(0 100px 50px 0);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  background: #cce679;
+}
+.donut-chart.chart3 .slice.two {
+  clip: rect(0 50px 100px 0);
+  -webkit-transform: rotate(270deg);
+  transform: rotate(270deg);
+  background: #cce679;
+}
+
+.donut-chart.chart3 .chart-center span {
+  color: #cce679;
+}
+.donut-chart.chart3 .chart-center span:after {
+  content: "60%";
+}
+
+
+
+
+.nav-justified > li, .nav-tabs.nav-justified > li {
+  float: left;
+  width: 33.33%;
+}
+.revenue-container {
+  border-bottom: 1px solid #555;
+}
+.range-container,
+.revenue-container {
+  background: #2a2a2b;
+  padding: 0 0 10px;
+}
+.revenue-container h1 {
+  font-family: 'Teko', sans-serif;
+  font-weight: 400;
+  font-size: 62px;
+  line-height: 60px;
+  margin: 0;
+}
+.revenue-container h4 {
+  font-weight: 400;
+  margin-top: 0;
+}
+.revenue-container h4 {
+  font-weight: 400;
+}
+.revenue-container h1,
+.revenue-container h3,
+.revenue-container h4,
+.dcharts-container h5 {
+  color: #FFF;
+}
+
+.chartHeading {
+  margin: 0;
+  padding: 15px 0 15px 0;
+  background: #2A2A2B;
+  color: rgb(224, 224, 227);
+}
+
+@media only screen and (max-width: 767px) {
   .page-signin .logo, .page-signup .logo, .page-forgot .logo {
-    margin: 7% 0 2%;
+    margin: 22% 0 14%;
   }
 }
 
