@@ -212,6 +212,7 @@ var clickEvent;
         lineColor: '#707073',
         minorGridLineColor: '#505053',
         minorTickInterval: 'auto',
+        tickInterval: '5',
         tickColor: '#707073',
         tickWidth: 1,
         title: {
