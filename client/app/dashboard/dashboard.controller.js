@@ -128,10 +128,8 @@ var clickEvent;
     $scope.chartConfig = {
       options: {
         colors: ["#28bdc6", "#90e4ad", "#cce679", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
-          "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"
-        ],
+          "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
         chart: {
-          type: 'spline',
           backgroundColor: {
             linearGradient: {
               x1: 1,
@@ -151,7 +149,6 @@ var clickEvent;
         },
 
         tooltip: {
-          headerFormat: '<b>{series.name}</b><br>',
           backgroundColor: 'rgba(0, 0, 0, 0.85)',
           style: {
             color: '#F0F0F0'
@@ -189,7 +186,7 @@ var clickEvent;
           itemHiddenStyle: {
             color: '#606063'
           },
-          layout: 'horizontal',
+          layout: 'vertical',
           align: 'left',
           verticalAlign: 'top',
           padding: 50,
@@ -301,9 +298,7 @@ var clickEvent;
       //The below properties are watched separately for changes.
       //Title configuration (optional)
       title: {
-        text: 'Revenue, Target & Net Revenue',
-        align: 'left',
-        x: 30,
+        text: 'Revenue, 2015',
         style: {
           color: '#E0E0E3',
           textTransform: 'uppercase',
@@ -343,7 +338,7 @@ var clickEvent;
       },
 
       xAxis: {
-        categories: ['', '', 'Mar 15', '', '', 'Jun 15', '', '', 'Sep 15', '', '', 'Dec 15'],
+        categories: ['MAR','JUN', 'SEP', 'DEC'],
         tickWidth: 0,
         title: {
           style: {
@@ -362,33 +357,18 @@ var clickEvent;
       },
 
       series: [{
-        name: 'Revenue',
-        data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
-        marker: {
-          symbol: 'circle',
-          fillColor: '#303031',
-          lineWidth: 1,
-          lineColor: '#28bdc6'
-        }
-      }, {
-        name: 'Target',
-        data: [2.2, 4.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5],
-        marker: {
-          symbol: 'circle',
-          fillColor: '#303031',
-          lineWidth: 1,
-          lineColor: '#90e4ad'
-        }
-      }, {
-        name: 'Last Year',
-        data: [3.9, 3.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0],
-        marker: {
-          symbol: 'circle',
-          fillColor: '#303031',
-          lineWidth: 1,
-          lineColor: '#cce679'
-        }
-      }]
+            name: 'Revenue',
+            data: [5.0, 14.5, 18.2, 15.2],
+            marker: {symbol: 'circle', fillColor: '#303031', lineWidth:1, lineColor: '#28bdc6'}
+        }, {
+            name: 'Target',
+            data: [1.2, 17.0, 19, 8.1],
+            marker: {symbol: 'circle', fillColor: '#303031', lineWidth:1, lineColor: '#90e4ad'}
+        }, {
+            name: 'Last Year',
+            data: [3.2, 13.5, 14.3, 12.2],
+            marker: {symbol: 'circle', fillColor: '#303031', lineWidth:1, lineColor: '#cce679'}
+        }]
     };
 
     $scope.init = function() {
