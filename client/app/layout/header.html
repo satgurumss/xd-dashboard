@@ -1,14 +1,6 @@
 <header class="top-header clearfix" data-ng-controller = "HeaderCtrl" ng-init="init()">
   <!-- Logo -->
-  <div class="logo"
-    ng-class="{ 'bg-dark': ['11','31'].indexOf(main.skin) >= 1,
-    'bg-white': main.skin === '21',
-    'bg-primary': ['12','22','32'].indexOf(main.skin) >= 0,
-    'bg-success': ['13','23','33'].indexOf(main.skin) >= 0,
-    'bg-info-alt': ['14','24','34'].indexOf(main.skin) >= 0,
-    'bg-warning': ['15','25','35'].indexOf(main.skin) >= 0,
-    'bg-danger': ['16','26','36'].indexOf(main.skin) >= 0,
-  }">
+  <div class="logo">
     <a href="#/">
       <img src="images/xdensity-logo.png" alt="user" class="img-responsive">
     </a>
@@ -47,9 +39,11 @@
               </li>
             </ul>
           </li>
-          <li style="padding: 7px 10px;">
-            <i class="fa fa-user"></i>
-            <span class="text-uppercase">My Profile</span>
+          <li>
+            <a href="javascript://">
+              <i class="fa fa-user"></i>
+              <span class="text-uppercase">My Profile</span>
+            </a>
           </li>
           <li>
             <a ng-click="logOut()">

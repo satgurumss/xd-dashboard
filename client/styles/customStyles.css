@@ -1158,9 +1158,6 @@ body {
   float: left;
   width: 33.33%;
 }
-.revenue-container {
-  border-bottom: 1px solid #555;
-}
 .range-container,
 .revenue-container {
   background: #2a2a2b;
@@ -1177,7 +1174,7 @@ body {
   font-weight: 400;
   margin-top: 0;
 }
-.revenue-container h4 {
+.revenue-container h3 {
   font-weight: 400;
 }
 .revenue-container h1,
@@ -1217,6 +1214,7 @@ body {
   -moz-transition: right 1s;
   -o-transition: right 1s;
   transition: right 1s;
+  margin: -1px 0 0 0;
 }
 
 .open > ul.dropdown-menu {
@@ -1226,7 +1224,7 @@ body {
 .top-header .sub-menu {
   list-style: none !important;
   padding-left: 11px;
-  margin: 5px 0 20px 0;
+  margin: 5px 0 5px 0;
 }
 
 .top-header .nav-item {

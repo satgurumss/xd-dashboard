@@ -17,7 +17,7 @@ var clickEvent;
     //This is not a highcharts object. It just looks a little like one!
     $scope.chartConfig = {
       options: {
-        colors: ["#28bdc6", "rgba(144,228,173, .5)", "rgba(204, 230, 121, .5)"],
+        colors: ["#28bdc6", "rgba(144,228,173, .3)", "rgba(204, 230, 121, .3)"],
         chart: {
           height: 260,
           backgroundColor: {
