@@ -1,5 +1,7 @@
 /*UTIL CLASSES*/
 
+@import url(https://fonts.googleapis.com/css?family=Teko:400,500);
+
 .mobile-right {
   float: right;
 }
@@ -1102,7 +1104,7 @@ body {
   color: #28bdc6;
 }
 .donut-chart.chart1 .chart-center span:after {
-  content: "80%";
+  content: "10%";
 }
 
 
@@ -1123,7 +1125,7 @@ body {
   color: #90e4ad;
 }
 .donut-chart.chart2 .chart-center span:after {
-  content: "60%";
+  content: "30%";
 }
 
 
@@ -1150,7 +1152,7 @@ body {
   color: #cce679;
 }
 .donut-chart.chart3 .chart-center span:after {
-  content: "15%";
+  content: "60%";
 }
 
 
@@ -1160,12 +1162,34 @@ body {
   float: left;
   width: 33.33%;
 }
-.range-container {
+.revenue-container {
+  border-bottom: 1px solid #555;
+}
+.range-container,
+.revenue-container {
   background: #2a2a2b;
   padding: 0 0 10px;
 }
-
-
+.revenue-container h1 {
+  font-family: 'Teko', sans-serif;
+  font-weight: 400;
+  font-size: 62px;
+  line-height: 60px;
+  margin: 0;
+}
+.revenue-container h4 {
+  font-weight: 400;
+  margin-top: 0;
+}
+.revenue-container h4 {
+  font-weight: 400;
+}
+.revenue-container h1,
+.revenue-container h3,
+.revenue-container h4,
+.dcharts-container h5 {
+  color: #FFF;
+}
 
 @media only screen and (max-width: 767px) {
   .page-signin .logo, .page-signup .logo, .page-forgot .logo {
