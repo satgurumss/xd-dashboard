@@ -1,65 +1,65 @@
 <header class="top-header clearfix" data-ng-controller = "HeaderCtrl" ng-init="init()">
 
-    <!-- Logo -->
-    <div class="logo"
-         ng-class="{ 'bg-dark': ['11','31'].indexOf(main.skin) >= 1,
-                     'bg-white': main.skin === '21',
-                     'bg-primary': ['12','22','32'].indexOf(main.skin) >= 0,
-                     'bg-success': ['13','23','33'].indexOf(main.skin) >= 0,
-                     'bg-info-alt': ['14','24','34'].indexOf(main.skin) >= 0,
-                     'bg-warning': ['15','25','35'].indexOf(main.skin) >= 0,
-                     'bg-danger': ['16','26','36'].indexOf(main.skin) >= 0,
-                    }">
-        <a href="#/">
-            <img src="images/xdensity-logo.png" alt="user" class="img-responsive">
+  <!-- Logo -->
+  <div class="logo"
+    ng-class="{ 'bg-dark': ['11','31'].indexOf(main.skin) >= 1,
+    'bg-white': main.skin === '21',
+    'bg-primary': ['12','22','32'].indexOf(main.skin) >= 0,
+    'bg-success': ['13','23','33'].indexOf(main.skin) >= 0,
+    'bg-info-alt': ['14','24','34'].indexOf(main.skin) >= 0,
+    'bg-warning': ['15','25','35'].indexOf(main.skin) >= 0,
+    'bg-danger': ['16','26','36'].indexOf(main.skin) >= 0,
+  }">
+    <a href="#/">
+      <img src="images/xdensity-logo.png" alt="user" class="img-responsive">
+    </a>
+  </div>
+
+  <div class="top-nav">
+    <ul class="nav-left list-unstyled">
+      <li class="dropdown text-normal nav-profile pull-right" uib-dropdown is-open="status.isopenProfile">
+        <a href="javascript:;" uib-dropdown-toggle ng-disabled="disabled">
+          <span>
+            &nbsp;<i class="fa fa-bars" style="font-size: 2em;"></i>
+          </span>
         </a>
-    </div>
-
-    <!-- needs to be put after logo to make it work -->
-    <!-- <div class="menu-button" toggle-off-canvas>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </div> -->
-
-    <div class="top-nav">
-        <ul class="nav-left list-unstyled">
-<!--             <li class="center" ng-class="{ active: isActive('/dashboard')}"><a href="#/dashboard">DASHBOARD</a></li>
-            <li class="center" ng-class="{ active: isActive('/search-result')}"><a href="#/search-result">SEARCH</a></li> -->
-            <li class="dropdown text-normal nav-profile pull-right" uib-dropdown is-open="status.isopenProfile">
-                <a href="javascript:;" uib-dropdown-toggle ng-disabled="disabled">
-                    <img src="images/defaultPic.jpg" alt="user" class="img-circle img30_30">
-                    <span class="hidden-xs">
-                        &nbsp;<i class="fa fa-caret-down"></i>
-                    </span>
+        <ul class="dropdown-menu bg-dark" uib-dropdown-menu>
+          <li style="padding: 7px 10px;">
+            <i class="fa fa-tachometer"></i>
+            <span class="text-uppercase">Dashboards</span>
+            <ul class="sub-menu">
+              <li class="nav-item">
+                <a href="javascript://">
+                  <i class="fa fa-line-chart"></i>
+                  <span>Financial</span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-scaleIn" uib-dropdown-menu>
-                    <li>
-                        <a href="javascript://">
-                            <i class="fa fa-line-chart"></i>
-                            <span>Financial</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript://">
-                            <i class="fa fa-money"></i>
-                            <span>Sales</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript://">
-                            <i class="fa fa-user"></i>
-                            <span>HR</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a ng-click="logOut()">
-                            <i class="fa fa-sign-out"></i>
-                            <span data-translate="LOG_OUT"></span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+              </li>
+              <li class="nav-item">
+                <a href="javascript://">
+                  <i class="fa fa-money"></i>
+                  <span>Sales</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="javascript://">
+                  <i class="fa fa-user"></i>
+                  <span>HR</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li style="padding: 7px 10px;">
+            <i class="fa fa-user"></i>
+            <span class="text-uppercase">My Profile</span>
+          </li>
+          <li>
+            <a ng-click="logOut()">
+              <i class="fa fa-sign-out"></i>
+              <span class="text-uppercase">Log Out</span>
+            </a>
+          </li>
         </ul>
-    </div>
+      </li>
+    </ul>
+  </div>
 </header>

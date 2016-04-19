@@ -118,13 +118,10 @@ a:hover {
   padding: 0 10px 0 10px;
 }
 
-.sub-menu{
+.sub-menu {
 	list-style: none !important;
 	padding-left: 11px;
   margin: 5px 0 20px 0;
-  /*max-height: 140px;
-  overflow-y:auto;
-  overflow-x: hidden; */
 }
 
 .sub-menu label{
@@ -763,7 +760,7 @@ ul.dropdown-menu {
   padding: 0;
 }
 .header-container > .top-header .dropdown-menu li > a {
-  color: #555;
+  color: #aaa;
   border-bottom: 1px dashed #66B5D7;
   padding: 7px 10px;
 }
@@ -891,7 +888,6 @@ ul.dropdown-menu {
 }
 ul.dropdown-menu li a {
   color: #555;
-  border-bottom: 1px dotted #66B5D7 !important;
   padding: 7px 10px;
 }
 ul.dropdown-menu li:last-child a {
@@ -1034,4 +1030,35 @@ body {
   .app-footer {
     position: static;
   }
+}
+
+.top-header ul.dropdown-menu {
+  height: 100vh;
+  opacity: 0.9;
+  box-shadow: -8px 32px 16px rgba(0, 0, 0, 0.5);
+  display: block;
+  min-width: 200px;
+  right: -250px;
+  -webkit-transition: right 1s;
+  -moz-transition: right 1s;
+  -o-transition: right 1s;
+  transition: right 1s;
+}
+
+.open > ul.dropdown-menu {
+  right:0;
+}
+
+.top-header .sub-menu {
+  list-style: none !important;
+  padding-left: 11px;
+  margin: 5px 0 20px 0;
+}
+
+.top-header .nav-item {
+  padding: 10px 0;
+}
+
+.top-header ul.sub-menu li.nav-item a {
+  border-bottom: 0;
 }
