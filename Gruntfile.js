@@ -75,7 +75,7 @@
       },
       connect: {
         options: {
-          port: 9900,
+          port: 5000,
           base: 'public',
           hostname: '0.0.0.0'
             // hostname: "localhost"
