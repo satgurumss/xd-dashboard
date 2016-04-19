@@ -130,6 +130,7 @@ var clickEvent;
         colors: ["#28bdc6", "#90e4ad", "#cce679", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
           "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
         chart: {
+          height: 250,
           backgroundColor: {
             linearGradient: {
               x1: 1,
