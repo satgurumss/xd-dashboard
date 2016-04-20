@@ -1072,15 +1072,15 @@ body {
   margin: 0 auto;
 }
 .donut-chart.chart1 .slice.one {
-  clip: rect(0 150px 16px 0);
-  -webkit-transform: rotate(340deg);
-  transform: rotate(340deg);
+  clip: rect(0 100px 10px 0);
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
   background: #28bdc6;
 }
 .donut-chart.chart1 .slice.two {
-  clip: rect(100px 0px 0px 0px);
-  -webkit-transform: rotate(260deg);
-  transform: rotate(260deg);
+  clip: rect(0 0px 100px 0px);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
   background: #28bdc6;
 }
 .donut-chart.chart1 .chart-center,
@@ -1105,15 +1105,15 @@ body {
 
 
 .donut-chart.chart2 .slice.one {
-  clip: rect(0 100px 50px 0);
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
+  clip: rect(0 100px 30px 0);
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
   background: #90e4ad;
 }
 .donut-chart.chart2 .slice.two {
-  clip: rect(0 50px 100px 0);
-  -webkit-transform: rotate(300deg);
-  transform: rotate(300deg);
+  clip: rect(0 0 100px 0);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
   background: #90e4ad;
 }
 
@@ -1132,15 +1132,15 @@ body {
   margin: 0 auto;
 }
 .donut-chart.chart3 .slice.one {
-  clip: rect(0 100px 50px 0);
-  -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
+  clip: rect(0 100px 60px 0);
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
   background: #cce679;
 }
 .donut-chart.chart3 .slice.two {
-  clip: rect(0 50px 100px 0);
-  -webkit-transform: rotate(270deg);
-  transform: rotate(270deg);
+  clip: rect(0 0 100px 0);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
   background: #cce679;
 }
 
