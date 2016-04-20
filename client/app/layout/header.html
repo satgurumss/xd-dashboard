@@ -15,7 +15,7 @@
           </span>
         </a>
         <ul class="dropdown-menu bg-dark" uib-dropdown-menu>
-          <li style="padding: 7px 10px;">
+          <li class="nav-item">
             <i class="fa fa-tachometer"></i>
             <span class="text-uppercase">Dashboards</span>
             <ul class="sub-menu">
@@ -39,17 +39,30 @@
               </li>
             </ul>
           </li>
-          <li>
-            <a href="javascript://">
-              <i class="fa fa-user"></i>
-              <span class="text-uppercase">My Profile</span>
-            </a>
-          </li>
-          <li>
-            <a ng-click="logOut()">
-              <i class="fa fa-sign-out"></i>
-              <span class="text-uppercase">Log Out</span>
-            </a>
+          <li class="nav-item">
+            <i class="fa fa-list"></i>
+            <span class="text-uppercase">Others</span>
+
+            <ul class="sub-menu">
+              <li class="nav-item">
+                <a href="javascript://">
+                  <i class="fa fa-user"></i>
+                  <span>My Profile</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="javascript://">
+                  <i class="fa fa-cog"></i>
+                  <span>Settings</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a ng-click="logOut()">
+                  <i class="fa fa-sign-out"></i>
+                  <span>Log Out</span>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </li>
