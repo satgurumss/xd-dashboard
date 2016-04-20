@@ -13,7 +13,7 @@ var clickEvent;
     });
 
   function DashboardCtrl($scope, $http, $location, backendApi, loggedInUser, $timeout) {
-
+    var categories = [{name:'MAR'},{name:'JUN'}, {name:'SEP'}, {name:'DEC'}];
     //This is not a highcharts object. It just looks a little like one!
     $scope.chartConfig = {
       options: {
@@ -210,8 +210,6 @@ var clickEvent;
           }
         },
         lineColor: '#707073',
-        minorGridLineColor: '#505053',
-        minorTickInterval: 'auto',
         tickInterval: '5',
         tickColor: '#707073',
         tickWidth: 1,
@@ -229,7 +227,7 @@ var clickEvent;
       },
 
       xAxis: {
-        categories: ['MAR','JUN', 'SEP', 'DEC'],
+        categories : ['MAR','JUN','SEP','DEC'],
         tickWidth: 0,
         title: {
           style: {
@@ -244,18 +242,33 @@ var clickEvent;
         },
         lineColor: '#707073',
         minorGridLineColor: '#505053',
-        tickColor: '#707073'
+        tickColor: '#707073',
+        tickInterval:1,
+        tickmarkPlacement: "on",
+        min: 0.5,
+        max: categories.length-1.5,
+        startOnTick: false,
+        endOnTick: false,
+        minPadding: 0,
+        maxPadding: 0,
+        align: "left" 
       },
 
       series: [{
+            type: 'area',
+            fillColor: "rgba(40, 189, 198, 0.3)",
             name: 'Revenue',
             data: [5.0, 14.5, 18.2, 15.2],
             marker: {symbol: 'circle', fillColor: '#303031', lineWidth:1, lineColor: '#28bdc6'}
         }, {
+            type: 'area',
+            fillColor: "rgba(144,228,173, 0.3)",
             name: 'Target',
             data: [1.2, 17.0, 19, 8.1],
             marker: {symbol: 'circle', fillColor: '#303031', lineWidth:1, lineColor: 'rgba(144,228,173, .6)'}
         }, {
+            type: 'area',
+            fillColor: "rgba(204, 230, 121, 0.3)",
             name: 'Last Year',
             data: [3.2, 13.5, 14.3, 12.2],
             marker: {symbol: 'circle', fillColor: '#303031', lineWidth:1, lineColor: 'rgba(204, 230, 121, .6)'}
