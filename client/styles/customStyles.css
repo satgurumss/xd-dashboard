@@ -1,6 +1,6 @@
 /*UTIL CLASSES*/
 
-@import url(https://fonts.googleapis.com/css?family=Teko:400,500);
+@import url(https://fonts.googleapis.com/css?family=Teko:300,400);
 
 .mobile-right {
   float: right;
@@ -1151,37 +1151,53 @@ body {
   content: "60%";
 }
 
-
-
-
-.nav-justified > li, .nav-tabs.nav-justified > li {
-  float: left;
-  width: 33.33%;
-}
-.range-container,
-.revenue-container {
+.revenue-title {
   background: #2a2a2b;
-  padding: 0 0 10px;
+}
+.revenue-title h3{
+  margin: 15px 0;
+}
+.revenue-container {
+  background: #3e3e40;
 }
 .revenue-container h1 {
-  font-family: 'Teko', sans-serif;
-  font-weight: 400;
-  font-size: 62px;
-  line-height: 60px;
-  margin: 0;
+    font-family: 'Teko', sans-serif;
+    font-weight: 300;
+    margin: 10px 0 0;
 }
 .revenue-container h4 {
   font-weight: 400;
   margin-top: 0;
 }
-.revenue-container h3 {
-  font-weight: 400;
+.revenue-container h5 {
+  margin-top: 0;
 }
+
+.chart-container {
+  padding-top: 10px;
+  background: #2a2a2b;
+}
+
+.range-container {
+  background: #2a2a2b;
+  padding: 0 0 10px;
+}
+.dcharts-container h5.title {
+  margin-bottom: 0px;
+  margin-top: 15px;
+}
+.revenue-title h3,
 .revenue-container h1,
-.revenue-container h3,
-.revenue-container h4,
-.dcharts-container h5 {
+.revenue-container h5,
+.dcharts-container h5,
+.dcharts-container h4 {
   color: #FFF;
+}
+
+
+.nav-justified > li, .nav-tabs.nav-justified > li {
+  float: left;
+  width: 33.33%;
 }
 
 .chartHeading {
