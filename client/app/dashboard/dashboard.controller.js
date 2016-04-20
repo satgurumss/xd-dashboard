@@ -79,7 +79,10 @@ var clickEvent;
           },
           layout: 'horizontal',
           align:"center",
-          borderWidth: 0
+          borderWidth: 0,
+          symbolHeight: 10,
+          symbolWidth: 10,
+          symbolRadius: 6
         },
 
         credits: {
