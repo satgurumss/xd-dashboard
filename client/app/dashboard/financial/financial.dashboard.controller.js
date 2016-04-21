@@ -13,9 +13,15 @@
      $scope.options = {
       from : 3,
       to : 12,
-      step:4,
+      step: 3,
       dimension: "months",
-      smooth:true
+      smooth:false,
+      css: {
+          background: {"background-color": "#5b9bd6"},
+          default: {"background-color": "#5b9bd6"},
+          pointer: {"background-color": "#54627b"}
+      },
+      scale: [0, 4, 8, 12]
     };
    }
 
