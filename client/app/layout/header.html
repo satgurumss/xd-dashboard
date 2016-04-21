@@ -1,4 +1,4 @@
-<header class="top-header clearfix" data-ng-controller = "HeaderCtrl" ng-init="init()">
+<header class="top-header clearfix" data-ng-controller = "HeaderCtrl">
   <!-- Logo -->
   <div class="logo">
     <a href="#/">
@@ -20,19 +20,19 @@
             <span class="text-uppercase">Dashboards</span>
             <ul class="sub-menu">
               <li class="nav-item">
-                <a href="javascript://">
+                <a href="javascript://" ng-click="navigateTo('/financial-dashboard')">
                   <i class="fa fa-line-chart"></i>
                   <span>Financial</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="javascript://">
+                <a href="javascript://" ng-click="navigateTo('/customers-dashboard')">
                   <i class="fa fa-money"></i>
-                  <span>Sales</span>
+                  <span>Customers</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="javascript://">
+                <a href="javascript://" ng-click="navigateTo('/financial-dashboard')">
                   <i class="fa fa-user"></i>
                   <span>HR</span>
                 </a>

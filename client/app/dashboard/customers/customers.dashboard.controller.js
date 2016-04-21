@@ -1,10 +1,9 @@
-var clickEvent;
 (function() {
   'use strict';
 
   angular.module('app')
-    .controller('DashboardCtrl',
-      ['$scope', '$http', '$location', 'backendApi', 'loggedInUser', '$timeout', DashboardCtrl])
+    .controller('FinancialDashCtrl',
+      ['$scope', '$http', '$location', 'backendApi', 'loggedInUser', '$timeout', FinancialDashCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
         if (isNaN(input)) return input;
@@ -12,8 +11,9 @@ var clickEvent;
       };
     });
 
-  function DashboardCtrl($scope, $http, $location, backendApi, loggedInUser, $timeout) {
+  function FinancialDashCtrl($scope, $http, $location, backendApi, loggedInUser, $timeout) {
     var categories = [{name:'MAR'},{name:'JUN'}, {name:'SEP'}, {name:'DEC'}];
+    
     //This is not a highcharts object. It just looks a little like one!
     $scope.chartConfig = {
       options: {
@@ -43,7 +43,7 @@ var clickEvent;
           style: {
             color: '#F0F0F0'
           },
-          valueSuffix: '°C'
+          valueSuffix: 'M'
         },
 
         plotOptions: {
@@ -278,78 +278,6 @@ var clickEvent;
         }]
     };
 
-    $scope.init = function() {
-      console.log("init")
-    }
-
   }
 
 })();
-
-angular.module('app')
-  .animation('.slide', [
-
-    function() {
-      var support;
-      support = jQuery.keyframe.isSupported();
-      jQuery.keyframe.debug = true;
-      return {
-        leave: function(element, doneFn) {
-          var elemHeight, elemScaledHeight, elemScaledWidth, elemWidth, firstFrame, scaledLeftOffset, scaledTopOffset, secondFrame, widgetControlWidth;
-
-          elemHeight = parseInt(element.css('height'));
-          elemWidth = parseInt(element.css('width'));
-          elemScaledHeight = elemHeight * 0.08;
-          elemScaledWidth = elemWidth * 0.08;
-          elemX = parseInt(typeof clickEvent != "undefined" ? clickEvent.pageX : 0);
-          elemY = parseInt(typeof clickEvent != "undefined" ? clickEvent.pageY : 0);
-
-          typeAheadWidthPx = angular.element('.search-field-wrapper').outerWidth(true);
-          searchTypeWidthPx = angular.element('.search-type').outerWidth(true);
-          searchPanelHeightPx = angular.element('.search-panel').outerHeight(true);
-          widgetControlWidth = angular.element('.widget-control').width();
-
-          buttonOffset = typeAheadWidthPx + searchTypeWidthPx;
-          //12 has been added because of container's extreme left padding
-          wigdetButtonOffset = (elemX - ((elemWidth - elemScaledWidth) / 2) - (widgetControlWidth + 120));
-
-          scaledTopOffset = ((elemHeight - elemScaledHeight) / 2) + elemY - searchPanelHeightPx;
-          scaledLeftOffset = buttonOffset - wigdetButtonOffset;
-
-          secondFrame = {
-            'opacity': '0.1',
-            // 'z-index': '5',
-            'top': '-' + scaledTopOffset + 'px',
-            'left': scaledLeftOffset + 'px',
-            '-webkit-transform': 'scale3d(.08,.08,.08)',
-            '-moz-transform': 'scale3d(.08,.08,.08)',
-            '-o-transform': 'scale3d(.08,.08,.08)',
-            'transform': 'scale3d(.08,.08,.08)'
-          };
-
-          firstFrame = {
-            'opacity': '1',
-            '-webkit-transform': 'scale3d( 0.475 , 0.475 , 0.475 ) translate3d(0px , 60px ,50px)',
-            '-moz-transform': 'scale3d( 0.475 , 0.475 , 0.475 ) translate3d(0px , 60px ,50px)',
-            '-o-transform': 'scale3d( 0.475 , 0.475 , 0.475 ) translate3d(0px , 60px ,50px)',
-            'transform': 'scale3d( 0.475 , 0.475 , 0.475 ) translate3d(0px , 60px ,50px)'
-          };
-
-          jQuery.keyframe.define([{
-            name: 'onMove',
-            '30%': firstFrame,
-            '100%': secondFrame
-          }]);
-          element.resetKeyframe(function() {
-            return element.playKeyframe({
-              name: 'onMove',
-              duration: '3s',
-              delay: '0s',
-              timingFunction: 'linear',
-              complete: doneFn
-            });
-          });
-        }
-      };
-    }
-  ]);

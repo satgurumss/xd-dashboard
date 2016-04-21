@@ -10,7 +10,7 @@
         $scope.errorAlert = false;
 
         $scope.doLogin = function() {
-           $location.url("/dashboard");
+           $location.url("/financial-dashboard");
         }
     }
 

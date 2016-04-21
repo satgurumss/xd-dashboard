@@ -53,8 +53,11 @@
         .when('/my-profile', {
           templateUrl: 'app/profile/my-profile.html'
         })
-        .when('/dashboard', {
-          templateUrl: 'app/dashboard/dashboard.html'
+        .when('/financial-dashboard', {
+          templateUrl: 'app/dashboard/financial/financial-dash.html'
+        })
+        .when('/customers-dashboard', {
+          templateUrl: 'app/dashboard/customers/customer-dash.html'
         })
         .when('/404', {
           templateUrl: 'app/page/404.html'
