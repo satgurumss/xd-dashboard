@@ -1,4 +1,4 @@
-<div class="page page-dashboard" data-ng-controller="FinancialDashCtrl">
+<div class="page page-dashboard" data-ng-controller="FinancialDashCtrl" ng-init="init()">
   <div class="row">
     <div class="panel-container">
 
@@ -20,7 +20,8 @@
 
         <div class="row range-container">
           <div class="col-xs-12 text-center">
-            <img src="images/range-slider.png" alt="Select Range">
+            <input ng-model="value" type="text" id="mySlider1" slider options="options" />
+            <!-- <img src="images/range-slider.png" alt="Select Range"> -->
           </div>
         </div>
 

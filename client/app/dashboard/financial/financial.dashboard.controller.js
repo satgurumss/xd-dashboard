@@ -3,16 +3,24 @@
 
   angular.module('app')
     .controller('FinancialDashCtrl',
-      ['$scope', '$http', '$location', 'backendApi', 'loggedInUser', '$timeout', FinancialDashCtrl])
-    .filter('singleDecimal', function($filter) {
-      return function(input) {
-        if (isNaN(input)) return input;
-        return Math.round(input * 10) / 10;
-      };
-    });
+      ['$scope', '$http', '$location', FinancialDashCtrl])
 
-  function FinancialDashCtrl($scope, $http, $location, backendApi, loggedInUser, $timeout) {
-    
+  function FinancialDashCtrl($scope, $http, $location) {
+   $scope.options ={};
+   var categories = ['MAR','JUN','SEP','DEC'];
+
+   $scope.init = function() {
+     $scope.options = {
+      from : 3,
+      to : 12,
+      step:4,
+      dimension: "months",
+      smooth:true
+    };
+   }
+
+    $scope.value = "4";
+
     //This is not a highcharts object. It just looks a little like one!
     $scope.chartConfig = {
       options: {
@@ -253,7 +261,7 @@
         endOnTick: false,
         minPadding: 0,
         maxPadding: 0,
-        align: "left" 
+        align: "left"
       },
 
       series: [{

@@ -1072,15 +1072,16 @@ body {
   margin: 0 auto;
 }
 .donut-chart.chart1 .slice.one {
-  clip: rect(0 100px 10px 0);
+  clip: rect(75px 37px 75px 0);
   -webkit-transform: rotate(360deg);
-  transform: rotate(360deg);
+  transform: rotate(0deg);
   background: #28bdc6;
 }
+
 .donut-chart.chart1 .slice.two {
-  clip: rect(0 0px 100px 0px);
+  clip: rect(0 16px 37px 0px);
   -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
+  transform: rotate(-270deg);
   background: #28bdc6;
 }
 .donut-chart.chart1 .chart-center,
@@ -1103,17 +1104,17 @@ body {
   content: "10%";
 }
 
-
 .donut-chart.chart2 .slice.one {
-  clip: rect(0 100px 30px 0);
+  clip: rect(75px 38px 75px 0px);
   -webkit-transform: rotate(360deg);
-  transform: rotate(360deg);
+  transform: rotate(0deg);
   background: #90e4ad;
 }
+
 .donut-chart.chart2 .slice.two {
-  clip: rect(0 0 100px 0);
+  clip: rect(0px 44px 38px 0px);
   -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
+  transform: rotate(-270deg);
   background: #90e4ad;
 }
 
@@ -1132,15 +1133,15 @@ body {
   margin: 0 auto;
 }
 .donut-chart.chart3 .slice.one {
-  clip: rect(0 100px 60px 0);
+  clip: rect(60px 38px 75px 0);
   -webkit-transform: rotate(360deg);
-  transform: rotate(360deg);
+  transform: rotate(0deg);
   background: #cce679;
 }
 .donut-chart.chart3 .slice.two {
-  clip: rect(0 0 100px 0);
+  clip: rect(0 75px 37px 0px);
   -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
+  transform: rotate(-270deg);
   background: #cce679;
 }
 

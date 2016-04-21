@@ -19,6 +19,7 @@
         'duScroll',
         'mgo-angular-wizard',
         "highcharts-ng",
+        'angularAwesomeSlider',
 
         // Custom modules
         'app.custom.services',

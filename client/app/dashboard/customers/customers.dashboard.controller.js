@@ -2,8 +2,8 @@
   'use strict';
 
   angular.module('app')
-    .controller('FinancialDashCtrl',
-      ['$scope', '$http', '$location', 'backendApi', 'loggedInUser', '$timeout', FinancialDashCtrl])
+    .controller('CustomerDashCtrl',
+      ['$scope', '$http', '$location', 'backendApi', 'loggedInUser', '$timeout', CustomerDashCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
         if (isNaN(input)) return input;
@@ -11,9 +11,9 @@
       };
     });
 
-  function FinancialDashCtrl($scope, $http, $location, backendApi, loggedInUser, $timeout) {
+  function CustomerDashCtrl($scope, $http, $location, backendApi, loggedInUser, $timeout) {
     var categories = [{name:'MAR'},{name:'JUN'}, {name:'SEP'}, {name:'DEC'}];
-    
+
     //This is not a highcharts object. It just looks a little like one!
     $scope.chartConfig = {
       options: {
@@ -254,7 +254,7 @@
         endOnTick: false,
         minPadding: 0,
         maxPadding: 0,
-        align: "left" 
+        align: "left"
       },
 
       series: [{
