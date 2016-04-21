@@ -1255,3 +1255,19 @@ body {
 .top-header ul.sub-menu li.nav-item a {
   border-bottom: 0;
 }
+
+.range-container {
+  text-align: center;
+}
+
+.range-container .slider-wrapper {
+  max-width: 300px;
+  display: inline-block;
+}
+
+.slider-wrapper .jslider div.jslider-pointer{
+    width: 10px;
+    height: 17px;
+    border-radius: 2px;
+    background-color: rgb(170, 170, 170);
+}
