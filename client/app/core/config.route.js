@@ -57,7 +57,7 @@
           templateUrl: 'app/dashboard/financial/financial-dash.html'
         })
         .when('/customers-dashboard', {
-          templateUrl: 'app/dashboard/customers/customer-dash.html'
+          templateUrl: 'app/dashboard/customers/customers-dash.html'
         })
         .when('/404', {
           templateUrl: 'app/page/404.html'
