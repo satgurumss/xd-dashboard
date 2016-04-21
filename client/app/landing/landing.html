@@ -1,4 +1,4 @@
-<div class="page page-dashboard" data-ng-controller="CustomerDashCtrl" ng-init="init()">
+<div class="page page-dashboard" data-ng-controller="LandingCtrl" ng-init="init()">
   <div class="row">
     <div class="panel-container">
 
@@ -14,15 +14,13 @@
             <h5 class="text-uppercase">Current Revenue</h5>
           </div>
         </div>
-        <div class="row revenue-title">
-          <div class="text-center">
-            <img src="images/map-sample.png">
-          </div>
+        <div class="row">
+          <highchart id="chart1" config="chartConfig" class="chart-container span10"></highchart>
         </div>
 
         <div class="row range-container">
-          <div class="col-xs-12 text-center">
-            <img src="images/range-slider.png" alt="Select Range">
+          <div class="slider-wrapper">
+            <input ng-model="value" type="text" id="mySlider1" slider options="options" />
           </div>
         </div>
 
@@ -77,17 +75,17 @@
                 <div class="col-md-12">
                     <div class="ui-tab-container ui-tab-horizontal">
                         <uib-tabset justified="true" class="ui-tab">
-                            <uib-tab heading="Top 5">
-                              <highchart id="top5Chart" config="chartConfig" 
-                                class="chart-container span10"></highchart>
+                            <uib-tab heading="2,0321">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                                <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
                             </uib-tab>
-                            <uib-tab heading="By Geography">
-                              <highchart id="byGeoChart" config="chartConfig" 
-                                class="chart-container span10"></highchart>
+                            <uib-tab heading="1,625">
+                                <p>Quod ea vel dolores earum veritatis quae sunt tempore odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
                             </uib-tab>
-                            <uib-tab heading="By Industry">
-                              <highchart id="byIndChart" config="chartConfig" 
-                                class="chart-container span10"></highchart>
+                            <uib-tab heading="479">
+                                <p>Blanditiis tenetur harum distinctio voluptate asperiores non magnam delectus. Consequatur, deleniti rem magnam possimus necessitatibus iusto suscipit mollitia rerum.</p>
+                                <p>Quod ea vel dolores earum veritatis quae sunt tempore odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
                             </uib-tab>
                         </uib-tabset>
                     </div>

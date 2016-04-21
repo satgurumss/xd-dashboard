@@ -17,8 +17,8 @@
     //This is not a highcharts object. It just looks a little like one!
     $scope.chartConfig = {
       options: {
-        colors: ["#28bdc6", "rgba(144,228,173, .3)", "rgba(204, 230, 121, .3)"],
         chart: {
+          type:"bar",
           height: 260,
           backgroundColor: {
             linearGradient: {
@@ -77,18 +77,18 @@
           itemHiddenStyle: {
             color: '#606063'
           },
-          layout: 'horizontal',
-          align:"center",
-          borderWidth: 0,
-          symbolHeight: 10,
-          symbolWidth: 10,
-          symbolRadius: 6
+          layout: 'vertical',
+          align:"right",
+          x: -40,
+          y: 80,
+          floating: true,
+          borderWidth: 1,
+          backgroundColor: '#FFFFFF',
+          shadow: true
         },
 
         credits: {
-          style: {
-            color: '#666'
-          }
+          enabled: false
         },
 
         labels: {
@@ -189,7 +189,7 @@
       //The below properties are watched separately for changes.
       //Title configuration (optional)
       title: {
-        text: '',
+        text: null,
         style: {
           color: '#E0E0E3',
           textTransform: 'uppercase',
@@ -206,11 +206,12 @@
       },
 
       yAxis: {
-        gridLineColor: '#707073',
+        min: 0,
         labels: {
           style: {
             color: '#E0E0E3'
-          }
+          },
+          overflow: 'justify'
         },
         lineColor: '#707073',
         tickInterval: '5',
@@ -220,19 +221,16 @@
           text: 'Millions ($)',
           style: {
             color: '#A0A0A3'
-          }
-        },
-        plotLines: [{
-          value: 0,
-          width: 1,
-          color: '#808080'
-        }]
+          },
+          align:"high"
+        }
       },
 
       xAxis: {
-        categories : ['MAR','JUN','SEP','DEC'],
+        categories: ['Customer 1', 'Customer 2', 'Customer 3', 'Customer 4', 'Customer 5'],
         tickWidth: 0,
         title: {
+          text:null,
           style: {
             color: '#A0A0A3'
           }
@@ -245,38 +243,24 @@
         },
         lineColor: '#707073',
         minorGridLineColor: '#505053',
-        tickColor: '#707073',
-        tickInterval:1,
-        tickmarkPlacement: "on",
-        min: 0.5,
-        max: categories.length-1.5,
-        startOnTick: false,
-        endOnTick: false,
-        minPadding: 0,
-        maxPadding: 0,
-        align: "left"
+        tickColor: '#707073'
       },
 
       series: [{
-            type: 'area',
-            fillColor: "rgba(40, 189, 198, 0.3)",
-            name: 'Revenue',
-            data: [5.0, 14.5, 18.2, 15.2],
-            marker: {symbol: 'circle', fillColor: '#303031', lineWidth:1, lineColor: '#28bdc6'}
-        }, {
-            type: 'area',
-            fillColor: "rgba(144,228,173, 0.3)",
-            name: 'Target',
-            data: [1.2, 17.0, 19, 8.1],
-            marker: {symbol: 'circle', fillColor: '#303031', lineWidth:1, lineColor: 'rgba(144,228,173, .6)'}
-        }, {
-            type: 'area',
-            fillColor: "rgba(204, 230, 121, 0.3)",
-            name: 'Last Year',
-            data: [3.2, 13.5, 14.3, 12.2],
-            marker: {symbol: 'circle', fillColor: '#303031', lineWidth:1, lineColor: 'rgba(204, 230, 121, .6)'}
+            data:[107, 31, 635, 203, 2]
         }]
     };
+    $scope.init = function(){
+
+      /*$http({
+        method: "JSONP",
+        url : "https://www.highcharts.com/samples/data/jsonp.php?filename=world-population.json&callback=JSON_CALLBACK"
+      }).success(function(data, status){
+        var mapData = Highcharts.geojson(Highcharts.maps['custom/world']);
+        console.log
+      };*/
+    }
+
 
   }
 
