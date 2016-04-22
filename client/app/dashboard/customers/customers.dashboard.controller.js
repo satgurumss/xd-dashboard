@@ -76,11 +76,10 @@
           },
           plotBorderColor: '#606063',
           events: {
-            load: function() {
-              var chart = this;
-              setTimeout(function() {
-                chart.reflow();
-              }, 0);
+            load: function(chart) {
+              $timeout(function() {
+                chart.target.reflow();
+              });
             }
           }
         },
@@ -279,7 +278,6 @@
 
     $scope.init = function() {
       $http.get("app/sampleData/middle-east.json").success(function(mapData) {
-        debugger
         console.log(mapData);
 
          $scope.mapConfig = {
