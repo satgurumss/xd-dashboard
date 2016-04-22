@@ -1498,4 +1498,6 @@ body {
     overflow-y: hidden;
 }
 
-
+.gauge-panel.panel-body{
+  min-height: auto
+}

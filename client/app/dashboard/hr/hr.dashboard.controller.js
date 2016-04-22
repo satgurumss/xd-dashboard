@@ -14,9 +14,12 @@
     //This is not a highcharts object. It just looks a little like one!
     $scope.chartConfig = {
       options: {
+        colors: ["#2b908f", "#90ee7e", "#f45b5b", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+          "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"
+        ],
         chart: {
           type: 'solidgauge',
-          height:220,
+          height: 220,
           backgroundColor: {
             linearGradient: {
               x1: 1,
@@ -30,6 +33,9 @@
             ]
           },
           plotBorderColor: '#606063',
+          style: {
+            fontFamily: "'Unica One', sans-serif"
+          }
         },
 
         tooltip: {
@@ -43,7 +49,7 @@
           positioner: function(labelWidth, labelHeight) {
             return {
               x: 75 - labelWidth / 2,
-              y: 70
+              y: 100
             };
           }
         },
@@ -56,6 +62,23 @@
             },
             linecap: 'round',
             stickyTracking: true
+          },
+          series: {
+             dataLabels: {
+                color: '#B0B0B3'
+             },
+             marker: {
+                lineColor: '#333'
+             }
+          },
+          boxplot: {
+             fillColor: '#505053'
+          },
+          candlestick: {
+             lineColor: 'white'
+          },
+          errorbar: {
+             color: 'white'
           }
         },
 
@@ -102,11 +125,11 @@
       //The below properties are watched separately for changes.
       //Title configuration (optional)
       title: {
-        text: null,
+        text: "Employee Status",
         style: {
           color: 'silver',
           textTransform: 'uppercase',
-          fontSize: '24px'
+          fontSize: '14px'
         }
       },
 
@@ -123,25 +146,58 @@
         background: [{ // Track for Move
           outerRadius: '112%',
           innerRadius: '88%',
-          backgroundColor: "rgba(144,228,173, 1)",
+          backgroundColor: "rgba(144,228,173, 0.3)",
           borderWidth: 0
         }, { // Track for Exercise
           outerRadius: '87%',
           innerRadius: '63%',
-          backgroundColor: "rgba(204, 230, 121, 1)",
+          backgroundColor: "rgba(204, 230, 121, 0.3)",
           borderWidth: 0
         }]
+      },
+
+      xAxis: {
+        gridLineColor: '#707073',
+        labels: {
+          style: {
+            color: '#E0E0E3'
+          }
+        },
+        lineColor: '#707073',
+        minorGridLineColor: '#505053',
+        tickColor: '#707073',
+        title: {
+          style: {
+            color: '#A0A0A3'
+
+          }
+        }
       },
 
       yAxis: {
         min: 0,
         max: 100,
         lineWidth: 0,
-        tickPositions: []
+        tickPositions: [],
+        gridLineColor: '#707073',
+        labels: {
+          style: {
+            color: '#E0E0E3'
+          }
+        },
+        lineColor: '#707073',
+        minorGridLineColor: '#505053',
+        tickColor: '#707073',
+        tickWidth: 1,
+        title: {
+          style: {
+            color: '#A0A0A3'
+          }
+        }
       },
 
       series: [{
-        name: 'Emp. Satisfaction',
+        name: 'Satisfaction',
         borderColor: "rgba(144,228,173, 1)",
         data: [{
           color: "rgba(144,228,173, 1)",
@@ -150,7 +206,7 @@
           y: 80
         }]
       }, {
-        name: 'Emp. Retention',
+        name: 'Retention',
         borderColor: "rgba(204, 230, 121, 1)",
         data: [{
           color: "rgba(204, 230, 121, 1)",
