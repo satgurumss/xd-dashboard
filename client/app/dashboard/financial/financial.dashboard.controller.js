@@ -14,7 +14,7 @@
       from : 3,
       to : 12,
       step: 3,
-      dimension: "months",
+      dimension: " months",
       smooth:false,
       css: {
           background: {"background-color": "#5b9bd6"},

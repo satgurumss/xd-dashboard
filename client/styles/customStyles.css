@@ -1026,14 +1026,27 @@ body {
   font-size: 13px;
   padding: 10px 5px;
 }
-.ui-tab-container .nav-tabs > li.active > a {
+.ui-tab-container .nav-tabs > li.active:nth-child(1) > a {
     color: #008db0;
+}
+.ui-tab-container .nav-tabs > li.active:nth-child(2) > a {
+    color: #90e4ad;
+}
+.ui-tab-container .nav-tabs > li.active:nth-child(3) > a {
+    color: #cce679;
 }
 .ui-tab-container .nav-tabs > li {
   border-top: 3px solid transparent;
 }
-.ui-tab-container .nav-tabs > li.active {
+
+.ui-tab-container .nav-tabs > li.active:nth-child(1) {
     border-top: 3px solid #008db0;
+}
+.ui-tab-container .nav-tabs > li.active:nth-child(2) {
+    border-top: 3px solid #90e4ad;
+}
+.ui-tab-container .nav-tabs > li.active:nth-child(3) {
+    border-top: 3px solid #cce679;
 }
 .ui-tab-container .tab-content {
   background: #FFF;
@@ -1477,6 +1490,12 @@ body {
 
 .page-landing .nav-item a {
   display: block;
+}
+
+.tab-content > .tab-pane:not(.active) {
+    display: block;
+    height: 0;
+    overflow-y: hidden;
 }
 
 

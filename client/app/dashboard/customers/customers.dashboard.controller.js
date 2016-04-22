@@ -2,8 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .controller('CustomerDashCtrl',
-      ['$scope', '$http', '$location', 'backendApi', 'loggedInUser', '$timeout', CustomerDashCtrl])
+    .controller('CustomerDashCtrl', ['$scope', '$http', '$location', 'backendApi', 'loggedInUser', '$timeout', CustomerDashCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
         if (isNaN(input)) return input;
@@ -12,30 +11,77 @@
     });
 
   function CustomerDashCtrl($scope, $http, $location, backendApi, loggedInUser, $timeout) {
-    var categories = [{name:'MAR'},{name:'JUN'}, {name:'SEP'}, {name:'DEC'}];
 
     //This is not a highcharts object. It just looks a little like one!
+    $scope.data = [{
+      "hc-key": "sa",
+      "value": 0
+    }, {
+      "hc-key": "bh",
+      "value": 1
+    }, {
+      "hc-key": "tr",
+      "value": 2
+    }, {
+      "hc-key": "om",
+      "value": 3
+    }, {
+      "hc-key": "ir",
+      "value": 4
+    }, {
+      "hc-key": "ye",
+      "value": 5
+    }, {
+      "hc-key": "kw",
+      "value": 6
+    }, {
+      "hc-key": "eg",
+      "value": 7
+    }, {
+      "hc-key": "il",
+      "value": 8
+    }, {
+      "hc-key": "jo",
+      "value": 9
+    }, {
+      "hc-key": "iq",
+      "value": 10
+    }, {
+      "hc-key": "qa",
+      "value": 11
+    }, {
+      "hc-key": "ae",
+      "value": 12
+    }, {
+      "hc-key": "sy",
+      "value": 13
+    }, {
+      "hc-key": "lb",
+      "value": 14
+    }, {
+      "hc-key": "cy",
+      "value": 15
+    }, {
+      "hc-key": "nc",
+      "value": 16
+    }];
+
     $scope.chartConfig = {
       options: {
         chart: {
-          type:"bar",
+          type: "bar",
           height: 260,
-          backgroundColor: {
-            linearGradient: {
-              x1: 1,
-              y1: 1,
-              x2: 1,
-              y2: 1
-            },
-            stops: [
-              [0, '#2a2a2b'],
-              [1, '#3e3e40']
-            ]
-          },
           style: {
             fontFamily: "sans-serif"
           },
-          plotBorderColor: '#606063'
+          plotBorderColor: '#606063',
+          events: {
+            load: function(chart) {
+              $timeout(function() {
+                chart.target.reflow();
+              });
+            }
+          }
         },
 
         tooltip: {
@@ -47,22 +93,20 @@
         },
 
         plotOptions: {
-          series: {
+          bar: {
+            pointWidth: 12,
+            pointPadding: 0,
             dataLabels: {
-              color: '#B0B0B3'
-            },
-            marker: {
-              lineColor: '#333'
+              color: '#707073',
+              verticalAlign: 'middle',
+              formatter: function() {
+                return "$" + this.point.y + "M"
+              },
+              enabled: true
             }
           },
-          boxplot: {
-            fillColor: '#505053'
-          },
-          candlestick: {
-            lineColor: 'white'
-          },
-          errorbar: {
-            color: 'white'
+          series: {
+            groupPadding: 0
           }
         },
 
@@ -78,7 +122,7 @@
             color: '#606063'
           },
           layout: 'vertical',
-          align:"right",
+          align: "right",
           x: -40,
           y: 80,
           floating: true,
@@ -166,17 +210,6 @@
           }
         },
 
-        scrollbar: {
-          barBackgroundColor: '#808083',
-          barBorderColor: '#808083',
-          buttonArrowColor: '#CCC',
-          buttonBackgroundColor: '#606063',
-          buttonBorderColor: '#606063',
-          rifleColor: '#FFF',
-          trackBackgroundColor: '#404043',
-          trackBorderColor: '#404043'
-        },
-
         // special colors for some of the
         legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
         background2: '#505053',
@@ -195,7 +228,7 @@
           textTransform: 'uppercase',
           fontSize: '20px'
         },
-        useHTML:true
+        useHTML: true
       },
 
       subtitle: {
@@ -206,31 +239,23 @@
       },
 
       yAxis: {
-        min: 0,
+        title: null,
         labels: {
-          style: {
-            color: '#E0E0E3'
-          },
-          overflow: 'justify'
+          enabled: false
         },
-        lineColor: '#707073',
-        tickInterval: '5',
-        tickColor: '#707073',
-        tickWidth: 1,
-        title: {
-          text: 'Millions ($)',
-          style: {
-            color: '#A0A0A3'
-          },
-          align:"high"
-        }
+        lineWidth: 0,
+        minorGridLineWidth: 0,
+        lineColor: 'transparent',
+        minorTickLength: 0,
+        tickLength: 0,
+        gridLineColor: 'transparent',
       },
 
       xAxis: {
         categories: ['Customer 1', 'Customer 2', 'Customer 3', 'Customer 4', 'Customer 5'],
         tickWidth: 0,
         title: {
-          text:null,
+          text: null,
           style: {
             color: '#A0A0A3'
           }
@@ -238,7 +263,7 @@
         gridLineColor: '#707073',
         labels: {
           style: {
-            color: '#E0E0E3'
+            color: '#707073'
           }
         },
         lineColor: '#707073',
@@ -247,18 +272,96 @@
       },
 
       series: [{
-            data:[107, 31, 635, 203, 2]
-        }]
+        data: [335, 203, 107, 31, 20]
+      }]
     };
-    $scope.init = function(){
+
+    $scope.init = function() {
+      $http.get("app/sampleData/middle-east.json").success(function(mapData) {
+        console.log(mapData);
+
+         $scope.mapConfig = {
+          options: {
+            chart: {
+              style: {
+                fontFamily: "sans-serif"
+              },
+              plotBorderColor: '#606063'
+            },
+
+            tooltip: {
+              backgroundColor: 'rgba(0, 0, 0, 0.85)',
+              style: {
+                color: '#F0F0F0'
+              }
+            },
+
+            labels: {
+              style: {
+                color: '#707073'
+              }
+            },
+
+            plotOptions:{
+              map:{
+                mapData : mapData,
+                joinBy : "hc-key"
+              }
+            },
+
+            // special colors for some of the
+            legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
+            background2: '#505053',
+            dataLabelsColor: '#B0B0B3',
+            textColor: '#C0C0C0',
+            contrastTextColor: '#F0F0F3',
+            maskColor: 'rgba(255,255,255,0.3)'
+          },
+          colorAxis: {
+              min: 0
+          },
+          //The below properties are watched separately for changes.
+          //Title configuration (optional)
+          title: {
+            text: null,
+            style: {
+              color: '#E0E0E3',
+              textTransform: 'uppercase',
+              fontSize: '20px'
+            },
+            useHTML: true
+          },
+
+          subtitle: {
+            style: {
+              color: '#E0E0E3',
+              textTransform: 'uppercase'
+            }
+          },
+
+          series: [{
+            data: $scope.data,
+            states: {
+              hover: {
+                color: '#BADA55'
+              }
+            },
+            dataLabels: {
+              enabled: true,
+              format: '{point.name}'
+            }
+          }]
+        };
+       
+      });
 
       /*$http({
         method: "JSONP",
         url : "https://www.highcharts.com/samples/data/jsonp.php?filename=world-population.json&callback=JSON_CALLBACK"
       }).success(function(data, status){
+        debugger
         var mapData = Highcharts.geojson(Highcharts.maps['custom/world']);
-        console.log
-      };*/
+      });*/
     }
 
 

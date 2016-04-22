@@ -11,8 +11,10 @@
       };
     });
 
-  function LandingCtrl($scope, $http, $timeout) {
-    $scope.init = function(){
+  function LandingCtrl($scope, $http, $location) {
+    $scope.navigateTo = function(route){
+      if($location.url() != route)
+        $location.url(route);
     }
 
   }
