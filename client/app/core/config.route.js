@@ -59,6 +59,9 @@
         .when('/customers-dashboard', {
           templateUrl: 'app/dashboard/customers/customers-dash.html'
         })
+        .when('/hr-dashboard', {
+          templateUrl: 'app/dashboard/hr/hr-dash.html'
+        })
         .when('/landing', {
           templateUrl: 'app/landing/landing.html'
         })
