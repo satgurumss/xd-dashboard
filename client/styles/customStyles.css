@@ -1239,6 +1239,10 @@ body {
   color: rgb(224, 224, 227);
 }
 
+.jslider div.jslider-label {
+    color: #EEE;
+}
+
 @media only screen and (max-width: 767px) {
   .page-signin .logo, .page-signup .logo, .page-forgot .logo {
     margin: 22% 0 14%;
