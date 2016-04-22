@@ -3,15 +3,18 @@
     <div class="panel-container">
 
       <div class="panel-body" style="padding: 0 15px 0 15px;">
-        <div class="row revenue-title">
+        <div class="row revenue-title hidden">
           <div class="col-xs-12 text-center">
             <h3>REVENUE, 2015</h3>
           </div>
         </div>
         <div class="row revenue-container">
-          <div class="col-xs-12 text-center">
-            <h1>$5,616,000</h1>
-            <h5 class="text-uppercase">Current Revenue</h5>
+          <div class="col-xs-6">
+            <h3>CUSTOMERS</h3>
+          </div>
+          <div class="col-xs-6 text-right">
+            <h3 class="text">$5,616,000</h3>
+            <h6 class="text-uppercase">Current Revenue</h6>
           </div>
         </div>
         <div class="row revenue-title">
@@ -27,7 +30,6 @@
         </div>
 
         <div class="row dcharts-container">
-          <h5 class="text-center title text-uppercase">Revenue Breakdown</h5>
           <div class="col-xs-4 text-center">
             <div class="card">
               <div class="donut-chart chart1">
@@ -37,7 +39,6 @@
                   <span></span>
                 </div>
               </div>
-              <h5>Energy</h5>
             </div>
           </div>
 
@@ -50,7 +51,6 @@
                   <span></span>
                 </div>
               </div>
-              <h5>Transport</h5>
             </div>
           </div>
 
@@ -63,7 +63,6 @@
                   <span></span>
                 </div>
               </div>
-              <h5>Devices</h5>
             </div>
           </div>
         </div>
@@ -78,15 +77,15 @@
                     <div class="ui-tab-container ui-tab-horizontal">
                         <uib-tabset justified="true" class="ui-tab">
                             <uib-tab heading="Top 5">
-                              <highchart id="top5Chart" config="chartConfig" 
+                              <highchart id="top5Chart" config="chartConfig"
                                 class="chart-container span10"></highchart>
                             </uib-tab>
                             <uib-tab heading="By Geography">
-                              <highchart id="byGeoChart" config="chartConfig" 
+                              <highchart id="byGeoChart" config="chartConfig"
                                 class="chart-container span10"></highchart>
                             </uib-tab>
                             <uib-tab heading="By Industry">
-                              <highchart id="byIndChart" config="chartConfig" 
+                              <highchart id="byIndChart" config="chartConfig"
                                 class="chart-container span10"></highchart>
                             </uib-tab>
                         </uib-tabset>

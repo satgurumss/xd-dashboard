@@ -1015,8 +1015,21 @@ body {
   background-color: #555f67;
   border: 1px solid #555f67;
 }
+.ui-tab-horizontal {
+  border: 0;
+}
+.ui-tab-container .nav-tabs > li > a {
+  font-size: 13px;
+  padding: 10px 5px;
+}
 .ui-tab-container .nav-tabs > li.active > a {
-    color: #222;
+    color: #008db0;
+}
+.ui-tab-container .nav-tabs > li {
+  border-top: 3px solid transparent;
+}
+.ui-tab-container .nav-tabs > li.active {
+    border-top: 3px solid #008db0;
 }
 .ui-tab-container .tab-content {
   background: #FFF;
@@ -1066,8 +1079,8 @@ body {
 .donut-chart.chart1,
 .donut-chart.chart2,
 .donut-chart.chart3 {
-  width: 75px;
-  height: 75px;
+  width: 65px;
+  height: 65px;
   background: #666;
   margin: 0 auto;
 }
@@ -1089,15 +1102,15 @@ body {
 .donut-chart.chart3 .chart-center {
   top: 5px;
   left: 5px;
-  width: 65px;
-  height: 65px;
+  width: 55px;
+  height: 55px;
   background: #3e3e40;
 }
 .donut-chart.chart1 .chart-center span,
 .donut-chart.chart2 .chart-center span,
 .donut-chart.chart3 .chart-center span  {
   font-size: 21px;
-  line-height: 65px;
+  line-height: 55px;
   color: #28bdc6;
 }
 .donut-chart.chart1 .chart-center span:after {
@@ -1127,8 +1140,8 @@ body {
 
 
 .donut-chart.chart3 {
-  width: 75px;
-  height: 75px;
+  width: 65px;
+  height: 65px;
   background: #666;
   margin: 0 auto;
 }
@@ -1181,13 +1194,21 @@ body {
 
 .range-container {
   background: #2a2a2b;
-  padding: 0 0 10px;
+  padding: 0 0 15px;
 }
 .dcharts-container h5.title {
   margin-bottom: 0px;
   margin-top: 15px;
 }
+
+.revenue-container h3 {
+  margin: 10px 0 0
+}
+
 .revenue-title h3,
+.revenue-container h3,
+.revenue-container h4,
+.revenue-container h6,
 .revenue-container h1,
 .revenue-container h5,
 .dcharts-container h5,
@@ -1195,6 +1216,16 @@ body {
   color: #FFF;
 }
 
+.revenue-container h3.text {
+  font-family: 'Teko', sans-serif;
+  font-weight: 300;
+  margin: 11px 0 0;
+  color: #CCC;
+}
+.revenue-container h6 {
+  color: #CCC;
+  margin: 0 0 12px 0;
+}
 
 .nav-justified > li, .nav-tabs.nav-justified > li {
   float: left;
