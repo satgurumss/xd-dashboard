@@ -18,6 +18,7 @@
           <div class="text-center">
             <img src="images/map-sample.png">
           </div>
+          <!-- <highchart id="worldMap" config="mapConfing" class="span10"></highchart> -->
         </div>
 
         <div class="row range-container">
@@ -78,16 +79,31 @@
                     <div class="ui-tab-container ui-tab-horizontal">
                         <uib-tabset justified="true" class="ui-tab">
                             <uib-tab heading="Top 5">
-                              <highchart id="top5Chart" config="chartConfig" 
-                                class="chart-container span10"></highchart>
+                            <highchart id="top5Chart" config="chartConfig" 
+                              class="span10"></highchart>
                             </uib-tab>
                             <uib-tab heading="By Geography">
+                              <span class="ui-select pull-right">
+                                <select>
+                                  <option>Qatar</option>
+                                  <option>UAE</option>
+                                  <option>Bahrain</option>
+                                  <option>Oman</option>
+                                </select>
+                              </span>
                               <highchart id="byGeoChart" config="chartConfig" 
-                                class="chart-container span10"></highchart>
+                                class="span10"></highchart>
                             </uib-tab>
                             <uib-tab heading="By Industry">
+                              <span class="ui-select pull-right">
+                                <select>
+                                  <option>Oil & Gas</option>
+                                  <option>Telecom</option>
+                                  <option>Finance</option>
+                                </select>
+                              </span>
                               <highchart id="byIndChart" config="chartConfig" 
-                                class="chart-container span10"></highchart>
+                                class="span10"></highchart>
                             </uib-tab>
                         </uib-tabset>
                     </div>
