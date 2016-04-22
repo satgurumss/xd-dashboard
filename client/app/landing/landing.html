@@ -1,102 +1,108 @@
-<div class="page page-dashboard" data-ng-controller="LandingCtrl" ng-init="init()">
-  <div class="row">
-    <div class="panel-container">
-
-      <div class="panel-body" style="padding: 0 15px 0 15px;">
-        <div class="row revenue-title">
-          <div class="col-xs-12 text-center">
-            <h3>REVENUE, 2015</h3>
-          </div>
-        </div>
-        <div class="row revenue-container">
-          <div class="col-xs-12 text-center">
-            <h1>$5,616,000</h1>
-            <h5 class="text-uppercase">Current Revenue</h5>
-          </div>
-        </div>
-        <div class="row">
-          <highchart id="chart1" config="chartConfig" class="chart-container span10"></highchart>
+<div class="page-landing container" data-ng-controller="LandingCtrl" ng-init="init()">
+  <ul class="navs-list">
+    <li class="nav-item row">
+      <a href="javascript://" class="tab-section">
+        <div class="section-contents col-xs-7">
+          <h3>FINANCE</h3>
+          <h5 class="title">Total Revenue</h5>
+          <h4 class="value">$5,000</h4>
         </div>
 
-        <div class="row range-container">
-          <div class="slider-wrapper">
-            <input ng-model="value" type="text" id="mySlider1" slider options="options" />
-          </div>
-        </div>
-
-        <div class="row dcharts-container">
-          <h5 class="text-center title text-uppercase">Revenue Breakdown</h5>
-          <div class="col-xs-4 text-center">
-            <div class="card">
-              <div class="donut-chart chart1">
-                <div class="slice one"></div>
-                <div class="slice two"></div>
-                <div class="chart-center">
-                  <span></span>
-                </div>
+        <div class="chart-section col-xs-5">
+          <div class="card">
+            <div class="donut-chart chart2">
+              <div class="slice one"></div>
+              <div class="slice two"></div>
+              <div class="chart-center">
+                <span></span>
               </div>
-              <h5>Energy</h5>
             </div>
+            <div class="chart-title">Label</div>
           </div>
 
-          <div class="col-xs-4 text-center">
-            <div class="card">
-              <div class="donut-chart chart2">
-                <div class="slice one"></div>
-                <div class="slice two"></div>
-                <div class="chart-center">
-                  <span></span>
-                </div>
-              </div>
-              <h5>Transport</h5>
-            </div>
-          </div>
-
-          <div class="col-xs-4 text-center">
-            <div class="card">
-              <div class="donut-chart chart3">
-                <div class="slice one"></div>
-                <div class="slice two"></div>
-                <div class="chart-center">
-                  <span></span>
-                </div>
-              </div>
-              <h5>Devices</h5>
-            </div>
-          </div>
+          <span class="action-icon">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </span>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-
-        <div class="" data-ng-controller="TabsDemoCtrl">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="ui-tab-container ui-tab-horizontal">
-                        <uib-tabset justified="true" class="ui-tab">
-                            <uib-tab heading="2,0321">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                                <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
-                            </uib-tab>
-                            <uib-tab heading="1,625">
-                                <p>Quod ea vel dolores earum veritatis quae sunt tempore odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                            </uib-tab>
-                            <uib-tab heading="479">
-                                <p>Blanditiis tenetur harum distinctio voluptate asperiores non magnam delectus. Consequatur, deleniti rem magnam possimus necessitatibus iusto suscipit mollitia rerum.</p>
-                                <p>Quod ea vel dolores earum veritatis quae sunt tempore odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
-                            </uib-tab>
-                        </uib-tabset>
-                    </div>
-                </div>
-            </div>
+      </a>
+    </li>
+    <li class="nav-item row">
+      <a href="javascript://" class="tab-section">
+        <div class="section-contents col-xs-7">
+          <h3>CUSTOMER</h3>
+          <h5 class="title">Total Customers</h5>
+          <h4 class="value">500</h4>
         </div>
 
-  </div>
+        <div class="chart-section col-xs-5">
+          <div class="card">
+            <div class="donut-chart chart2">
+              <div class="slice one"></div>
+              <div class="slice two"></div>
+              <div class="chart-center">
+                <span></span>
+              </div>
+            </div>
+            <div class="chart-title">New Customers</div>
+          </div>
+
+          <span class="action-icon">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </a>
+    </li>
+    <li class="nav-item row">
+      <a href="javascript://" class="tab-section">
+        <div class="section-contents col-xs-7">
+          <h3>HR</h3>
+          <h5 class="title">Employee retention</h5>
+          <h4 class="value">89%</h4>
+        </div>
+
+        <div class="chart-section col-xs-5">
+          <div class="card">
+            <div class="donut-chart chart2">
+              <div class="slice one"></div>
+              <div class="slice two"></div>
+              <div class="chart-center">
+                <span></span>
+              </div>
+            </div>
+            <div class="chart-title">Employee satisfication</div>
+          </div>
+
+          <span class="action-icon">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </a>
+    </li>
+    <li class="nav-item row">
+      <a href="javascript://" class="tab-section">
+        <div class="section-contents col-xs-7">
+          <h3>STOCK</h3>
+          <h5 class="title">Ongoing projects</h5>
+          <h4 class="value">15</h4>
+        </div>
+
+        <div class="chart-section col-xs-5">
+          <div class="card">
+            <div class="donut-chart chart2">
+              <div class="slice one"></div>
+              <div class="slice two"></div>
+              <div class="chart-center">
+                <span></span>
+              </div>
+            </div>
+            <div class="chart-title">Label</div>
+          </div>
+
+          <span class="action-icon">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </a>
+    </li>
+  </ul>
 </div>
-
-<style type="text/css">
-
-
-</style>
