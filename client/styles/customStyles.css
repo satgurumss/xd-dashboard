@@ -1311,21 +1311,21 @@ body {
     background-color: rgb(170, 170, 170);
 }
 
-/** Landing page styling **/
+/** Landing page Old styling **/
 
-.page-landing {
+.page-landing-old {
   color: #fff;
 }
 
-.page-landing .tab-section {
+.page-landing-old .tab-section {
   color: #fff;
 }
 
-.page-landing .section-contents {
+.page-landing-old .section-contents {
   padding-top: 10px;
 }
 
-.page-landing .section-contents .title {
+.page-landing-old .section-contents .title {
   display: inline-block;
   float: left;
   width: 50%;
@@ -1335,27 +1335,27 @@ body {
   color: #aaa;
 }
 
-.page-landing .section-contents .value {
+.page-landing-old .section-contents .value {
   font-family: 'Teko', sans-serif;
   display: inline-block;
   float: left;
 }
 
-.page-landing .chart-section {
+.page-landing-old .chart-section {
   padding-left: 0;
 }
 
-.page-landing .navs-list {
+.page-landing-old .navs-list {
   margin: 0;
   padding: 0;
 }
 
-.page-landing .card {
+.page-landing-old .card {
   display: inline-block;
   width: 100px;
 }
 
-.page-landing .card .chart-title {
+.page-landing-old .card .chart-title {
   position:absolute;
   bottom: 7px;
   left: 0;
@@ -1369,6 +1369,97 @@ body {
   color: #aaa;
 }
 
+.page-landing-old .navs-list li:nth-child(odd),
+.page-landing-old .navs-list li:nth-child(odd) .chart-title {
+  background: #3e3e40;
+}
+
+.page-landing-old .navs-list li:hover,
+.page-landing-old .navs-list li:hover .chart-title {
+  background: #2a2a2b;
+}
+
+.page-landing-old .nav-item {
+  padding: 10px 0;
+}
+
+.page-landing-old .nav-item a {
+  display: block;
+}
+
+.page-landing-old .action-icon {
+  position: absolute;
+  font-size: 44px;
+  top: 50%;
+  right: 10px;
+  margin-top: -31px;
+  background: transparent;
+  border: 0;
+  text-align: center;
+  color: #aaa;
+}
+
+/** Landing page New styling **/
+
+.page-landing {
+  color: #fff;
+}
+
+.page-landing .tab-section {
+  color: #fff;
+}
+
+.page-landing .section-contents .value {
+  font-family: 'Teko', sans-serif;
+  font-weight: 400;
+  margin: 0;
+}
+.page-landing .section-contents .title {
+  color: #AAA;
+  margin: 2px 0 0;
+}
+.page-landing .section-mid {
+  padding-right: 0;
+}
+.page-landing .section-mid,
+.page-landing .section-title {
+  padding-left: 0;
+}
+.page-landing .section-mid .value {
+  color: #AAA;
+  font-family: 'Teko', sans-serif;
+  font-weight: 400;
+  margin: 5px 0 0;
+}
+.page-landing .section-mid .title {
+  color: #AAA;
+  margin: 5px 0 0;
+}
+
+
+.page-landing .section-title .title {
+  color: #50A5EE;
+  margin: 17px 7px 0 0;
+  text-align: right;
+}
+
+.page-landing .action-icon {
+  position: absolute;
+  font-size: 28px;
+  top: 50%;
+  right: 5px;
+  margin-top: -13px;
+  background: transparent;
+  border: 0;
+  text-align: center;
+  color: #aaa;
+}
+
+.page-landing .navs-list {
+    margin: 0;
+    padding: 0;
+}
+
 .page-landing .navs-list li:nth-child(odd),
 .page-landing .navs-list li:nth-child(odd) .chart-title {
   background: #3e3e40;
@@ -1380,22 +1471,12 @@ body {
 }
 
 .page-landing .nav-item {
-  padding: 10px 0;
+  border-bottom: 1px solid #3e3e40;
+  padding: 25px 0;
 }
 
 .page-landing .nav-item a {
   display: block;
 }
 
-.page-landing .action-icon {
-  position: absolute;
-  font-size: 44px;
-  top: 50%;
-  right: 10px;
-  margin-top: -31px;
-  background: transparent;
-  border: 0;
-  text-align: center;
-  color: #aaa;
-}
 
