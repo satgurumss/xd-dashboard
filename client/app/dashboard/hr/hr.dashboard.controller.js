@@ -257,7 +257,7 @@
           style: {
             color: '#E0E0E3',
             textTransform: 'uppercase',
-            fontSize: '15px'
+            fontSize: '20px'
           }
         },
         subtitle: {
@@ -443,8 +443,12 @@
 
         chart: {
           type: 'solidgauge',
-          height: 200,
-          width: 150
+          height: 250,
+          width: 160,
+          spacingBottom: 0,
+          spacingTop: 0,
+          spacingLeft: 0,
+          spacingRight: 0,
         },
 
         title: {
@@ -465,7 +469,7 @@
           positioner: function(labelWidth, labelHeight) {
             return {
               x: 77 - labelWidth / 2,
-              y: 84
+              y: 110
             };
           }
         },
@@ -475,12 +479,12 @@
           endAngle: 360,
           background: [{ // Track for Satisfaction
             outerRadius: '110%',
-            innerRadius: '95%',
+            innerRadius: '86%',
             backgroundColor: "rgba(144,228,173, 0.3)",
             borderWidth: 0
           }, { // Track for Retention
-            outerRadius: '94%',
-            innerRadius: '75%',
+            outerRadius: '85%',
+            innerRadius: '60%',
             backgroundColor: "rgba(204, 230, 121, 0.3)",
             borderWidth: 0
           }]
@@ -509,17 +513,17 @@
           borderColor: "rgba(144,228,173, 1)",
           data: [{
             color: "rgba(144,228,173, 1)",
-            radius: '103%',
-            innerRadius: '103%',
+            radius: '102%',
+            innerRadius: '94%',
             y: 80
           }]
         }, {
           name: 'Retention',
           borderColor: "rgba(204, 230, 121, 1)",
           data: [{
-            color: "rgba(204, 230, 121, 1)",
-            radius: '83%',
-            innerRadius: '83%',
+            color:"rgba(204, 230, 121, 1)",
+            radius: '77%',
+            innerRadius: '69%',
             y: 60
           }]
         }]
@@ -529,8 +533,12 @@
 
         chart: {
           type: 'solidgauge',
-          height: 200,
-          width: 150
+          height: 250,
+          width: 160,
+          spacingBottom: 0,
+          spacingTop: 0,
+          spacingLeft: 0,
+          spacingRight: 0,
         },
 
         title: {
@@ -551,7 +559,7 @@
           positioner: function(labelWidth, labelHeight) {
             return {
               x: 77 - labelWidth / 2,
-              y: 84
+              y: 110
             };
           }
         },
@@ -561,12 +569,12 @@
           endAngle: 360,
           background: [{ // Track for Satisfaction
             outerRadius: '110%',
-            innerRadius: '95%',
+            innerRadius: '86%',
             backgroundColor: "rgba(144,228,173, 0.3)",
             borderWidth: 0
           }, { // Track for Retention
-            outerRadius: '94%',
-            innerRadius: '75%',
+            outerRadius: '85%',
+            innerRadius: '60%',
             backgroundColor: "rgba(204, 230, 121, 0.3)",
             borderWidth: 0
           }]
@@ -595,17 +603,17 @@
           borderColor: "rgba(144,228,173, 1)",
           data: [{
             color: "rgba(144,228,173, 1)",
-            radius: '103%',
-            innerRadius: '103%',
+            radius: '102%',
+            innerRadius: '94%',
             y: 80
           }]
         }, {
           name: 'Retention',
           borderColor: "rgba(204, 230, 121, 1)",
           data: [{
-            color: "rgba(204, 230, 121, 1)",
-            radius: '83%',
-            innerRadius: '83%',
+            color:"rgba(204, 230, 121, 1)",
+            radius: '77%',
+            innerRadius: '69%',
             y: 60
           }]
         }]
