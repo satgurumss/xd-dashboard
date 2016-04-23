@@ -238,8 +238,8 @@
         chart: {
           backgroundColor: {
             linearGradient: {
-              x1: 0,
-              y1: 0,
+              x1: 1,
+              y1: 1,
               x2: 1,
               y2: 1
             },
@@ -439,7 +439,7 @@
 
       // Apply the theme
       // Highcharts.setOptions(Highcharts.theme);
-      var empGauge = {
+      var empGauge1 = {
 
         chart: {
           type: 'solidgauge',
@@ -449,7 +449,94 @@
         },
 
         title: {
-          text: 'Employee Stats',
+          text: '2015',
+          style: {
+            fontSize: '15px'
+          }
+        },
+
+        tooltip: {
+          borderWidth: 0,
+          backgroundColor: 'none',
+          shadow: false,
+          style: {
+            fontSize: '12px'
+          },
+          pointFormat: '<div style="text-align:center;">{series.name}<br><span style="font-size:2em; color: {point.color}; font-weight: bold margin-left:10px">{point.y}%</span></div>',
+          positioner: function(labelWidth, labelHeight) {
+            return {
+              x: 77 - labelWidth / 2,
+              y: 84
+            };
+          }
+        },
+
+        pane: {
+          startAngle: 0,
+          endAngle: 360,
+          background: [{ // Track for Satisfaction
+            outerRadius: '110%',
+            innerRadius: '95%',
+            backgroundColor: "rgba(144,228,173, 0.3)",
+            borderWidth: 0
+          }, { // Track for Retention
+            outerRadius: '94%',
+            innerRadius: '75%',
+            backgroundColor: "rgba(204, 230, 121, 0.3)",
+            borderWidth: 0
+          }]
+        },
+
+        yAxis: {
+          min: 0,
+          max: 100,
+          lineWidth: 0,
+          tickPositions: []
+        },
+
+        plotOptions: {
+          solidgauge: {
+            borderWidth: '10px',
+            dataLabels: {
+              enabled: false
+            },
+            linecap: 'round',
+            stickyTracking: false
+          }
+        },
+
+        series: [{
+          name: 'Satisfaction',
+          borderColor: "rgba(144,228,173, 1)",
+          data: [{
+            color: "rgba(144,228,173, 1)",
+            radius: '103%',
+            innerRadius: '103%',
+            y: 80
+          }]
+        }, {
+          name: 'Retention',
+          borderColor: "rgba(204, 230, 121, 1)",
+          data: [{
+            color: "rgba(204, 230, 121, 1)",
+            radius: '83%',
+            innerRadius: '83%',
+            y: 60
+          }]
+        }]
+      };
+
+      var empGauge2 = {
+
+        chart: {
+          type: 'solidgauge',
+          height: 250,
+          width: 150,
+          marginTop: -10
+        },
+
+        title: {
+          text: '2016',
           style: {
             fontSize: '15px'
           }
@@ -526,8 +613,8 @@
         }]
       };
 
-      $('#employee-gauge1').highcharts(Highcharts.merge(empGauge, theme));
-      $('#employee-gauge2').highcharts(Highcharts.merge(empGauge, theme));
+      $('#employee-gauge1').highcharts(Highcharts.merge(empGauge1, theme));
+      $('#employee-gauge2').highcharts(Highcharts.merge(empGauge2, theme));
     }
   }
 

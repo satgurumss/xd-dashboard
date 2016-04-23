@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .controller('CustomerDashCtrl', ['$scope', '$http', '$location', 'backendApi', 'loggedInUser', '$timeout', CustomerDashCtrl])
+    .controller('CustomerDashCtrl', ['$scope', '$http', '$location', '$timeout', CustomerDashCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
         if (isNaN(input)) return input;
@@ -10,36 +10,13 @@
       };
     });
 
-  function CustomerDashCtrl($scope, $http, $location, backendApi, loggedInUser, $timeout) {
-    $scope.options = {
-      from: 3,
-      to: 12,
-      step: 3,
-      dimension: " months",
-      smooth: false,
-      css: {
-        background: {
-          "background-color": "#5b9bd6"
-        },
-        default: {
-          "background-color": "#5b9bd6"
-        },
-        pointer: {
-          "background-color": "#54627b"
-        }
-      },
-      scale: [0, 4, 8, 12]
-    };
-
-    $scope.value = "4";
-
+  function CustomerDashCtrl($scope, $http, $location, $timeout) {
     //This is not a highcharts object. It just looks a little like one!
-
     $scope.chartConfig = {
       options: {
         chart: {
           type: "bar",
-          height: 260,
+          height: 200,
           style: {
             fontFamily: "sans-serif"
           },
@@ -63,7 +40,7 @@
 
         plotOptions: {
           bar: {
-            pointWidth: 20,
+            pointWidth: 15,
             pointPadding: 0,
             dataLabels: {
               color: '#707073',
@@ -221,7 +198,7 @@
       },
 
       xAxis: {
-        categories: ['Customer 1', 'Customer 2', 'Customer 3', 'Customer 4', 'Customer 5'],
+        categories: ['Cust. 1', 'Cust. 2', 'Cust. 3', 'Cust. 4', 'Cust. 5'],
         tickWidth: 0,
         tickPixelInterval: 20,
         title: {
@@ -246,11 +223,36 @@
       },
 
       series: [{
-        data: [335, 203, 107, 31, 20]
+        data: [205, 190, 160, 140, 100]
       }]
     };
+    $scope.options = {}
 
     $scope.init = function() {
+      $scope.options = {
+        from: 3,
+        to: 12,
+        step: 3,
+        dimension: " months",
+        smooth: false,
+        css: {
+          background: {
+            "background-color": "#666666"
+          },
+          default: {
+            "background-color": "white"
+          },
+          after: {
+            "background-color": "#7cb5ec"
+          },
+          pointer: {
+            "background-color": "54627b"
+          }
+        },
+        scale: [3, 6, 9, 12]
+      };
+
+      $scope.value = "3";
       // Prepare demo data
       /*      var data1 = [{
         "hc-key": "sa",
@@ -1320,11 +1322,9 @@
           }]
         };
         /*map bubble*/
-        $('#worldMap').highcharts('Map',Highcharts.merge(options, theme));
+        $('#worldMap').highcharts('Map', Highcharts.merge(options, theme));
       });
     }
-
-
   }
 
 })();

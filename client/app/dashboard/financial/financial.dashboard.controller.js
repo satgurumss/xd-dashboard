@@ -2,37 +2,44 @@
   'use strict';
 
   angular.module('app')
-    .controller('FinancialDashCtrl',
-      ['$scope', '$http', '$location', FinancialDashCtrl])
+    .controller('FinancialDashCtrl', ['$scope', '$http', '$location', FinancialDashCtrl])
 
   function FinancialDashCtrl($scope, $http, $location) {
-   $scope.options ={};
-   var categories = ['MAR','JUN','SEP','DEC'];
+    var categories = ['MAR', 'JUN', 'SEP', 'DEC'];
 
-   $scope.init = function() {
-     $scope.options = {
-      from : 3,
-      to : 12,
-      step: 3,
-      dimension: " months",
-      smooth:false,
-      css: {
-          background: {"background-color": "#5b9bd6"},
-          default: {"background-color": "#5b9bd6"},
-          pointer: {"background-color": "#54627b"}
-      },
-      scale: [0, 4, 8, 12]
-    };
-   }
+    $scope.init = function() {
+      $scope.options = {
+        from: 3,
+        to: 12,
+        step: 3,
+        dimension: " months",
+        smooth: false,
+        css: {
+          background: {
+            "background-color": "#666666"
+          },
+          default: {
+            "background-color": "white"
+          },
+          after: {
+            "background-color": "#7cb5ec"
+          },
+          pointer: {
+            "background-color": "54627b"
+          }
+        },
+        scale: [3, 6, 9, 12]
+      };
+    }
 
-    $scope.value = "4";
+    $scope.value = "3";
 
     //This is not a highcharts object. It just looks a little like one!
     $scope.chartConfig = {
       options: {
         colors: ["#28bdc6", "rgba(144,228,173, .3)", "rgba(204, 230, 121, .3)"],
         chart: {
-          height: 260,
+          height: 200,
           backgroundColor: {
             linearGradient: {
               x1: 1,
@@ -91,7 +98,7 @@
             color: '#606063'
           },
           layout: 'horizontal',
-          align:"center",
+          align: "center",
           borderWidth: 0,
           symbolHeight: 10,
           symbolWidth: 10,
@@ -208,7 +215,7 @@
           textTransform: 'uppercase',
           fontSize: '20px'
         },
-        useHTML:true
+        useHTML: true
       },
 
       subtitle: {
@@ -243,7 +250,7 @@
       },
 
       xAxis: {
-        categories : ['MAR','JUN','SEP','DEC'],
+        categories: ['MAR', 'JUN', 'SEP', 'DEC'],
         tickWidth: 0,
         title: {
           style: {
@@ -259,10 +266,10 @@
         lineColor: '#707073',
         minorGridLineColor: '#505053',
         tickColor: '#707073',
-        tickInterval:1,
+        tickInterval: 1,
         tickmarkPlacement: "on",
         min: 0.5,
-        max: categories.length-1.5,
+        max: categories.length - 1.5,
         startOnTick: false,
         endOnTick: false,
         minPadding: 0,
@@ -271,24 +278,39 @@
       },
 
       series: [{
-            type: 'area',
-            fillColor: "rgba(40, 189, 198, 0.3)",
-            name: 'Revenue',
-            data: [5.0, 14.5, 18.2, 15.2],
-            marker: {symbol: 'circle', fillColor: '#303031', lineWidth:1, lineColor: '#28bdc6'}
-        }, {
-            type: 'area',
-            fillColor: "rgba(144,228,173, 0.3)",
-            name: 'Target',
-            data: [1.2, 17.0, 19, 8.1],
-            marker: {symbol: 'circle', fillColor: '#303031', lineWidth:1, lineColor: 'rgba(144,228,173, .6)'}
-        }, {
-            type: 'area',
-            fillColor: "rgba(204, 230, 121, 0.3)",
-            name: 'Last Year',
-            data: [3.2, 13.5, 14.3, 12.2],
-            marker: {symbol: 'circle', fillColor: '#303031', lineWidth:1, lineColor: 'rgba(204, 230, 121, .6)'}
-        }]
+        type: 'area',
+        fillColor: "rgba(40, 189, 198, 0.3)",
+        name: 'Revenue',
+        data: [5.0, 14.5, 18.2, 15.2],
+        marker: {
+          symbol: 'circle',
+          fillColor: '#303031',
+          lineWidth: 1,
+          lineColor: '#28bdc6'
+        }
+      }, {
+        type: 'area',
+        fillColor: "rgba(144,228,173, 0.3)",
+        name: 'Target',
+        data: [1.2, 17.0, 19, 8.1],
+        marker: {
+          symbol: 'circle',
+          fillColor: '#303031',
+          lineWidth: 1,
+          lineColor: 'rgba(144,228,173, .6)'
+        }
+      }, {
+        type: 'area',
+        fillColor: "rgba(204, 230, 121, 0.3)",
+        name: 'Last Year',
+        data: [3.2, 13.5, 14.3, 12.2],
+        marker: {
+          symbol: 'circle',
+          fillColor: '#303031',
+          lineWidth: 1,
+          lineColor: 'rgba(204, 230, 121, .6)'
+        }
+      }]
     };
 
   }

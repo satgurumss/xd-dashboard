@@ -1515,3 +1515,8 @@ body {
 .emp-gauge-container{
   padding:0;
 }
+
+.custom-select{
+  max-width: 80px;
+  border: none;
+}

@@ -22,7 +22,7 @@
 
         <div class="row range-container">
           <div class="slider-wrapper">
-            <input ng-model="value" type="text" id="mySlider1" slider options="options" />
+            <input ng-model="value" type="text" id="mySlider2" slider options="options" />
           </div>
         </div>
 
@@ -73,12 +73,15 @@
                 <div class="col-md-12">
                     <div class="ui-tab-container ui-tab-horizontal">
                         <uib-tabset justified="true" class="ui-tab">
-                            <uib-tab heading="Top 5">
+                            <uib-tab heading="TOP 5">
                             <highchart id="top5Chart" config="chartConfig" 
                               class="span10"></highchart>
                             </uib-tab>
-                            <uib-tab heading="By Geography">
-                              <span class="ui-select pull-right">
+                            <uib-tab heading="GEOGRAPHY">
+                              <span>
+                                Top Customers By Geography
+                              </span>
+                              <span class="ui-select custom-select pull-right">
                                 <select>
                                   <option>Qatar</option>
                                   <option>UAE</option>
@@ -89,8 +92,11 @@
                               <highchart id="byGeoChart" config="chartConfig" 
                                 class="span10"></highchart>
                             </uib-tab>
-                            <uib-tab heading="By Industry">
-                              <span class="ui-select pull-right">
+                            <uib-tab heading="INDUSTRY">
+                              <span>
+                                Top Customers By Industry
+                              </span>
+                              <span class="ui-select custom-select pull-right">
                                 <select>
                                   <option>Oil & Gas</option>
                                   <option>Telecom</option>
