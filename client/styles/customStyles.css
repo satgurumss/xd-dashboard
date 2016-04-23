@@ -523,6 +523,16 @@ ul.list-unstyled {
 }
 
 
+.page-dashboard-customer .custom-select {
+  border-bottom: 2px solid #50A5EE;
+}
+.page-dashboard-customer .ui-select > select {
+  padding: 4px 5px 4px 1px;
+}
+.page-dashboard-customer .ui-select:after {
+  color: #50A5EE;
+  right: 0;
+}
 
 @media only screen and (max-width: 768px) {
   .panel-body {
@@ -1033,10 +1043,10 @@ body {
     color: #008db0;
 }
 .ui-tab-container .nav-tabs > li.active:nth-child(2) > a {
-    color: #90e4ad;
+    color: #5dc280;
 }
 .ui-tab-container .nav-tabs > li.active:nth-child(3) > a {
-    color: #cce679;
+    color: #B6C546;
 }
 .ui-tab-container .nav-tabs > li {
   border-top: 3px solid transparent;
@@ -1046,10 +1056,10 @@ body {
     border-top: 3px solid #008db0;
 }
 .ui-tab-container .nav-tabs > li.active:nth-child(2) {
-    border-top: 3px solid #90e4ad;
+    border-top: 3px solid #5dc280;
 }
 .ui-tab-container .nav-tabs > li.active:nth-child(3) {
-    border-top: 3px solid #cce679;
+    border-top: 3px solid #B6C546;
 }
 .ui-tab-container .tab-content {
   background: #FFF;
@@ -1457,7 +1467,7 @@ body {
 
 .page-landing .section-title .title {
   color: #50A5EE;
-  margin: 17px 7px 0 0;
+  margin: 2px -5px 0 0;
   text-align: right;
 }
 
@@ -1478,9 +1488,9 @@ body {
     padding: 0;
 }
 
-.page-landing .navs-list li:nth-child(odd),
-.page-landing .navs-list li:nth-child(odd) .chart-title {
-  background: #3e3e40;
+.page-landing .navs-list li,
+.page-landing .navs-list li:nth-child(odd) {
+  background: url(../images/item-shadow.png) repeat-x bottom;
 }
 
 .page-landing .navs-list li:hover,
@@ -1489,7 +1499,6 @@ body {
 }
 
 .page-landing .nav-item {
-  border-bottom: 1px solid #3e3e40;
   padding: 25px 0;
 }
 
