@@ -40,6 +40,7 @@
         colors: ["#28bdc6", "rgba(144,228,173, .3)", "rgba(204, 230, 121, .3)"],
         chart: {
           height: 200,
+          marginRight:25,
           backgroundColor: {
             linearGradient: {
               x1: 1,
