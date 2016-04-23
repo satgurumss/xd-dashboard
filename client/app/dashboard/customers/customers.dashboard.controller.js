@@ -11,6 +11,21 @@
     });
 
   function CustomerDashCtrl($scope, $http, $location, backendApi, loggedInUser, $timeout) {
+    $scope.options = {
+      from : 3,
+      to : 12,
+      step: 3,
+      dimension: " months",
+      smooth:false,
+      css: {
+          background: {"background-color": "#5b9bd6"},
+          default: {"background-color": "#5b9bd6"},
+          pointer: {"background-color": "#54627b"}
+      },
+      scale: [0, 4, 8, 12]
+    };
+
+    $scope.value = "4";
 
     //This is not a highcharts object. It just looks a little like one!
 
@@ -1146,11 +1161,7 @@
           // Apply the theme
           Highcharts.setOptions(Highcharts.theme);
           // Initiate the chart
-          /* $('#worldMap').highcharts('Map', 
-          {
-            chart:{
-              type:"Map",
-            }
+          /* $('#worldMap').highcharts('Map', {
             title: {
               text: 'Customer Distribution'
             },
@@ -1188,6 +1199,80 @@
               }
             }]
           });*/
+          
+          /*map2*/
+          /*$scope.mapConfig = {
+            options: {
+              chart: {
+                style: {
+                  fontFamily: "sans-serif"
+                },
+                plotBorderColor: '#606063'
+              },
+
+              tooltip: {
+                backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                style: {
+                  color: '#F0F0F0'
+                }
+              },
+
+              labels: {
+                style: {
+                  color: '#707073'
+                }
+              },
+
+              plotOptions:{
+                map:{
+                  mapData : mapData,
+                  joinBy : "hc-key"
+                }
+              },
+
+              // special colors for some of the
+              legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
+              background2: '#505053',
+              dataLabelsColor: '#B0B0B3',
+              textColor: '#C0C0C0',
+              contrastTextColor: '#F0F0F3',
+              maskColor: 'rgba(255,255,255,0.3)'
+            },
+            colorAxis: {
+                min: 0
+            },
+            //The below properties are watched separately for changes.
+            //Title configuration (optional)
+            title: {
+              text: null,
+              style: {
+                color: '#E0E0E3',
+                textTransform: 'uppercase',
+                fontSize: '20px'
+              },
+              useHTML: true
+            },
+
+            subtitle: {
+              style: {
+                color: '#E0E0E3',
+                textTransform: 'uppercase'
+              }
+            },
+
+            series: [{
+              data: $scope.data,
+              states: {
+                hover: {
+                  color: '#BADA55'
+                }
+              },
+              dataLabels: {
+                enabled: true,
+                format: '{point.name}'
+              }
+            }]
+          };*/
 
           /*map bubble*/
           $('#worldMap').highcharts('Map', {
@@ -1232,81 +1317,9 @@
               }
             }]
           });
+
         })();
 
-        /*map2*/
-        /*$scope.mapConfig = {
-          options: {
-            chart: {
-              style: {
-                fontFamily: "sans-serif"
-              },
-              plotBorderColor: '#606063'
-            },
-
-            tooltip: {
-              backgroundColor: 'rgba(0, 0, 0, 0.85)',
-              style: {
-                color: '#F0F0F0'
-              }
-            },
-
-            labels: {
-              style: {
-                color: '#707073'
-              }
-            },
-
-            plotOptions:{
-              map:{
-                mapData : mapData,
-                joinBy : "hc-key"
-              }
-            },
-
-            // special colors for some of the
-            legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
-            background2: '#505053',
-            dataLabelsColor: '#B0B0B3',
-            textColor: '#C0C0C0',
-            contrastTextColor: '#F0F0F3',
-            maskColor: 'rgba(255,255,255,0.3)'
-          },
-          colorAxis: {
-              min: 0
-          },
-          //The below properties are watched separately for changes.
-          //Title configuration (optional)
-          title: {
-            text: null,
-            style: {
-              color: '#E0E0E3',
-              textTransform: 'uppercase',
-              fontSize: '20px'
-            },
-            useHTML: true
-          },
-
-          subtitle: {
-            style: {
-              color: '#E0E0E3',
-              textTransform: 'uppercase'
-            }
-          },
-
-          series: [{
-            data: $scope.data,
-            states: {
-              hover: {
-                color: '#BADA55'
-              }
-            },
-            dataLabels: {
-              enabled: true,
-              format: '{point.name}'
-            }
-          }]
-        };*/
 
       });
     }
