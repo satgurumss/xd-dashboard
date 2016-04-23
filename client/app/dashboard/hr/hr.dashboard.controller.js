@@ -443,9 +443,8 @@
 
         chart: {
           type: 'solidgauge',
-          height: 250,
-          width: 150,
-          marginTop: -10
+          height: 200,
+          width: 150
         },
 
         title: {
@@ -530,9 +529,8 @@
 
         chart: {
           type: 'solidgauge',
-          height: 250,
-          width: 150,
-          marginTop: -10
+          height: 200,
+          width: 150
         },
 
         title: {
@@ -547,7 +545,7 @@
           backgroundColor: 'none',
           shadow: false,
           style: {
-            fontSize: '14px'
+            fontSize: '12px'
           },
           pointFormat: '<div style="text-align:center;">{series.name}<br><span style="font-size:2em; color: {point.color}; font-weight: bold margin-left:10px">{point.y}%</span></div>',
           positioner: function(labelWidth, labelHeight) {
