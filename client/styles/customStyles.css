@@ -1501,3 +1501,10 @@ body {
 .gauge-panel.panel-body{
   min-height: auto
 }
+
+.white-text {
+  color: #FFF;
+}
+.emp-gauge-container{
+  padding:0;
+}

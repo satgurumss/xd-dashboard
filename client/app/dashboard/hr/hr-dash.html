@@ -1,4 +1,4 @@
-<div class="page page-hr" data-ng-controller="HRDashCtrl">
+<div class="page page-hr" data-ng-controller="HRDashCtrl" ng-init="init()">
   <div class="row">
     <div class="panel-container">
 
@@ -8,16 +8,23 @@
             <h3>HR</h3>
           </div>
           <div class="col-xs-6 text-right">
-            <h3 class="text">89%</h3>
+            <h3 class="text"><span class="white-text">80%</span></h3>
             <h6 class="text-uppercase">Employee Satisfaction</h6>
           </div>
         </div>
         <div class="row revenue-title">
-          <div class='col-xs-6'>
+          <!-- <div class='col-xs-6'>
             <highchart id="worldMap" config="chartConfig" class="span10"></highchart>
           </div>
           <div class='col-xs-6'>
             <highchart id="worldMap" config="chartConfig" class="span10"></highchart>
+          </div> -->
+
+          <div class='col-xs-6 emp-gauge-container'>
+            <div id="employee-gauge1" class="span10"></div>
+          </div>
+          <div class='col-xs-6 emp-gauge-container'>
+            <div id="employee-gauge2" class="span10"></div>
           </div>
         </div>
       </div>
