@@ -14,9 +14,10 @@
 
         <!-- Needs images, font... therefore can not be part of main.css -->
         <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Teko:300,400">
         <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
 
-        <link rel="stylesheet" type="text/css" href="bower_components/angular-awesome-slider/dist/css/angular-awesome-slider.min.css">
+        <link rel="stylesheet" type="text/css" href="angular-awesome-slider.css">
         <!-- end Needs images -->
 
             <!-- build:css({.tmp,client}) styles/main.css -->
@@ -99,6 +100,12 @@
         <script type="text/javascript" src="app/angular-map-it.js"></script>
         <!-- endbuild -->
 
+        <!-- highcharts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/4.2.4/highcharts.src.js"></script>
+        <script src="http://code.highcharts.com/highcharts-more.js"></script>
+        <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+        <script src="http://code.highcharts.com/maps/modules/map.js"></script>
+        
         <!-- build:js scripts/ui.js -->
         <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
         <script src="bower_components/toastr/toastr.min.js"></script>
@@ -168,12 +175,7 @@
 
         <!-- abraaj services and directives -->
         <script src="app/directives/custom-directives.js"></script>
-        <!-- highcharts -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/4.2.4/highcharts.src.js"></script>
-        <script src="http://code.highcharts.com/highcharts-more.js"></script>
-        <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
-        <script src="http://code.highcharts.com/maps/modules/map.js"></script>
-        
+
         <!-- abraaj controllers -->
         <script src="app/login/login.controller.js"></script>
         <script src="app/dashboard/financial/financial.dashboard.controller.js"></script>

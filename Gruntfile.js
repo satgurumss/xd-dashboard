@@ -309,7 +309,9 @@
               "styles/img/**/*",
               "styles/ui/images/*",
               "app/**/*.html",
+              "app/sampleData/middle-east.json",
               "services.js",
+              "angular-awesome-slider.css",
               "jquery.keyframes.js",
               "prefixfree.min.js",
               "vendors/echarts.js"
