@@ -12,15 +12,21 @@
 
   function CustomerDashCtrl($scope, $http, $location, backendApi, loggedInUser, $timeout) {
     $scope.options = {
-      from : 3,
-      to : 12,
+      from: 3,
+      to: 12,
       step: 3,
       dimension: " months",
-      smooth:false,
+      smooth: false,
       css: {
-          background: {"background-color": "#5b9bd6"},
-          default: {"background-color": "#5b9bd6"},
-          pointer: {"background-color": "#54627b"}
+        background: {
+          "background-color": "#5b9bd6"
+        },
+        default: {
+          "background-color": "#5b9bd6"
+        },
+        pointer: {
+          "background-color": "#54627b"
+        }
       },
       scale: [0, 4, 8, 12]
     };
@@ -945,223 +951,221 @@
 
       $http.get("app/sampleData/middle-east.json").success(function(mapData) {
         // Load the fonts
-        (function() {
+        Highcharts.createElement('link', {
+          href: 'https://fonts.googleapis.com/css?family=Unica+One',
+          rel: 'stylesheet',
+          type: 'text/css'
+        }, null, document.getElementsByTagName('head')[0]);
 
-          Highcharts.createElement('link', {
-            href: 'https://fonts.googleapis.com/css?family=Unica+One',
-            rel: 'stylesheet',
-            type: 'text/css'
-          }, null, document.getElementsByTagName('head')[0]);
-
-          Highcharts.theme = {
-            colors: ["#2b908f", "#90ee7e", "#f45b5b", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
-              "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"
-            ],
-            chart: {
-              backgroundColor: {
-                linearGradient: {
-                  x1: 0,
-                  y1: 0,
-                  x2: 1,
-                  y2: 1
-                },
-                stops: [
-                  [0, '#2a2a2b'],
-                  [1, '#3e3e40']
-                ]
+        var theme = {
+          colors: ["#2b908f", "#90ee7e", "#f45b5b", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+            "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"
+          ],
+          chart: {
+            backgroundColor: {
+              linearGradient: {
+                x1: 0,
+                y1: 0,
+                x2: 1,
+                y2: 1
               },
-              style: {
-                fontFamily: "'Unica One', sans-serif"
-              },
-              plotBorderColor: '#606063'
+              stops: [
+                [0, '#2a2a2b'],
+                [1, '#3e3e40']
+              ]
             },
-            title: {
-              style: {
-                color: '#E0E0E3',
-                textTransform: 'uppercase',
-                fontSize: '20px'
-              }
+            style: {
+              fontFamily: "'Unica One', sans-serif"
             },
-            subtitle: {
-              style: {
-                color: '#E0E0E3',
-                textTransform: 'uppercase'
-              }
-            },
-            xAxis: {
-              gridLineColor: '#707073',
-              labels: {
-                style: {
-                  color: '#E0E0E3'
-                }
-              },
-              lineColor: '#707073',
-              minorGridLineColor: '#505053',
-              tickColor: '#707073',
-              title: {
-                style: {
-                  color: '#A0A0A3'
-
-                }
-              }
-            },
-            yAxis: {
-              gridLineColor: '#707073',
-              labels: {
-                style: {
-                  color: '#E0E0E3'
-                }
-              },
-              lineColor: '#707073',
-              minorGridLineColor: '#505053',
-              tickColor: '#707073',
-              tickWidth: 1,
-              title: {
-                style: {
-                  color: '#A0A0A3'
-                }
-              }
-            },
-            tooltip: {
-              backgroundColor: 'rgba(0, 0, 0, 0.85)',
-              style: {
-                color: '#F0F0F0'
-              }
-            },
-            plotOptions: {
-              series: {
-                dataLabels: {
-                  color: '#B0B0B3'
-                },
-                marker: {
-                  lineColor: '#333'
-                }
-              },
-              boxplot: {
-                fillColor: '#505053'
-              },
-              candlestick: {
-                lineColor: 'white'
-              },
-              errorbar: {
-                color: 'white'
-              }
-            },
-            legend: {
-              itemStyle: {
-                color: '#E0E0E3'
-              },
-              itemHoverStyle: {
-                color: '#FFF'
-              },
-              itemHiddenStyle: {
-                color: '#606063'
-              }
-            },
-            credits: {
-              style: {
-                color: '#666'
-              }
-            },
+            plotBorderColor: '#606063'
+          },
+          title: {
+            style: {
+              color: '#E0E0E3',
+              textTransform: 'uppercase',
+              fontSize: '20px'
+            }
+          },
+          subtitle: {
+            style: {
+              color: '#E0E0E3',
+              textTransform: 'uppercase'
+            }
+          },
+          xAxis: {
+            gridLineColor: '#707073',
             labels: {
               style: {
-                color: '#707073'
+                color: '#E0E0E3'
               }
             },
+            lineColor: '#707073',
+            minorGridLineColor: '#505053',
+            tickColor: '#707073',
+            title: {
+              style: {
+                color: '#A0A0A3'
 
-            drilldown: {
-              activeAxisLabelStyle: {
-                color: '#F0F0F3'
+              }
+            }
+          },
+          yAxis: {
+            gridLineColor: '#707073',
+            labels: {
+              style: {
+                color: '#E0E0E3'
+              }
+            },
+            lineColor: '#707073',
+            minorGridLineColor: '#505053',
+            tickColor: '#707073',
+            tickWidth: 1,
+            title: {
+              style: {
+                color: '#A0A0A3'
+              }
+            }
+          },
+          tooltip: {
+            backgroundColor: 'rgba(0, 0, 0, 0.85)',
+            style: {
+              color: '#F0F0F0'
+            }
+          },
+          plotOptions: {
+            series: {
+              dataLabels: {
+                color: '#B0B0B3'
               },
-              activeDataLabelStyle: {
-                color: '#F0F0F3'
+              marker: {
+                lineColor: '#333'
               }
             },
-
-            navigation: {
-              buttonOptions: {
-                symbolStroke: '#DDDDDD',
-                theme: {
-                  fill: '#505053'
-                }
-              }
+            boxplot: {
+              fillColor: '#505053'
             },
+            candlestick: {
+              lineColor: 'white'
+            },
+            errorbar: {
+              color: 'white'
+            }
+          },
+          legend: {
+            itemStyle: {
+              color: '#E0E0E3'
+            },
+            itemHoverStyle: {
+              color: '#FFF'
+            },
+            itemHiddenStyle: {
+              color: '#606063'
+            }
+          },
+          credits: {
+            style: {
+              color: '#666'
+            }
+          },
+          labels: {
+            style: {
+              color: '#707073'
+            }
+          },
 
-            // scroll charts
-            rangeSelector: {
-              buttonTheme: {
-                fill: '#505053',
-                stroke: '#000000',
-                style: {
-                  color: '#CCC'
+          drilldown: {
+            activeAxisLabelStyle: {
+              color: '#F0F0F3'
+            },
+            activeDataLabelStyle: {
+              color: '#F0F0F3'
+            }
+          },
+
+          navigation: {
+            buttonOptions: {
+              symbolStroke: '#DDDDDD',
+              theme: {
+                fill: '#505053'
+              }
+            }
+          },
+
+          // scroll charts
+          rangeSelector: {
+            buttonTheme: {
+              fill: '#505053',
+              stroke: '#000000',
+              style: {
+                color: '#CCC'
+              },
+              states: {
+                hover: {
+                  fill: '#707073',
+                  stroke: '#000000',
+                  style: {
+                    color: 'white'
+                  }
                 },
-                states: {
-                  hover: {
-                    fill: '#707073',
-                    stroke: '#000000',
-                    style: {
-                      color: 'white'
-                    }
-                  },
-                  select: {
-                    fill: '#000003',
-                    stroke: '#000000',
-                    style: {
-                      color: 'white'
-                    }
+                select: {
+                  fill: '#000003',
+                  stroke: '#000000',
+                  style: {
+                    color: 'white'
                   }
                 }
-              },
-              inputBoxBorderColor: '#505053',
-              inputStyle: {
-                backgroundColor: '#333',
-                color: 'silver'
-              },
-              labelStyle: {
-                color: 'silver'
               }
             },
-
-            navigator: {
-              handles: {
-                backgroundColor: '#666',
-                borderColor: '#AAA'
-              },
-              outlineColor: '#CCC',
-              maskFill: 'rgba(255,255,255,0.1)',
-              series: {
-                color: '#7798BF',
-                lineColor: '#A6C7ED'
-              },
-              xAxis: {
-                gridLineColor: '#505053'
-              }
+            inputBoxBorderColor: '#505053',
+            inputStyle: {
+              backgroundColor: '#333',
+              color: 'silver'
             },
+            labelStyle: {
+              color: 'silver'
+            }
+          },
 
-            scrollbar: {
-              barBackgroundColor: '#808083',
-              barBorderColor: '#808083',
-              buttonArrowColor: '#CCC',
-              buttonBackgroundColor: '#606063',
-              buttonBorderColor: '#606063',
-              rifleColor: '#FFF',
-              trackBackgroundColor: '#404043',
-              trackBorderColor: '#404043'
+          navigator: {
+            handles: {
+              backgroundColor: '#666',
+              borderColor: '#AAA'
             },
+            outlineColor: '#CCC',
+            maskFill: 'rgba(255,255,255,0.1)',
+            series: {
+              color: '#7798BF',
+              lineColor: '#A6C7ED'
+            },
+            xAxis: {
+              gridLineColor: '#505053'
+            }
+          },
 
-            // special colors for some of the
-            legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
-            background2: '#505053',
-            dataLabelsColor: '#B0B0B3',
-            textColor: '#C0C0C0',
-            contrastTextColor: '#F0F0F3',
-            maskColor: 'rgba(255,255,255,0.3)'
-          };
+          scrollbar: {
+            barBackgroundColor: '#808083',
+            barBorderColor: '#808083',
+            buttonArrowColor: '#CCC',
+            buttonBackgroundColor: '#606063',
+            buttonBorderColor: '#606063',
+            rifleColor: '#FFF',
+            trackBackgroundColor: '#404043',
+            trackBorderColor: '#404043'
+          },
 
-          // Apply the theme
-          Highcharts.setOptions(Highcharts.theme);
-          // Initiate the chart
-          /* $('#worldMap').highcharts('Map', {
+          // special colors for some of the
+          legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
+          background2: '#505053',
+          dataLabelsColor: '#B0B0B3',
+          textColor: '#C0C0C0',
+          contrastTextColor: '#F0F0F3',
+          maskColor: 'rgba(255,255,255,0.3)'
+        };
+
+        // Apply the theme
+        //Highcharts.setOptions(Highcharts.theme);
+        // Initiate the chart
+        /* $('#worldMap').highcharts('Map', {
             title: {
               text: 'Customer Distribution'
             },
@@ -1199,9 +1203,9 @@
               }
             }]
           });*/
-          
-          /*map2*/
-          /*$scope.mapConfig = {
+
+        /*map2*/
+        /*$scope.mapConfig = {
             options: {
               chart: {
                 style: {
@@ -1273,54 +1277,50 @@
               }
             }]
           };*/
+        var options = {
+          chart: {
+            borderWidth: 1
+          },
 
-          /*map bubble*/
-          $('#worldMap').highcharts('Map', {
-            chart: {
-              borderWidth: 1
-            },
+          title: {
+            text: 'Customer Distribution'
+          },
 
-            title: {
-              text: 'Customer Distribution'
-            },
+          credits: {
+            enabled: false
+          },
 
-            credits: {
-              enabled: false
-            },
+          legend: {
+            enabled: false
+          },
 
-            legend: {
-              enabled: false
-            },
+          mapNavigation: {
+            enabled: false,
+            buttonOptions: {
+              verticalAlign: 'bottom'
+            }
+          },
 
-            mapNavigation: {
-              enabled: false,
-              buttonOptions: {
-                verticalAlign: 'bottom'
-              }
-            },
-
-            series: [{
-              name: 'Countries',
-              mapData: mapData,
-              color: '#E0E0E0',
-              enableMouseTracking: false
-            }, {
-              type: 'mapbubble',
-              mapData: mapData,
-              name: '# of Customers',
-              joinBy: ['iso-a2', 'code'],
-              data: data,
-              minSize: 20,
-              maxSize: '20%',
-              tooltip: {
-                pointFormat: '{point.name} - {point.z}'
-              }
-            }]
-          });
-
-        })();
-
-
+          series: [{
+            name: 'Countries',
+            mapData: mapData,
+            color: '#E0E0E0',
+            enableMouseTracking: false
+          }, {
+            type: 'mapbubble',
+            mapData: mapData,
+            name: '# of Customers',
+            joinBy: ['iso-a2', 'code'],
+            data: data,
+            minSize: 20,
+            maxSize: '20%',
+            tooltip: {
+              pointFormat: '{point.name} - {point.z}'
+            }
+          }]
+        };
+        /*map bubble*/
+        $('#worldMap').highcharts('Map',Highcharts.merge(options, theme));
       });
     }
 

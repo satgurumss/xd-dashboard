@@ -765,16 +765,16 @@ p.search-description {
 ul.dropdown-menu {
   padding: 0;
 }
-.header-container > .top-header .dropdown-menu li > a {
-  color: #aaa;
-  border-bottom: 1px dashed #66B5D7;
-  padding: 7px 0;
-}
 
 .header-container > .top-header .sub-menu li > a {
   padding: 7px 10px;
 }
 
+.header-container > .top-header .dropdown-menu li > a {
+  color: #aaa;
+  border-bottom: 1px dashed #66B5D7;
+  padding: 7px 0;
+}
 .header-container > .top-header .dropdown-menu  li > a:last-child {
   border-bottom: 0;
 }
@@ -1318,7 +1318,9 @@ body {
 }
 
 .range-container .slider-wrapper {
-  max-width: 300px;
+  max-width: 250px;
+  padding-top: 10px;
+  height: 30px;
   display: inline-block;
 }
 

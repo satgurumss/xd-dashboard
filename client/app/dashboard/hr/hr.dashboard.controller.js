@@ -231,7 +231,7 @@
         type: 'text/css'
       }, null, document.getElementsByTagName('head')[0]);
 
-      Highcharts.theme = {
+      var theme = {
         colors: ["#2b908f", "#90ee7e", "#f45b5b", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
           "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"
         ],
@@ -301,7 +301,7 @@
           }
         },
         tooltip: {
-          backgroundColor: 'rgba(0, 0, 0, 0.85)',
+          backgroundColor: 'none',
           style: {
             color: '#F0F0F0'
           }
@@ -337,7 +337,7 @@
           }
         },
         credits: {
-          enabled:false,
+          enabled: false,
           style: {
             color: '#666'
           }
@@ -438,15 +438,14 @@
       };
 
       // Apply the theme
-      Highcharts.setOptions(Highcharts.theme);
-
-      Highcharts.chart('employee-gauge1', {
+      // Highcharts.setOptions(Highcharts.theme);
+      var empGauge = {
 
         chart: {
           type: 'solidgauge',
-          height:250,
-          width:150,
-          marginTop:-10
+          height: 250,
+          width: 150,
+          marginTop: -10
         },
 
         title: {
@@ -525,94 +524,10 @@
             y: 60
           }]
         }]
-      });
-      
-      Highcharts.chart('employee-gauge2', {
+      };
 
-        chart: {
-          type: 'solidgauge',
-          height:250,
-          width:150,
-          marginTop:-10
-        },
-
-        title: {
-          text: 'Employee Stats',
-          style: {
-            fontSize: '15px'
-          }
-        },
-
-        tooltip: {
-          borderWidth: 0,
-          backgroundColor: 'none',
-          shadow: false,
-          style: {
-            fontSize: '14px'
-          },
-          pointFormat: '<div style="text-align:center;">{series.name}<br><span style="font-size:2em; color: {point.color}; font-weight: bold margin-left:10px">{point.y}%</span></div>',
-          positioner: function(labelWidth, labelHeight) {
-            return {
-              x: 77 - labelWidth / 2,
-              y: 84
-            };
-          }
-        },
-
-        pane: {
-          startAngle: 0,
-          endAngle: 360,
-          background: [{ // Track for Satisfaction
-            outerRadius: '110%',
-            innerRadius: '95%',
-            backgroundColor: "rgba(144,228,173, 0.3)",
-            borderWidth: 0
-          }, { // Track for Retention
-            outerRadius: '94%',
-            innerRadius: '75%',
-            backgroundColor: "rgba(204, 230, 121, 0.3)",
-            borderWidth: 0
-          }]
-        },
-
-        yAxis: {
-          min: 0,
-          max: 100,
-          lineWidth: 0,
-          tickPositions: []
-        },
-
-        plotOptions: {
-          solidgauge: {
-            borderWidth: '10px',
-            dataLabels: {
-              enabled: false
-            },
-            linecap: 'round',
-            stickyTracking: false
-          }
-        },
-
-        series: [{
-          name: 'Satisfaction',
-          borderColor: "rgba(144,228,173, 1)",
-          data: [{
-            color: "rgba(144,228,173, 1)",
-            radius: '103%',
-            innerRadius: '103%',
-            y: 80
-          }]
-        }, {
-          name: 'Retention',
-          borderColor: "rgba(204, 230, 121, 1)",
-          data: [{
-            color: "rgba(204, 230, 121, 1)",
-            radius: '83%',
-            innerRadius: '83%',
-            y: 60
-          }]
-        }]
-      });
+      $('#employee-gauge1').highcharts(Highcharts.merge(empGauge, theme));
+      $('#employee-gauge2').highcharts(Highcharts.merge(empGauge, theme));
     }
   }
 
