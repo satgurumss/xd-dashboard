@@ -768,8 +768,13 @@ ul.dropdown-menu {
 .header-container > .top-header .dropdown-menu li > a {
   color: #aaa;
   border-bottom: 1px dashed #66B5D7;
+  padding: 7px 0;
+}
+
+.header-container > .top-header .sub-menu li > a {
   padding: 7px 10px;
 }
+
 .header-container > .top-header .dropdown-menu  li > a:last-child {
   border-bottom: 0;
 }
