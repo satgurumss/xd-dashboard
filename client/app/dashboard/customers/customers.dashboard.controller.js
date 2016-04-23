@@ -14,6 +14,7 @@
     //This is not a highcharts object. It just looks a little like one!
     $scope.chartConfig = {
       options: {
+        colors : ["#B6A2DE"],
         chart: {
           type: "bar",
           height: 200,
@@ -42,6 +43,7 @@
           bar: {
             pointWidth: 15,
             pointPadding: 0,
+            borderRadius:4,  
             dataLabels: {
               color: '#707073',
               verticalAlign: 'middle',
@@ -979,7 +981,8 @@
             style: {
               fontFamily: "'Unica One', sans-serif"
             },
-            plotBorderColor: '#606063'
+            plotBorderColor: "none",
+            borderWidth: 0
           },
           title: {
             style: {
