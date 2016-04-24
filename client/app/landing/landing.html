@@ -9,60 +9,54 @@
   <ul class="navs-list">
     <li class="nav-item row">
       <a href="javascript://" class="tab-section" ng-click="navigateTo('/financial-dashboard')">
-        <div class="section-contents col-xs-4">
-          <h3 class="value">$ 5.3 M</h3>
-          <h5 class="title">Revenue</h5>
+        <div class="section-contents col-xs-6">
+          <h2 class="value-big">$ 5.3 M <span>Revenue</span></h2>
+          <h4 class="value-small">$ 4.5 M <span>Budget</span></h4>
         </div>
-        <div class="section-contents col-xs-3">
-          <h3 class="value">$ 4.5 M</h3>
-          <h6 class="title">Budget</h6>
-        </div>
-        <div class="section-title col-xs-5">
+        <div class="section-title col-xs-6">
           <h5 class="title">FINANCE <img src="images/Icon_finance.png" border="0" /></h5>
-
-          <span class="action-icon hidden">
-            <i class="fa fa-angle-right" aria-hidden="true"></i>
-          </span>
         </div>
       </a>
     </li>
     <li class="nav-item row">
       <a href="javascript://" class="tab-section" ng-click="navigateTo('/customers-dashboard')">
-        <div class="section-contents col-xs-4">
-          <h3 class="value">500</h3>
-          <h5 class="title">Total</h5>
+        <div class="section-contents col-xs-6">
+          <h2 class="value-big">500 <span>Total</span></h2>
+          <h4 class="value-small">300 <span>New</span></h4>
         </div>
-        <div class="section-contents col-xs-3">
-          <h3 class="value">300</h3>
-          <h6 class="title">New</h6>
-        </div>
-        <div class="section-title col-xs-5">
+        <div class="section-title col-xs-6">
           <h5 class="title">CUSTOMERS <img src="images/Icon_customers.png" border="0" /></h5>
-          <span class="action-icon hidden">
-            <i class="fa fa-angle-right" aria-hidden="true"></i>
-          </span>
         </div>
       </a>
     </li>
     <li class="nav-item row">
       <a href="javascript://" class="tab-section" ng-click="navigateTo('/hr-dashboard')">
-        <div class="section-contents col-xs-4">
-          <h3 class="value">89 %</h3>
-          <h6 class="title">Retention</h6>
+        <div class="section-contents col-xs-6">
+          <h2 class="value-big">89 % <span>Retention</span></h2>
+          <h4 class="value-small">70 % <span>Satisfaction</span></h4>
         </div>
-        <div class="section-contents col-xs-3">
-          <h3 class="value">70 %</h3>
-          <h6 class="title">Satisfaction</h6>
-        </div>
-        <div class="section-title col-xs-5">
+        <div class="section-title col-xs-6">
           <h5 class="title">HR <img src="images/Icon_hr.png" border="0" /></h5>
+        </div>
+      </a>
+    </li>
+    <li class="nav-item row">
+      <a href="javascript://" class="tab-section">
+        <div class="section-contents col-xs-6">
+          <h2 class="value-big">$ 5.3 M <span>Inventory Value</span></h2>
+          <h4 class="value-small">1.0 M <span>Units Sold</span></h4>
+        </div>
+        <div class="section-title col-xs-6">
+          <h5 class="title">PROJECTS <img src="images/Icon_projects.png" border="0" /></h5>
           <span class="action-icon hidden">
             <i class="fa fa-angle-right" aria-hidden="true"></i>
           </span>
         </div>
       </a>
     </li>
-    <li class="nav-item row">
+
+
+    <li class="nav-item row hidden">
       <a href="javascript://" class="tab-section">
         <div class="section-contents col-xs-4">
           <h3 class="value">$ 5.3 M</h3>
@@ -80,6 +74,9 @@
         </div>
       </a>
     </li>
+
+
+
   </ul>
 </div>
 
@@ -106,12 +103,38 @@ body {
 .page-landing .navs-list li:hover {
     background: rgba(20,23,37,.6);
 }
-.page-landing .section-title .title {
-  font-size: 13px;
-}
-.page-landing .section-contents .title {
+.page-landing .section-contents {
   white-space: nowrap;
 }
+.page-landing .section-contents .value-big {
+  color: #50A5EE;
+  font-family: 'Teko', sans-serif;
+  font-weight: 400;
+  margin: 0;
+}
+.page-landing .section-contents .value-small {
+  font-family: 'Teko', sans-serif;
+  font-weight: 400;
+  margin: 0;
+}
+.page-landing .section-contents .value-big span,
+.page-landing .section-contents .value-small span {
+  color: #FFF;
+  font-size: 14px;
+  font-family: lato;
+  opacity: .4;
+  margin: 0 0 0 2px;
+}
+
+.page-landing .section-title .title {
+  margin: 8px -5px 0 0;
+}
+
+.page-landing .section-title .title img {
+    position: relative;
+    top: -2px;
+}
+
 .app-footer {
     color: #999;
   }
