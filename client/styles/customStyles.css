@@ -1270,7 +1270,15 @@ body {
 }
 
 .jslider div.jslider-label {
-    color: #EEE;
+    color: #FFF;
+    font-size: 12px;
+}
+.jslider div.jslider-value{
+  font-size: 12px;
+}
+.jslider div.jslider-scale ins{
+  font-size: 12px;
+  color: #ccc;
 }
 
 @media only screen and (max-width: 767px) {
