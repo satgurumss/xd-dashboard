@@ -10,8 +10,8 @@
     <li class="nav-item row">
       <a href="javascript://" class="tab-section" ng-click="navigateTo('/financial-dashboard')">
         <div class="section-contents col-xs-6">
-          <h2 class="value-big">$ 5.3 M <span>Revenue</span></h2>
-          <h4 class="value-small">$ 4.5 M <span>Budget</span></h4>
+          <h1 class="value-big">$ 4.5 M <span>Revenue</span></h1>
+          <h4 class="value-small">$ 5.3 M <span>Budget</span></h4>
         </div>
         <div class="section-title col-xs-6">
           <h5 class="title">FINANCE <img src="images/Icon_finance.png" border="0" /></h5>
@@ -21,10 +21,11 @@
     <li class="nav-item row">
       <a href="javascript://" class="tab-section" ng-click="navigateTo('/customers-dashboard')">
         <div class="section-contents col-xs-6">
-          <h2 class="value-big">500 <span>Total</span></h2>
+          <h1 class="value-big">500 <span>Total</span></h1>
           <h4 class="value-small">300 <span>New</span></h4>
         </div>
         <div class="section-title col-xs-6">
+
           <h5 class="title">CUSTOMERS <img src="images/Icon_customers.png" border="0" /></h5>
         </div>
       </a>
@@ -32,18 +33,18 @@
     <li class="nav-item row">
       <a href="javascript://" class="tab-section" ng-click="navigateTo('/hr-dashboard')">
         <div class="section-contents col-xs-6">
-          <h2 class="value-big">89 % <span>Retention</span></h2>
+          <h1 class="value-big">89 % <span>Retention</span></h1>
           <h4 class="value-small">70 % <span>Satisfaction</span></h4>
         </div>
         <div class="section-title col-xs-6">
-          <h5 class="title">HR <img src="images/Icon_hr.png" border="0" /></h5>
+          <h5 class="title">PEOPLE <img src="images/Icon_hr.png" border="0" /></h5>
         </div>
       </a>
     </li>
     <li class="nav-item row">
       <a href="javascript://" class="tab-section">
         <div class="section-contents col-xs-6">
-          <h2 class="value-big">$ 5.3 M <span>Inventory Value</span></h2>
+          <h1 class="value-big">$ 5.3 M <span>Inventory</span></h1>
           <h4 class="value-small">1.0 M <span>Units Sold</span></h4>
         </div>
         <div class="section-title col-xs-6">
@@ -94,9 +95,17 @@ body {
   background: url(images/bg-1.jpg);
   background-size: cover;
 }
+.page-landing .nav-item {
+    padding: 25px 15px;
+}
 .revenue-title {
     background: #141725;
 }
+
+.page-landing .navs-list li:nth-child(even) {
+  background-color: rgba(20,23,37,.15);
+}
+
 .page-landing .navs-list li:hover {
     background: rgba(20,23,37,.6);
 }
@@ -117,7 +126,7 @@ body {
 .page-landing .section-contents .value-big span,
 .page-landing .section-contents .value-small span {
   color: #FFF;
-  font-size: 14px;
+  font-size: 13px;
   font-family: lato;
   opacity: .4;
   margin: 0 0 0 2px;
