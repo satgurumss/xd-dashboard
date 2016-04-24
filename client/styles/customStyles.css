@@ -526,6 +526,9 @@ ul.list-unstyled {
 .page-dashboard-customer .custom-select {
   border-bottom: 2px solid #50A5EE;
 }
+.page-dashboard-customer .range-container{
+  padding: 5px 0 20px;
+}
 .page-dashboard-customer .ui-select > select {
   padding: 4px 5px 4px 1px;
 }
