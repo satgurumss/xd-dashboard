@@ -59,7 +59,7 @@
         .when('/customers-dashboard', {
           templateUrl: 'app/dashboard/customers/customers-dash.html'
         })
-        .when('/hr-dashboard', {
+        .when('/people-dashboard', {
           templateUrl: 'app/dashboard/hr/hr-dash.html'
         })
         .when('/landing', {

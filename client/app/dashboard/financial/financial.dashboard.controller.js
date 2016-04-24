@@ -5,7 +5,7 @@
     .controller('FinancialDashCtrl', ['$scope', '$http', '$location', FinancialDashCtrl])
 
   function FinancialDashCtrl($scope, $http, $location) {
-    var categories = ['MAR', 'JUN', 'SEP', 'DEC'];
+    var categories = ['JUL', 'OCT', 'JAN', 'APR'];
 
     $scope.init = function() {
       $scope.options = {
@@ -251,7 +251,7 @@
       },
 
       xAxis: {
-        categories: ['MAR', 'JUN', 'SEP', 'DEC'],
+        categories: ['JUL', 'OCT', 'JAN', 'APR'],
         tickWidth: 0,
         title: {
           style: {
@@ -270,7 +270,7 @@
         tickInterval: 1,
         tickmarkPlacement: "on",
         min: 0.5,
-        max: categories.length - 1.5,
+        max: 2.5,
         startOnTick: false,
         endOnTick: false,
         minPadding: 0,

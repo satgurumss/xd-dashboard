@@ -1284,7 +1284,8 @@
           };*/
         var options = {
           chart: {
-            borderWidth: 1
+            borderWidth: 1,
+            height:245
           },
 
           title: {
@@ -1317,8 +1318,8 @@
             name: '# of Customers',
             joinBy: ['iso-a2', 'code'],
             data: data,
-            minSize: 20,
-            maxSize: '20%',
+            minSize: 10,
+            maxSize: '80%',
             tooltip: {
               pointFormat: '{point.name} - {point.z}'
             }
