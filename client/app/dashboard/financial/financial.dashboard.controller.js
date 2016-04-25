@@ -5,212 +5,113 @@
     .controller('FinancialDashCtrl', ['$scope', '$http', '$location', FinancialDashCtrl])
 
   function FinancialDashCtrl($scope, $http, $location) {
-    var categories = ['JUL', 'OCT', 'JAN', 'APR'];
-
-    $scope.init = function() {
-      $scope.options = {
-        from: 3,
-        to: 12,
-        step: 3,
-        dimension: " months",
-        smooth: false,
-        css: {
-          background: {
-            "background-color": "#666666"
-          },
-          default: {
-            "background-color": "white"
-          },
-          after: {
-            "background-color": "#7cb5ec"
-          },
-          pointer: {
-            "background-color": "54627b"
-          }
+    $scope.options = {
+      from: 3,
+      to: 12,
+      step: 3,
+      dimension: " months",
+      smooth: false,
+      css: {
+        background: {
+          "background-color": "#666666"
         },
-        scale: [3, 6, 9, 12]
-      };
-    }
-
+        default: {
+          "background-color": "white"
+        },
+        after: {
+          "background-color": "#7cb5ec"
+        },
+        pointer: {
+          "background-color": "54627b"
+        }
+      },
+      scale: [3, 6, 9, 12]
+    };
+    
     $scope.value = "3";
 
-    //This is not a highcharts object. It just looks a little like one!
     $scope.chartConfig = {
-      options: {
-        colors: ["#28bdc6", "rgba(144,228,173, .3)", "rgba(204, 230, 121, .3)"],
-        chart: {
-          height: 200,
-          marginRight:25,
-          backgroundColor: {
-            linearGradient: {
-              x1: 1,
-              y1: 1,
-              x2: 1,
-              y2: 1
-            },
-            stops: [
-              [0, '#2a2a2b'],
-              [1, '#3e3e40']
-            ]
+      colors: ["#28bdc6", "rgba(144,228,173, .3)", "rgba(204, 230, 121, .3)"],
+      chart: {
+        height: 200,
+        marginRight: 25,
+        backgroundColor: {
+          linearGradient: {
+            x1: 1,
+            y1: 1,
+            x2: 1,
+            y2: 1
           },
-          style: {
-            fontFamily: "sans-serif"
-          },
-          plotBorderColor: '#606063'
+          stops: [
+            [0, '#2a2a2b'],
+            [1, '#3e3e40']
+          ]
         },
-
-        tooltip: {
-          backgroundColor: 'rgba(0, 0, 0, 0.85)',
-          style: {
-            color: '#F0F0F0'
-          },
-          valueSuffix: 'M'
+        style: {
+          fontFamily: "sans-serif"
         },
-
-        plotOptions: {
-          series: {
-            dataLabels: {
-              color: '#B0B0B3'
-            },
-            marker: {
-              lineColor: '#333'
-            }
-          },
-          boxplot: {
-            fillColor: '#505053'
-          },
-          candlestick: {
-            lineColor: 'white'
-          },
-          errorbar: {
-            color: 'white'
-          }
-        },
-
-        legend: {
-          itemStyle: {
-            color: '#E0E0E3',
-            fontSize: '10px'
-          },
-          itemHoverStyle: {
-            color: '#FFF'
-          },
-          itemHiddenStyle: {
-            color: '#606063'
-          },
-          layout: 'horizontal',
-          align: "center",
-          borderWidth: 0,
-          symbolHeight: 10,
-          symbolWidth: 10,
-          symbolRadius: 6
-        },
-
-        credits: {
-          style: {
-            color: '#666'
-          }
-        },
-
-        labels: {
-          style: {
-            color: '#707073'
-          }
-        },
-
-        drilldown: {
-          activeAxisLabelStyle: {
-            color: '#F0F0F3'
-          },
-          activeDataLabelStyle: {
-            color: '#F0F0F3'
-          }
-        },
-
-        navigation: {
-          buttonOptions: {
-            symbolStroke: '#DDDDDD',
-            theme: {
-              fill: '#505053'
-            }
-          }
-        },
-
-        // scroll charts
-        rangeSelector: {
-          buttonTheme: {
-            fill: '#505053',
-            stroke: '#000000',
-            style: {
-              color: '#CCC'
-            },
-            states: {
-              hover: {
-                fill: '#707073',
-                stroke: '#000000',
-                style: {
-                  color: 'white'
-                }
-              },
-              select: {
-                fill: '#000003',
-                stroke: '#000000',
-                style: {
-                  color: 'white'
-                }
-              }
-            }
-          },
-          inputBoxBorderColor: '#505053',
-          inputStyle: {
-            backgroundColor: '#333',
-            color: 'silver'
-          },
-          labelStyle: {
-            color: 'silver'
-          }
-        },
-
-        navigator: {
-          handles: {
-            backgroundColor: '#666',
-            borderColor: '#AAA'
-          },
-          outlineColor: '#CCC',
-          maskFill: 'rgba(255,255,255,0.1)',
-          series: {
-            color: '#7798BF',
-            lineColor: '#A6C7ED'
-          },
-          xAxis: {
-            gridLineColor: '#505053'
-          }
-        },
-
-        scrollbar: {
-          barBackgroundColor: '#808083',
-          barBorderColor: '#808083',
-          buttonArrowColor: '#CCC',
-          buttonBackgroundColor: '#606063',
-          buttonBorderColor: '#606063',
-          rifleColor: '#FFF',
-          trackBackgroundColor: '#404043',
-          trackBorderColor: '#404043'
-        },
-
-        // special colors for some of the
-        legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
-        background2: '#505053',
-        dataLabelsColor: '#B0B0B3',
-        textColor: '#C0C0C0',
-        contrastTextColor: '#F0F0F3',
-        maskColor: 'rgba(255,255,255,0.3)'
+        plotBorderColor: '#606063'
       },
 
-      //The below properties are watched separately for changes.
-      //Title configuration (optional)
+      tooltip: {
+        backgroundColor: 'rgba(0, 0, 0, 0.85)',
+        style: {
+          color: '#F0F0F0'
+        },
+        valueSuffix: 'M'
+      },
+
+      plotOptions: {
+        series: {
+          dataLabels: {
+            color: '#B0B0B3'
+          },
+          marker: {
+            lineColor: '#333'
+          }
+        },
+        boxplot: {
+          fillColor: '#505053'
+        },
+        candlestick: {
+          lineColor: 'white'
+        },
+        errorbar: {
+          color: 'white'
+        }
+      },
+
+      legend: {
+        itemStyle: {
+          color: '#E0E0E3',
+          fontSize: '10px'
+        },
+        itemHoverStyle: {
+          color: '#FFF'
+        },
+        itemHiddenStyle: {
+          color: '#606063'
+        },
+        layout: 'horizontal',
+        align: "center",
+        borderWidth: 0,
+        symbolHeight: 10,
+        symbolWidth: 10,
+        symbolRadius: 6
+      },
+
+      credits: {
+        enabled: false
+      },
+
+      labels: {
+        style: {
+          color: '#707073'
+        }
+      },
+
       title: {
-        text: '',
+        text: null,
         style: {
           color: '#E0E0E3',
           textTransform: 'uppercase',
