@@ -18,12 +18,13 @@
           </div>
         </div>
         <div class="row">
-          <hc-chart options="chartConfig" class="chart-container span10"/>
+          <hc-chart options="chartConfig" watch="monthsToDisplay" class="chart-container span10"/>
         </div>
 
         <div class="row range-container">
           <div class="slider-wrapper">
-            <input ng-model="value" type="text" id="mySlider1" slider options="options" />
+            <input slider options="options" ng-model="monthsToDisplay" ng-change="updateChart()"
+              type="text" id="mySlider1" />
           </div>
         </div>
 
