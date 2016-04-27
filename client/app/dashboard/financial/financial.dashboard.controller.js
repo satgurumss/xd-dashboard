@@ -170,6 +170,7 @@
         tickInterval: 1,
         tickmarkPlacement: "on",
         min: 0,
+        max: 2,
         startOnTick: true,
         endOnTick: true,
         minPadding: 0,
@@ -227,7 +228,7 @@
         case "3":
           categories = ['FEB', 'MAR', 'APR']
           $scope.chartConfig.xAxis.categories = categories;
-          $scope.chartConfig.xAxis.max = (categories.length) - 1.5;
+          $scope.chartConfig.xAxis.max = 2;
           $scope.chartConfig.series[0].data = [];
           $scope.chartConfig.series[0].data = [5.0, 14.5, 18.2];
 
@@ -242,7 +243,7 @@
         case "6":
           categories = ['NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR']
           $scope.chartConfig.xAxis.categories = categories;
-          $scope.chartConfig.xAxis.max = (categories.length) - 1.5;
+          $scope.chartConfig.xAxis.max = 4.5;
 
           $scope.chartConfig.series[0].data = [];
           $scope.chartConfig.series[0].data = [6.0, 7.8, 16.0, 6.0, 14.5, 18.2];
@@ -258,7 +259,7 @@
         case "9":
           categories = ['AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR']
           $scope.chartConfig.xAxis.categories = categories;
-          $scope.chartConfig.xAxis.max = (categories.length) - 1.5;
+          $scope.chartConfig.xAxis.max = 7.5;
 
           $scope.chartConfig.series[0].data = [];
           $scope.chartConfig.series[0].data = [10.8, 9.5, 11, 6.0, 7.8, 16.0, 5.0, 14.5, 18.2];
@@ -273,7 +274,7 @@
         case "12":
           categories = ['MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR']
           $scope.chartConfig.xAxis.categories = categories;
-          $scope.chartConfig.xAxis.max = (categories.length) - 1.5;
+          $scope.chartConfig.xAxis.max = 10.5;
 
           $scope.chartConfig.series[0].data = [];
           $scope.chartConfig.series[0].data = [15, 5.0, 14.5, 10.8, 9.5, 11, 6.0, 7.8, 16.0, 5.0, 14.5, 18.2];
