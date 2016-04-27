@@ -1042,28 +1042,12 @@ body {
   font-size: 13px;
   padding: 10px 5px;
 }
-.ui-tab-container .nav-tabs > li.active:nth-child(1) > a {
-    color: #008db0;
-}
-.ui-tab-container .nav-tabs > li.active:nth-child(2) > a {
-    color: #5dc280;
-}
-.ui-tab-container .nav-tabs > li.active:nth-child(3) > a {
-    color: #B6C546;
-}
-.ui-tab-container .nav-tabs > li {
-  border-top: 3px solid transparent;
+
+.ui-tab-container .nav-tabs > li.active > a {
+  color: #FFF;
+  background-color: #008db0;
 }
 
-.ui-tab-container .nav-tabs > li.active:nth-child(1) {
-    border-top: 3px solid #008db0;
-}
-.ui-tab-container .nav-tabs > li.active:nth-child(2) {
-    border-top: 3px solid #5dc280;
-}
-.ui-tab-container .nav-tabs > li.active:nth-child(3) {
-    border-top: 3px solid #B6C546;
-}
 .ui-tab-container .tab-content {
   background: #FFF;
 }
