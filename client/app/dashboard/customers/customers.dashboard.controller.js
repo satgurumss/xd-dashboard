@@ -208,8 +208,8 @@
         case "3":
           $scope.barChartOptions.xAxis.categories = ['Cust. 1', 'Cust. 2', 'Cust. 3', 'Cust. 4', 'Cust. 5'],
 
-          $scope.barChartOptions.series.data = [];
-          $scope.barChartOptions.series[0].data = [205, 190, 160, 140, 100];
+          /*$scope.barChartOptions.series.data = [];
+          $scope.barChartOptions.series[0].data = [205, 190, 160, 140, 100];*/
 
           $scope.mapData = [];
           $scope.mapData = [{
@@ -269,8 +269,8 @@
 
           $scope.barChartOptions.xAxis.categories = ['Cust. 1', 'Cust. 2', 'Cust. 3', 'Cust. 4', 'Cust. 5'],
 
-          $scope.barChartOptions.series.data = [];
-          $scope.barChartOptions.series[0].data = [190, 185, 165, 130, 120];
+          /*$scope.barChartOptions.series.data = [];
+          $scope.barChartOptions.series[0].data = [190, 185, 165, 130, 120];*/
 
           $scope.mapData = [];
           $scope.mapData = [{
@@ -330,8 +330,8 @@
         case "9":
           $scope.barChartOptions.xAxis.categories = ['Cust. 1', 'Cust. 2', 'Cust. 3', 'Cust. 4', 'Cust. 5'],
 
-          $scope.barChartOptions.series.data = [];
-          $scope.barChartOptions.series[0].data = [200, 180, 160, 135, 110];
+          /*$scope.barChartOptions.series.data = [];
+          $scope.barChartOptions.series[0].data = [200, 180, 160, 135, 110];*/
 
           $scope.mapData = [];
           $scope.mapData = [{
@@ -390,8 +390,8 @@
         case "12":
           $scope.barChartOptions.xAxis.categories = ['Cust. 1', 'Cust. 2', 'Cust. 3', 'Cust. 4', 'Cust. 5'],
 
-          $scope.barChartOptions.series.data = [];
-          $scope.barChartOptions.series[0].data = [185, 172, 150, 131, 120];
+          /*$scope.barChartOptions.series.data = [];
+          $scope.barChartOptions.series[0].data = [185, 172, 150, 131, 120];*/
 
           $scope.mapData = [];
           $scope.mapData = [{
