@@ -73,40 +73,31 @@
                 <div class="col-md-12">
                     <div class="ui-tab-container ui-tab-horizontal">
                         <uib-tabset justified="true" class="ui-tab">
-                            <uib-tab heading="REVENUE SPEED">
-<!--                             <highchart id="top5Chart" config="chartConfig"
-                              class="span10"></highchart> -->
+                            <uib-tab heading="REV. SPREAD">
+                              <div>
+                                <span class="ui-select custom-select pull-right">
+                                  <select>
+                                    <option>Top 5</option>
+                                    <option>By Geogrpahy</option>
+                                  </select>
+                                </span>
+                                <span class="pull-right pad-r-5">Show</span>
+                              </div>
                               <hc-chart options="barChartOptions"/>
                             </uib-tab>
                             <uib-tab heading="PENETRATION">
-                              <span>
-                                Top Customers By Geography
-                              </span>
-                              <span class="ui-select custom-select pull-right">
-                                <select>
-                                  <option>Qatar</option>
-                                  <option>UAE</option>
-                                  <option>Bahrain</option>
-                                  <option>Oman</option>
-                                </select>
-                              </span>
-                              <!-- <highchart id="byGeoChart" config="chartConfig"
-                                class="span10"></highchart> -->
+                              <div>
+                                <span class="ui-select custom-select pull-right">
+                                  <select>
+                                    <option>Top 5</option>
+                                    <option>By Geogrpahy</option>
+                                  </select>
+                                </span>
+                                <span class="pull-right pad-r-5">Show</span>
+                              </div>
                               <hc-chart options="barChartOptions"/>
                             </uib-tab>
                             <uib-tab heading="SATISFATION">
-                              <span>
-                                Top Customers By Industry
-                              </span>
-                              <span class="ui-select custom-select pull-right">
-                                <select>
-                                  <option>Oil & Gas</option>
-                                  <option>Telecom</option>
-                                  <option>Finance</option>
-                                </select>
-                              </span>
-                              <!-- <highchart id="byIndChart" config="chartConfig"
-                                class="span10"></highchart> -->
                               <hc-chart options="barChartOptions"/>
                             </uib-tab>
                         </uib-tabset>
