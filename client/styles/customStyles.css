@@ -1570,3 +1570,7 @@ body {
 .display-inline-block{
   display:  inline-block;;
 }
+
+.margin-t1{
+  margin-top: 1px;
+}
