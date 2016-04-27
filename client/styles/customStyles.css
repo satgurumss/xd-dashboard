@@ -1043,14 +1043,21 @@ body {
   padding: 10px 5px;
 }
 
-.ui-tab-container .nav-tabs > li.active > a {
+.ui-tab-container .nav-tabs > li.active > a,
+.ui-tab-container .nav-tabs > li.active:active > a,
+.ui-tab-container .nav-tabs > li.active:hover > a,
+.ui-tab-container .nav-tabs > li.active:focus > a,
+.ui-tab-horizontal .nav-tabs > li.active > a,
+.ui-tab-horizontal .nav-tabs > li.active:hover > a,
+.ui-tab-horizontal .nav-tabs > li.active:focus > a {
   color: #FFF;
-  background-color: #008db0;
+  background-color: #28bdc6;
 }
 
 .ui-tab-container .tab-content {
   background: #FFF;
 }
+
 .bg-white {
   background: rgba(255,255,255, 0.8);
 }
@@ -1219,7 +1226,7 @@ body {
 }
 
 .revenue-container h3 {
-  margin: 10px 0 0
+  margin: 10px 0 0;
 }
 
 .revenue-title h3,
@@ -1233,12 +1240,20 @@ body {
   color: #FFF;
 }
 
-.revenue-container h3.text {
+.page-title {
+  font-family: Lato, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 20px;
+  color: #CCC;
+}
+
+.revenue-container .big-number {
   font-family: 'Teko', sans-serif;
   font-weight: 300;
   margin: 11px 0 0;
-  color: #CCC;
+  color: #FFF;
+  font-size: 40px;
 }
+
 .revenue-container h6 {
   color: #CCC;
   margin: 0 0 12px 0;
