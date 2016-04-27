@@ -1,4 +1,4 @@
-<div class="page page-dashboard" data-ng-controller="FinancialDashCtrl" ng-init="init()">
+<div class="page page-dashboard" data-ng-controller="FinancialDashCtrl">
   <div class="row">
     <div class="panel-container">
 
@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="row">
-          <highchart id="chart1" config="chartConfig" class="chart-container span10"></highchart>
+          <hc-chart options="chartConfig" class="chart-container span10"/>
         </div>
 
         <div class="row range-container">
