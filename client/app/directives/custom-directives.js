@@ -288,14 +288,12 @@
                 }
               }]
             };
-            debugger
             $(element[0]).highcharts('Map', Highcharts.merge(options, theme));
           };
 
           renderChart();
 
           scope.$watch("data", function(loading) {
-            debugger
             renderChart();
           });
           /*map bubble*/
