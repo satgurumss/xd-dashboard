@@ -1127,12 +1127,21 @@ body {
   background: #28bdc6;
 }
 
+.donut-chart.chart75 .slice.one{
+  clip: rect(50px 37px 75px 0);
+}
+
 .donut-chart.chart1 .slice.two {
   clip: rect(0 16px 37px 0px);
   -webkit-transform: rotate(90deg);
   transform: rotate(-270deg);
   background: #28bdc6;
 }
+
+.donut-chart.chart75 .slice.two{
+  clip: rect(0 75px 37px 0px);
+}
+
 .donut-chart.chart1 .chart-center,
 .donut-chart.chart2 .chart-center,
 .donut-chart.chart3 .chart-center {
@@ -1151,6 +1160,10 @@ body {
 }
 .donut-chart.chart1 .chart-center span:after {
   content: "10%";
+}
+
+.donut-chart.chart75 .chart-center span:after {
+  content: "75%";
 }
 
 .donut-chart.chart2 .slice.one {
