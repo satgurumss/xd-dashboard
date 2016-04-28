@@ -1542,9 +1542,6 @@ body {
 .white-text {
   color: #FFF;
 }
-.emp-gauge-container{
-  padding:0;
-}
 
 .custom-select{
   max-width: 85px;
