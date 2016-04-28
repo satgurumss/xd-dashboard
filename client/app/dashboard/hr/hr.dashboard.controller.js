@@ -102,11 +102,8 @@
 
     $scope.init = function(){
 
-      $scope.gauge2015 = angular.copy(gaugeDefaultOptions);
-      $scope.gauge2015.title.text = "2015";
-
-      $scope.gauge2016 = angular.copy(gaugeDefaultOptions);
-      $scope.gauge2016.title.text = "2016";
+      $scope.overallGauge = angular.copy(gaugeDefaultOptions);
+      $scope.overallGauge.title.text = "Overall";
     }
   }
 
