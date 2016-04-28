@@ -1,4 +1,4 @@
-<div class="container page-hr" data-ng-controller="HRDashCtrl" ng-init="init()">
+<div class="container page-hr" data-ng-controller="HRDashCtrl as hrCtrl" ng-init="init()">
   <div class="panel-container">
 
     <div class="gauge-panel panel-body" style="padding: 0 15px 0 15px;">
@@ -12,6 +12,7 @@
         </div>
       </div>
       <div class="row revenue-title">
+        <h5 class="text-uppercase text-center">Overall Statistics</h5>
         <div class="dcharts-container">
           <div class="col-xs-4 text-center">
             <div class="card">
@@ -57,10 +58,28 @@
     <div class="ui-tab-container ui-tab-horizontal">
         <uib-tabset justified="true" class="ui-tab">
           <uib-tab heading="SATISFACTION">
+            <div class="clearfix">
+              <hc-chart options="satisfactionChart" watch="hrCtrl.monthsToDisplay"/>
+            </div>
+            <div class="slider-wrapper">
+              <input slider options="options" ng-model="hrCtrl.monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
+            </div>
           </uib-tab>
           <uib-tab heading="RETENTION">
+            <div class="clearfix">
+              <hc-chart options="satisfactionChart" watch="hrCtrl.monthsToDisplay"/>
+            </div>
+            <div class="slider-wrapper">
+              <input slider options="options" ng-model="hrCtrl.monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
+            </div>
           </uib-tab>
           <uib-tab heading="PERFORMANCE">
+            <div class="clearfix">
+              <hc-chart options="satisfactionChart" watch="hrCtrl.monthsToDisplay"/>
+            </div>
+            <div class="slider-wrapper">
+              <input slider options="options" ng-model="hrCtrl.monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
+            </div>
           </uib-tab>
         </uib-tabset>
     </div>

@@ -1529,6 +1529,7 @@ body {
   display: block;
 }
 
+.page-hr .tab-content > .tab-pane:not(.active)
 .page-dashboard-customer .tab-content > .tab-pane:not(.active) {
     display: block;
     height: 0;
@@ -1587,4 +1588,8 @@ body {
 .customer-container:not(:last-child){
   border-bottom: 1px solid #ccc;
   margin-bottom: 20px;
+}
+
+.page-hr .slider-wrapper{
+  min-height: 35px;
 }
