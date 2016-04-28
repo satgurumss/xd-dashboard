@@ -1,5 +1,4 @@
-<div class="page page-dashboard" data-ng-controller="FinancialDashCtrl">
-  <div class="row">
+<div class="container page-dashboard" data-ng-controller="FinancialDashCtrl">
     <div class="panel-container">
 
       <div class="panel-body" style="padding: 0 15px 0 15px;">
@@ -9,21 +8,25 @@
           </div>
         </div>
         <div class="row revenue-container">
-          <div class="col-xs-6">
-            <h3>FINANCE</h3>
+          <div class="col-xs-4">
+            <h3 class="page-title">FINANCE</h3>
           </div>
-          <div class="col-xs-6 text-right">
-            <h3 class="text">$&nbsp;<span class='white-text'>4,540,000</span></h3>
+          <div class="col-xs-8 text-right">
+            <span class="h2 big-number display-inline-block"><span class="sign">$&nbsp;</span>4.54 M</span>
+            <span class="trend green-text">
+              <i class="trend-arrow fa fa-play fa-rotate-270"/>0.54 M
+            </span>
             <h6 class="text-uppercase">Current Revenue</h6>
           </div>
         </div>
         <div class="row">
-          <hc-chart options="chartConfig" class="chart-container span10"/>
+          <hc-chart options="chartConfig" watch="monthsToDisplay" class="chart-container span10"/>
         </div>
 
         <div class="row range-container">
           <div class="slider-wrapper">
-            <input ng-model="value" type="text" id="mySlider1" slider options="options" />
+            <input slider options="options" ng-model="monthsToDisplay" ng-change="updateChart()"
+              type="text" id="mySlider1" />
           </div>
         </div>
 
@@ -66,39 +69,85 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
 
-        <div class="" data-ng-controller="TabsDemoCtrl">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="ui-tab-container ui-tab-horizontal">
-                        <uib-tabset justified="true" class="ui-tab">
-                            <uib-tab heading="ENERGY">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                                <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
-                            </uib-tab>
-                            <uib-tab heading="TRANSPORT">
-                                <p>Quod ea vel dolores earum veritatis quae sunt tempore odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                            </uib-tab>
-                            <uib-tab heading="DEVICES">
-                                <p>Blanditiis tenetur harum distinctio voluptate asperiores non magnam delectus. Consequatur, deleniti rem magnam possimus necessitatibus iusto suscipit mollitia rerum.</p>
-                                <p>Quod ea vel dolores earum veritatis quae sunt tempore odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
-                            </uib-tab>
-                        </uib-tabset>
-                    </div>
+    <div class="" data-ng-controller="TabsDemoCtrl">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ui-tab-container ui-tab-horizontal">
+                    <uib-tabset justified="true" class="ui-tab">
+                        <uib-tab heading="ENERGY">
+                          <div>
+                            <div>
+                              <span class="h5">Revenue</span>&nbsp;
+                              <span class="h5">$&nbsp;<span>4.54 K</span>
+                              <span class="trend green-text">
+                                <i class="trend-arrow fa fa-play fa-rotate-270"/>5.4 K
+                              </span>
+                              <span class="trend red-text hidden">
+                                <i class="trend-arrow fa fa-play fa-rotate-90"/>5.4 K
+                              </span>
+                            </div>
+                            <div class="hidden">
+                              <span class="h5">Forecast</span>&nbsp;
+                              <span class="h5">$&nbsp;<span>400,000</span></span>
+                            </div>
+                          </div>
+                          <br>
+                          <div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                          </div>
+                        </uib-tab>
+                        <uib-tab heading="TRANSPORT">
+                          <div>
+                            <div>
+                              <span class="h5">Revenue</span>&nbsp;
+                              <span class="h5">$&nbsp;<span>1.36 M</span>
+                              <span class="trend green-text hidden">
+                                <i class="trend-arrow fa fa-play fa-rotate-270"/>5.4 K
+                              </span>
+                              <span class="trend red-text">
+                                <i class="trend-arrow fa fa-play fa-rotate-90"/>1.38 K
+                              </span>
+                            </div>
+                            <div class="hidden">
+                              <span class="h5">Forecast</span>&nbsp;
+                              <span class="h5">$&nbsp;<span>1,500,000</span></span>
+                            </div>
+                          </div>
+                          <br>
+                          <div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                          </div>
+                        </uib-tab>
+                        <uib-tab heading="DEVICES">
+                          <div>
+                            <div>
+                              <span class="h5">Revenue</span>&nbsp;
+                              <span class="h5">$&nbsp;<span>2.72 M</span>
+                              <span class="trend green-text">
+                                <i class="trend-arrow fa fa-play fa-rotate-270"/>7.24 K
+                              </span>
+                              <span class="trend red-text hidden">
+                                <i class="trend-arrow fa fa-play fa-rotate-90"/>5.4 k
+                              </span>
+                            </div>
+                            <div class="hidden">
+                              <span class="h5">Forecast</span>&nbsp;
+                              <span class="h5">$&nbsp;<span>2,000,000</span></span>
+                            </div>
+                          </div>
+                          <br>
+                          <div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                          </div>
+                        </uib-tab>
+                    </uib-tabset>
                 </div>
             </div>
         </div>
-
-  </div>
+    </div>
 </div>
 
 <style type="text/css">
-
-.range-container {
-  padding: 0 15px 25px;
-}
 
 </style>

@@ -14,12 +14,11 @@
     var gaugeDefaultOptions = {
       chart: {
         type: 'solidgauge',
-        height: 250,
-        width: 160,
-        spacingBottom: 0,
+        height: 300,
+        spacingBottom: 20,
         spacingTop: 0,
         spacingLeft: 0,
-        spacingRight: 0,
+        spacingRight: 0
       },
 
       title: {
@@ -36,26 +35,38 @@
         style: {
           fontSize: '12px'
         },
-        pointFormat: '<div style="text-align:center;">{series.name}<br><span style="font-size:2em; color: {point.color}; font-weight: bold margin-left:10px">{point.y}%</span></div>',
+        pointFormat: '<span class="display-inline-block" style="text-align:center;font-size:1.2em;">{series.name}</span><br><span class="display-inline-block" style="font-size:2.5em; color: {point.color}; font-weight: bold margin-left:10px">{point.y}%</span>',
         positioner: function(labelWidth, labelHeight) {
           return {
-            x: 77 - labelWidth / 2,
-            y: 110
+            x: 165 - labelWidth / 2,
+            y: 120
           };
         }
+      },
+
+      legend: {
+        labelFormatter: function() {
+          return '<span style="text-weight:bold;color:' + this.data[0].color + '">' + this.name + '</span>';
+        },
+        symbolWidth: 0
       },
 
       pane: {
         startAngle: 0,
         endAngle: 360,
-        background: [{ // Track for Satisfaction
-          outerRadius: '110%',
-          innerRadius: '86%',
+        background: [{ // Track for Performance
+          outerRadius: '112%',
+          innerRadius: '92%',
+          backgroundColor: "rgba(40, 189, 198, 0.3)",
+          borderWidth: 0
+        }, { // Track for Satisfaction
+          outerRadius: '91%',
+          innerRadius: '71%',
           backgroundColor: "rgba(144,228,173, 0.3)",
           borderWidth: 0
         }, { // Track for Retention
-          outerRadius: '85%',
-          innerRadius: '60%',
+          outerRadius: '70%',
+          innerRadius: '50%',
           backgroundColor: "rgba(204, 230, 121, 0.3)",
           borderWidth: 0
         }]
@@ -75,38 +86,45 @@
             enabled: false
           },
           linecap: 'round',
-          stickyTracking: false
+          stickyTracking: false,
+          showInLegend: false
         }
       },
 
       series: [{
+        name: 'Performance',
+        borderColor: "rgba(40, 189, 198, 1)",
+        data: [{
+          color: "rgba(40, 189, 198, 1)",
+          radius: '107%',
+          innerRadius: '97%',
+          y: 90
+        }]
+      }, {
         name: 'Satisfaction',
         borderColor: "rgba(144,228,173, 1)",
         data: [{
           color: "rgba(144,228,173, 1)",
-          radius: '102%',
-          innerRadius: '94%',
-          y: 80
+          radius: '86%',
+          innerRadius: '76.5%',
+          y: 75
         }]
       }, {
         name: 'Retention',
         borderColor: "rgba(204, 230, 121, 1)",
         data: [{
-          color:"rgba(204, 230, 121, 1)",
-          radius: '77%',
-          innerRadius: '69%',
+          color: "rgba(204, 230, 121, 1)",
+          radius: '65.5%',
+          innerRadius: '55.5%',
           y: 60
         }]
       }]
     };
 
-    $scope.init = function(){
+    $scope.init = function() {
 
-      $scope.gauge2015 = angular.copy(gaugeDefaultOptions);
-      $scope.gauge2015.title.text = "2015";
-
-      $scope.gauge2016 = angular.copy(gaugeDefaultOptions);
-      $scope.gauge2016.title.text = "2016";
+      $scope.overallGauge = angular.copy(gaugeDefaultOptions);
+      $scope.overallGauge.title.text = "Overall";
     }
   }
 

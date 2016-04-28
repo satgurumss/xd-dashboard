@@ -1,66 +1,155 @@
-<div class="page page-hr" data-ng-controller="HRDashCtrl" ng-init="init()">
-  <div class="row">
-    <div class="panel-container">
+<div class="container page-hr" data-ng-controller="HRDashCtrl" ng-init="init()">
+  <div class="panel-container">
 
-      <div class="gauge-panel panel-body" style="padding: 0 15px 0 15px;">
-        <div class="row revenue-container">
-          <div class="col-xs-6">
-            <h3>PEOPLE</h3>
-          </div>
-          <div class="col-xs-6 text-right">
-            <h3 class="text"><span class="white-text">80%</span></h3>
-            <h6 class="text-uppercase">Emp.&nbsp; Satisfaction</h6>
-          </div>
+    <div class="gauge-panel panel-body" style="padding: 0 15px 0 15px;">
+      <div class="row revenue-container">
+        <div class="col-xs-6">
+          <h3 class="page-title">PEOPLE</h3>
         </div>
-        <div class="row revenue-title">
-          <!-- <div class='col-xs-6'>
-            <highchart id="worldMap" config="chartConfig" class="span10"></highchart>
-          </div>
-          <div class='col-xs-6'>
-            <highchart id="worldMap" config="chartConfig" class="span10"></highchart>
-          </div> -->
-
-          <div class='col-xs-6 emp-gauge-container'>
-            <hc-chart-dark options="gauge2015" class="span10"/>
-          </div>
-          <div class='col-xs-6 emp-gauge-container'>
-            <hc-chart-dark options="gauge2016" class="span10"/>
-          </div>
+        <div class="col-xs-6 text-right">
+          <h2 class="big-number">75%</h2>
+          <h6 class="text-uppercase">Emp.&nbsp; Satisfaction</h6>
+        </div>
+      </div>
+      <div class="row revenue-title">
+        <div class='emp-gauge-container'>
+          <hc-chart-dark options="overallGauge" class="span10"/>
         </div>
       </div>
     </div>
   </div>
-  <div class="row">
 
-    <div class="" data-ng-controller="TabsDemoCtrl">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="ui-tab-container ui-tab-horizontal">
-                    <uib-tabset justified="true" class="ui-tab">
-                      <uib-tab heading="360°">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                            <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                        </uib-tab>
-                        <uib-tab heading="PROGRAMS">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                            <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                        </uib-tab>
-                        <uib-tab heading="TRAININGS">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                            <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                        </uib-tab>
-                    </uib-tabset>
+  <div class="" data-ng-controller="TabsDemoCtrl">
+    <div class="ui-tab-container ui-tab-horizontal">
+        <uib-tabset justified="true" class="ui-tab">
+          <uib-tab heading="FINANCE">
+            <div class="row dcharts-container">
+              <div class="col-xs-4 text-center">
+                <div class="card">
+                  <div class="donut-chart chart1">
+                    <div class="slice one"></div>
+                    <div class="slice two"></div>
+                    <div class="chart-center">
+                      <span></span>
+                    </div>
+                  </div>
                 </div>
-            </div>
-        </div>
-    </div>
+                <div class="gauge-label">Performance</div>
+              </div>
 
+              <div class="col-xs-4 text-center">
+                <div class="card">
+                  <div class="donut-chart chart2">
+                    <div class="slice one"></div>
+                    <div class="slice two"></div>
+                    <div class="chart-center">
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="gauge-label">Satisfaction</div>
+              </div>
+
+              <div class="col-xs-4 text-center">
+                <div class="card">
+                  <div class="donut-chart chart3">
+                    <div class="slice one"></div>
+                    <div class="slice two"></div>
+                    <div class="chart-center">
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="gauge-label">Retention</div>
+              </div>
+          </div>
+          </uib-tab>
+          <uib-tab heading="OPERATIONS">
+            <div class="row dcharts-container">
+              <div class="col-xs-4 text-center">
+                <div class="card">
+                  <div class="donut-chart chart1">
+                    <div class="slice one"></div>
+                    <div class="slice two"></div>
+                    <div class="chart-center">
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="gauge-label">Performance</div>
+              </div>
+
+              <div class="col-xs-4 text-center">
+                <div class="card">
+                  <div class="donut-chart chart2">
+                    <div class="slice one"></div>
+                    <div class="slice two"></div>
+                    <div class="chart-center">
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="gauge-label">Satisfaction</div>
+              </div>
+
+              <div class="col-xs-4 text-center">
+                <div class="card">
+                  <div class="donut-chart chart3">
+                    <div class="slice one"></div>
+                    <div class="slice two"></div>
+                    <div class="chart-center">
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="gauge-label">Retention</div>
+              </div>
+            </div>
+          </uib-tab>
+          <uib-tab heading="SALES">
+            <div class="row dcharts-container">
+              <div class="col-xs-4 text-center">
+                <div class="card">
+                  <div class="donut-chart chart1">
+                    <div class="slice one"></div>
+                    <div class="slice two"></div>
+                    <div class="chart-center">
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="gauge-label">Performance</div>
+              </div>
+
+              <div class="col-xs-4 text-center">
+                <div class="card">
+                  <div class="donut-chart chart2">
+                    <div class="slice one"></div>
+                    <div class="slice two"></div>
+                    <div class="chart-center">
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="gauge-label">Satisfaction</div>
+              </div>
+
+              <div class="col-xs-4 text-center">
+                <div class="card">
+                  <div class="donut-chart chart3">
+                    <div class="slice one"></div>
+                    <div class="slice two"></div>
+                    <div class="chart-center">
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="gauge-label">Retention</div>
+              </div>
+            </div>
+          </uib-tab>
+        </uib-tabset>
+    </div>
   </div>
 </div>
 

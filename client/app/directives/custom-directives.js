@@ -244,52 +244,60 @@
             maskColor: 'rgba(255,255,255,0.3)'
           };
 
-          var options = {
-            chart: {
-              borderWidth: 1,
-              height: 245
-            },
+          var renderChart = function() {
+            var options = {
+              chart: {
+                borderWidth: 1,
+                height: 245
+              },
 
-            title: {
-              text: 'Customer Distribution'
-            },
+              title: {
+                text: 'Customer Distribution'
+              },
 
-            credits: {
-              enabled: false
-            },
+              credits: {
+                enabled: false
+              },
 
-            legend: {
-              enabled: false
-            },
+              legend: {
+                enabled: false
+              },
 
-            mapNavigation: {
-              enabled: false,
-              buttonOptions: {
-                verticalAlign: 'bottom'
-              }
-            },
+              mapNavigation: {
+                enabled: false,
+                buttonOptions: {
+                  verticalAlign: 'bottom'
+                }
+              },
 
-            series: [{
-              name: 'Countries',
-              mapData: mapData,
-              color: '#E0E0E0',
-              enableMouseTracking: false
-            }, {
-              type: 'mapbubble',
-              mapData: mapData,
-              name: '# of Customers',
-              joinBy: ['iso-a2', 'code'],
-              data: scope.data,
-              minSize: 10,
-              maxSize: '25%',
-              tooltip: {
-                pointFormat: '{point.name} - {point.z}'
-              }
-            }]
+              series: [{
+                name: 'Countries',
+                mapData: mapData,
+                color: '#E0E0E0',
+                enableMouseTracking: false
+              }, {
+                type: 'mapbubble',
+                mapData: mapData,
+                name: '# of Customers',
+                joinBy: ['iso-a2', 'code'],
+                data: scope.data,
+                minSize: 10,
+                maxSize: '25%',
+                tooltip: {
+                  pointFormat: '{point.name} - {point.z}'
+                }
+              }]
+            };
+            $(element[0]).highcharts('Map', Highcharts.merge(options, theme));
           };
-          /*map bubble*/
-          $(element[0]).highcharts('Map', Highcharts.merge(options, theme));
 
+          renderChart();
+
+          scope.$watch("data", function(loading) {
+            renderChart();
+          });
+          /*map bubble*/
+          
           // Apply the theme to all High Charts
           //Highcharts.setOptions(Highcharts.theme);
 
@@ -420,7 +428,15 @@
         options: '='
       },
       link: function(scope, element) {
-        Highcharts.chart(element[0], scope.options);
+        var renderChart = function() {
+          Highcharts.chart(element[0], scope.options);
+        };
+
+        renderChart();
+
+        scope.$watch("options.series[0].data", function(loading) {
+          renderChart();
+        });
       }
     };
   }
@@ -649,7 +665,15 @@
 
         // Apply the theme
         // Highcharts.setOptions(Highcharts.theme);
-        $(element[0]).highcharts(Highcharts.merge(scope.options, theme));
+        var renderChart = function() {
+          $(element[0]).highcharts(Highcharts.merge(scope.options, theme));
+        };
+
+        renderChart();
+
+        scope.$watch("options.series[0].data", function(loading) {
+          renderChart();
+        });
       }
     };
   }
