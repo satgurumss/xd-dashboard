@@ -1,0 +1,11 @@
+<div class="clearfix margin-t10">
+	<div data-slim-scroll data-scroll-height="300px">
+		<div class="customer-container" data-ng-repeat="customer in customers">
+			<span class="h4 display-inline-block"> {{customer.name}}</span>
+			<span>&nbsp;rated&nbsp;{{customer.rating}}&nbsp;/&nbsp;5</span>
+			<div class="customer-reason">
+				<p>{{customer.reasons}}</p>
+			</div>
+		</div>
+	</div>
+</div>

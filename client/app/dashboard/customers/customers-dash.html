@@ -74,7 +74,7 @@
                     <div class="ui-tab-container ui-tab-horizontal">
                         <uib-tabset justified="true" class="ui-tab">
                             <uib-tab heading="REV. SPREAD">
-                              <div>
+                              <div class="clearfix">
                                 <span class="ui-select custom-select pull-right">
                                   <select>
                                     <option>Top 5</option>
@@ -86,7 +86,7 @@
                               <hc-chart options="barChartOptions"/>
                             </uib-tab>
                             <uib-tab heading="PENETRATION">
-                              <div>
+                              <div class="clearfix">
                                 <span class="ui-select custom-select pull-right">
                                   <select>
                                     <option>Top 5</option>
@@ -98,7 +98,7 @@
                               <hc-chart options="barChartOptions"/>
                             </uib-tab>
                             <uib-tab heading="SATISFATION">
-                              <div>
+                              <div class="clearfix">
                                 <span class="ui-select custom-select pull-right">
                                   <select>
                                     <option>Satisfied</option>
@@ -107,7 +107,7 @@
                                 </span>
                                 <span class="pull-right pad-r-5 display-inline-block margin-t1">Show Top 5 Customers</span>
                               </div>
-                              <hc-chart options="barChartOptions"/>
+                              <div ng-include="'app/dashboard/customers/customers-list.html'"></div>
                             </uib-tab>
                         </uib-tabset>
                     </div>

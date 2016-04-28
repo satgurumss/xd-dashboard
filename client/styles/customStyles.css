@@ -1544,8 +1544,11 @@ body {
 }
 
 .custom-select{
-  max-width: 85px;
   border: none;
+}
+.custom-select select{
+  min-width: 85px;
+  max-width: 85px;
 }
 
 .range-container {
@@ -1579,4 +1582,9 @@ body {
 
 .margin-t1{
   margin-top: 1px;
+}
+
+.customer-container:not(:last-child){
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
 }

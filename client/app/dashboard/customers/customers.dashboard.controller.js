@@ -11,7 +11,30 @@
     });
 
   function CustomerDashCtrl($scope, $http, $location, $timeout) {
-
+    $scope.customers=[{
+      name: "Customer 1",
+      reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
+      rating: "4.5"
+    },
+    {
+      name: "Customer 2",
+      reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
+      rating: "4"
+    },
+    {
+      name: "Customer 3",
+      reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
+      rating: "4"
+    },
+    {
+      name: "Customer 4",
+      reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
+      rating: "3.5"
+    },{
+      name: "Customer 5",
+      reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
+      rating: "4.5"
+    }]
     $scope.barChartOptions = {
       colors: ["#B6A2DE"],
 
