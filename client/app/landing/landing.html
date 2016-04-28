@@ -1,4 +1,4 @@
-<div class="page-landing container" data-ng-controller="LandingCtrl">
+<!-- <div class="page-landing container" data-ng-controller="LandingCtrl">
   <div class="panel-container">
     <div class="row revenue-title">
       <div class="col-xs-12 text-center">
@@ -72,17 +72,595 @@
         </div>
       </a>
     </li>
+  </ul>
+</div>
+ -->
 
-
+<div class="page-landing-v2 container" data-ng-controller="LandingCtrl">
+  <div class="panel-container">
+    <div class="row revenue-title">
+      <div class="col-xs-12 text-center">
+        <h4 class="text-uppercase">Executive Summary</h4>
+      </div>
+    </div>
+  </div>
+  <ul class="navs-list">
+    <li class="nav-item row finance-nav">
+      <a href="javascript://" class="tab-section" ng-click="navigateTo('/financial-dashboard')">
+        <div class="section section-info col-xs-3">
+          <div class="section-inner">
+            <h5><i class="fa fa-circle"></i>
+                <span class="title">FCT</span>
+                <span class="doller">$</span>
+                <span class="count">5.3</span>
+                <span class="count-m">M</span>
+              </h5>
+              <h5><i class="fa fa-circle"></i>
+                <span class="title">REV</span>
+                <span class="doller">$</span>
+                <span class="count">6.1</span>
+                <span class="count-m">M</span>
+              </h5>
+          </div>
+        </div>
+        <div class="section section-contents col-xs-5">
+          <div class="section-inner">
+            <div class="card">
+              <div class="donut-chart chart1">
+                <div class="slice one"></div>
+                <div class="slice two"></div>
+                <div class="chart-center">
+                  <span></span>
+                </div>
+              </div>
+              <h6>READY</h6>
+            </div>
+            <p class="section-cont-text">
+              Consectet adipiscing elit seddo
+            </p>
+          </div>
+        </div>
+        <div class="section section-title col-xs-4">
+          <div class="section-inner">
+            <div class="sec-icon"><img src="images/icon_finance-v2.png" height="46" width="46" border="0" /></div>
+            <h6 class="value-small">FINANCE</h6>
+          </div>
+        </div>
+        <div class=" col-xs-12 section-shadow text-right">
+          <div class="rc rc-finance"></div>
+        </div>
+      </a>
+    </li>
+    <li class="nav-item row customers-nav">
+      <a href="javascript://" class="tab-section" ng-click="navigateTo('/customers-dashboard')">
+        <div class="section section-info col-xs-3">
+          <div class="section-inner">
+            <h5><i class="fa fa-circle"></i>
+                <span class="title">TTL</span>
+                <span class="count">&nbsp;&nbsp;&nbsp;500</span>
+              </h5>
+              <h5><i class="fa fa-circle"></i>
+                <span class="title">NEW</span>
+                <span class="count">&nbsp;30</span>
+              </h5>
+          </div>
+        </div>
+        <div class="section section-contents col-xs-5">
+          <div class="section-inner">
+            <div class="card">
+              <div class="donut-chart chart2">
+                <div class="slice one"></div>
+                <div class="slice two"></div>
+                <div class="chart-center">
+                  <span></span>
+                </div>
+              </div>
+              <h6>SI</h6>
+            </div>
+            <p class="section-cont-text">
+              Consectet adipiscing elit seddo
+            </p>
+          </div>
+        </div>
+        <div class="section section-title col-xs-4">
+          <div class="section-inner">
+            <div class="sec-icon"><img src="images/icon_customers-v2.png" height="46" width="46" border="0" /></div>
+            <h6 class="value-small">CUSTOMERS</h6>
+          </div>
+        </div>
+        <div class=" col-xs-12 section-shadow text-right">
+          <div class="rc rc-customers"></div>
+        </div>
+      </a>
+    </li>
+    <li class="nav-item row people-nav">
+      <a href="javascript://" class="tab-section" ng-click="navigateTo('/people-dashboard')">
+        <div class="section section-info col-xs-3">
+          <div class="section-inner">
+            <h5><i class="fa fa-circle"></i>
+                <span class="title">SI</span>
+                <span class="count">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;70</span>
+                <span class="doller">%</span>
+              </h5>
+              <h5><i class="fa fa-circle"></i>
+                <span class="title">RTN</span>
+                <span class="count">&nbsp;30</span>
+                <span class="doller">%</span>
+              </h5>
+          </div>
+        </div>
+        <div class="section section-contents col-xs-5">
+          <div class="section-inner">
+            <div class="card">
+              <div class="donut-chart chart1 chart3">
+                <div class="slice one"></div>
+                <div class="slice two"></div>
+                <div class="chart-center">
+                  <span></span>
+                </div>
+              </div>
+              <h6>RTN</h6>
+            </div>
+            <p class="section-cont-text">
+              Consectet adipiscing elit seddo
+            </p>
+          </div>
+        </div>
+        <div class="section section-title col-xs-4">
+          <div class="section-inner">
+            <div class="sec-icon"><img src="images/icon_people-v2.png" height="46" width="46" border="0" /></div>
+            <h6 class="value-small">PEOPLE</h6>
+          </div>
+        </div>
+        <div class=" col-xs-12 section-shadow text-right">
+          <div class="rc rc-people"></div>
+        </div>
+      </a>
+    </li>
+    <li class="nav-item row projects-nav">
+      <a href="javascript://" class="tab-section">
+        <div class="section section-info col-xs-3">
+          <div class="section-inner">
+            <h5><i class="fa fa-circle"></i>
+                <span class="title">INV</span>
+                <span class="doller">$</span>
+                <span class="count">5.3</span>
+                <span class="count-m">M</span>
+              </h5>
+              <h5><i class="fa fa-circle"></i>
+                <span class="title">UNS</span>
+                <span class="count">&nbsp;1.0</span>
+                <span class="count-m">M</span>
+              </h5>
+          </div>
+        </div>
+        <div class="section section-contents col-xs-5">
+          <div class="section-inner">
+            <div class="card">
+              <div class="donut-chart chart1 chart4">
+                <div class="slice one"></div>
+                <div class="slice two"></div>
+                <div class="chart-center">
+                  <span></span>
+                </div>
+              </div>
+              <h6>TARGET</h6>
+            </div>
+            <p class="section-cont-text">
+              Consectet adipiscing elit seddo
+            </p>
+          </div>
+        </div>
+        <div class="section section-title col-xs-4">
+          <div class="section-inner">
+            <div class="sec-icon"><img src="images/icon_projects-v2.png" height="46" width="46" border="0" /></div>
+            <h6 class="value-small">PROJECTS</h6>
+          </div>
+        </div>
+        <div class=" col-xs-12 section-shadow text-right">
+          <div class="rc rc-project"></div>
+        </div>
+      </a>
+    </li>
 
   </ul>
 </div>
 
 <style type="text/css">
 
+
+.page-landing-v2 {
+  font-family: "Droid Sans", sans-serif;
+}
+
+.page-landing-v2 .nav-item .col-xs-3 {
+    width: 27%;
+}
+.page-landing-v2 .nav-item .col-xs-4 {
+  padding-right: 11px;
+  width: 31.33333%;
+}
+.revenue-title h4 {
+  color: #CCC;
+  font-size: 16px;
+  margin: 15px 0;
+}
+.page-landing-v2 .navs-list {
+  margin: 0 5px 0 0;
+  padding: 0;
+}
+.page-landing-v2 .section {
+  -webkit-box-shadow: -10px 0px 13px rgba(0,0,0,0.2);
+  -moz-box-shadow: -10px 0px 13px rgba(0,0,0,0.2);
+  -o-box-shadow: -10px 0px 13px rgba(0,0,0,0.2);
+  box-shadow: -10px 0px 13px rgba(0,0,0,0.2);
+}
+
+.page-landing-v2 .section-inner {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+
+.page-landing-v2 .section-info {
+  background: url(images/shadow-c1.png) no-repeat top right;
+}
+.page-landing-v2 .section-contents {
+  background: url(images/shadow-c2.png) repeat-x top;
+}
+.page-landing-v2 .finance-nav .section-info,
+.page-landing-v2 .finance-nav .section-contents {
+  background-color: #77ac4a;
+}
+.page-landing-v2 .finance-nav .section-title {
+  background: url(images/right-finance.png) no-repeat top right;
+}
+
+.page-landing-v2 .customers-nav .section-info,
+.page-landing-v2 .customers-nav .section-contents {
+  background-color: #efefef;
+}
+.page-landing-v2 .customers-nav .section-title {
+  background: url(images/right-customers.png) no-repeat top right;
+}
+
+.page-landing-v2 .people-nav .section-info,
+.page-landing-v2 .people-nav .section-contents {
+  background-color: #c8b134;
+}
+.page-landing-v2 .people-nav .section-title {
+  background: url(images/right-people.png) no-repeat top right;
+}
+
+.page-landing-v2 .projects-nav .section-info,
+.page-landing-v2 .projects-nav .section-contents {
+  background-color: #007d9e;
+}
+.page-landing-v2 .projects-nav .section-title {
+  background: url(images/right-projects.png) no-repeat top right;
+}
+
+
+.page-landing-v2 .section {
+    height: 86px;
+}
+
+.page-landing-v2 .value-small {
+  margin: 0;
+  font-size: 10px;
+}
+
+.page-landing-v2 .section-title .section-inner {
+    padding-top: 12px;
+    padding-right: 2px;
+    float: right;
+    text-align: center;
+    width: 65px;
+}
+
+.page-landing-v2 .section-shadow {
+  background: url(images/section-bg.jpg) repeat-x top;
+  height: 19px;
+  padding: 0;
+  margin-bottom: 2px;
+  position: relative;
+}
+.page-landing-v2 .section-shadow .rc {
+  height: 20px;
+  width: 16px;
+  position: absolute;
+  top: -1px;
+  right: 0;
+}
+.page-landing-v2 .section-shadow .rc-finance {
+  background: url(images/finance-bcurve.png) no-repeat top right;
+}
+.page-landing-v2 .section-shadow .rc-customers {
+  background: url(images/customers-bcurve.png) no-repeat top right;
+}
+.page-landing-v2 .section-shadow .rc-people {
+  background: url(images/people-bcurve.png) no-repeat top right;
+}
+.page-landing-v2 .section-shadow .rc-project {
+  background: url(images/projects-bcurve.png) no-repeat top right;
+}
+
+
+
+
+/*.page-landing-v2 .finance-nav,
+.page-landing-v2 .finance-nav .section-title,
+.page-landing-v2 .finance-nav .section-inner {
+  background: #;
+}
+
+.page-landing-v2 .section-title.section {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 0;
+  padding-left: 57px;
+  background: #464646;
+}
+
+.page-landing-v2 .section-title:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -23px;
+  bottom: 0;
+  border: 45px solid transparent;
+  border-right: 36px solid #77ac4a;
+}*/
+
+.page-landing-v2 .finance-nav .section-info,
+.page-landing-v2 .finance-nav .section-title,
+.page-landing-v2 .finance-nav .section-contents,
+
+.page-landing-v2 .people-nav .section-info,
+.page-landing-v2 .people-nav .section-title,
+.page-landing-v2 .people-nav .section-contents,
+
+.page-landing-v2 .projects-nav .section-info,
+.page-landing-v2 .projects-nav .section-title,
+.page-landing-v2 .projects-nav .section-contents {
+  color: #FFF;
+}
+.page-landing-v2 .customers-nav .section-info,
+.page-landing-v2 .customers-nav .section-title,
+.page-landing-v2 .customers-nav .section-contents {
+  color: #333;
+}
+
+.page-landing-v2 .section-contents {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.section-cont-text {
+  font-size: 11px;
+  padding-top: 12px;
+  opacity: 0.7;
+}
+.section-info h5 {
+  letter-spacing: -.5px;
+}
+.section-info h5:nth-child(1) {
+  margin: 15px 0 0;
+}
+.section-info h5:nth-child(2) {
+  margin: 10px 0 0;
+}
+.section-info .fa-circle {
+  font-size: 8px;
+  position: relative;
+  top: -1px;
+}
+.section-info .title,
+.section-info .count-m {
+  font-size: 12px;
+}
+.section-info .doller {
+  font-size: 12px;
+  position: relative;
+}
+.section-info .count {
+  font-size: 12px;
+}
+.section-info .fa-circle,
+.section-info .title,
+.section-info .doller {
+  opacity: 0.5;
+}
+
+
+
+.card {
+  margin: 0 7px 0 0;
+  float: left;
+  box-shadow: none;
+  padding: 0;
+  position: relative;
+  text-align: center;
+}
+.card h6{
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    z-index: 10;
+    margin: 0;
+    text-align: center;
+    font-size: 11px;
+}
+.donut-chart.chart1 {
+  width: 70px;
+  height: 70px;
+  background: transparent;
+  border: 1px solid #FFF;
+}
+.donut-chart.chart1 .slice.one {
+  clip: rect(52px 41px 75px 0);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  background: #FFF;
+}
+.donut-chart.chart1 .slice.two {
+  clip: rect(0 90px 36px 0px);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  background: #FFF;
+}
+.donut-chart.chart1 .chart-center {
+  top: 5px;
+  left: 5px;
+  width: 58px;
+  height: 58px;
+  background: #77ac4a;
+  border: 1px solid #FFF;
+}
+.donut-chart.chart1 .chart-center span {
+  font-size: 24px;
+  line-height: 48px;
+  color: #FFF;
+}
+.donut-chart.chart1 .chart-center span:after {
+  content: "70%";
+}
+
+
+
+.donut-chart.chart2 {
+  width: 70px;
+  height: 70px;
+  background: transparent;
+  border: 1px solid #333;
+}
+.donut-chart.chart2 .slice.one {
+  clip: rect(18px 41px 75px 0);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  background: #333;
+}
+.donut-chart.chart2 .slice.two {
+  clip: rect(0 90px 36px 0px);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  background: #333;
+}
+
+.donut-chart.chart2 .chart-center {
+  top: 5px;
+  left: 5px;
+  width: 58px;
+  height: 58px;
+  background: #EFEFEF;
+  border: 1px solid #333;
+}
+.donut-chart.chart2 .chart-center span {
+  font-size: 24px;
+  line-height: 48px;
+  color: #333;
+}
+.donut-chart.chart2 .chart-center span:after {
+  content: "85%";
+}
+
+
+.donut-chart.chart3 .slice.one {
+  clip: rect(90px 41px 75px 0);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  background: #FFF;
+}
+.donut-chart.chart3 .slice.two {
+  clip: rect(0 90px 36px 0px);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  background: #FFF;
+}
+
+.donut-chart.chart4 .slice.one {
+  clip: rect(52px 41px 75px 0);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  background: #FFF;
+}
+.donut-chart.chart4 .slice.two {
+  clip: rect(0 90px 36px 0px);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  background: #FFF;
+}
+
+.donut-chart.chart1.chart3 .chart-center {
+  background: #c8b134;
+}
+.donut-chart.chart1.chart4 .chart-center {
+  background: #007d9e;
+}
+
+
+.donut-chart.chart1.chart3 .chart-center span:after {
+    content: "50%";
+}
+.donut-chart.chart1.chart4 .chart-center span:after {
+    content: "70%";
+}
+
+
+
+
+@media only screen and (max-width: 354px) {
+  .section-contents .section-cont-text {
+    display: none;
+  }
+  .page-landing-v2 .nav-item .col-xs-3 {
+    width: 30%;
+  }
+  .page-landing-v2 .nav-item .col-xs-5 {
+    width: 35%;
+  }
+  .page-landing-v2 .nav-item .col-xs-4 {
+      width: 35%;
+  }
+  .card {
+    float: none;
+    margin: 0;
+  }
+  .section-info h5 {
+    margin: 10px -5px;
+  }
+  .page-landing-v2 .section-title {
+    background-size: 110px 100% !important;
+    padding-right: 10px;
+  }
+  .page-landing-v2 .section-title .section-inner {
+    padding-top: 12px;
+    padding-right: 2px;
+    float: right;
+    text-align: center;
+    width: 65px;
+  }
+}
+
+
+
+
+
+
+
+/* body {
+  background-color: #464646 !important;
+  background: url(images/bg-1.jpg);
+  background-size: cover;
+}
 .app > .main-container:before {
   background-color: #464646 !important;
-  background: url(images/bg-3.jpg);
+    background: url(images/bg-1.jpg);
+  background-size: cover;
+}
+.body-auth #content {
+  background-color: #464646;
+  background: url(images/bg-1.jpg);
   background-size: cover;
 }
 .page-landing .nav-item {
@@ -133,7 +711,7 @@
 
 .app-footer {
     color: #999;
-  }
+  } */
 
 
 </style>
