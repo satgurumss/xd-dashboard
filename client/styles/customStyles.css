@@ -1072,6 +1072,10 @@ body {
   background: #3e3e40;
 }
 
+.page-hr .dcharts-container {
+  background: transparent;
+}
+
 .card {
   padding:15px 0 15px 0;
   margin: 0;
