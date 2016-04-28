@@ -1523,7 +1523,7 @@ body {
 .page-landing .nav-item a {
   display: block;
 }
-
+/*for highcharts hidden redraw issue*/
 .tab-content > .tab-pane:not(.active) {
     display: block;
     height: 0;
@@ -1536,9 +1536,6 @@ body {
 
 .white-text {
   color: #FFF;
-}
-.emp-gauge-container{
-  padding:0;
 }
 
 .custom-select{
