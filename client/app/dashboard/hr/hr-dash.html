@@ -1,0 +1,89 @@
+<div class="container page-hr" data-ng-controller="HRDashCtrl as hrCtrl" ng-init="init()">
+  <div class="panel-container">
+
+    <div class="gauge-panel panel-body" style="padding: 0 15px 0 15px;">
+      <div class="row revenue-container">
+        <div class="col-xs-6 ">
+          <h1 class="big-number">75%</h1>
+          <div class="h6 text-uppercase white-text page-sub-heading">
+            <span>
+              <i class="fa fa-circle opacity-50"></i>&nbsp;
+              Emp.&nbsp; Satisfaction
+            </span>
+          </div>
+        </div>
+        <div class="col-xs-6 text-right db-heading hr-db-heading">
+          <div class="sec-icon"><img src="images/icon_people-v2.png" height="46" width="46" border="0" /></div>
+          <h6 class="value-small white-text">PEOPLE</h6>
+        </div>
+      </div>
+      <div class="row revenue-title">
+        <h5 class="text-uppercase text-center">Overall Statistics</h5>
+
+        <div class="row dcharts-container">
+          <div class="col-xs-12 text-center">
+            <div class="circle-container circle-blue">
+             <div ng-circles value="75" width="15" colors="['#666', '#28bdc6']" textClass="custom-text-class"></div>
+             <h5 class="text-uppercase">Satisfaction</h5>
+            </div>
+          </div>
+
+          <div class="col-xs-6 text-center">
+            <div class="circle-container circle-green">
+             <div ng-circles value="30" width="15" colors="['#666', '#90e4ad']" textClass="custom-text-class"></div>
+             <h5 class="text-uppercase">Retention</h5>
+            </div>
+          </div>
+
+          <div class="col-xs-6 text-center">
+            <div class="circle-container circle-yellow">
+             <div ng-circles value="60" width="15" colors="['#666', '#cce679']" textClass="custom-text-class"></div>
+             <h5 class="text-uppercase">Perofrmance</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="" data-ng-controller="TabsDemoCtrl">
+    <div class="ui-tab-container ui-tab-horizontal">
+        <uib-tabset justified="true" class="ui-tab">
+          <uib-tab heading="SATISFACTION">
+            <div class="clearfix">
+              <hc-chart options="satisfactionChart" watch="hrCtrl.monthsToDisplay"/>
+            </div>
+            <div class="slider-wrapper">
+              <input slider options="options" ng-model="hrCtrl.monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
+            </div>
+          </uib-tab>
+          <uib-tab heading="RETENTION">
+            <div class="clearfix">
+              <hc-chart options="satisfactionChart" watch="hrCtrl.monthsToDisplay"/>
+            </div>
+            <div class="slider-wrapper">
+              <input slider options="options" ng-model="hrCtrl.monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
+            </div>
+          </uib-tab>
+          <uib-tab heading="PERFORMANCE">
+            <div class="clearfix">
+              <hc-chart options="satisfactionChart" watch="hrCtrl.monthsToDisplay"/>
+            </div>
+            <div class="slider-wrapper">
+              <input slider options="options" ng-model="hrCtrl.monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
+            </div>
+          </uib-tab>
+        </uib-tabset>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .page-hr .circle-container{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 110px;
+    position: relative;
+  }
+</style>

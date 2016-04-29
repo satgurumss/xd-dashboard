@@ -29,8 +29,8 @@
                     case '/page/500':
                         return $element.addClass('body-wide body-err');
                     case '/signin':
-                    case '/page/signup':
-                    case '/page/forgot-password':
+                    case '/signup':
+                    case '/forgot-password':
                         return $element.addClass('body-wide body-auth');
                     case '/page/lock-screen':
                         return $element.addClass('body-wide body-lock');

@@ -44,14 +44,29 @@
         .when('/signin', {
           templateUrl: 'app/login/signin.html'
         })
+        .when('/signup', {
+          templateUrl: 'app/page/signup.html'
+        })
+        .when('/forgot', {
+          templateUrl: 'app/page/forgot-password.html'
+        })
         .when('/my-profile', {
           templateUrl: 'app/profile/my-profile.html'
         })
-        .when('/dashboard', {
-          templateUrl: 'app/dashboard/dashboard.html'
+        .when('/financial-dashboard', {
+          templateUrl: 'app/dashboard/financial/financial-dash.html'
         })
-        .when('/search-result', {
-          templateUrl: 'app/search/search-result.html'
+        .when('/customers-dashboard', {
+          templateUrl: 'app/dashboard/customers/customers-dash.html'
+        })
+        .when('/people-dashboard', {
+          templateUrl: 'app/dashboard/hr/hr-dash.html'
+        })
+        .when('/landing', {
+          templateUrl: 'app/landing/landing.html'
+        })
+        .when('/landing-old', {
+          templateUrl: 'app/landing/landing-old.html'
         })
         .when('/404', {
           templateUrl: 'app/page/404.html'

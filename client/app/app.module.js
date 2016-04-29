@@ -1,7 +1,16 @@
 (function () {
     'use strict';
 
-    angular.module('app', [
+    var // Constants
+        INTERVAL_BIG = 1000,
+        INTERVAL_SMALL = 250,
+        COLOR_SET_1 = ['#1abc9c', '#2c3e50'],
+        COLOR_SET_2 = ['#2ecc71', '#9b59b6'],
+
+        // Variables
+        app;
+
+    app = angular.module('app', [
         // Angular modules
         'ngRoute',
         'ngAnimate',
@@ -19,6 +28,8 @@
         'duScroll',
         'mgo-angular-wizard',
         "highcharts-ng",
+        'angularAwesomeSlider',
+        'angular-circles',
 
         // Custom modules
         'app.custom.services',
@@ -35,4 +46,9 @@
         'angular-maps'
     ]);
 
+    /*app.config(['ngCirclesSettingsProvider', function (ngCirclesSettingsProvider) {
+        ngCirclesSettingsProvider.set({
+            colors: ['#f1c40f', '#c0392b']
+        });
+    }]);*/
 })();

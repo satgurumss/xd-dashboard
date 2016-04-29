@@ -56,7 +56,8 @@
       getCurrentUser : function(){
         console.log("getCurrentUser");
         var user = $cookies.getObject("abraajLogin");
-        return typeof user != "undefined" ? user.fields : {};
+        var mockUser = {"account_s": "arat", "name_s" :"Ali Arat"}
+        return mockUser;
       },
       logOutUser : function(){
         console.log("logOutUser");

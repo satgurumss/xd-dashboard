@@ -1,0 +1,145 @@
+<div class="container page-dashboard" data-ng-controller="FinancialDashCtrl">
+    <div class="panel-container">
+
+      <div class="panel-body" style="padding: 0 15px 0 15px;">
+        <div class="row revenue-title hidden">
+          <div class="col-xs-12 text-center">
+            <h3>REVENUE, 2015</h3>
+          </div>
+        </div>
+        <div class="row revenue-container">
+          <div class="col-xs-8">
+            <span class="h1 big-number display-inline-block"><span class="sign">$&nbsp;</span>43.45 M</span>
+            <span class="trend orange-text">
+              - 10.2 K
+            </span>
+            <div class="h6 text-uppercase white-text page-sub-heading">
+              <span class='budget-value'>
+                <i class="fa fa-circle orange-text"></i>
+                <span class="sign">$&nbsp;</span>42.01 M</span>
+              </span>
+              &nbsp;
+              <span class="forecast-value">
+                <i class="fa fa-circle blue-text"></i>
+                <span class="sign">$&nbsp;</span>42.01 M</span>
+              </span>
+            </div>
+          </div>
+          <div class="col-xs-4 text-right db-heading finance-db-heading">
+            <div class="sec-icon"><img src="images/icon_finance-v2.png" height="46" width="46" border="0" /></div>
+            <h6 class="value-small white-text">FINANCE</h6>
+          </div>
+        </div>
+        <div class="row">
+          <hc-chart options="chartConfig" watch="monthsToDisplay" class="chart-container span10"/>
+        </div>
+
+        <div class="row range-container">
+          <div class="slider-wrapper">
+            <input slider options="options" ng-model="monthsToDisplay" ng-change="updateChart()"
+              type="text" id="mySlider1" />
+          </div>
+        </div>
+
+        <div class="row dcharts-container">
+          <div class="col-xs-4 text-center">
+            <div class="circle-container circle-blue">
+             <div ng-circles value="10" width="15" colors="['#666', '#28bdc6']" textClass="custom-text-class"></div>
+            </div>
+          </div>
+
+          <div class="col-xs-4 text-center">
+            <div class="circle-container circle-green">
+             <div ng-circles value="30" width="15" colors="['#666', '#90e4ad']" textClass="custom-text-class"></div>
+            </div>
+          </div>
+
+          <div class="col-xs-4 text-center">
+            <div class="circle-container circle-yellow">
+             <div ng-circles value="60" width="15" colors="['#666', '#cce679']" textClass="custom-text-class"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="" data-ng-controller="TabsDemoCtrl">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ui-tab-container ui-tab-horizontal">
+                    <uib-tabset justified="true" class="ui-tab">
+                        <uib-tab heading="ENERGY">
+                          <div>
+                            <div>
+                              <span class="h5">Revenue</span>&nbsp;
+                              <span class="h5">$&nbsp;<span>4.54 K</span>
+                              <span class="trend green-text">
+                                <i class="trend-arrow fa fa-play fa-rotate-270"/>5.4 K
+                              </span>
+                              <span class="trend orange-text hidden">
+                                <i class="trend-arrow fa fa-play fa-rotate-90"/>5.4 K
+                              </span>
+                            </div>
+                            <div class="hidden">
+                              <span class="h5">Forecast</span>&nbsp;
+                              <span class="h5">$&nbsp;<span>400,000</span></span>
+                            </div>
+                          </div>
+                          <br>
+                          <div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                          </div>
+                        </uib-tab>
+                        <uib-tab heading="TRANSPORT">
+                          <div>
+                            <div>
+                              <span class="h5">Revenue</span>&nbsp;
+                              <span class="h5">$&nbsp;<span>1.36 M</span>
+                              <span class="trend green-text hidden">
+                                <i class="trend-arrow fa fa-play fa-rotate-270"/>5.4 K
+                              </span>
+                              <span class="trend orange-text">
+                                <i class="trend-arrow fa fa-play fa-rotate-90"/>1.38 K
+                              </span>
+                            </div>
+                            <div class="hidden">
+                              <span class="h5">Forecast</span>&nbsp;
+                              <span class="h5">$&nbsp;<span>1,500,000</span></span>
+                            </div>
+                          </div>
+                          <br>
+                          <div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                          </div>
+                        </uib-tab>
+                        <uib-tab heading="DEVICES">
+                          <div>
+                            <div>
+                              <span class="h5">Revenue</span>&nbsp;
+                              <span class="h5">$&nbsp;<span>2.72 M</span>
+                              <span class="trend green-text">
+                                <i class="trend-arrow fa fa-play fa-rotate-270"/>7.24 K
+                              </span>
+                              <span class="trend orange-text hidden">
+                                <i class="trend-arrow fa fa-play fa-rotate-90"/>5.4 k
+                              </span>
+                            </div>
+                            <div class="hidden">
+                              <span class="h5">Forecast</span>&nbsp;
+                              <span class="h5">$&nbsp;<span>2,000,000</span></span>
+                            </div>
+                          </div>
+                          <br>
+                          <div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                          </div>
+                        </uib-tab>
+                    </uib-tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+</style>

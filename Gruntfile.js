@@ -75,7 +75,7 @@
       },
       connect: {
         options: {
-          port: 9900,
+          port: 5000,
           base: 'public',
           hostname: '0.0.0.0'
             // hostname: "localhost"
@@ -309,7 +309,10 @@
               "styles/img/**/*",
               "styles/ui/images/*",
               "app/**/*.html",
+              "app/sampleData/middle-east.json",
               "services.js",
+              "circles.js",
+              "angular-awesome-slider.css",
               "jquery.keyframes.js",
               "prefixfree.min.js",
               "vendors/echarts.js"
