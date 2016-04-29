@@ -13,40 +13,23 @@
       </div>
       <div class="row revenue-title">
         <h5 class="text-uppercase text-center">Overall Statistics</h5>
-        <div class="dcharts-container">
+
+        <div class="row dcharts-container">
           <div class="col-xs-4 text-center">
-            <div class="card">
-              <div class="donut-chart chart1 chart75">
-                <div class="slice one"></div>
-                <div class="slice two"></div>
-                <div class="chart-center">
-                  <span></span>
-                </div>
-              </div>
+            <div class="circle-container circle-blue">
+             <div ng-circles value="75" width="15" colors="['#666', '#28bdc6']" textClass="custom-text-class"></div>
             </div>
           </div>
 
           <div class="col-xs-4 text-center">
-            <div class="card">
-              <div class="donut-chart chart2">
-                <div class="slice one"></div>
-                <div class="slice two"></div>
-                <div class="chart-center">
-                  <span></span>
-                </div>
-              </div>
+            <div class="circle-container circle-green">
+             <div ng-circles value="30" width="15" colors="['#666', '#90e4ad']" textClass="custom-text-class"></div>
             </div>
           </div>
 
           <div class="col-xs-4 text-center">
-            <div class="card">
-              <div class="donut-chart chart3">
-                <div class="slice one"></div>
-                <div class="slice two"></div>
-                <div class="chart-center">
-                  <span></span>
-                </div>
-              </div>
+            <div class="circle-container circle-yellow">
+             <div ng-circles value="60" width="15" colors="['#666', '#cce679']" textClass="custom-text-class"></div>
             </div>
           </div>
         </div>
