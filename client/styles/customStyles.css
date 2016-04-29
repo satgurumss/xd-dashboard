@@ -1670,3 +1670,7 @@ body {
   padding: 5px 0 8px 5px;
   margin: 0 0 10px 0;
 }
+
+.opacity-50{
+  opacity: 0.5;
+}
