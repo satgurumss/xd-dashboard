@@ -1576,7 +1576,18 @@ body {
 .page-landing .section-info .doller {
   opacity: 0.5;
 }
+@media only screen and (max-width: 374px){
+  .page-landing .section-info .heading-value {
+    font-size: 18px;
+    margin: 7px 0;
+  }
 
+  .page-landing .section-info h5.info-value {
+    margin: 5px 0;
+    font-size: 8px;
+    min-width: 35px;
+  }
+}
 @media only screen and (max-width: 354px) {
   .section-contents .section-cont-text {
     display: none;
@@ -1708,8 +1719,13 @@ div.circle-container {
   padding: 9px 10px 10px 0;
 }
 
-.db-heading .sec-icon img{
+.page-dashboard-customer .db-heading .sec-icon img{
   margin-right: 10px;
+}
+
+.page-dashboard .db-heading,
+.page-hr .db-heading{
+  padding-right: 15px;
 }
 
 .finance-db-heading{
