@@ -1708,6 +1708,10 @@ div.circle-container {
   padding: 9px 10px 10px 0;
 }
 
+.db-heading .sec-icon img{
+  margin-right: 10px;
+}
+
 .finance-db-heading{
   background: url(../images/right-finance-db.png) no-repeat top right;
 }
@@ -1728,4 +1732,10 @@ div.circle-container {
 
 .opacity-50{
   opacity: 0.5;
+}
+
+.big-number .sign{
+  font-size: 20px;
+  position: relative;
+  top: -17px;
 }
