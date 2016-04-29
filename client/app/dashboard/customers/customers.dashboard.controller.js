@@ -34,7 +34,8 @@
       name: "Customer 5",
       reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
       rating: "4.5"
-    }]
+    }];
+    
     $scope.barChartOptions = {
       colors: ["#B6A2DE"],
 

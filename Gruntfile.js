@@ -311,6 +311,7 @@
               "app/**/*.html",
               "app/sampleData/middle-east.json",
               "services.js",
+              "circles.js",
               "angular-awesome-slider.css",
               "jquery.keyframes.js",
               "prefixfree.min.js",

@@ -12,6 +12,8 @@
     });
 
   function LandingCtrl($scope, $http, $location) {
+    $scope.colors = ['transparent', '#FFF'];
+
     $scope.navigateTo = function(route){
       if($location.url() != route)
         $location.url(route);
