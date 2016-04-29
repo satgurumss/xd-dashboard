@@ -110,7 +110,9 @@
                 <div class="slice one"></div>
                 <div class="slice two"></div>
                 <div class="chart-center">
-                  <span></span>
+                </div>
+                <div class="circle-container">
+                 <div ng-circles value="70" width="18" colors="['transparent', '#FFF']" textClass="custom-text-class"></div>
                 </div>
               </div>
               <h6>READY</h6>
@@ -152,7 +154,9 @@
                 <div class="slice one"></div>
                 <div class="slice two"></div>
                 <div class="chart-center">
-                  <span></span>
+                </div>
+                <div class="circle-container">
+                 <div ng-circles value="85" width="18" colors="['transparent', '#464646']" textClass="custom-text-class"></div>
                 </div>
               </div>
               <h6>SI</h6>
@@ -196,7 +200,9 @@
                 <div class="slice one"></div>
                 <div class="slice two"></div>
                 <div class="chart-center">
-                  <span></span>
+                </div>
+                <div class="circle-container">
+                 <div ng-circles value="50" width="18" colors="['transparent', '#FFF']" textClass="custom-text-class"></div>
                 </div>
               </div>
               <h6>RTN</h6>
@@ -241,7 +247,9 @@
                 <div class="slice one"></div>
                 <div class="slice two"></div>
                 <div class="chart-center">
-                  <span></span>
+                </div>
+                <div class="circle-container">
+                 <div ng-circles value="70" width="18" colors="['transparent', '#FFF']" textClass="custom-text-class"></div>
                 </div>
               </div>
               <h6>TARGET</h6>
@@ -263,6 +271,7 @@
       </a>
     </li>
   </ul>
+
 </div>
 
 <style type="text/css">
@@ -476,13 +485,13 @@
   clip: rect(52px 41px 75px 0);
   -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
-  background: #FFF;
+  background: transparent;
 }
 .donut-chart.chart1 .slice.two {
   clip: rect(0 90px 36px 0px);
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
-  background: #FFF;
+  background: transparent;
 }
 .donut-chart.chart1 .chart-center {
   top: 5px;
@@ -501,8 +510,6 @@
   content: "70%";
 }
 
-
-
 .donut-chart.chart2 {
   width: 70px;
   height: 70px;
@@ -513,13 +520,13 @@
   clip: rect(18px 41px 75px 0);
   -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
-  background: #333;
+  background: transparent;
 }
 .donut-chart.chart2 .slice.two {
   clip: rect(0 90px 36px 0px);
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
-  background: #333;
+  background: transparent;
 }
 
 .donut-chart.chart2 .chart-center {
@@ -544,26 +551,26 @@
   clip: rect(90px 41px 75px 0);
   -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
-  background: #FFF;
+  background: transparent;
 }
 .donut-chart.chart3 .slice.two {
   clip: rect(0 90px 36px 0px);
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
-  background: #FFF;
+  background: transparent;
 }
 
 .donut-chart.chart4 .slice.one {
   clip: rect(52px 41px 75px 0);
   -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
-  background: #FFF;
+  background: transparent;
 }
 .donut-chart.chart4 .slice.two {
   clip: rect(0 90px 36px 0px);
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
-  background: #FFF;
+  background: transparent;
 }
 
 .donut-chart.chart1.chart3 .chart-center {
@@ -580,9 +587,6 @@
 .donut-chart.chart1.chart4 .chart-center span:after {
     content: "70%";
 }
-
-
-
 
 @media only screen and (max-width: 354px) {
   .section-contents .section-cont-text {
@@ -617,10 +621,19 @@
   }
 }
 
+div.circle-container {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 70px;
+    position: relative;
+    z-index: 1;
+    left: -1px;
+}
 
-
-
-
+div.circle-container .circles-text {
+  top: -4px !important;
+}
 
 
 /* body {

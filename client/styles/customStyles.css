@@ -1070,6 +1070,30 @@ body {
 
 .dcharts-container {
   background: #3e3e40;
+  padding: 15px 0;
+}
+
+
+.page-dashboard .circle-container,
+.page-hr .circle-container,
+.page-dashboard-customer .circle-container {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: 70px;
+  position: relative;
+}
+
+.circle-blue .circles-text {
+  color: #28bdc6;
+}
+
+.circle-green .circles-text {
+  color: #90e4ad;
+}
+
+.circle-yellow .circles-text {
+  color: #cce679;
 }
 
 .page-hr .dcharts-container {
