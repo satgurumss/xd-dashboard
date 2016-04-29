@@ -1400,169 +1400,224 @@ body {
 
 /** Landing page Old styling **/
 
-.page-landing-old {
-  color: #fff;
+
+.page-landing {
+  font-family: "Droid Sans", sans-serif;
 }
 
-.page-landing-old .tab-section {
-  color: #fff;
+.page-landing .nav-item .col-xs-3 {
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 27%;
 }
-
-.page-landing-old .section-contents {
-  padding-top: 10px;
+.page-landing .nav-item .col-xs-4 {
+  padding-right: 11px;
+  width: 31.33333%;
 }
-
-.page-landing-old .section-contents .title {
-  display: inline-block;
-  float: left;
-  width: 50%;
-  max-width: 75px;
-  text-align: right;
-  padding: 0 5px 0 0;
-  color: #aaa;
+.revenue-title h4 {
+  color: #CCC;
+  font-size: 16px;
+  margin: 15px 0;
 }
-
-.page-landing-old .section-contents .value {
-  font-family: 'Teko', sans-serif;
-  display: inline-block;
-  float: left;
-}
-
-.page-landing-old .chart-section {
-  padding-left: 0;
-}
-
-.page-landing-old .navs-list {
-  margin: 0;
+.page-landing .navs-list {
+  margin: 0 5px 0 0;
   padding: 0;
 }
 
-.page-landing-old .card {
-  display: inline-block;
-  width: 100px;
+.page-landing .navs-list .nav-item:nth-child(odd) {
+  background: #575B61;
+  -webkit-border-top-right-radius: 20px;
+  -moz-border-top-right-radius: 20px;
+  -o-border-top-right-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
-.page-landing-old .card .chart-title {
-  position:absolute;
-  bottom: 7px;
-  left: 0;
-  right: 0;
-  background: #464646;
-  max-height: 40px;
-  min-height: 40px;
-  padding: 5px;
-  overflow: hidden;
-  text-align: center;
-  color: #aaa;
+.page-landing .navs-list .nav-item {
+  background: #5B9BD5;
+  -webkit-border-top-right-radius: 20px;
+  -moz-border-top-right-radius: 20px;
+  -o-border-top-right-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
-.page-landing-old .navs-list li:nth-child(odd),
-.page-landing-old .navs-list li:nth-child(odd) .chart-title {
-  background: #3e3e40;
+.page-landing .navs-list .nav-item {
+   -webkit-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
+  -moz-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
+  -o-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
+  box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
 }
 
-.page-landing-old .navs-list li:hover,
-.page-landing-old .navs-list li:hover .chart-title {
-  background: #2a2a2b;
+.page-landing .section-inner {
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
-.page-landing-old .nav-item {
-  padding: 10px 0;
+.page-landing .finance-nav .section-title {
+  background: url(../images/right-finance.png) no-repeat top right;
 }
 
-.page-landing-old .nav-item a {
-  display: block;
+.page-landing .customers-nav .section-title {
+  background: url(../images/right-customers.png) no-repeat top right;
 }
 
-.page-landing-old .action-icon {
-  position: absolute;
-  font-size: 44px;
-  top: 50%;
-  right: 10px;
-  margin-top: -31px;
-  background: transparent;
-  border: 0;
-  text-align: center;
-  color: #aaa;
+
+.page-landing .people-nav .section-title {
+  background: url(../images/right-people.png) no-repeat top right;
 }
 
-/** Landing page New styling **/
 
-.page-landing {
-  color: #fff;
+.page-landing .projects-nav .section-title {
+  background: url(../images/right-projects.png) no-repeat top right;
 }
 
-.page-landing .tab-section {
-  color: #fff;
+
+.page-landing .section {
+    height: 86px;
 }
 
-.page-landing .section-contents .value {
-  font-family: 'Teko', sans-serif;
-  font-weight: 400;
+.page-landing .value-small {
   margin: 0;
-}
-.page-landing .section-contents .title {
-  color: #AAA;
-  margin: 2px 0 0;
-}
-.page-landing .section-mid {
-  padding-right: 0;
-}
-.page-landing .section-mid,
-.page-landing .section-title {
-  padding-left: 0;
-}
-.page-landing .section-mid .value {
-  color: #AAA;
-  font-family: 'Teko', sans-serif;
-  font-weight: 400;
-  margin: 5px 0 0;
-}
-.page-landing .section-mid .title {
-  color: #AAA;
-  margin: 5px 0 0;
+  font-size: 10px;
 }
 
-
-.page-landing .section-title .title {
-  color: #50A5EE;
-  margin: 2px -5px 0 0;
-  text-align: right;
+.page-landing .section-title .section-inner {
+    padding-top: 12px;
+    padding-right: 2px;
+    float: right;
+    text-align: center;
+    width: 65px;
 }
 
-.page-landing .action-icon {
+.page-landing .section-shadow {
+  background: url(../images/section-bg.jpg) repeat-x top;
+  height: 20px;
+  padding: 0;
+  position: relative;
+}
+.page-landing .section-shadow .rc {
+  height: 20px;
+  width: 16px;
   position: absolute;
-  font-size: 28px;
-  top: 50%;
-  right: 5px;
-  margin-top: -13px;
-  background: transparent;
-  border: 0;
-  text-align: center;
-  color: #aaa;
+  top: -1px;
+  right: 0;
+}
+.page-landing .section-shadow .rc-finance {
+  background: url(../images/finance-bcurve.png) no-repeat top right;
+}
+.page-landing .section-shadow .rc-customers {
+  background: url(../images/customers-bcurve.png) no-repeat top right;
+}
+.page-landing .section-shadow .rc-people {
+  background: url(../images/people-bcurve.png) no-repeat top right;
+}
+.page-landing .section-shadow .rc-project {
+  background: url(../images/projects-bcurve.png) no-repeat top right;
 }
 
-.page-landing .navs-list {
+.page-landing .section-info,
+.page-landing .section-title,
+.page-landing .section-contents {
+  color: #FFF;
+}
+
+.page-landing .customers-nav .section-title {
+  color: #464646;
+}
+
+.page-landing .section-contents {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.page-landing .section-cont-text {
+  font-size: 11px;
+  padding-top: 12px;
+  opacity: 0.7;
+}
+
+.page-landing .section-info .heading-value {
+  font-size: 20px;
+  margin: 7px 5px;
+}
+
+.page-landing .section-info .contents-below {
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: #FFF;
+}
+
+.page-landing .section-info .contents-below h5 {
+  margin: 5px;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: normal;
+  min-width: 50px;
+}
+
+.page-landing .section-info .fa-circle {
+  font-size: 8px;
+  position: relative;
+  top: -1px;
+}
+
+.page-landing .section-info .title,
+.page-landing .section-info .count-m {
+  font-size: 12px;
+}
+.page-landing .section-info .doller {
+  font-size: 12px;
+  position: relative;
+}
+.page-landing .section-info .count {
+  font-size: 12px;
+}
+.page-landing .section-info .fa-circle,
+.page-landing .section-info .title,
+.page-landing .section-info .doller {
+  opacity: 0.5;
+}
+
+@media only screen and (max-width: 354px) {
+  .section-contents .section-cont-text {
+    display: none;
+  }
+  .page-landing .nav-item .col-xs-3 {
+    width: 30%;
+  }
+  .page-landing .nav-item .col-xs-5 {
+    width: 35%;
+  }
+  .page-landing .nav-item .col-xs-4 {
+      width: 35%;
+  }
+  .card {
+    float: none;
+    margin: 0;
+  }
+  .section-info h5 {
+    margin: 10px -5px;
+  }
+  .page-landing .section-title {
+    background-size: 110px 100% !important;
+    padding-right: 10px;
+  }
+  .page-landing .section-title .section-inner {
+    padding-top: 12px;
+    padding-right: 2px;
+    float: right;
+    text-align: center;
+    width: 65px;
+  }
+}
+
+div.circle-container {
+    display: inline-block;
     margin: 0;
     padding: 0;
-}
-
-.page-landing .navs-list li,
-.page-landing .navs-list li:nth-child(odd) {
-  background: url(../images/item-shadow.png) repeat-x bottom;
-}
-
-.page-landing .navs-list li:hover,
-.page-landing .navs-list li:hover .chart-title {
-  background: #2a2a2b;
-}
-
-.page-landing .nav-item {
-  padding: 25px 0;
-}
-
-.page-landing .nav-item a {
-  display: block;
+    width: 70px;
+    position: relative;
+    z-index: 1;
+    left: -1px;
 }
 
 .page-hr .tab-content > .tab-pane:not(.active),
