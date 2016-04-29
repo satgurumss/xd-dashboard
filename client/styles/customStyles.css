@@ -1054,7 +1054,7 @@ body {
 .ui-tab-horizontal .nav-tabs > li.active:hover > a,
 .ui-tab-horizontal .nav-tabs > li.active:focus > a {
   color: #FFF;
-  background-color: #0E668E;
+  background-color: #5B9BD5;
 }
 
 .ui-tab-container .tab-content {
@@ -1273,10 +1273,10 @@ body {
 
 .revenue-container .big-number {
   font-family: 'Teko', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   margin: 11px 0 0;
   color: #FFF;
-  font-size: 40px;
+  font-size: 50px;
   line-height: 1.1;
 }
 
@@ -1577,12 +1577,16 @@ body {
   color: #00a64d;
 }
 
-.red-text{
-  color: #ff001f;
+.orange-text{
+  color: #FFC000;
+}
+
+.blue-text{
+  color: #0070C0;
 }
 
 .revenue-container .trend{
-  font-size:11px;
+  font-size:14px;
 }
 
 .trend-arrow{
@@ -1605,4 +1609,25 @@ body {
 
 .page-hr .slider-wrapper{
   min-height: 35px;
+}
+
+.db-heading{
+  margin-top: 14px;
+}
+
+.finance-db-heading{
+  background: url(../images/right-finance-db.png) no-repeat top right;
+}
+
+.customers-db-heading{
+  background: url(../images/right-customers-db.png) no-repeat top right;
+}
+
+.hr-db-heading{
+  background: url(../images/right-people-db.png) no-repeat top right;
+}
+.page-sub-heading{
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 5px 0 8px 5px;
 }
