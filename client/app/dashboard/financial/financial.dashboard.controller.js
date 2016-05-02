@@ -2,9 +2,9 @@
   'use strict';
 
   angular.module('app')
-    .controller('FinancialDashCtrl', ['$scope', '$http', '$location', FinancialDashCtrl])
+    .controller('FinancialDashCtrl', ['$scope', '$http', '$location', "gaugesService", "CONST", FinancialDashCtrl])
 
-  function FinancialDashCtrl($scope, $http, $location) {
+  function FinancialDashCtrl($scope, $http, $location, gaugesService, CONST) {
     $scope.options = {
       from: 3,
       to: 12,
@@ -214,6 +214,143 @@
       }]
     };
 
+    $scope.barChartOptions = {
+      colors: ["#B6A2DE"],
+
+      chart: {
+        type: "bar",
+        height: 100,
+        width:200,
+        style: {
+          fontFamily: "sans-serif"
+        },
+        plotBorderColor: '#606063',
+        spacingTop: 0,
+        spacingBottom: 0,
+        spacingLeft: 0,
+        spacingRight: 0
+      },
+
+      tooltip: {
+        backgroundColor: 'rgba(0, 0, 0, 0.85)',
+        style: {
+          color: '#F0F0F0'
+        },
+        valueSuffix: 'M',
+        enabled:false
+      },
+
+      plotOptions: {
+        bar: {
+          pointWidth: 15,
+          pointPadding: 0,
+          borderRadius: 4,
+          dataLabels: {
+            color: '#707073',
+            verticalAlign: 'middle',
+            align:"right",
+            formatter: function() {
+              return "$ " + this.point.y + " M"
+              //return this.point.category
+            },
+            enabled: true,
+          }
+        },
+      },
+      credits: {
+        enabled: false
+      },
+
+      labels: {
+        style: {
+          color: '#707073'
+        }
+      },
+
+      legend: {
+        enabled: false
+      },
+
+      title: {
+        text: null,
+        style: {
+          color: '#E0E0E3',
+          textTransform: 'uppercase',
+          fontSize: '20px'
+        },
+        useHTML: true
+      },
+
+      subtitle: {
+        style: {
+          color: '#E0E0E3',
+          textTransform: 'uppercase'
+        }
+      },
+
+      yAxis: {
+        title: null,
+        labels: {
+          enabled: false
+        },
+        lineWidth: 0,
+        minorGridLineWidth: 0,
+        lineColor: 'transparent',
+        minorTickLength: 0,
+        tickLength: 0,
+        gridLineColor: 'transparent',
+      },
+
+      xAxis: {
+        categories: ['Customer A Consulting', 'Customer B Consulting', 'Customer C Consulting', 'Customer D Consulting', 'Customer E Consulting'],
+        tickWidth: 0,
+        tickPixelInterval: 20,
+        title: {
+          text: null,
+          style: {
+            color: '#A0A0A3'
+          }
+        },
+        gridLineColor: '#707073',
+        labels: {
+          style: {
+            color: '#707073',
+            fontSize: "0px",
+            enabled: false
+          }
+        },
+        lineWidth: 0,
+        minorGridLineWidth: 0,
+        lineColor: 'transparent',
+        minorTickLength: 0,
+        tickLength: 0,
+        gridLineColor: 'transparent'
+      },
+
+      series: [{
+        groupPadding: 0,
+        data: [205, 190, 160, 140, 100]
+      }]
+    };
+
+    $scope.gauges = {
+      energy:{
+        percent: 10,
+        className: "circle-blue",
+        colors: CONST.gaugeBlue 
+      },
+      transport:{
+        percent: 30,
+        className: "circle-green",
+        colors: CONST.gaugeGreen
+      },
+      devices:{
+        percent: 60,
+        className: "circle-yellow",
+        colors: CONST.gaugeYellow 
+      }
+    }
+
     $scope.updateChart = function() {
       var categories = [],
         generateRandomSeries = function(max) {
@@ -274,7 +411,7 @@
         case "12":
           categories = ['MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR']
           $scope.chartConfig.xAxis.categories = categories;
-          $scope.chartConfig.xAxis.max = 10;
+          $scope.chartConfig.xAxis.max = null;
 
           $scope.chartConfig.series[0].data = [];
           $scope.chartConfig.series[0].data = [15, 5.0, 14.5, 10.8, 9.5, 11, 6.0, 7.8, 16.0, 5.0, 14.5, 18.2];
@@ -289,6 +426,10 @@
 
           break;
       }
+    }
+
+    $scope.init = function(){
+      $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
     }
 
   }

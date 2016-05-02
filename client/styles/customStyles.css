@@ -400,7 +400,7 @@ ul.list-unstyled {
     color: #0079c1;
 }
 .panel-body {
-  min-height:  342px;
+  min-height:  400px;
 }
 
 
@@ -1092,6 +1092,18 @@ body {
 
 .circle-yellow .circles-text {
   color: #cce679;
+}
+
+.circle-danger .circles-text {
+  color: #da1b1b;
+}
+
+.circle-warning .circles-text {
+  color: #ff8400;
+}
+
+.circle-success .circles-text {
+  color: #157c3e;
 }
 
 .page-hr .dcharts-container {

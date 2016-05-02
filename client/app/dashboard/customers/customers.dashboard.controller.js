@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .controller('CustomerDashCtrl', ['$scope', '$http', '$location', '$timeout', CustomerDashCtrl])
+    .controller('CustomerDashCtrl', ['$scope', '$http', '$location', 'gaugesService', "CONST", CustomerDashCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
         if (isNaN(input)) return input;
@@ -10,7 +10,7 @@
       };
     });
 
-  function CustomerDashCtrl($scope, $http, $location, $timeout) {
+  function CustomerDashCtrl($scope, $http, $location, gaugesService, CONST) {
     $scope.customers=[{
       name: "Customer 1",
       reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
@@ -35,17 +35,40 @@
       reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
       rating: "4.5"
     }];
-    
-    $scope.barChartOptions = {
+
+    $scope.gauges = {
+      revSpread:{
+        percent: 10,
+        className: "circle-blue",
+        colors: CONST.gaugeBlue 
+      },
+      penetration:{
+        percent: 30,
+        className: "circle-green",
+        colors: CONST.gaugeGreen 
+      },
+      satisfaction:{
+        percent: 60,
+        className: "circle-yellow",
+        colors: CONST.gaugeYellow
+      }
+    }
+
+        $scope.barChartOptions = {
       colors: ["#B6A2DE"],
 
       chart: {
         type: "bar",
-        height: 200,
+        height: 100,
+        width:200,
         style: {
           fontFamily: "sans-serif"
         },
-        plotBorderColor: '#606063'
+        plotBorderColor: '#606063',
+        spacingTop: 0,
+        spacingBottom: 0,
+        spacingLeft: 0,
+        spacingRight: 0
       },
 
       tooltip: {
@@ -53,7 +76,8 @@
         style: {
           color: '#F0F0F0'
         },
-        valueSuffix: 'M'
+        valueSuffix: 'M',
+        enabled:false
       },
 
       plotOptions: {
@@ -64,10 +88,12 @@
           dataLabels: {
             color: '#707073',
             verticalAlign: 'middle',
+            align:"right",
             formatter: function() {
               return "$ " + this.point.y + " M"
+              //return this.point.category
             },
-            enabled: true
+            enabled: true,
           }
         },
       },
@@ -116,7 +142,7 @@
       },
 
       xAxis: {
-        categories: ['Cust. 1', 'Cust. 2', 'Cust. 3', 'Cust. 4', 'Cust. 5'],
+        categories: ['Customer A Consulting', 'Customer B Consulting', 'Customer C Consulting', 'Customer D Consulting', 'Customer E Consulting'],
         tickWidth: 0,
         tickPixelInterval: 20,
         title: {
@@ -129,7 +155,8 @@
         labels: {
           style: {
             color: '#707073',
-            fontSize: "14px"
+            fontSize: "0px",
+            enabled: false
           }
         },
         lineWidth: 0,
@@ -472,6 +499,10 @@
           }];
           break;
       }
+    }
+
+    $scope.init = function (argument) {
+      $scope.gauges = angular.copy( gaugesService.updateGaugeState($scope.gauges) );
     }
   }
 

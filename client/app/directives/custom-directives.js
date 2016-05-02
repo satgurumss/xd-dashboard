@@ -248,7 +248,11 @@
             var options = {
               chart: {
                 borderWidth: 1,
-                height: 245
+                height: 200,
+                spacingTop: 0,
+                spacingBottom: 0,
+                spacingLeft: 0,
+                spacingRight: 0
               },
 
               title: {
@@ -268,6 +272,9 @@
                 buttonOptions: {
                   verticalAlign: 'bottom'
                 }
+              },
+              yAxis:{
+                enabled:false
               },
 
               series: [{

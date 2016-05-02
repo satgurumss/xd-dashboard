@@ -1,4 +1,4 @@
-<div class="container page-dashboard" data-ng-controller="FinancialDashCtrl">
+<div class="container page-dashboard" data-ng-controller="FinancialDashCtrl" ng-init="init()">
     <div class="panel-container">
 
       <div class="panel-body" style="padding: 0 15px 0 15px;">
@@ -45,20 +45,20 @@
 
         <div class="row dcharts-container">
           <div class="col-xs-4 text-center">
-            <div class="circle-container circle-blue">
-             <div ng-circles value="10" width="15" colors="['#666', '#28bdc6']" textClass="custom-text-class"></div>
+            <div class="circle-container" ng-class="gauges.energy.className">
+             <div ng-circles value="gauges.energy.percent" width="15" colors="gauges.energy.colors" textClass="custom-text-class"></div>
             </div>
           </div>
 
           <div class="col-xs-4 text-center">
-            <div class="circle-container circle-green">
-             <div ng-circles value="30" width="15" colors="['#666', '#90e4ad']" textClass="custom-text-class"></div>
+            <div class="circle-container" ng-class="gauges.transport.className">
+             <div ng-circles value="gauges.transport.percent" width="15" colors="gauges.transport.colors" textClass="custom-text-class"></div>
             </div>
           </div>
 
           <div class="col-xs-4 text-center">
-            <div class="circle-container circle-yellow">
-             <div ng-circles value="60" width="15" colors="['#666', '#cce679']" textClass="custom-text-class"></div>
+            <div class="circle-container " ng-class="gauges.devices.className">
+             <div ng-circles value="gauges.devices.percent" width="15" colors="gauges.devices.colors" textClass="custom-text-class"></div>
             </div>
           </div>
         </div>
@@ -66,91 +66,175 @@
     </div>
 
     <div class="" data-ng-controller="TabsDemoCtrl">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="ui-tab-container ui-tab-horizontal">
-                    <!-- <uib-tabset justified="true" class="ui-tab">
-                        <uib-tab heading="ENERGY">
-                          <div>
-                            <div>
-                              <span class="h5">Revenue</span>&nbsp;
-                              <span class="h5">$&nbsp;<span>4.54 K</span>
-                              <span class="trend green-text">
-                                <i class="trend-arrow fa fa-play fa-rotate-270"/>5.4 K
-                              </span>
-                              <span class="trend orange-text hidden">
-                                <i class="trend-arrow fa fa-play fa-rotate-90"/>5.4 K
-                              </span>
-                            </div>
-                            <div class="hidden">
-                              <span class="h5">Forecast</span>&nbsp;
-                              <span class="h5">$&nbsp;<span>400,000</span></span>
-                            </div>
-                          </div>
-                          <br>
-                          <div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                          </div>
-                        </uib-tab>
-                        <uib-tab heading="TRANSPORT">
-                          <div>
-                            <div>
-                              <span class="h5">Revenue</span>&nbsp;
-                              <span class="h5">$&nbsp;<span>1.36 M</span>
-                              <span class="trend green-text hidden">
-                                <i class="trend-arrow fa fa-play fa-rotate-270"/>5.4 K
-                              </span>
-                              <span class="trend orange-text">
-                                <i class="trend-arrow fa fa-play fa-rotate-90"/>1.38 K
-                              </span>
-                            </div>
-                            <div class="hidden">
-                              <span class="h5">Forecast</span>&nbsp;
-                              <span class="h5">$&nbsp;<span>1,500,000</span></span>
-                            </div>
-                          </div>
-                          <br>
-                          <div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                          </div>
-                        </uib-tab>
-                        <uib-tab heading="DEVICES">
-                          <div>
-                            <div>
-                              <span class="h5">Revenue</span>&nbsp;
-                              <span class="h5">$&nbsp;<span>2.72 M</span>
-                              <span class="trend green-text">
-                                <i class="trend-arrow fa fa-play fa-rotate-270"/>7.24 K
-                              </span>
-                              <span class="trend orange-text hidden">
-                                <i class="trend-arrow fa fa-play fa-rotate-90"/>5.4 k
-                              </span>
-                            </div>
-                            <div class="hidden">
-                              <span class="h5">Forecast</span>&nbsp;
-                              <span class="h5">$&nbsp;<span>2,000,000</span></span>
-                            </div>
-                          </div>
-                          <br>
-                          <div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                          </div>
-                        </uib-tab>
-                    </uib-tabset> -->
-                    <uib-tabset justified="true" class="ui-tab">
-                        <uib-tab heading="ENERGY">
-                          <img class="energy-tab img-responsive" src="images/energy-tab.png"></img>
-                        </uib-tab>
-                        <uib-tab heading="TRANSPORT">
-                          <img class="transport-tab img-responsive" src="images/transport-tab.png"></img>
-                        </uib-tab>
-                        <uib-tab heading="DEVICES">
-                          <img class="devices-tab img-responsive" src="images/devices-tab.png"></img>
-                        </uib-tab>
-                    </uib-tabset>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="ui-tab-container ui-tab-horizontal">
+            <uib-tabset justified="true" class="ui-tab">
+              <uib-tab heading="ENERGY">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div>
+                      <span class="h3">4.35 M</span>
+                      <span class="trend green-text hidden">
+                        5.4 K
+                      </span>
+                      <span class="trend orange-text">
+                        - 1.35 M
+                      </span>
+                    </div>
+                    <div>
+                      <div class="h6 text-uppercase">
+                        <span class='budget-value'>
+                          <i class="fa fa-circle orange-text"></i>
+                          <span class="sign hidden">$&nbsp;</span>42.01 M</span>
+                        </span>
+                        &nbsp;
+                        <span class="forecast-value">
+                          <i class="fa fa-circle blue-text"></i>
+                          <span class="sign hidden">$&nbsp;</span>42.01 M</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-4">
+                    <hc-chart options="barChartOptions"/>
+                  </div>
+                  <div class="col-xs-8">
+                    <ul>
+                      <li>
+                        Customer A Consulting
+                      </li>
+                      <li>
+                        Customer B Consulting
+                      </li>
+                      <li>
+                        Customer C Consulting
+                      </li>
+                      <li>
+                        Customer D Consulting
+                      </li>
+                      <li>
+                        Customer E Consulting
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-            </div>
+              </uib-tab>
+              <uib-tab heading="TRANSPORT">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div>
+                      <span class="h3">13.06 M</span>
+                      <span class="trend green-text">
+                        + 1.06 M
+                      </span>
+                      <span class="trend orange-text hidden">
+                        - 1.35 M
+                      </span>
+                    </div>
+                    <div>
+                      <div class="h6 text-uppercase">
+                        <span class='budget-value'>
+                          <i class="fa fa-circle orange-text"></i>
+                          <span class="sign hidden">$&nbsp;</span>12.00 M</span>
+                        </span>
+                        &nbsp;
+                        <span class="forecast-value">
+                          <i class="fa fa-circle blue-text"></i>
+                          <span class="sign hidden">$&nbsp;</span>13.06 M</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-4">
+                   <hc-chart options="barChartOptions"/>
+                  </div>
+                  <div class="col-xs-8">
+                    <ul>
+                      <li>
+                        Customer A Consulting
+                      </li>
+                      <li>
+                        Customer B Consulting
+                      </li>
+                      <li>
+                        Customer C Consulting
+                      </li>
+                      <li>
+                        Customer D Consulting
+                      </li>
+                      <li>
+                        Customer E Consulting
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </uib-tab>
+              <uib-tab heading="DEVICES">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div>
+                      <span class="h3">26.12 M</span>
+                      <span class="trend green-text hidden">
+                        + 1.12 M
+                      </span>
+                      <span class="trend orange-text">
+                        - 1.35 M
+                      </span>
+                    </div>
+                    <div>
+                      <div class="h6 text-uppercase">
+                        <span class='budget-value'>
+                          <i class="fa fa-circle orange-text"></i>
+                          <span class="sign hidden">$&nbsp;</span>25.00 M</span>
+                        </span>
+                        &nbsp;
+                        <span class="forecast-value">
+                          <i class="fa fa-circle blue-text"></i>
+                          <span class="sign hidden">$&nbsp;</span>26.12 M</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-4">
+                   <hc-chart options="barChartOptions"/>
+                  </div>
+                  <div class="col-xs-8">
+                    <ul>
+                      <li>
+                        Customer A Consulting
+                      </li>
+                      <li>
+                        Customer B Consulting
+                      </li>
+                      <li>
+                        Customer C Consulting
+                      </li>
+                      <li>
+                        Customer D Consulting
+                      </li>
+                      <li>
+                        Customer E Consulting
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </uib-tab>
+            </uib-tabset>
+            <!-- <uib-tabset justified="true" class="ui-tab">
+                <uib-tab heading="ENERGY">
+                  <img class="energy-tab img-responsive" src="images/energy-tab.png"></img>
+                </uib-tab>
+                <uib-tab heading="TRANSPORT">
+                  <img class="transport-tab img-responsive" src="images/transport-tab.png"></img>
+                </uib-tab>
+                <uib-tab heading="DEVICES">
+                  <img class="devices-tab img-responsive" src="images/devices-tab.png"></img>
+                </uib-tab>
+            </uib-tabset> -->
+          </div>
         </div>
+      </div>
     </div>
 </div>
 
