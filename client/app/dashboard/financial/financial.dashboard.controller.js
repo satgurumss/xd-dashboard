@@ -5,6 +5,77 @@
     .controller('FinancialDashCtrl', ['$scope', '$http', '$location', "gaugesService", "CONST", FinancialDashCtrl])
 
   function FinancialDashCtrl($scope, $http, $location, gaugesService, CONST) {
+
+    $scope.gaugesWithMonths = [{
+      energy:{
+        percent: 20,
+        className: "circle-blue",
+        colors: CONST.gaugeBlue
+      },
+      transport:{
+        percent: 50,
+        className: "circle-green",
+        colors: CONST.gaugeGreen
+      },
+      devices:{
+        percent: 80,
+        className: "circle-yellow",
+        colors: CONST.gaugeYellow
+      }
+    }, {
+      energy:{
+        percent: 90,
+        className: "circle-blue",
+        colors: CONST.gaugeBlue
+      },
+      transport:{
+        percent: 15,
+        className: "circle-green",
+        colors: CONST.gaugeGreen
+      },
+      devices:{
+        percent: 75,
+        className: "circle-yellow",
+        colors: CONST.gaugeYellow
+      }
+    }, {
+      energy:{
+        percent: 44,
+        className: "circle-blue",
+        colors: CONST.gaugeBlue
+      },
+      transport:{
+        percent: 18,
+        className: "circle-green",
+        colors: CONST.gaugeGreen
+      },
+      devices:{
+        percent: 35,
+        className: "circle-yellow",
+        colors: CONST.gaugeYellow
+      }
+    }, {
+      energy:{
+        percent: 10,
+        className: "circle-blue",
+        colors: CONST.gaugeBlue
+      },
+      transport:{
+        percent: 30,
+        className: "circle-green",
+        colors: CONST.gaugeGreen
+      },
+      devices:{
+        percent: 60,
+        className: "circle-yellow",
+        colors: CONST.gaugeYellow
+      }
+    }];
+
+
+    $scope.gauges = $scope.gaugesWithMonths[0];
+
+    // slider options
     $scope.options = {
       from: 3,
       to: 12,
@@ -333,24 +404,6 @@
       }]
     };
 
-    $scope.gauges = {
-      energy:{
-        percent: 10,
-        className: "circle-blue",
-        colors: CONST.gaugeBlue 
-      },
-      transport:{
-        percent: 30,
-        className: "circle-green",
-        colors: CONST.gaugeGreen
-      },
-      devices:{
-        percent: 60,
-        className: "circle-yellow",
-        colors: CONST.gaugeYellow 
-      }
-    }
-
     $scope.updateChart = function() {
       var categories = [],
         generateRandomSeries = function(max) {
@@ -375,6 +428,8 @@
           $scope.chartConfig.series[2].data = [];
           $scope.chartConfig.series[2].data = [3.2, 13.5, 14.3];
 
+          $scope.gauges = $scope.gaugesWithMonths[0];
+
 
           break
         case "6":
@@ -390,6 +445,8 @@
 
           $scope.chartConfig.series[2].data = [];
           $scope.chartConfig.series[2].data = [8.0, 5.5, 10.7, 7.2, 13.5, 14.3];
+
+          $scope.gauges = $scope.gaugesWithMonths[1];
 
 
           break;
@@ -407,6 +464,8 @@
           $scope.chartConfig.series[2].data = [];
           $scope.chartConfig.series[2].data = [12, 10, 15, 8.0, 5.5, 10.7, 3.2, 13.5, 14.3];
 
+          $scope.gauges = $scope.gaugesWithMonths[2];
+
           break;
         case "12":
           categories = ['MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR']
@@ -422,10 +481,14 @@
           $scope.chartConfig.series[2].data = [];
           $scope.chartConfig.series[2].data = [12, 7, 11.7, 12, 10, 15, 8.0, 5.5, 10.7, 3.2, 13.5, 14.3];
 
+          $scope.gauges = $scope.gaugesWithMonths[4];
+
 
 
           break;
       }
+
+      $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
     }
 
     $scope.init = function(){

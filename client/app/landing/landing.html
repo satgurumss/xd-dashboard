@@ -168,9 +168,73 @@
     </li>
   </ul>
 
+  <div class="bottom-section">
+    <ul class="icons-list row">
+      <li class="icon-item col-xs-4">
+        <a href="javascript://">
+          <div class="icon profile-icon"></div>
+          <div class="count badge badge-info">7</div>
+        </a>
+      </li>
+      <li class="icon-item col-xs-4">
+        <a href="javascript://">
+          <div class="icon car-icon"></div>
+          <div class="count badge badge-info">1</div>
+        </a>
+      </li>
+      <li class="icon-item col-xs-4">
+        <a href="javascript://">
+          <div class="icon search-icon"></div>
+          <div class="count badge badge-info">5</div>
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <style type="text/css">
 
+  .page-landing .bottom-section {
+    padding: 10px 0;
+  }
 
+  .page-landing .icons-list {
+    padding: 0;
+  }
+
+  .page-landing .icons-list .icon-item {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: #2F2F2F;
+    -webkit-box-shadow: -6px 1px 28px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: -6px 1px 28px rgba(0, 0, 0, 0.5);
+    -o-box-shadow: -6px 1px 28px rgba(0, 0, 0, 0.5);
+    box-shadow: -6px 1px 28px rgba(0, 0, 0, 0.5);
+  }
+
+  .page-landing .icons-list .profile-icon {
+    background: url(images/Icon_people-v2.png) no-repeat top right;
+  }
+
+  .page-landing .icons-list .car-icon {
+    background: url(images/Icon_finance-v2.png) no-repeat top right;
+  }
+
+  .page-landing .icons-list .search-icon {
+    background: url(images/Icon_projects-v2.png) no-repeat top right;
+  }
+
+  .page-landing .icons-list .icon {
+    height: 40px;
+    background-size: contain;
+    background-position: center;
+  }
+
+  .page-landing .icons-list .count {
+    position: absolute;
+    top: 12px;
+    right: 50%;
+    margin-right: -23px;
+    border-radius: 50%;
+  }
 </style>
