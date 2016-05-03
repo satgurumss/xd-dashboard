@@ -1309,11 +1309,11 @@ body {
 }
 
 .revenue-container .big-number {
-  font-family: 'Teko', sans-serif;
-  font-weight: 400;
-  margin: 11px 0 0;
+  font-family: "Roboto Condensed";
+  margin: 10px 0 5px;
   color: #FFF;
-  font-size: 50px;
+  font-size: 30px;
+  font-weight: 500;
   line-height: 1.1;
 }
 
@@ -1499,7 +1499,7 @@ body {
 
   .page-landing .value-small {
     margin: 0;
-    font-size: 9px;
+    font-size: 11px;
   }
 
   .page-landing .section-title .section-inner {
@@ -1593,7 +1593,7 @@ body {
   .page-dashboard .revenue-container .value-label {
     font-size: 11px;
     position: absolute;
-    top: 15px;
+    top: 9px;
     letter-spacing: 0;
   }
 
@@ -1606,8 +1606,8 @@ body {
 
   .page-dashboard .revenue-container .trend{
     position: absolute;
-    top: 36px;
-    right: 36px;
+    top: 26px;
+    right: 55px;
     letter-spacing: 0;
   }
 
@@ -1869,8 +1869,8 @@ div.circle-container {
 }
 
 .db-heading{
-  margin-top: 14px;
-  padding: 9px 10px 10px 0;
+  margin-top: 5px;
+  padding: 6px 7px 7px 0;
 }
 
 .page-dashboard-customer .db-heading .sec-icon img{
@@ -1878,20 +1878,24 @@ div.circle-container {
 }
 
 .page-dashboard .db-heading,
-.page-hr .db-heading{
-  padding-right: 15px;
+.page-hr .db-heading {
+  padding-right: 10px;
+
 }
 
 .finance-db-heading{
   background: url(../images/right-finance-db.png) no-repeat top right;
+  background-size: 105px 69px;
 }
 
 .customers-db-heading{
   background: url(../images/right-customers-db.png) no-repeat top right;
+  background-size: 117px 69px;
 }
 
 .hr-db-heading{
   background: url(../images/right-people-db.png) no-repeat top right;
+  background-size: 105px 69px;
 }
 .page-sub-heading{
   border-top: 1px solid #ddd;
@@ -1907,5 +1911,5 @@ div.circle-container {
 .big-number .sign{
   font-size: 20px;
   position: relative;
-  top: -17px;
+  top: -8px;
 }

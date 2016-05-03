@@ -23,25 +23,26 @@
           </div>
         </div>
         <div class="col-xs-6 text-right db-heading hr-db-heading">
-          <div class="sec-icon"><img src="images/Icon_people-v2.png" height="46" width="46" border="0" /></div>
+          <div class="sec-icon"><img src="images/Icon_people-v2.png" height="36" width="36" border="0" /></div>
           <h6 class="value-small white-text">PEOPLE</h6>
         </div>
       </div>
 
-      <div class="row events-container" ng-controller="calendarCtrl">
+      <div class="row events-container">
         <div class="margin-t10">
           <span class="h5 text-uppercase">Training & Events</span>
-          <span type="button" class="btn btn-primary btn-xs pull-right" ng-click="addEvent()">
+          <span type="button" class="btn btn-primary btn-xs pull-right">
             <i class="fa fa-plus"/>
           </span>
         </div>
         <div>
-          <div class="divider"></div>
-          <div ng-model="eventSources" calendar="myCalendar1" config="uiConfig.calendar" ui-calendar="uiConfig.calendar"></div>
+          <img alt="" src="images/people-clander.png" border="0" class="img-responsive">
 
-          <div class="callout callout-info" ng-show="alertMessage != undefined && alertMessage != ''">
+          <!-- <div ng-model="eventSources" calendar="myCalendar1" config="uiConfig.calendar" ui-calendar="uiConfig.calendar"></div> -->
+
+          <!-- <div class="callout callout-info" ng-show="alertMessage != undefined && alertMessage != ''">
               <span>{{alertMessage}}</span>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -102,5 +103,8 @@
 <style type="text/css">
   .events-container{
     padding: 0 15px 0 15px;
+  }
+  .ui-tab-container .nav-tabs > li > a {
+    font-size: 13px;
   }
 </style>
