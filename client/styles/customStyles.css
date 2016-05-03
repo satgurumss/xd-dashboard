@@ -1112,6 +1112,10 @@ body {
   color: #157c3e;
 }
 
+.circle-white .circles-text {
+  color: #fff;
+}
+
 .gauge-label {
   position: relative;
   top: -10px;
