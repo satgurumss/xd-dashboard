@@ -150,7 +150,6 @@
     $scope.satisfactionChart = {
       chart: {
         height: 300,
-        width: 300,
         spacingLeft: 0,
         spacingRight: 5
       },
