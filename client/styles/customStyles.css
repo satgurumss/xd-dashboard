@@ -1537,7 +1537,6 @@ body {
   .page-landing .section-contents {
     padding-left: 10px;
     padding-right: 10px;
-    padding-top: 7px;
     text-align: center;
     -webkit-box-shadow: 0 0 26px -4px rgba(0,0,0,0.5);
     -moz-box-shadow: 0 0 26px -4px rgba(0,0,0,0.5);
@@ -1559,7 +1558,6 @@ body {
     margin: 7px 5px;
     letter-spacing: -1px;
     position: relative;
-    display: inline-block;
   }
 
   .page-landing .section-info .dollar-sign {
@@ -1694,10 +1692,6 @@ body {
     font-weight: bold;
   }
 
-  .page-landing .bottom-section {
-    padding: 10px 0;
-  }
-
   .page-landing .icons-list {
     padding: 0;
   }
@@ -1728,7 +1722,7 @@ body {
   }
 
   .page-landing .icons-list .icon {
-    height: 50px;
+    height: 52px;
     background-size: contain;
     background-position: center;
   }
