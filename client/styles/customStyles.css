@@ -1414,7 +1414,7 @@ body {
 
 /** Landing page Old styling **/
 
-  .page-landing {
+.page-landing {
     font-family: "roboto condensed", sans-serif;
   }
 
@@ -1556,9 +1556,6 @@ body {
     box-shadow: 0 0 26px -4px rgba(0,0,0,0.5);
   }
 
-  .section.section-contents {
-  }
-
   .page-landing .section-cont-text {
     font-size: 11px;
     padding-top: 12px;
@@ -1570,6 +1567,7 @@ body {
     margin: 7px 5px;
     letter-spacing: -1px;
     position: relative;
+    display: inline-block;
   }
 
   .page-landing .section-info .dollar-sign {
@@ -1580,33 +1578,34 @@ body {
     letter-spacing: 0;
   }
 
-  .page-landing .section-info .value-label {
+  .page-dashboard .heading-value {
+    display: inline-block;
+    position: relative;
+  }
+
+  .page-landing .section-info .value-label,
+  .page-dashboard .revenue-container .value-label {
     font-size: 11px;
     position: absolute;
-    top: 0px;
-    right: -30px;
+    top: 0;
+    right: -28px;
     letter-spacing: 0;
   }
 
   .page-dashboard .revenue-container .value-label {
-    font-size: 11px;
-    position: absolute;
-    top: 9px;
-    letter-spacing: 0;
+    top: 6px;
   }
 
-  .page-landing .section-info .trend{
+  .page-landing .section-info .trend,
+  .page-dashboard .revenue-container .trend {
     position: absolute;
     bottom: 0;
-    right: -38px;
+    right: -33px;
     letter-spacing: 0;
   }
 
-  .page-dashboard .revenue-container .trend{
-    position: absolute;
-    top: 26px;
-    right: 55px;
-    letter-spacing: 0;
+  .page-dashboard .revenue-container .trend {
+    bottom: 7px;
   }
 
   .page-landing .section-info .contents-below {
@@ -1671,6 +1670,7 @@ body {
     }
   }
   @media only screen and (max-width: 354px) {
+
     .section-contents .section-cont-text {
       display: none;
     }
@@ -1695,13 +1695,75 @@ body {
       padding-right: 10px;
     }
     .page-landing .section-title .section-inner {
-      padding-top: 12px;
+      padding-top: 5px;
       padding-right: 2px;
       float: right;
       text-align: center;
       width: 65px;
     }
   }
+
+
+  div.circle-container {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      width: 60px;
+      position: relative;
+      z-index: 1;
+      left: -1px;
+  }
+
+  .circle-container div.circles-text {
+    font-weight: bold;
+  }
+
+  .page-landing .icons-list {
+    padding: 0;
+  }
+
+  .page-landing .icons-list .icon-item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    -webkit-box-shadow: -14px 0 17px -13px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: -14px 0 17px -13px rgba(0, 0, 0, 0.5);
+    -o-box-shadow: -14px 0 17px -13px rgba(0, 0, 0, 0.5);
+    box-shadow: -14px 0 17px -13px rgba(0, 0, 0, 0.5);
+  }
+
+  .page-landing .icons-list .icon-item:hover {
+    background: #2F2F2F;
+  }
+
+  .page-landing .icons-list .profile-icon {
+    background: url(../images/icon-team.png) no-repeat top right;
+  }
+
+  .page-landing .icons-list .car-icon {
+    background: url(../images/icon-v-tracking.png) no-repeat top right;
+  }
+
+  .page-landing .icons-list .search-icon {
+    background: url(../images/icon-assets.png) no-repeat top right;
+  }
+
+  .page-landing .icons-list .icon {
+    height: 52px;
+    background-size: contain;
+    background-position: center;
+  }
+
+  .page-landing .icons-list .count {
+    position: absolute;
+    background: #E8CB43;
+    color: #454545;
+    top: 5px;
+    right: 50%;
+    margin-right: -29px;
+    border-radius: 50%;
+  }
+
+  /*  landing page end */
 
 
   div.circle-container {
