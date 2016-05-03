@@ -1588,12 +1588,12 @@ body {
     font-size: 11px;
     position: absolute;
     top: 0;
-    right: -28px;
+    right: -33px;
     letter-spacing: 0;
   }
 
   .page-dashboard .revenue-container .value-label {
-    top: 6px;
+    top: 0px;
   }
 
   .page-landing .section-info .trend,
@@ -1605,7 +1605,8 @@ body {
   }
 
   .page-dashboard .revenue-container .trend {
-    bottom: 7px;
+    bottom: 1px;
+    right: -44px;
   }
 
   .page-landing .section-info .contents-below {
@@ -1695,7 +1696,6 @@ body {
       padding-right: 10px;
     }
     .page-landing .section-title .section-inner {
-      padding-top: 5px;
       padding-right: 2px;
       float: right;
       text-align: center;
