@@ -1,4 +1,5 @@
-<div class="page page-dashboard-customer" data-ng-controller="CustomerDashCtrl">
+<div class="page page-dashboard-customer" data-ng-controller="CustomerDashCtrl"
+  ng-init="init()">
   <div class="row">
     <div class="panel-container">
 
@@ -6,7 +7,7 @@
         <div class="row revenue-container">
           <div class="col-xs-6 ">
             <h1 class="big-number">500</h1>
-            <div class="text-uppercase white-text page-sub-heading">
+            <!-- <div class="text-uppercase white-text page-sub-heading">
               <span class="h6 info-value">
                 <i class="fa fa-circle orange-text"></i>
                 <span class="count">500</span>
@@ -16,10 +17,13 @@
                 <i class="fa fa-circle blue-text"></i>
                 <span class="count">30</span>
               </span>
+            </div> -->
+            <div class="progress-container">
+              <img src="images/progress-bar.png">
             </div>
           </div>
           <div class="col-xs-6 text-right db-heading customers-db-heading">
-            <div class="sec-icon"><img src="images/Icon_customers-v2.png" height="46" width="46" border="0" /></div>
+            <div class="sec-icon"><img src="images/Icon_customers-v2.png" height="36" width="36" border="0" /></div>
             <h6 class="value-small dark-grey-text">CUSTOMERS</h6>
           </div>
         </div>
@@ -35,20 +39,20 @@
 
         <div class="row dcharts-container">
           <div class="col-xs-4 text-center">
-            <div class="circle-container circle-blue">
-             <div ng-circles value="10" width="15" colors="['#666', '#28bdc6']" textClass="custom-text-class"></div>
+            <div class="circle-container" ng-class="gauges.revSpread.className">
+             <div ng-circles value="gauges.revSpread.percent" width="15" colors="gauges.revSpread.colors" textClass="custom-text-class"></div>
             </div>
           </div>
 
           <div class="col-xs-4 text-center">
-            <div class="circle-container circle-green">
-             <div ng-circles value="30" width="15" colors="['#666', '#90e4ad']" textClass="custom-text-class"></div>
+            <div class="circle-container" ng-class="gauges.penetration.className">
+             <div ng-circles value="gauges.penetration.percent" width="15" colors="gauges.penetration.colors" textClass="custom-text-class"></div>
             </div>
           </div>
 
           <div class="col-xs-4 text-center">
-            <div class="circle-container circle-yellow">
-             <div ng-circles value="60" width="15" colors="['#666', '#cce679']" textClass="custom-text-class"></div>
+            <div class="circle-container " ng-class="gauges.satisfaction.className">
+             <div ng-circles value="gauges.satisfaction.percent" width="15" colors="gauges.satisfaction.colors" textClass="custom-text-class"></div>
             </div>
           </div>
         </div>
@@ -57,52 +61,107 @@
   </div>
   <div class="row">
 
-        <div class="" data-ng-controller="TabsDemoCtrl">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="ui-tab-container ui-tab-horizontal">
-                        <uib-tabset justified="true" class="ui-tab">
-                            <uib-tab heading="REV. SPREAD">
-                              <div class="clearfix">
-                                <span class="ui-select custom-select pull-right">
-                                  <select>
-                                    <option>Top 5</option>
-                                    <option>By Geogrpahy</option>
-                                  </select>
-                                </span>
-                                <span class="pull-right pad-r-5 display-inline-block margin-t1">Show</span>
-                              </div>
-                              <hc-chart options="barChartOptions"/>
-                            </uib-tab>
-                            <uib-tab heading="PENETRATION">
-                              <div class="clearfix">
-                                <span class="ui-select custom-select pull-right">
-                                  <select>
-                                    <option>Top 5</option>
-                                    <option>By Geogrpahy</option>
-                                  </select>
-                                </span>
-                                <span class="pull-right pad-r-5 display-inline-block margin-t1">Show</span>
-                              </div>
-                              <hc-chart options="barChartOptions"/>
-                            </uib-tab>
-                            <uib-tab heading="SATISFATION">
-                              <div class="clearfix">
-                                <span class="ui-select custom-select pull-right">
-                                  <select>
-                                    <option>Satisfied</option>
-                                    <option>Dissatisfied</option>
-                                  </select>
-                                </span>
-                                <span class="pull-right pad-r-5 display-inline-block margin-t1">Show Top 5 Customers</span>
-                              </div>
-                              <div ng-include="'app/dashboard/customers/customers-list.html'"></div>
-                            </uib-tab>
-                        </uib-tabset>
-                    </div>
+    <div class="" data-ng-controller="TabsDemoCtrl">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="ui-tab-container ui-tab-horizontal">
+            <uib-tabset justified="true" class="ui-tab">
+              <uib-tab heading="REV. SPREAD">
+                <div class="clearfix">
+                  <span class="h3"><span class="sign">$&nbsp;</span>79.00 M</span>
+                  <span class="ui-select custom-select pull-right">
+                    <select>
+                      <option>Top 5</option>
+                      <option>By Geogrpahy</option>
+                    </select>
+                  </span>
+                  <span class="pull-right pad-r-5 display-inline-block margin-t1">Show</span>
+                  <div class="progress-container">
+                    <img src="images/progress-bar.png">
+                  </div>
                 </div>
-            </div>
+                <div class="row">
+                  <div class="col-xs-4 margin-t10">
+                    <hc-chart options="barChartOptions"/>
+                  </div>
+                  <div class="col-xs-8 margin-t10">
+                    <ul>
+                      <li>
+                        Acme Corporation
+                      </li>
+                      <li>
+                        Mercury Consulting
+                      </li>
+                      <li>
+                        Omega Technologies
+                      </li>
+                      <li>
+                        Starlight Systems
+                      </li>
+                      <li>
+                        Platinum Consulting
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </uib-tab>
+              <uib-tab heading="PENETRATION">
+                <div class="clearfix">
+                  <span class="h3"><span class="sign">$&nbsp;</span>79.00 M</span>
+                  <span class="ui-select custom-select pull-right">
+                    <select>
+                      <option>Top 5</option>
+                      <option>By Geogrpahy</option>
+                    </select>
+                  </span>
+                  <span class="pull-right pad-r-5 display-inline-block margin-t1">Show</span>
+
+                  <div class="progress-container">
+                    <img src="images/progress-bar.png">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-4 margin-t10">
+                    <hc-chart options="barChartOptions"/>
+                  </div>
+                  <div class="col-xs-8 margin-t10">
+                    <ul>
+                      <li>
+                        Acme Corporation
+                      </li>
+                      <li>
+                        Mercury Consulting
+                      </li>
+                      <li>
+                        Omega Technologies
+                      </li>
+                      <li>
+                        Starlight Systems
+                      </li>
+                      <li>
+                        Platinum Consulting
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </uib-tab>
+              <uib-tab heading="SATISFATION">
+                <div class="clearfix">
+                  <span class="ui-select custom-select pull-right">
+                    <select>
+                      <option>Satisfied</option>
+                      <option>Dissatisfied</option>
+                    </select>
+                  </span>
+                  <span class="pull-right pad-r-5 display-inline-block margin-t1">Show Top 5 Customers</span>
+                </div>
+                <div ng-include="'app/dashboard/customers/customers-list.html'"></div>
+              </uib-tab>
+            </uib-tabset>
+          </div>
         </div>
+      </div>
+    </div>
 
   </div>
 </div>

@@ -3,7 +3,7 @@
   <div class="panel-container">
     <div class="row revenue-title">
       <div class="col-xs-12 text-center">
-        <h4 class="text-uppercase">Executive Summary</h4>
+        <h4 class="text-uppercase">Overview</h4>
       </div>
     </div>
   </div>
@@ -13,19 +13,21 @@
         <div class="section section-info col-xs-5">
           <div class="section-inner">
             <h1 class="heading-value">
+              <span class="dollar-sign">$</span>
               43.45 M
-              <span class="arrow-up"></span>
+              <span class="value-label">QTD</span>
+              <span class="trend orange-text">-10.2k</span>
             </h1>
             <div class="contents-below">
               <h5 class="info-value">
                 <i class="fa fa-circle orange-text"></i>
-                <span class="count">5.3</span>
-                <span class="count-m">M</span>
+                <span>5.3</span>
+                <span>M</span>
               </h5>
               <h5 class="info-value">
-                <i class="fa fa-circle blue-text"></i>
-                <span class="count">6.1</span>
-                <span class="count-m">M</span>
+                <i class="fa fa-circle red-text"></i>
+                <span>6.1</span>
+                <span>M</span>
               </h5>
             </div>
           </div>
@@ -33,7 +35,7 @@
         <div class="section section-contents col-xs-3">
           <div class="section-inner">
             <div class="circle-container">
-             <div ng-circles value="70" width="18" colors="['#767676', '#5B9BD5']" textClass="custom-text-class"></div>
+             <div ng-circles value="gauges.finance.percent" width="20" colors="['#FFF', gauges.finance.colors[1]]"></div>
             </div>
           </div>
         </div>
@@ -59,11 +61,11 @@
             <div class="contents-below">
               <h5 class="info-value">
                 <i class="fa fa-circle orange-text"></i>
-                <span class="count">500</span>
+                <span>500</span>
               </h5>
               <h5 class="info-value">
-                <i class="fa fa-circle blue-text"></i>
-                <span class="count">30</span>
+                <i class="fa fa-circle red-text"></i>
+                <span>30</span>
               </h5>
             </div>
           </div>
@@ -71,7 +73,7 @@
         <div class="section section-contents col-xs-3">
           <div class="section-inner">
             <div class="circle-container">
-             <div ng-circles value="85" width="18" colors="['#767676', '#FFF']" textClass="custom-text-class"></div>
+             <div ng-circles value="gauges.customers.percent" width="20" colors="['#EEE', gauges.customers.colors[1]]"></div>
             </div>
           </div>
         </div>
@@ -97,13 +99,13 @@
             <div class="contents-below">
               <h5 class="info-value">
                 <i class="fa fa-circle orange-text"></i>
-                <span class="count">70</span>
-                <span class="doller">%</span>
+                <span>70</span>
+                <span>%</span>
               </h5>
               <h5 class="info-value">
-                <i class="fa fa-circle blue-text"></i>
-                <span class="count">50</span>
-                <span class="doller">%</span>
+                <i class="fa fa-circle red-text"></i>
+                <span>50</span>
+                <span>%</span>
               </h5>
             </div>
           </div>
@@ -111,7 +113,7 @@
         <div class="section section-contents col-xs-3">
           <div class="section-inner">
             <div class="circle-container">
-              <div ng-circles value="50" width="18" colors="['#767676', '#5B9BD5']" textClass="custom-text-class"></div>
+             <div ng-circles value="gauges.people.percent" width="20" colors="['#FFF', gauges.people.colors[1]]"></div>
             </div>
           </div>
         </div>
@@ -131,19 +133,20 @@
         <div class="section section-info col-xs-5">
           <div class="section-inner">
             <h1 class="heading-value">
+              <span class="dollar-sign">$</span>
               5.3 M
               <span class="arrow-up"></span>
             </h1>
             <div class="contents-below">
               <h5 class="info-value">
                 <i class="fa fa-circle orange-text"></i>
-                <span class="count">1.0</span>
-                <span class="count-m">M</span>
+                <span>1.0</span>
+                <span>M</span>
               </h5>
               <h5 class="info-value">
-                <i class="fa fa-circle blue-text"></i>
-                <span class="count">1.5</span>
-                <span class="count-m">M</span>
+                <i class="fa fa-circle red-text"></i>
+                <span>1.5</span>
+                <span>M</span>
               </h5>
             </div>
           </div>
@@ -151,7 +154,7 @@
         <div class="section section-contents col-xs-3">
           <div class="section-inner">
             <div class="circle-container">
-             <div ng-circles value="70" width="18" colors="['#767676', '#FFF']" textClass="custom-text-class"></div>
+             <div ng-circles value="gauges.projects.percent" width="20" colors="['#FFF', gauges.projects.colors[1]]"></div>
             </div>
           </div>
         </div>
@@ -168,9 +171,30 @@
     </li>
   </ul>
 
+  <div class="bottom-section">
+    <ul class="icons-list row">
+      <li class="icon-item col-xs-4">
+        <a href="javascript://" ng-click="navigateTo('/team-performance')">
+          <div class="icon profile-icon"></div>
+          <div class="count badge badge-info">7</div>
+        </a>
+      </li>
+      <li class="icon-item col-xs-4">
+        <a href="javascript://">
+          <div class="icon car-icon"></div>
+          <div class="count badge badge-info">1</div>
+        </a>
+      </li>
+      <li class="icon-item col-xs-4">
+        <a href="javascript://">
+          <div class="icon search-icon"></div>
+          <div class="count badge badge-info">5</div>
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <style type="text/css">
-
 
 </style>

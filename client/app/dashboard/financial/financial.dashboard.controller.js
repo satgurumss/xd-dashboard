@@ -2,9 +2,56 @@
   'use strict';
 
   angular.module('app')
-    .controller('FinancialDashCtrl', ['$scope', '$http', '$location', FinancialDashCtrl])
+    .controller('FinancialDashCtrl', ['$scope', '$http', '$location', "gaugesService", "CONST", FinancialDashCtrl])
 
-  function FinancialDashCtrl($scope, $http, $location) {
+  function FinancialDashCtrl($scope, $http, $location, gaugesService, CONST) {
+
+    $scope.gaugesWithMonths = [{
+      energy:{
+        percent: 10
+      },
+      transport:{
+        percent: 30
+      },
+      devices:{
+        percent: 60
+      }
+    }, {
+      energy:{
+        percent: 70
+      },
+      transport:{
+        percent: 20
+      },
+      devices:{
+        percent: 10
+      }
+    }, {
+      energy:{
+        percent: 40
+      },
+      transport:{
+        percent: 40
+      },
+      devices:{
+        percent: 20
+      }
+    }, {
+      energy:{
+        percent: 10
+      },
+      transport:{
+        percent: 30
+      },
+      devices:{
+        percent: 60
+      }
+    }];
+
+
+    $scope.gauges = $scope.gaugesWithMonths[0];
+
+    // slider options
     $scope.options = {
       from: 3,
       to: 12,
@@ -214,6 +261,125 @@
       }]
     };
 
+    $scope.barChartOptions = {
+      colors: ["#B6A2DE"],
+
+      chart: {
+        type: "bar",
+        height: 100,
+        width:200,
+        style: {
+          fontFamily: "sans-serif"
+        },
+        plotBorderColor: '#606063',
+        spacingTop: 0,
+        spacingBottom: 0,
+        spacingLeft: 0,
+        spacingRight: 0
+      },
+
+      tooltip: {
+        backgroundColor: 'rgba(0, 0, 0, 0.85)',
+        style: {
+          color: '#F0F0F0'
+        },
+        valueSuffix: 'M',
+        enabled:false
+      },
+
+      plotOptions: {
+        bar: {
+          pointWidth: 15,
+          pointPadding: 0,
+          borderRadius: 4,
+          dataLabels: {
+            color: '#707073',
+            verticalAlign: 'middle',
+            align:"right",
+            formatter: function() {
+              return "$ " + this.point.y + " M"
+              //return this.point.category
+            },
+            enabled: true,
+          }
+        },
+      },
+      credits: {
+        enabled: false
+      },
+
+      labels: {
+        style: {
+          color: '#707073'
+        }
+      },
+
+      legend: {
+        enabled: false
+      },
+
+      title: {
+        text: null,
+        style: {
+          color: '#E0E0E3',
+          textTransform: 'uppercase',
+          fontSize: '20px'
+        },
+        useHTML: true
+      },
+
+      subtitle: {
+        style: {
+          color: '#E0E0E3',
+          textTransform: 'uppercase'
+        }
+      },
+
+      yAxis: {
+        title: null,
+        labels: {
+          enabled: false
+        },
+        lineWidth: 0,
+        minorGridLineWidth: 0,
+        lineColor: 'transparent',
+        minorTickLength: 0,
+        tickLength: 0,
+        gridLineColor: 'transparent',
+      },
+
+      xAxis: {
+        categories: ['1', '2', '3', '4', '5'],
+        tickWidth: 0,
+        tickPixelInterval: 20,
+        title: {
+          text: null,
+          style: {
+            color: '#A0A0A3'
+          }
+        },
+        gridLineColor: '#707073',
+        labels: {
+          style: {
+            color: '#707073',
+            fontSize: "14px",
+            enabled: false
+          }
+        },
+        lineWidth: 0,
+        minorGridLineWidth: 0,
+        lineColor: 'transparent',
+        minorTickLength: 0,
+        tickLength: 0,
+        gridLineColor: 'transparent'
+      },
+
+      series: [{
+        groupPadding: 0,
+        data: [205, 190, 160, 140, 100]
+      }]
+    };
+
     $scope.updateChart = function() {
       var categories = [],
         generateRandomSeries = function(max) {
@@ -238,6 +404,8 @@
           $scope.chartConfig.series[2].data = [];
           $scope.chartConfig.series[2].data = [3.2, 13.5, 14.3];
 
+          $scope.gauges = $scope.gaugesWithMonths[0];
+
 
           break
         case "6":
@@ -253,6 +421,8 @@
 
           $scope.chartConfig.series[2].data = [];
           $scope.chartConfig.series[2].data = [8.0, 5.5, 10.7, 7.2, 13.5, 14.3];
+
+          $scope.gauges = $scope.gaugesWithMonths[1];
 
 
           break;
@@ -270,11 +440,13 @@
           $scope.chartConfig.series[2].data = [];
           $scope.chartConfig.series[2].data = [12, 10, 15, 8.0, 5.5, 10.7, 3.2, 13.5, 14.3];
 
+          $scope.gauges = $scope.gaugesWithMonths[2];
+
           break;
         case "12":
           categories = ['MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR']
           $scope.chartConfig.xAxis.categories = categories;
-          $scope.chartConfig.xAxis.max = 10;
+          $scope.chartConfig.xAxis.max = null;
 
           $scope.chartConfig.series[0].data = [];
           $scope.chartConfig.series[0].data = [15, 5.0, 14.5, 10.8, 9.5, 11, 6.0, 7.8, 16.0, 5.0, 14.5, 18.2];
@@ -285,10 +457,18 @@
           $scope.chartConfig.series[2].data = [];
           $scope.chartConfig.series[2].data = [12, 7, 11.7, 12, 10, 15, 8.0, 5.5, 10.7, 3.2, 13.5, 14.3];
 
+          $scope.gauges = $scope.gaugesWithMonths[3];
+
 
 
           break;
       }
+
+      $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
+    }
+
+    $scope.init = function(){
+      $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
     }
 
   }

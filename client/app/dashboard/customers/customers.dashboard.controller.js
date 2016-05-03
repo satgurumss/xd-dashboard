@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .controller('CustomerDashCtrl', ['$scope', '$http', '$location', '$timeout', CustomerDashCtrl])
+    .controller('CustomerDashCtrl', ['$scope', '$http', '$location', 'gaugesService', "CONST", CustomerDashCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
         if (isNaN(input)) return input;
@@ -10,7 +10,7 @@
       };
     });
 
-  function CustomerDashCtrl($scope, $http, $location, $timeout) {
+  function CustomerDashCtrl($scope, $http, $location, gaugesService, CONST) {
     $scope.customers=[{
       name: "Customer 1",
       reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
@@ -35,17 +35,67 @@
       reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
       rating: "4.5"
     }];
-    
+
+  $scope.gaugesWithMonths = [{
+      revSpread:{
+        percent: 10
+      },
+      penetration:{
+        percent: 30
+      },
+      satisfaction:{
+        percent: 60
+      }
+    }, {
+      revSpread:{
+        percent: 70
+      },
+      penetration:{
+        percent: 20
+      },
+      satisfaction:{
+        percent: 10
+      }
+    }, {
+      revSpread:{
+        percent: 40
+      },
+      penetration:{
+        percent: 40
+      },
+      satisfaction:{
+        percent: 20
+      }
+    }, {
+      revSpread:{
+        percent: 10
+      },
+      penetration:{
+        percent: 30
+      },
+      satisfaction:{
+        percent: 60
+      }
+    }];
+
+
+    $scope.gauges = $scope.gaugesWithMonths[0];
+
     $scope.barChartOptions = {
       colors: ["#B6A2DE"],
 
       chart: {
         type: "bar",
-        height: 200,
+        height: 100,
+        width:200,
         style: {
           fontFamily: "sans-serif"
         },
-        plotBorderColor: '#606063'
+        plotBorderColor: '#606063',
+        spacingTop: 0,
+        spacingBottom: 0,
+        spacingLeft: 0,
+        spacingRight: 10
       },
 
       tooltip: {
@@ -53,7 +103,8 @@
         style: {
           color: '#F0F0F0'
         },
-        valueSuffix: 'M'
+        valueSuffix: 'M',
+        enabled:false
       },
 
       plotOptions: {
@@ -64,10 +115,12 @@
           dataLabels: {
             color: '#707073',
             verticalAlign: 'middle',
+            align:"right",
             formatter: function() {
               return "$ " + this.point.y + " M"
+              //return this.point.category
             },
-            enabled: true
+            enabled: true,
           }
         },
       },
@@ -116,7 +169,7 @@
       },
 
       xAxis: {
-        categories: ['Cust. 1', 'Cust. 2', 'Cust. 3', 'Cust. 4', 'Cust. 5'],
+        categories: ['1', '2', '3', '4', '5'],
         tickWidth: 0,
         tickPixelInterval: 20,
         title: {
@@ -129,7 +182,8 @@
         labels: {
           style: {
             color: '#707073',
-            fontSize: "14px"
+            fontSize: "14px",
+            enabled: false
           }
         },
         lineWidth: 0,
@@ -142,7 +196,7 @@
 
       series: [{
         groupPadding: 0,
-        data: [205, 190, 160, 140, 100]
+        data: [22, 20, 15, 12, 10]
       }]
     };
 
@@ -288,6 +342,7 @@
             code: "NC",
             z: 262
           }];
+          $scope.gauges = $scope.gaugesWithMonths[0];
           break
         case "6":
 
@@ -350,6 +405,7 @@
             z: 200
           }];
 
+          $scope.gauges = $scope.gaugesWithMonths[1];
           break;
         case "9":
           $scope.barChartOptions.xAxis.categories = ['Cust. 1', 'Cust. 2', 'Cust. 3', 'Cust. 4', 'Cust. 5'],
@@ -410,6 +466,7 @@
             code: "NC",
             z: 150
           }];
+          $scope.gauges = $scope.gaugesWithMonths[2];
           break;
         case "12":
           $scope.barChartOptions.xAxis.categories = ['Cust. 1', 'Cust. 2', 'Cust. 3', 'Cust. 4', 'Cust. 5'],
@@ -470,8 +527,15 @@
             code: "NC",
             z: 190
           }];
+          $scope.gauges = $scope.gaugesWithMonths[3];
           break;
       }
+
+      $scope.gauges = angular.copy( gaugesService.updateGaugeState($scope.gauges) );
+    }
+
+    $scope.init = function (argument) {
+      $scope.gauges = angular.copy( gaugesService.updateGaugeState($scope.gauges) );
     }
   }
 

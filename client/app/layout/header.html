@@ -7,7 +7,7 @@
       </a>
     </div>
 
-    <div class="top-nav col-xs-9"">
+    <div class="top-nav col-xs-9">
       <ul class="nav-left list-unstyled">
         <li class="dropdown text-normal nav-profile pull-right" uib-dropdown is-open="status.isopenProfile">
           <a href="javascript:;" uib-dropdown-toggle ng-disabled="disabled">
@@ -19,7 +19,7 @@
             <li class="nav-item">
               <a href="javascript://" ng-click="navigateTo('/landing')">
                 <i class="fa fa-file-text-o"></i>
-                <span>Exec Summary</span>
+                <span>Overview</span>
               </a>
             </li>
             <li class="nav-item">
@@ -47,12 +47,36 @@
               </ul>
             </li>
             <li class="nav-item">
+              <i class="fa fa-map"></i>
+              <span class="text-uppercase">Tracking</span>
+              <ul class="sub-menu">
+                <li class="nav-item">
+                  <a href="javascript://" ng-click="navigateTo('/team-performance')">
+                    <i class="fa fa-line-chart"></i>
+                    <span>Team Performance</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="javascript://">
+                    <i class="fa fa-money"></i>
+                    <span>Vehicle Tracking</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="javascript://">
+                    <i class="fa fa-user"></i>
+                    <span>Asset Tracking</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
               <i class="fa fa-list"></i>
               <span class="text-uppercase">Others</span>
 
               <ul class="sub-menu">
                 <li class="nav-item">
-                  <a href="javascript://">
+                  <a href="javascript://" ng-click="navigateTo('/my-profile')">
                     <i class="fa fa-user"></i>
                     <span>My Profile</span>
                   </a>

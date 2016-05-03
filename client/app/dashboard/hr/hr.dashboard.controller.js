@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .controller('HRDashCtrl', ['$scope', '$http', '$location', '$timeout', HRDashCtrl])
+    .controller('HRDashCtrl', ['$scope', '$http', '$location', 'gaugesService','CONST', HRDashCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
         if (isNaN(input)) return input;
@@ -10,7 +10,7 @@
       };
     });
 
-  function HRDashCtrl($scope, $http, $location, $timeout) {
+  function HRDashCtrl($scope, $http, $location,gaugesService, CONST) {
     var gaugeDefaultOptions = {
       chart: {
         type: 'solidgauge',
@@ -143,13 +143,13 @@
       },
       scale: [3, 6, 9, 12]
     };
+
     var hrCtrl = this;
     hrCtrl.monthsToDisplay = "3";
 
     $scope.satisfactionChart = {
       chart: {
         height: 300,
-        width: 300,
         spacingLeft: 0,
         spacingRight: 5
       },
@@ -231,9 +231,26 @@
       }]
     };
 
+    $scope.gauges = {
+      satisfaction:{
+        percent: 10,
+        className: "circle-blue",
+        colors: CONST.gaugeBlue 
+      },
+      retention:{
+        percent: 30,
+        className: "circle-green",
+        colors: CONST.gaugeGreen 
+      },
+      hiring:{
+        percent: 60,
+        className: "circle-yellow",
+        colors: CONST.gaugeYellow
+      }
+    }
+
     $scope.init = function() {
-      $scope.overallGauge = angular.copy(gaugeDefaultOptions);
-      $scope.overallGauge.title.text = "Overall";
+      $scope.gauges = angular.copy( gaugesService.updateGaugeState($scope.gauges) )
     }
 
     $scope.updateChart = function() {

@@ -400,7 +400,7 @@ ul.list-unstyled {
     color: #0079c1;
 }
 .panel-body {
-  min-height:  342px;
+  min-height:  400px;
 }
 
 
@@ -1034,8 +1034,9 @@ body {
   border: 0;
 }
 .ui-tab-container .nav-tabs > li > a {
-  font-size: 12px;
+  font-size: 15px;
   padding: 10px 5px;
+  letter-spacing: -1px;
 }
 
 .ui-tab-container .nav-tabs > li.active > a,
@@ -1053,6 +1054,17 @@ body {
   background: #FFF;
 }
 
+.ui-tab-container .nav-tabs > li.active:after {
+    content: "";
+    position: absolute;
+    top: -29px;
+    left: 50%;
+    border: 14px solid transparent;
+    border-bottom: 16px solid #5B9BD5;
+    z-index: 1;
+    margin-left: -14px;
+}
+
 .bg-white {
   background: rgba(255,255,255, 0.8);
 }
@@ -1067,18 +1079,12 @@ body {
 
 
 .page-dashboard .circle-container,
-.page-dashboard-customer .circle-container {
+.page-dashboard-customer .circle-container,
+.page-hr .circle-container {
   display: inline-block;
   margin: 0;
   padding: 0;
   width: 70px;
-  position: relative;
-}
-.page-hr .circle-container{
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  width: 100px;
   position: relative;
 }
 
@@ -1094,9 +1100,16 @@ body {
   color: #cce679;
 }
 
-.page-hr .dcharts-container {
-  background: transparent;
-  padding: 15px;
+.circle-danger .circles-text {
+  color: #da1b1b;
+}
+
+.circle-warning .circles-text {
+  color: #ff8400;
+}
+
+.circle-success .circles-text {
+  color: #157c3e;
 }
 
 .gauge-label {
@@ -1237,7 +1250,8 @@ body {
   content: "60%";
 }
 
-.revenue-title {
+.revenue-title,
+.events-container {
   background: #2a2a2b;
 }
 .revenue-title h3{
@@ -1295,11 +1309,11 @@ body {
 }
 
 .revenue-container .big-number {
-  font-family: 'Teko', sans-serif;
-  font-weight: 400;
-  margin: 11px 0 0;
+  font-family: "Roboto Condensed";
+  margin: 10px 0 5px;
   color: #FFF;
-  font-size: 50px;
+  font-size: 30px;
+  font-weight: 500;
   line-height: 1.1;
 }
 
@@ -1400,226 +1414,436 @@ body {
 
 /** Landing page Old styling **/
 
-
 .page-landing {
-  font-family: "Droid Sans", sans-serif;
-}
-
-.page-landing .nav-item .col-xs-3 {
-  padding-left: 10px;
-  padding-right: 10px;
-  width: 27%;
-}
-.page-landing .nav-item .col-xs-4 {
-  padding-right: 11px;
-  width: 31.33333%;
-}
-.revenue-title h4 {
-  color: #CCC;
-  font-size: 16px;
-  margin: 15px 0;
-}
-.page-landing .navs-list {
-  margin: 0 5px 0 0;
-  padding: 0;
-}
-
-.page-landing .navs-list .nav-item:nth-child(odd) {
-  background: #575B61;
-  -webkit-border-top-right-radius: 20px;
-  -moz-border-top-right-radius: 20px;
-  -o-border-top-right-radius: 20px;
-  border-top-right-radius: 20px;
-}
-
-.page-landing .navs-list .nav-item {
-  background: #5B9BD5;
-  -webkit-border-top-right-radius: 20px;
-  -moz-border-top-right-radius: 20px;
-  -o-border-top-right-radius: 20px;
-  border-top-right-radius: 20px;
-}
-
-.page-landing .navs-list .nav-item {
-   -webkit-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
-  -moz-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
-  -o-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
-  box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
-}
-
-.page-landing .section-inner {
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
-
-.page-landing .finance-nav .section-title {
-  background: url(../images/right-finance.png) no-repeat top right;
-}
-
-.page-landing .customers-nav .section-title {
-  background: url(../images/right-customers.png) no-repeat top right;
-}
-
-
-.page-landing .people-nav .section-title {
-  background: url(../images/right-people.png) no-repeat top right;
-}
-
-
-.page-landing .projects-nav .section-title {
-  background: url(../images/right-projects.png) no-repeat top right;
-}
-
-
-.page-landing .section {
-    height: 86px;
-}
-
-.page-landing .value-small {
-  margin: 0;
-  font-size: 10px;
-}
-
-.page-landing .section-title .section-inner {
-    padding-top: 12px;
-    padding-right: 2px;
-    float: right;
-    text-align: center;
-    width: 65px;
-}
-
-.page-landing .section-shadow {
-  background: url(../images/section-bg.jpg) repeat-x top;
-  height: 20px;
-  padding: 0;
-  position: relative;
-}
-.page-landing .section-shadow .rc {
-  height: 20px;
-  width: 16px;
-  position: absolute;
-  top: -1px;
-  right: 0;
-}
-.page-landing .section-shadow .rc-finance {
-  background: url(../images/finance-bcurve.png) no-repeat top right;
-}
-.page-landing .section-shadow .rc-customers {
-  background: url(../images/customers-bcurve.png) no-repeat top right;
-}
-.page-landing .section-shadow .rc-people {
-  background: url(../images/people-bcurve.png) no-repeat top right;
-}
-.page-landing .section-shadow .rc-project {
-  background: url(../images/projects-bcurve.png) no-repeat top right;
-}
-
-.page-landing .section-info,
-.page-landing .section-title,
-.page-landing .section-contents {
-  color: #FFF;
-}
-
-.page-landing .customers-nav .section-title {
-  color: #464646;
-}
-
-.page-landing .section-contents {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.page-landing .section-cont-text {
-  font-size: 11px;
-  padding-top: 12px;
-  opacity: 0.7;
-}
-
-.page-landing .section-info .heading-value {
-  font-size: 20px;
-  margin: 7px 5px;
-}
-
-.page-landing .section-info .contents-below {
-  border-width: 1px 0;
-  border-style: solid;
-  border-color: #FFF;
-}
-
-.page-landing .section-info .contents-below h5 {
-  margin: 5px;
-  display: inline-block;
-  font-size: 18px;
-  font-weight: normal;
-  min-width: 50px;
-}
-
-.page-landing .section-info .fa-circle {
-  font-size: 8px;
-  position: relative;
-  top: -1px;
-}
-
-.page-landing .section-info .title,
-.page-landing .section-info .count-m {
-  font-size: 12px;
-}
-.page-landing .section-info .doller {
-  font-size: 12px;
-  position: relative;
-}
-.page-landing .section-info .count {
-  font-size: 12px;
-}
-.page-landing .section-info .fa-circle,
-.page-landing .section-info .title,
-.page-landing .section-info .doller {
-  opacity: 0.5;
-}
-@media only screen and (max-width: 374px){
-  .page-landing .section-info .heading-value {
-    font-size: 18px;
-    margin: 7px 0;
+    font-family: "roboto condensed", sans-serif;
   }
 
-  .page-landing .section-info h5.info-value {
-    margin: 5px 0;
-    font-size: 8px;
-    min-width: 35px;
-  }
-}
-@media only screen and (max-width: 354px) {
-  .section-contents .section-cont-text {
-    display: none;
-  }
   .page-landing .nav-item .col-xs-3 {
-    width: 30%;
-  }
-  .page-landing .nav-item .col-xs-5 {
-    width: 35%;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 27%;
   }
   .page-landing .nav-item .col-xs-4 {
-      width: 35%;
+    padding-right: 11px;
+    width: 31.33333%;
   }
-  .card {
-    float: none;
+  .revenue-title h4 {
+    color: #CCC;
+    font-size: 16px;
+    margin: 15px 0;
+  }
+  .page-landing .navs-list {
+    margin: 0 5px 0 0;
+    padding: 0;
+  }
+
+  .page-landing .navs-list .nav-item {
+    background: #575B61;
+    -webkit-border-top-right-radius: 20px;
+    -moz-border-top-right-radius: 20px;
+    -o-border-top-right-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  .page-landing .navs-list .nav-item {
+     -webkit-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
+    -moz-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
+    -o-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
+    box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
+  }
+
+  .page-landing .finance-nav .section {
+    background: #82B73C;
+  }
+
+  .page-landing .customers-nav .section {
+    background: #FFF;
+    color: #454545;
+  }
+
+  .page-landing .people-nav .section {
+    background: #C8B134;
+  }
+
+  .page-landing .projects-nav .section {
+    background: #337BA1;
+  }
+
+  .page-landing .section-inner {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .page-landing .finance-nav .section-title {
+    background: url(../images/right-finance.png) no-repeat top right;
+  }
+
+  .page-landing .customers-nav .section-title {
+    background: url(../images/right-customers.png) no-repeat top right;
+  }
+
+
+  .page-landing .people-nav .section-title {
+    background: url(../images/right-people.png) no-repeat top right;
+  }
+
+
+  .page-landing .projects-nav .section-title {
+    background: url(../images/right-projects.png) no-repeat top right;
+  }
+
+
+  .page-landing .section {
+      height: 86px;
+  }
+
+  .page-landing .value-small {
     margin: 0;
+    font-size: 11px;
   }
-  .section-info h5 {
-    margin: 10px -5px;
-  }
-  .page-landing .section-title {
-    background-size: 110px 100% !important;
-    padding-right: 10px;
-  }
+
   .page-landing .section-title .section-inner {
-    padding-top: 12px;
-    padding-right: 2px;
-    float: right;
-    text-align: center;
-    width: 65px;
+      padding-top: 12px;
+      padding-right: 2px;
+      float: right;
+      text-align: center;
+      width: 65px;
   }
-}
+
+  .page-landing .section-shadow {
+    background: url(../images/section-bg.jpg) repeat-x top;
+    height: 20px;
+    padding: 0;
+    position: relative;
+  }
+  .page-landing .section-shadow .rc {
+    height: 20px;
+    width: 16px;
+    position: absolute;
+    top: -1px;
+    right: 0;
+  }
+  .page-landing .section-shadow .rc-finance {
+    background: url(../images/finance-bcurve.png) no-repeat top right;
+  }
+  .page-landing .section-shadow .rc-customers {
+    background: url(../images/customers-bcurve.png) no-repeat top right;
+  }
+  .page-landing .section-shadow .rc-people {
+    background: url(../images/people-bcurve.png) no-repeat top right;
+  }
+  .page-landing .section-shadow .rc-project {
+    background: url(../images/projects-bcurve.png) no-repeat top right;
+  }
+
+  .page-landing .section-info,
+  .page-landing .section-title,
+  .page-landing .section-contents {
+    color: #FFF;
+  }
+
+  .page-landing .customers-nav .section-title {
+    color: #464646;
+  }
+
+  .page-landing .section-contents {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    -webkit-box-shadow: 0 0 26px -4px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0 0 26px -4px rgba(0,0,0,0.5);
+    -o-box-shadow: 0 0 26px -4px rgba(0,0,0,0.5);
+    box-shadow: 0 0 26px -4px rgba(0,0,0,0.5);
+  }
+
+  .page-landing .section-cont-text {
+    font-size: 11px;
+    padding-top: 12px;
+    opacity: 0.7;
+  }
+
+  .page-landing .section-info .heading-value {
+    font-size: 28px;
+    margin: 7px 5px;
+    letter-spacing: -1px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .page-landing .section-info .dollar-sign {
+    font-size: 15px;
+    position: absolute;
+    top: 0px;
+    left: -9px;
+    letter-spacing: 0;
+  }
+
+  .page-dashboard .heading-value {
+    display: inline-block;
+    position: relative;
+  }
+
+  .page-landing .section-info .value-label,
+  .page-dashboard .revenue-container .value-label {
+    font-size: 11px;
+    position: absolute;
+    top: 0;
+    right: -33px;
+    letter-spacing: 0;
+  }
+
+  .page-dashboard .revenue-container .value-label {
+    top: 0px;
+  }
+
+  .page-landing .section-info .trend,
+  .page-dashboard .revenue-container .trend {
+    position: absolute;
+    bottom: 0;
+    right: -33px;
+    letter-spacing: 0;
+  }
+
+  .page-dashboard .revenue-container .trend {
+    bottom: 1px;
+    right: -47px;
+  }
+
+  .page-landing .section-info .contents-below {
+    border-top: 1px solid rgba(0,0,0,0.2);
+  }
+
+  .page-landing .section-info .contents-below h5 {
+    margin: 5px 0;
+    display: inline-block;
+    font-size: 19px;
+    font-weight: normal;
+    min-width: 50px;
+  }
+
+  .page-landing .section-info .fa-circle {
+    font-size: 8px;
+    position: relative;
+    top: -4px;
+  }
+
+  .page-landing .section-info .title,
+  .page-landing .section-info .count-m {
+    font-size: 12px;
+  }
+  .page-landing .section-info .doller {
+    font-size: 12px;
+    position: relative;
+  }
+  .page-landing .section-info .count {
+    font-size: 12px;
+  }
+
+  .page-landing .section-info .title,
+  .page-landing .section-info .doller {
+    opacity: 0.5;
+  }
+  @media only screen and (max-width: 374px){
+    .page-landing .section-info .heading-value {
+      font-size: 24px;
+      margin: 7px 0;
+    }
+
+    .page-landing .section-info .dollar-sign {
+      font-size: 13px;
+    }
+
+    .page-landing .section-info .value-label {
+      font-size: 10px;
+      top: -3px;
+      right: -24px;
+    }
+
+    .page-landing .section-info h5.info-value {
+      margin: 5px 0;
+      font-size: 8px;
+      min-width: 35px;
+    }
+
+    .page-landing .section-info .contents-below h5 {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    .page-landing .section-info .fa-circle {
+      top: -2px;
+    }
+  }
+
+  @media only screen and (max-width: 354px) {
+    .page-landing .section-info .heading-value {
+      font-size: 18px;
+    }
+
+    .page-landing .section-info .contents-below h5 {
+      margin: 5px 0;
+      font-size: 10px;
+    }
+    .section-contents .section-cont-text {
+      display: none;
+    }
+    .page-landing .nav-item .col-xs-3 {
+      width: 30%;
+    }
+    .page-landing .nav-item .col-xs-5 {
+      width: 35%;
+    }
+    .page-landing .nav-item .col-xs-4 {
+        width: 35%;
+    }
+    .card {
+      float: none;
+      margin: 0;
+    }
+    .section-info h5 {
+      margin: 10px -5px;
+    }
+    .page-landing .section-title {
+      background-size: 110px 100% !important;
+      padding-right: 10px;
+    }
+    .page-landing .section-title .section-inner {
+      padding-right: 2px;
+      float: right;
+      text-align: center;
+      width: 65px;
+    }
+
+    .page-landing .section-info .fa-circle {
+      top: -1px;
+    }
+
+    .page-landing .value-small {
+      font-size: 9px;
+    }
+  }
+
+
+  div.circle-container {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      width: 60px;
+      position: relative;
+      z-index: 1;
+      left: -1px;
+  }
+
+  .circle-container div.circles-text {
+    font-weight: bold;
+  }
+
+  .page-landing .icons-list {
+    padding: 0;
+  }
+
+  .page-landing .icons-list .icon-item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    -webkit-box-shadow: -14px 0 17px -13px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: -14px 0 17px -13px rgba(0, 0, 0, 0.5);
+    -o-box-shadow: -14px 0 17px -13px rgba(0, 0, 0, 0.5);
+    box-shadow: -14px 0 17px -13px rgba(0, 0, 0, 0.5);
+  }
+
+  .page-landing .icons-list .icon-item:hover {
+    background: #2F2F2F;
+  }
+
+  .page-landing .icons-list .profile-icon {
+    background: url(../images/icon-team.png) no-repeat top right;
+  }
+
+  .page-landing .icons-list .car-icon {
+    background: url(../images/icon-v-tracking.png) no-repeat top right;
+  }
+
+  .page-landing .icons-list .search-icon {
+    background: url(../images/icon-assets.png) no-repeat top right;
+  }
+
+  .page-landing .icons-list .icon {
+    height: 52px;
+    background-size: contain;
+    background-position: center;
+  }
+
+  .page-landing .icons-list .count {
+    position: absolute;
+    background: #E8CB43;
+    color: #454545;
+    top: 5px;
+    right: 50%;
+    margin-right: -29px;
+    border-radius: 50%;
+  }
+
+  /*  landing page end */
+
+
+  div.circle-container {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      width: 60px;
+      position: relative;
+      z-index: 1;
+      left: -1px;
+  }
+
+  .circle-container div.circles-text {
+    font-weight: bold;
+  }
+
+  .page-landing .icons-list {
+    padding: 0;
+  }
+
+  .page-landing .icons-list .icon-item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    -webkit-box-shadow: -14px 0 17px -13px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: -14px 0 17px -13px rgba(0, 0, 0, 0.5);
+    -o-box-shadow: -14px 0 17px -13px rgba(0, 0, 0, 0.5);
+    box-shadow: -14px 0 17px -13px rgba(0, 0, 0, 0.5);
+  }
+
+  .page-landing .icons-list .icon-item:hover {
+    background: #2F2F2F;
+  }
+
+  .page-landing .icons-list .profile-icon {
+    background: url(../images/icon-team.png) no-repeat top right;
+  }
+
+  .page-landing .icons-list .car-icon {
+    background: url(../images/icon-v-tracking.png) no-repeat top right;
+  }
+
+  .page-landing .icons-list .search-icon {
+    background: url(../images/icon-assets.png) no-repeat top right;
+  }
+
+  .page-landing .icons-list .icon {
+    height: 52px;
+    background-size: contain;
+    background-position: center;
+  }
+
+  .page-landing .icons-list .count {
+    position: absolute;
+    background: #E8CB43;
+    color: #454545;
+    top: 5px;
+    right: 50%;
+    margin-right: -29px;
+    border-radius: 50%;
+  }
 
 div.circle-container {
     display: inline-block;
@@ -1636,10 +1860,6 @@ div.circle-container {
     display: block;
     height: 0;
     overflow-y: hidden;
-}
-
-.gauge-panel.panel-body{
-  min-height: auto
 }
 
 .white-text {
@@ -1662,12 +1882,18 @@ div.circle-container {
   font-size: 10px
 }
 
-.green-text{
+.green-text,
+.up-trend.green-text{
   color: #00a64d;
 }
 
-.orange-text{
+.orange-text,
+.down-trend.orange-text{
   color: #FFC000;
+}
+
+.ui-tab-container .down-trend.orange-text{
+  color: #da1b1b;
 }
 
 .blue-text{
@@ -1676,6 +1902,10 @@ div.circle-container {
 
 .grey-text{
   color: #767676;
+}
+
+.red-text{
+  color: #C62B0A;
 }
 
 .revenue-container .dark-grey-text,
@@ -1715,8 +1945,8 @@ div.circle-container {
 }
 
 .db-heading{
-  margin-top: 14px;
-  padding: 9px 10px 10px 0;
+  margin-top: 5px;
+  padding: 6px 7px 7px 0;
 }
 
 .page-dashboard-customer .db-heading .sec-icon img{
@@ -1724,20 +1954,24 @@ div.circle-container {
 }
 
 .page-dashboard .db-heading,
-.page-hr .db-heading{
-  padding-right: 15px;
+.page-hr .db-heading {
+  padding-right: 10px;
+
 }
 
 .finance-db-heading{
   background: url(../images/right-finance-db.png) no-repeat top right;
+  background-size: 105px 69px;
 }
 
 .customers-db-heading{
   background: url(../images/right-customers-db.png) no-repeat top right;
+  background-size: 117px 69px;
 }
 
 .hr-db-heading{
   background: url(../images/right-people-db.png) no-repeat top right;
+  background-size: 105px 69px;
 }
 .page-sub-heading{
   border-top: 1px solid #ddd;
@@ -1753,5 +1987,5 @@ div.circle-container {
 .big-number .sign{
   font-size: 20px;
   position: relative;
-  top: -17px;
+  top: -8px;
 }

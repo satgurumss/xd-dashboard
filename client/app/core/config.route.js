@@ -68,6 +68,9 @@
         .when('/landing-old', {
           templateUrl: 'app/landing/landing-old.html'
         })
+        .when('/team-performance', {
+          templateUrl: 'app/tracking/team-performance.html'
+        })
         .when('/404', {
           templateUrl: 'app/page/404.html'
         })
