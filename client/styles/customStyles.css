@@ -1606,7 +1606,7 @@ body {
 
   .page-dashboard .revenue-container .trend {
     bottom: 1px;
-    right: -44px;
+    right: -47px;
   }
 
   .page-landing .section-info .contents-below {
@@ -1716,6 +1716,10 @@ body {
 
     .page-landing .section-info .fa-circle {
       top: -1px;
+    }
+
+    .page-landing .value-small {
+      font-size: 9px;
     }
   }
 
