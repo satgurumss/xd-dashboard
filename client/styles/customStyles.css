@@ -1067,18 +1067,12 @@ body {
 
 
 .page-dashboard .circle-container,
-.page-dashboard-customer .circle-container {
+.page-dashboard-customer .circle-container,
+.page-hr .circle-container {
   display: inline-block;
   margin: 0;
   padding: 0;
   width: 70px;
-  position: relative;
-}
-.page-hr .circle-container{
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  width: 100px;
   position: relative;
 }
 
@@ -1104,11 +1098,6 @@ body {
 
 .circle-success .circles-text {
   color: #157c3e;
-}
-
-.page-hr .dcharts-container {
-  background: transparent;
-  padding: 15px;
 }
 
 .gauge-label {
@@ -1249,7 +1238,8 @@ body {
   content: "60%";
 }
 
-.revenue-title {
+.revenue-title,
+.events-container {
   background: #2a2a2b;
 }
 .revenue-title h3{
@@ -1648,10 +1638,6 @@ div.circle-container {
     display: block;
     height: 0;
     overflow-y: hidden;
-}
-
-.gauge-panel.panel-body{
-  min-height: auto
 }
 
 .white-text {

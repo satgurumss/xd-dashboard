@@ -90,7 +90,7 @@
         /* config object */
         $scope.uiConfig = {
             calendar:{
-                height: 450,
+                height: 250,
                 editable: true,
                 header:{
                     left: 'title',

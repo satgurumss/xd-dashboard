@@ -302,7 +302,7 @@
       },
 
       xAxis: {
-        categories: ['Customer A Consulting', 'Customer B Consulting', 'Customer C Consulting', 'Customer D Consulting', 'Customer E Consulting'],
+        categories: ['1', '2', '3', '4', '5'],
         tickWidth: 0,
         tickPixelInterval: 20,
         title: {
