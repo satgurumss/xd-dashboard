@@ -1586,14 +1586,28 @@ body {
     font-size: 11px;
     position: absolute;
     top: 0px;
-    right: -26px;
+    right: -30px;
     letter-spacing: 0;
   }
 
-  .page-landing .section-info .trend {
+  .page-dashboard .revenue-container .value-label {
+    font-size: 11px;
+    position: absolute;
+    top: 15px;
+    letter-spacing: 0;
+  }
+
+  .page-landing .section-info .trend{
     position: absolute;
     bottom: 0;
-    right: -31px;
+    right: -38px;
+    letter-spacing: 0;
+  }
+
+  .page-dashboard .revenue-container .trend{
+    position: absolute;
+    top: 36px;
+    right: 36px;
     letter-spacing: 0;
   }
 
