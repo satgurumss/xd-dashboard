@@ -68,7 +68,7 @@
         spacingTop: 0,
         spacingBottom: 0,
         spacingLeft: 0,
-        spacingRight: 0
+        spacingRight: 10
       },
 
       tooltip: {
@@ -169,7 +169,7 @@
 
       series: [{
         groupPadding: 0,
-        data: [205, 190, 160, 140, 100]
+        data: [22, 20, 15, 12, 10]
       }]
     };
 

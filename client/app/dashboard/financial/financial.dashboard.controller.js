@@ -362,7 +362,7 @@
         labels: {
           style: {
             color: '#707073',
-            fontSize: "0px",
+            fontSize: "14px",
             enabled: false
           }
         },
