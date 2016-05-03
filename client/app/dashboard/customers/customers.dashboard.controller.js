@@ -36,23 +36,50 @@
       rating: "4.5"
     }];
 
-    $scope.gauges = {
+  $scope.gaugesWithMonths = [{
       revSpread:{
-        percent: 10,
-        className: "circle-blue",
-        colors: CONST.gaugeBlue 
+        percent: 10
       },
       penetration:{
-        percent: 30,
-        className: "circle-green",
-        colors: CONST.gaugeGreen 
+        percent: 30
       },
       satisfaction:{
-        percent: 60,
-        className: "circle-yellow",
-        colors: CONST.gaugeYellow
+        percent: 60
       }
-    }
+    }, {
+      revSpread:{
+        percent: 70
+      },
+      penetration:{
+        percent: 20
+      },
+      satisfaction:{
+        percent: 10
+      }
+    }, {
+      revSpread:{
+        percent: 40
+      },
+      penetration:{
+        percent: 40
+      },
+      satisfaction:{
+        percent: 20
+      }
+    }, {
+      revSpread:{
+        percent: 10
+      },
+      penetration:{
+        percent: 30
+      },
+      satisfaction:{
+        percent: 60
+      }
+    }];
+
+
+    $scope.gauges = $scope.gaugesWithMonths[0];
 
     $scope.barChartOptions = {
       colors: ["#B6A2DE"],
@@ -315,6 +342,7 @@
             code: "NC",
             z: 262
           }];
+          $scope.gauges = $scope.gaugesWithMonths[0];
           break
         case "6":
 
@@ -377,6 +405,7 @@
             z: 200
           }];
 
+          $scope.gauges = $scope.gaugesWithMonths[1];
           break;
         case "9":
           $scope.barChartOptions.xAxis.categories = ['Cust. 1', 'Cust. 2', 'Cust. 3', 'Cust. 4', 'Cust. 5'],
@@ -437,6 +466,7 @@
             code: "NC",
             z: 150
           }];
+          $scope.gauges = $scope.gaugesWithMonths[2];
           break;
         case "12":
           $scope.barChartOptions.xAxis.categories = ['Cust. 1', 'Cust. 2', 'Cust. 3', 'Cust. 4', 'Cust. 5'],
@@ -497,8 +527,11 @@
             code: "NC",
             z: 190
           }];
+          $scope.gauges = $scope.gaugesWithMonths[3];
           break;
       }
+
+      $scope.gauges = angular.copy( gaugesService.updateGaugeState($scope.gauges) );
     }
 
     $scope.init = function (argument) {
