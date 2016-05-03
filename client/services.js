@@ -99,11 +99,11 @@
               gauge.colors = CONST.gaugeDanger,
               gauge.className = "circle-danger"
             }
-            else if(30 < gauge.percent <= 50){
+            else if(30 < gauge.percent && gauge.percent <= 50){
               gauge.colors = CONST.gaugeWarning,
               gauge.className = "circle-warning"
             }
-            else if(50 < gauge.percent <= 80){
+            else if(50 < gauge.percent && gauge.percent <= 100){
               gauge.colors = CONST.gaugeSuccess,
               gauge.className = "circle-success"
             }
