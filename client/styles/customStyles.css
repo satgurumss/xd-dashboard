@@ -1034,8 +1034,9 @@ body {
   border: 0;
 }
 .ui-tab-container .nav-tabs > li > a {
-  font-size: 12px;
+  font-size: 15px;
   padding: 10px 5px;
+  letter-spacing: -1px;
 }
 
 .ui-tab-container .nav-tabs > li.active > a,
@@ -1051,6 +1052,17 @@ body {
 
 .ui-tab-container .tab-content {
   background: #FFF;
+}
+
+.ui-tab-container .nav-tabs > li.active:after {
+    content: "";
+    position: absolute;
+    top: -29px;
+    left: 50%;
+    border: 14px solid transparent;
+    border-bottom: 16px solid #5B9BD5;
+    z-index: 1;
+    margin-left: -14px;
 }
 
 .bg-white {
@@ -1572,14 +1584,28 @@ body {
     font-size: 11px;
     position: absolute;
     top: 0px;
-    right: -26px;
+    right: -30px;
     letter-spacing: 0;
   }
 
-  .page-landing .section-info .trend {
+  .page-dashboard .revenue-container .value-label {
+    font-size: 11px;
+    position: absolute;
+    top: 15px;
+    letter-spacing: 0;
+  }
+
+  .page-landing .section-info .trend{
     position: absolute;
     bottom: 0;
-    right: -31px;
+    right: -38px;
+    letter-spacing: 0;
+  }
+
+  .page-dashboard .revenue-container .trend{
+    position: absolute;
+    top: 36px;
+    right: 36px;
     letter-spacing: 0;
   }
 
@@ -1774,12 +1800,18 @@ div.circle-container {
   font-size: 10px
 }
 
-.green-text{
+.green-text,
+.up-trend.green-text{
   color: #00a64d;
 }
 
-.orange-text{
+.orange-text,
+.down-trend.orange-text{
   color: #FFC000;
+}
+
+.ui-tab-container .down-trend.orange-text{
+  color: #da1b1b;
 }
 
 .blue-text{
