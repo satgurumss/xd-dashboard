@@ -33,7 +33,7 @@
         <div class="section section-contents col-xs-3">
           <div class="section-inner">
             <div class="circle-container">
-             <div ng-circles value="70" width="18" colors="['#767676', '#5B9BD5']" textClass="custom-text-class"></div>
+             <div ng-circles value="gauges.finance.percent" width="15" colors="['#FFF', gauges.finance.colors[1]]"></div>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@
         <div class="section section-contents col-xs-3">
           <div class="section-inner">
             <div class="circle-container">
-             <div ng-circles value="85" width="18" colors="['#767676', '#FFF']" textClass="custom-text-class"></div>
+             <div ng-circles value="gauges.customers.percent" width="15" colors="['#FFF', gauges.customers.colors[1]]"></div>
             </div>
           </div>
         </div>
@@ -111,7 +111,7 @@
         <div class="section section-contents col-xs-3">
           <div class="section-inner">
             <div class="circle-container">
-              <div ng-circles value="50" width="18" colors="['#767676', '#5B9BD5']" textClass="custom-text-class"></div>
+             <div ng-circles value="gauges.people.percent" width="15" colors="['#FFF', gauges.people.colors[1]]"></div>
             </div>
           </div>
         </div>
@@ -151,7 +151,7 @@
         <div class="section section-contents col-xs-3">
           <div class="section-inner">
             <div class="circle-container">
-             <div ng-circles value="70" width="18" colors="['#767676', '#FFF']" textClass="custom-text-class"></div>
+             <div ng-circles value="gauges.projects.percent" width="15" colors="['#FFF', gauges.projects.colors[1]]"></div>
             </div>
           </div>
         </div>
@@ -194,6 +194,248 @@
 
 <style type="text/css">
 
+
+.page-landing {
+  font-family: "roboto condensed", sans-serif;
+}
+
+.page-landing .nav-item .col-xs-3 {
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 27%;
+}
+.page-landing .nav-item .col-xs-4 {
+  padding-right: 11px;
+  width: 31.33333%;
+}
+.revenue-title h4 {
+  color: #CCC;
+  font-size: 16px;
+  margin: 15px 0;
+}
+.page-landing .navs-list {
+  margin: 0 5px 0 0;
+  padding: 0;
+}
+
+.page-landing .navs-list .nav-item {
+  background: #575B61;
+  -webkit-border-top-right-radius: 20px;
+  -moz-border-top-right-radius: 20px;
+  -o-border-top-right-radius: 20px;
+  border-top-right-radius: 20px;
+}
+/*
+.page-landing .navs-list .nav-item {
+  background: #5B9BD5;
+  -webkit-border-top-right-radius: 20px;
+  -moz-border-top-right-radius: 20px;
+  -o-border-top-right-radius: 20px;
+  border-top-right-radius: 20px;
+} */
+
+.page-landing .navs-list .nav-item {
+   -webkit-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
+  -moz-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
+  -o-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
+  box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
+}
+
+.page-landing .finance-nav .section {
+  background: #82B73C;
+}
+
+.page-landing .customers-nav .section {
+  background: #FFF;
+  color: #454545;
+}
+
+.page-landing .people-nav .section {
+  background: #C8B134;
+}
+
+.page-landing .projects-nav .section {
+  background: #337BA1;
+}
+
+.page-landing .section-inner {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.page-landing .finance-nav .section-title {
+  background: url(../images/right-finance.png) no-repeat top right;
+}
+
+.page-landing .customers-nav .section-title {
+  background: url(../images/right-customers.png) no-repeat top right;
+}
+
+
+.page-landing .people-nav .section-title {
+  background: url(../images/right-people.png) no-repeat top right;
+}
+
+
+.page-landing .projects-nav .section-title {
+  background: url(../images/right-projects.png) no-repeat top right;
+}
+
+
+.page-landing .section {
+    height: 86px;
+}
+
+.page-landing .value-small {
+  margin: 0;
+  font-size: 10px;
+}
+
+.page-landing .section-title .section-inner {
+    padding-top: 12px;
+    padding-right: 2px;
+    float: right;
+    text-align: center;
+    width: 65px;
+}
+
+.page-landing .section-shadow {
+  background: url(../images/section-bg.jpg) repeat-x top;
+  height: 20px;
+  padding: 0;
+  position: relative;
+}
+.page-landing .section-shadow .rc {
+  height: 20px;
+  width: 16px;
+  position: absolute;
+  top: -1px;
+  right: 0;
+}
+.page-landing .section-shadow .rc-finance {
+  background: url(../images/finance-bcurve.png) no-repeat top right;
+}
+.page-landing .section-shadow .rc-customers {
+  background: url(../images/customers-bcurve.png) no-repeat top right;
+}
+.page-landing .section-shadow .rc-people {
+  background: url(../images/people-bcurve.png) no-repeat top right;
+}
+.page-landing .section-shadow .rc-project {
+  background: url(../images/projects-bcurve.png) no-repeat top right;
+}
+
+.page-landing .section-info,
+.page-landing .section-title,
+.page-landing .section-contents {
+  color: #FFF;
+}
+
+.page-landing .customers-nav .section-title {
+  color: #464646;
+}
+
+.page-landing .section-contents {
+  padding-left: 10px;
+  padding-right: 10px;
+  -webkit-box-shadow: 0 0 26px -4px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 0 26px -4px rgba(0,0,0,0.5);
+  -o-box-shadow: 0 0 26px -4px rgba(0,0,0,0.5);
+  box-shadow: 0 0 26px -4px rgba(0,0,0,0.5);
+}
+
+.section.section-contents {
+}
+
+.page-landing .section-cont-text {
+  font-size: 11px;
+  padding-top: 12px;
+  opacity: 0.7;
+}
+
+.page-landing .section-info .heading-value {
+  font-size: 20px;
+  margin: 7px 5px;
+}
+
+.page-landing .section-info .contents-below {
+  border-top: 1px solid rgba(0,0,0,0.2);
+}
+
+.page-landing .section-info .contents-below h5 {
+  margin: 5px;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: normal;
+  min-width: 50px;
+}
+
+.page-landing .section-info .fa-circle {
+  font-size: 8px;
+  position: relative;
+  top: -1px;
+}
+
+.page-landing .section-info .title,
+.page-landing .section-info .count-m {
+  font-size: 12px;
+}
+.page-landing .section-info .doller {
+  font-size: 12px;
+  position: relative;
+}
+.page-landing .section-info .count {
+  font-size: 12px;
+}
+.page-landing .section-info .fa-circle,
+.page-landing .section-info .title,
+.page-landing .section-info .doller {
+  opacity: 0.5;
+}
+@media only screen and (max-width: 374px){
+  .page-landing .section-info .heading-value {
+    font-size: 18px;
+    margin: 7px 0;
+  }
+
+  .page-landing .section-info h5.info-value {
+    margin: 5px 0;
+    font-size: 8px;
+    min-width: 35px;
+  }
+}
+@media only screen and (max-width: 354px) {
+  .section-contents .section-cont-text {
+    display: none;
+  }
+  .page-landing .nav-item .col-xs-3 {
+    width: 30%;
+  }
+  .page-landing .nav-item .col-xs-5 {
+    width: 35%;
+  }
+  .page-landing .nav-item .col-xs-4 {
+      width: 35%;
+  }
+  .card {
+    float: none;
+    margin: 0;
+  }
+  .section-info h5 {
+    margin: 10px -5px;
+  }
+  .page-landing .section-title {
+    background-size: 110px 100% !important;
+    padding-right: 10px;
+  }
+  .page-landing .section-title .section-inner {
+    padding-top: 12px;
+    padding-right: 2px;
+    float: right;
+    text-align: center;
+    width: 65px;
+  }
+}
   .page-landing .bottom-section {
     padding: 10px 0;
   }
@@ -205,11 +447,10 @@
   .page-landing .icons-list .icon-item {
     padding-top: 15px;
     padding-bottom: 15px;
-    background: #2F2F2F;
-    -webkit-box-shadow: -6px 1px 28px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: -6px 1px 28px rgba(0, 0, 0, 0.5);
-    -o-box-shadow: -6px 1px 28px rgba(0, 0, 0, 0.5);
-    box-shadow: -6px 1px 28px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: -17px 0 17px -13px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: -17px 0 17px -13px rgba(0, 0, 0, 0.5);
+    -o-box-shadow: -17px 0 17px -13px rgba(0, 0, 0, 0.5);
+    box-shadow: -17px 0 17px -13px rgba(0, 0, 0, 0.5);
   }
 
   .page-landing .icons-list .profile-icon {

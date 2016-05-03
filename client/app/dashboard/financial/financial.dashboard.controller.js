@@ -8,67 +8,43 @@
 
     $scope.gaugesWithMonths = [{
       energy:{
-        percent: 20,
-        className: "circle-blue",
-        colors: CONST.gaugeBlue
+        percent: 20
       },
       transport:{
-        percent: 50,
-        className: "circle-green",
-        colors: CONST.gaugeGreen
+        percent: 50
       },
       devices:{
-        percent: 80,
-        className: "circle-yellow",
-        colors: CONST.gaugeYellow
+        percent: 80
       }
     }, {
       energy:{
-        percent: 90,
-        className: "circle-blue",
-        colors: CONST.gaugeBlue
+        percent: 90
       },
       transport:{
-        percent: 15,
-        className: "circle-green",
-        colors: CONST.gaugeGreen
+        percent: 15
       },
       devices:{
-        percent: 75,
-        className: "circle-yellow",
-        colors: CONST.gaugeYellow
+        percent: 75
       }
     }, {
       energy:{
-        percent: 44,
-        className: "circle-blue",
-        colors: CONST.gaugeBlue
+        percent: 44
       },
       transport:{
-        percent: 18,
-        className: "circle-green",
-        colors: CONST.gaugeGreen
+        percent: 18
       },
       devices:{
-        percent: 35,
-        className: "circle-yellow",
-        colors: CONST.gaugeYellow
+        percent: 35
       }
     }, {
       energy:{
-        percent: 10,
-        className: "circle-blue",
-        colors: CONST.gaugeBlue
+        percent: 10
       },
       transport:{
-        percent: 30,
-        className: "circle-green",
-        colors: CONST.gaugeGreen
+        percent: 30
       },
       devices:{
-        percent: 60,
-        className: "circle-yellow",
-        colors: CONST.gaugeYellow
+        percent: 60
       }
     }];
 
@@ -481,7 +457,7 @@
           $scope.chartConfig.series[2].data = [];
           $scope.chartConfig.series[2].data = [12, 7, 11.7, 12, 10, 15, 8.0, 5.5, 10.7, 3.2, 13.5, 14.3];
 
-          $scope.gauges = $scope.gaugesWithMonths[4];
+          $scope.gauges = $scope.gaugesWithMonths[3];
 
 
 
