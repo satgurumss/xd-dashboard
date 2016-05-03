@@ -8,33 +8,33 @@
 
     $scope.gaugesWithMonths = [{
       energy:{
+        percent: 10
+      },
+      transport:{
+        percent: 30
+      },
+      devices:{
+        percent: 60
+      }
+    }, {
+      energy:{
+        percent: 70
+      },
+      transport:{
         percent: 20
       },
-      transport:{
-        percent: 50
-      },
       devices:{
-        percent: 80
+        percent: 10
       }
     }, {
       energy:{
-        percent: 90
+        percent: 40
       },
       transport:{
-        percent: 15
+        percent: 40
       },
       devices:{
-        percent: 75
-      }
-    }, {
-      energy:{
-        percent: 44
-      },
-      transport:{
-        percent: 18
-      },
-      devices:{
-        percent: 35
+        percent: 20
       }
     }, {
       energy:{
