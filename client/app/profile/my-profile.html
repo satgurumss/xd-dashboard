@@ -117,13 +117,13 @@
       <div class="row">
         <div class="col-xs-12">
           <uib-progress class="progressbar-lg progress-rounded">
-            <uib-bar value="50" type="success">
+            <uib-bar value="50" class="darksuccess-progress">
               <span>Salary</span>
             </uib-bar>
-            <uib-bar value="25" type="warning">
+            <uib-bar value="25" class="darkwarning-progress">
               <span>Bonus</span>
             </uib-bar>
-            <uib-bar value="25" type="danger">
+            <uib-bar value="25" class="darkdanger-progress">
               <span>Allowances</span>
             </uib-bar>
           </uib-progress>
@@ -149,3 +149,17 @@
     </div>
   </div>
 </div>
+
+<style type="text/css">
+  .darksuccess-progress{
+    background-color:#157c3e;
+  }
+
+  .darkwarning-progress{
+    background-color:#ff8400;
+  }
+
+  .darkdanger-progress{
+    background-color:#da1b1b;
+  }
+</style>
