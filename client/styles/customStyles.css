@@ -1758,11 +1758,15 @@ body {
     margin-top: -4px;
   }
 
+  .page-landing .projects-nav .circle-container div.circles-text {
+    margin-top: 0px;
+  }
+
   .page-landing .circle-container .circle-label {
     font-size: 11px;
     position: absolute;
     bottom: 13px;
-    left: 19px;
+    left: 23px;
     font-weight: bold;
   }
 
@@ -2089,11 +2093,11 @@ div.circle-container {
 .page-profile {
     margin: 0;
 }
-.custom-profile-header {
+/*.custom-profile-header {
   margin: 0 15px 0 0;
   position: fixed;
   z-index: 10;
-}
+}*/
 .container-dark,
 .custom-profile-header {
   background: #2a2a2b;
@@ -2121,9 +2125,7 @@ div.circle-container {
   background: #3e3e40;
   padding: 15px;
 }
-.container-vacation {
-  margin-top: 182px;
-}
+
 .container-vacation .form-control {
   color: #2a2a2a;
   background-color: #e4e4e4;

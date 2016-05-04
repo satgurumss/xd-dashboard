@@ -1,7 +1,7 @@
 
 <div class="page page-profile" ng-controller="ProfileCtrl">
   <div class="container">
-    <header class="custom-profile-header clearfix">
+    <div class="container container-dark container-header">
       <div class="row">
         <div class="col-xs-4">
           <div class="profile-imge">
@@ -41,7 +41,7 @@
             </div>
         </div>
       </div>
-    </header>
+    </div>
     <div class="container container-light container-vacation">
         <!-- Vacations -->
         <div class="row">
@@ -58,33 +58,41 @@
             </div>
           </div>
           <div class="col-xs-8" data-ng-controller="DatepickerDemoCtrl">
-            <div class="input-group ui-datepicker mb-10">
-                <input type="text"
-                  class="form-control"
-                  datepicker-popup="{{format}}"
-                  ng-model="dt"
-                  is-open="opened"
-                  min="minDate"
-                  datepicker-options="dateOptions"
-                  date-disabled="disabled(date, mode)"
-                  ng-required="true"
-                  close-text="Close"
-                  placeholder="From Date">
-                <span class="input-group-addon" ng-click="open($event)"><i class="fa fa-calendar"></i></span>
+           <div class="input-group ui-datepicker">
+              <input type="text" 
+                     class="form-control"
+                     uib-datepicker-popup="{{format}}"
+                     ng-model="dt"
+                     is-open="popup1.opened"
+                     min-date="minDate"
+                     max-date="maxDate"
+                     datepicker-options="dateOptions"
+                     date-disabled="disabled(date, mode)"
+                     ng-required="true"
+                     close-text="Close"
+                     disabled="disabled"
+                     alt-input-formats="altInputFormats" />
+              <span class="input-group-addon" ng-click="open1()">
+                <i class="fa fa-calendar"></i>
+              </span>
             </div>
-            <div class="input-group ui-datepicker  mb-10">
-                <input type="text"
-                  class="form-control"
-                  datepicker-popup="{{format}}"
-                  ng-model="dt"
-                  is-open="opened"
-                  min="minDate"
-                  datepicker-options="dateOptions"
-                  date-disabled="disabled(date, mode)"
-                  ng-required="true"
-                  close-text="Close"
-                  placeholder="To Date">
-                <span class="input-group-addon" ng-click="open($event)"><i class="fa fa-calendar"></i></span>
+            <div class="input-group ui-datepicker margin-t10">
+              <input type="text" 
+                     class="form-control"
+                     uib-datepicker-popup="{{format}}"
+                     ng-model="dt"
+                     is-open="popup2.opened"
+                     min-date="minDate"
+                     max-date="maxDate"
+                     datepicker-options="dateOptions"
+                     date-disabled="disabled(date, mode)"
+                     ng-required="true"
+                     close-text="Close"
+                     disabled="disabled"
+                     alt-input-formats="altInputFormats" />
+              <span class="input-group-addon" ng-click="open2()">
+                <i class="fa fa-calendar"></i>
+              </span>
             </div>
           </div>
         </div>
