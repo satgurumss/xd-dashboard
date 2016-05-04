@@ -193,7 +193,7 @@
         data: [5.0, 4.0, 5.0],
         marker: {
           symbol: 'circle',
-          fillColor: '#303031',
+          fillColor: 'rgba(40, 189, 198, 1)',
           lineWidth: 1,
           lineColor: '#28bdc6'
         }
