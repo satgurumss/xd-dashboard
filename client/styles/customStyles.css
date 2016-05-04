@@ -1890,6 +1890,7 @@ div.circle-container {
 }
 
 .page-hr .tab-content > .tab-pane:not(.active),
+.customDisplayNone,
 .page-dashboard-customer .tab-content > .tab-pane:not(.active) {
     display: block;
     height: 0;

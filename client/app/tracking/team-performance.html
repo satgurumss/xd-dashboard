@@ -1,137 +1,147 @@
 <div class="container page-team-performance" data-ng-controller="TeamPerformanceCtrl">
-
-<div class="container">
-  <div class="revenue-container clearfix">
-    <div class="col-xs-8">
-      <h1 class="heading-value big-number display-inline-block clearfix">
-        <span class="sign">$</span>
-        43.45M
-        <span class="value-label label">QTD</span>
-        <span class="trend down-trend orange-text">- 10.2 K</span>
-      </h1>
-      <div class="clearfix"></div>
-      <div class="progress-container">
-        <progress-bar options="financeProgress"/>
+  <div class="container">
+    <div class="revenue-container clearfix">
+      <div class="col-xs-8">
+        <h1 class="heading-value big-number display-inline-block clearfix">
+          <span class="sign">$</span>
+          43.45M
+          <span class="value-label label">QTD</span>
+          <span class="trend down-trend orange-text">- 10.2 K</span>
+        </h1>
+        <div class="clearfix"></div>
+        <div class="progress-container">
+          <progress-bar options="performanceProgress"/>
+        </div>
+      </div>
+      <div class="col-xs-4 pl-0 team-count-badge text-right">
+        <img src="images/icon-team.png" border="0" />
+        <div class="badge badge-warning">8</div>
       </div>
     </div>
-    <div class="col-xs-4 pl-0 team-count-badge text-right">
-      <img src="images/icon-team.png" border="0" />
-      <div class="badge badge-warning">8</div>
+
+    <div class="container container-dark container-team">
+    <!-- Team Container -->
+        <div class="row">
+          <div class="col-xs-4 text-center team-mem-box" ng-click="empView()">
+            <div class="team-emp-img">
+              <img alt="" src="images/g1.jpg" border="0" widht="80%" class="img-circle" />
+              <div class="badge badge-warning">8</div>
+            </div>
+            <h5 class="white-text mt-0 text-uppercase">D Smith</h5>
+            <h6 class="mt-0">Manager HR</h6>
+            <div class="progress-bar-container">
+              <progress-bar options="empStats[0]"/>
+            </div>
+          </div>
+          <div class="col-xs-4 text-center team-mem-box" ng-click="empView()">
+            <div class="team-emp-img">
+              <img alt="" src="images/m1.jpg" border="0" widht="80%" class="img-circle" />
+              <div class="badge badge-warning hidden">8</div>
+            </div>
+            <h5 class="white-text mt-0 text-uppercase">S DOE</h5>
+            <h6 class="mt-0">Manager</h6>
+            <div class="progress-bar-container">
+              <progress-bar options="empStats[1]"/>
+            </div>
+          </div>
+          <div class="col-xs-4 text-center team-mem-box" ng-click="empView()">
+            <div class="team-emp-img">
+              <img alt="" src="images/g2.jpg" border="0" widht="80%" class="img-circle" />
+              <div class="badge badge-warning hidden">8</div>
+            </div>
+            <h5 class="white-text mt-0 text-uppercase">M Maria</h5>
+            <h6 class="mt-0">Manager IT</h6>
+            <div class="progress-bar-container">
+              <progress-bar options="empStats[2]"/>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 text-center team-mem-box" ng-click="empView()">
+            <div class="team-emp-img">
+              <img alt="" src="images/m4.jpg" border="0" widht="80%" class="img-circle" />
+              <div class="badge badge-warning hidden">8</div>
+            </div>
+            <h5 class="white-text mt-0 text-uppercase">A Aditya</h5>
+            <h6 class="mt-0">Mgr Finance</h6>
+            <div class="progress-bar-container">
+              <progress-bar options="empStats[3]"/>
+            </div>
+          </div>
+          <div class="col-xs-4 text-center team-mem-box" ng-click="empView()">
+            <div class="team-emp-img">
+              <img alt="" src="images/g3.jpg" border="0" widht="80%" class="img-circle" />
+              <div class="badge badge-warning hidden">8</div>
+            </div>
+            <h5 class="white-text mt-0 text-uppercase">G Lorem</h5>
+            <h6 class="mt-0">Mgr Audit</h6>
+            <div class="progress-bar-container">
+              <progress-bar options="empStats[4]"/>
+            </div>
+          </div>
+          <div class="col-xs-4 text-center team-mem-box" ng-click="empView()">
+            <div class="team-emp-img">
+              <img alt="" src="images/m3.jpg" border="0" widht="80%" class="img-circle" />
+              <div class="badge badge-warning hidden">8</div>
+            </div>
+            <h5 class="white-text mt-0 text-uppercase">C Gayle</h5>
+            <h6 class="mt-0">Manger HR</h6>
+            <div class="progress-bar-container">
+              <progress-bar options="empStats[5]"/>
+            </div>
+          </div>
+        </div>
     </div>
+
+    <div class="container container-white container-team-overviw" 
+      ng-class="{customDisplayNone: !isEmpView}">
+      <!-- Team Overview -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h4 class="dark-text mt-0">Team Overview</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4 margin-t10">
+         <hc-chart options="barChartOptions"/>
+        </div>
+        <div class="col-xs-8 margin-t10">
+          <ul>
+            <li>
+              C. Gayle
+            </li>
+            <li>
+              M. Maria
+            </li>
+            <li>
+              S. Doe
+            </li>
+            <li>
+              G. Lorem
+            </li>
+            <li>
+              A. Aditya
+            </li>
+            <li>
+              D. Smith
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container container-white container-emp-overviw" 
+      ng-class="{customDisplayNone:isEmpView}">
+      <div class="slider-wrapper" style="margin-bottom:10px;">
+        <input slider options="options" ng-model="monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
+      </div>
+      <div class="clearfix">
+        <hc-chart options="satisfactionChart" watch="hrCtrl.monthsToDisplay"/>
+      </div>
+    </div>>
   </div>
-
-<div class="container container-dark container-team">
-<!-- Team Container -->
-    <div class="row">
-      <div class="col-xs-4 text-center team-mem-box">
-        <div class="team-emp-img">
-          <img alt="" src="images/g1.jpg" border="0" widht="80%" class="img-circle" />
-          <div class="badge badge-warning">8</div>
-        </div>
-        <h5 class="white-text mt-0 text-uppercase">D Smith</h5>
-        <h6 class="mt-0">Manager HR</h6>
-        <div class="progress-bar-container">
-          prog. bar
-        </div>
-      </div>
-      <div class="col-xs-4 text-center team-mem-box">
-        <div class="team-emp-img">
-          <img alt="" src="images/m1.jpg" border="0" widht="80%" class="img-circle" />
-          <div class="badge badge-warning hidden">8</div>
-        </div>
-        <h5 class="white-text mt-0 text-uppercase">S DOE</h5>
-        <h6 class="mt-0">Manager</h6>
-        <div class="progress-bar-container">
-          prog. bar
-        </div>
-      </div>
-      <div class="col-xs-4 text-center team-mem-box">
-        <div class="team-emp-img">
-          <img alt="" src="images/g2.jpg" border="0" widht="80%" class="img-circle" />
-          <div class="badge badge-warning hidden">8</div>
-        </div>
-        <h5 class="white-text mt-0 text-uppercase">M Maria</h5>
-        <h6 class="mt-0">Manager IT</h6>
-        <div class="progress-bar-container">
-          prog. bar
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-4 text-center team-mem-box">
-        <div class="team-emp-img">
-          <img alt="" src="images/m4.jpg" border="0" widht="80%" class="img-circle" />
-          <div class="badge badge-warning hidden">8</div>
-        </div>
-        <h5 class="white-text mt-0 text-uppercase">A Aditya</h5>
-        <h6 class="mt-0">Mgr Finance</h6>
-        <div class="progress-bar-container">
-          prog. bar
-        </div>
-      </div>
-      <div class="col-xs-4 text-center team-mem-box">
-        <div class="team-emp-img">
-          <img alt="" src="images/g3.jpg" border="0" widht="80%" class="img-circle" />
-          <div class="badge badge-warning hidden">8</div>
-        </div>
-        <h5 class="white-text mt-0 text-uppercase">G Lorem</h5>
-        <h6 class="mt-0">Mgr Audit</h6>
-        <div class="progress-bar-container">
-          prog. bar
-        </div>
-      </div>
-      <div class="col-xs-4 text-center team-mem-box">
-        <div class="team-emp-img">
-          <img alt="" src="images/m3.jpg" border="0" widht="80%" class="img-circle" />
-          <div class="badge badge-warning hidden">8</div>
-        </div>
-        <h5 class="white-text mt-0 text-uppercase">C Gayle</h5>
-        <h6 class="mt-0">Manger HR</h6>
-        <div class="progress-bar-container">
-          prog. bar
-        </div>
-      </div>
-    </div>
 </div>
 
-<div class="container container-white container-team-overviw">
-  <!-- Team Overview -->
-  <div class="row">
-    <div class="col-xs-12">
-      <h4 class="dark-text mt-0">Team Overview</h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      Team over view Graph
-    </div>
-  </div>
-</div>
-
-
-
-
-
-<br />
-<br />
-<br />
-
-  <div class="row">
-  <div class="col-sm-12">
-    <img alt="" src="images/team-perf-img1.png" border="0" class="img-responsive">
-  </div>
-  </div>
-  <div class="row">
-  <div class="col-sm-12">
-    <img alt="" src="images/team-perf-img2.png" border="0" class="img-responsive">
-  </div>
-</div>
-</div>
-
-
-
-
-</div>
 <style>
 
 body {
