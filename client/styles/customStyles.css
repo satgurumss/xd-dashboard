@@ -1620,6 +1620,7 @@ body {
 
   .page-landing .section-info .total {
     font-size: 11px;
+    letter-spacing: 0;
   }
 
   .page-dashboard .revenue-container .trend {
@@ -1766,8 +1767,8 @@ body {
   .page-landing .circle-container .circle-label {
     font-size: 11px;
     position: absolute;
-    bottom: 13px;
-    left: 23px;
+    bottom: 20px;
+    left: 25.5px;
     font-weight: bold;
   }
 
@@ -2022,7 +2023,7 @@ div.circle-container {
 .big-number .sign{
   font-size: 20px;
   position: relative;
-  top: -8px;
+  top: -6px;
 }
 .tab-header{
   margin-bottom:10px;
@@ -2056,6 +2057,7 @@ div.circle-container {
   font-size: 12px;
   font-weight: bold;
   line-height: 18px;
+  text-shadow: -2px 1px 2px #333;
 }
 .gradient-percent {
   height: 18px;
@@ -2113,6 +2115,9 @@ div.circle-container {
 }
 .profile-social-team {
   margin-top: 15px;
+}
+.team-count{
+  margin-top: 5px;
 }
 .team-count-badge {
   position: relative;

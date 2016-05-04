@@ -5,7 +5,7 @@
 		.controller('TeamPerformanceCtrl', ['$scope', '$http', '$location', "gaugesService", "CONST", TeamPerformanceCtrl])
 
 	function TeamPerformanceCtrl($scope, $http, $location, gaugesService, CONST) {
-		$scope.isEmpView = false;
+		$scope.isTeamView = true;
 
 		$scope.performanceProgress = {
 			percent: 75,
@@ -236,7 +236,7 @@
       },
 
       series: [{
-        name: 'Mgmt',
+        name: "Sales",
         data: [60.5, 65.9, 78.6],
         type:"area",
         fillColor: "rgba(40, 189, 198, 0.3)",
@@ -250,8 +250,12 @@
       }]
     };
 
+    $scope.init = function(){
+    	$scope.isTeamView = true;
+    }
+
 		$scope.empView = function(){
-			$scope.isEmpView = true;
+			$scope.isTeamView = false;
 		}
 
 		$scope.updateChart = function() {
