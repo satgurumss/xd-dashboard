@@ -51,8 +51,8 @@
             y2: 1
           },
           stops: [
-            [0, '#2a2a2b'],
-            [1, '#3e3e40']
+            [0, '#3E3E40'],
+            [1, '#3E3E40']
           ]
         },
         style: {
@@ -239,6 +239,11 @@
           $scope.chartConfig.series[0].data = [3.5, 3, 3, 3.5, 3, 4, 4.5, 4.0, 4.0, 5.0, 4.5, 5.0];
           break;
       }
+    }
+
+    $scope.navigateTo = function(route){
+      if($location.url() != route)
+        $location.url(route);
     }
   }
 
