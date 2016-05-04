@@ -1,30 +1,139 @@
 <div class="container page-team-performance" data-ng-controller="TeamPerformanceCtrl">
-    <div class="panel-container hidden">
 
-
-
-
-
+<div class="container">
+  <div class="revenue-container clearfix">
+    <div class="col-xs-8">
+      <h1 class="heading-value big-number display-inline-block clearfix">
+        <span class="sign">$</span>
+        43.45M
+        <span class="value-label label">QTD</span>
+        <span class="trend down-trend orange-text">- 10.2 K</span>
+      </h1>
+      <div class="clearfix"></div>
+      <div class="progress-container">
+        <progress-bar options="financeProgress"/>
+      </div>
     </div>
+    <div class="col-xs-4 pl-0 team-count-badge text-right">
+      <img src="images/icon-team.png" border="0" />
+      <div class="badge badge-warning">8</div>
+    </div>
+  </div>
 
-    <div class="container">
-      <div class="row">
-      <div class="col-sm-12">
-        <img alt="" src="images/team-perf-img1.png" border="0" class="img-responsive">
+<div class="container container-dark container-team">
+<!-- Team Container -->
+    <div class="row">
+      <div class="col-xs-4 text-center team-mem-box">
+        <div class="team-emp-img">
+          <img alt="" src="images/g1.jpg" border="0" widht="80%" class="img-circle" />
+          <div class="badge badge-warning">8</div>
+        </div>
+        <h5 class="white-text mt-0 text-uppercase">D Smith</h5>
+        <h6 class="mt-0">Manager HR</h6>
+        <div class="progress-bar-container">
+          prog. bar
+        </div>
+      </div>
+      <div class="col-xs-4 text-center team-mem-box">
+        <div class="team-emp-img">
+          <img alt="" src="images/m1.jpg" border="0" widht="80%" class="img-circle" />
+          <div class="badge badge-warning hidden">8</div>
+        </div>
+        <h5 class="white-text mt-0 text-uppercase">S DOE</h5>
+        <h6 class="mt-0">Manager</h6>
+        <div class="progress-bar-container">
+          prog. bar
+        </div>
+      </div>
+      <div class="col-xs-4 text-center team-mem-box">
+        <div class="team-emp-img">
+          <img alt="" src="images/g2.jpg" border="0" widht="80%" class="img-circle" />
+          <div class="badge badge-warning hidden">8</div>
+        </div>
+        <h5 class="white-text mt-0 text-uppercase">M Maria</h5>
+        <h6 class="mt-0">Manager IT</h6>
+        <div class="progress-bar-container">
+          prog. bar
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12">
-        <img alt="" src="images/team-perf-img2.png" border="0" class="img-responsive">
+      <div class="col-xs-4 text-center team-mem-box">
+        <div class="team-emp-img">
+          <img alt="" src="images/m4.jpg" border="0" widht="80%" class="img-circle" />
+          <div class="badge badge-warning hidden">8</div>
+        </div>
+        <h5 class="white-text mt-0 text-uppercase">A Aditya</h5>
+        <h6 class="mt-0">Mgr Finance</h6>
+        <div class="progress-bar-container">
+          prog. bar
+        </div>
+      </div>
+      <div class="col-xs-4 text-center team-mem-box">
+        <div class="team-emp-img">
+          <img alt="" src="images/g3.jpg" border="0" widht="80%" class="img-circle" />
+          <div class="badge badge-warning hidden">8</div>
+        </div>
+        <h5 class="white-text mt-0 text-uppercase">G Lorem</h5>
+        <h6 class="mt-0">Mgr Audit</h6>
+        <div class="progress-bar-container">
+          prog. bar
+        </div>
+      </div>
+      <div class="col-xs-4 text-center team-mem-box">
+        <div class="team-emp-img">
+          <img alt="" src="images/m3.jpg" border="0" widht="80%" class="img-circle" />
+          <div class="badge badge-warning hidden">8</div>
+        </div>
+        <h5 class="white-text mt-0 text-uppercase">C Gayle</h5>
+        <h6 class="mt-0">Manger HR</h6>
+        <div class="progress-bar-container">
+          prog. bar
+        </div>
       </div>
     </div>
+</div>
+
+<div class="container container-white container-team-overviw">
+  <!-- Team Overview -->
+  <div class="row">
+    <div class="col-xs-12">
+      <h4 class="dark-text mt-0">Team Overview</h4>
+    </div>
   </div>
+  <div class="row">
+    <div class="col-sm-12">
+      Team over view Graph
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<br />
+<br />
+<br />
+
+  <div class="row">
+  <div class="col-sm-12">
+    <img alt="" src="images/team-perf-img1.png" border="0" class="img-responsive">
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-sm-12">
+    <img alt="" src="images/team-perf-img2.png" border="0" class="img-responsive">
+  </div>
+</div>
+</div>
 
 
 
 
 </div>
 <style>
+
 body {
   background-color: #464646 !important;
   background: #464646;
@@ -32,6 +141,79 @@ body {
 .page-team-performance {
   padding: 0;
   margin: 0;
+}
+.dark-text {
+  color: #343434;
+  margin-top: 0;
+}
+.container-dark {
+  background: #2a2a2b;
+  padding: 15px;
+}
+.container-light {
+  background: #3e3e40;
+  padding: 15px;
+}
+.container-white {
+  background: #FFF;
+  padding: 15px;
+}
+.page-team-performance .revenue-container {
+  padding: 10px 0;
+}
+.page-team-performance .revenue-container .big-number {
+  margin: 0 0 5px;
+  position: relative;
+}
+
+.page-team-performance .team-count-badge img {
+  position: relative;
+  right: 10px;
+  top: 4px;
+}
+
+.page-team-performance .team-count-badge,
+.page-team-performance .container-team .team-emp-img {
+  position: relative;
+}
+
+.page-team-performance .container-team {
+  padding: 0 15px;
+}
+
+.page-team-performance .container-team .team-mem-box {
+    padding: 15px 10px;
+    border-right: 2px solid #464646;
+    border-bottom: 2px solid #464646;
+}
+.page-team-performance .container-team .team-mem-box:last-child {
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid #464646;
+}
+
+.page-team-performance .container-team .team-emp-img img {
+  max-width: 65%;
+}
+
+.page-team-performance .team-count-badge .badge,
+.page-team-performance .container-team .team-emp-img .badge {
+  color: #333;
+  position: absolute;
+  right: 10px;
+  top: 0px;
+}
+.page-team-performance .container-team .team-emp-img .badge {
+  right: 0;
+  top: -5px;
+}
+.page-team-performance .container-team h5 {
+  margin: 5px 0 2px;
+}
+.page-team-performance .container-team h6 {
+  margin: 0;
+}
+.page-team-performance .container-team .progress-bar-container {
+  margin: 5px 0 0;
 }
 
 </style>
