@@ -7,47 +7,46 @@
   function FinancialDashCtrl($scope, $http, $location, gaugesService, CONST) {
 
     $scope.gaugesWithMonths = [{
-      energy:{
+      energy: {
         percent: 10
       },
-      transport:{
+      transport: {
         percent: 30
       },
-      devices:{
+      devices: {
         percent: 60
       }
     }, {
-      energy:{
+      energy: {
         percent: 70
       },
-      transport:{
+      transport: {
         percent: 20
       },
-      devices:{
+      devices: {
         percent: 10
       }
     }, {
-      energy:{
+      energy: {
         percent: 40
       },
-      transport:{
+      transport: {
         percent: 40
       },
-      devices:{
+      devices: {
         percent: 20
       }
     }, {
-      energy:{
+      energy: {
         percent: 10
       },
-      transport:{
+      transport: {
         percent: 30
       },
-      devices:{
+      devices: {
         percent: 60
       }
     }];
-
 
     $scope.gauges = $scope.gaugesWithMonths[0];
 
@@ -267,7 +266,7 @@
       chart: {
         type: "bar",
         height: 100,
-        width:200,
+        width: 200,
         style: {
           fontFamily: "sans-serif"
         },
@@ -284,7 +283,7 @@
           color: '#F0F0F0'
         },
         valueSuffix: 'M',
-        enabled:false
+        enabled: false
       },
 
       plotOptions: {
@@ -295,10 +294,10 @@
           dataLabels: {
             color: '#707073',
             verticalAlign: 'middle',
-            align:"right",
+            align: "right",
             formatter: function() {
               return "$ " + this.point.y + " M"
-              //return this.point.category
+                //return this.point.category
             },
             enabled: true,
           }
@@ -379,6 +378,27 @@
         data: [205, 190, 160, 140, 100]
       }]
     };
+
+    $scope.financeProgress = {
+      percent: 50,
+      barLabel: "YTD",
+      barValue: "$ 10.6 M"
+    }
+
+    $scope.tabProgress = [{
+        percent: 40,
+        barLabel: "",
+        barValue: "$ 4.35 M"
+      }, {
+        percent: 50,
+        barLabel: "",
+        barValue: "$ 10.6 M"
+      }, {
+        percent: 80,
+        barLabel: "",
+        barValue: "$ 18.6 M"
+      }
+    ];
 
     $scope.updateChart = function() {
       var categories = [],
@@ -467,7 +487,7 @@
       $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
     }
 
-    $scope.init = function(){
+    $scope.init = function() {
       $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
     }
 

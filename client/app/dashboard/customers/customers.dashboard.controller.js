@@ -11,69 +11,67 @@
     });
 
   function CustomerDashCtrl($scope, $http, $location, gaugesService, CONST) {
-    $scope.customers=[{
-      name: "Customer 1",
+    $scope.isSatisifed = "true";
+    $scope.customers = [{
+      name: "Acme Corporation",
       reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
       rating: "4.5"
-    },
-    {
-      name: "Customer 2",
+    }, {
+      name: "Mercury Consulting",
       reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
       rating: "4"
-    },
-    {
-      name: "Customer 3",
+    }, {
+      name: "Omega Technologies",
       reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
       rating: "4"
-    },
-    {
-      name: "Customer 4",
+    }, {
+      name: "Starlight Systems",
       reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
       rating: "3.5"
-    },{
-      name: "Customer 5",
+    }, {
+      name: "Platinum Consulting",
       reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
       rating: "4.5"
     }];
 
-  $scope.gaugesWithMonths = [{
-      revSpread:{
+    $scope.gaugesWithMonths = [{
+      revSpread: {
         percent: 10
       },
-      penetration:{
+      penetration: {
         percent: 30
       },
-      satisfaction:{
+      satisfaction: {
         percent: 60
       }
     }, {
-      revSpread:{
+      revSpread: {
         percent: 70
       },
-      penetration:{
+      penetration: {
         percent: 20
       },
-      satisfaction:{
+      satisfaction: {
         percent: 10
       }
     }, {
-      revSpread:{
+      revSpread: {
         percent: 40
       },
-      penetration:{
+      penetration: {
         percent: 40
       },
-      satisfaction:{
+      satisfaction: {
         percent: 20
       }
     }, {
-      revSpread:{
+      revSpread: {
         percent: 10
       },
-      penetration:{
+      penetration: {
         percent: 30
       },
-      satisfaction:{
+      satisfaction: {
         percent: 60
       }
     }];
@@ -87,7 +85,7 @@
       chart: {
         type: "bar",
         height: 100,
-        width:200,
+        width: 200,
         style: {
           fontFamily: "sans-serif"
         },
@@ -104,7 +102,7 @@
           color: '#F0F0F0'
         },
         valueSuffix: 'M',
-        enabled:false
+        enabled: false
       },
 
       plotOptions: {
@@ -115,10 +113,10 @@
           dataLabels: {
             color: '#707073',
             verticalAlign: 'middle',
-            align:"right",
+            align: "right",
             formatter: function() {
               return "$ " + this.point.y + " M"
-              //return this.point.category
+                //return this.point.category
             },
             enabled: true,
           }
@@ -225,58 +223,74 @@
 
     $scope.monthsToDisplay = "3";
 
+    $scope.customerProgress = {
+      percent: 50,
+      barLabel: "",
+      barValue: "50%"
+    };
+
+    $scope.tabProgress = [{
+      percent: 40,
+      barLabel: "",
+      barValue: "40%"
+    }, {
+      percent: 60,
+      barLabel: "",
+      barValue: "60%"
+    }];
+
     // Prepare map data
     $scope.mapData = [{
       code: "SA",
-      z: 28829
+      z: 20
     }, {
       code: "BH",
-      z: 1332
+      z: 15
     }, {
       code: "TR",
-      z: 74933
+      z: 18
     }, {
       code: "OM",
-      z: 3632
+      z: 6
     }, {
       code: "IR",
-      z: 77447
+      z: 5
     }, {
       code: "YE",
-      z: 24407
+      z: 10
     }, {
       code: "KW",
-      z: 3369
+      z: 9
     }, {
       code: "EG",
-      z: 82056
+      z: 21
     }, {
       code: "IL",
-      z: 8060
+      z: 1
     }, {
       code: "JO",
-      z: 6460
+      z: 4
     }, {
       code: "IQ",
-      z: 33417
+      z: 8
     }, {
       code: "QA",
-      z: 2169
+      z: 6
     }, {
       code: "AE",
-      z: 9346
+      z: 25
     }, {
       code: "SY",
-      z: 22846
+      z: 12
     }, {
       code: "LB",
-      z: 4467
+      z: 18
     }, {
       code: "CY",
-      z: 1141
+      z: 4
     }, {
       code: "NC",
-      z: 262
+      z: 20
     }];
 
     $scope.updateChart = function() {
@@ -531,11 +545,60 @@
           break;
       }
 
-      $scope.gauges = angular.copy( gaugesService.updateGaugeState($scope.gauges) );
+      $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
     }
 
-    $scope.init = function (argument) {
-      $scope.gauges = angular.copy( gaugesService.updateGaugeState($scope.gauges) );
+    $scope.init = function(argument) {
+      $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
+    }
+
+    $scope.toggleCustomers = function(isSatisifed){
+
+      if(isSatisifed === "true") {
+        $scope.customers = [{
+          name: "Acme Corporation",
+          reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
+          rating: "4.5"
+        }, {
+          name: "Mercury Consulting",
+          reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
+          rating: "4"
+        }, {
+          name: "Omega Technologies",
+          reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
+          rating: "4"
+        }, {
+          name: "Starlight Systems",
+          reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
+          rating: "3.5"
+        }, {
+          name: "Platinum Consulting",
+          reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
+          rating: "4.5"
+        }];
+      }else{
+        $scope.customers = [{
+          name: "Acme Corporation",
+          reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
+          rating: "1.5"
+        }, {
+          name: "Mercury Consulting",
+          reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
+          rating: "1"
+        }, {
+          name: "Omega Technologies",
+          reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
+          rating: "1"
+        }, {
+          name: "Starlight Systems",
+          reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
+          rating: "2"
+        }, {
+          name: "Platinum Consulting",
+          reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
+          rating: "2.5"
+        }];
+      }
     }
   }
 

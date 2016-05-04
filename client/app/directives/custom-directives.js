@@ -5,7 +5,8 @@
     .directive('myEnterPress', enterDirective)
     .directive('hcMap', ['$http', hcMap])
     .directive('hcChart', hcChart)
-    .directive('hcChartDark', hcChartDark);
+    .directive('hcChartDark', hcChartDark)
+    .directive("progressBar", progressBar);
 
   function enterDirective() {
     return function(scope, element, attrs) {
@@ -21,7 +22,7 @@
     };
   }
 
-  function hcMap($http) {
+  function hcMap($http, $window) {
     return {
       restrict: "E",
       template: '<div></div>',
@@ -294,8 +295,11 @@
                   pointFormat: '{point.name} - {point.z}'
                 }
               }]
-            };
+            },
+            tempScrollTop = $($window).scrollTop();
+
             $(element[0]).highcharts('Map', Highcharts.merge(options, theme));
+            $($window).scrollTop(tempScrollTop);
           };
 
           renderChart();
@@ -426,7 +430,7 @@
     };
   }
 
-  function hcChart() {
+  function hcChart($window) {
     return {
       restrict: 'E',
       template: '<div></div>',
@@ -436,7 +440,9 @@
       },
       link: function(scope, element) {
         var renderChart = function() {
+          var tempScrollTop = $($window).scrollTop();
           Highcharts.chart(element[0], scope.options);
+          $($window).scrollTop(tempScrollTop);
         };
 
         renderChart();
@@ -448,7 +454,7 @@
     };
   }
 
-  function hcChartDark() {
+  function hcChartDark($window) {
     return {
       restrict: 'E',
       template: '<div></div>',
@@ -673,7 +679,9 @@
         // Apply the theme
         // Highcharts.setOptions(Highcharts.theme);
         var renderChart = function() {
+          var tempScrollTop = $($window).scrollTop();
           $(element[0]).highcharts(Highcharts.merge(scope.options, theme));
+          $($window).scrollTop(tempScrollTop);
         };
 
         renderChart();
@@ -681,6 +689,17 @@
         scope.$watch("options.series[0].data", function(loading) {
           renderChart();
         });
+      }
+    };
+  }
+
+  function progressBar(){
+    return {
+      restrict: 'E',
+      templateUrl: '/app/directives/progress-bar.html',
+      replace: true,
+      scope: {
+        options: '='
       }
     };
   }
