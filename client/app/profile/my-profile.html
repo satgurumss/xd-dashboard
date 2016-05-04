@@ -1,12 +1,11 @@
 
 <div class="page page-profile" ng-controller="ProfileCtrl">
-
   <div class="container">
     <header class="custom-profile-header clearfix">
       <div class="row">
         <div class="col-xs-4">
           <div class="profile-imge">
-            <img alt="{{currentUser.account_s[0]}}" src="images/g1.jpg" border="0" class="img-responsive img-circle">
+            <img alt="user" src="images/g1.jpg" border="0" class="img-responsive img-circle">
           </div>
         </div>
         <div class="col-xs-8 pl-0 profile-social">
@@ -34,8 +33,10 @@
                 <h5 class="white-text">15</h5>
               </div>
               <div class="col-xs-4 pl-0 team-count-badge">
-                <img src="images/icon-team.png" width="50px" border="0" />
-                <div class="badge badge-warning">7</div>
+                <a href="javascript://" ng-click="navigateTo('/team-performance')">
+                  <img src="images/icon-team.png" width="50px" border="0" />
+                  <div class="badge badge-warning">7</div>
+                </a>
               </div>
             </div>
         </div>
@@ -48,11 +49,15 @@
             <h4 class="white-text mt-0">Vacations</h4>
           </div>
         </div>
-        <div class="row">
-          <div class="col-xs-6">
-            Donet Chart
+        <div class="row margin-b10">
+          <div class="col-xs-4 text-center" style="padding-right: 0">
+            <div class="circle-container circle-white">
+             <div ng-circles value="vacationsChart.percent" text="vacationsChart.text" width="20" 
+              colors="vacationsChart.colors"></div>
+             <span class="white-text">Remaining</span>
+            </div>
           </div>
-          <div class="col-xs-6" data-ng-controller="DatepickerDemoCtrl">
+          <div class="col-xs-8" data-ng-controller="DatepickerDemoCtrl">
             <div class="input-group ui-datepicker mb-10">
                 <input type="text"
                   class="form-control"
@@ -60,7 +65,6 @@
                   ng-model="dt"
                   is-open="opened"
                   min="minDate"
-                  max="'2015-06-22'"
                   datepicker-options="dateOptions"
                   date-disabled="disabled(date, mode)"
                   ng-required="true"
@@ -75,7 +79,6 @@
                   ng-model="dt"
                   is-open="opened"
                   min="minDate"
-                  max="'2015-06-22'"
                   datepicker-options="dateOptions"
                   date-disabled="disabled(date, mode)"
                   ng-required="true"
@@ -87,12 +90,12 @@
         </div>
         <div class="row">
           <div class="col-xs-12 mb-10">
-            <input type="text" placeholder="Reason" class="form-control" />
+            <input type="text" placeholder="Reason" class="form-control" ng-model="reason"/>
           </div>
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <button type="button" class="btn btn-info btn-block">Apply</button>
+            <button type="button" class="btn btn-info btn-block" ng-disabled="!reason">Apply</button>
           </div>
         </div>
     </div>
@@ -104,7 +107,19 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-6">Financial Bar</div>
+        <div class="col-xs-12">
+          <uib-progress class="progressbar-lg progress-rounded">
+            <uib-bar value="50" type="success">
+              <span>Salary</span>
+            </uib-bar>
+            <uib-bar value="25" type="warning">
+              <span>Bonus</span>
+            </uib-bar>
+            <uib-bar value="25" type="danger">
+              <span>Allowances</span>
+            </uib-bar>
+          </uib-progress>
+        </div>
       </div>
     </div>
     <div class="container container-light container-anualrev">
@@ -115,124 +130,14 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-6">Annual Reviews Graph</div>
+        <hc-chart options="chartConfig" watch="monthsToDisplay" class="span10"/>
       </div>
-    </div>
-  </div>
-
-<br />
-<br />
-
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <img alt="" src="images/profile-img1.png" border="0" class="img-responsive">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <img alt="" src="images/profile-img2.png" border="0" class="img-responsive">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <img alt="" src="images/profile-img3.png" border="0" class="img-responsive">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <img alt="" src="images/profile-img4.png" border="0" class="img-responsive">
+      <div class="row range-container">
+        <div class="slider-wrapper">
+          <input slider options="options" ng-model="monthsToDisplay" ng-change="updateChart()"
+            type="text" id="mySlider1" />
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
-<script type="text/ng-template" id="items_renderer.html">
-    <div class="angular-ui-tree-handle">
-        <span>{{item.items}}</span>
-    </div>
-</script>
-
-<script type="text/ng-template" id="items_renderer.html">
-    <div class="angular-ui-tree-handle" data-nodrag>
-        <span data-ng-show="item.items.length > 0"><a class="angular-ui-tree-icon" data-nodrag ng-click="toggle(this)">
-            <span class="angular-ui-tree-icon-collapse" ng-class="{'collapsed': collapsed, 'uncollapsed': !collapsed}"></span>
-        </a></span>
-        <label class="ui-checkbox">
-        <input type="checkbox" value="{{item.title}}" ng-click="setPref(item, $event)"
-          ng-checked="isRegionSelected(item) || item.isChecked">
-        <span class="text-uppercase">{{item.title}}</span>
-       </label>
-
-    </div>
-    <ol ui-tree-nodes="options" ng-model="item.items" ng-class="{hidden: collapsed}">
-        <li ng-repeat="item in item.items" ui-tree-node ng-include="'items_renderer.html'">
-        </li>
-    </ol>
-</script>
-
-<style>
-.page-profile {
-  padding: 0;
-}
-.page-profile {
-    margin: 0;
-}
-.custom-profile-header {
-  margin: 0 15px 0 0;
-  position: fixed;
-  z-index: 10;
-}
-.container-dark,
-.custom-profile-header {
-  background: #2a2a2b;
-  padding: 15px;
-}
-.profile-social h4 {
-  margin: 5px 0 5px;
-}
-.profile-social h5 {
-  margin: 0 0 5px;
-}
-.profile-social-team {
-  margin-top: 15px;
-}
-.team-count-badge {
-  position: relative;
-}
-.team-count-badge .badge {
-  position: absolute;
-  color: #333;
-  right: 0;
-  top: -10px;
-}
-.container-light {
-  background: #3e3e40;
-  padding: 15px;
-}
-.container-vacation {
-  margin-top: 182px;
-}
-.container-vacation .form-control {
-  color: #2a2a2a;
-  background-color: #e4e4e4;
-  border: 1px solid #e4e4e4;
-  font-size: 13px;
-}
-.container-vacation .input-group-addon {
-  color: #727272;
-  background-color: #e4e4e4;
-  border: 1px solid #e4e4e4;
-}
-.container-vacation .input-group-addon .fa {
-  font-size: 18px;
-}
-.mb-10 {
-  margin-bottom: 10px;
-}
-.container-dark h4,
-.container-light h4 {
-  margin-top: 0;
-}
-</style>
