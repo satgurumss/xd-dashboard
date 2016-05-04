@@ -5,8 +5,6 @@
 		.controller('TeamPerformanceCtrl', ['$scope', '$http', '$location', "gaugesService", "CONST", TeamPerformanceCtrl])
 
 	function TeamPerformanceCtrl($scope, $http, $location, gaugesService, CONST) {
-		$scope.isTeamView = true;
-
 		$scope.performanceProgress = {
 			percent: 75,
 			barLabel: "YTD",
@@ -132,181 +130,245 @@
 			}]
 		};
 
-		$scope.empStats = [{
-			percent: 40,
-			barLabel: "",
-			barValue: "40%"
+		$scope.team = [{
+			name: "D Smith",
+			title: "Manager HR",
+			img: "images/g1.jpg",
+			trendIsPositive: true,
+			trend: "+1.0 M",
+			budget: "4 M",
+			fct: "4.5 M",
+			progress: {
+				percent: 40,
+				barLabel: "",
+				barValue: "$5 M"
+			}
 		}, {
-			percent: 60,
-			barLabel: "",
-			barValue: "65%"
+			name: "S Doe",
+			title: "Manager",
+			img: "images/m1.jpg",
+			trendIsPositive: false,
+			trend: "-2.0 M",
+			budget: "18 M",
+			fct: "18 M",
+			progress: {
+				percent: 60,
+				barLabel: "",
+				barValue: "$16 M"
+			}
 		}, {
-			percent: 75,
-			barLabel: "",
-			barValue: "75%"
+			name: "M Maria",
+			title: "Manager IT",
+			img: "images/g2.jpg",
+			trendIsPositive: true,
+			trend: "+1.0 M",
+			budget: "18 M",
+			fct: "19 M",
+			progress: {
+				percent: 75,
+				barLabel: "",
+				barValue: "$19 M"
+			}
 		}, {
-			percent: 40,
-			barLabel: "",
-			barValue: "40%"
+			name: "A Aditya",
+			title: "Mgr Finance",
+			img: "images/m4.jpg",
+			trendIsPositive: false,
+			trend: "-2.0 M",
+			budget: "12 M",
+			fct: "12 M",
+			progress: {
+				percent: 40,
+				barLabel: "",
+				barValue: "$10 M"
+			}
 		}, {
-			percent: 50,
-			barLabel: "",
-			barValue: "50%"
+			name: "G Lorem",
+			title: "Mgr Audit",
+			img: "images/g3.jpg",
+			trendIsPositive: true,
+			trend: "+3.0 M",
+			budget: "11 M",
+			fct: "15 M",
+			progress: {
+				percent: 50,
+				barLabel: "",
+				barValue: "$14 M"
+			}
 		}, {
-			percent: 80,
-			barLabel: "",
-			barValue: "80%"
+			name: "C Gayle",
+			title: "Manager HR",
+			img: "images/m3.jpg",
+			trendIsPositive: false,
+			trend: "-0.5 M",
+			budget: "19.5 M",
+			fct: "19.5 M",
+			progress: {
+				percent: 80,
+				barLabel: "",
+				barValue: "$20 M"
+			}
 		}];
 
 		$scope.options = {
-      from: 3,
-      to: 12,
-      step: 3,
-      dimension: " months",
-      smooth: false,
-      css: {
-        background: {
-          "background-color": "#666666"
-        },
-        default: {
-          "background-color": "white"
-        },
-        after: {
-          "background-color": "#7cb5ec"
-        },
-        pointer: {
-          "background-color": "54627b"
-        }
-      },
-      scale: [3, 6, 9, 12]
-    };
-    $scope.monthsToDisplay = "3";
+			from: 3,
+			to: 12,
+			step: 3,
+			dimension: " months",
+			smooth: false,
+			vertical: true,
+			css: {
+				background: {
+					"background-color": "#666666"
+				},
+				default: {
+					"background-color": "white"
+				},
+				after: {
+					"background-color": "#7cb5ec"
+				},
+				pointer: {
+					"background-color": "54627b"
+				}
+			},
+			scale: [3, 6, 9, 12]
+		};
 
-    $scope.satisfactionChart = {
-      chart: {
-        height: 200,
-        spacingLeft: 0,
-        spacingRight: 5
-      },
+		$scope.monthsToDisplay = "3";
 
-      title: {
-        text: null,
-      },
+		$scope.satisfactionChart = {
+			chart: {
+				height: 200,
+				spacingLeft: 0,
+				spacingRight: 5
+			},
 
-      subtitle: {
-        text: null
-      },
+			title: {
+				text: null,
+			},
 
-      credits: {
-        enabled: false
-      },
+			subtitle: {
+				text: null
+			},
 
-      yAxis: {
-        title: {
-          text: null,
-        },
-        lineWidth: 0,
-        minorGridLineWidth: 0,
-        lineColor: 'transparent',
-        minorTickLength: 0,
-        tickLength: 0,
-        gridLineColor: 'transparent',
-        tickInterval:25
-      },
-      xAxis: {
-        lineWidth: 0,
-        minorGridLineWidth: 0,
-        lineColor: 'transparent',
-        minorTickLength: 0,
-        tickLength: 0,
-        gridLineColor: 'transparent',
-        categories: ['FEB', 'MAR', 'APR']
-      },
-      tooltip: {
-        formatter: function() {
-          return '<span class="display-inline-block" style="text-align:center;font-size:1.2em;">' + this.series.name + '</span><br><span class="display-inline-block" style="font-size:1.5em; font-weight: bold; margin-left:10px">' + this.y + '%</span>'
-        }
-      },
+			credits: {
+				enabled: false
+			},
 
-      legend: {
-        layout: 'horizontal',
-        align: 'center',
-        borderWidth: 0,
-        enabled:false
-      },
+			yAxis: {
+				title: {
+					text: null,
+				},
+				lineWidth: 0,
+				minorGridLineWidth: 0,
+				lineColor: 'transparent',
+				minorTickLength: 0,
+				tickLength: 0,
+				gridLineColor: 'transparent',
+				tickInterval: 25
+			},
+			xAxis: {
+				lineWidth: 0,
+				minorGridLineWidth: 0,
+				lineColor: 'transparent',
+				minorTickLength: 0,
+				tickLength: 0,
+				gridLineColor: 'transparent',
+				categories: ['FEB', 'MAR', 'APR']
+			},
+			tooltip: {
+				formatter: function() {
+					return '<span class="display-inline-block" style="text-align:center;font-size:1.2em;">' + this.series.name + '</span><br><span class="display-inline-block" style="font-size:1.5em; font-weight: bold; margin-left:10px">' + this.y + '%</span>'
+				}
+			},
 
-      series: [{
-        name: "Sales",
-        data: [60.5, 65.9, 78.6],
-        type:"area",
-        fillColor: "rgba(40, 189, 198, 0.3)",
-        color: "rgba(40, 189, 198, 1)",
-        marker: {
-          symbol: 'circle',
-          fillColor: 'rgba(40, 189, 198, 1)',
-          lineWidth: 1,
-          lineColor: 'rgba(40, 189, 198, 1)'
-        }
-      }]
-    };
+			legend: {
+				layout: 'horizontal',
+				align: 'center',
+				borderWidth: 0,
+				enabled: false
+			},
 
-    $scope.init = function(){
-    	$scope.isTeamView = true;
-    }
+			series: [{
+				name: "Sales",
+				data: [60.5, 65.9, 78.6],
+				type: "area",
+				fillColor: "rgba(40, 189, 198, 0.3)",
+				color: "rgba(40, 189, 198, 1)",
+				marker: {
+					symbol: 'circle',
+					fillColor: 'rgba(40, 189, 198, 1)',
+					lineWidth: 1,
+					lineColor: 'rgba(40, 189, 198, 1)'
+				}
+			}]
+		};
 
-		$scope.empView = function(){
+		$scope.init = function() {
+			$scope.isTeamView = true;
+		}
+
+		$scope.empView = function(index) {
 			$scope.isTeamView = false;
+			var selectedEmp = $scope.team[index];
+
+			$scope.emp = {};
+			$scope.emp.value = selectedEmp.progress.barValue;
+			$scope.emp.trend = selectedEmp.trend;
+			$scope.emp.trendIsPositive = selectedEmp.trendIsPositive;
+			$scope.emp.budget = selectedEmp.budget;
+			$scope.emp.fct = selectedEmp.fct
 		}
 
 		$scope.updateChart = function() {
-      var categories = [],
-        generateRandomSeries = function(max) {
-          var rnd = []
-          for (var i = 0; i < max; i++) {
-            rnd.push(Math.floor(Math.random() * 20) + 1)
-          }
-          return rnd;
-        }
+			var categories = [],
+				generateRandomSeries = function(max) {
+					var rnd = []
+					for (var i = 0; i < max; i++) {
+						rnd.push(Math.floor(Math.random() * 20) + 1)
+					}
+					return rnd;
+				}
 
-      switch ($scope.monthsToDisplay) {
-        case "3":
-          categories = ['FEB', 'MAR', 'APR']
-          $scope.satisfactionChart.xAxis.categories = []
-          $scope.satisfactionChart.xAxis.categories = categories;
+			switch ($scope.monthsToDisplay) {
+				case "3":
+					categories = ['FEB', 'MAR', 'APR']
+					$scope.satisfactionChart.xAxis.categories = []
+					$scope.satisfactionChart.xAxis.categories = categories;
 
-          $scope.satisfactionChart.series[0].data = [];
-          $scope.satisfactionChart.series[0].data = [60.5, 65.9, 78.6];
+					$scope.satisfactionChart.series[0].data = [];
+					$scope.satisfactionChart.series[0].data = [60.5, 65.9, 78.6];
 
-          break
-        case "6":
-          categories = ['NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR']
-          $scope.satisfactionChart.xAxis.categories = []
-          $scope.satisfactionChart.xAxis.categories = categories;
+					break
+				case "6":
+					categories = ['NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR']
+					$scope.satisfactionChart.xAxis.categories = []
+					$scope.satisfactionChart.xAxis.categories = categories;
 
-          $scope.satisfactionChart.series[0].data = [];
-          $scope.satisfactionChart.series[0].data = [90.2, 80.5, 75.3, 60.5, 65.9, 78.6];
+					$scope.satisfactionChart.series[0].data = [];
+					$scope.satisfactionChart.series[0].data = [90.2, 80.5, 75.3, 60.5, 65.9, 78.6];
 
-          break;
-        case "9":
-          categories = ['AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR']
-          $scope.satisfactionChart.xAxis.categories = []
-          $scope.satisfactionChart.xAxis.categories = categories;
+					break;
+				case "9":
+					categories = ['AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR']
+					$scope.satisfactionChart.xAxis.categories = []
+					$scope.satisfactionChart.xAxis.categories = categories;
 
-          $scope.satisfactionChart.series[0].data = [];
-          $scope.satisfactionChart.series[0].data = [65.5, 80, 85.5, 90.2, 80.5, 75.3, 60.5, 65.9, 78.6];
+					$scope.satisfactionChart.series[0].data = [];
+					$scope.satisfactionChart.series[0].data = [65.5, 80, 85.5, 90.2, 80.5, 75.3, 60.5, 65.9, 78.6];
 
-          break;
-        case "12":
-          categories = ['MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR']
-          $scope.satisfactionChart.xAxis.categories = []
-          $scope.satisfactionChart.xAxis.categories = categories;
+					break;
+				case "12":
+					categories = ['MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR']
+					$scope.satisfactionChart.xAxis.categories = []
+					$scope.satisfactionChart.xAxis.categories = categories;
 
-          $scope.satisfactionChart.series[0].data = [];
-          $scope.satisfactionChart.series[0].data = [50.2, 60, 73.5, 65.5, 80, 85.5, 90.2, 80.5, 75.3, 60.5, 65.9, 78.6];
+					$scope.satisfactionChart.series[0].data = [];
+					$scope.satisfactionChart.series[0].data = [50.2, 60, 73.5, 65.5, 80, 85.5, 90.2, 80.5, 75.3, 60.5, 65.9, 78.6];
 
-          break;
-      }
-    }
+					break;
+			}
+		}
 	}
 
 })();

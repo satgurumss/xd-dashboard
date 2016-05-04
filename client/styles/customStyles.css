@@ -1928,7 +1928,8 @@ div.circle-container {
   color: #FFC000;
 }
 
-.ui-tab-container .down-trend.orange-text{
+.ui-tab-container .down-trend.orange-text,
+.container-emp-overview .down-trend.orange-text{
   color: #da1b1b;
 }
 

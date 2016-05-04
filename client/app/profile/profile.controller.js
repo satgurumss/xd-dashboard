@@ -2,13 +2,12 @@
   'use strict';
 
   angular.module('app')
-    .controller('ProfileCtrl', ['$scope', '$rootScope', '$http', '$location','CONST', ProfileCtrl])
+    .controller('ProfileCtrl', ['$scope', '$rootScope', '$http', '$location','CONST', 'gaugesService', ProfileCtrl])
 
-  function ProfileCtrl($scope, $rootScope, $http, $location, CONST) {
+  function ProfileCtrl($scope, $rootScope, $http, $location, CONST, gaugesService) {
   	$scope.vacationsChart = {
-  		percent: 15,
-  		text: "15d",
-  		colors: CONST.gaugeSuccess
+  		percent: 100-25,
+  		text: "15d"
   	};
 
   	$scope.reason = "";
@@ -244,6 +243,15 @@
     $scope.navigateTo = function(route){
       if($location.url() != route)
         $location.url(route);
+    }
+
+    $scope.init = function(){
+      if($scope.vacationsChart.percent <= 30){
+        $scope.vacationsChart.colors = CONST.gaugeDanger      }
+      else if(30 < $scope.vacationsChart.percent && $scope.vacationsChart.percent <= 50){
+        $scope.vacationsChart.colors = CONST.gaugeWarning      }
+      else if(50 < $scope.vacationsChart.percent && $scope.vacationsChart.percent <= 100){
+        $scope.vacationsChart.colors = CONST.gaugeSuccess      }
     }
   }
 
