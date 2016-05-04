@@ -1469,7 +1469,7 @@ body {
 
   .page-landing .customers-nav .section {
     background: #FFF;
-    color: #454545;
+    color: #464646;
   }
 
   .page-landing .people-nav .section {
@@ -1510,15 +1510,15 @@ body {
 
   .page-landing .value-small {
     margin: 0;
-    font-size: 11px;
+    font-size: 9px;
   }
 
   .page-landing .section-title .section-inner {
-      padding-top: 12px;
-      padding-right: 2px;
-      float: right;
-      text-align: center;
-      width: 65px;
+    padding-top: 12px;
+    padding-right: 2px;
+    float: right;
+    text-align: center;
+    width: 65px;
   }
 
   .page-landing .section-shadow {
@@ -1609,11 +1609,16 @@ body {
   }
 
   .page-landing .section-info .trend,
+  .page-landing .section-info .total,
   .page-dashboard .revenue-container .trend {
     position: absolute;
     bottom: 0;
     right: -33px;
     letter-spacing: 0;
+  }
+
+  .page-landing .section-info .total {
+    font-size: 11px;
   }
 
   .page-dashboard .revenue-container .trend {
@@ -1628,7 +1633,7 @@ body {
   .page-landing .section-info .contents-below h5 {
     margin: 5px 0;
     display: inline-block;
-    font-size: 19px;
+    font-size: 17px;
     font-weight: normal;
     min-width: 50px;
   }
@@ -1636,7 +1641,7 @@ body {
   .page-landing .section-info .fa-circle {
     font-size: 8px;
     position: relative;
-    top: -4px;
+    top: -3px;
   }
 
   .page-landing .section-info .title,
@@ -1683,7 +1688,7 @@ body {
     }
 
     .page-landing .section-info .fa-circle {
-      top: -2px;
+      top: -1px;
     }
   }
 
@@ -1735,20 +1740,32 @@ body {
     }
   }
 
-
   div.circle-container {
-      display: inline-block;
-      margin: 0;
-      padding: 0;
-      width: 60px;
-      position: relative;
-      z-index: 1;
-      left: -1px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 60px;
+    position: relative;
+    z-index: 1;
+    left: -1px;
   }
 
   .circle-container div.circles-text {
     font-weight: bold;
   }
+
+  .page-landing .circle-container div.circles-text {
+    margin-top: -4px;
+  }
+
+  .page-landing .circle-container .circle-label {
+    font-size: 11px;
+    position: absolute;
+    bottom: 13px;
+    left: 19px;
+    font-weight: bold;
+  }
+
 
   .page-landing .icons-list {
     padding: 0;
@@ -1795,7 +1812,7 @@ body {
     border-radius: 50%;
   }
 
-  /*  landing page end */
+/*  landing page end */
 
 
   div.circle-container {
