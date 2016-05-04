@@ -1595,7 +1595,8 @@ body {
   }
 
   .page-landing .section-info .value-label,
-  .page-dashboard .revenue-container .value-label {
+  .page-dashboard .revenue-container .value-label,
+  .page-team-performance .revenue-container .value-label {
     font-size: 11px;
     position: absolute;
     top: 0;
@@ -1609,8 +1610,8 @@ body {
   }
 
   .page-landing .section-info .trend,
-  .page-landing .section-info .total,
-  .page-dashboard .revenue-container .trend {
+  .page-dashboard .revenue-container .trend,
+  .page-team-performance .revenue-container .trend {
     position: absolute;
     bottom: 0;
     right: -33px;
