@@ -1112,6 +1112,10 @@ body {
   color: #157c3e;
 }
 
+.circle-white .circles-text {
+  color: #fff;
+}
+
 .gauge-label {
   position: relative;
   top: -10px;
@@ -1563,7 +1567,7 @@ body {
   }
 
   .page-landing .section-info .heading-value {
-    font-size: 24px;
+    font-size: 28px;
     margin: 7px 5px;
     letter-spacing: -1px;
     position: relative;
@@ -1606,7 +1610,7 @@ body {
 
   .page-dashboard .revenue-container .trend {
     bottom: 1px;
-    right: -44px;
+    right: -47px;
   }
 
   .page-landing .section-info .contents-below {
@@ -1616,7 +1620,7 @@ body {
   .page-landing .section-info .contents-below h5 {
     margin: 5px 0;
     display: inline-block;
-    font-size: 14px;
+    font-size: 19px;
     font-weight: normal;
     min-width: 50px;
   }
@@ -1624,7 +1628,7 @@ body {
   .page-landing .section-info .fa-circle {
     font-size: 8px;
     position: relative;
-    top: -1px;
+    top: -4px;
   }
 
   .page-landing .section-info .title,
@@ -1645,7 +1649,7 @@ body {
   }
   @media only screen and (max-width: 374px){
     .page-landing .section-info .heading-value {
-      font-size: 18px;
+      font-size: 24px;
       margin: 7px 0;
     }
 
@@ -1667,11 +1671,23 @@ body {
 
     .page-landing .section-info .contents-below h5 {
       margin: 5px 0;
-      font-size: 10px;
+      font-size: 14px;
+    }
+
+    .page-landing .section-info .fa-circle {
+      top: -2px;
     }
   }
-  @media only screen and (max-width: 354px) {
 
+  @media only screen and (max-width: 354px) {
+    .page-landing .section-info .heading-value {
+      font-size: 18px;
+    }
+
+    .page-landing .section-info .contents-below h5 {
+      margin: 5px 0;
+      font-size: 10px;
+    }
     .section-contents .section-cont-text {
       display: none;
     }
@@ -1700,6 +1716,14 @@ body {
       float: right;
       text-align: center;
       width: 65px;
+    }
+
+    .page-landing .section-info .fa-circle {
+      top: -1px;
+    }
+
+    .page-landing .value-small {
+      font-size: 9px;
     }
   }
 
