@@ -1,6 +1,12 @@
 <div class="container page-team-performance" data-ng-controller="TeamPerformanceCtrl">
-
-<div class="container">
+  <div class="panel-container">
+    <div class="row revenue-title">
+      <div class="col-xs-12 text-center">
+        <h4 class="text-uppercase">Team Performance</h4>
+      </div>
+    </div>
+  </div>
+  <div class="container">
   <div class="revenue-container clearfix">
     <div class="col-xs-8">
       <h1 class="heading-value big-number display-inline-block clearfix">
@@ -20,8 +26,8 @@
     </div>
   </div>
 
-<div class="container container-dark container-team">
-<!-- Team Container -->
+  <div class="container container-dark container-team">
+  <!-- Team Container -->
     <div class="row">
       <div class="col-xs-4 text-center team-mem-box">
         <div class="team-emp-img">
@@ -92,21 +98,21 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
 
-<div class="container container-white container-team-overviw">
-  <!-- Team Overview -->
-  <div class="row">
-    <div class="col-xs-12">
-      <h4 class="dark-text mt-0">Team Overview</h4>
+  <div class="container container-white container-team-overviw">
+    <!-- Team Overview -->
+    <div class="row">
+      <div class="col-xs-12">
+        <h4 class="dark-text mt-0">Team Overview</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        Team over view Graph
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-12">
-      Team over view Graph
-    </div>
-  </div>
-</div>
 
 
 
@@ -164,6 +170,9 @@ body {
 .page-team-performance .revenue-container .big-number {
   margin: 0 0 5px;
   position: relative;
+}
+.page-team-performance .revenue-container .trend {
+  right: -48px;
 }
 
 .page-team-performance .team-count-badge img {
