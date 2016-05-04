@@ -1,170 +1,127 @@
 
 <div class="page page-profile" ng-controller="ProfileCtrl">
 
-  <div class="container hidden">
+  <div class="container">
     <header class="custom-profile-header clearfix">
-        <div class="profile-imge pb-15 text-center">
-            <img alt="{{currentUser.account_s[0]}}" src="images/g1.jpg" border="0" width="50%" class="img-reponsive img-circle">
+      <div class="row">
+        <div class="col-xs-4">
+          <div class="profile-imge">
+            <img alt="{{currentUser.account_s[0]}}" src="images/g1.jpg" border="0" class="img-responsive img-circle">
+          </div>
         </div>
-        <h2 class="white-text text-center">{{profileInfo.name_s[0]}}James Davidson</h2>
-        <h4 class="text-center white-text">Associate Manager</h4>
+        <div class="col-xs-8 pl-0 profile-social">
+          <h4 class="white-text">Dorthy Smith</h4>
+          <h5 class="">Associate Manager Finance</h5>
 
-        <div class="profile-social pl-0 pr-0 col-xs-12">
-          <div class="col-xs-4 pl-0 pr-0 profile-social-info br0">
-            <h5 class="text-center">Manager <span class="text-uppercase white-text">J Martin</span></h5>
-          </div>
-          <div class="col-xs-4 pl-0 pr-0 profile-social-info br0">
-            <h5 class="text-center">Direct Report <span class="text-uppercase white-text">2,343</span></h5>
-          </div>
-          <div class="col-xs-4 pl-0 pr-0 profile-social-info">
-            <h5 class="text-center">Emp. ID <span class="text-uppercase white-text">Emp-0034</span></h5>
-          </div>
+          <div class="clearfix"></div>
+
+            <div class="col-xs-4 pl-0 pr-0 profile-social-info">
+              EID
+            </div>
+            <div class="col-xs-8 pl-0 pr-0 profile-social-info">
+              <span class="white-text">123-90034</span>
+            </div>
+            <div class="col-xs-4 pl-0 pr-0 profile-social-info br0">
+              Manager
+            </div>
+            <div class="col-xs-8 pl-0 pr-0 profile-social-info">
+              <span class="white-text">Joe Martin</span>
+            </div>
+
+            <div class="col-xs-12 pl-0 pr-0 profile-social-team text-right">
+              <div class="team-count col-xs-8 pr-0 text-right">
+                Team
+                <h5 class="white-text">15</h5>
+              </div>
+              <div class="col-xs-4 pl-0 team-count-badge">
+                <img src="images/icon-team.png" width="50px" border="0" />
+                <div class="badge badge-warning">7</div>
+              </div>
+            </div>
         </div>
+      </div>
     </header>
-    <div class="row">
-        <!-- About -->
-        <div class="col-sm-12">
-          <div class="panel mini-box custom-minibox">
-            <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-info">
-                <i class="fa fa-info"></i>
-            </span>
-            <div class="box-info" style=" max-width: 90%; text-align: justify;">
-                <p class="size-h3">About Me</p>
-                <p class="text-muted">
-                    {{profileInfo.bio_s[0]}}
-                </p>
+    <div class="container container-light container-vacation">
+        <!-- Vacations -->
+        <div class="row">
+          <div class="col-xs-6">
+            <h4 class="white-text mt-0">Vacations</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            Donet Chart
+          </div>
+          <div class="col-xs-6" data-ng-controller="DatepickerDemoCtrl">
+            <div class="input-group ui-datepicker mb-10">
+                <input type="text"
+                  class="form-control"
+                  datepicker-popup="{{format}}"
+                  ng-model="dt"
+                  is-open="opened"
+                  min="minDate"
+                  max="'2015-06-22'"
+                  datepicker-options="dateOptions"
+                  date-disabled="disabled(date, mode)"
+                  ng-required="true"
+                  close-text="Close"
+                  placeholder="From Date">
+                <span class="input-group-addon" ng-click="open($event)"><i class="fa fa-calendar"></i></span>
+            </div>
+            <div class="input-group ui-datepicker  mb-10">
+                <input type="text"
+                  class="form-control"
+                  datepicker-popup="{{format}}"
+                  ng-model="dt"
+                  is-open="opened"
+                  min="minDate"
+                  max="'2015-06-22'"
+                  datepicker-options="dateOptions"
+                  date-disabled="disabled(date, mode)"
+                  ng-required="true"
+                  close-text="Close"
+                  placeholder="To Date">
+                <span class="input-group-addon" ng-click="open($event)"><i class="fa fa-calendar"></i></span>
             </div>
           </div>
         </div>
-
-        <!-- Expertise Sectors -->
-        <div class="col-sm-12">
-          <div class="panel mini-box custom-minibox">
-              <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-info">
-                  <i class="fa fa-industry"></i>
-              </span>
-              <div class="box-info">
-                  <p class="size-h3">Expertise Sectors</p>
-                  <p class="text-muted">
-                    <span ng-repeat = "sector in profileInfo.expertise_sector_s">
-                      {{sector}}{{$last ? '' : ', '}}
-                    </span>
-                  </p>
-              </div>
+        <div class="row">
+          <div class="col-xs-12 mb-10">
+            <input type="text" placeholder="Reason" class="form-control" />
           </div>
         </div>
-
-        <!-- Expertise -->
-        <div class="col-sm-6">
-          <div class="panel mini-box custom-minibox">
-              <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-info">
-                  <i class="fa fa-magic"></i>
-              </span>
-              <div class="box-info">
-                  <p class="size-h3">Expertise</p>
-                  <p class="text-muted">
-                    <span ng-repeat = "skill in profileInfo.expertise_skills_s">
-                      {{skill}}{{$last ? '' : ', '}}
-                    </span>
-                  </p>
-              </div>
-          </div>
-        </div>
-
-        <!-- Regions -->
-        <div class="col-sm-6">
-          <div class="panel mini-box custom-minibox">
-              <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-info">
-                  <i class="fa fa-globe"></i>
-              </span>
-              <div class="box-info">
-                  <p class="size-h3">Regions</p>
-                  <p class="text-muted">
-                    <span ng-repeat = "region in profileInfo.expertise_region_s">
-                      {{region}}{{$last ? '' : ', '}}
-                    </span>
-                  </p>
-              </div>
-          </div>
-        </div>
-
-        <!-- Employment History -->
-        <div class="col-sm-6">
-          <div class="panel mini-box custom-minibox">
-            <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-info">
-                <i class="fa fa-briefcase"></i>
-            </span>
-            <div class="box-info">
-                <p class="size-h3">Employment History</p>
-                <p class="text-muted">
-                  <span ng-repeat = "history in profileInfo.employment_history_s">
-                    {{history}}{{$last ? '' : ', '}}
-                  </span>
-                </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Interests -->
-        <div class="col-sm-6">
-          <div class="panel mini-box custom-minibox">
-            <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-info">
-                <i class="fa fa-heart"></i>
-            </span>
-            <div class="box-info">
-                <p class="size-h3">Interests</p>
-                <p class="text-muted">
-                  <span ng-repeat = "interest in profileInfo.interests_s">
-                    {{interest}}
-                  </span>
-                </p>
-            </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="button" class="btn btn-info btn-block">Apply</button>
           </div>
         </div>
     </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="panel mini-box custom-minibox">
-          <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-info">
-              <i class="fa fa-tasks"></i>
-          </span>
-          <div class="box-info">
-              <p class="size-h3">GICS Preferences</p>
-          </div>
-          <div class="panel-body">
-            <div data-slim-scroll data-scroll-height="500px">
-              <div ui-tree="options">
-                  <ol ui-tree-nodes ng-model="list2" >
-                      <li ng-repeat="item in list2" ui-tree-node ng-include="'items_renderer.html'"></li>
-                  </ol>
-              </div>
-            </div>
-          </div>
+    <div class="container container-dark container-financals">
+      <!-- Financials -->
+      <div class="row">
+        <div class="col-xs-6">
+          <h4 class="white-text mt-0">Financials</h4>
         </div>
       </div>
-
-      <div class="col-md-6">
-        <div class="panel mini-box custom-minibox">
-          <span class="btn-icon btn-icon-round btn-icon-lg-alt bg-info">
-              <i class="fa fa-tasks"></i>
-          </span>
-          <div class="box-info">
-              <p class="size-h3">Region Preferences</p>
-          </div>
-          <div class="panel-body">
-            <div data-slim-scroll data-scroll-height="500px">
-             <div ui-tree="options">
-                <ol ui-tree-nodes ng-model="list1" >
-                  <li ng-repeat="item in list1" ui-tree-node ng-include="'items_renderer.html'"></li>
-                </ol>
-              </div>
-            </div>
-          </div>
+      <div class="row">
+        <div class="col-xs-6">Financial Bar</div>
+      </div>
+    </div>
+    <div class="container container-light container-anualrev">
+      <!-- Performance -->
+      <div class="row">
+        <div class="col-xs-6">
+          <h4 class="white-text mt-0">Annual Reviews</h4>
         </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">Annual Reviews Graph</div>
       </div>
     </div>
   </div>
+
+<br />
+<br />
 
   <div class="container">
     <div class="row">
@@ -188,8 +145,6 @@
       </div>
     </div>
   </div>
-
-
 </div>
 
 
@@ -224,43 +179,60 @@
 .page-profile {
     margin: 0;
 }
-/*.custom-profile-header .profile-imge {
-  padding: 25px 0 0;
+.custom-profile-header {
+  margin: 0 15px 0 0;
+  position: fixed;
+  z-index: 10;
 }
-.custom-profile-header h2 {
-  font-weight: 500;
-  margin: 10px 0 0;
+.container-dark,
+.custom-profile-header {
+  background: #2a2a2b;
+  padding: 15px;
 }
-.custom-profile-header .profile-social {
-  display: block;
-  margin: 0 0 15px 0;
+.profile-social h4 {
+  margin: 5px 0 5px;
 }
-.custom-profile-header .profile-social-info {
-  border: 1px solid #777;
+.profile-social h5 {
+  margin: 0 0 5px;
 }
-.custom-profile-header .profile-social-info.br0 {
-    border-right: 0;
+.profile-social-team {
+  margin-top: 15px;
 }
-.custom-profile-header .profile-social h5 {
-  color: #DDD;
-}
-.custom-profile-header .profile-social h5 span {
-  display: block;
-  margin: 5px 0 0;
-}
-
-
-.page-profile .ui-checkbox {
-  margin: 0 20px 0px 20px;
-}
-.page-profile .ui-checkbox input[type="checkbox"] + span:before {
+.team-count-badge {
   position: relative;
-  top: -2px;
 }
-.page-profile .angular-ui-tree-handle {
-  border: 0;
-  border-bottom: 1px solid #e9e9e9;
-  padding: 2px 0;
-  cursor: default;
-}*/
+.team-count-badge .badge {
+  position: absolute;
+  color: #333;
+  right: 0;
+  top: -10px;
+}
+.container-light {
+  background: #3e3e40;
+  padding: 15px;
+}
+.container-vacation {
+  margin-top: 182px;
+}
+.container-vacation .form-control {
+  color: #2a2a2a;
+  background-color: #e4e4e4;
+  border: 1px solid #e4e4e4;
+  font-size: 13px;
+}
+.container-vacation .input-group-addon {
+  color: #727272;
+  background-color: #e4e4e4;
+  border: 1px solid #e4e4e4;
+}
+.container-vacation .input-group-addon .fa {
+  font-size: 18px;
+}
+.mb-10 {
+  margin-bottom: 10px;
+}
+.container-dark h4,
+.container-light h4 {
+  margin-top: 0;
+}
 </style>

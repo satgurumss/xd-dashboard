@@ -980,13 +980,16 @@ ul.dropdown-menu li:last-child a {
 body {
   background-color: #464646 !important;
   background: #464646;
+  color: #999;
 }
 .app > .main-container:before {
   background-color: #464646 !important;
   background: #464646;
+  color: #999;
 }
 .body-auth #content {
-    background-color: #464646;
+  background-color: #464646;
+  color: #999;
 }
 
 .btn-info {
