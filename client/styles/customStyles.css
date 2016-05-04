@@ -1600,7 +1600,8 @@ body {
   }
 
   .page-dashboard .revenue-container .value-label {
-    top: 0px;
+    top: -1px;
+    right: -45px;
   }
 
   .page-landing .section-info .trend,
@@ -1613,7 +1614,7 @@ body {
 
   .page-dashboard .revenue-container .trend {
     bottom: 1px;
-    right: -47px;
+    right: -51px;
   }
 
   .page-landing .section-info .contents-below {
@@ -1996,3 +1997,67 @@ div.circle-container {
   position: relative;
   top: -8px;
 }
+.tab-header{
+  margin-bottom:10px;
+}
+/*PROGRESS BAR STYLE*/
+.prog-bar-containter {
+  background: #777;
+  border-radius: 5px;
+  float: left;
+  width: 85%;
+}
+.gradient-bar {
+  background: -webkit-linear-gradient(left, red, orange, yellow, green);
+  background: -o-linear-gradient(left, red, orange, yellow, green);
+  background: -moz-linear-gradient(left, red, orange, yellow, green);
+  background: linear-gradient(to right, red, orange, yellow, green);
+
+  box-shadow: inset 0px 4px 4px rgba(0,0,0,.3);
+
+  overflow: hidden;
+  height: 18px;
+  width: 100%;
+  border-radius: 5px;
+  position: relative;
+}
+.gradient-bar .bar-percent {
+  position: absolute;
+  color: #FFF;
+  z-index: 5;
+  right: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 18px;
+}
+.gradient-percent {
+  height: 18px;
+  position: absolute;
+  background: #777;
+  right: 0;
+  border-radius: 0 5px 5px 0;
+
+  text-align: right;
+
+  box-shadow: inset 0px 4px 4px rgba(0,0,0,.3);
+}
+.gradient-percent .bar-label{
+  color: #FFF;
+  font-size: 14px;
+  line-height: 20px;
+  padding-right: 10px;
+}
+
+.label-out {
+  float: left;
+  font-size: 12px;
+  line-height: 18px;
+  margin-left: 3%;
+  width: 12%;
+}
+
+.tab-progress-container{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+/*--------------------------*/
