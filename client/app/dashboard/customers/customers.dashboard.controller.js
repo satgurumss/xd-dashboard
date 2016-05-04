@@ -11,7 +11,7 @@
     });
 
   function CustomerDashCtrl($scope, $http, $location, gaugesService, CONST) {
-    $scope.isSatisifed = "true";
+    $scope.isSatisfied = "true";
     $scope.customers = [{
       name: "Acme Corporation",
       reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
@@ -552,9 +552,9 @@
       $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
     }
 
-    $scope.toggleCustomers = function(isSatisifed){
+    $scope.toggleCustomers = function(isSatisfied){
 
-      if(isSatisifed === "true") {
+      if(isSatisfied === "true") {
         $scope.customers = [{
           name: "Acme Corporation",
           reasons: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.",
