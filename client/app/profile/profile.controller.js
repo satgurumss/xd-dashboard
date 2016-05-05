@@ -256,11 +256,13 @@
     }
 
     $scope.showInfo = function(info, index){
-      var values= ["$20 K", "$5 K", "$10 K"]
+      var values= ["$20 K", "$5 K", "$10 K"],
+          percents=["50%", "25%", "25%"];
       
       $scope.userInfo = {
         title: info,
-        value: values[index]
+        value: values[index],
+        percent: percents[index]
       };
     }
   }

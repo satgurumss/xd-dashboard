@@ -78,13 +78,16 @@
     <div ng-class="{customDisplayNone: isTeamView}">
       <div class="container container-white container-emp-overview">
         <div>
-          <div>
+          <div class="position-relative">
             <span class="h3">{{emp.value}}</span>
             <span class="trend up-trend green-text" ng-class="{hidden:emp.trendIsPositive}">
               {{emp.trend}}
             </span>
             <span class="trend down-trend orange-text" ng-class="{hidden:!emp.trendIsPositive}">
               {{emp.trend}}
+            </span>
+            <span class="trend ytd">
+             YTD&nbsp;${{emp.ytd}}
             </span>
             <div class="h6 text-uppercase pull-right">
               <span class='budget-value'>
@@ -98,14 +101,19 @@
               </span>
             </div>
           </div>
-        </h1>
         </div>
         <div class="row">
-          <div class="col-xs-10 chart-container">
-            <hc-chart options="satisfactionChart" watch="monthsToDisplay"/>
-          </div>
-          <div class="col-xs-2 pr-0 pl-0">
-            <div class="vertical-slider-wrapper">
+          <ul class="nav-list col-xs-2 user-actions">
+            <li class="nav-item"><span><i class="fa fa-envelope-o"/></span></li>
+            <li class="nav-item"><span><i class="fa fa-phone"/></span></li>
+            <li class="nav-item"><span><i class="fa fa-comments-o"/></span></li>
+            <li class="nav-item"><span><i class="fa fa-share-alt"/></span></li>
+          </ul>
+          <div class="col-xs-10 margin-t10">
+            <div class="clearfix">
+              <hc-chart options="satisfactionChart" watch="monthsToDisplay"/>
+            </div>
+            <div class="slider-wrapper">
               <input slider options="options" ng-model="monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
             </div>
           </div>
@@ -203,7 +211,8 @@ body {
 }
 
 .page-team-performance .slider-wrapper {
-  padding: 15px;
+  padding: 10px;
+  margin-bottom: 8px;
 }
 .page-team-performance .chart-container {
   padding: 10px;
@@ -244,4 +253,36 @@ body {
   height: 110%;
   top: -6px;  
 }
+
+.user-actions{
+  margin-top: 25px;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 0;
+  margin-left: 0px;
+}
+.user-actions i.fa{
+  font-size: 28px;
+  margin-top: 5px;
+  color:#5B9BD5;
+}
+
+.user-actions li{
+  padding-bottom: 8px;
+  padding-left: 15px;
+  padding-top:5px;
+  box-shadow: inset 0px 4px 4px rgba(0,0,0,.2);
+}
+.user-actions li:not(:last-child){
+  padding-bottom: 7px;
+  border-bottom:1px solid #ccc;
+}
+
+.page-team-performance .ytd{
+  position: absolute; 
+  bottom: -13px;
+  left: 3px;
+}
+
 </style>
