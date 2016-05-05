@@ -1597,7 +1597,8 @@ body {
   .page-landing .section-info .value-label,
   .page-dashboard .revenue-container .value-label,
   .page-dashboard-customer .revenue-container .value-label,
-  .page-hr .revenue-container .value-label {
+  .page-hr .revenue-container .value-label,
+  .page-team-performance .revenue-container .value-label {
     font-size: 11px;
     position: absolute;
     top: 0;
