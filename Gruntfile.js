@@ -312,6 +312,7 @@
               "app/sampleData/middle-east.json",
               "services.js",
               "circles.js",
+              "angular-bootstrap-calendar-tpls.min.js",
               "angular-awesome-slider.css",
               "jquery.keyframes.js",
               "prefixfree.min.js",

@@ -2090,6 +2090,7 @@ div.circle-container {
   line-height: 18px;
   margin-left: 3%;
   width: 12%;
+  margin-top: 2%;
 }
 
 .tab-progress-container{
@@ -2210,7 +2211,7 @@ div.circle-container {
 }
 
 .blue-progress{
-  background-color:#1C289E;
+  background-color:#5B9BD5;
 }
 
 /*----------------------------*/
@@ -2285,6 +2286,13 @@ div.circle-container {
     border: 1px solid green;
   }
 
+  .my-calendar .cal-row-head [class*=cal-cell]{
+    text-transform: uppercase;
+  }
+  .my-calendar .cal-row-head [class*=cal-cell]:hover{
+    border:none;
+  }
+
   .my-calendar .cal-month-box .cal-day-today [class*=cal-cell]:hover  {
     border: 1px solid #229CD7;
   }
@@ -2346,4 +2354,10 @@ div.circle-container {
   .modal-dialog .input-group-addon {
     background-color: transparent;
     border-color: #ccc;
+  }
+
+  .btn-primary-custom{
+    color: #fff;
+    background-color: #5B9BD5;
+    border-color: #5B9BD5;
   }
