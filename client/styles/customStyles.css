@@ -2214,3 +2214,136 @@ div.circle-container {
 }
 
 /*----------------------------*/
+
+  .events-container{
+    padding: 0 15px 0 15px;
+  }
+  .ui-tab-container .nav-tabs > li > a {
+    font-size: 13px;
+  }
+
+  .calendar-header {
+    padding: 10px 0;
+    border-bottom: 1px solid #aaa;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .calendar-header button {
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    font-size: 20px;
+  }
+
+  .calendar-header .calendar-title {
+    display: inline-block;
+    margin: 5px 0 0 0;
+    font-size: 16px;
+  }
+
+  .my-calendar .cal-month-box,
+  .my-calendar .cal-week-box,
+  .my-calendar .cal-year-box,
+  .my-calendar .cal-month-box .cal-row-fluid,
+  .my-calendar .cal-year-box .row,
+  .my-calendar .cal-month-box [class*=cal-cell],
+  .my-calendar .cal-year-box [class*=span] {
+    border: 0;
+  }
+
+  .my-calendar .cal-month-box [class*=cal-cell],
+  .my-calendar .cal-year-box [class*=span] {
+    min-height: 0;
+  }
+
+  .my-calendar .cal-cell .cal-month-day {
+    height: 50px;
+  }
+
+ .my-calendar .badge {
+    display: none;
+  }
+
+  .my-calendar span[data-cal-date] {
+    margin-top: 5px;
+    font-size: 15px;
+    color: white;
+    outline: none;
+  }
+
+  .my-calendar .cal-month-box .cal-day-today span[data-cal-date] {
+    font-size: 15px;
+    color: green;
+    font-weight: bold;
+    opacity: 1;
+  }
+
+
+  .my-calendar .cal-month-box .cal-day-today  {
+    background-color: transparent;
+    border: 1px solid green;
+  }
+
+  .my-calendar .cal-month-box .cal-day-today [class*=cal-cell]:hover  {
+    border: 1px solid #229CD7;
+  }
+
+  .my-calendar .cal-row-fluid:hover,
+  .my-calendar .cal-year-box .row:hover {
+    background-color: transparent;
+  }
+
+  .my-calendar .cal-cell.drop-active,
+  .my-calendar .cal-day-hour-part.drop-active,
+  .my-calendar .cal-week-box .cal-cell1.drop-active,
+  .my-calendar .cell-focus,
+  .my-calendar [class*=cal-cell] .drop-active,
+  .my-calendar [class*=cal-cell]:hover {
+    background-color: transparent;
+    border: 1px solid #229CD7;
+    outline: none;
+  }
+
+  .my-calendar .event {
+    width: 7px;
+    height: 7px;
+    border: 0;
+  }
+
+  .my-calendar #cal-week-box {
+    display: none;
+  }
+
+  .my-calendar .cal-event-list .event.pull-left {
+    margin-top: 7px;
+  }
+
+  .my-calendar .cal-slide-content {
+    padding: 20px 10px 10px;
+  }
+
+  .my-calendar .glyphicon {
+    font-size: 13px;
+  }
+
+  .my-calendar .glyphicon.glyphicon-pencil {
+    color: #229CD7;
+  }
+
+  .my-calendar .glyphicon.glyphicon-remove {
+    color: #C62B0A;
+  }
+
+  .my-calendar .cal-day-tick {
+    background-color: transparent;
+    border: 0;
+    bottom: -18px;
+    margin-right: -14px;
+  }
+
+  .modal-dialog .form-control,
+  .modal-dialog .input-group-addon {
+    background-color: transparent;
+    border-color: #ccc;
+  }
