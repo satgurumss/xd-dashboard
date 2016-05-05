@@ -9,7 +9,7 @@
         var d = date.getDate();
         var m = date.getMonth();
         var y = date.getFullYear();
-        
+
         /* event source that contains custom events on the scope */
         $scope.events = [
             {title: 'All Day Event',start: new Date(y, m, 1)},
@@ -34,7 +34,7 @@
         $scope.calEventsExt = {
              color: '#f00',
              textColor: 'yellow',
-             events: [ 
+             events: [
                     {type:'party',title: 'Lunch',start: new Date(y, m, d, 12, 0),end: new Date(y, m, d, 14, 0),allDay: false},
                     {type:'party',title: 'Lunch 2',start: new Date(y, m, d, 12, 0),end: new Date(y, m, d, 14, 0),allDay: false},
                     {type:'party',title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
@@ -90,7 +90,7 @@
         /* config object */
         $scope.uiConfig = {
             calendar:{
-                height: 250,
+                height: 260,
                 editable: true,
                 header:{
                     left: 'title',

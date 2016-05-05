@@ -11,6 +11,42 @@
     });
 
   function HRDashCtrl($scope, $http, $location,gaugesService, CONST) {
+
+    $scope.events = [
+      {
+        title: 'My event title', // The title of the event
+        type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
+        startsAt: new Date(), // A javascript date object for when the event starts
+        endsAt: new Date(), // Optional - a javascript date object for when the event ends
+        editable: true, // If edit-event-html is set and this field is explicitly set to false then dont make it editable.
+        deletable: true, // If
+      }, {
+        title: 'My event title', // The title of the event
+        type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
+        startsAt: new Date(), // A javascript date object for when the event starts
+        endsAt: new Date(), // Optional - a javascript date object for when the event ends
+        editable: true, // If edit-event-html is set and this field is explicitly set to false then dont make it editable.
+        deletable: true, // If
+      }];
+
+    $scope.calendarOptions = {
+      view:"month",
+      viewDate: new Date(),
+      viewTitle:"Training & Events",
+      eventHtmlEdit: "<i class=\'glyphicon glyphicon-pencil\'></i>",
+      deleteEventHtml: "<i class=\'glyphicon glyphicon-remove\'></i>",
+      cellIsOpen:true,
+      enableViewChange: false,
+      onEventDelete: function(event) {
+        console.log(event)
+      }
+    }
+
+    $scope.eventClicked = function(event) {
+      console.log('clicked');
+      event.preventDefault();
+    }
+
     var gaugeDefaultOptions = {
       chart: {
         type: 'solidgauge',
@@ -242,12 +278,12 @@
       satisfaction:{
         percent: 10,
         className: "circle-blue",
-        colors: CONST.gaugeBlue 
+        colors: CONST.gaugeBlue
       },
       retention:{
         percent: 30,
         className: "circle-green",
-        colors: CONST.gaugeGreen 
+        colors: CONST.gaugeGreen
       },
       hiring:{
         percent: 60,
