@@ -216,7 +216,6 @@
 			step: 3,
 			dimension: " months",
 			smooth: false,
-			vertical: true,
 			css: {
 				background: {
 					"background-color": "#666666"
