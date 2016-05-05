@@ -313,6 +313,7 @@
               "services.js",
               "circles.js",
               "angular-bootstrap-calendar-tpls.min.js",
+              "angular-bootstrap-calendar.min.css",
               "angular-awesome-slider.css",
               "jquery.keyframes.js",
               "prefixfree.min.js",
