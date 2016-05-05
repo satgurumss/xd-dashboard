@@ -2090,6 +2090,18 @@ div.circle-container {
   padding-left: 0px;
   padding-right: 0px;
 }
+
+.prog-bar-green{
+  background:#157c3e;
+}
+
+.prog-bar-yellow{
+  background:#ff8400;
+}
+
+.prog-bar-red{
+  background:#da1b1b;
+}
 /*--------------------------*/
 
 .page-profile {
@@ -2159,3 +2171,40 @@ div.circle-container {
 .page-profile .range-container{
   background: #3E3E40;
 }
+
+/*for angular progress bar*/
+.progressbar-custom{
+  height:25px;
+  margin: 8px 0 8px 0;
+}
+
+.progressbar-custom span{
+  display: block;
+  margin-top: 2px;
+}
+
+.progressbar-custom span a{
+  color:#fff;
+}
+
+.progressbar-custom span a:hover{
+  text-decoration: none;
+}
+
+.green-progress{
+  background-color:#157c3e;
+}
+
+.yellow-progress{
+  background-color:#ff8400;
+}
+
+.red-progress{
+  background-color:#da1b1b;
+}
+
+.blue-progress{
+  background-color:#1C289E;
+}
+
+/*----------------------------*/

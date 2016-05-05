@@ -116,17 +116,26 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <uib-progress class="progressbar-lg progress-rounded">
-            <uib-bar value="50" class="darksuccess-progress">
-              <span>Salary</span>
+          <uib-progress class="progressbar-custom progress-rounded">
+            <uib-bar value="50" class="green-progress">
+              <span>
+                <a href="javascript://" ng-click="showInfo('Salary', 0)">Salary</a>
+              </span>
             </uib-bar>
-            <uib-bar value="25" class="darkwarning-progress">
-              <span>Bonus</span>
+            <uib-bar value="25" class="yellow-progress">
+              <span>
+                <a href="javascript://" ng-click="showInfo('Bonus', 1)">Bonus</a>
+              </span>
             </uib-bar>
-            <uib-bar value="25" class="darkdanger-progress">
-              <span>Allowances</span>
+            <uib-bar value="25" class="blue-progress">
+              <span>
+                <a href="javascript://" ng-click="showInfo('Allowances', 2)">Allowances</a>
+              </span>
             </uib-bar>
           </uib-progress>
+        </div>
+        <div class="col-xs-12">
+          <span class="h4">{{userInfo.title}}</span>&nbsp;{{userInfo.value}}
         </div>
       </div>
     </div>
@@ -149,17 +158,3 @@
     </div>
   </div>
 </div>
-
-<style type="text/css">
-  .darksuccess-progress{
-    background-color:#157c3e;
-  }
-
-  .darkwarning-progress{
-    background-color:#ff8400;
-  }
-
-  .darkdanger-progress{
-    background-color:#da1b1b;
-  }
-</style>

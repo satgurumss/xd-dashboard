@@ -139,7 +139,7 @@
 			budget: "4 M",
 			fct: "4.5 M",
 			progress: {
-				percent: 40,
+				percent: 30,
 				barLabel: "",
 				barValue: "$5 M"
 			}

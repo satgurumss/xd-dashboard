@@ -247,56 +247,56 @@
 
           var renderChart = function() {
             var options = {
-              chart: {
-                borderWidth: 1,
-                height: 200,
-                spacingTop: 0,
-                spacingBottom: 0,
-                spacingLeft: 0,
-                spacingRight: 0
-              },
+                chart: {
+                  borderWidth: 1,
+                  height: 200,
+                  spacingTop: 0,
+                  spacingBottom: 0,
+                  spacingLeft: 0,
+                  spacingRight: 0
+                },
 
-              title: {
-                text: 'Customer Distribution'
-              },
+                title: {
+                  text: 'Customer Distribution'
+                },
 
-              credits: {
-                enabled: false
-              },
+                credits: {
+                  enabled: false
+                },
 
-              legend: {
-                enabled: false
-              },
+                legend: {
+                  enabled: false
+                },
 
-              mapNavigation: {
-                enabled: false,
-                buttonOptions: {
-                  verticalAlign: 'bottom'
-                }
-              },
-              yAxis:{
-                enabled:false
-              },
+                mapNavigation: {
+                  enabled: false,
+                  buttonOptions: {
+                    verticalAlign: 'bottom'
+                  }
+                },
+                yAxis: {
+                  enabled: false
+                },
 
-              series: [{
-                name: 'Countries',
-                mapData: mapData,
-                color: '#E0E0E0',
-                enableMouseTracking: false
-              }, {
-                type: 'mapbubble',
-                mapData: mapData,
-                name: '# of Customers',
-                joinBy: ['iso-a2', 'code'],
-                data: scope.data,
-                minSize: 10,
-                maxSize: '25%',
-                tooltip: {
-                  pointFormat: '{point.name} - {point.z}'
-                }
-              }]
-            },
-            tempScrollTop = $($window).scrollTop();
+                series: [{
+                  name: 'Countries',
+                  mapData: mapData,
+                  color: '#E0E0E0',
+                  enableMouseTracking: false
+                }, {
+                  type: 'mapbubble',
+                  mapData: mapData,
+                  name: '# of Customers',
+                  joinBy: ['iso-a2', 'code'],
+                  data: scope.data,
+                  minSize: 10,
+                  maxSize: '25%',
+                  tooltip: {
+                    pointFormat: '{point.name} - {point.z}'
+                  }
+                }]
+              },
+              tempScrollTop = $($window).scrollTop();
 
             $(element[0]).highcharts('Map', Highcharts.merge(options, theme));
             $($window).scrollTop(tempScrollTop);
@@ -308,7 +308,7 @@
             renderChart();
           });
           /*map bubble*/
-          
+
           // Apply the theme to all High Charts
           //Highcharts.setOptions(Highcharts.theme);
 
@@ -699,7 +699,25 @@
       templateUrl: '/app/directives/progress-bar.html',
       replace: true,
       scope: {
-        options: '='
+        options: '=',
+        applyThreshold: '='
+      },
+      link: function(scope, element) {
+        var applyThresholdToProgressBar = function() {
+          var progressBar = $(element[0]).find("div.gradient-bar");
+
+          if (scope.options.percent <= 30) {
+            progressBar.addClass("prog-bar-red");
+          } else if (30 < scope.options.percent && scope.options.percent <= 50) {
+            progressBar.addClass("prog-bar-yellow");
+          } else if (50 < scope.options.percent && scope.options.percent <= 100) {
+            progressBar.addClass("prog-bar-green");
+          }
+        };
+
+        if (scope.applyThreshold) {
+          applyThresholdToProgressBar();
+        }
       }
     };
   }

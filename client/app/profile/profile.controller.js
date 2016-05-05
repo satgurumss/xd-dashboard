@@ -9,6 +9,7 @@
   		percent: 100-25,
   		text: "15d"
   	};
+    $scope.userInfo = {}
 
   	$scope.reason = "";
 
@@ -252,6 +253,15 @@
         $scope.vacationsChart.colors = CONST.gaugeWarning      }
       else if(50 < $scope.vacationsChart.percent && $scope.vacationsChart.percent <= 100){
         $scope.vacationsChart.colors = CONST.gaugeSuccess      }
+    }
+
+    $scope.showInfo = function(info, index){
+      var values= ["$20 K", "$5 K", "$10 K"]
+      
+      $scope.userInfo = {
+        title: info,
+        value: values[index]
+      };
     }
   }
 
