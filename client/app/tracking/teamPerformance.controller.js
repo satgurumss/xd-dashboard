@@ -137,6 +137,7 @@
 			trendIsPositive: true,
 			trend: "+1.0 M",
 			budget: "4 M",
+			ytd: "10 M",
 			fct: "4.5 M",
 			progress: {
 				percent: 30,
@@ -150,6 +151,7 @@
 			trendIsPositive: false,
 			trend: "-2.0 M",
 			budget: "18 M",
+			ytd: "18 M",
 			fct: "18 M",
 			progress: {
 				percent: 60,
@@ -163,6 +165,7 @@
 			trendIsPositive: true,
 			trend: "+1.0 M",
 			budget: "18 M",
+			ytd: "22 M",
 			fct: "19 M",
 			progress: {
 				percent: 75,
@@ -176,6 +179,7 @@
 			trendIsPositive: false,
 			trend: "-2.0 M",
 			budget: "12 M",
+			ytd: "15 M",
 			fct: "12 M",
 			progress: {
 				percent: 40,
@@ -189,6 +193,7 @@
 			trendIsPositive: true,
 			trend: "+3.0 M",
 			budget: "11 M",
+			ytd: "18 M",
 			fct: "15 M",
 			progress: {
 				percent: 50,
@@ -202,6 +207,7 @@
 			trendIsPositive: false,
 			trend: "-0.5 M",
 			budget: "19.5 M",
+			ytd: "19.5 M",
 			fct: "19.5 M",
 			progress: {
 				percent: 80,
@@ -223,6 +229,9 @@
 				default: {
 					"background-color": "white"
 				},
+				before: {
+					"background-color": "#7cb5ec"
+				},
 				after: {
 					"background-color": "#7cb5ec"
 				},
@@ -233,7 +242,7 @@
 			scale: [3, 6, 9, 12]
 		};
 
-		$scope.monthsToDisplay = "3";
+		$scope.monthsToDisplay = "6";
 
 		$scope.satisfactionChart = {
 			chart: {
@@ -273,7 +282,7 @@
 				minorTickLength: 0,
 				tickLength: 0,
 				gridLineColor: 'transparent',
-				categories: ['FEB', 'MAR', 'APR']
+				categories: ['NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR']
 			},
 			tooltip: {
 				formatter: function() {
@@ -290,7 +299,7 @@
 
 			series: [{
 				name: "Sales",
-				data: [60.5, 65.9, 78.6],
+				data: [90.2, 80.5, 75.3, 60.5, 65.9, 78.6],
 				type: "area",
 				fillColor: "rgba(40, 189, 198, 0.3)",
 				color: "rgba(40, 189, 198, 1)",
@@ -316,7 +325,8 @@
 			$scope.emp.trend = selectedEmp.trend;
 			$scope.emp.trendIsPositive = selectedEmp.trendIsPositive;
 			$scope.emp.budget = selectedEmp.budget;
-			$scope.emp.fct = selectedEmp.fct
+			$scope.emp.fct = selectedEmp.fct;
+			$scope.emp.ytd = selectedEmp.ytd;
 		}
 
 		$scope.updateChart = function() {

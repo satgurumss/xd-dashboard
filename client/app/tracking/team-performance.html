@@ -78,13 +78,16 @@
     <div ng-class="{customDisplayNone: isTeamView}">
       <div class="container container-white container-emp-overview">
         <div>
-          <div>
+          <div class="position-relative">
             <span class="h3">{{emp.value}}</span>
             <span class="trend up-trend green-text" ng-class="{hidden:emp.trendIsPositive}">
               {{emp.trend}}
             </span>
             <span class="trend down-trend orange-text" ng-class="{hidden:!emp.trendIsPositive}">
               {{emp.trend}}
+            </span>
+            <span class="trend ytd">
+             YTD&nbsp;${{emp.ytd}}
             </span>
             <div class="h6 text-uppercase pull-right">
               <span class='budget-value'>
@@ -104,7 +107,7 @@
             <li class="nav-item"><span><i class="fa fa-envelope-o"/></span></li>
             <li class="nav-item"><span><i class="fa fa-phone"/></span></li>
             <li class="nav-item"><span><i class="fa fa-comments-o"/></span></li>
-            <li class="nav-item"><span><i class="fa fa-file-o"/></span></li>
+            <li class="nav-item"><span><i class="fa fa-share-alt"/></span></li>
           </ul>
           <div class="col-xs-10 margin-t10">
             <div class="clearfix">
@@ -261,7 +264,8 @@ body {
 }
 .user-actions i.fa{
   font-size: 28px;
-  margin-top: 5px
+  margin-top: 5px;
+  color:#5B9BD5;
 }
 
 .user-actions li{
@@ -273,6 +277,12 @@ body {
 .user-actions li:not(:last-child){
   padding-bottom: 7px;
   border-bottom:1px solid #ccc;
+}
+
+.page-team-performance .ytd{
+  position: absolute; 
+  bottom: -13px;
+  left: 3px;
 }
 
 </style>

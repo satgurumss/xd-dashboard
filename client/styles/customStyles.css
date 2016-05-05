@@ -1596,7 +1596,8 @@ body {
 
   .page-landing .section-info .value-label,
   .page-dashboard .revenue-container .value-label,
-  .page-team-performance .revenue-container .value-label {
+  .page-dashboard-customer .revenue-container .value-label,
+  .page-hr .revenue-container .value-label {
     font-size: 11px;
     position: absolute;
     top: 0;
@@ -1604,9 +1605,20 @@ body {
     letter-spacing: 0;
   }
 
+  .page-hr .revenue-container .value-label {
+    top: 0;
+    right: -73px;
+  }
+
+  .page-hr .revenue-container .trend {
+    bottom: 0px;
+    right: -51px;
+    position: absolute;
+  }
+
   .page-dashboard .revenue-container .value-label {
     top: -1px;
-    right: -45px;
+    right: -38px;
   }
 
   .page-landing .section-info .trend,
@@ -1615,7 +1627,15 @@ body {
     position: absolute;
     bottom: 0;
     right: -33px;
-    letter-spacing: 0;
+    letter-spacing: 1px;
+  }
+
+  .page-dashboard .revenue-container .trend{
+    right: -59px;
+  }
+
+  .page-landing .section-info .trend{
+    text-shadow: 1px 1px 1px black;;
   }
 
   .page-landing .section-info .total {
@@ -1758,10 +1778,6 @@ body {
 
   .page-landing .circle-container div.circles-text {
     margin-top: -4px;
-  }
-
-  .page-landing .projects-nav .circle-container div.circles-text {
-    margin-top: 0px;
   }
 
   .page-landing .circle-container .circle-label {
@@ -2203,7 +2219,11 @@ div.circle-container {
 }
 
 .yellow-progress{
-  background-color:#ff8400;
+  background-color:#FFC500;
+}
+
+.yellow-progress span a{
+  color:#000;
 }
 
 .red-progress{
@@ -2360,4 +2380,8 @@ div.circle-container {
     color: #fff;
     background-color: #5B9BD5;
     border-color: #5B9BD5;
+  }
+
+  .position-relative{
+    position: relative;
   }

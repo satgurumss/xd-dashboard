@@ -135,7 +135,8 @@
           </uib-progress>
         </div>
         <div class="col-xs-12">
-          <span class="h4">{{userInfo.title}}</span>&nbsp;{{userInfo.value}}
+          {{userInfo.title}}&nbsp;<span class="h4 white-text">{{userInfo.value}}</span>&nbsp;
+          <span ng-if="userInfo.percent">({{userInfo.percent}})</span>
         </div>
       </div>
     </div>

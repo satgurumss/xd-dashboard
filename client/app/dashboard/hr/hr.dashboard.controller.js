@@ -17,21 +17,29 @@
 
     $scope.events = [
       {
-        title: 'My event title', // The title of the event
+        title: 'Corporate Event', // The title of the event
         type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
         startsAt: new Date(), // A javascript date object for when the event starts
         endsAt: new Date(), // Optional - a javascript date object for when the event ends
         editable: false, // If edit-event-html is set and this field is explicitly set to false then dont make it editable.
         deletable: true, // If
       }, {
-        title: 'My event title', // The title of the event
+        title: 'Management Training', // The title of the event
         type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
         startsAt: new Date(), // A javascript date object for when the event starts
         endsAt: new Date(), // Optional - a javascript date object for when the event ends
         editable: false, // If edit-event-html is set and this field is explicitly set to false then dont make it editable.
         deletable: true, // If
+      },
+      {
+        title: 'Management Training 2', // The title of the event
+        type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
+        startsAt: "Thu May 15 2016 19:22:13 GMT+0500 (Pakistan Standard Time)", // A javascript date object for when the event starts
+        endsAt: "Thu May 19 2016 19:22:13 GMT+0500 (Pakistan Standard Time)", // Optional - a javascript date object for when the event ends
+        editable: false, // If edit-event-html is set and this field is explicitly set to false then dont make it editable.
+        deletable: true, // If
       }];
-
+      
     $scope.calendarOptions = {
       view:"month",
       viewDate: new Date(),
@@ -322,9 +330,9 @@
     }
 
     $scope.hrProgress = {
-      percent: 70,
-      barLabel: "",
-      barValue: "70%"
+      percent: 50,
+      barLabel: "SAT",
+      barValue: "50%"
     };
 
     $scope.init = function() {

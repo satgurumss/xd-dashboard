@@ -225,7 +225,7 @@
 
     $scope.customerProgress = {
       percent: 50,
-      barLabel: "",
+      barLabel: "SAT",
       barValue: "50%"
     };
 
