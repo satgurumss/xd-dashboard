@@ -2,7 +2,8 @@
   'use strict';
 
   angular.module('app')
-    .controller('HRDashCtrl', ['$scope', '$http', '$location', 'gaugesService','CONST', HRDashCtrl])
+    .controller('HRDashCtrl', ['$scope', '$http', '$location', 'gaugesService','CONST', '$uibModal', HRDashCtrl])
+    .controller('addEventModalCtrl', ['$scope','$uibModalInstance','startDate', addEventModalCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
         if (isNaN(input)) return input;
@@ -10,7 +11,9 @@
       };
     });
 
-  function HRDashCtrl($scope, $http, $location,gaugesService, CONST) {
+  function HRDashCtrl($scope, $http, $location, gaugesService, CONST, $uibModal) {
+
+    $scope.currentSelectedDate = new Date();
 
     $scope.events = [
       {
@@ -18,14 +21,14 @@
         type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
         startsAt: new Date(), // A javascript date object for when the event starts
         endsAt: new Date(), // Optional - a javascript date object for when the event ends
-        editable: true, // If edit-event-html is set and this field is explicitly set to false then dont make it editable.
+        editable: false, // If edit-event-html is set and this field is explicitly set to false then dont make it editable.
         deletable: true, // If
       }, {
         title: 'My event title', // The title of the event
         type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
         startsAt: new Date(), // A javascript date object for when the event starts
         endsAt: new Date(), // Optional - a javascript date object for when the event ends
-        editable: true, // If edit-event-html is set and this field is explicitly set to false then dont make it editable.
+        editable: false, // If edit-event-html is set and this field is explicitly set to false then dont make it editable.
         deletable: true, // If
       }];
 
@@ -36,15 +39,41 @@
       eventHtmlEdit: "<i class=\'glyphicon glyphicon-pencil\'></i>",
       deleteEventHtml: "<i class=\'glyphicon glyphicon-remove\'></i>",
       cellIsOpen:true,
-      enableViewChange: false,
-      onEventDelete: function(event) {
-        console.log(event)
-      }
+      enableViewChange: false
     }
 
-    $scope.eventClicked = function(event) {
-      console.log('clicked');
-      event.preventDefault();
+    $scope.onTimespanClick = function(calendarDate, calendarCell) {
+      $scope.currentSelectedDate = new Date(calendarDate);
+    }
+
+    $scope.addEvent = function() {
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'myModalContent.html',
+        controller: 'addEventModalCtrl',
+        size: "lg",
+        resolve:{
+          startDate : function(){return $scope.currentSelectedDate}
+        }
+      });
+
+      modalInstance.result.then(function (selectedItem) {
+        console.log(selectedItem);
+         $scope.events.push({
+          title: selectedItem.title,
+          type: 'info',
+          startsAt: new Date(selectedItem.startDate),
+          endsAt: new Date(selectedItem.endDate),
+          draggable: true,
+          resizable: true,
+          editable: false,
+        });
+      });
+
+    }
+
+    $scope.onEventDelete = function(calendarEvent) {
+      $scope.events.splice($scope.events.indexOf(calendarEvent), 1);
     }
 
     var gaugeDefaultOptions = {
@@ -377,6 +406,21 @@
           break;
       }
     }
+  }
+
+  function addEventModalCtrl($scope,$modalInstance, startDate){
+    $scope.newEvent= {};
+    $scope.newEvent.startDate = startDate;
+    $scope.newEvent.endDate = startDate;
+
+    $scope.ok = function () {
+      if ($scope.newEvent.title)
+        $modalInstance.close($scope.newEvent);
+    };
+
+    $scope.cancel = function () {
+      $modalInstance.dismiss('cancel');
+    };
   }
 
 })();

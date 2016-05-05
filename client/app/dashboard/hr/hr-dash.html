@@ -31,7 +31,7 @@
       <div class="row events-container">
         <div class="margin-t10">
           <span class="h5 text-uppercase">Training & Events</span>
-          <span type="button" class="btn btn-primary btn-xs pull-right" ng-click="events.push({title: 'New event', type: 'important', draggable: true, resizable: true})">
+          <span type="button" class="btn btn-primary btn-xs pull-right" ng-click="addEvent()">
             <i class="fa fa-plus"/>
           </span>
         </div>
@@ -66,7 +66,8 @@
             delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
             cell-is-open="calendarOptions.cellIsOpen"
             on-view-change-click="calendarOptions.enableViewChange"
-            on-delete-event-click="calendarOptions.onEventDelete(calendarEvent)"
+            on-delete-event-click="onEventDelete(calendarEvent)"
+            on-timespan-click="onTimespanClick(calendarDate, calendarCell)"
             class="my-calendar">
           </mwl-calendar>
         </div>
@@ -124,7 +125,64 @@
         </uib-tabset>
     </div>
   </div>
+
 </div>
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">New Event</h3>
+    </div>
+    <div class="modal-body">
+        <form class="ng-pristine ng-valid">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Title</label>
+                <input type="text" ng-model="newEvent.title" class="form-control" placeholder="title">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Starts at</label>
+                 <div class="input-group ui-datepicker" data-ng-controller="DatepickerDemoCtrl">
+                    <input type="text"
+                           class="form-control"
+                           uib-datepicker-popup="{{format}}"
+                           ng-model="newEvent.startDate"
+                           is-open="popup1.opened"
+                           datepicker-options="dateOptions"
+                           date-disabled="disabled(date, mode)"
+                           ng-required="true"
+                           close-text="Close"
+                           disabled="disabled"
+                           alt-input-formats="altInputFormats" />
+                    <span class="input-group-addon" ng-click="open1()">
+                      <i class="fa fa-calendar"></i>
+                    </span>
+                  </div>
+            </div>
+             <div class="form-group">
+                <label for="exampleInputPassword1">Ends at</label>
+                <div class="input-group ui-datepicker" data-ng-controller="DatepickerDemoCtrl">
+                    <input type="text"
+                           class="form-control"
+                           uib-datepicker-popup="{{format}}"
+                           ng-model="newEvent.endDate"
+                           is-open="popup1.opened"
+                           min-date="newEvent.startDate"
+                           datepicker-options="dateOptions"
+                           date-disabled="disabled(date, mode)"
+                           ng-required="true"
+                           close-text="Close"
+                           alt-input-formats="altInputFormats" />
+                      <span class="input-group-addon" ng-click="open1()">
+                      <i class="fa fa-calendar"></i>
+                    </span>
+                  </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">Add</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
 
 <style type="text/css">
   .events-container{
@@ -135,9 +193,10 @@
   }
 
   .calendar-header {
-    padding: 10px 0 7px;
-    border-bottom: 1px solid #CCC;
+    padding: 10px 0;
+    border-bottom: 1px solid #aaa;
     text-align: center;
+    margin-bottom: 10px;
   }
 
   .calendar-header button {
@@ -173,7 +232,7 @@
   }
 
  .my-calendar .badge {
-    display: none !important;
+    display: none;
   }
 
   .my-calendar span[data-cal-date] {
@@ -190,9 +249,14 @@
     opacity: 1;
   }
 
-  .my-calendar .cal-month-box .cal-day-today {
+
+  .my-calendar .cal-month-box .cal-day-today  {
     background-color: transparent;
     border: 1px solid green;
+  }
+
+  .my-calendar .cal-month-box .cal-day-today [class*=cal-cell]:hover  {
+    border: 1px solid #229CD7;
   }
 
   .my-calendar .cal-row-fluid:hover,
@@ -207,15 +271,18 @@
   .my-calendar [class*=cal-cell] .drop-active,
   .my-calendar [class*=cal-cell]:hover {
     background-color: transparent;
+    border: 1px solid #229CD7;
+    outline: none;
   }
 
   .my-calendar .event {
     width: 7px;
     height: 7px;
+    border: 0;
   }
 
   .my-calendar #cal-week-box {
-    display: none !important;
+    display: none;
   }
 
   .my-calendar .cal-event-list .event.pull-left {
