@@ -1,0 +1,110 @@
+<div class="container page-hr" data-ng-controller="HRDashCtrl as hrCtrl" ng-init="init()">
+  <div class="panel-container">
+
+    <div class="panel-body" style="padding: 0 15px 0 15px;">
+      <div class="row revenue-container">
+        <div class="col-xs-6 ">
+          <h1 class="big-number">75%</h1>
+          <!-- <div class=" text-uppercase white-text page-sub-heading">
+            <span class="h6 info-value">
+              <i class="fa fa-circle orange-text"></i>
+              <span class="count">30</span>
+              <span class="doller">%</span>
+            </span>
+            &nbsp;
+            <span class="h6 info-value">
+              <i class="fa fa-circle blue-text"></i>
+              <span class="count">40</span>
+              <span class="doller">%</span>
+            </span>
+          </div> -->
+          <div class="progress-container">
+            <progress-bar options="hrProgress"/>
+          </div>
+        </div>
+        <div class="col-xs-6 text-right db-heading hr-db-heading">
+          <div class="sec-icon"><img src="images/Icon_people-v2.png" height="36" width="36" border="0" /></div>
+          <h6 class="value-small white-text">PEOPLE</h6>
+        </div>
+      </div>
+
+      <div class="row events-container">
+        <div class="margin-t10">
+          <span class="h5 text-uppercase">Training & Events</span>
+          <span type="button" class="btn btn-primary btn-xs pull-right">
+            <i class="fa fa-plus"/>
+          </span>
+        </div>
+        <div>
+          <img alt="" src="images/people-clander.png" border="0" class="img-responsive">
+
+          <!-- <div ng-model="eventSources" calendar="myCalendar1" config="uiConfig.calendar" ui-calendar="uiConfig.calendar"></div> -->
+
+          <!-- <div class="callout callout-info" ng-show="alertMessage != undefined && alertMessage != ''">
+              <span>{{alertMessage}}</span>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="row dcharts-container">
+        <div class="col-xs-4 text-center">
+          <div class="circle-container circle-white">
+           <div ng-circles value="gauges.satisfaction.percent" width="15" colors="gauges.satisfaction.colors" textClass="custom-text-class"></div>
+          </div>
+        </div>
+
+        <div class="col-xs-4 text-center">
+          <div class="circle-container circle-white">
+           <div ng-circles value="gauges.retention.percent" width="15" colors="gauges.retention.colors" textClass="custom-text-class"></div>
+          </div>
+        </div>
+
+        <div class="col-xs-4 text-center">
+          <div class="circle-container  circle-white">
+           <div ng-circles value="gauges.hiring.percent" width="15" colors="gauges.hiring.colors" textClass="custom-text-class"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="" data-ng-controller="TabsDemoCtrl">
+    <div class="ui-tab-container ui-tab-horizontal">
+        <uib-tabset justified="true" class="ui-tab">
+          <uib-tab heading="SATISFACTION">
+            <div class="slider-wrapper" style="margin-bottom:10px;">
+              <input slider options="options" ng-model="hrCtrl.monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
+            </div>
+            <div class="clearfix">
+              <hc-chart options="satisfactionChart" watch="hrCtrl.monthsToDisplay"/>
+            </div>
+          </uib-tab>
+          <uib-tab heading="RETENTION">
+            <div class="slider-wrapper" style="margin-bottom:10px;">
+              <input slider options="options" ng-model="hrCtrl.monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
+            </div>
+            <div class="clearfix">
+              <hc-chart options="satisfactionChart" watch="hrCtrl.monthsToDisplay"/>
+            </div>
+          </uib-tab>
+          <uib-tab heading="HIRING">
+            <div class="slider-wrapper" style="margin-bottom:10px;">
+              <input slider options="options" ng-model="hrCtrl.monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
+            </div>
+            <div class="clearfix">
+              <hc-chart options="satisfactionChart" watch="hrCtrl.monthsToDisplay"/>
+            </div>
+          </uib-tab>
+        </uib-tabset>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  .events-container{
+    padding: 0 15px 0 15px;
+  }
+  .ui-tab-container .nav-tabs > li > a {
+    font-size: 13px;
+  }
+</style>

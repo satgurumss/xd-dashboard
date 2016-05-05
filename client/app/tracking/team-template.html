@@ -1,0 +1,12 @@
+<div class="col-xs-4 text-center team-mem-box" ng-click="empView($index)" 
+  data-ng-repeat="member in team">
+  <div class="team-emp-img">
+    <img alt="" src="{{member.img}}" border="0" widht="80%" class="img-circle" />
+    <div class="badge badge-warning" ng-if="member.msgs">{{member.msgs}}</div>
+  </div>
+  <h5 class="white-text mt-0 text-uppercase">{{member.name}}</h5>
+  <h6 class="mt-0">{{member.title}}</h6>
+  <div class="progress-bar-container">
+    <progress-bar options="member.progress" apply-threshold="true"/>
+  </div>
+</div>

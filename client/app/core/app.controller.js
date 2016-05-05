@@ -2,8 +2,15 @@
     'use strict';
 
     angular.module('app')
-        .controller('AppCtrl', [ '$scope', '$rootScope', '$route', '$document', 'appConfig', AppCtrl]); // overall control
-
+        .controller('AppCtrl', [ '$scope', '$rootScope', '$route', '$document', 'appConfig', AppCtrl]) // overall control
+        .constant("CONST",{
+            gaugeBlue: ['#777777', '#28bdc6'],
+            gaugeGreen: ['#777777', '#90e4ad'],
+            gaugeYellow: ['#777777', '#cce679'],
+            gaugeDanger: ['#777777', '#da1b1b'],
+            gaugeWarning: ['#777777', '#ff8400'],
+            gaugeSuccess: ['#777777', '#157c3e'],
+        });
     
     function AppCtrl($scope, $rootScope, $route, $document, appConfig) {
 
