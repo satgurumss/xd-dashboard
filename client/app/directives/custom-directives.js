@@ -3,9 +3,9 @@
 
   angular.module('app')
     .directive('myEnterPress', enterDirective)
-    .directive('hcMap', ['$http', hcMap])
-    .directive('hcChart', hcChart)
-    .directive('hcChartDark', hcChartDark)
+    .directive('hcMap', ['$http', '$window', hcMap])
+    .directive('hcChart', ['$window', hcChart])
+    .directive('hcChartDark', ['$window', hcChartDark])
     .directive("progressBar", progressBar);
 
   function enterDirective() {
