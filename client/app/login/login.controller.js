@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('app')
-        .controller('LoginCtrl', ['$scope', '$rootScope', '$http', 'backendApi', '$location','loggedInUser', LoginCtrl])
+        .controller('LoginCtrl', ['$scope', '$rootScope', '$http', '$location','loggedInUser', LoginCtrl])
 
-    function LoginCtrl($scope, $rootScope, $http, backendApi, $location, loggedInUser) {
+    function LoginCtrl($scope, $rootScope, $http, $location, loggedInUser) {
         $scope.userName = "";
         $scope.password = "";
         $scope.errorAlert = false;

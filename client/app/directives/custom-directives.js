@@ -5,7 +5,8 @@
     .directive('myEnterPress', enterDirective)
     .directive('hcMap', ['$http', hcMap])
     .directive('hcChart', hcChart)
-    .directive('hcChartDark', hcChartDark);
+    .directive('hcChartDark', hcChartDark)
+    .directive("progressBar", progressBar);
 
   function enterDirective() {
     return function(scope, element, attrs) {
@@ -21,7 +22,7 @@
     };
   }
 
-  function hcMap($http) {
+  function hcMap($http, $window) {
     return {
       restrict: "E",
       template: '<div></div>',
@@ -246,56 +247,59 @@
 
           var renderChart = function() {
             var options = {
-              chart: {
-                borderWidth: 1,
-                height: 200,
-                spacingTop: 0,
-                spacingBottom: 0,
-                spacingLeft: 0,
-                spacingRight: 0
-              },
+                chart: {
+                  borderWidth: 1,
+                  height: 200,
+                  spacingTop: 0,
+                  spacingBottom: 0,
+                  spacingLeft: 0,
+                  spacingRight: 0
+                },
 
-              title: {
-                text: 'Customer Distribution'
-              },
+                title: {
+                  text: 'Customer Distribution'
+                },
 
-              credits: {
-                enabled: false
-              },
+                credits: {
+                  enabled: false
+                },
 
-              legend: {
-                enabled: false
-              },
+                legend: {
+                  enabled: false
+                },
 
-              mapNavigation: {
-                enabled: false,
-                buttonOptions: {
-                  verticalAlign: 'bottom'
-                }
-              },
-              yAxis:{
-                enabled:false
-              },
+                mapNavigation: {
+                  enabled: false,
+                  buttonOptions: {
+                    verticalAlign: 'bottom'
+                  }
+                },
+                yAxis: {
+                  enabled: false
+                },
 
-              series: [{
-                name: 'Countries',
-                mapData: mapData,
-                color: '#E0E0E0',
-                enableMouseTracking: false
-              }, {
-                type: 'mapbubble',
-                mapData: mapData,
-                name: '# of Customers',
-                joinBy: ['iso-a2', 'code'],
-                data: scope.data,
-                minSize: 10,
-                maxSize: '25%',
-                tooltip: {
-                  pointFormat: '{point.name} - {point.z}'
-                }
-              }]
-            };
+                series: [{
+                  name: 'Countries',
+                  mapData: mapData,
+                  color: '#E0E0E0',
+                  enableMouseTracking: false
+                }, {
+                  type: 'mapbubble',
+                  mapData: mapData,
+                  name: '# of Customers',
+                  joinBy: ['iso-a2', 'code'],
+                  data: scope.data,
+                  minSize: 10,
+                  maxSize: '25%',
+                  tooltip: {
+                    pointFormat: '{point.name} - {point.z}'
+                  }
+                }]
+              },
+              tempScrollTop = $($window).scrollTop();
+
             $(element[0]).highcharts('Map', Highcharts.merge(options, theme));
+            $($window).scrollTop(tempScrollTop);
           };
 
           renderChart();
@@ -304,7 +308,7 @@
             renderChart();
           });
           /*map bubble*/
-          
+
           // Apply the theme to all High Charts
           //Highcharts.setOptions(Highcharts.theme);
 
@@ -426,7 +430,7 @@
     };
   }
 
-  function hcChart() {
+  function hcChart($window) {
     return {
       restrict: 'E',
       template: '<div></div>',
@@ -436,7 +440,9 @@
       },
       link: function(scope, element) {
         var renderChart = function() {
+          var tempScrollTop = $($window).scrollTop();
           Highcharts.chart(element[0], scope.options);
+          $($window).scrollTop(tempScrollTop);
         };
 
         renderChart();
@@ -448,7 +454,7 @@
     };
   }
 
-  function hcChartDark() {
+  function hcChartDark($window) {
     return {
       restrict: 'E',
       template: '<div></div>',
@@ -673,7 +679,9 @@
         // Apply the theme
         // Highcharts.setOptions(Highcharts.theme);
         var renderChart = function() {
+          var tempScrollTop = $($window).scrollTop();
           $(element[0]).highcharts(Highcharts.merge(scope.options, theme));
+          $($window).scrollTop(tempScrollTop);
         };
 
         renderChart();
@@ -681,6 +689,35 @@
         scope.$watch("options.series[0].data", function(loading) {
           renderChart();
         });
+      }
+    };
+  }
+
+  function progressBar(){
+    return {
+      restrict: 'E',
+      templateUrl: '/app/directives/progress-bar.html',
+      replace: true,
+      scope: {
+        options: '=',
+        applyThreshold: '='
+      },
+      link: function(scope, element) {
+        var applyThresholdToProgressBar = function() {
+          var progressBar = $(element[0]).find("div.gradient-bar");
+
+          if (scope.options.percent <= 30) {
+            progressBar.addClass("prog-bar-red");
+          } else if (30 < scope.options.percent && scope.options.percent <= 50) {
+            progressBar.addClass("prog-bar-yellow");
+          } else if (50 < scope.options.percent && scope.options.percent <= 100) {
+            progressBar.addClass("prog-bar-green");
+          }
+        };
+
+        if (scope.applyThreshold) {
+          applyThresholdToProgressBar();
+        }
       }
     };
   }

@@ -149,7 +149,7 @@
 
     $scope.satisfactionChart = {
       chart: {
-        height: 300,
+        height: 200,
         spacingLeft: 0,
         spacingRight: 5
       },
@@ -175,7 +175,8 @@
         lineColor: 'transparent',
         minorTickLength: 0,
         tickLength: 0,
-        gridLineColor: 'transparent'
+        gridLineColor: 'transparent',
+        tickInterval:25
       },
       xAxis: {
         lineWidth: 0,
@@ -199,8 +200,10 @@
       },
 
       series: [{
-        name: 'Management',
-        data: [72.5, 80.9, 78.6],
+        name: 'Mgmt',
+        data: [60.5, 65.9, 78.6],
+        type:"area",
+        fillColor: "rgba(40, 189, 198, 0.3)",
         color: "rgba(40, 189, 198, 1)",
         marker: {
           symbol: 'circle',
@@ -211,7 +214,9 @@
       }, {
         name: 'Sales',
         data: [80.0, 76.9, 81.0],
+        type: "area",
         color: "rgba(204, 230, 121, 1)",
+        fillColor: "rgba(204, 230, 121, 0.3)",
         marker: {
           symbol: 'circle',
           fillColor: 'rgba(204, 230, 121, 1)',
@@ -220,8 +225,10 @@
         }
       }, {
         name: 'Operations',
-        data: [84.1, 88.6, 85.5],
+        data: [84.1, 80.6, 85.5],
+        type: "area",
         color: "rgba(144,228,173, 1)",
+        fillColor: "rgba(144,228,173, 0.3)",
         marker: {
           symbol: 'circle',
           fillColor: 'rgba(144,228,173, 1)',
@@ -249,6 +256,12 @@
       }
     }
 
+    $scope.hrProgress = {
+      percent: 70,
+      barLabel: "",
+      barValue: "70%"
+    };
+
     $scope.init = function() {
       $scope.gauges = angular.copy( gaugesService.updateGaugeState($scope.gauges) )
     }
@@ -270,13 +283,13 @@
           $scope.satisfactionChart.xAxis.categories = categories;
 
           $scope.satisfactionChart.series[0].data = [];
-          $scope.satisfactionChart.series[0].data = [72.5, 80.9, 78.6];
+          $scope.satisfactionChart.series[0].data = [60.5, 65.9, 78.6];
 
           $scope.satisfactionChart.series[1].data = [];
           $scope.satisfactionChart.series[1].data = [80.0, 76.9, 81.0];
 
           $scope.satisfactionChart.series[2].data = [];
-          $scope.satisfactionChart.series[2].data = [84.1, 88.6, 85.5];
+          $scope.satisfactionChart.series[2].data = [84.1, 80.6, 85.5];
 
 
           break
@@ -286,13 +299,13 @@
           $scope.satisfactionChart.xAxis.categories = categories;
 
           $scope.satisfactionChart.series[0].data = [];
-          $scope.satisfactionChart.series[0].data = [90.2, 80.5, 70.3, 72.5, 80.9, 78.6];
+          $scope.satisfactionChart.series[0].data = [90.2, 80.5, 75.3, 60.5, 65.9, 78.6];
 
           $scope.satisfactionChart.series[1].data = [];
           $scope.satisfactionChart.series[1].data = [88.6, 87.0, 84.3, 80.0, 76.9, 81.0];
 
           $scope.satisfactionChart.series[2].data = [];
-          $scope.satisfactionChart.series[2].data = [75.8, 74.1, 76.1, 84.1, 88.6, 85.5];
+          $scope.satisfactionChart.series[2].data = [68.8, 80.1, 70.1, 84.1, 80.6, 85.5];
 
 
           break;
@@ -302,13 +315,13 @@
           $scope.satisfactionChart.xAxis.categories = categories;
 
           $scope.satisfactionChart.series[0].data = [];
-          $scope.satisfactionChart.series[0].data = [85.5, 85.2, 85.5, 90.2, 80.5, 70.3, 72.5, 80.9, 78.6];
+          $scope.satisfactionChart.series[0].data = [65.5, 80, 85.5, 90.2, 80.5, 75.3, 60.5, 65.9, 78.6];
 
           $scope.satisfactionChart.series[1].data = [];
           $scope.satisfactionChart.series[1].data = [80.4, 83.5, 87.0, 88.6, 87.0, 84.3, 80.0, 76.9, 81.0];
 
           $scope.satisfactionChart.series[2].data = [];
-          $scope.satisfactionChart.series[2].data = [81.3, 77.0, 72.0, 75.8, 74.1, 76.1, 84.1, 88.6, 85.5];
+          $scope.satisfactionChart.series[2].data = [81.3, 70.0, 76.0, 68.8, 80.1, 70.1, 84.1, 80.6, 85.5];
 
           break;
         case "12":
@@ -317,15 +330,13 @@
           $scope.satisfactionChart.xAxis.categories = categories;
 
           $scope.satisfactionChart.series[0].data = [];
-          $scope.satisfactionChart.series[0].data = [70.2, 70.6, 73.5, 85.5, 85.2, 85.5, 90.2, 80.5, 70.3, 72.5, 80.9, 78.6];
+          $scope.satisfactionChart.series[0].data = [50.2, 60, 73.5, 65.5, 80, 85.5, 90.2, 80.5, 75.3, 60.5, 65.9, 78.6];
 
           $scope.satisfactionChart.series[1].data = [];
           $scope.satisfactionChart.series[1].data = [60.9, 70.6, 73.5, 80.4, 83.5, 87.0, 88.6, 87.0, 84.3, 80.0, 76.9, 81.0];
 
           $scope.satisfactionChart.series[2].data = [];
-          $scope.satisfactionChart.series[2].data = [70.2, 70.8, 75.7, 81.3, 77.0, 72.0, 75.8, 74.1, 76.1, 84.1, 88.6, 85.5];
-
-
+          $scope.satisfactionChart.series[2].data = [55.2, 65.8, 75.7, 81.3, 70.0, 76.0, 68.8, 80.1, 70.1, 84.1, 80.6, 85.5];
 
           break;
       }

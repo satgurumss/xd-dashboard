@@ -19,7 +19,7 @@
             </span>
           </div> -->
           <div class="progress-container">
-            <img src="images/progress-bar.png">
+            <progress-bar options="hrProgress"/>
           </div>
         </div>
         <div class="col-xs-6 text-right db-heading hr-db-heading">
@@ -72,27 +72,27 @@
     <div class="ui-tab-container ui-tab-horizontal">
         <uib-tabset justified="true" class="ui-tab">
           <uib-tab heading="SATISFACTION">
+            <div class="slider-wrapper" style="margin-bottom:10px;">
+              <input slider options="options" ng-model="hrCtrl.monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
+            </div>
             <div class="clearfix">
               <hc-chart options="satisfactionChart" watch="hrCtrl.monthsToDisplay"/>
-            </div>
-            <div class="slider-wrapper">
-              <input slider options="options" ng-model="hrCtrl.monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
             </div>
           </uib-tab>
           <uib-tab heading="RETENTION">
+            <div class="slider-wrapper" style="margin-bottom:10px;">
+              <input slider options="options" ng-model="hrCtrl.monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
+            </div>
             <div class="clearfix">
               <hc-chart options="satisfactionChart" watch="hrCtrl.monthsToDisplay"/>
-            </div>
-            <div class="slider-wrapper">
-              <input slider options="options" ng-model="hrCtrl.monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
             </div>
           </uib-tab>
           <uib-tab heading="HIRING">
+            <div class="slider-wrapper" style="margin-bottom:10px;">
+              <input slider options="options" ng-model="hrCtrl.monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
+            </div>
             <div class="clearfix">
               <hc-chart options="satisfactionChart" watch="hrCtrl.monthsToDisplay"/>
-            </div>
-            <div class="slider-wrapper">
-              <input slider options="options" ng-model="hrCtrl.monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
             </div>
           </uib-tab>
         </uib-tabset>

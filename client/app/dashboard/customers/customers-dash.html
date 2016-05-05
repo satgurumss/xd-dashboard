@@ -19,7 +19,7 @@
               </span>
             </div> -->
             <div class="progress-container">
-              <img src="images/progress-bar.png">
+              <progress-bar options="customerProgress"/>
             </div>
           </div>
           <div class="col-xs-6 text-right db-heading customers-db-heading">
@@ -67,17 +67,17 @@
           <div class="ui-tab-container ui-tab-horizontal">
             <uib-tabset justified="true" class="ui-tab">
               <uib-tab heading="REV. SPREAD">
-                <div class="clearfix">
+                <div class="clearfix tab-header">
                   <span class="h3"><span class="sign">$&nbsp;</span>79.00 M</span>
                   <span class="ui-select custom-select pull-right">
                     <select>
-                      <option>Top 5</option>
+                      <option>By Industry</option>
                       <option>By Geogrpahy</option>
                     </select>
                   </span>
                   <span class="pull-right pad-r-5 display-inline-block margin-t1">Show</span>
-                  <div class="progress-container">
-                    <img src="images/progress-bar.png">
+                  <div class="tab-progress-container col-xs-8">
+                    <progress-bar options="tabProgress[0]"/>
                   </div>
                 </div>
                 <div class="row">
@@ -106,18 +106,18 @@
                 </div>
               </uib-tab>
               <uib-tab heading="PENETRATION">
-                <div class="clearfix">
+                <div class="clearfix tab-header">
                   <span class="h3"><span class="sign">$&nbsp;</span>79.00 M</span>
                   <span class="ui-select custom-select pull-right">
                     <select>
-                      <option>Top 5</option>
+                      <option>By Industry</option>
                       <option>By Geogrpahy</option>
                     </select>
                   </span>
                   <span class="pull-right pad-r-5 display-inline-block margin-t1">Show</span>
 
-                  <div class="progress-container">
-                    <img src="images/progress-bar.png">
+                  <div class="tab-progress-container col-xs-8">
+                    <progress-bar options="tabProgress[1]"/>
                   </div>
                 </div>
                 <div class="row">
@@ -146,11 +146,11 @@
                 </div>
               </uib-tab>
               <uib-tab heading="SATISFATION">
-                <div class="clearfix">
+                <div class="clearfix tab-header">
                   <span class="ui-select custom-select pull-right">
-                    <select>
-                      <option>Satisfied</option>
-                      <option>Dissatisfied</option>
+                    <select ng-model="isSatisfied" ng-change="toggleCustomers(isSatisfied)">
+                      <option value="true" ng-selected="isSatisfied =='true'">Satisfied</option>
+                      <option value="false">Dissatisfied</option>
                     </select>
                   </span>
                   <span class="pull-right pad-r-5 display-inline-block margin-t1">Show Top 5 Customers</span>

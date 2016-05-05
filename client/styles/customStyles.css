@@ -34,6 +34,10 @@
   margin-top: 20px;
 }
 
+.margin-b10{
+  margin-bottom: 10px;
+}
+
 .margin-t10{
   margin-top: 10px;
 }
@@ -980,13 +984,16 @@ ul.dropdown-menu li:last-child a {
 body {
   background-color: #464646 !important;
   background: #464646;
+  color: #999;
 }
 .app > .main-container:before {
   background-color: #464646 !important;
   background: #464646;
+  color: #999;
 }
 .body-auth #content {
-    background-color: #464646;
+  background-color: #464646;
+  color: #999;
 }
 
 .btn-info {
@@ -1462,7 +1469,7 @@ body {
 
   .page-landing .customers-nav .section {
     background: #FFF;
-    color: #454545;
+    color: #464646;
   }
 
   .page-landing .people-nav .section {
@@ -1503,15 +1510,15 @@ body {
 
   .page-landing .value-small {
     margin: 0;
-    font-size: 11px;
+    font-size: 9px;
   }
 
   .page-landing .section-title .section-inner {
-      padding-top: 12px;
-      padding-right: 2px;
-      float: right;
-      text-align: center;
-      width: 65px;
+    padding-top: 12px;
+    padding-right: 2px;
+    float: right;
+    text-align: center;
+    width: 65px;
   }
 
   .page-landing .section-shadow {
@@ -1588,7 +1595,8 @@ body {
   }
 
   .page-landing .section-info .value-label,
-  .page-dashboard .revenue-container .value-label {
+  .page-dashboard .revenue-container .value-label,
+  .page-team-performance .revenue-container .value-label {
     font-size: 11px;
     position: absolute;
     top: 0;
@@ -1597,20 +1605,27 @@ body {
   }
 
   .page-dashboard .revenue-container .value-label {
-    top: 0px;
+    top: -1px;
+    right: -45px;
   }
 
   .page-landing .section-info .trend,
-  .page-dashboard .revenue-container .trend {
+  .page-dashboard .revenue-container .trend,
+  .page-team-performance .revenue-container .trend {
     position: absolute;
     bottom: 0;
     right: -33px;
     letter-spacing: 0;
   }
 
+  .page-landing .section-info .total {
+    font-size: 11px;
+    letter-spacing: 0;
+  }
+
   .page-dashboard .revenue-container .trend {
     bottom: 1px;
-    right: -47px;
+    right: -51px;
   }
 
   .page-landing .section-info .contents-below {
@@ -1620,7 +1635,7 @@ body {
   .page-landing .section-info .contents-below h5 {
     margin: 5px 0;
     display: inline-block;
-    font-size: 19px;
+    font-size: 17px;
     font-weight: normal;
     min-width: 50px;
   }
@@ -1628,7 +1643,7 @@ body {
   .page-landing .section-info .fa-circle {
     font-size: 8px;
     position: relative;
-    top: -4px;
+    top: -3px;
   }
 
   .page-landing .section-info .title,
@@ -1675,7 +1690,7 @@ body {
     }
 
     .page-landing .section-info .fa-circle {
-      top: -2px;
+      top: -1px;
     }
   }
 
@@ -1727,20 +1742,36 @@ body {
     }
   }
 
-
   div.circle-container {
-      display: inline-block;
-      margin: 0;
-      padding: 0;
-      width: 60px;
-      position: relative;
-      z-index: 1;
-      left: -1px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 60px;
+    position: relative;
+    z-index: 1;
+    left: -1px;
   }
 
   .circle-container div.circles-text {
     font-weight: bold;
   }
+
+  .page-landing .circle-container div.circles-text {
+    margin-top: -4px;
+  }
+
+  .page-landing .projects-nav .circle-container div.circles-text {
+    margin-top: 0px;
+  }
+
+  .page-landing .circle-container .circle-label {
+    font-size: 11px;
+    position: absolute;
+    bottom: 20px;
+    left: 25.5px;
+    font-weight: bold;
+  }
+
 
   .page-landing .icons-list {
     padding: 0;
@@ -1787,7 +1818,7 @@ body {
     border-radius: 50%;
   }
 
-  /*  landing page end */
+/*  landing page end */
 
 
   div.circle-container {
@@ -1860,6 +1891,7 @@ div.circle-container {
 }
 
 .page-hr .tab-content > .tab-pane:not(.active),
+.customDisplayNone,
 .page-dashboard-customer .tab-content > .tab-pane:not(.active) {
     display: block;
     height: 0;
@@ -1896,7 +1928,8 @@ div.circle-container {
   color: #FFC000;
 }
 
-.ui-tab-container .down-trend.orange-text{
+.ui-tab-container .down-trend.orange-text,
+.container-emp-overview .down-trend.orange-text{
   color: #da1b1b;
 }
 
@@ -1991,5 +2024,193 @@ div.circle-container {
 .big-number .sign{
   font-size: 20px;
   position: relative;
-  top: -8px;
+  top: -6px;
 }
+.tab-header{
+  margin-bottom:10px;
+}
+/*PROGRESS BAR STYLE*/
+.prog-bar-containter {
+  background: #333;
+  border-radius: 15px;
+  float: left;
+  width: 85%;
+  box-shadow: 0px 2px 0px rgba(255,255,255,.2);
+  padding: 2px;
+}
+.tab-progress-container ..prog-bar-containter {
+  padding: 1px;
+}
+.gradient-bar {
+  background: -webkit-linear-gradient(left, red, orange, yellow, green);
+  background: -o-linear-gradient(left, red, orange, yellow, green);
+  background: -moz-linear-gradient(left, red, orange, yellow, green);
+  background: linear-gradient(to right, red, orange, yellow, green);
+
+  box-shadow: inset 0px 4px 4px rgba(0,0,0,.3);
+  overflow: hidden;
+  height: 20px;
+  width: 90%;
+  border-radius: 15px 0 0 15px;
+  position: relative;
+  border: 1px solid #999;
+  border-right: 0px solid #333;
+}
+.gradient-bar .bar-percent {
+  position: absolute;
+  color: #FFF;
+  z-index: 5;
+  right: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 18px;
+  text-shadow: -2px 1px 2px #333;
+}
+.gradient-percent {
+  height: 18px;
+  position: absolute;
+  background: #333;
+  right: 0;
+  /*border-radius: 0 5px 5px 0;*/
+
+  text-align: right;
+
+  box-shadow: inset 0px 4px 4px rgba(0,0,0,.3);
+}
+.gradient-percent .bar-label{
+  color: #FFF;
+  font-size: 14px;
+  line-height: 20px;
+  padding-right: 10px;
+}
+
+.label-out {
+  float: left;
+  font-size: 12px;
+  line-height: 18px;
+  margin-left: 3%;
+  width: 12%;
+}
+
+.tab-progress-container{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.prog-bar-green{
+  background:#157c3e;
+}
+
+.prog-bar-yellow{
+  background:#ff8400;
+}
+
+.prog-bar-red{
+  background:#da1b1b;
+}
+/*--------------------------*/
+
+.page-profile {
+  padding: 0;
+}
+.page-profile {
+    margin: 0;
+}
+/*.custom-profile-header {
+  margin: 0 15px 0 0;
+  position: fixed;
+  z-index: 10;
+}*/
+.container-dark,
+.custom-profile-header {
+  background: #2a2a2b;
+  padding: 15px;
+}
+.profile-social h4 {
+  margin: 5px 0 5px;
+}
+.profile-social h5 {
+  margin: 0 0 5px;
+}
+.profile-social-team {
+  margin-top: 15px;
+}
+.team-count{
+  margin-top: 5px;
+}
+.team-count-badge {
+  position: relative;
+}
+.team-count-badge .badge {
+  position: absolute;
+  color: #333;
+  right: 0;
+  top: -10px;
+}
+.container-light {
+  background: #3e3e40;
+  padding: 15px;
+}
+
+.container-vacation .form-control {
+  color: #2a2a2a;
+  background-color: #e4e4e4;
+  border: 1px solid #e4e4e4;
+  font-size: 13px;
+}
+.container-vacation .input-group-addon {
+  color: #727272;
+  background-color: #e4e4e4;
+  border: 1px solid #e4e4e4;
+}
+.container-vacation .input-group-addon .fa {
+  font-size: 18px;
+}
+.mb-10 {
+  margin-bottom: 10px;
+}
+.container-dark h4,
+.container-light h4 {
+  margin-top: 0;
+}
+
+.page-profile .range-container{
+  background: #3E3E40;
+}
+
+/*for angular progress bar*/
+.progressbar-custom{
+  height:25px;
+  margin: 8px 0 8px 0;
+}
+
+.progressbar-custom span{
+  display: block;
+  margin-top: 2px;
+}
+
+.progressbar-custom span a{
+  color:#fff;
+}
+
+.progressbar-custom span a:hover{
+  text-decoration: none;
+}
+
+.green-progress{
+  background-color:#157c3e;
+}
+
+.yellow-progress{
+  background-color:#ff8400;
+}
+
+.red-progress{
+  background-color:#da1b1b;
+}
+
+.blue-progress{
+  background-color:#1C289E;
+}
+
+/*----------------------------*/
