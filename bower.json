@@ -33,7 +33,8 @@
     "ngmap": "~1.16.0",
     "textAngular": "~1.5.0",
     "toastr": "~2.1.0",
-    "weather-icons": "~2.0.0"
+    "weather-icons": "~2.0.0",
+    "moment": "~2.13.0"
   },
   "devDependencies": {
     "bourbon": "~4.2.0",

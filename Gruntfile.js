@@ -302,6 +302,7 @@
               "bower_components/weather-icons/css/*",
               "bower_components/weather-icons/fonts/*",
               "bower_components/weather-icons/font/*",
+              "bower_components/angular-bootstrap-calendar/**/*",
               "fonts/**/*",
               "i18n/**/*",
               "images/**/*",
@@ -312,8 +313,6 @@
               "app/sampleData/middle-east.json",
               "services.js",
               "circles.js",
-              "angular-bootstrap-calendar-tpls.min.js",
-              "angular-bootstrap-calendar.min.css",
               "angular-awesome-slider.css",
               "jquery.keyframes.js",
               "prefixfree.min.js",
@@ -358,7 +357,7 @@
       },
       uglify: {
         options: {
-          mangle: true,
+          mangle: false,
           compress: {
             drop_console: true
           }
