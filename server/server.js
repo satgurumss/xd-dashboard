@@ -47,7 +47,8 @@ var webappRoutes = [
   '^\/customers-dashboard',
   '^\/people-dashboard',
   '^\/signin',
-  '^\/my-profile'
+  '^\/my-profile',
+  '^\/team-performance'
 ];
 
 app.get(new RegExp(webappRoutes.join('|')), function(req, res) {
