@@ -30,7 +30,7 @@
                                 <input type="text"
                                        class="form-control"
                                        placeholder="username"
-                                       ng-model="userName"
+                                       ng-model="loginData.userName"
                                        ng-change="errorAlert = false"
                                        >
                             </div>
@@ -40,10 +40,10 @@
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-lock"></span>
                                 </span>
-                                <input type="text"
+                                <input type="password"
                                        class="form-control"
                                        placeholder="password"
-                                       ng-model="password"
+                                       ng-model="loginData.password"
                                        ng-change="errorAlert = false"
                                        >
                             </div>
