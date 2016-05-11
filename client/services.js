@@ -5,7 +5,7 @@
     .factory('loggedInUser', loggedInUser)
     .factory('gaugesService', gaugesService)
 
-  function loggedInUser($cookies, $location, $http) {
+  function loggedInUser($cookies, $location, $http, $q) {
     console.log("loggedInUser")
     return {
       logOutUser: function() {
@@ -14,8 +14,22 @@
             $location.url("/signin");
           })
           .error(function(data, status, headers, config) {
-            alert("error");
+            console.log("error");
           })
+      },
+      isLoggedIn: function(){
+
+        $http.get("/isLoggedInUser")
+        .success(function(loggedIn,status){
+          if( ! loggedIn )
+            $location.url("/signin");
+          else{
+            $location.url("/landing")
+          }
+        })
+        .error(function(data,status){
+          $location.url("/signin");
+        });
       }
     };
   }

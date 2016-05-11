@@ -1,22 +1,3 @@
-/**
- * Copyright (c) Microsoft Corporation
- *  All Rights Reserved
- *  Apache License 2.0
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @flow
- */
-
 'use strict';
 
 /**
@@ -31,6 +12,7 @@ var passport = require('passport');
 var util = require('util');
 var bunyan = require('bunyan');
 var config = require('./ad-config');
+var _appPath = '../dist';
 
 // Start QuickStart here
 
@@ -86,8 +68,7 @@ passport.use(new OIDCStrategy({
     responseType: config.creds.responseType,
     responseMode: config.creds.responseMode,
     skipUserProfile: config.creds.skipUserProfile,
-    scope: config.creds.scope,
-    issuer : config.creds.issuer
+    scope: config.creds.scope
   },
   function(iss, sub, profile, accessToken, refreshToken, done) {
     log.info('Example: Email address we received was: ', profile.email);
@@ -131,7 +112,7 @@ app.get('/', function(req, res){
 });
 
 
-app.get('/login',
+app.get('/loginAd',
   passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
   function(req, res) {
     log.info('Login was called in the Sample');
@@ -140,29 +121,16 @@ app.get('/login',
 
 // Our POST routes (Section 3)
 
-// POST /auth/openid
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  The first step in OpenID authentication will involve redirecting
-//   the user to their OpenID provider.  After authenticating, the OpenID
-//   provider will redirect the user back to this application at
-//   /auth/openid/return
-app.post('/auth/openid',
-  passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
-  function(req, res) {
-    log.info('Authenitcation was called in the Sample');
-    res.redirect('/');
-  });
 
 // GET /auth/openid/return
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-app.get('/login/return',
-  passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
+app.get('/loginAd/return',
+  passport.authenticate('azuread-openidconnect', { failureRedirect: '/#/signin' }),
   function(req, res) {
-    
-    res.redirect('/');
+    res.redirect('/#/landing');
   });
 
 // POST /auth/openid/return
@@ -170,16 +138,62 @@ app.get('/login/return',
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-app.post('/login/return',
-  passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
+app.post('/loginAd/return',
+  passport.authenticate('azuread-openidconnect', { failureRedirect: '/#/signin' }),
   function(req, res) {
-    
-    res.redirect('/');
+    res.redirect('/#/landing');
   });
 
-app.get('/logout', function(req, res){
+// POST /auth/openid/return
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request.  If authentication fails, the user will be redirected back to the
+//   login page.  Otherwise, the primary route function function will be called,
+//   which, in this example, will redirect the user to the home page.
+app.post('/loginAd/return',
+  passport.authenticate('azuread-openidconnect', { failureRedirect: '/#/signin' }),
+  function(req, res) {
+    console.log(req.session)
+    res.redirect('/#/landing');
+  });
+
+app.post('/logout', function(req, res){
+  console.log(req.session)
   req.logout();
+  req.session.destroy();
+  console.log(req.session)
   res.redirect('/');
+});
+
+app.get("/isLoggedInUser",function(req,res){
+  console.log(res.session)
+  if(req.session.passport != undefined){
+    if(req.session.passport.user != null || req.session.passport.user != "" )
+      res.send(true);
+    else
+      res.send(false);
+  }else{
+    res.send(false);
+  }
+
+})
+
+
+//using wild cards
+
+var webappRoutes = [
+  '^\/landing',
+  '^\/financial-dashboard',
+  '^\/customers-dashboard',
+  '^\/people-dashboard',
+  '^\/signin',
+  '^\/my-profile',
+  '^\/team-performance'
+];
+
+app.get(new RegExp(webappRoutes.join('|')), function(req, res) {
+  res.sendFile(_appPath + '/index.html', {
+    root: _appPath
+  });
 });
 
 app.listen(9000);

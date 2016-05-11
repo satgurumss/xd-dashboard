@@ -10,10 +10,10 @@
             password:''           
         }
         $scope.errorAlert = false;
-
+        loggedInUser.isLoggedIn();
         $scope.doLogin = function() {
             //$location.url("/landing");
-            $window.location.href = "/login";
+            $window.location.href = "/loginAd";
 
             /*$http.post("/login", $scope.loginData)
                 .success(function(data, status, headers, config) {
