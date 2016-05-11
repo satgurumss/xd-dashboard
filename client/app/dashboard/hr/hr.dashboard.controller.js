@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .controller('HRDashCtrl', ['$scope', '$http', '$location', 'gaugesService','CONST', '$uibModal', HRDashCtrl])
+    .controller('HRDashCtrl', ['$scope', '$http', '$location', 'gaugesService','CONST', '$uibModal', "loggedInUser", HRDashCtrl])
     .controller('addEventModalCtrl', ['$scope','$uibModalInstance','startDate', addEventModalCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
@@ -11,8 +11,9 @@
       };
     });
 
-  function HRDashCtrl($scope, $http, $location, gaugesService, CONST, $uibModal) {
-
+  function HRDashCtrl($scope, $http, $location, gaugesService, CONST, $uibModal, loggedInUser) {
+    loggedInUser.isLoggedIn("/people-dashboard")
+    
     $scope.currentSelectedDate = new Date();
 
     $scope.events = [

@@ -2,10 +2,12 @@
   'use strict';
 
   angular.module('app')
-    .controller('ProfileCtrl', ['$scope', '$rootScope', '$http', '$location','CONST', 'gaugesService', ProfileCtrl])
+    .controller('ProfileCtrl', ['$scope', '$rootScope', '$http', '$location','CONST', 'gaugesService', "loggedInUser", ProfileCtrl])
 
-  function ProfileCtrl($scope, $rootScope, $http, $location, CONST, gaugesService) {
-  	$scope.vacationsChart = {
+  function ProfileCtrl($scope, $rootScope, $http, $location, CONST, gaugesService, loggedInUser) {
+  	loggedInUser.isLoggedIn("/my-profile")
+
+    $scope.vacationsChart = {
   		percent: 100-25,
   		text: "15d"
   	};

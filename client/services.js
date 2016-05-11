@@ -17,14 +17,14 @@
             console.log("error");
           })
       },
-      isLoggedIn: function(){
+      isLoggedIn: function(route){
 
         $http.get("/isLoggedInUser")
         .success(function(loggedIn,status){
           if( ! loggedIn )
             $location.url("/signin");
           else{
-            $location.url("/landing")
+            $location.url(route)
           }
         })
         .error(function(data,status){

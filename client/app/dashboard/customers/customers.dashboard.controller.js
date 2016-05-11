@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .controller('CustomerDashCtrl', ['$scope', '$http', '$location', 'gaugesService', "CONST", CustomerDashCtrl])
+    .controller('CustomerDashCtrl', ['$scope', '$http', '$location', 'gaugesService', "CONST","loggedInUser", CustomerDashCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
         if (isNaN(input)) return input;
@@ -10,7 +10,9 @@
       };
     });
 
-  function CustomerDashCtrl($scope, $http, $location, gaugesService, CONST) {
+  function CustomerDashCtrl($scope, $http, $location, gaugesService, CONST, loggedInUser) {
+    loggedInUser.isLoggedIn("/customers-dashboard");
+    
     $scope.isSatisfied = "true";
     $scope.customers = [{
       name: "Acme Corporation",

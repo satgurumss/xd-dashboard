@@ -2,9 +2,11 @@
 	'use strict';
 
 	angular.module('app')
-		.controller('TeamPerformanceCtrl', ['$scope', '$http', '$location', "gaugesService", "CONST", TeamPerformanceCtrl])
+		.controller('TeamPerformanceCtrl', ['$scope', '$http', '$location', "gaugesService", "CONST", "loggedInUser", TeamPerformanceCtrl])
 
-	function TeamPerformanceCtrl($scope, $http, $location, gaugesService, CONST) {
+	function TeamPerformanceCtrl($scope, $http, $location, gaugesService, CONST, loggedInUser) {
+
+		loggedInUser.isLoggedIn("/team-performance")
 		$scope.performanceProgress = {
 			percent: 75,
 			barLabel: "YTD",

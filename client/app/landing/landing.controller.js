@@ -12,6 +12,8 @@
     });
 
   function LandingCtrl($scope, $http, $location, gaugesService, loggedInUser) {
+    loggedInUser.isLoggedIn("/landing");
+    
     $scope.gauges = {
       finance:{
         percent: 25
@@ -28,7 +30,6 @@
     };
 
     $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
-    loggedInUser.isLoggedIn();
 
     $scope.navigateTo = function(route){
       if($location.url() != route)

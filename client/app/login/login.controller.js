@@ -10,7 +10,9 @@
             password:''           
         }
         $scope.errorAlert = false;
-        loggedInUser.isLoggedIn();
+
+        loggedInUser.isLoggedIn("/landing");
+        
         $scope.doLogin = function() {
             //$location.url("/landing");
             $window.location.href = "/loginAd";
