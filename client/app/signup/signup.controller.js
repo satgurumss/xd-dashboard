@@ -15,7 +15,6 @@
         console.log("in signup controller");
         console.log($window.WebViewBridge);
         if($window.WebViewBridge) {
-            alert("webview");
             $scope.isWebViewOpened = true;
             // $window.WebViewBridge.onMessage = function (message) {
             //     alert("webview response");

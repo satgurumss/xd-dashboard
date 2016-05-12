@@ -29,7 +29,7 @@
 
         $http.get("/isLoggedInUser")
         .success(function(loggedIn,status){
-          if( ! loggedIn || ! hyprLoggedIn)
+          if( ! loggedIn)
             $location.url("/signin");
           else{
             $location.url(route)

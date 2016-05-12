@@ -71,7 +71,7 @@
                     </fieldset>
                 </form>
 
-                <section >
+                <section ng-if="isWebViewOpened" >
                   <div class="or-hypr line-thru"></div>
                   <hr class="signin-separator">
 
@@ -89,7 +89,7 @@
                          >
                       </div>
                     </div>
-                    <img src="images/thumb_imp.png" class="thumb-img" ng-click="hyprRegister(hyprUsername);" ng-show="!hyprLoginClicked" />
+                    <img src="images/thumb.png" class="thumb-img" ng-click="hyprRegister(hyprUsername);" ng-show="!hyprLoginClicked" />
                     <h4 ng-show="hyprLoginClicked">Please provide your thumb impression to get registered.</h4>
                     <h5 class="text-center">Powered by HYPR</h5>
                   </center>
