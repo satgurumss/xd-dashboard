@@ -29,7 +29,7 @@
                                 <input type="text"
                                        class="form-control"
                                        placeholder="username"
-                                       ng-model="userName"
+                                       ng-model="loginData.userName"
                                        ng-change="errorAlert = false"
                                        >
                             </div>
@@ -39,10 +39,10 @@
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-lock"></span>
                                 </span>
-                                <input type="text"
+                                <input type="password"
                                        class="form-control"
                                        placeholder="password"
-                                       ng-model="password"
+                                       ng-model="loginData.password"
                                        ng-change="errorAlert = false"
                                        >
                             </div>
@@ -57,7 +57,7 @@
                             <h4 class="or-separator">OR</h4>
                           </div>
                           <div class="col-md-5 col-xs-12 text-right pl-0 pr-0">
-                            <button class="btn btn-block btn-lg btn-signin btn-w-md btn-gap-v btn-line-info" ng-click="hyprLogin();">Active Directory</button>
+                            <button class="btn btn-block btn-lg btn-signin btn-w-md btn-gap-v btn-line-info" ng-click="doLogin();">Active Directory</button>
                           </div>
                         </div>
                     </fieldset>

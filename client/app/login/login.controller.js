@@ -5,11 +5,14 @@
         .controller('LoginCtrl', ['$scope', '$rootScope', '$window', '$http', '$location','loggedInUser', 'WebViewService', LoginCtrl])
 
     function LoginCtrl($scope, $rootScope, $window, $http, $location, loggedInUser, WebViewService) {
-        $scope.userName = "";
-        $scope.password = "";
         $scope.errorAlert = false;
         $scope.hyprLoginClicked = false;
         $scope.isWebViewOpened = false;
+        $scope.loginData = {
+            userName: '',
+            password:''
+        }
+        loggedInUser.isLoggedIn();
 
         console.log("in signin controller");
         console.log($window.WebViewBridge);
@@ -18,8 +21,16 @@
         }
 
         $scope.doLogin = function() {
-           //$location.url("/financial-dashboard");
-           $location.url("/landing");
+            //$location.url("/landing");
+            $window.location.href = "/loginAd";
+
+            /*$http.post("/login", $scope.loginData)
+                .success(function(data, status, headers, config) {
+                    $location.url("/landing");
+                })
+                .error(function(data, status, headers, config) {
+                    alert("error");
+                })*/
         }
 
         $scope.signupClicked = function() {

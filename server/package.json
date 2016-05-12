@@ -6,15 +6,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "author": "Usman",
   "license": "ISC",
   "dependencies": {
+    "adal-node": "^0.1.19",
     "body-parser": "^1.14.1",
+    "bunyan": "^1.8.1",
     "compression": "^1.6.0",
+    "crypto": "0.0.3",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
-    "express-session": "^1.12.1"
+    "express-session": "^1.12.1",
+    "passport": "^0.3.2",
+    "passport-azure-ad": "^1.4.5",
+    "passport-azure-ad-oauth2": "0.0.4"
   }
 }
