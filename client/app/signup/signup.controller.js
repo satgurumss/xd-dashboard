@@ -2,16 +2,17 @@
     'use strict';
 
     angular.module('app')
-        .controller('LoginCtrl', ['$scope', '$rootScope', '$window', '$http', '$location','loggedInUser', 'WebViewService', LoginCtrl])
+        .controller('SignupCtrl', ['$scope', '$rootScope', '$window', '$http', '$location','loggedInUser', 'WebViewService', SignupCtrl])
 
-    function LoginCtrl($scope, $rootScope, $window, $http, $location, loggedInUser, WebViewService) {
+    function SignupCtrl($scope, $rootScope, $window, $http, $location, loggedInUser, WebViewService) {
         $scope.userName = "";
         $scope.password = "";
         $scope.errorAlert = false;
+        $scope.hyprname = null;
         $scope.hyprLoginClicked = false;
         $scope.isWebViewOpened = false;
 
-        console.log("in signin controller");
+        console.log("in signup controller");
         console.log($window.WebViewBridge);
         if($window.WebViewBridge) {
             $scope.isWebViewOpened = true;
@@ -31,9 +32,13 @@
             $window.WebViewBridge.send("message from webview response");
         }
 
-        $scope.hyprLogin = function() {
-          $scope.hyprLoginClicked = true;
-          WebViewService.hyprLogin();
+        $scope.hyprRegister = function() {
+          // $scope.hyprLoginClicked = true;
+          if($scope.hyprname)  {
+              WebViewService.hyprRegister($scope.hyprname);
+          } else {
+            alert("Please enter username");
+          }
         }
     }
 

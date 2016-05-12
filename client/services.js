@@ -1,9 +1,15 @@
 (function () {
   'use strict';
 
+  var webViewMessages = {
+    hypr_login: "hypr_login",
+    hypr_register: "hypr_register"
+  };
+
   angular.module('app')
     .factory('loggedInUser', loggedInUser)
     .factory('gaugesService', gaugesService)
+    .factory('WebViewService', webViewService)
 
   function loggedInUser($cookies, $location){
     console.log("loggedInUser")
@@ -68,6 +74,28 @@
         });
 
         return gaugesList;
+      }
+    }
+  }
+
+  function webViewService($window) {
+    return {
+      hyprLogin: function(hyprname) {
+        var message =  {
+          name: hyprname,
+          action: webViewMessages.hypr_login
+        };
+        console.log(message);
+        if($window.WebViewBridge) $window.WebViewBridge.send(message);
+      },
+      hyprRegister: function(hyprname) {
+        var message =  {
+          name: hyprname,
+          action: webViewMessages.hypr_register
+        };
+        message = JSON.stringify(message);
+        console.log(message);
+        if($window.WebViewBridge) $window.WebViewBridge.send(message);
       }
     }
   }

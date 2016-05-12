@@ -44,8 +44,11 @@
         .when('/signin', {
           templateUrl: 'app/login/signin.html'
         })
-        .when('/signup', {
+        .when('/signup-temp', {
           templateUrl: 'app/page/signup.html'
+        })
+        .when('/signup', {
+          templateUrl: 'app/signup/signup.html'
         })
         .when('/forgot', {
           templateUrl: 'app/page/forgot-password.html'
