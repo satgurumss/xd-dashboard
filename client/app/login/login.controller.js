@@ -44,8 +44,7 @@
         }
 
         $scope.hyprLogin = function() {
-          $scope.hyprLoginClicked = true;
-          WebViewService.hyprLogin();
+            WebViewService.hyprLogin(hyprUsername);
         }
     }
 

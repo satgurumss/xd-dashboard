@@ -4,7 +4,8 @@
   var webViewMessages = {
     hypr_login: "hypr_login",
     hypr_register: "hypr_register"
-  };
+  },
+  hyprLoggedIn = false;
 
   angular.module('app')
     .factory('loggedInUser', loggedInUser)
@@ -17,17 +18,18 @@
       logOutUser: function() {
         $http.post("/logout")
           .success(function(data, status, headers, config) {
+            hyprLoggedIn = false;
             $location.url("/signin");
           })
           .error(function(data, status, headers, config) {
             console.log("error");
           })
       },
-      isLoggedIn: function(route){
+      isLoggedIn: function(route) {
 
         $http.get("/isLoggedInUser")
         .success(function(loggedIn,status){
-          if( ! loggedIn )
+          if( ! loggedIn || ! hyprLoggedIn)
             $location.url("/signin");
           else{
             $location.url(route)
@@ -61,11 +63,10 @@
     }
   }
 
-  function webViewService($window) {
+  function webViewService($window, $location) {
     return {
-      hyprLogin: function(hyprname) {
+      hyprLogin: function() {
         var message =  {
-          name: hyprname,
           action: webViewMessages.hypr_login
         };
         console.log(message);
@@ -79,6 +80,24 @@
         message = JSON.stringify(message);
         console.log(message);
         if($window.WebViewBridge) $window.WebViewBridge.send(message);
+      },
+      responseHandler: function(response) {
+        console.log(response);
+        response = JSON.parse(response);
+
+        console.log("in service");
+        console.log(response);
+
+        switch(response.action) {
+          case "reg_response":
+            if(response.data.Response === 'Success') {
+              console.log("iin iff");
+              hyprLoggedIn = true;
+              $location.url("/landing");
+
+            }
+            break;
+        }
       }
     }
   }

@@ -84,12 +84,12 @@
                         <input type="text"
                          class="form-control"
                          placeholder="Username"
-                         ng-model="hyprname"
+                         ng-model="hyprUsername"
                          ng-change="errorAlert = false"
                          >
                       </div>
                     </div>
-                    <img src="images/thumb_imp.png" class="thumb-img" ng-click="hyprRegister();" ng-show="!hyprLoginClicked" />
+                    <img src="images/thumb_imp.png" class="thumb-img" ng-click="hyprRegister(hyprUsername);" ng-show="!hyprLoginClicked" />
                     <h4 ng-show="hyprLoginClicked">Please provide your thumb impression to get registered.</h4>
                     <h5 class="text-center">Powered by HYPR</h5>
                   </center>
