@@ -15,8 +15,7 @@
         $scope.errorAlert = false;
 
         loggedInUser.isLoggedIn("/landing");
-        console.log("in signin controller");
-        console.log($window.WebViewBridge);
+
         if($window.WebViewBridge) {
             $scope.isWebViewOpened = true;
         }

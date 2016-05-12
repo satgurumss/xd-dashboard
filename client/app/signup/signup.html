@@ -2,14 +2,14 @@
 
     <div class="backgroud-black">
         <div class="text-center">
-            <section class="logo text-center">
-                <img src="images/xdensity-logo.png" class="img-responsive" alt="XDensity">
+            <section class="header-logo logo text-center">
+                <img src="images/x-density-logo-sm.png" class="img-responsive" alt="XDensity">
             </section>
         </div>
     </div>
 
     <div class="main-body">
-        <div class="container">
+        <div class="container signup-form-container">
             <div class="row">
                 <center>
                   <div class="col-md-offset-4 col-sm-offset-3 col-md-4 col-sm-6 alert alert-danger"
@@ -22,39 +22,39 @@
                 <form class="form-horizontal login-form" name="loginForm" ng-submit="doLogin()">
                     <fieldset>
                         <div class="form-group">
-                            <div class="input-group input-group-lg">
+                            <div class="input-group input-group-lg custom-input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-user"></span>
                                 </span>
                                 <input type="text"
                                        class="form-control"
-                                       placeholder="Username"
+                                       placeholder="USERNAME"
                                        ng-model="userName"
                                        ng-change="errorAlert = false"
                                        >
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="input-group input-group-lg">
+                            <div class="input-group input-group-lg custom-input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-envelope"></span>
                                 </span>
                                 <input type="email"
                                        class="form-control"
-                                       placeholder="Email"
+                                       placeholder="EMAIL"
                                        ng-model="email"
                                        ng-change="errorAlert = false"
                                        >
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="input-group input-group-lg">
+                            <div class="input-group input-group-lg custom-input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-lock"></span>
                                 </span>
                                 <input type="password"
                                        class="form-control"
-                                       placeholder="Password"
+                                       placeholder="PASSWORD"
                                        ng-model="password"
                                        ng-change="errorAlert = false"
                                        >
@@ -63,21 +63,21 @@
 
                         <div class="form-group">
                           <div class="col-md-12 col-xs-12 pr-0 pl-0">
-                            <button class="btn btn-block btn-info btn-lg btn-signin"
-                                  type="submit">Sign up
-                              </button>
+                            <button class="btn btn-block btn-info btn-lg btn-signin btn-rounded"
+                                type="submit">SIGN UP <span><img src="images/login.png"/></span>
+                            </button>
                           </div>
                         </div>
                     </fieldset>
                 </form>
 
-                <section ng-if="isWebViewOpened">
+                <section >
                   <div class="or-hypr line-thru"></div>
                   <hr class="signin-separator">
 
                   <center>
                    <div class="form-group">
-                      <div class="input-group input-group-lg">
+                      <div class="input-group input-group-lg custom-input-group">
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-envelope"></span>
                         </span>
