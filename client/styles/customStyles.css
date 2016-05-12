@@ -72,6 +72,7 @@ a:hover {
 
 #content {
   bottom: 0;
+  position: static;
 }
 
 .custom-modal-body{
@@ -211,7 +212,7 @@ ul.list-unstyled {
 .app-footer {
   background-color: #242633;
   border-top: 1px solid #242633;
-  position: absolute;
+  position: static;
   z-index: 4;
 }
 
@@ -797,7 +798,7 @@ ul.dropdown-menu {
   background: rgba(0,0,0,.1);
   border-top: 0;
   color: #555;
-  position: absolute;
+  position: static;
   text-align: center;
   z-index: 4;
 }
@@ -1013,7 +1014,7 @@ body {
   display: inline-block;
 }
 .page-signin .logo, .page-signup .logo, .page-forgot .logo {
-    margin: 5% 0 2%;
+    /*margin: 5% 0 2%;*/
 }
 .page-signin a, .page-signup a, .page-forgot a {
     color: #FFF;
@@ -1359,7 +1360,7 @@ body {
 
 @media only screen and (max-width: 767px) {
   .page-signin .logo, .page-signup .logo, .page-forgot .logo {
-    margin: 22% 0 14%;
+    /*margin: 22% 0 14%;*/
   }
 }
 
@@ -2385,4 +2386,63 @@ div.circle-container {
 
   .position-relative{
     position: relative;
+  }
+
+  .signin-separator {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .btn-signin {
+    min-width: 100px;
+  }
+  .or-separator {
+    margin-top: 14px;
+  }
+  .thumb-img {
+    border-radius: 50%;
+    width: 100px;
+  }
+  .signin-separator {
+    border-top: 1px solid #767676;
+  }
+  .btn-line-info {
+    border-color: #50A5EE;
+  }
+
+  .btn-line-info:hover {
+    background-color: #50A5EE;
+
+  }
+
+  .page-signup .signin-header{
+      background-color: #50A5EE;
+  }
+
+  .body-wide #content {
+    position: static;
+  }
+
+  .or-hypr.line-thru:before {
+    content: "OR";
+    width: 50px;
+    height: 10px;
+    background-color: #454545;
+    margin: -8px 0 0 -20px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    z-index: -1;
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .or-hypr.line-thru:after {
+    width: 100%;
+    border-bottom: 1px solid;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 49%;
+    z-index: -2;
   }
