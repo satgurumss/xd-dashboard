@@ -2,35 +2,33 @@
     'use strict';
 
     angular.module('app')
-        .controller('LoginCtrl', ['$scope', '$rootScope', '$window', '$http', '$location','loggedInUser', 'WebViewService', LoginCtrl])
+        .controller('LoginCtrl', ['$scope', '$rootScope', '$window', '$http', '$location','loggedInUser', 'WebViewService', '$timeout', LoginCtrl])
 
-    function LoginCtrl($scope, $rootScope, $window, $http, $location, loggedInUser, WebViewService) {
+    function LoginCtrl($scope, $rootScope, $window, $http, $location, loggedInUser, WebViewService, $timeout) {
+        $scope.showPage = false;
+        $timeout(function() {
+            $scope.showPage = true;
+            if($window.WebViewBridge) {
+                $rootScope.isWebViewOpened = true;
+            }
+        }, 1000);
         $scope.errorAlert = false;
         $scope.hyprLoginClicked = false;
-        $scope.isWebViewOpened = false;
+        $rootScope.isWebViewOpened = false;
         $scope.loginData = {
             userName: '',
             password:''
         }
+        $rootScope.isTouchIdSupported = false;
         $scope.errorAlert = false;
 
         loggedInUser.isLoggedIn("/landing");
-
         if($window.WebViewBridge) {
-            $scope.isWebViewOpened = true;
+            $rootScope.isWebViewOpened = true;
         }
 
         $scope.doLogin = function() {
-            //$location.url("/landing");
             $window.location.href = "/loginAd";
-
-            /*$http.post("/login", $scope.loginData)
-                .success(function(data, status, headers, config) {
-                    $location.url("/landing");
-                })
-                .error(function(data, status, headers, config) {
-                    alert("error");
-                })*/
         }
 
         $scope.signupClicked = function() {
@@ -38,12 +36,23 @@
         }
 
         $scope.listenMessage = function(message) {
-            alert('got a message from Native: ' + message);
-            $window.WebViewBridge.send("message from webview response");
+            if(message === "touch_supported") {
+                $rootScope.isTouchIdSupported = true;
+                return;
+            } else if(message === "touch_not_supported") {
+                $rootScope.isTouchIdSupported = false;
+                return;
+            }
+            WebViewService.responseHandler(message);
         }
 
         $scope.hyprLogin = function() {
-            WebViewService.hyprLogin(hyprUsername);
+            var hyprUsername = "aaaa";
+            if(hyprUsername)  {
+              WebViewService.hyprLogin(hyprUsername);
+              } else {
+                alert("Please enter username");
+              }
         }
     }
 

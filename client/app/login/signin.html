@@ -1,6 +1,6 @@
-<div class="page-signin" id= "signin-page"  data-ng-controller="LoginCtrl as loginCtrl">
+<div class="page-signin" id= "signin-page"  data-ng-controller="LoginCtrl as loginCtrl" >
 
-    <div class="backgroud-black">
+    <div class="backgroud-black" ng-if="showPage">
       <div class="text-center">
         <section class="header-logo logo text-center">
           <img src="images/x-density-logo-sm.png" class="img-responsive" alt="XDensity">
@@ -8,7 +8,7 @@
       </div>
     </div>
 
-    <div class="main-body">
+    <div class="main-body" ng-if="showPage">
       <div class="container login-form-container">
           <div class="row">
               <center>
@@ -63,10 +63,23 @@
                   </fieldset>
               </form>
 
-              <section ng-if="isWebViewOpened">
+              <section ng-if="isWebViewOpened && isTouchIdSupported">
 
                 <center>
                   <h4 class="or-separator">OR</h4>
+                  <div class="form-group hidden">
+                    <div class="input-group input-group-lg custom-input-group">
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-envelope"></span>
+                      </span>
+                      <input type="text"
+                       class="form-control"
+                       placeholder="Username"
+                       ng-model="hyprUsername"
+                       ng-change="errorAlert = false"
+                       >
+                    </div>
+                  </div>
                   <img src="images/thumb.png" class="thumb-img" ng-click="hyprLogin();" ng-show="!hyprLoginClicked" />
                   <h4 ng-show="hyprLoginClicked">Please provide your thumb impression in order to login.</h4>
                   <h5 class="text-center">Powered by HYPR</h5>

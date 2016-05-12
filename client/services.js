@@ -5,7 +5,8 @@
     hypr_login: "hypr_login",
     hypr_register: "hypr_register"
   },
-  hyprLoggedIn = false;
+  hyprLoggedIn = false,
+  usingHypr = false;
 
   angular.module('app')
     .factory('loggedInUser', loggedInUser)
@@ -29,8 +30,11 @@
 
         $http.get("/isLoggedInUser")
         .success(function(loggedIn,status){
-          if( ! loggedIn)
+          if( ! loggedIn && ! usingHypr)
             $location.url("/signin");
+          else if( ! hyprLoggedIn && usingHypr) {
+            $location.url("/signin");
+          }
           else{
             $location.url(route)
           }
@@ -65,14 +69,18 @@
 
   function webViewService($window, $location) {
     return {
-      hyprLogin: function() {
+      hyprLogin: function(name) {
+        usingHypr = true;
         var message =  {
-          action: webViewMessages.hypr_login
+          action: webViewMessages.hypr_login,
+          name: name
         };
+        message = JSON.stringify(message);
         console.log(message);
         if($window.WebViewBridge) $window.WebViewBridge.send(message);
       },
       hyprRegister: function(hyprname) {
+        usingHypr = true;
         var message =  {
           name: hyprname,
           action: webViewMessages.hypr_register
@@ -82,6 +90,7 @@
         if($window.WebViewBridge) $window.WebViewBridge.send(message);
       },
       responseHandler: function(response) {
+
         console.log(response);
         response = JSON.parse(response);
 
@@ -90,7 +99,17 @@
 
         switch(response.action) {
           case "reg_response":
+            alert(response.data);
             if(response.data.Response === 'Success') {
+              console.log("iin iff");
+              hyprLoggedIn = true;
+              $location.url("/landing");
+
+            }
+            break;
+
+          case "auth_response":
+            if(response.data.Response === 'Success!') {
               console.log("iin iff");
               hyprLoggedIn = true;
               $location.url("/landing");
