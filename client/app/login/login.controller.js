@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('app')
-        .controller('LoginCtrl', ['$scope', '$rootScope', '$window', '$http', '$location','loggedInUser', 'WebViewService', '$timeout', LoginCtrl])
+        .controller('LoginCtrl', ['$scope', '$rootScope', '$window', '$http', '$location','loggedInUser', 'WebViewService', '$timeout', "$log", LoginCtrl])
 
-    function LoginCtrl($scope, $rootScope, $window, $http, $location, loggedInUser, WebViewService, $timeout) {
+    function LoginCtrl($scope, $rootScope, $window, $http, $location, loggedInUser, WebViewService, $timeout, $log) {
         $scope.errorAlert = false;
         $scope.hyprLoginClicked = false;
         $scope.loginData = {
@@ -26,7 +26,6 @@
                 if(data)
                     $location.url("/landing");
                 else{
-                    alert($scope.errorAlert)
                     $scope.errorAlert = true;
                 }
               })
@@ -48,12 +47,12 @@
               }
         }
 
-        $scope.isActiveDirectory = function(emailModel) {
-            console.log("isActiveDirectory")
+        $scope.isActiveDirectory = function() {
             var email = angular.copy($scope.loginData.email),
                 directory = "netorgft998123";
-            if(email != "" && email.substring(directory) > -1)
-                $scope.doADLogin()
+
+            if(typeof email != "undefined" && email != "" && email.indexOf(directory) > -1)
+                $scope.doADLogin();
         }
     }
 
