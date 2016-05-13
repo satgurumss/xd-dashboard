@@ -14,12 +14,12 @@
               <center>
                 <div class="col-md-offset-4 col-sm-offset-3 col-md-4 col-sm-6 alert alert-danger"
                   ng-show="errorAlert">
-                  Invalid username entered. Please try again.
+                  Invalid email/password entered. Please try again.
                 </div>
               </center>
           </div>
           <div class="form-container">
-              <form class="form-horizontal login-form" name="loginForm" ng-submit="doLogin()">
+              <form class="form-horizontal login-form" name="loginForm" ng-submit="loginForm.$valid && doLocalLogin($event);">
                   <fieldset>
                       <div class="form-group">
                           <div class="input-group input-group-lg custom-input-group">
@@ -28,8 +28,9 @@
                               </span>
                               <input type="text"
                                      class="form-control"
-                                     placeholder="USERNAME"
-                                     ng-model="loginData.userName"
+                                     placeholder="EMAIL"
+                                     ng-model="loginData.email"
+                                     required="true"
                                      ng-change="errorAlert = false"
                                      >
                           </div>
@@ -43,28 +44,32 @@
                                      class="form-control"
                                      placeholder="PASSWORD"
                                      ng-model="loginData.password"
+                                     required="true"
                                      ng-change="errorAlert = false"
                                      >
                           </div>
                       </div>
                       <div class="form-group">
                         <div class="col-md-5 col-xs-12 pr-0 pl-0">
-                          <button class="btn btn-block btn-info btn-lg btn-signin btn-rounded"
-                                type="submit">LOGIN <span><img src="images/login.png"/></span>
-                            </button>
-                        </div>
-                        <div class="col-md-2 col-xs-12 text-center">
-                          <h4 class="or-separator">OR</h4>
-                        </div>
-                        <div class="col-md-5 col-xs-12 text-right pl-0 pr-0">
-                          <button class="btn btn-block btn-lg btn-signin btn-w-md btn-gap-v btn-line-info btn-rounded" ng-click="doLogin();">Active Directory</button>
+                          <button class="btn btn-block btn-info btn-lg btn-signin btn-rounded">
+                            LOGIN <span><img src="images/login.png"/></span>
+                          </button>
                         </div>
                       </div>
                   </fieldset>
               </form>
+              <div class="form-group">
+                <div class="col-md-2 col-xs-12 text-center">
+                  <h4 class="or-separator">OR</h4>
+                </div>
+                <div class="col-md-5 col-xs-12 text-right pl-0 pr-0">
+                  <button class="btn btn-block btn-lg btn-signin btn-w-md btn-gap-v btn-line-info btn-rounded" ng-click="doADLogin($event);">
+                    Active Directory
+                  </button>
+                </div>
+              </div>
 
               <section ng-if="isWebViewOpened">
-
                 <center>
                   <h4 class="or-separator">OR</h4>
                   <div class="form-group hidden">
@@ -90,7 +95,7 @@
               </section>
 
               <section>
-                  <p class="text-center text-muted">Not a member? <a ng-click="signupClicked();">Sign up now &nbsp;<i class="glyphicon glyphicon-arrow-right"></i></a></p>
+                <p class="text-center text-muted">Not a member? <a ng-click="signupClicked();">Sign up now &nbsp;<i class="glyphicon glyphicon-arrow-right"></i></a></p>
               </section>
 
           </div>

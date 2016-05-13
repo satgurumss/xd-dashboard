@@ -8,7 +8,7 @@
         $scope.errorAlert = false;
         $scope.hyprLoginClicked = false;
         $scope.loginData = {
-            userName: '',
+            email: '',
             password:''
         }
 
@@ -16,8 +16,21 @@
 
         loggedInUser.isLoggedIn("/landing");
 
-        $scope.doLogin = function() {
+        $scope.doADLogin = function(e) {
             $window.location.href = "/loginAd";
+        }
+
+        $scope.doLocalLogin = function(e) {
+            $http.post("/local-login", $scope.loginData)
+              .success(function(data, status, headers, config) {
+                if(data)
+                    $location.url("/landing");
+                else
+                    $scope.errorAlert = true;
+              })
+              .error(function(data, status, headers, config) {
+                $scope.errorAlert = true;
+              })
         }
 
         $scope.signupClicked = function() {
