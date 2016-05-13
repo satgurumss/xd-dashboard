@@ -5,16 +5,20 @@
         .controller('LoginCtrl', ['$scope', '$rootScope', '$window', '$http', '$location','loggedInUser', 'WebViewService', '$timeout', "$log", LoginCtrl])
 
     function LoginCtrl($scope, $rootScope, $window, $http, $location, loggedInUser, WebViewService, $timeout, $log) {
-        $scope.errorAlert = false;
+        var ctrl = this;
+
+        $scope.signInError = false;
         $scope.hyprLoginClicked = false;
         $scope.loginData = {
             email: '',
             password:''
-        }
-
-        $scope.errorAlert = false;
+        };
 
         loggedInUser.isLoggedIn("/landing");
+        
+        var showError = function(){
+            ctrl.signInError = true;
+        }
 
         $scope.doADLogin = function() {
             $window.location.href = "/loginAd";
@@ -23,14 +27,15 @@
         $scope.doLocalLogin = function() {
             $http.post("/local-login", $scope.loginData)
               .success(function(data, status, headers, config) {
-                if(data)
+                if(data){
                     $location.url("/landing");
+                }
                 else{
-                    $scope.errorAlert = true;
+                    ctrl.signInError = true;
                 }
               })
               .error(function(data, status, headers, config) {
-                $scope.errorAlert = true;
+                ctrl.signInError = true;
               })
         }
 
@@ -48,6 +53,7 @@
         }
 
         $scope.isActiveDirectory = function() {
+            $scope.signInError = false
             var email = angular.copy($scope.loginData.email),
                 directory = "netorgft998123";
 

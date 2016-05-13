@@ -10,10 +10,9 @@
 
     <div class="main-body" ng-if="showPage">
       <div class="container login-form-container">
-          <div class="row">
+          <div class="row" ng-show="loginCtrl.signInError">
               <center>
-                <div class="col-md-offset-4 col-sm-offset-3 col-md-4 col-sm-6 alert alert-danger"
-                  ng-show="errorAlert">
+                <div class="col-md-offset-4 col-sm-offset-3 col-md-4 col-sm-6 alert alert-danger" >
                   Invalid email/password entered. Please try again.
                 </div>
               </center>
@@ -45,7 +44,7 @@
                                      placeholder="PASSWORD"
                                      ng-model="loginData.password"
                                      required="true"
-                                     ng-change="errorAlert = false"
+                                     ng-change="loginCtrl.signInError = false"
                                      >
                           </div>
                       </div>
@@ -81,7 +80,7 @@
                        class="form-control"
                        placeholder="Username"
                        ng-model="hyprUsername"
-                       ng-change="errorAlert = false"
+                       ng-change="loginCtrl.signInError = false"
                        >
                     </div>
                   </div>
