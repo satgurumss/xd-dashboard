@@ -99,7 +99,6 @@
 
         switch(response.action) {
           case "reg_response":
-            alert(response.data);
             if(response.data.Response === 'Success') {
               console.log("iin iff");
               hyprLoggedIn = true;

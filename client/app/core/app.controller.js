@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('app')
-        .controller('AppCtrl', [ '$scope', '$rootScope', '$route', '$document', 'appConfig', '$window', AppCtrl]) // overall control
+        .controller('AppCtrl', [ '$scope', '$rootScope', '$route', '$document', 'appConfig', '$window', '$timeout', 'WebViewService',  AppCtrl]) // overall control
         .constant("CONST",{
             gaugeBlue: ['#777777', '#28bdc6'],
             gaugeGreen: ['#777777', '#90e4ad'],
@@ -12,7 +12,34 @@
             gaugeSuccess: ['#777777', '#157c3e'],
         });
 
-    function AppCtrl($scope, $rootScope, $route, $document, appConfig, $window) {
+    function AppCtrl($scope, $rootScope, $route, $document, appConfig, $window, $timeout, WebViewService) {
+        $rootScope.showPage = false;
+        $rootScope.isTouchIdSupported = false;
+        $rootScope.isWebViewOpened = false;
+        $rootScope.isAlraeadyRegistered = false;
+        $timeout(function() {
+            $rootScope.showPage = true;
+            if($window.WebViewBridge) {
+                $rootScope.isWebViewOpened = true;
+            }
+        }, 1000);
+
+        $scope.listenMessage = function(message) {
+            var index = message.indexOf("already registered");
+            if(index > 0) {
+                $rootScope.isAlraeadyRegistered = true;
+                return;
+            }
+            if(message === "touch_supported") {
+                $rootScope.isTouchIdSupported = true;
+                return;
+            } else if(message === "touch_not_supported") {
+                $rootScope.isTouchIdSupported = false;
+                return;
+            }
+            WebViewService.responseHandler(message);
+        }
+
         $scope.pageTransitionOpts = appConfig.pageTransitionOpts;
         $scope.main = appConfig.main;
         $scope.color = appConfig.color;

@@ -71,32 +71,32 @@
                     </fieldset>
                 </form>
 
-                <section ng-if="isWebViewOpened && isTouchIdSupported" >
-                  <div class="or-hypr line-thru"></div>
-                  <hr class="signin-separator">
-
+                <section ng-if="isWebViewOpened" >
                   <center>
+                  <h4 class="or-separator">OR</h4>
                    <div class="form-group">
                       <div class="input-group input-group-lg custom-input-group">
                         <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-envelope"></span>
+                            <span class="glyphicon glyphicon-user"></span>
                         </span>
                         <input type="text"
                          class="form-control"
-                         placeholder="Username"
+                         placeholder="USERNAME"
                          ng-model="hyprUsername"
                          ng-change="errorAlert = false"
                          >
                       </div>
+                      <p ng-if="isAlraeadyRegistered" class="error-message">Username already exists.</p>
                     </div>
-                    <img src="images/thumb.png" class="thumb-img" ng-click="hyprRegister(hyprUsername);" ng-show="!hyprLoginClicked" />
-                    <h4 ng-show="hyprLoginClicked">Please provide your thumb impression to get registered.</h4>
-                    <h5 class="text-center">Powered by HYPR</h5>
+                    <h6 ng-show="!isTouchIdSupported" class="text-muted">The device does not support Touch ID or there is no Touch ID registered on this device.</h6>
+                    <img ng-if="!isTouchIdSupported" src="images/disabled-thumb.png" class="thumb-img" />
+                    <img ng-if="isTouchIdSupported" src="images/thumb.png" class="thumb-img" ng-click="isTouchIdSupported && hyprRegister(hyprUsername);" />
+                    <h6 class="text-center">Powered by HYPR</h6>
                   </center>
                   <!-- <button class="btn btn-block btn-lg btn-w-md btn-gap-v btn-line-info" ng-click="hyprLogin();">Sign in with Hypr</button> -->
                 </section>
                 <section>
-                    <p class="text-center text-muted">Already have an account? <a href="#/signin">Log in now</a></p>
+                    <p class="text-center text-muted">Already have an account? <a href="#/signin">Log in</a></p>
                 </section>
             </div>
         </div>
