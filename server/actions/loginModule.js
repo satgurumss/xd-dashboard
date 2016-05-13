@@ -1,10 +1,10 @@
 //Active Directory Login Module
 var loginModule = function() {
 	var dummyLogins = [{
-		email: "test1@xdensity.com",
+		email: "ceo@xdensity.com",
 		password: "123"
 	}, {
-		email: "test2@xdensity.com",
+		email: "cfo@xdensity.com",
 		password: "123"
 	}];
 

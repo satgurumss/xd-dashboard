@@ -86,7 +86,7 @@
                   </div>
                   <h6 ng-show="!isTouchIdSupported" class="text-muted">The device does not support Touch ID or there is no Touch ID registered on this device.</h6>
                   <img ng-if="!isTouchIdSupported" src="images/disabled-thumb.png" class="thumb-img" />
-                  <img ng-if="isTouchIdSupported" src="images/thumb.png" class="thumb-img" ng-click="hyprRegister();" />
+                  <img ng-if="isTouchIdSupported" src="images/thumb.png" class="thumb-img" ng-click="hyprLogin();" />
                   <h4 ng-show="hyprLoginClicked">Please provide your thumb impression in order to login.</h4>
                   <h6 class="text-center">Powered by HYPR</h6>
                 </center>
