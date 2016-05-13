@@ -16,17 +16,19 @@
 
         loggedInUser.isLoggedIn("/landing");
 
-        $scope.doADLogin = function(e) {
+        $scope.doADLogin = function() {
             $window.location.href = "/loginAd";
         }
 
-        $scope.doLocalLogin = function(e) {
+        $scope.doLocalLogin = function() {
             $http.post("/local-login", $scope.loginData)
               .success(function(data, status, headers, config) {
                 if(data)
                     $location.url("/landing");
-                else
+                else{
+                    alert($scope.errorAlert)
                     $scope.errorAlert = true;
+                }
               })
               .error(function(data, status, headers, config) {
                 $scope.errorAlert = true;
@@ -44,6 +46,14 @@
               } else {
                 alert("Please enter username");
               }
+        }
+
+        $scope.isActiveDirectory = function() {
+            console.log("isActiveDirectory")
+            var email = angular.copy($scope.loginData.email),
+                directory = "netorgft998123";
+            if(email != "" && email.substring(directory) > -1)
+                $scope.doADLogin();
         }
     }
 

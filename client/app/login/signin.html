@@ -19,7 +19,7 @@
               </center>
           </div>
           <div class="form-container">
-              <form class="form-horizontal login-form" name="loginForm" ng-submit="loginForm.$valid && doLocalLogin($event);">
+              <form class="form-horizontal login-form" name="loginForm" ng-submit="loginForm.$valid && doLocalLogin();">
                   <fieldset>
                       <div class="form-group">
                           <div class="input-group input-group-lg custom-input-group">
@@ -31,7 +31,7 @@
                                      placeholder="EMAIL"
                                      ng-model="loginData.email"
                                      required="true"
-                                     ng-change="errorAlert = false"
+                                     ng-change="errorAlert = false; isActiveDirectory()"
                                      >
                           </div>
                       </div>
@@ -63,7 +63,7 @@
                   <h4 class="or-separator">OR</h4>
                 </div>
                 <div class="col-md-5 col-xs-12 text-right pl-0 pr-0">
-                  <button class="btn btn-block btn-lg btn-signin btn-w-md btn-gap-v btn-line-info btn-rounded" ng-click="doADLogin($event);">
+                  <button class="btn btn-block btn-lg btn-signin btn-w-md btn-gap-v btn-line-info btn-rounded" ng-click="doADLogin();">
                     Active Directory
                   </button>
                 </div>
