@@ -48,12 +48,12 @@
               }
         }
 
-        $scope.isActiveDirectory = function() {
+        $scope.isActiveDirectory = function(emailModel) {
             console.log("isActiveDirectory")
             var email = angular.copy($scope.loginData.email),
                 directory = "netorgft998123";
             if(email != "" && email.substring(directory) > -1)
-                $scope.doADLogin();
+                $scope.doADLogin()
         }
     }
 
