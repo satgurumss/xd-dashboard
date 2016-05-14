@@ -15,7 +15,7 @@
         };
 
         loggedInUser.isLoggedIn("/landing");
-        
+
         var showError = function(){
             ctrl.signInError = true;
         }
