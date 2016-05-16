@@ -2,9 +2,10 @@
   'use strict';
 
   angular.module('app')
-    .controller('FinancialDashCtrl', ['$scope', '$http', '$location', "gaugesService", "CONST", FinancialDashCtrl])
+    .controller('FinancialDashCtrl', ['$scope', '$http', '$location', "gaugesService", "CONST", "loggedInUser", FinancialDashCtrl])
 
-  function FinancialDashCtrl($scope, $http, $location, gaugesService, CONST) {
+  function FinancialDashCtrl($scope, $http, $location, gaugesService, CONST, loggedInUser) {
+    loggedInUser.isLoggedIn("/financial-dashboard");
 
     $scope.gaugesWithMonths = [{
       energy: {

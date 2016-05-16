@@ -3,7 +3,7 @@
 
   angular.module('app')
     .controller('LandingCtrl',
-      ['$scope', '$http', '$location', "gaugesService", LandingCtrl])
+      ['$scope', '$http', '$location', "gaugesService", "loggedInUser", LandingCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
         if (isNaN(input)) return input;
@@ -11,7 +11,9 @@
       };
     });
 
-  function LandingCtrl($scope, $http, $location, gaugesService) {
+  function LandingCtrl($scope, $http, $location, gaugesService, loggedInUser) {
+    loggedInUser.isLoggedIn("/landing");
+    
     $scope.gauges = {
       finance:{
         percent: 25

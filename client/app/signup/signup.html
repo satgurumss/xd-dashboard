@@ -1,0 +1,108 @@
+<div class="page-signup" id= "signin-page"  data-ng-controller="SignupCtrl">
+
+    <div class="backgroud-black">
+        <div class="text-center">
+            <section class="header-logo logo text-center">
+                <img src="images/x-density-logo-sm.png" class="img-responsive" alt="XDensity">
+            </section>
+        </div>
+    </div>
+
+    <div class="main-body">
+        <div class="container signup-form-container">
+            <div class="row">
+                <center>
+                  <div class="col-md-offset-4 col-sm-offset-3 col-md-4 col-sm-6 alert alert-danger"
+                    ng-show="errorAlert">
+                    Invalid username entered. Please try again.
+                  </div>
+                </center>
+            </div>
+            <div class="form-container">
+                <form class="form-horizontal login-form" name="loginForm" ng-submit="doLogin()">
+                    <fieldset>
+                        <div class="form-group">
+                            <div class="input-group input-group-lg custom-input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                </span>
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="EMAIL"
+                                       ng-model="email"
+                                       ng-change="errorAlert = false"
+                                       >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group input-group-lg custom-input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-envelope"></span>
+                                </span>
+                                <input type="email"
+                                       class="form-control"
+                                       placeholder="EMAIL"
+                                       ng-model="email"
+                                       ng-change="errorAlert = false"
+                                       >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group input-group-lg custom-input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-lock"></span>
+                                </span>
+                                <input type="password"
+                                       class="form-control"
+                                       placeholder="PASSWORD"
+                                       ng-model="password"
+                                       ng-change="errorAlert = false"
+                                       >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="col-md-12 col-xs-12 pr-0 pl-0">
+                            <button class="btn btn-block btn-info btn-lg btn-signin btn-rounded"
+                                type="submit">SIGN UP <span><img src="images/login.png"/></span>
+                            </button>
+                          </div>
+                        </div>
+                    </fieldset>
+                </form>
+
+                <section ng-if="isWebViewOpened" >
+                  <center>
+                  <h4 class="or-separator">OR</h4>
+                   <div class="form-group">
+                      <div class="input-group input-group-lg custom-input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </span>
+                        <input type="text"
+                         class="form-control"
+                         placeholder="USERNAME"
+                         ng-model="hyprUsername"
+                         ng-change="errorAlert = false"
+                         >
+                      </div>
+                      <p ng-if="isAlraeadyRegistered" class="error-message">Username already exists.</p>
+                    </div>
+                    <h6 ng-show="!isTouchIdSupported" class="text-muted">The device does not support Touch ID or there is no Touch ID registered on this device.</h6>
+                    <img ng-if="!isTouchIdSupported" src="images/disabled-thumb.png" class="thumb-img" />
+                    <img ng-if="isTouchIdSupported" src="images/thumb.png" class="thumb-img" ng-click="isTouchIdSupported && hyprRegister(hyprUsername);" />
+                    <h6 class="text-center">Powered by HYPR</h6>
+                  </center>
+                  <!-- <button class="btn btn-block btn-lg btn-w-md btn-gap-v btn-line-info" ng-click="hyprLogin();">Sign in with Hypr</button> -->
+                </section>
+                <section>
+                    <p class="text-center text-muted">Already have an account? <a href="#/signin">Log in</a></p>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+
+</style>
