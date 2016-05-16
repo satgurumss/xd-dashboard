@@ -13,6 +13,7 @@ var util = require('util');
 var bunyan = require('bunyan');
 var config = require('./ad-config');
 var _appPath = '../dist';
+var db_xdensity = require('./db-definitions.js');
 var loginModule = require("./actions/loginModule");
 
 // Start QuickStart here

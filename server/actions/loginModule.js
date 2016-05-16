@@ -1,5 +1,7 @@
 //Active Directory Login Module
 var loginModule = function() {
+	var db = require("db-definitions")
+
 	var dummyLogins = [{
 		email: "ceo@xdensity.com",
 		password: "123"
