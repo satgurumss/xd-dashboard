@@ -1,5 +1,5 @@
  exports.creds = {
- 	returnURL: 'http://localhost:9000/loginAd/return',
+ 	returnURL: 'http://50.112.117.188:9000/loginAd/return',
  	realm:"netorgft998123.onmicrosoft.com",
  	issuer: "https://login.microsoftonline.com/262bfb42-b44c-4b5d-93ff-fccddae42eeb/saml2",
  	identityMetadata: 'https://login.microsoftonline.com/common/.well-known/openid-configuration', // For using Microsoft you should never need to change this.

@@ -14,13 +14,14 @@ var bunyan = require('bunyan');
 var config = require('./ad-config');
 var _appPath = '../dist';
 var db_xdensity = require('./db-definitions.js');
+var loginModule = require("./actions/loginModule");
 
 // Start QuickStart here
 
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
 var log = bunyan.createLogger({
-    name: 'Microsoft OIDC Example Web Application'
+  name: 'Microsoft OIDC Example Web Application'
 });
 
 
@@ -35,7 +36,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  findByEmail(id, function (err, user) {
+  findByEmail(id, function(err, user) {
     done(err, user);
   });
 });
@@ -74,7 +75,7 @@ passport.use(new OIDCStrategy({
   function(iss, sub, profile, accessToken, refreshToken, done) {
     log.info('Example: Email address we received was: ', profile.email);
     // asynchronous verification, for effect...
-    process.nextTick(function () {
+    process.nextTick(function() {
       findByEmail(profile.email, function(err, user) {
         if (err) {
           return done(err);
@@ -97,8 +98,12 @@ var app = express();
 
 app.set('view engine', 'ejs');
 app.use(cookieParser());
-app.use(expressSession({ secret: 'keyboard cat', resave: true, saveUninitialized: false }));
-app.use(bodyParser.urlencoded({ extended : true }));
+app.use(expressSession({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: false
+}));
+app.use(bodyParser({limit: '50mb'}));
 // Initialize Passport!  Also use passport.session() middleware, to support
 // persistent login sessions (recommended).
 app.use(passport.initialize());
@@ -106,19 +111,40 @@ app.use(passport.session());
 app.use(express.Router());
 app.use(express.static('../dist'));
 
+//adding permissions to allow the express app to accept the requests form other domains
+app.all('/*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type,X-Requested-With');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,HEAD,DELETE,OPTIONS');
+  req.headers['X-Forwarded-For', {
+    'accept-encoding': 'gzip,deflate'
+  }]
+  req.headers['X-Forwarded-For', {
+    'content-encoding': 'gzip,deflate'
+  }]
+  req.header("Content-Type","application/json")
+  next();
+});
+
 //Routes (Section 4)
 
-app.get('/', function(req, res){
-  res.render('index', { user: req.user });
+app.get('/', function(req, res) {
+  res.render('index', {
+    user: req.user
+  });
 });
 
 
 app.get('/loginAd',
-  passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
+  passport.authenticate('azuread-openidconnect', {
+    failureRedirect: '/login'
+  }),
   function(req, res) {
     log.info('Login was called in the Sample');
     res.redirect('/');
-});
+  });
+
+app.post('/local-login',loginModule.login);
 
 // Our POST routes (Section 3)
 
@@ -129,10 +155,10 @@ app.get('/loginAd',
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
 app.get('/loginAd/return',
-  passport.authenticate('azuread-openidconnect', { failureRedirect: '/#/signin' }),
-  function(req, res) {
-    res.redirect('/#/landing');
-  });
+  passport.authenticate('azuread-openidconnect', {
+    failureRedirect: '/#/signin'
+  }),
+  loginModule.loginAd);
 
 // POST /auth/openid/return
 //   Use passport.authenticate() as route middleware to authenticate the
@@ -140,43 +166,14 @@ app.get('/loginAd/return',
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
 app.post('/loginAd/return',
-  passport.authenticate('azuread-openidconnect', { failureRedirect: '/#/signin' }),
-  function(req, res) {
-    res.redirect('/#/landing');
-  });
+  passport.authenticate('azuread-openidconnect', {
+    failureRedirect: '/#/signin'
+  }),
+  loginModule.loginAd);
 
-// POST /auth/openid/return
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  If authentication fails, the user will be redirected back to the
-//   login page.  Otherwise, the primary route function function will be called,
-//   which, in this example, will redirect the user to the home page.
-app.post('/loginAd/return',
-  passport.authenticate('azuread-openidconnect', { failureRedirect: '/#/signin' }),
-  function(req, res) {
-    console.log(req.session)
-    res.redirect('/#/landing');
-  });
+app.post('/logout', loginModule.logOut);
 
-app.post('/logout', function(req, res){
-  console.log(req.session)
-  req.logout();
-  req.session.destroy();
-  console.log(req.session)
-  res.redirect('/');
-});
-
-app.get("/isLoggedInUser",function(req,res){
-  console.log(res.session)
-  if(req.session.passport != undefined){
-    if(req.session.passport.user != null || req.session.passport.user != "" )
-      res.send(true);
-    else
-      res.send(false);
-  }else{
-    res.send(false);
-  }
-
-})
+app.get("/isLoggedInUser", loginModule.isUserLoggedIn)
 
 
 //using wild cards
@@ -207,6 +204,8 @@ app.listen(9000);
 //   the request will proceed.  Otherwise, the user will be redirected to the
 //   login page.
 function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
+  if (req.isAuthenticated()) {
+    return next();
+  }
   res.redirect('/login')
 }

@@ -10,13 +10,13 @@
         $scope.errorAlert = false;
         $scope.hyprname = null;
         $scope.hyprLoginClicked = false;
-        $scope.isWebViewOpened = false;
+       // $scope.isWebViewOpened = false;
 
         console.log("in signup controller");
         console.log($window.WebViewBridge);
-        if($window.WebViewBridge) {
-            $scope.isWebViewOpened = true;
-        }
+        // if($window.WebViewBridge) {
+        //     $scope.isWebViewOpened = true;
+        // }
 
         $scope.doLogin = function() {
            //$location.url("/financial-dashboard");
@@ -28,14 +28,18 @@
         }
 
         $scope.listenMessage = function(message) {
-            alert('got a message from Native: ' + message);
-            $window.WebViewBridge.send("message from webview response");
+            var index = message.indexOf("already registered");
+            if(index > 0) {
+                alert("Registeration failed: User is already registered.");
+                return;
+            }
+            WebViewService.responseHandler(message);
         }
 
-        $scope.hyprRegister = function() {
+        $scope.hyprRegister = function(hyprUsername) {
           // $scope.hyprLoginClicked = true;
-          if($scope.hyprname)  {
-              WebViewService.hyprRegister($scope.hyprname);
+          if(hyprUsername)  {
+              WebViewService.hyprRegister(hyprUsername);
           } else {
             alert("Please enter username");
           }

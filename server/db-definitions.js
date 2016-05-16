@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize'),
-	sequelize = new Sequelize('xdensity', 'root', null, {
+	sequelize = new Sequelize('xdensity-db', 'root', null, {
 		dialect: "mysql",
 		// or 'sqlite', 'postgres', 'mariadb'
 		host: 'localhost',
@@ -32,7 +32,6 @@ AccountModel = sequelize.define("account", {
 }, {
 	tableName: 'account', // this will define the table's name
 	timestamps: true // this will deactivate the timestamp columns
-
 }, {
 	updatedAt: 'last_update',
 	createdAt: 'created_on'
@@ -48,23 +47,34 @@ UserModel = sequelize.define("user", {
 	user_password: {
 		type: Sequelize.STRING
 	},
-	user_role: {
-		type: Sequelize.STRING
-	},
 	user_password_token: {
 		type: Sequelize.STRING
 	},
 	user_isAdmin: {
 		type: Sequelize.BOOLEAN
 	}
-
 }, {
 	tableName: 'user', // this will define the table's name
 	timestamps: true // this will deactivate the timestamp columns
-
 }, {
 	updatedAt: 'last_update',
 	createdAt: 'created_on'
+});
+
+RefUserModel = sequelize.define("refUserModel", {
+	role_ID: {
+		type: Sequelize.STRING,
+		primaryKey:true
+	},
+	title: {
+		type: Sequelize.STRING
+	},
+	description:{
+		type: Sequelize.STRING
+	}
+}, {
+	tableName: 'ref_user_role', // this will define the table's name
+	timestamps: false // this will deactivate the timestamp columns
 });
 
 //------ DEPT Models -----//
@@ -75,7 +85,6 @@ DepartmentModel = sequelize.define("department", {
 }, {
 	tableName: 'department', // this will define the table's name
 	timestamps: true // this will deactivate the timestamp columns
-
 }, {
 	updatedAt: 'last_update',
 	createdAt: 'created_on'
@@ -97,7 +106,6 @@ ProjectModel = sequelize.define("project", {
 }, {
 	tableName: 'project', // this will define the table's name
 	timestamps: true // this will deactivate the timestamp columns
-
 }, {
 	updatedAt: 'last_update',
 	createdAt: 'created_on'
@@ -110,14 +118,10 @@ CustomerModel = sequelize.define("customer", {
 	},
 	customer_city: {
 		type: Sequelize.STRING
-	},
-	customer_country_code: {
-		type: Sequelize.STRING
 	}
 }, {
 	tableName: 'customer', // this will define the table's name
 	timestamps: true // this will deactivate the timestamp columns
-
 }, {
 	updatedAt: 'last_update',
 	createdAt: 'created_on'
@@ -125,12 +129,15 @@ CustomerModel = sequelize.define("customer", {
 
 RefCountryCodeModel = sequelize.define("ref_country_code", {
 	country_code: {
-		type: Sequelize.STRING
+		type: Sequelize.STRING,
+		primaryKey:true
+	},
+	title:{
+		type:Sequelize.STRING
 	}
 }, {
 	tableName: 'ref_country_code', // this will define the table's name
 	timestamps: false // this will deactivate the timestamp columns
-
 });
 
 CustomerFeedbackModel = sequelize.define("customer_feedback", {
@@ -143,12 +150,10 @@ CustomerFeedbackModel = sequelize.define("customer_feedback", {
 }, {
 	tableName: 'customer_feedback', // this will define the table's name
 	timestamps: true // this will deactivate the timestamp columns
-
 }, {
 	updatedAt: 'last_update',
 	createdAt: 'created_on'
 });
-
 
 //-------EMPLOYEE MODELS-------- //
 EmployeeModel = sequelize.define("employee", {
@@ -172,11 +177,13 @@ EmployeeModel = sequelize.define("employee", {
 	},
 	emp_designation: {
 		type: Sequelize.STRING
+	},
+	annual_leaves_allowed:{
+		type:Sequelize.INTEGER
 	}
 }, {
 	tableName: 'employees', // this will define the table's name
 	timestamps: true // this will deactivate the timestamp columns
-
 }, {
 	updatedAt: 'last_update',
 	createdAt: 'created_on'
@@ -195,7 +202,6 @@ EventModel = sequelize.define("event", {
 }, {
 	tableName: 'event', // this will define the table's name
 	timestamps: true // this will deactivate the timestamp columns
-
 }, {
 	updatedAt: 'last_update',
 	createdAt: 'created_on'
@@ -211,7 +217,6 @@ EmployeeSatisfactionModel = sequelize.define("employee_satisfaction", {
 }, {
 	tableName: 'employee_satisfaction', // this will define the table's name
 	timestamps: true // this will deactivate the timestamp columns
-
 }, {
 	updatedAt: 'last_update',
 	createdAt: 'created_on'
@@ -227,7 +232,6 @@ EmployeeLeaveModel = sequelize.define("emp_leaves", {
 }, {
 	tableName: 'emp_leaves', // this will define the table's name
 	timestamps: true // this will deactivate the timestamp columns
-
 }, {
 	updatedAt: 'last_update',
 	createdAt: 'created_on'
@@ -243,10 +247,13 @@ PayrollModel = sequelize.define("emp_payroll", {
 }, {
 	tableName: 'emp_payroll', // this will define the table's name
 	timestamps: false // this will deactivate the timestamp columns
-
 });
 
 RefRemunerationTypeModel = sequelize.define("ref_remuneration_types", {
+	remunerationType: {
+		type: Sequelize.STRING,
+		primaryKey:true
+	},
 	title: {
 		type: Sequelize.STRING
 	},
@@ -256,10 +263,13 @@ RefRemunerationTypeModel = sequelize.define("ref_remuneration_types", {
 }, {
 	tableName: 'ref_remuneration_types', // this will define the table's name
 	timestamps: false // this will deactivate the timestamp columns
-
 });
 
 RefLeaveModel = sequelize.define("ref_leaves", {
+	leaveType: {
+		type: Sequelize.STRING,
+		primaryKey:true
+	},
 	title: {
 		type: Sequelize.STRING
 	},
@@ -269,7 +279,6 @@ RefLeaveModel = sequelize.define("ref_leaves", {
 }, {
 	tableName: 'ref_leaves', // this will define the table's name
 	timestamps: false // this will deactivate the timestamp columns
-
 });
 
 TeamModel = sequelize.define("team", {
@@ -277,7 +286,15 @@ TeamModel = sequelize.define("team", {
 		type: Sequelize.STRING
 	}
 }, {
-	tableName: 'ref_leaves', // this will define the table's name
+	tableName: 'team', // this will define the table's name
+	timestamps: true // this will deactivate the timestamp columns
+}, {
+	updatedAt: 'last_update',
+	createdAt: 'created_on'
+});
+
+TeamMembersModel = sequelize.define("team_members", {}, {
+	tableName: 'team_members', // this will define the table's name
 	timestamps: true // this will deactivate the timestamp columns
 }, {
 	updatedAt: 'last_update',
@@ -334,6 +351,8 @@ LabelsModel = sequelize.define("labels", {
 
 
 //------ DB Relations -------- //
+
+//ACCOUNT REALTIONS
 AccountModel.hasMany(UserModel, {
 	foreignKey: "account_ID"
 });
@@ -374,10 +393,97 @@ AccountModel.hasMany(DepartmentModel, {
 	foreignKey: "account_ID"
 });
 
+AccountModel.hasMany(TeamModel, {
+	foreignKey: "account_ID"
+});
+
+//USER ROLE TYPE
+UserModel.belongsTo(RefUserModel,{
+	foreignKey:"userRole"
+});
+
+//EMPLOYEE REALTIONS
+EmployeeModel.hasMany(EmployeeSatisfactionModel, {
+	foreignKey: "employee_ID"
+});
+
+EmployeeModel.hasMany(ProjectModel, {
+	foreignKey: "employee_ID"
+});
+
+EmployeeModel.hasMany(SaleModel, {
+	foreignKey: "employee_ID"
+});
+
+EmployeeModel.hasMany(EmployeeLeaveModel, {
+	foreignKey: "employee_ID"
+});
+
+EmployeeModel.hasMany(PayrollModel, {
+	foreignKey: "employee_ID"
+});
+
+EmployeeModel.belongsToMany(TeamModel, {
+	through: TeamMembersModel,
+	foreignKey: "employee_ID"
+});
+
+EmployeeModel.belongsTo(EmployeeModel, {
+	foreignKey: "manager_ID",
+	as: "Manager"
+});
+
+// REF REMUNERATION RELATIONS
+PayrollModel.belongsTo(RefRemunerationTypeModel,{
+	foreignKey:"remunerationType"
+});
+
+// TEAM RELATIONS
+TeamModel.belongsToMany(EmployeeModel, {
+	through: TeamMembersModel,
+	foreignKey: "team_ID"
+});
+
+// REF_LEAVE RELATIONS
+EmployeeLeaveModel.belongsTo(RefLeaveModel,{
+	foreignKey: "leaveType"
+}); 
+
+//CUSTOMERS RELATIONS
+CustomerModel.hasMany(CustomerFeedbackModel, {
+	foreignKey: "customer_ID"
+});
+
+CustomerModel.hasMany(ProjectModel, {
+	foreignKey: "customer_ID"
+});
+
+CustomerModel.hasMany(SaleModel, {
+	foreignKey: "customer_ID"
+});
+
+// REF_LEAVE RELATIONS
+CustomerModel.belongsTo(RefCountryCodeModel,{
+	foreignKey: "customer_country_code"
+}); 
+
+
+//DEPT RELATIONS
+DepartmentModel.hasMany(ProjectModel, {
+	foreignKey: "department_ID"
+});
+
+DepartmentModel.hasMany(EmployeeModel, {
+	foreignKey: "department_ID"
+});
+
+DepartmentModel.hasMany(ForecastedSalesModel,{
+	foreignKey: "department_ID"
+})
 
 sequelize
 	.sync({
-		force: true
+		force: false
 	})
 	.then(function() {
 		console.log('It worked fine!')
@@ -385,3 +491,25 @@ sequelize
 	.catch(function(err) {
 		console.log('An error occurred while creating the table:', err)
 	});
+
+// EXPORTING MODULES FOR USER
+exports.accountModel = AccountModel;
+exports.userModel = UserModel;
+exports.refUserModel = RefUserModel;
+exports.departmentModel = DepartmentModel;
+exports.projectModel = ProjectModel;
+exports.customerModel = CustomerModel;
+exports.refCountryModel = RefCountryCodeModel;
+exports.customerFeedbackModel = CustomerFeedbackModel;
+exports.employeeModel = EmployeeModel;
+exports.eventsModel = EventModel;
+exports.employeeSatisfactionModel = EmployeeSatisfactionModel;
+exports.empoloyeeLeaveModel = EmployeeLeaveModel;
+exports.payrollModel = PayrollModel;
+exports.refRemunerationModel = RefRemunerationTypeModel;
+exports.refLeaveModel = RefLeaveModel;
+exports.teamModel = TeamModel;
+exports.teamMemberModel = TeamMembersModel;
+exports.saleModel = SaleModel;
+exports.forecastedSaleModel = ForecastedSalesModel;
+exports.labelsModel = LabelsModel;

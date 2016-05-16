@@ -4,7 +4,9 @@
   var webViewMessages = {
     hypr_login: "hypr_login",
     hypr_register: "hypr_register"
-  };
+  },
+  hyprLoggedIn = false,
+  usingHypr = false;
 
   angular.module('app')
     .factory('loggedInUser', loggedInUser)
@@ -17,18 +19,22 @@
       logOutUser: function() {
         $http.post("/logout")
           .success(function(data, status, headers, config) {
+            hyprLoggedIn = false;
             $location.url("/signin");
           })
           .error(function(data, status, headers, config) {
             console.log("error");
           })
       },
-      isLoggedIn: function(route){
+      isLoggedIn: function(route) {
 
         $http.get("/isLoggedInUser")
         .success(function(loggedIn,status){
-          if( ! loggedIn )
+          if( ! loggedIn && ! usingHypr)
             $location.url("/signin");
+          else if( ! hyprLoggedIn && usingHypr) {
+            $location.url("/signin");
+          }
           else{
             $location.url(route)
           }
@@ -61,17 +67,20 @@
     }
   }
 
-  function webViewService($window) {
+  function webViewService($window, $location) {
     return {
-      hyprLogin: function(hyprname) {
+      hyprLogin: function(name) {
+        usingHypr = true;
         var message =  {
-          name: hyprname,
-          action: webViewMessages.hypr_login
+          action: webViewMessages.hypr_login,
+          name: name
         };
+        message = JSON.stringify(message);
         console.log(message);
         if($window.WebViewBridge) $window.WebViewBridge.send(message);
       },
       hyprRegister: function(hyprname) {
+        usingHypr = true;
         var message =  {
           name: hyprname,
           action: webViewMessages.hypr_register
@@ -79,6 +88,34 @@
         message = JSON.stringify(message);
         console.log(message);
         if($window.WebViewBridge) $window.WebViewBridge.send(message);
+      },
+      responseHandler: function(response) {
+
+        console.log(response);
+        response = JSON.parse(response);
+
+        console.log("in service");
+        console.log(response);
+
+        switch(response.action) {
+          case "reg_response":
+            if(response.data.Response === 'Success') {
+              console.log("iin iff");
+              hyprLoggedIn = true;
+              $location.url("/landing");
+
+            }
+            break;
+
+          case "auth_response":
+            if(response.data.Response === 'Success!') {
+              console.log("iin iff");
+              hyprLoggedIn = true;
+              $location.url("/landing");
+
+            }
+            break;
+        }
       }
     }
   }

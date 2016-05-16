@@ -2401,7 +2401,7 @@ div.circle-container {
   }
   .thumb-img {
     border-radius: 50%;
-    width: 100px;
+    width: 150px;
   }
   .signin-separator {
     border-top: 1px solid #767676;
@@ -2446,3 +2446,42 @@ div.circle-container {
     top: 49%;
     z-index: -2;
   }
+
+.custom-input-group .input-group-addon{
+  color: #A09FA4;
+  background-color: #555F67;
+  border: 1px solid #555F67;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 0px;
+}
+
+.custom-input-group span.glyphicon{
+  padding: 7px 15px;
+  border-right: 1px solid #aaa;
+}
+.custom-input-group input.form-control{
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.btn-rounded{
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.page-signin .header-logo,
+.page-signup .header-logo{
+  margin-top: -45px;
+}
+
+.login-form-container,
+.signup-form-container{
+  margin: 0px 30px 0 30px;
+}
+
+.error-message {
+  font-size: 11px;
+}
