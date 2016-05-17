@@ -175,6 +175,8 @@ app.post('/logout', loginModule.logOut);
 
 app.get("/isLoggedInUser", loginModule.isUserLoggedIn)
 
+app.get("/fetch-current-user", loginModule.fetchCurrentUser)
+
 
 //using wild cards
 

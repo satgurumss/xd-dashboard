@@ -1,0 +1,43 @@
+<div class="container container-white container-emp-overview">
+  <div>
+    <div class="position-relative">
+      <span class="h3">{{emp.value}}</span>
+      <span class="trend up-trend green-text" ng-class="{hidden:emp.trendIsPositive}">
+        {{emp.trend}}
+      </span>
+      <span class="trend down-trend orange-text" ng-class="{hidden:!emp.trendIsPositive}">
+        {{emp.trend}}
+      </span>
+      <span class="trend ytd">
+       YTD&nbsp;${{emp.ytd}}
+     </span>
+     <div class="h6 text-uppercase pull-right">
+      <span class='budget-value'>
+        <i class="fa fa-circle orange-text"></i>
+        <span class="sign">$&nbsp;</span>{{emp.budget}}</span>
+      </span>
+      &nbsp;
+      <span class="forecast-value">
+        <i class="fa fa-circle blue-text"></i>
+        <span class="sign">$&nbsp;</span>{{emp.fct}}</span>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <ul class="nav-list col-xs-2 user-actions">
+    <li class="nav-item"><span><i class="fa fa-envelope-o"/></span></li>
+    <li class="nav-item"><span><i class="fa fa-phone"/></span></li>
+    <li class="nav-item"><span><i class="fa fa-comments-o"/></span></li>
+    <li class="nav-item"><span><i class="fa fa-share-alt"/></span></li>
+  </ul>
+  <div class="col-xs-10 margin-t10">
+    <div class="clearfix">
+      <hc-chart options="satisfactionChart" watch="monthsToDisplay"/>
+    </div>
+    <div class="slider-wrapper">
+      <input slider options="options" ng-model="monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider1" />
+    </div>
+  </div>
+</div>
+</div>

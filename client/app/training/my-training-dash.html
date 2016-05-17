@@ -1,0 +1,140 @@
+<div class="container page-training" data-ng-controller="TrainingDashCtrl as trainingCtrl" ng-init="init()">
+  <div class="panel-container">
+    <div class="panel-body" style="padding: 0 15px 0 15px;">
+      <div class="row revenue-container">
+        <div class="col-xs-6 ">
+          <h1 class="heading-value big-number display-inline-block position-relative">
+            2
+            <span class="value-label label">Active Trainings</span>
+          </h1>
+          <div class="progress-container">
+            <progress-bar options="hrProgress"/>
+          </div>
+        </div>
+        <div class="col-xs-6 text-right db-heading projects-db-heading">
+          <div class="sec-icon"><img src="images/Icon_projects-v2.png" height="36" width="36" border="0" /></div>
+          <h6 class="value-small white-text">MY TRAINING</h6>
+        </div>
+      </div>
+
+      <div class="row events-container">
+        <div class="margin-t10">
+          <span class="h5 text-uppercase">Training & Events</span>
+          <span type="button" class="btn btn-primary-custom btn-xs pull-right" ng-click="addEvent()">
+            <i class="fa fa-plus"/>
+          </span>
+        </div>
+        <div>
+          <div class="calendar-header clearfix">
+            <button
+              class="pull-left"
+              mwl-date-modifier
+              date="calendarOptions.viewDate"
+              decrement="calendarOptions.view">
+                <i class="fa fa-caret-left"></i>
+            </button>
+
+            <h3 class="calendar-title">{{ calendarOptions.viewTitle }}</h3>
+
+            <button
+              class="pull-right"
+              mwl-date-modifier
+              date="calendarOptions.viewDate"
+              increment="calendarOptions.view">
+                <i class="fa fa-caret-right"></i>
+            </button>
+
+          </div>
+
+          <mwl-calendar
+            view="calendarOptions.view"
+            view-date="calendarOptions.viewDate"
+            events="events"
+            view-title="calendarOptions.viewTitle"
+            edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
+            delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
+            cell-is-open="calendarOptions.cellIsOpen"
+            on-view-change-click="calendarOptions.enableViewChange"
+            on-delete-event-click="onEventDelete(calendarEvent)"
+            on-timespan-click="onTimespanClick(calendarDate, calendarCell)"
+            class="my-calendar">
+          </mwl-calendar>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="" data-ng-controller="TabsDemoCtrl">
+    <div class="ui-tab-container ui-tab-horizontal">
+        <uib-tabset justified="true" class="ui-tab">
+          <uib-tab heading="AVAILABLE TRAINING">
+            <ng-include src="'app/training/available-training-list.html'"/>
+          </uib-tab>
+          <uib-tab heading="MY TRAINING">
+            <ng-include src="'app/training/completed-training-list.html'"/>
+          </uib-tab>
+        </uib-tabset>
+    </div>
+  </div>
+
+</div>
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">New Event</h3>
+    </div>
+    <div class="modal-body">
+        <form class="ng-pristine ng-valid">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Title</label>
+                <input type="text" ng-model="newEvent.title" class="form-control" placeholder="title">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Starts at</label>
+                 <div class="input-group ui-datepicker" data-ng-controller="DatepickerDemoCtrl">
+                    <input type="text"
+                           class="form-control"
+                           uib-datepicker-popup="{{format}}"
+                           ng-model="newEvent.startDate"
+                           is-open="popup1.opened"
+                           datepicker-options="dateOptions"
+                           date-disabled="disabled(date, mode)"
+                           ng-required="true"
+                           close-text="Close"
+                           disabled="disabled"
+                           alt-input-formats="altInputFormats" />
+                    <span class="input-group-addon" ng-click="open1()">
+                      <i class="fa fa-calendar"></i>
+                    </span>
+                  </div>
+            </div>
+             <div class="form-group">
+                <label for="exampleInputPassword1">Ends at</label>
+                <div class="input-group ui-datepicker" data-ng-controller="DatepickerDemoCtrl">
+                    <input type="text"
+                           class="form-control"
+                           uib-datepicker-popup="{{format}}"
+                           ng-model="newEvent.endDate"
+                           is-open="popup1.opened"
+                           min-date="newEvent.startDate"
+                           datepicker-options="dateOptions"
+                           date-disabled="disabled(date, mode)"
+                           ng-required="true"
+                           close-text="Close"
+                           alt-input-formats="altInputFormats" />
+                      <span class="input-group-addon" ng-click="open1()">
+                      <i class="fa fa-calendar"></i>
+                    </span>
+                  </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary-custom" type="button" ng-click="ok()">Add</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+<style type="text/css">
+
+</style>

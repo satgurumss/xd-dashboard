@@ -28,6 +28,7 @@
             $http.post("/local-login", $scope.loginData)
               .success(function(data, status, headers, config) {
                 if(data){
+                    $rootScope.$broadcast("userLoggedIn",{"userRole": data.userRole});
                     $location.url("/landing");
                 }
                 else{

@@ -1,0 +1,17 @@
+<div class="margin-t10" data-slim-scroll data-scroll-height="350px">
+	<div class="row training-row" data-ng-repeat="training in availableTraining">
+		<div class="col-xs-12">
+			<span class="h4">{{training.title}}</span>
+			<button class="btn btn-sm btn-info pull-right" ng-if="! training.isApplied">
+				<span class="fa fa-plus"/>&nbsp;Apply
+			</button>
+
+			<button class="btn btn-sm btn-info pull-right disabled" ng-if="training.isApplied" >
+				<span class="fa fa-check-circle"/>&nbsp;Applied
+			</button>
+		</div>
+		<div class="col-xs-12">
+			<p>{{training.description}}</p>
+		</div>
+	</div>
+</div>

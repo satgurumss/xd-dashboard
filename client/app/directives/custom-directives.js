@@ -6,7 +6,8 @@
     .directive('hcMap', ['$http', '$window', hcMap])
     .directive('hcChart', ['$window', hcChart])
     .directive('hcChartDark', ['$window', hcChartDark])
-    .directive("progressBar", progressBar);
+    .directive("progressBar", progressBar)
+    .directive("trainingList", trainingList);
 
   function enterDirective() {
     return function(scope, element, attrs) {
@@ -717,6 +718,27 @@
 
         if (scope.applyThreshold) {
           applyThresholdToProgressBar();
+        }
+      }
+    };
+  }
+
+  function trainingList(){
+    return {
+      restrict: 'E',
+      template: '<ng-include src="getTemplateUrl()"/>',
+      replace: true,
+      scope: {
+        list: '=',
+        type: "="
+      },
+      controller: function($scope){
+        $scope.getTemplateUrl = function(){
+          if($scope.type === "avaiable"){
+            return '/app/training/available-training-list.html'
+          } else if ($scope.type === "completed") {
+            return '/app/training/completed-training-list.html'
+          }
         }
       }
     };

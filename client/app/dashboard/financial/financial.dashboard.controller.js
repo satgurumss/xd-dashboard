@@ -5,7 +5,6 @@
     .controller('FinancialDashCtrl', ['$scope', '$http', '$location', "gaugesService", "CONST", "loggedInUser", FinancialDashCtrl])
 
   function FinancialDashCtrl($scope, $http, $location, gaugesService, CONST, loggedInUser) {
-    loggedInUser.isLoggedIn("/financial-dashboard");
 
     $scope.gaugesWithMonths = [{
       energy: {
@@ -387,19 +386,20 @@
     }
 
     $scope.tabProgress = [{
-        percent: 40,
-        barLabel: "",
-        barValue: "$ 4.35 M"
-      }, {
-        percent: 50,
-        barLabel: "",
-        barValue: "$ 10.6 M"
-      }, {
-        percent: 80,
-        barLabel: "",
-        barValue: "$ 18.6 M"
-      }
-    ];
+      percent: 40,
+      barLabel: "",
+      barValue: "$ 4.35 M"
+    }, {
+      percent: 50,
+      barLabel: "",
+      barValue: "$ 10.6 M"
+    }, {
+      percent: 80,
+      barLabel: "",
+      barValue: "$ 18.6 M"
+    }];
+
+    $scope.dashboardTitle = "";
 
     $scope.updateChart = function() {
       var categories = [],
@@ -489,8 +489,33 @@
     }
 
     $scope.init = function() {
+      loggedInUser.fetchCurrentUser()
+        .success(function(data, status, headers, config) {
+          loggedInUser.isLoggedIn("/financial-dashboard");
+          $scope.userRole = data.userRole
+          populatePageLabels($scope.userRole);
+        })
+        .error(function(data, status, headers, config) {
+          $location.url("#/")
+        })
+
       $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
     }
+
+    var populatePageLabels = function(userRole) {
+
+      switch (userRole) {
+        case "CEO":
+          $scope.dashboardTitle = "FINANCIAL";
+          break
+
+        case "SLMGR":
+        case "FLDSL":
+           $scope.dashboardTitle = "MY SALES";
+          break
+      }
+    }
+
 
   }
 

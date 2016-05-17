@@ -110,9 +110,19 @@ a:hover {
   margin: 10px 0 10px 0;
 }
 
-.search-result:not(:last-child) > .desc-col .optional-links{
+.search-result:not(:last-child) > .desc-col .optional-links,
+.training-row:not(:last-child){
   border-bottom: 1px solid #DCDCDC;
 }
+
+.training-row:not(:last-child){
+  margin-bottom: 15px;
+}
+
+.training-row .training-heading{
+  margin-bottom: 5px;
+}
+
 .result-arrow i{
 	font-size:110px;
 }
@@ -1073,6 +1083,10 @@ body {
     margin-left: -14px;
 }
 
+.page-training .ui-tab-container .nav-tabs>li.active:after{
+  border-bottom:none;
+}
+
 .bg-white {
   background: rgba(255,255,255, 0.8);
 }
@@ -1599,6 +1613,7 @@ body {
   .page-dashboard .revenue-container .value-label,
   .page-dashboard-customer .revenue-container .value-label,
   .page-hr .revenue-container .value-label,
+  .page-training .revenue-container .value-label,
   .page-team-performance .revenue-container .value-label {
     font-size: 11px;
     position: absolute;
@@ -1611,8 +1626,13 @@ body {
     top: 0;
     right: -73px;
   }
+  .page-training .revenue-container .value-label {
+    top: 0;
+    right: -85px;
+  }
 
-  .page-hr .revenue-container .trend {
+  .page-hr .revenue-container .trend,
+  .page-training .revenue-container .trend {
     bottom: 0px;
     right: -51px;
     position: absolute;
@@ -1621,6 +1641,14 @@ body {
   .page-dashboard .revenue-container .value-label {
     top: -1px;
     right: -38px;
+  }
+
+  .page-training .projects-db-heading h6.value-small{
+    font-size:10px;
+  }
+
+  .page-training .nav-tabs.nav-justified>li{
+    width:50%;
   }
 
   .page-landing .section-info .trend,
@@ -2028,6 +2056,12 @@ div.circle-container {
   background: url(../images/right-people-db.png) no-repeat top right;
   background-size: 105px 69px;
 }
+
+.projects-db-heading{
+  background: url(../images/right-projects-db.png) no-repeat top right;
+  background-size: 105px 69px;
+}
+
 .page-sub-heading{
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
@@ -2239,7 +2273,7 @@ div.circle-container {
 /*----------------------------*/
 
   .events-container{
-    padding: 0 15px 0 15px;
+    padding: 0 15px 10px 15px;
   }
   .ui-tab-container .nav-tabs > li > a {
     font-size: 13px;

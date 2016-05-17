@@ -56,6 +56,9 @@
         .when('/my-profile', {
           templateUrl: 'app/profile/my-profile.html'
         })
+        .when('/my-training', {
+          templateUrl: 'app/training/my-training-dash.html'
+        })
         .when('/financial-dashboard', {
           templateUrl: 'app/dashboard/financial/financial-dash.html'
         })

@@ -42,6 +42,9 @@
         .error(function(data,status){
           $location.url("/signin");
         });
+      },
+      fetchCurrentUser: function(){
+        return $http.get("/fetch-current-user");
       }
     };
   }
