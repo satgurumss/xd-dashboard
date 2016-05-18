@@ -1,0 +1,34 @@
+<div class="page-signin page-pre-landing">
+
+    <div class="backgroud-black" ng-if="showPage">
+      <div class="text-center">
+        <section class="header-logo logo text-center">
+          <img src="images/x-density-logo-sm.png" class="img-responsive" alt="XDensity">
+        </section>
+      </div>
+    </div>
+
+    <div class="main-body" ng-if="showPage">
+      <div class="container login-form-container">
+        <div class="row">
+          <div class="col-md-5 col-xs-12 text-right pl-0 pr-0">
+            <a class="btn btn-block btn-lg btn-info btn-rounded" ng-href="/#/signin">
+              CEO VIEW
+            </a>
+            <a class="btn btn-block btn-lg btn-info btn-rounded" ng-href="/#/signin">
+              SALES MANAGER VIEW
+            </a>
+            <a class="btn btn-block btn-lg btn-info btn-rounded" ng-href="/#/signin">
+              FIELD STUDY VIEW
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<style type="text/css">
+.page-pre-landing .btn-block:not(:first-child){
+  margin-top:35px;
+}
+</style>

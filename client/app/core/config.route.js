@@ -39,7 +39,10 @@
       $routeProvider
       // .when('/', {redirectTo: 'page/signin'})
         .when('/', {
-          redirectTo: '/signin'
+          redirectTo: '/pre-landing'
+        })
+        .when('/pre-landing', {
+          templateUrl: 'app/landing/pre-landing.html'
         })
         .when('/signin', {
           templateUrl: 'app/login/signin.html'
