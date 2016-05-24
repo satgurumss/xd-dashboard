@@ -213,14 +213,14 @@
         .success(function(data, status, headers, config) {
           loggedInUser.isLoggedIn("/organization-dashboard");
           $scope.userRole = data.userRole
-          $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
           
           populatePageLabels($scope.userRole);
         })
         .error(function(data, status, headers, config) {
           $location.url("#/")
         })
-
+      
+      $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
     }
 
     var populatePageLabels = function(userRole) {
