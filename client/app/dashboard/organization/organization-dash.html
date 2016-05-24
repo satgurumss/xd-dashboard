@@ -1,4 +1,4 @@
-<div class="container page-dashboard" data-ng-controller="FinancialDashCtrl" ng-init="init()">
+<div class="container page-dashboard" data-ng-controller="OrganizationDashCtrl" ng-init="init()">
     <div class="panel-container">
 
       <div class="panel-body" style="padding: 0 15px 0 15px;">
@@ -17,39 +17,46 @@
             <div class="sec-icon"><img src="images/Icon_finance-v2.png" height="36" width="36" border="0" 
               style=" margin-right: 7px;" /></div>
             <h6 class="value-small white-text">{{dashboardTitle}}</h6>
+          </div>  
+        </div>
+        
+        <div class="row vendors-progress">
+          <div class="progress-container">
+            <progress-bar options="vendorsProgress" apply-threshold="true"/>
           </div>
         </div>
+        
         <div class="row">
-          <hc-chart options="chartConfig" watch="monthsToDisplay" class="chart-container span10"/>
+          <hc-chart options="chartConfig" class="chart-container span10"/>
         </div>
         
         <div class="row dept-charts-container">
           <div class="col-xs-3 text-center">
             <div class="circle-container circle-white">
-             <div ng-circles value="gauges.energy.percent" width="15" colors="gauges.energy.colors"></div>
+             <div ng-circles value="gauges.hr.percent" width="15" colors="gauges.hr.colors"></div>
             </div>
-            <span>Human Resources</span>
+            <span>$ 10 M <br> Human Resources</span>
           </div>
 
           <div class="col-xs-3 text-center">
             <div class="circle-container circle-white">
-             <div ng-circles value="gauges.transport.percent" width="15" colors="gauges.transport.colors"></div>
+             <div ng-circles value="gauges.broadcast.percent" width="15" colors="gauges.broadcast.colors"></div>
             </div>
-            <span>Broadcast</span>
+            <span>$ 10 M <br> Broadcast</span>
           </div>
 
           <div class="col-xs-3 text-center">
             <div class="circle-container  circle-white">
-             <div ng-circles value="gauges.devices.percent" width="15" colors="gauges.devices.colors"></div>
+             <div ng-circles value="gauges.finance.percent" width="15" colors="gauges.finance.colors"></div>
             </div>
-            <span>Finance</span>
+            <span>$ 10 M <br> Finance</span>
           </div>
 
           <div class="col-xs-3 text-center">
             <div class="circle-container  circle-white">
-             <div ng-circles value="gauges.devices.percent" width="15" colors="gauges.devices.colors"></div>
+             <div ng-circles value="gauges.technical.percent" width="15" colors="gauges.technical.colors"></div>
             </div>
-            <span>Technical</span>
+            <span>$ 10 M <br> Technical</span>
           </div>
         </div>
       </div>

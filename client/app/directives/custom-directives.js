@@ -437,13 +437,21 @@
       template: '<div></div>',
       replace: true,
       scope: {
-        options: '='
+        options: '=',
+        readonly: "=?"
       },
       link: function(scope, element) {
         var renderChart = function() {
           var tempScrollTop = $($window).scrollTop();
           Highcharts.chart(element[0], scope.options);
           $($window).scrollTop(tempScrollTop);
+          
+          scope.readonly = angular.isDefined(scope.readonly) ? scope.readonly : false;
+          
+          if(scope.readonly){
+            $(element[0]).click(function() { return false; });
+            $(element[0]).children().click(function() { return false; });
+          }
         };
 
         renderChart();
@@ -461,7 +469,8 @@
       template: '<div></div>',
       replace: true,
       scope: {
-        options: '='
+        options: '=',
+        readonly: "=?"
       },
       link: function(scope, element) {
         // Load the fonts
@@ -683,6 +692,13 @@
           var tempScrollTop = $($window).scrollTop();
           $(element[0]).highcharts(Highcharts.merge(scope.options, theme));
           $($window).scrollTop(tempScrollTop);
+
+          scope.readonly = angular.isDefined(scope.readonly) ? scope.readonly : false;
+
+          if(scope.readonly){
+            $(element[0]).click(function() { return false; });
+            $(element[0]).children().click(function() { return false; });
+          }
         };
 
         renderChart();

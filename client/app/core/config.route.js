@@ -63,10 +63,10 @@
           templateUrl: 'app/training/my-training-dash.html'
         })
         .when('/organization-dashboard', {
-          templateUrl: 'app/dashboard/financial/financial-dash.html'
+          templateUrl: 'app/dashboard/organization/organization-dash.html'
         })
-        .when('/customers-dashboard', {
-          templateUrl: 'app/dashboard/customers/customers-dash.html'
+        .when('/department-dashboard', {
+          templateUrl: 'app/dashboard/department/department-dash.html'
         })
         .when('/people-dashboard', {
           templateUrl: 'app/dashboard/hr/hr-dash.html'

@@ -1685,6 +1685,19 @@ body {
     position: relative;
   }
 
+  .vendors-progress {
+    background: #464646;
+    padding: 15px 10px;
+  }
+
+  .page-dashboard .vendors-progress .prog-bar-containter {
+    width: 65%;
+  }
+
+  .page-dashboard .vendors-progress .label-out {
+    width: 28%;;
+  }
+
   .page-dashboard .revenue-container .value-label,
   .page-dashboard-customer .revenue-container .value-label,
   .page-hr .revenue-container .value-label,

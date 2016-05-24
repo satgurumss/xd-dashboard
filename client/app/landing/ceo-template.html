@@ -37,53 +37,10 @@
     </a>
   </li>
   <li class="nav-item row customers-nav">
-    <a href="javascript://" class="tab-section" ng-click="navigateTo('/customers-dashboard')">
+    <a href="javascript://" class="tab-section" ng-click="navigateTo('/department-dashboard')">
       <div class="section section-contents col-xs-8">
         <div class="section-inner">
-          <div class="dept-gauge col-xs-3">
-            <div class="circle-container">
-             <div ng-circles value="gauges.hr_dept.percent" width="20" 
-              colors="['#CCC', gauges.hr_dept.colors[1]]"/>
-            </div>
-            <div class="contents-below">
-              <span class="dept-label">
-                Human Resources
-              </span>
-            </div>
-          </div>
-          <div class="dept-gauge col-xs-3">
-            <div class="circle-container">
-             <div ng-circles value="gauges.brd_dept.percent" width="20" 
-              colors="['#CCC', gauges.brd_dept.colors[1]]"/>
-            </div>
-            <div class="contents-below">
-              <span class="dept-label">
-                Broadcast
-              </span>
-            </div>
-          </div>
-          <div class="dept-gauge col-xs-3">
-            <div class="circle-container">
-             <div ng-circles value="gauges.fin_dept.percent" width="20" 
-              colors="['#CCC', gauges.fin_dept.colors[1]]"/>
-            </div>
-            <div class="contents-below">
-              <span class="dept-label">
-                Finance
-              </span>
-            </div>
-          </div>
-          <div class="dept-gauge col-xs-3">
-            <div class="circle-container">
-             <div ng-circles value="gauges.tech_dept.percent" width="20" 
-              colors="['#CCC', gauges.tech_dept.colors[1]]"/>
-            </div>
-            <div class="contents-below">
-              <span class="dept-label">
-                Technical
-              </span>
-            </div>
-          </div>
+          <hc-chart options="deptBarChartOptions" readonly="true"/>
         </div>
       </div>
       <div class="section section-title col-xs-4">
