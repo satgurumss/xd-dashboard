@@ -4,158 +4,80 @@
     <div class="panel-container">
 
       <div class="panel-body" style="padding: 0 15px 0 15px;">
+        
         <div class="row revenue-container">
           <div class="col-xs-6 ">
-            <h1 class="heading-value big-number display-inline-block position-relative">
-              500
-              <span class="value-label label">Total</span>
-            </h1>
-            <div class="progress-container">
-              <progress-bar options="customerProgress"/>
-            </div>
+           Tabs to different depts
           </div>
           <div class="col-xs-6 text-right db-heading customers-db-heading">
-            <div class="sec-icon"><img src="images/Icon_customers-v2.png" height="36" width="36" border="0" /></div>
-            <h6 class="value-small dark-grey-text">CUSTOMERS</h6>
+            <div class="sec-icon"><img src="images/dept-icon.png" height="36" width="36" border="0" /></div>
+            <h6 class="value-small dark-grey-text">DEPARTMENTS</h6>
+          </div>
+        </div>
+        <div class="row dept-summary-section">
+          <div class="dept-info-section col-xs-5">
+            <h1 class="display-inline-block heading-value position-relative big-number">
+              <span class="dollar-sign">$</span>
+              10 M
+              <span class="value-label">Value</span>
+            </h1>
+            <div class="contents-below">
+              <h1 class="display-inline-block heading-value position-relative big-number">
+                10
+                <span class="value-label">Contracts</span>
+              </h1>
+            </div>
+          </div>
+          <div class="dept-alignment-section col-xs-7">
+            <div class="dept-alignment col-xs-7">
+              <div class="circle-container circle-white">
+               <div ng-circles value="alignmentGauges.hr.percent" width="20" 
+                colors="['#FFF', alignmentGauges.hr.colors[1]]"></div>
+               <span class="circle-label">Aligned</span>
+              </div>
+            </div>
+            <div class="dept-renewals col-xs-5">
+              <h1 class="display-inline-block heading-value position-relative big-number">
+                20
+                <span class="value-label">$ 5M</span>
+              </h1>
+            </div>
           </div>
         </div>
         <div class="row revenue-title">
-          <hc-map data="mapData"></hc-map>
+          <hc-chart options="chartConfig" class="chart-container span10"/>
+        </div>
+        <div class="row vendors-row">
+          <h3 class="vendors-heading text-center">Top 5 Vendors</h3>
+          <div class="col-xs-4 margin-t10">
+            <hc-chart options="vendorsChartOptions"/>
+          </div>
+          <div class="col-xs-8 margin-t10">
+            <ul>
+              <li>
+                Acme Corporation
+              </li>
+              <li>
+                Mercury Consulting
+              </li>
+              <li>
+                Omega Technologies
+              </li>
+              <li>
+                Starlight Systems
+              </li>
+              <li>
+                Platinum Consulting
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div class="row range-container">
-          <div class="slider-wrapper">
-            <input ng-model="monthsToDisplay" ng-change="updateChart()" type="text" id="mySlider2" slider options="options" />
-          </div>
-        </div>
-
-        <div class="row dcharts-container">
-          <div class="col-xs-4 text-center">
-            <div class="circle-container circle-white">
-             <div ng-circles value="gauges.revSpread.percent" width="15" colors="gauges.revSpread.colors" textClass="custom-text-class"></div>
-            </div>
-          </div>
-
-          <div class="col-xs-4 text-center">
-            <div class="circle-container circle-white">
-             <div ng-circles value="gauges.penetration.percent" width="15" colors="gauges.penetration.colors" textClass="custom-text-class"></div>
-            </div>
-          </div>
-
-          <div class="col-xs-4 text-center">
-            <div class="circle-container circle-white">
-             <div ng-circles value="gauges.satisfaction.percent" width="15" colors="gauges.satisfaction.colors" textClass="custom-text-class"></div>
-            </div>
-          </div>
-        </div>
       </div>
+
     </div>
   </div>
-  <div class="row">
-
-    <div class="" data-ng-controller="TabsDemoCtrl">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="ui-tab-container ui-tab-horizontal">
-            <uib-tabset justified="true" class="ui-tab">
-              <uib-tab heading="REV. SPREAD">
-                <div class="clearfix tab-header">
-                  <span class="h3"><span class="sign">$&nbsp;</span>79.00 M</span>
-                  <span class="ui-select custom-select pull-right">
-                    <select>
-                      <option>By Industry</option>
-                      <option>By Geogrpahy</option>
-                    </select>
-                  </span>
-                  <span class="pull-right pad-r-5 display-inline-block margin-t1">Show</span>
-                  <div class="tab-progress-container col-xs-8">
-                    <progress-bar apply-threshold="true" options="tabProgress[0]"/>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-4 margin-t10">
-                    <hc-chart options="barChartOptions"/>
-                  </div>
-                  <div class="col-xs-8 margin-t10">
-                    <ul>
-                      <li>
-                        Acme Corporation
-                      </li>
-                      <li>
-                        Mercury Consulting
-                      </li>
-                      <li>
-                        Omega Technologies
-                      </li>
-                      <li>
-                        Starlight Systems
-                      </li>
-                      <li>
-                        Platinum Consulting
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </uib-tab>
-              <uib-tab heading="PENETRATION">
-                <div class="clearfix tab-header">
-                  <span class="h3"><span class="sign">$&nbsp;</span>79.00 M</span>
-                  <span class="ui-select custom-select pull-right">
-                    <select>
-                      <option>By Industry</option>
-                      <option>By Geogrpahy</option>
-                    </select>
-                  </span>
-                  <span class="pull-right pad-r-5 display-inline-block margin-t1">Show</span>
-
-                  <div class="tab-progress-container col-xs-8">
-                    <progress-bar apply-threshold="true" options="tabProgress[1]"/>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-4 margin-t10">
-                    <hc-chart options="barChartOptions"/>
-                  </div>
-                  <div class="col-xs-8 margin-t10">
-                    <ul>
-                      <li>
-                        Acme Corporation
-                      </li>
-                      <li>
-                        Mercury Consulting
-                      </li>
-                      <li>
-                        Omega Technologies
-                      </li>
-                      <li>
-                        Starlight Systems
-                      </li>
-                      <li>
-                        Platinum Consulting
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </uib-tab>
-              <uib-tab heading="SATISFATION">
-                <div class="clearfix tab-header">
-                  <span class="ui-select custom-select pull-right">
-                    <select ng-model="isSatisfied" ng-change="toggleCustomers(isSatisfied)">
-                      <option value="true" ng-selected="isSatisfied =='true'">Satisfied</option>
-                      <option value="false">Dissatisfied</option>
-                    </select>
-                  </span>
-                  <span class="pull-right pad-r-5 display-inline-block margin-t1">Show Top 5 Customers</span>
-                </div>
-                <div ng-include="'app/dashboard/customers/customers-list.html'"></div>
-              </uib-tab>
-            </uib-tabset>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
+  
 </div>
 
 <style type="text/css">

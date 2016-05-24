@@ -194,7 +194,7 @@
       }]
     };
 
-    $scope.financeProgress = {
+    $scope.organizationProgress = {
       percent: 47,
       barLabel: "Spent",
       barValue: "$ 20.45 M"

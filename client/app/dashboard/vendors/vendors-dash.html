@@ -1,0 +1,66 @@
+<div class="container page-hr" data-ng-controller="VendorsDashCtrl as vendorsCtrl" ng-init="init()">
+  <div class="panel-container">
+    
+    <div class="panel-body" style="padding: 0 15px 0 15px;">
+      <div class="row revenue-container">
+        <div class="col-xs-6 ">
+          <h1 class="heading-value big-number display-inline-block position-relative">
+            200
+            <span class="value-label label">Total Vendors</span>
+          </h1>
+          <h2 class="sub-heading-value display-inline-block position-relative">
+            <span class="sign">$</span>
+            30.00 M
+            <span class="value-label label">Spent</span>
+          </h2>
+        </div>
+        <div class="col-xs-6 text-right db-heading hr-db-heading">
+          <div class="sec-icon"><img src="images/vendor-icon.png" height="36" width="36" border="0" /></div>
+          <h6 class="value-small white-text">VENDORS</h6>
+        </div>
+      </div>
+
+      <div class="row vendor-charts-container">
+        <div class="col-xs-6 text-center">
+          <div class="circle-container">
+           <div ng-circles value="vendorStats.renewals.percent" width="20" text="{{vendorStats.renewals.text}}" colors="vendorStats.renewals.colors" textClass="custom-text-class"></div>
+          </div>
+          <div class="status-section">
+            <span class="status-value">
+              <span class="sign">$</span>
+              <h2 class="display-inline-block margin-t1"> {{vendorStats.renewals.value}}</h2>
+            </span> 
+            <span class="status-label">
+              Upcoming Renewals
+            </span>
+          </div>
+        </div>
+
+        <div class="col-xs-6 text-center">
+          <div class="circle-container">
+           <div ng-circles value="vendorStats.alignment.percent" width="20" colors="vendorStats.alignment.colors" textClass="custom-text-class"></div>
+          </div>
+          <div class="status-section">
+            <span class="status-value">
+              <h2 class="margin-t1"> {{vendorStats.alignment.value}} </h2>
+            </span> 
+            <span class="status-label">
+              Vendors Alignement
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row vendors-trend-chart">
+        <hc-chart options="chartConfig" class="chart-container span10" readonly="true"/>
+      </div>
+
+      <div class="row vendor-btn-container">
+        <button class="btn-block btn-info btn-lg btn-rounded" ng-click="goToSearchVendors()">
+          <i class="fa fa-search"/>&nbsp;Search Vendors
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
