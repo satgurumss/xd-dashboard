@@ -36,7 +36,12 @@
             $location.url("/signin");
           }
           else{
-            $rootScope.$broadcast("userLoggedIn",{"userRole": data.user.userRole});
+                        
+            if(! usingHypr)
+              $rootScope.$broadcast("userLoggedIn",{"userRole": data.user.userRole});
+            else
+              $rootScope.$broadcast("userLoggedIn",{"userRole": "CEO"});
+            
             $location.url(route)
           }
         })
