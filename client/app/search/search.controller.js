@@ -2,14 +2,10 @@
   'use strict';
 
   angular.module('app')
-    .controller('SearchCtrl', ['$scope', '$http', 'backendApi', '$location', 'loggedInUser', SearchCtrl])
+    .controller('SearchCtrl', ['$scope', '$http', '$location', 'loggedInUser', SearchCtrl])
 
-  function SearchCtrl($scope, $http, backendApi, $location, loggedInUser) {
+  function SearchCtrl($scope, $http, $location, loggedInUser) {
 
-    $scope.queryText = "";
-    $scope.moreLikeThis = "";
-    $scope.searchbarWidth = "col-xs-12"
-    $scope.searchTypeWidth = "col-xs-6"
     $scope.blankslateMsg = "Please enter search keywords above to begin";
     $scope.numPerPageOpt = [3, 5, 10];
     $scope.numPerPage = $scope.numPerPageOpt[2];
@@ -19,46 +15,10 @@
     $scope.filteredItems = [];
     $scope.sortOrder = ".score";
     $scope.firstSearch = true;
-    $scope.autoCompeleteData = [];
-
-    $scope.sortOptions = [{
-      "name": "Relevance",
-      "value": ".score"
-    }, {
-      "name": "Date",
-      "value": "date"
-    }];
-
-    var currentUser = {},
-      searchData = {
-        "workflow": "abraajSearch",
-        "query": "",
-        "username": "Administrator",
-        "realm": "Anonymous",
-        "queryLanguage": "simple",
-        "sort": [".score"],
-        "restParams": {
-          "offset": $scope.numberToFetch
-        },
-        "fields": ["*", "SCOPETEASER(text, fragmentSize=100, fragment=true, numFragments=1, fragmentScope=sentence, scopeMode=HTML) as teaser"]
-      },
-      advFilters = [],
-      selectedAdvFilters = [];
+    $scope.vendorsList = ["Mirosoft", "Cisco", "Fujitsu", "HP", "IBM", "XDensity", "Oreedo", "Woodworks", "Netapp", "Broadtech", "Fintech", "SAP"];
 
     $scope.init = function() {
-      //use this to get current user
-      currentUser = loggedInUser.getCurrentUser();
-      if (!_.isEmpty(currentUser)) {
-        var qboost = loggedInUser.getQBoost(currentUser.account_s[0]);
-        searchData.username = currentUser.account_s[0];
-        searchData.restParams["q.boost"] = qboost;
-
-        if (typeof $location.search().queryText != "undefined" && $location.search().queryText != null) {
-          $scope.queryText = $location.search().queryText;
-          $scope.search();
-        }
-      } else
-        loggedInUser.logOutUser();
+      loggedInUser.isLoggedIn("/search");
     }
 
     $scope.searchBar = function() {
@@ -72,42 +32,9 @@
     };
 
     $scope.sendSearchRequest = function() {
-      if ($scope.queryText != "" || $scope.moreLikeThis != "") {
-        if ($scope.moreLikeThis != "")
-          searchData.query = $scope.moreLikeThis;
-        else
-          searchData.query = $scope.queryText;
-
-        if (advFilters.length > 0) {
-          searchData.restParams['q.filter'] = advFilters;
-          searchData.restParams['q.filter.type'] = ['advanced'];
-        } else {
-          delete searchData.restParams['q.filter'];
-          delete searchData.restParams['q.filter.type'];
-        }
-
-        backendApi.search(searchData).then(function(res) {
-          $scope.firstSearch = false;
-          $scope.moreLikeThis = "";
-          if (typeof res.data.documents != "undefined" && res.data.documents.length > 0) {
-            $scope.searchResults = res;
-            $scope.promotions = $scope.searchResults.data.placements;
-            console.log("$scope.searchResults ", $scope.searchResults);
-
-            //$scope.filteredItems = angular.copy($scope.searchResults.data.documents);
-            $scope.currentPageItems = angular.copy($scope.searchResults.data.documents);
-          } else {
-            $scope.blankslateMsg = "No result found. Please try again.";
-            $scope.currentPageItems = [];
-            $scope.filteredItems = [];
-          }
-        });
-      }
     };
 
     $scope.sortResults = function() {
-      searchData.sort = [];
-      searchData.sort.push($scope.sortOrder);
       $scope.currentPage = 1;
       $scope.search();
     }
@@ -142,8 +69,6 @@
 
     $scope.advSearch = function() {
       $scope.currentPage = 1;
-      searchData.restParams['q.filter'] = advFilters;
-      searchData.restParams['q.filter.type'] = ['advanced'];
       $scope.search();
     };
 
@@ -154,9 +79,10 @@
       $scope.search();
     }
 
-    $scope.onSelect = function($item, $model, $label) {
+    $scope.onAutoCompleteSelect = function($item, $model, $label) {
       $scope.queryText = $model;
       $scope.currentPage = 1;
+      //alert($scope.queryText)
       $scope.search();
     }
 
@@ -164,57 +90,11 @@
       $scope.queryText = queryText;
     }
 
-    $scope.fetchAutoComplete = function(queryText) {
+   /* $scope.fetchAutoComplete = function(queryText) {
       return backendApi.getAutocompleteData(queryText).then(function(res) {
         return res.data;
       });
-    }
-
-    $scope.formatFilterLabel = function(label) {
-      label = label.replace(/_/g, " ");
-
-      if (label.lastIndexOf(" ") != -1)
-        label = label.substring(0, label.lastIndexOf(" "));
-
-      return label;
-    }
-
-    $scope.formatFilterCheckboxLabels = function(label) {
-      var newLabel = "";
-
-      switch (label) {
-        case "gics":
-          newLabel = "GICS";
-          break;
-        case "investment":
-          newLabel = "Investment";
-          break;
-        case "news":
-          newLabel = "News";
-          break;
-        case "hr":
-          newLabel = "Human Resources";
-          break;
-        case "deal":
-          newLabel = "Deals";
-          break;
-        case "region":
-          newLabel = "Region";
-          break;
-        case "km":
-          newLabel = "Knowledge Management";
-          break;
-        case "profile":
-          newLabel = "Profiles";
-          break;
-        default:
-          newLabel = label;
-          break;
-      }
-
-      return newLabel;
-    }
-
+    }*/
 
     $scope.abbreviateNumber = function(num, digits, type) {
       var si = [{
@@ -249,27 +129,6 @@
         return num.toString();
       } else {
         return num;
-      }
-    }
-
-    $scope.fetchMoreLikeThis = function(moreLikeThisQuery) {
-      console.log(moreLikeThisQuery);
-      if (!_.isUndefined(moreLikeThisQuery) && !_.isEmpty(moreLikeThisQuery)) {
-
-        moreLikeThisQuery = moreLikeThisQuery.substring(moreLikeThisQuery.indexOf("(") + 1, moreLikeThisQuery.indexOf(")"));
-
-        moreLikeThisQuery = moreLikeThisQuery.split(",");
-        var queryString = "";
-
-        moreLikeThisQuery.forEach(function(str, index, array) {
-          queryString += index < array.length - 2 ? str + " OR " : " " + str;
-        })
-
-        $scope.moreLikeThis = queryString.replace(/"/g, "");
-        //$scope.moreLikeThis = queryString;
-
-        $scope.currentPage = 1;
-        $scope.search();
       }
     }
   }

@@ -4,23 +4,13 @@
       <div class="panel-body">
         <div class="row">
           <div data-ng-include="'app/shared/searchbar.html'"></div>
-
-          <div class="col-xs-6 col-sm-3 col-lg-2">
-            <span class="ui-select pull-right relevance-filter">
-              <select ng-model='sortOrder'ng-change="sortResults()">
-                <option ng-repeat="opt in sortOptions" value ="{{opt.value}}">
-                  Sort by {{opt.name}}
-                </option>
-              </select>
-            </span>
-          </div>
         </div>
       </div>
     </div>
   </div>
   <div class="container">
     <div class="panel panel-default">
-      <div class="panel-body blank-panel search-empty-img" ng-show = "firstSearch"> </div>
+      <div class="panel-body" ng-show = "firstSearch">{{blankslateMsg}}</div>
       <div class="panel-body pad-25 results-panel" ng-show = "!firstSearch">
         <div class="row results-section">
           <!-- ###mobile advanced search drop down### -->
@@ -169,77 +159,4 @@
 
 <style type="text/css">
 
-  @media screen and (min-width: 1200px) and (max-width: 1600px) {
-
-  .page-search .search-section .col-lg-2 {
-    width:  13%;
-  }
-
-  .page-search .search-section .col-lg-offset-2 {
-      margin-left: 20.66667%;
-  }
-
-}
-
-
-.search-empty-img {
-  background: url('images/abraaj-empty-search.jpg') no-repeat;
-  background-size: cover;
-  background-position: center center;
-}
-@media screen and (min-width: 768px) {
-  .search-empty-img {
-    background-position: 29% center;
-  }
-}
-
-.total-records{
-  margin:20px 0 0 0;
-}
-
-.promotions{
-  margin-bottom: 25px;
-  border-bottom: 1px solid #eee;
-}
-
-.promotion-container{
-  padding:10px 0 5px 0;
-}
-
-.promotion:not(:first-child){
-  margin:5px 0 0 0;
-}
-
-.promotion-container h4{
-  margin:0;
-}
-
-.truncate {
-  width: 99%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-@media only screen and (max-device-width : 667px) {
-  .total-records{
-    margin:0;
-  }
-
-  .promotion-container{
-    margin-bottom: 10px;
-  }
-}
-.nowrap{
-  white-space: nowrap;
-}
-.text-underline{
-  text-decoration: underline;
-}
-.inner{
-  padding: 0 36px;
-}
-.accordion-container .panel-collapse.in{
-  height: 250px !important;
-}
 </style>

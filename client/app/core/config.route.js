@@ -47,8 +47,8 @@
         .when('/signin', {
           templateUrl: 'app/login/signin.html'
         })
-        .when('/signup-temp', {
-          templateUrl: 'app/page/signup.html'
+        .when('/search', {
+          templateUrl: 'app/search/search-result.html'
         })
         .when('/signup', {
           templateUrl: 'app/signup/signup.html'
@@ -62,7 +62,7 @@
         .when('/my-training', {
           templateUrl: 'app/training/my-training-dash.html'
         })
-        .when('/financial-dashboard', {
+        .when('/organization-dashboard', {
           templateUrl: 'app/dashboard/financial/financial-dash.html'
         })
         .when('/customers-dashboard', {

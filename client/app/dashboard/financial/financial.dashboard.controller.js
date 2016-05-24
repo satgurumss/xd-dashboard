@@ -380,9 +380,9 @@
     };
 
     $scope.financeProgress = {
-      percent: 50,
-      barLabel: "YTD",
-      barValue: "$ 10.6 M"
+      percent: 47,
+      barLabel: "Spent",
+      barValue: "$ 20.45 M"
     }
 
     $scope.tabProgress = [{
@@ -491,7 +491,7 @@
     $scope.init = function() {
       loggedInUser.fetchCurrentUser()
         .success(function(data, status, headers, config) {
-          loggedInUser.isLoggedIn("/financial-dashboard");
+          loggedInUser.isLoggedIn("/organization-dashboard");
           $scope.userRole = data.userRole
           populatePageLabels($scope.userRole);
         })
@@ -506,7 +506,7 @@
 
       switch (userRole) {
         case "CEO":
-          $scope.dashboardTitle = "FINANCIAL";
+          $scope.dashboardTitle = "ORGANIZATION";
           break
 
         case "SLMGR":

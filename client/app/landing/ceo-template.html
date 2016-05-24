@@ -1,38 +1,34 @@
 <ul class="navs-list">
   <li class="nav-item row finance-nav">
-    <a href="javascript://" class="tab-section" ng-click="navigateTo('/financial-dashboard')">
+    <a href="javascript://" class="tab-section" ng-click="navigateTo('/organization-dashboard')">
       <div class="section section-info col-xs-5">
         <div class="section-inner">
           <h1 class="heading-value">
             <span class="dollar-sign">$</span>
             43.45 M
-            <span class="value-label">QTD</span>
-            <span class="trend orange-text">-10.2k</span>
+            <span class="value-label">Budget</span>
           </h1>
           <div class="contents-below">
-            <h5 class="info-value">
-              <i class="fa fa-circle orange-text"></i>
-              <span>5.3M</span>
-            </h5>
-            <h5 class="info-value">
-              <i class="fa fa-circle red-text"></i>
-              <span>6.1M</span>
-            </h5>
+            <h1 class="heading-value">
+              <span class="dollar-sign">$</span>
+              20.45 M
+              <span class="value-label">Spent</span>
+            </h1>
           </div>
         </div>
       </div>
       <div class="section section-contents col-xs-3">
         <div class="section-inner">
           <div class="circle-container">
-           <div ng-circles value="gauges.finance.percent" width="20" colors="['#FFF', gauges.finance.colors[1]]"></div>
-           <span class="circle-label">QTD</span>
+           <div ng-circles value="gauges.organization.percent" text="{{gauges.organization.text}}" width="20" colors="['#FFF', gauges.organization.colors[1]]"></div>
+           <span class="circle-label">T - 90</span>
           </div>
         </div>
       </div>
       <div class="section section-title col-xs-4">
         <div class="section-inner">
-          <div class="sec-icon"><img src="images/Icon_finance-v2.png" height="46" width="46" border="0" /></div>
-          <h6 class="value-small">FINANCE</h6>
+          <div class="sec-icon"><img src="images/organization-icon.png" height="46" width="46" border="0" /></div>
+          <h6 class="value-small">ORGANIZATION</h6>
         </div>
       </div>
       <div class=" col-xs-12 section-shadow text-right">
@@ -42,37 +38,58 @@
   </li>
   <li class="nav-item row customers-nav">
     <a href="javascript://" class="tab-section" ng-click="navigateTo('/customers-dashboard')">
-      <div class="section section-info col-xs-5">
+      <div class="section section-contents col-xs-8">
         <div class="section-inner">
-          <h1 class="heading-value">
-            500
-            <span class="total">Total</span>
-          </h1>
-          <div class="contents-below">
-            <h5 class="info-value">
-              <i class="fa fa-circle orange-text"></i>
-              <span>500</span>
-            </h5>
-            <h5 class="info-value">
-              <i class="fa fa-circle red-text"></i>
-              <span>30</span>
-              <span class="total">New</span>
-            </h5>
+          <div class="dept-gauge col-xs-3">
+            <div class="circle-container">
+             <div ng-circles value="gauges.hr_dept.percent" width="20" 
+              colors="['#CCC', gauges.hr_dept.colors[1]]"/>
+            </div>
+            <div class="contents-below">
+              <span class="dept-label">
+                Human Resources
+              </span>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="section section-contents col-xs-3">
-        <div class="section-inner">
-          <div class="circle-container">
-           <div ng-circles value="gauges.customers.percent" width="20" colors="['#EEE', gauges.customers.colors[1]]"></div>
-           <span class="circle-label">SAT</span>
+          <div class="dept-gauge col-xs-3">
+            <div class="circle-container">
+             <div ng-circles value="gauges.brd_dept.percent" width="20" 
+              colors="['#CCC', gauges.brd_dept.colors[1]]"/>
+            </div>
+            <div class="contents-below">
+              <span class="dept-label">
+                Broadcast
+              </span>
+            </div>
+          </div>
+          <div class="dept-gauge col-xs-3">
+            <div class="circle-container">
+             <div ng-circles value="gauges.fin_dept.percent" width="20" 
+              colors="['#CCC', gauges.fin_dept.colors[1]]"/>
+            </div>
+            <div class="contents-below">
+              <span class="dept-label">
+                Finance
+              </span>
+            </div>
+          </div>
+          <div class="dept-gauge col-xs-3">
+            <div class="circle-container">
+             <div ng-circles value="gauges.tech_dept.percent" width="20" 
+              colors="['#CCC', gauges.tech_dept.colors[1]]"/>
+            </div>
+            <div class="contents-below">
+              <span class="dept-label">
+                Technical
+              </span>
+            </div>
           </div>
         </div>
       </div>
       <div class="section section-title col-xs-4">
         <div class="section-inner">
-          <div class="sec-icon"><img src="images/Icon_customers-v2.png" height="46" width="46" border="0" /></div>
-          <h6 class="value-small">CUSTOMERS</h6>
+          <div class="sec-icon"><img src="images/dept-icon.png" height="46" width="46" border="0" /></div>
+          <h6 class="value-small">DEPARTMENTS</h6>
         </div>
       </div>
       <div class=" col-xs-12 section-shadow text-right">
@@ -85,37 +102,30 @@
       <div class="section section-info col-xs-5">
         <div class="section-inner">
           <h1 class="heading-value">
-            70 %
-            <span class="arrow-up"></span>
-            <span class="total">Retention</span>
+            200
+            <span class="value-label">Vendors</span>
           </h1>
           <div class="contents-below">
-            <h5 class="info-value">
-              <i class="fa fa-circle orange-text"></i>
-              <span>70</span>
-              <span>%</span>
-            </h5>
-            <h5 class="info-value">
-              <i class="fa fa-circle red-text"></i>
-              <span>50</span>
-              <span>%</span>
-              <span class="total">HIRE</span>
-            </h5>
+            <h1 class="heading-value">
+              <span class="dollar-sign">$</span>
+              50.00 M
+              <span class="value-label">Contracts</span>
+            </h1>
           </div>
         </div>
       </div>
       <div class="section section-contents col-xs-3">
         <div class="section-inner">
           <div class="circle-container">
-           <div ng-circles value="gauges.people.percent" width="20" colors="['#FFF', gauges.people.colors[1]]"></div>
-           <span class="circle-label">SAT</span>
+           <div ng-circles value="gauges.vendors.percent" width="20" colors="['#FFF', gauges.vendors.colors[1]]"></div>
+           <span class="circle-label">ALIGNED</span>
           </div>
         </div>
       </div>
       <div class="section section-title col-xs-4">
         <div class="section-inner">
-          <div class="sec-icon"><img src="images/Icon_people-v2.png" height="46" width="46" border="0" /></div>
-          <h6 class="value-small">PEOPLE</h6>
+          <div class="sec-icon"><img src="images/vendor-icon.png" height="46" width="50" border="0" /></div>
+          <h6 class="value-small">VENDORS</h6>
         </div>
       </div>
       <div class=" col-xs-12 section-shadow text-right">
@@ -123,67 +133,4 @@
       </div>
     </a>
   </li>
-  <li class="nav-item row projects-nav">
-    <a href="javascript://" class="tab-section">
-      <div class="section section-info col-xs-5">
-        <div class="section-inner">
-          <h1 class="heading-value">
-            <span class="dollar-sign">$</span>
-            5.3 M
-            <span class="arrow-up"></span>
-          </h1>
-          <div class="contents-below">
-            <h5 class="info-value">
-              <i class="fa fa-circle orange-text"></i>
-              <span>1.0M</span>
-            </h5>
-            <h5 class="info-value">
-              <i class="fa fa-circle red-text"></i>
-              <span>1.5M</span>
-            </h5>
-          </div>
-        </div>
-      </div>
-      <div class="section section-contents col-xs-3">
-        <div class="section-inner">
-          <div class="circle-container">
-           <div ng-circles value="gauges.projects.percent" width="20" colors="['#FFF', gauges.projects.colors[1]]"></div>
-           <span class="circle-label">QTD</span>
-          </div>
-        </div>
-      </div>
-      <div class="section section-title col-xs-4">
-        <div class="section-inner">
-          <div class="sec-icon"><img src="images/Icon_projects-v2.png" height="46" width="46" border="0" /></div>
-          <h6 class="value-small">PROJECTS</h6>
-        </div>
-      </div>
-      <div class=" col-xs-12 section-shadow text-right">
-        <div class="rc rc-project"></div>
-      </div>
-    </a>
-  </li>
 </ul>
-
-<div class="bottom-section">
-  <ul class="icons-list row">
-    <li class="icon-item col-xs-4">
-      <a href="javascript://" ng-click="navigateTo('/team-performance')">
-        <div class="icon profile-icon"></div>
-        <div class="count badge badge-info">7</div>
-      </a>
-    </li>
-    <li class="icon-item col-xs-4">
-      <a href="javascript://">
-        <div class="icon car-icon"></div>
-        <div class="count badge badge-info">1</div>
-      </a>
-    </li>
-    <li class="icon-item col-xs-4">
-      <a href="javascript://">
-        <div class="icon search-icon"></div>
-        <div class="count badge badge-info">5</div>
-      </a>
-    </li>
-  </ul>
-</div>

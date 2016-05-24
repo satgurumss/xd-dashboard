@@ -440,7 +440,7 @@ ul.list-unstyled {
   position: relative;
   margin: -30px -15px 30px;
   padding: 15px 25px;
-  background: url(../images/background/8.jpg) center center no-repeat fixed;
+  /*background: url(../images/background/8.jpg) center center no-repeat fixed;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -455,19 +455,19 @@ ul.list-unstyled {
 }
 
 .search-panel .ui-select {
-    border: 1px solid #FFF;
-    border-left: 1px solid #DDD;
-    background: #FFF;
-    margin: 0;
-    width: 100%;
+  border: 1px solid #FFF;
+  border-left: 1px solid #DDD;
+  background: #FFF;
+  margin: 0;
+  width: 100%;
 }
 .search-panel .ui-select > select {
-    z-index: 99;
-    display: block;
-    position: relative;
-    padding: 10px 22px 10px 8px;
-    min-width: 100%;
-    width: 100%;
+  z-index: 99;
+  display: block;
+  position: relative;
+  padding: 10px 22px 10px 8px;
+  min-width: 100%;
+  width: 100%;
 }
 .search-panel .ui-select:after {
   right: 10%;
@@ -486,6 +486,69 @@ ul.list-unstyled {
 .search-panel .btn-widget .fa {
   font-size: 22px;
   color: #0079c1;
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1600px) {
+
+  .page-search .search-section .col-lg-2 {
+    width:  13%;
+  }
+
+  .page-search .search-section .col-lg-offset-2 {
+      margin-left: 20.66667%;
+  }
+
+}
+
+.total-records{
+  margin:20px 0 0 0;
+}
+
+.promotions{
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee;
+}
+
+.promotion-container{
+  padding:10px 0 5px 0;
+}
+
+.promotion:not(:first-child){
+  margin:5px 0 0 0;
+}
+
+.promotion-container h4{
+  margin:0;
+}
+
+.truncate {
+  width: 99%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media only screen and (max-device-width : 667px) {
+  .total-records{
+    margin:0;
+  }
+
+  .promotion-container{
+    margin-bottom: 10px;
+  }
+}
+
+.nowrap{
+  white-space: nowrap;
+}
+.text-underline{
+  text-decoration: underline;
+}
+.inner{
+  padding: 0 36px;
+}
+.accordion-container .panel-collapse.in{
+  height: 250px !important;
 }
 
 .widget-hading .ui-select {
@@ -556,7 +619,7 @@ ul.list-unstyled {
     overflow-x: auto;
   }
   .search-panel {
-    margin: 0 -15px 30px;
+    margin: 0 8px 30px;
     padding: 15px;
   }
 
@@ -1094,9 +1157,13 @@ body {
   background: transparent;
 }
 
-.dcharts-container {
+.dept-charts-container {
   background: #3e3e40;
   padding: 15px 0;
+}
+
+.dept-charts-container .col-xs-3{
+  padding:0;
 }
 
 
@@ -1308,7 +1375,7 @@ body {
   background: #2a2a2b;
   padding: 0 0 15px;
 }
-.dcharts-container h5.title {
+.dept-charts-container h5.title {
   margin-bottom: 0px;
   margin-top: 15px;
 }
@@ -1323,8 +1390,8 @@ body {
 .revenue-container h6,
 .revenue-container h1,
 .revenue-container h5,
-.dcharts-container h5,
-.dcharts-container h4 {
+.dept-charts-container h5,
+.dept-charts-container h4 {
   color: #FFF;
 }
 
@@ -1440,7 +1507,7 @@ body {
 
 /** Landing page Old styling **/
 
-.page-landing {
+  .page-landing {
     font-family: "roboto condensed", sans-serif;
   }
 
@@ -1453,6 +1520,10 @@ body {
     padding-right: 11px;
     width: 31.33333%;
   }
+  .page-landing .nav-item.customers-nav .col-xs-4{
+    width: 33.33333%;
+  }
+
   .revenue-title h4 {
     color: #CCC;
     font-size: 16px;
@@ -1496,8 +1567,8 @@ body {
   }
 
   .page-landing .section-inner {
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   .page-landing .finance-nav .section-title {
@@ -1520,7 +1591,7 @@ body {
 
 
   .page-landing .section {
-      height: 86px;
+      height: 110px;
   }
 
   .page-landing .value-small {
@@ -1529,11 +1600,16 @@ body {
   }
 
   .page-landing .section-title .section-inner {
-    padding-top: 12px;
+    padding-top: 20px;
     padding-right: 2px;
     float: right;
     text-align: center;
     width: 65px;
+  }
+
+  .page-landing .section-title h6.value-small{
+    margin-top: 10px;
+    font-size: 10px;
   }
 
   .page-landing .section-shadow {
@@ -1609,7 +1685,6 @@ body {
     position: relative;
   }
 
-  .page-landing .section-info .value-label,
   .page-dashboard .revenue-container .value-label,
   .page-dashboard-customer .revenue-container .value-label,
   .page-hr .revenue-container .value-label,
@@ -1618,8 +1693,29 @@ body {
     font-size: 11px;
     position: absolute;
     top: 0;
-    right: -33px;
+    right: -24px;
     letter-spacing: 0;
+  }
+
+  .page-landing .section-info .value-label{
+    font-size: 11px;
+    position: absolute;
+    top: 17px;
+    letter-spacing: 0;
+  }
+
+  .page-landing .finance-nav .value-label{
+    right:-32px;
+  }
+
+  .page-landing .people-nav .section-inner .value-label{
+    top: 15px;
+    right: -40px;
+  }
+
+  .page-landing .people-nav .contents-below .value-label{
+    top: 15px;
+    right: -45px;
   }
 
   .page-hr .revenue-container .value-label {
@@ -1712,10 +1808,11 @@ body {
   .page-landing .section-info .doller {
     opacity: 0.5;
   }
+
   @media only screen and (max-width: 374px){
     .page-landing .section-info .heading-value {
       font-size: 24px;
-      margin: 7px 0;
+      margin: 10px 0;
     }
 
     .page-landing .section-info .dollar-sign {
@@ -1724,8 +1821,8 @@ body {
 
     .page-landing .section-info .value-label {
       font-size: 10px;
-      top: -3px;
-      right: -24px;
+      top: 8px;
+      right: -30px;
     }
 
     .page-landing .section-info h5.info-value {
@@ -1741,6 +1838,10 @@ body {
 
     .page-landing .section-info .fa-circle {
       top: -1px;
+    }
+
+    .dept-label {
+      font-size: 12px;
     }
   }
 
@@ -1805,19 +1906,48 @@ body {
   .circle-container div.circles-text {
     font-weight: bold;
   }
+  
+  .page-landing div.circle-container{
+    margin: 8px 0px;
+  }
+
+  /*department gauge width*/
+  .page-landing .customers-nav .section-contents{
+    padding: 0 5px;
+  }
+
+  .page-landing .customers-nav div.circle-container{
+    width: 45px;
+  }
 
   .page-landing .circle-container div.circles-text {
     margin-top: -4px;
   }
 
+  .dept-gauge .circle-container div.circles-text {
+    margin-top:0;
+  }
+  
+  .dept-gauge .contents-below{
+    margin-top:-10px;
+  }
+
+  .page-landing .customers-nav .dept-gauge.col-xs-3 {
+    padding: 0;
+    display: inline-block;
+    width:25%;
+  }
   .page-landing .circle-container .circle-label {
     font-size: 11px;
     position: absolute;
     bottom: 20px;
-    left: 25.5px;
+    left: 23px;
     font-weight: bold;
   }
 
+  .page-landing .people-nav .circle-container .circle-label {
+    left: 15px;
+  }
 
   .page-landing .icons-list {
     padding: 0;

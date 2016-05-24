@@ -56,17 +56,24 @@ var loginModule = function() {
 	function isUserLoggedIn(req, res) {
 		console.log("isUserLoggedIn");
 		console.log(req.session)
-		var isLoggedIn = false;
+		var userData = {
+			user: {},
+			isLoggedIn : false
+		};
 
 		if (req.session.passport != undefined) {
-			if (req.session.passport.user != null || req.session.passport.user != "")
-				isLoggedIn = true;
+			if (req.session.passport.user != null || req.session.passport.user != ""){
+				userData.user = req.session.passport.user
+				userData.isLoggedIn = true;
+			}
 		} else if (req.session.user != undefined) {
-			if (req.session.user.email != null || req.session.user.email != "")
-				isLoggedIn = true;
+			if (req.session.user.email != null || req.session.user.email != ""){
+				userData.user = req.session.user
+				userData.isLoggedIn = true;
+			}
 		}
 
-		res.send(isLoggedIn);
+		res.send(userData);
 	}
 
 	function fetchCurrentUser(req, res){

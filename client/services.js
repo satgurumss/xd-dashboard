@@ -13,8 +13,9 @@
     .factory('gaugesService', gaugesService)
     .factory('WebViewService', webViewService)
 
-  function loggedInUser($cookies, $location, $http, $q) {
+  function loggedInUser($cookies, $location, $http, $q, $rootScope) {
     console.log("loggedInUser")
+
     return {
       logOutUser: function() {
         $http.post("/logout")
@@ -29,13 +30,14 @@
       isLoggedIn: function(route) {
 
         $http.get("/isLoggedInUser")
-        .success(function(loggedIn,status){
-          if( ! loggedIn && ! usingHypr)
+        .success(function(data,status){
+          if( ! data.isLoggedIn && ! usingHypr)
             $location.url("/signin");
           else if( ! hyprLoggedIn && usingHypr) {
             $location.url("/signin");
           }
           else{
+            $rootScope.$broadcast("userLoggedIn",{"userRole": data.user.userRole});
             $location.url(route)
           }
         })

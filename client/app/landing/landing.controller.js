@@ -37,16 +37,23 @@
       switch (userRole){
         case "CEO":
           $scope.gauges = {
-            finance: {
-              percent: 25
+            organization: {
+              percent: 25,
+              text: 30
             },
-            customers: {
-              percent: 75
-            },
-            people: {
+            hr_dept: {
               percent: 50
             },
-            projects: {
+            fin_dept: {
+              percent: 80
+            },
+            brd_dept: {
+              percent: 25
+            },
+            tech_dept: {
+              percent: 70
+            },
+            vendors: {
               percent: 50
             }
           };
