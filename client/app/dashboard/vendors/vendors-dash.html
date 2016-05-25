@@ -55,6 +55,32 @@
         <hc-chart options="chartConfig" class="chart-container span10" readonly="true"/>
       </div>
 
+      <div class="row vendors-row">
+          <h3 class="vendors-heading text-center">Top 5 Vendors</h3>
+          <div class="col-xs-4 margin-t10">
+            <hc-chart options="vendorsChartOptions"/>
+          </div>
+          <div class="col-xs-8 margin-t10">
+            <ul>
+              <li>
+                Acme Corporation
+              </li>
+              <li>
+                Mercury Consulting
+              </li>
+              <li>
+                Omega Technologies
+              </li>
+              <li>
+                Starlight Systems
+              </li>
+              <li>
+                Platinum Consulting
+              </li>
+            </ul>
+          </div>
+        </div>
+
       <div class="row vendor-btn-container">
         <button class="btn-block btn-info btn-lg btn-rounded" ng-click="goToSearchVendors()">
           <i class="fa fa-search"/>&nbsp;Search Vendors

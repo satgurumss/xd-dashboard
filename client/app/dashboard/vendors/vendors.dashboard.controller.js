@@ -15,7 +15,7 @@
 
     $scope.currentSelectedDate = new Date();
 
-    $scope.events = [{
+    /*    $scope.events = [{
       title: 'Corporate Event', // The title of the event
       type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
       startsAt: new Date(), // A javascript date object for when the event starts
@@ -46,9 +46,9 @@
       deleteEventHtml: "<i class=\'glyphicon glyphicon-remove\'></i>",
       cellIsOpen: true,
       enableViewChange: false
-    }
+    }*/
 
-    $scope.onTimespanClick = function(calendarDate, calendarCell) {
+    /*    $scope.onTimespanClick = function(calendarDate, calendarCell) {
       $scope.currentSelectedDate = new Date(calendarDate);
     }
 
@@ -82,7 +82,7 @@
 
     $scope.onEventDelete = function(calendarEvent) {
       $scope.events.splice($scope.events.indexOf(calendarEvent), 1);
-    }
+    }*/
 
     $scope.vendorStats = {
       renewals: {
@@ -264,6 +264,125 @@
           lineWidth: 1,
           lineColor: '#28bdc6'
         }
+      }]
+    };
+
+    $scope.vendorsChartOptions = {
+      colors: ["#72B6D7"],
+
+      chart: {
+        type: "bar",
+        height: 100,
+        width: 200,
+        style: {
+          fontFamily: "sans-serif"
+        },
+        plotBorderColor: '#606063',
+        spacingTop: 0,
+        spacingBottom: 0,
+        spacingLeft: 0,
+        spacingRight: 10
+      },
+
+      tooltip: {
+        backgroundColor: 'rgba(0, 0, 0, 0.85)',
+        style: {
+          color: '#F0F0F0'
+        },
+        valueSuffix: 'M',
+        enabled: false
+      },
+
+      plotOptions: {
+        bar: {
+          pointWidth: 15,
+          pointPadding: 0,
+          borderRadius: 4,
+          dataLabels: {
+            color: '#707073',
+            verticalAlign: 'middle',
+            align: "right",
+            formatter: function() {
+              return "$ " + this.point.y + " M"
+                //return this.point.category
+            },
+            enabled: true,
+          }
+        },
+      },
+      credits: {
+        enabled: false
+      },
+
+      labels: {
+        style: {
+          color: '#707073'
+        }
+      },
+
+      legend: {
+        enabled: false
+      },
+
+      title: {
+        text: null,
+        style: {
+          color: '#E0E0E3',
+          textTransform: 'uppercase',
+          fontSize: '20px'
+        },
+        useHTML: true
+      },
+
+      subtitle: {
+        style: {
+          color: '#E0E0E3',
+          textTransform: 'uppercase'
+        }
+      },
+
+      yAxis: {
+        title: null,
+        labels: {
+          enabled: false
+        },
+        lineWidth: 0,
+        minorGridLineWidth: 0,
+        lineColor: 'transparent',
+        minorTickLength: 0,
+        tickLength: 0,
+        gridLineColor: 'transparent',
+      },
+
+      xAxis: {
+        categories: ['1', '2', '3', '4', '5'],
+        tickWidth: 0,
+        tickPixelInterval: 20,
+        title: {
+          text: null,
+          style: {
+            color: '#A0A0A3'
+          }
+        },
+        gridLineColor: '#707073',
+        labels: {
+          style: {
+            color: '#707073',
+            fontSize: "14px",
+            enabled: false
+          }
+        },
+        lineWidth: 0,
+        minorGridLineWidth: 0,
+        lineColor: 'transparent',
+        minorTickLength: 0,
+        tickLength: 0,
+        gridLineColor: 'transparent'
+      },
+
+      series: [{
+        groupPadding: 0,
+        data: [22, 20, 15, 12, 10]
       }]
     };
 

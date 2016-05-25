@@ -15,10 +15,11 @@
     $scope.gauges = {};
 
     $scope.deptBarChartOptions = {
-      colors: ["#C9C9C9","#5494AB"],
+      colors: ["#C9C9C9", "#5494AB", "#C82E12"],
 
       chart: {
-        type: "bar",
+        type: "columnrange",
+        inverted: true,
         height: 100,
         width: 200,
         style: {
@@ -37,7 +38,7 @@
           color: '#F0F0F0'
         },
         valueSuffix: 'M',
-        enabled: false
+        enabled: true
       },
 
       plotOptions: {
@@ -56,9 +57,11 @@
           }
         },
         series: {
-          stacking:'normal'
+          groupPadding: 0,
+          stacking: "normal"
         }
       },
+
       credits: {
         enabled: false
       },
@@ -101,9 +104,8 @@
 
       xAxis: {
         categories: ['HR', 'Broadcast', 'Financial', 'Technical'],
+        min: 0,
         max: 3,
-        tickWidth: 0,
-        tickPixelInterval: 20,
         title: {
           text: null
         },
@@ -125,15 +127,58 @@
 
       series: [{
         groupPadding: 0,
-        name:"Budget",
-        data: [5, 2, 4, 2],
+        name: "Budget",
+        data: [{
+          low: 10,
+          high: 15
+        }, {
+          low: 0,
+          high: 10
+        }, {
+          low: 8,
+          high: 10
+        }, {
+          low: 3,
+          high: 5
+        }],
         marker: {
           symbol: 'circle'
         }
-      },{
+      }, {
         groupPadding: 0,
         name: "Spent",
-        data: [10, 8, 6, 3],
+        data: [{
+          low: 0,
+          high: 10
+        }, {
+          low: 0,
+          high: 0
+        }, {
+          low: 0,
+          high: 8
+        }, {
+          low: 0,
+          high: 3
+        }],
+        marker: {
+          symbol: 'circle'
+        }
+      }, {
+        groupPadding: 0,
+        name: "Over Spent",
+        data: [{
+          low: 0,
+          high: 0
+        }, {
+          low: 10,
+          high: 15
+        }, {
+          low: 0,
+          high: 0
+        }, {
+          low: 0,
+          high: 0
+        }],
         marker: {
           symbol: 'circle'
         }
@@ -149,18 +194,18 @@
       loggedInUser.isLoggedIn("/landing");
 
       loggedInUser.fetchCurrentUser()
-      .success(function(data, status, headers, config) {
-        $scope.userRole = data.userRole
-        populateGaugeData($scope.userRole);
-      })
-      .error(function(data, status, headers, config) {
-        $location.url("#/")
-      })
+        .success(function(data, status, headers, config) {
+          $scope.userRole = data.userRole
+          populateGaugeData($scope.userRole);
+        })
+        .error(function(data, status, headers, config) {
+          $location.url("#/")
+        })
     }
 
-    var populateGaugeData = function(userRole){
+    var populateGaugeData = function(userRole) {
 
-      switch (userRole){
+      switch (userRole) {
         case "CEO":
           $scope.gauges = {
             organization: {
@@ -183,7 +228,7 @@
               percent: 50
             }
           };
-        break
+          break
 
         case "SLMGR":
         case "FLDSL":
@@ -202,7 +247,7 @@
               percent: 50
             }
           };
-        break
+          break
       }
       $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
     }

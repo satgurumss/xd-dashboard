@@ -1758,15 +1758,17 @@ body {
   }
 
   .vendors-progress {
-    background: #464646;
+    background: #2A2A2B;
     padding: 15px 10px;
   }
 
-  .page-dashboard .vendors-progress .prog-bar-containter {
+  .page-dashboard .vendors-progress .prog-bar-containter,
+  .page-dashboard-customer .vendors-progress .prog-bar-containter {
     width: 65%;
   }
 
-  .page-dashboard .vendors-progress .label-out {
+  .page-dashboard .vendors-progress .label-out,
+  .page-dashboard-customer .vendors-progress .label-out {
     width: 28%;;
   }
 

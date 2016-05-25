@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .controller('DepartmentDashCtrl', ['$scope', '$http', '$location', 'gaugesService', "CONST","loggedInUser", DepartmentDashCtrl])
+    .controller('DepartmentDashCtrl', ['$scope', '$http', '$location', 'gaugesService', "CONST", "loggedInUser", DepartmentDashCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
         if (isNaN(input)) return input;
@@ -107,7 +107,7 @@
       },
 
       title: {
-        text: "3 Year Trend Budget vs Spent",
+        text: null,
         style: {
           color: '#E0E0E3',
           fontSize: '16px',
@@ -307,6 +307,29 @@
         data: [22, 20, 15, 12, 10]
       }]
     };
+
+    $scope.vendorsProgress = {
+      hr: {
+        percent: 50,
+        barLabel: "Vendors Aligned",
+        barValue: "5"
+      },
+      tech: {
+        percent: 50,
+        barLabel: "Vendors Aligned",
+        barValue: "5"
+      },
+      broadcast: {
+        percent: 50,
+        barLabel: "Vendors Aligned",
+        barValue: "5"
+      },
+      finance: {
+        percent: 50,
+        barLabel: "Vendors Aligned",
+        barValue: "5"
+      }
+    }
 
     $scope.init = function(argument) {
       loggedInUser.isLoggedIn("/department-dashboard");
