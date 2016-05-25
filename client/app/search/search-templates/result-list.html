@@ -1,0 +1,21 @@
+<div class="search-result-row">
+	<div class="result-heading">
+		<div class="result-info">
+			<h5 class="display-inline-block col-xs-4">{{result.contract.title}}</h5>
+			<h5 class="display-inline-block col-xs-3">{{result.contract.dept}}</h5>
+			<h5 class="display-inline-block col-xs-3">{{result.contract.fiscalYear}}</h5>
+			<h5 class="display-inline-block col-xs-2">{{abbreviateNumber(result.contract.value,2)}}</h5>
+			<span class="profile-link">
+				<a href="javascript:;" ng-click="openDetails($index)" ng-show="!result.isFirstOpen"> 
+					<i class="fa fa-chevron-down fa-2"/>
+				</a>
+				<a href="javascript:;" ng-click="closeDetails($index)" ng-show="result.isFirstOpen">
+				 <i class="fa fa-chevron-up fa-2"/>
+				</a>
+			</span>
+		</div>
+	</div>
+	<div ng-include="'app/search/search-templates/additional-info.html'">
+	</div>
+</div>
+<hr>

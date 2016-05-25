@@ -1,24 +1,30 @@
-<!-- &#xF002;  -->
-<div class="col-lg-12pb-15 search-field-wrapper">
-  <div class="ui-typeahead input-group search-field">
-    <input
-      type="text"
-      uib-typeahead="vendor for vendor in vendorsList"
-      typeahead-focus-first = "false"
-      typeahead-on-select = "onAutoCompleteSelect($item, $model, $label)"
-      class="form-control btn-rounded"
-      ng-model = "queryText"
-      placeholder="Search"
-      style="font-family:Arial, FontAwesome"
-      ng-change="updateCtrlModel(queryText)"
-      my-enter-press="updateCtrlModel(queryText); queryText && searchBar(queryText);"
-      >
+<div class="row search-field-wrapper">
+  <div class="col-xs-8 search-field-container">
+     <!-- input-group  -->
+    <div class="ui-typeahead search-field">
+      <input
+        type="text"
+        uib-typeahead="vendor for vendor in vendorsList"
+        typeahead-focus-first = "false"
+        typeahead-on-select = "onAutoCompleteSelect($item, $model, $label)"
+        class="form-control btn-rounded"
+        ng-model = "queryText"
+        placeholder="Search"
+        style="font-family:Arial, FontAwesome"
+        ng-change="updateCtrlModel(queryText)"
+        my-enter-press="updateCtrlModel(queryText); queryText && searchBar(queryText);"
+        >
 
-      <span class="input-group-btn">
-        <button class="btn btn-md btn-default search-btn btn-rounded"
-          ng-click="updateCtrlModel(queryText); searchBar(queryText);">
-          <i class="fa fa-search"/>
-        </button>
-      </span>
+        <!-- <span class="input-group-btn">
+          <button class="btn btn-md btn-default search-btn btn-rounded"
+            ng-click="updateCtrlModel(queryText); searchBar(queryText);">
+            <i class="fa fa-search"/>
+          </button>
+        </span> -->
+    </div>
+  </div>
+  <div class="col-xs-4 text-right db-heading hr-db-heading">
+    <div class="sec-icon"><img src="images/dept-icon.png" height="36" width="36" border="0" /></div>
+    <h6 class="value-small white-text">SEARCH</h6>
   </div>
 </div>

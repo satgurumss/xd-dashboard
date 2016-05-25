@@ -1,154 +1,26 @@
 <div class="page page-search" data-ng-controller="SearchCtrl" ng-init="init()">
-  <div class="row search-section" >
-    <div class="search-panel">
-      <div class="panel-body">
-        <div class="row">
-          <div data-ng-include="'app/shared/searchbar.html'"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="panel panel-default">
-      <div class="panel-body" ng-show = "firstSearch">{{blankslateMsg}}</div>
-      <div class="panel-body pad-25 results-panel" ng-show = "!firstSearch">
-        <div class="row results-section">
-          <!-- ###mobile advanced search drop down### -->
-          <div class="clearfix visible-xs adv-search-mobile" style="padding: 0 30px;"
-            ng-show = "searchResults.data.facets.length > 0 && queryText">
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="btn-group btn-block" uib-dropdown is-open="status.isopen" auto-close="outsideClick">
-                  <button type="button" class="btn btn-default btn-block" uib-dropdown-toggle ng-disabled="disabled"> Advanced Search &nbsp;
-                   <span class="fa fa-bars light-grey"></span>
-                  </button>
-                  <ul uib-dropdown-menu>
-                    <li>
-                      <button class="btn-restall btn-link" ng-click="resetAdvSearch()">
-                        Reset All
-                      </button>
-                    </li>
-                    <li  ng-repeat = "facet in searchResults.data.facets"
-                      ng-if="facet.buckets.length > 0">
-                      <div class="text-uppercase menu-title">
-                        {{formatFilterLabel(facet.label)}}&nbsp;({{facet.buckets.length}})
-                      </div>
-                      <ul class="sub-menu">
-                          <li  ng-repeat= 'opt in facet.buckets'>
-                           <label class="ui-checkbox">
-                            <input type="checkbox" value="{{opt.filter}}">
-                            <span>{{formatFilterCheckboxLabels(opt.label)}}&nbsp;({{opt.count}})</span>
-                           </label>
-                          </li>
-                      </ul>
-                    </li>
-                    <div>
-                    <button class="btn btn-sm btn-block btn-line-primary hidden" ng-click="advSearch()">
-                      <i class="fa fa-search"/> Search
-                    </button>
-                  </div>
-                  </ul>
-                </div>
-                <!-- <button class="btn btn-line-default btn-block" ng-click="openAdvSearchModal()">
-                  Advanced Search
-                </button> -->
-              </div>
+  <div class="panel search-result-panel">
+    <div class="panel-body">
+      <div data-ng-include="'app/shared/searchbar.html'"></div>
+      <div ng-show="firstSearch"><h5 class="text-center">{{blankslateMsg}}</h5></div>
+      <div class="results-panel" ng-show = "!firstSearch">
+        <h5 class="text-center" ng-show="currentPageItems.length == 0">No results found. Please try again.</h5>
+        <div class="results-section" ng-show="currentPageItems.length > 0">
+          <div class="row results-container">
+            <div class="searched-vendor">
+              <span class="h5">Search Results for</span> <span class="h4">{{searchedVendor}}</span>
             </div>
-          </div>
-
-          <!-- ###desktop advanced search section### -->
-          <div class="adv-search  col-lg-3 col-md-3 col-sm-4 hidden-xs" >
-            <div ng-show = "searchResults.data.facets.length > 0">
-              <span class="h4">Advanced Search</span>
-              <span >
-                <button class="btn-restall btn-link pull-right" ng-click="resetAdvSearch()">
-                  Reset All
-                </button>
-                <button hidden class="btn btn-sm btn-line-primary pull-right hidden" ng-click="advSearch()">
-                  <i class="fa fa-search"/> Search
-                </button>
-              </span>
-              <ul class="list-unstyled margin-t20">
-                <li  ng-repeat = "facet in searchResults.data.facets"
-                  ng-if="facet.buckets.length > 0">
-                  <div class="text-uppercase menu-title">
-                    {{formatFilterLabel(facet.label)}}
-                  </div>
-                  <ul class="sub-menu" >
-                    <div data-slim-scroll data-scroll-height="140px">
-                      <li ng-repeat= 'opt in facet.buckets'>
-                     <label class="ui-checkbox">
-                      <input type="checkbox" ng-checked="isChecked(opt.filter)" value="{{opt.filter}}"
-                        ng-click="setAdvFilter($event,opt.filter)">
-                      <span>{{formatFilterCheckboxLabels(opt.label)}}&nbsp;({{opt.count}})</span>
-                     </label>
-                      </li>
-                    </div>
-                  </ul>
-                </li>
-              </ul>
-              <div>
-                <button class="btn-restall btn-link pull-right" ng-click="resetAdvSearch()">
-                  Reset All
-                </button>
-                <button  class="btn btn-sm btn-line-primary pull-right hidden" ng-click="advSearch()">
-                  <i class="fa fa-search"/> Search
-                </button>
-              </div>
+            <div class="search-header col-xs-12" style="background-color:#232323;">
+              <h5 class="col-xs-4">Vendor</h5>
+              <h5 class="col-xs-3">Department</h5>
+              <h5 class="col-xs-3">F.Year</h5>
+              <h5 class="col-xs-2">Value $</h5>
             </div>
-          </div>
-
-          <div class="col-lg-9 col-md-9 col-sm-8 results-container">
-            <div ng-show = "currentPageItems.length == 0" >
-              <h4>{{blankslateMsg}}</h4>
-            </div>
-            <div class="promotions">
-             <div 
-                data-ng-repeat="promotion in promotions" 
-                ng-if="promotions.length>0"
-                ng-include="'app/search/search-templates/promotion-template.html'">
-              </div>
-            </div>
-            <div class="search-result row pad-l-0" data-ng-repeat="result in currentPageItems">
+            <div class="search-result row" data-ng-repeat="result in currentPageItems">
               <div
-                ng-if="result.fields.table[0] == 'news' "
-  							ng-include="'app/search/search-templates/result-news.html'">
+  							ng-include="'app/search/search-templates/result-list.html'">
   						</div>
-  						<div
-  							ng-if="result.fields.table[0] == 'profile'"
-  							ng-include="'app/search/search-templates/result-person.html'">
-  						</div>
-              <div
-                ng-if="result.fields.table[0] == 'hr'"
-                ng-include="'app/search/search-templates/result-hr.html'">
-              </div>
-  						<div
-  							ng-if="result.fields.table[0] == 'deal'"
-  							ng-include="'app/search/search-templates/result-deal.html'">
-  						</div>
-  						<div
-  							ng-if="result.fields.table[0] == 'km'"
-  							ng-include="'app/search/search-templates/result-knowledge.html'">
-  						</div>
-              <div
-                ng-if='result.fields.table[0] == "investment"'
-                ng-include="'app/search/search-templates/result-investment.html'">
-              </div>
-
               <!--result row end-->
-            </div>
-
-            <div class="col-md-12 text-right" ng-show="currentPageItems.length > 0">
-              <span class="pull-left total-records">Total&nbsp;{{searchResults.data.totalHits}}&nbsp;Records</span>
-              <uib-pagination class="pagination-sm"
-                ng-model="currentPage"
-                total-items="searchResults.data.totalHits"
-                max-size="4"
-                ng-change="search()"
-                items-per-page="numPerPage"
-                rotate="false"
-                boundary-links="true">
-              </uib-pagination>
             </div>
           </div>
         </div>
@@ -156,7 +28,3 @@
     </div>
   </div>
 </div>
-
-<style type="text/css">
-
-</style>
