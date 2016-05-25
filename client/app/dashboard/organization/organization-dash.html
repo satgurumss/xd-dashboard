@@ -1,62 +1,87 @@
-<div class="container page-dashboard" data-ng-controller="OrganizationDashCtrl" ng-init="init()">
+<div class="container page-dashboard organization-dashboard" data-ng-controller="OrganizationDashCtrl" ng-init="init()">
     <div class="panel-container">
 
       <div class="panel-body" style="padding: 0 15px 0 15px;">
         <div class="row revenue-container">
-          <div class="col-xs-8">
-            <h1 class="heading-value big-number">
-              <span class="sign">$</span>
-              43.45 M
-              <span class="value-label label">Budget</span>
-            </h1>
-            <div class="progress-container">
-              <progress-bar options="organizationProgress"/>
+          <div class="col-xs-8 left-contents">
+            <h1 class="renewal-value">200</h1>
+            <div class="inner-contents">
+              <h3 class="renewal-label">vendors</h3>
+              <h3 class="currency-value">$42.01M</h3>
             </div>
           </div>
-          <div class="col-xs-4 text-right db-heading finance-db-heading">
-            <div class="sec-icon"><img src="images/organization-icon.png" height="36" width="36" border="0" 
-              style=" margin-right: 7px;" /></div>
-            <h6 class="value-small white-text">{{dashboardTitle}}</h6>
-          </div>  
-        </div>
-        
-        <div class="row vendors-progress">
-          <div class="progress-container">
-            <progress-bar options="vendorsProgress" apply-threshold="true"/>
+          <div class="col-xs-4 finance-db-heading">
           </div>
         </div>
-        
-        <div class="row">
+
+        <div class="row vendors-progress">
+          <div class="contents-left col-sm-7 col-xs-7">
+            <div class="circle-container circle-white">
+              <div ng-circles value="gauges.hr.percent" width="20" colors="gauges.hr.colors"></div>
+            </div>
+
+            <div class="inner-contents">
+              <h3 class="session-value">2016</h3>
+              <h3 class="session-value">Budget vs Spent</h3>
+              <h3 class="currency-value">$ 42.01M</h3>
+              <h3 class="currency-value">$ 42.01M</h3>
+            </div>
+          </div>
+
+          <div class="contents-right col-sm-5 col-xs-5">
+            <div class="inner-contents">
+              <h1 class="renewal-value">98</h1>
+              <div class="inner-contents">
+                <h3 class="renewal-label">renewals</h3>
+                <h3 class="currency-value">$42.01M</h3>
+              </div>
+            </div>
+            <div class="progress-container">
+              <progress-bar options="vendorsProgress" apply-threshold="true"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="row graph-container">
           <hc-chart options="chartConfig" class="chart-container span10"/>
         </div>
-        
+
         <div class="row dept-charts-container">
-          <div class="col-xs-3 text-center">
-            <div class="circle-container circle-white">
-             <div ng-circles value="gauges.hr.percent" width="15" colors="gauges.hr.colors"></div>
-            </div>
-            <span>$ 10 M <br> Human Resources</span>
+          <h2 class="dept-chart-heading">Budget vs Spent</h2>
+          <div class="clearfix titles-container">
+            <span class="col-xs-3">HR</span>
+            <span class="col-xs-3">FIN</span>
+            <span class="col-xs-3">TECH</span>
+            <span class="col-xs-3">BRD</span>
           </div>
-
-          <div class="col-xs-3 text-center">
-            <div class="circle-container circle-white">
-             <div ng-circles value="gauges.broadcast.percent" width="15" colors="gauges.broadcast.colors"></div>
+          <div class="clearfix">
+            <div class="col-xs-3 text-center">
+              <div class="circle-container">
+               <div ng-circles value="gauges.hr.percent" width="20" colors="gauges.hr.colors"></div>
+              </div>
+              <span>$10 M</span>
             </div>
-            <span>$ 10 M <br> Broadcast</span>
-          </div>
 
-          <div class="col-xs-3 text-center">
-            <div class="circle-container  circle-white">
-             <div ng-circles value="gauges.finance.percent" width="15" colors="gauges.finance.colors"></div>
+            <div class="col-xs-3 text-center">
+              <div class="circle-container">
+               <div ng-circles value="gauges.broadcast.percent" width="20" colors="gauges.broadcast.colors"></div>
+              </div>
+              <span>$10 M</span>
             </div>
-            <span>$ 10 M <br> Finance</span>
-          </div>
 
-          <div class="col-xs-3 text-center">
-            <div class="circle-container  circle-white">
-             <div ng-circles value="gauges.technical.percent" width="15" colors="gauges.technical.colors"></div>
+            <div class="col-xs-3 text-center">
+              <div class="circle-container">
+               <div ng-circles value="gauges.finance.percent" width="20" colors="gauges.finance.colors"></div>
+              </div>
+              <span>$10 M</span>
             </div>
-            <span>$ 10 M <br> Technical</span>
+
+            <div class="col-xs-3 text-center">
+              <div class="circle-container">
+               <div ng-circles value="gauges.technical.percent" width="20" colors="gauges.technical.colors"></div>
+              </div>
+              <span>$10 M</span>
+            </div>
           </div>
         </div>
       </div>
@@ -64,4 +89,113 @@
 </div>
 
 <style type="text/css">
+  .organization-dashboard {
+    color: white;
+    font-family: "Roboto Condensed";
+  }
+
+  .organization-dashboard .panel-container {
+    background: transparent;
+  }
+
+  .organization-dashboard .revenue-container {
+    background: #2A2A2B;
+    margin-top: 15px;
+  }
+
+  .organization-dashboard .revenue-container .left-contents {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .organization-dashboard .revenue-container .finance-db-heading {
+    background: url(../images/right-organization.png) no-repeat top right;
+    background-size: contain;
+    height: 67px;
+  }
+
+  .organization-dashboard .revenue-container h1 {
+    font-family: "Roboto Condensed";
+    font-weight: bold;
+  }
+
+  .organization-dashboard .vendors-progress {
+    background: transparent;
+  }
+
+  .organization-dashboard .graph-container {
+    background: #2A2A2B;
+  }
+
+  .organization-dashboard .vendors-progress .contents-left,
+  .organization-dashboard .vendors-progress .contents-right {
+    padding: 0;
+  }
+
+  .organization-dashboard .inner-contents {
+    display: inline-block;
+  }
+
+  .organization-dashboard .session-value,
+  .organization-dashboard .renewal-label,
+  .organization-dashboard .currency-value {
+    font-size: 14px;
+    margin: 4px;
+  }
+  .organization-dashboard .renewal-value {
+    display: inline-block;
+    margin: 4px 0;
+  }
+
+  .organization-dashboard .vendors-progress .inner-contents .session-value,
+  .organization-dashboard .vendors-progress .inner-contents .renewal-label {
+    font-weight: normal;
+  }
+
+  .organization-dashboard .vendors-progress .contents-right .prog-bar-containter {
+    width: 100%;
+  }
+
+  .organization-dashboard .vendors-progress .label-out {
+    display: block;
+    width: 100%;
+  }
+
+  .organization-dashboard .dept-charts-container {
+    background: white;
+    padding: 10px 0;
+    color: #2A2A2B;
+    font-family: "roboto condensed", sans-serif;
+  }
+
+  .organization-dashboard .dept-charts-container .dept-chart-heading {
+    text-align: center;
+    margin: 0 0 10px;
+    font-size: 18px;
+  }
+
+  .organization-dashboard .dept-charts-container .titles-container {
+    background: #5B9B08;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  .organization-dashboard .dept-charts-container .titles-container span {
+    position: relative;
+    padding: 5px 0;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .organization-dashboard .dept-charts-container .titles-container span:after {
+    content: '';
+    border: 7px solid transparent;
+    border-top: 8px solid #5B9B08;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -8px;
+  }
+
 </style>

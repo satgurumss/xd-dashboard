@@ -8,16 +8,20 @@
 
     $scope.gauges = {
       hr: {
-        percent: 10
+        percent: 10,
+        colors: ['#BCBCBC', '#5B9B08']
       },
       broadcast: {
-        percent: 30
+        percent: 30,
+        colors: ['#BCBCBC', '#5B9B08']
       },
       finance: {
-        percent: 60
+        percent: 60,
+        colors: ['#BCBCBC', '#5B9B08']
       },
       technical: {
-        percent: 40
+        percent: 40,
+        colors: ['#BCBCBC', '#5B9B08']
       }
     };
 
@@ -101,7 +105,7 @@
       },
 
       title: {
-        text: "3 Year Trend Budget vs Spent",
+        text: null,
         style: {
           color: '#E0E0E3',
           fontSize: '16px',
@@ -213,14 +217,14 @@
         .success(function(data, status, headers, config) {
           loggedInUser.isLoggedIn("/organization-dashboard");
           $scope.userRole = data.userRole
-          
+
           populatePageLabels($scope.userRole);
         })
         .error(function(data, status, headers, config) {
           $location.url("#/")
         })
-      
-      $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
+
+     /* $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));*/
     }
 
     var populatePageLabels = function(userRole) {
