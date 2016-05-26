@@ -4,10 +4,10 @@
     <div class="panel-body" style="padding: 0 15px 0 15px;">
       <div class="row revenue-container">
         <div class="col-xs-8 left-contents">
-          <h1 class="renewal-value">200</h1>
+          <h1 class="renewal-value">{{organization.vendors}}</h1>
           <div class="inner-contents">
             <h3 class="renewal-label">vendors</h3>
-            <h3 class="currency-value">$42.01M</h3>
+            <h3 class="currency-value">${{formatNumberFromString(organization.contractValue)}}</h3>
           </div>
         </div>
         <div class="col-xs-4 hr-db-heading">
@@ -16,8 +16,8 @@
 
       <div class="row vendor-charts-container">
          <div class="contents-left col-sm-7 col-xs-7">
-            <div class="circle-container circle-white">
-              <div ng-circles value="gauges.hr.percent" width="20" colors="gauges.hr.colors"></div>
+            <div class="circle-container circle-white" ng-if="vendors.percent">
+              <div ng-circles value="vendors.percent" width="20" colors="vendors.colors"></div>
             </div>
 
             <div class="inner-contents">
@@ -28,17 +28,17 @@
 
           <div class="contents-right col-sm-5 col-xs-5">
             <div class="inner-contents">
-              <h1 class="renewal-value">98</h1>
+              <h1 class="renewal-value">{{organization.upcomingRenewalsR4}}</h1>
               <div class="labels-container">
                 <h3 class="renewal-label">renewals</h3>
-                <h3 class="currency-value">$42.01M</h3>
+                <h3 class="currency-value">${{formatNumberFromString(organization.upcomingRenewalsValue)}}</h3>
               </div>
             </div>
           </div>
       </div>
 
       <div class="row vendors-trend-chart">
-        <hc-chart options="chartConfig" class="chart-container span10" readonly="true"/>
+        <hc-chart options="chartConfig" class="chart-container span10"/>
       </div>
 
       <div class="row vendors-row">
@@ -65,7 +65,7 @@
               </li>
             </ul>
           </div>
-        </div>
+      </div>
 
       <div class="row vendor-btn-container">
         <button class="btn-block btn-info btn-lg btn-rounded" ng-click="goToSearchVendors()">

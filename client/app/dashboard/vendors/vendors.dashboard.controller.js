@@ -2,8 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .controller('VendorsDashCtrl', ['$scope', '$http', '$location', 'gaugesService', 'CONST', '$uibModal', "loggedInUser", VendorsDashCtrl])
-    .controller('addEventModalCtrl', ['$scope', '$uibModalInstance', 'startDate', addEventModalCtrl])
+    .controller('VendorsDashCtrl', ['$scope', '$http', '$location', 'gaugesService', 'CONST', "loggedInUser", "utils", VendorsDashCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
         if (isNaN(input)) return input;
@@ -11,98 +10,7 @@
       };
     });
 
-  function VendorsDashCtrl($scope, $http, $location, gaugesService, CONST, $uibModal, loggedInUser) {
-
-    $scope.currentSelectedDate = new Date();
-
-    $scope.gauges = {
-      hr: {
-        percent: 20,
-        colors: ['#BCBCBC', '#347BA1']
-      }
-    };
-
-    /*    $scope.events = [{
-      title: 'Corporate Event', // The title of the event
-      type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
-      startsAt: new Date(), // A javascript date object for when the event starts
-      endsAt: new Date(), // Optional - a javascript date object for when the event ends
-      editable: false, // If edit-event-html is set and this field is explicitly set to false then dont make it editable.
-      deletable: true, // If
-    }, {
-      title: 'Management Training', // The title of the event
-      type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
-      startsAt: new Date(), // A javascript date object for when the event starts
-      endsAt: new Date(), // Optional - a javascript date object for when the event ends
-      editable: false, // If edit-event-html is set and this field is explicitly set to false then dont make it editable.
-      deletable: true, // If
-    }, {
-      title: 'Management Training 2', // The title of the event
-      type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
-      startsAt: "Thu May 15 2016 19:22:13 GMT+0500 (Pakistan Standard Time)", // A javascript date object for when the event starts
-      endsAt: "Thu May 19 2016 19:22:13 GMT+0500 (Pakistan Standard Time)", // Optional - a javascript date object for when the event ends
-      editable: false, // If edit-event-html is set and this field is explicitly set to false then dont make it editable.
-      deletable: true, // If
-    }];
-
-    $scope.calendarOptions = {
-      view: "month",
-      viewDate: new Date(),
-      viewTitle: "Training & Events",
-      eventHtmlEdit: "<i class=\'glyphicon glyphicon-pencil\'></i>",
-      deleteEventHtml: "<i class=\'glyphicon glyphicon-remove\'></i>",
-      cellIsOpen: true,
-      enableViewChange: false
-    }*/
-
-    /*    $scope.onTimespanClick = function(calendarDate, calendarCell) {
-      $scope.currentSelectedDate = new Date(calendarDate);
-    }
-
-    $scope.addEvent = function() {
-      var modalInstance = $uibModal.open({
-        animation: $scope.animationsEnabled,
-        templateUrl: 'myModalContent.html',
-        controller: 'addEventModalCtrl',
-        size: "lg",
-        resolve: {
-          startDate: function() {
-            return $scope.currentSelectedDate
-          }
-        }
-      });
-
-      modalInstance.result.then(function(selectedItem) {
-        console.log(selectedItem);
-        $scope.events.push({
-          title: selectedItem.title,
-          type: 'info',
-          startsAt: new Date(selectedItem.startDate),
-          endsAt: new Date(selectedItem.endDate),
-          draggable: true,
-          resizable: true,
-          editable: false,
-        });
-      });
-
-    }
-
-    $scope.onEventDelete = function(calendarEvent) {
-      $scope.events.splice($scope.events.indexOf(calendarEvent), 1);
-    }*/
-
-    $scope.vendorStats = {
-      renewals: {
-        percent: 10,
-        text: "10",
-        value: "10 M"
-      },
-      alignment: {
-        percent: 30,
-        value: "20"
-      }
-    };
-
+  function VendorsDashCtrl($scope, $http, $location, gaugesService, CONST, loggedInUser, utils) {
     $scope.chartConfig = {
       colors: ["#28bdc6", "rgba(144,228,173, .3)", "rgba(204, 230, 121, .3)"],
       chart: {
@@ -279,12 +187,13 @@
 
       chart: {
         type: "bar",
-        height: 100,
-        width: 200,
+        height: 120,
+        width: 250,
         style: {
           fontFamily: "sans-serif"
         },
-        plotBorderColor: '#606063',
+        backgroundColor:"#EDEDED",
+        plotBorderColor: '#EDEDED',
         spacingTop: 0,
         spacingBottom: 0,
         spacingLeft: 0,
@@ -395,103 +304,37 @@
 
     $scope.init = function() {
       loggedInUser.isLoggedIn("/vendors-dashboard");
-      $scope.vendorStats = angular.copy(gaugesService.updateGaugeState($scope.vendorStats));
-    }
 
-    $scope.updateChart = function() {
-      var categories = [],
-        generateRandomSeries = function(max) {
-          var rnd = []
-          for (var i = 0; i < max; i++) {
-            rnd.push(Math.floor(Math.random() * 20) + 1)
-          }
-          return rnd;
-        }
-
-      switch (hrCtrl.monthsToDisplay) {
-        case "3":
-          categories = ['FEB', 'MAR', 'APR']
-          $scope.satisfactionChart.xAxis.categories = []
-          $scope.satisfactionChart.xAxis.categories = categories;
-
-          $scope.satisfactionChart.series[0].data = [];
-          $scope.satisfactionChart.series[0].data = [60.5, 65.9, 78.6];
-
-          $scope.satisfactionChart.series[1].data = [];
-          $scope.satisfactionChart.series[1].data = [80.0, 76.9, 81.0];
-
-          $scope.satisfactionChart.series[2].data = [];
-          $scope.satisfactionChart.series[2].data = [84.1, 80.6, 85.5];
-
-
-          break
-        case "6":
-          categories = ['NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR']
-          $scope.satisfactionChart.xAxis.categories = []
-          $scope.satisfactionChart.xAxis.categories = categories;
-
-          $scope.satisfactionChart.series[0].data = [];
-          $scope.satisfactionChart.series[0].data = [90.2, 80.5, 75.3, 60.5, 65.9, 78.6];
-
-          $scope.satisfactionChart.series[1].data = [];
-          $scope.satisfactionChart.series[1].data = [88.6, 87.0, 84.3, 80.0, 76.9, 81.0];
-
-          $scope.satisfactionChart.series[2].data = [];
-          $scope.satisfactionChart.series[2].data = [68.8, 80.1, 70.1, 84.1, 80.6, 85.5];
-
-
-          break;
-        case "9":
-          categories = ['AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR']
-          $scope.satisfactionChart.xAxis.categories = []
-          $scope.satisfactionChart.xAxis.categories = categories;
-
-          $scope.satisfactionChart.series[0].data = [];
-          $scope.satisfactionChart.series[0].data = [65.5, 80, 85.5, 90.2, 80.5, 75.3, 60.5, 65.9, 78.6];
-
-          $scope.satisfactionChart.series[1].data = [];
-          $scope.satisfactionChart.series[1].data = [80.4, 83.5, 87.0, 88.6, 87.0, 84.3, 80.0, 76.9, 81.0];
-
-          $scope.satisfactionChart.series[2].data = [];
-          $scope.satisfactionChart.series[2].data = [81.3, 70.0, 76.0, 68.8, 80.1, 70.1, 84.1, 80.6, 85.5];
-
-          break;
-        case "12":
-          categories = ['MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB', 'MAR', 'APR']
-          $scope.satisfactionChart.xAxis.categories = []
-          $scope.satisfactionChart.xAxis.categories = categories;
-
-          $scope.satisfactionChart.series[0].data = [];
-          $scope.satisfactionChart.series[0].data = [50.2, 60, 73.5, 65.5, 80, 85.5, 90.2, 80.5, 75.3, 60.5, 65.9, 78.6];
-
-          $scope.satisfactionChart.series[1].data = [];
-          $scope.satisfactionChart.series[1].data = [60.9, 70.6, 73.5, 80.4, 83.5, 87.0, 88.6, 87.0, 84.3, 80.0, 76.9, 81.0];
-
-          $scope.satisfactionChart.series[2].data = [];
-          $scope.satisfactionChart.series[2].data = [55.2, 65.8, 75.7, 81.3, 70.0, 76.0, 68.8, 80.1, 70.1, 84.1, 80.6, 85.5];
-
-          break;
-      }
+      loggedInUser.fetchCurrentUser()
+        .success(function(data, status, headers, config) {
+          $scope.userRole = data.userRole;
+          populateData($scope.userRole);
+        })
+        .error(function(data, status, headers, config) {
+          $location.url("#/")
+        })
     }
 
     $scope.goToSearchVendors = function() {
       $location.url('/search');
     }
+
+    $scope.formatNumberFromString = function(value) {
+      return utils.formatNumberFromString(value)
+    }
+
+    var populateData = function(userRole) {
+
+      $scope.vendors = {};
+
+      $scope.vendors["percent"] = utils.getVendorsAlignment("Organization");
+      $scope.vendors["colors"] = ['#BCBCBC', '#4792C1']
+
+      $scope.organization = utils.getDeptData("Organization");
+
+      //formatDeptChartData();
+
+      //$scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
+    }
   }
-
-  function addEventModalCtrl($scope, $modalInstance, startDate) {
-    $scope.newEvent = {};
-    $scope.newEvent.startDate = startDate;
-    $scope.newEvent.endDate = startDate;
-
-    $scope.ok = function() {
-      if ($scope.newEvent.title)
-        $modalInstance.close($scope.newEvent);
-    };
-
-    $scope.cancel = function() {
-      $modalInstance.dismiss('cancel');
-    };
-  }
-
 })();
