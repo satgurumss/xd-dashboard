@@ -43,7 +43,7 @@
 
       plotOptions: {
         bar: {
-          pointWidth: 15,
+          pointWidth: 10,
           pointPadding: 0,
           dataLabels: {
             color: '#707073',

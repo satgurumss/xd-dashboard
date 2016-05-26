@@ -1,324 +1,47 @@
-<div class="accordion-container">
+<div class="row accordion-container">
   <uib-accordion close-others="true" class="ui-accordion">
-  <uib-accordion-group is-open="result.isFirstOpen">
-    <div class="row">
-      <div class="col-md-10 col-md-offset-2" >
-        <div class="inner" data-slim-scroll data-scroll-height="250px">
-
-          <div class="row" ng-if="result.fields.invested_date_t[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Invested Date</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">{{result.fields.invested_date_t[0] | date:'MMMM dd, yyyy'}}</div>
+    <uib-accordion-group is-open="result.isFirstOpen">
+      <div class="result-details">
+        <div class="col-xs-12 result-title">
+          <span class="h3">{{result.vendor.title}}</span> - <span class="h5">{{result.contract.title}}</span>
+        </div>
+        <div class="col-xs-12">
+          <div class="col-xs-4">
+            <h5 class="display-inline-block col-xs-2">$ {{abbreviateNumber(result.contract.value,2)}}</h5>
           </div>
-          <div class="row" ng-if="result.fields.region_id">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Region</strong>
+          
+          <div class="col-xs-4">
+            <div>
+              Start: {{result.contract.startDate}}
             </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <span ng-repeat="region in result.fields.region_id">{{region}} {{!$last ? ", " : ""}}</span>
-            </div>
-          </div>
-          <!-- <div class="row" ng-if="result.fields.country_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Country</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">{{result.fields.country_s[0]}}</div>
-          </div> -->
-          <div class="row" ng-if="result.fields.deal_source_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Deal Source</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">{{result.fields.deal_source_s[0]}}</div>
-          </div>
-          <div class="row" ng-if="result.fields.deal_lead_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Deal Lead</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">{{result.fields.deal_lead_s[0]}}</div>
-          </div>
-          <div class="row" ng-if="result.fields.deal_team_members_s">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Deal Team</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <span  ng-repeat="teamMember in result.fields.deal_team_members_s">{{teamMember}} {{!$last ? ", " : ""}}</span>
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.propose_completion_date_t[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Completion Date</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              {{result.fields.propose_completion_date_t[0] | date:'MMMM dd, yyyy'}}
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.investment_team_s">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap" >Investment Team</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <span  ng-repeat="iteam in result.fields.investment_team_s">{{iteam}} {{!$last ? ", " : ""}}</span>
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.first_fund_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">First Fund</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              {{result.fields.first_fund_s[0]}}
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.fund_region_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Fund Region</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              {{result.fields.fund_region_s[0]}}
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.team_s">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Team</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <span  ng-repeat="iteam in result.fields.team_s">{{iteam}} {{!$last ? ", " : ""}}</span>
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.ownership_percent_f[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Ownership</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">{{result.fields.ownership_percent_f[0]}}%</div>
-          </div>
-          <div class="row" ng-if="result.fields.gross_irr_percent_f[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Gross IRR</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              {{result.fields.gross_irr_percent_f[0]}}%
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.gross_moc_percent_f[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Gross MOC</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              {{result.fields.gross_moc_percent_f[0]}}%
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.holding_period_f[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Holding Period</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              {{result.fields.holding_period_f[0]}}
-            </div>
-          </div>
-          <div class="row" 
-            ng-if="result.fields.gics_id && result.fields.table[0] != 'profile'">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">GICS</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <span ng-repeat="gics in result.fields.gics_id track by $index">{{gics}} {{!$last ? ", " : ""}}</span>
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.industry_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Industry</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              {{result.fields.industry_s[0]}}
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.filename[0] && result.fields.table[0] !='km'">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">File Name</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              {{result.fields.filename[0]}}
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.size[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Size</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              {{abbreviateNumber(result.fields.size[0], 2)}}
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.stage_date_t[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Stage Date</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              {{result.fields.stage_date_t[0] | date:'MMMM dd, yyyy'}}
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.doctype[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Document Type</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              {{result.fields.doctype[0]}}
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.application[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Application(s)</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <span  ng-repeat="app in result.fields.application">{{app}} {{!$last ? ", " : ""}}</span>
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.languages[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Language(s)</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <span  ng-repeat="language in result.fields.languages">{{language}} {{!$last ? ", " : ""}}</span>
-            </div>
-          </div>
-          <!-- <div class="row" ng-if="result.fields.company[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Copmany(s)</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <span  ng-repeat="cmp in result.fields.company">{{cmp}} {{!$last ? ", " : ""}}</span>
-            </div>
-          </div> -->
-          <!-- <div class="row" ng-if="result.fields.location[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Location(s)</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <span  ng-repeat="loc in result.fields.location">{{loc}} {{!$last ? ", " : ""}}</span>
-            </div>
-          </div> -->
-         <!--  <div class="row" ng-if="result.fields.people[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">People</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <span  ng-repeat="person in result.fields.people">{{person}} {{!$last ? ", " : ""}}</span>
-            </div>
-          </div> -->
-
-          <!-- persons-->
-          <div class="row" ng-if="result.fields.alumni_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Alumni</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              {{result.fields.alumni_s[0]}}
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.assistant_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Assistant</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              {{result.fields.assistant_s[0]}}
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.bio_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Bio</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              {{result.fields.bio_s[0]}}
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.interests_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Interest(s)</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <span  ng-repeat="loc in result.fields.interests_s">{{loc}} {{!$last ? ", " : ""}}</span>
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.employment_history_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Employment</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              {{result.fields.employment_history_s[0]}}
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.project_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Project(s)</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              {{result.fields.project_s[0]}}
+            <div>
+              Exp: {{result.contract.endDate}}
             </div>
           </div>
           
-          <div class="row margin-t10" 
-            ng-if="result.fields.experience_region_s[0] || result.fields.experience_sector_s[0] || result.fields.experience_skills_s[0] ">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap text-underline">Experience</strong>
+          <div class="col-xs-4">
+            <div>
+              <h5> {{result.contract.type}} </h5>
             </div>
-          </div>
-          <div class="row" ng-if="result.fields.experience_region_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Region(s)</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <span  ng-repeat="loc in result.fields.experience_region_s">{{loc}} {{!$last ? ", " : ""}}</span>
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.experience_sector_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Sector(s)</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <span  ng-repeat="loc in result.fields.experience_sector_s">{{loc}} {{!$last ? ", " : ""}}</span>
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.experience_skills_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Skill(s)</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <span  ng-repeat="loc in result.fields.experience_skills_s">{{loc}} {{!$last ? ", " : ""}}</span>
-            </div>
-          </div>
-
-          <div class="row margin-t10" 
-            ng-if="result.fields.expertise_region_s[0] || result.fields.expertise_sector_s[0] || result.fields.expertise_skills_s[0] ">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap text-underline">Expertise</strong>
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.expertise_region_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Region(s)</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <span  ng-repeat="loc in result.fields.expertise_region_s">{{loc}} {{!$last ? ", " : ""}}</span>
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.expertise_sector_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Sector(s)</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <span  ng-repeat="loc in result.fields.expertise_sector_s">{{loc}} {{!$last ? ", " : ""}}</span>
-            </div>
-          </div>
-          <div class="row" ng-if="result.fields.expertise_skills_s[0]">
-            <div class="col-md-2 col-sm-3 col-xs-12">
-              <strong class="pull-right nowrap">Skill(s)</strong>
-            </div>
-            <div class="col-md-10 col-sm-9 col-xs-12">
-              <span  ng-repeat="loc in result.fields.expertise_skills_s">{{loc}} {{!$last ? ", " : ""}}</span>
+            <div>
+              <span>
+                Days to Renewal
+              </span>
+              <span>
+                {{result.contract.daysToRenewal}}
+              </span>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </uib-accordion-group>
+
+      <div class="result-timeline">
+        <img src="images/timeline.jpg" class="img-responsive">
+      </div>
+
+      <div class="result-trend" style="padding: 10px 15px;">
+        <hc-chart-dynamic options="resultTrendInfo" series="result.contract.valueTrend"/>
+      </div>
+    </uib-accordion-group>
   </uib-accordion>
 </div>

@@ -97,13 +97,54 @@ a:hover {
 /*-------*/
 
 /*SEARCH PAGE STYLES*/
-.results-section{
-	margin-top: 10px;
+.page-search .search-result-panel{
+  background: #464646;
+  box-shadow: none;
+}
+.page-search .search-result-panel:hover{
+  box-shadow: none;
+}
+
+.page-search .accordion-container {
+  margin: 0;
+}
+
+.page-search .accordion-container .result-title {
+  margin: 10px 0;
+}
+
+.page-search .accordion-container .highcharts-container{
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0;
+}
+
+.page-search .results-container .searched-vendor{
+  margin-bottom:10px;
+}
+
+.page-search .search-field-container{
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 25px;
+}
+
+.page-search .search-field input{
+  color: #ddd;
+  background-color: transparent;
+  border: 1px solid #555f67;
+}
+
+.page-search .accordion-container .result-title h5{
+  font-size: 16px;
 }
 
 .results-container{
 	border: 1px solid #DCDCDC;
-	margin-top:10px;
+  border: 0;
+  border-left: 0;
+  margin-top: 10px;
+  box-shadow: -5px 0 7px -5px #333;
 }
 
 .search-result{
@@ -121,56 +162,6 @@ a:hover {
 
 .training-row .training-heading{
   margin-bottom: 5px;
-}
-
-.result-arrow i{
-	font-size:110px;
-}
-.adv-search-mobile .dropdown-menu{
-	min-width: 185px;
-  left:auto;
-  padding: 0 10px 0 10px;
-}
-
-.sub-menu {
-	list-style: none !important;
-	padding-left: 11px;
-  margin: 5px 0 20px 0;
-}
-
-.sub-menu label{
-	 margin: 0 10px 10px 20px;
-}
-
-.sub-menu .ui-checkbox span{
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.menu-title{
-  padding-left: 10px;
-  border-bottom: 1px solid #DCDCDC;
-}
-
-.year-filter select{
-	min-width: 158px;
-  height: 35px;
-  width:auto;
-}
-.relevance-filter select{
-  width: auto;
-}
-.search-type {
-  padding-left: 0;
-}
-
-.adv-search-mobile .sub-menu li span {
-    white-space: normal !important;
-}
-
-.page-search .ui-accordion .panel-group .panel-heading + .panel-collapse .panel-body {
-  border: none;
 }
 
 @media only screen and (max-device-width : 667px) {
@@ -547,9 +538,6 @@ ul.list-unstyled {
 .inner{
   padding: 0 36px;
 }
-.accordion-container .panel-collapse.in{
-  height: 250px !important;
-}
 
 .widget-hading .ui-select {
     margin: 0;
@@ -629,7 +617,7 @@ ul.list-unstyled {
     overflow-x: auto;
   }
   .search-panel {
-    margin: 0 8px 30px;
+    margin: 0 8px 0px;
     padding: 15px;
   }
 
@@ -738,18 +726,7 @@ p.search-description {
     position: relative;
 }
 
-.results-container {
-    border: 0;
-    border-left: 0;
-    margin-top: -10px;
-    box-shadow: -5px 0 7px -5px #333;
-}
-
-
 @media only screen and (max-width: 768px) {
-  /*.person-info {
-    padding-left: 0;
-  }*/
   .person-info .other-info {
     display: block;
     border-right: 0;
@@ -761,11 +738,11 @@ p.search-description {
     border-bottom: 0;
   }
   .results-container {
-  border: 0;
-  border-left: 0;
-  margin-top: 10px;
-  box-shadow: none;
-}
+    border: 0;
+    border-left: 0;
+    box-shadow: none;
+    margin-top:0;
+  }
 }
 /*
 @media only screen and (max-width: 767px) {
@@ -889,9 +866,7 @@ ul.dropdown-menu {
   color: #777;
   padding: 0 10px;
 }
-.page-search .panel {
-    box-shadow: 4px 4px 7px -3px rgba(0,0,0,0.9);
-}
+
 .btn-restall {
   color: #0079c1;
   font-weight: normal;
@@ -902,16 +877,6 @@ ul.dropdown-menu {
 }
 .btn-restall:hover {
   color: #0079c1;
-}
-.page-search .menu-title {
-  padding-left: 0px;
-  padding-bottom: 5px;
-}
-.page-search .sub-menu {
-  padding-left: 0px;
-}
-.page-search .person-info h5 {
-    line-height: 1.45;
 }
 
 .dropdown-menu > .active > a,
@@ -2743,13 +2708,6 @@ div.circle-container {
   font-size: 11px;
 }
 
-
-
-
-
-
-
-
 /* New CSS for Aljazeera */
 
 #content {
@@ -2988,4 +2946,17 @@ div.circle-container {
 }
 .color-light-orange {
   color: #fdc07f;
+}
+
+.page-search .search-result-row .accordion-container .panel-group{
+  margin-bottom: 0;
+}
+
+.page-search .search-result-row .accordion-container .panel-heading{
+   padding-top: 0px;
+   padding-bottom: 0px;
+}
+
+.page-search .accordion-container .ui-accordion .panel-group .panel-heading+.panel-collapse .panel-body{
+  border:none;
 }

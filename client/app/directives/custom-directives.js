@@ -6,6 +6,7 @@
     .directive('hcMap', ['$http', '$window', hcMap])
     .directive('hcChart', ['$window', hcChart])
     .directive('hcChartDark', ['$window', hcChartDark])
+    .directive('hcChartDynamic', ['$window', hcChartDynamic])
     .directive("progressBar", progressBar)
     .directive("trainingList", trainingList);
 
@@ -444,6 +445,41 @@
         var renderChart = function() {
           var tempScrollTop = $($window).scrollTop();
           Highcharts.chart(element[0], scope.options);
+          $($window).scrollTop(tempScrollTop);
+          
+          scope.readonly = angular.isDefined(scope.readonly) ? scope.readonly : false;
+          
+          if(scope.readonly){
+            $(element[0]).click(function() { return false; });
+            $(element[0]).children().click(function() { return false; });
+          }
+        };
+
+        renderChart();
+
+        scope.$watch("options.series[0].data", function(loading) {
+          renderChart();
+        });
+      }
+    };
+  }
+
+  function hcChartDynamic($window) {
+    return {
+      restrict: 'E',
+      template: '<div></div>',
+      replace: true,
+      scope: {
+        options: '&',
+        readonly: "=?",
+        series: '&'
+      },
+      link: function(scope, element) {
+        var renderChart = function() {
+          var tempScrollTop = $($window).scrollTop();
+          scope.options().series[0].data = scope.series();
+          
+          Highcharts.chart(element[0], scope.options());
           $($window).scrollTop(tempScrollTop);
           
           scope.readonly = angular.isDefined(scope.readonly) ? scope.readonly : false;
