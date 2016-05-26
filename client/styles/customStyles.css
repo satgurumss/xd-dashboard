@@ -1099,7 +1099,8 @@ body {
 
 .vendor-btn-container {
   background-color: #464646;
-  padding-top: 40px;
+  padding-top: 10px;
+  text-align: center;
 }
 
 .dept-charts-container .col-xs-3{

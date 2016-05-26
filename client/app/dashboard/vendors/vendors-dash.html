@@ -69,7 +69,8 @@
 
       <div class="row vendor-btn-container">
         <button class="btn-block btn-info btn-lg btn-rounded" ng-click="goToSearchVendors()">
-          <i class="fa fa-search"/>&nbsp;Search Vendors
+          <span class="search-icon"></span>
+          <span class="text">Vendors</span>
         </button>
       </div>
     </div>
@@ -169,6 +170,32 @@
 
   .page-hr .vendors-row ul {
     font-size: 12px;
+  }
+
+  .page-hr .vendors-row ul li {
+    padding: 3px 0;
+  }
+
+  .page-hr .vendor-btn-container button {
+    background-color: transparent;
+    border: 0;
+    color: white;
+    width: 144px;
+    display: inline-block;
+  }
+
+  .page-hr .vendor-btn-container button .search-icon {
+    background: url("http://localhost:9000/styles/../images/icon-vendors.png") top center no-repeat;
+    height: 50px;
+    width: 50px;
+    background-size: contain;
+    display: inline-block;
+    float: left;
+  }
+
+  .page-hr .vendor-btn-container button .text {
+    display: inline-block;
+    margin-top: 10px;
   }
 
 
