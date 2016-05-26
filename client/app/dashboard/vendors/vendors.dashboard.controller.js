@@ -15,6 +15,13 @@
 
     $scope.currentSelectedDate = new Date();
 
+    $scope.gauges = {
+      hr: {
+        percent: 20,
+        colors: ['#BCBCBC', '#347BA1']
+      }
+    };
+
     /*    $scope.events = [{
       title: 'Corporate Event', // The title of the event
       type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special

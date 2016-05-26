@@ -6,17 +6,17 @@
       <div class="results-panel" ng-show = "!firstSearch">
         <h5 class="text-center" ng-show="currentPageItems.length == 0">No results found. Please try again.</h5>
         <div class="results-section" ng-show="currentPageItems.length > 0">
-          <div class="row results-container">
+          <div class="results-container">
             <div class="searched-vendor">
               <span class="h5">Search Results for</span> <span class="h4">{{searchedVendor}}</span>
             </div>
-            <div class="search-header col-xs-12" style="background-color:#232323;">
-              <h5 class="col-xs-4">Vendor</h5>
-              <h5 class="col-xs-3">Department</h5>
-              <h5 class="col-xs-3">F.Year</h5>
-              <h5 class="col-xs-2">Value $</h5>
+            <div class="search-header row" style="background-color:#232323;">
+              <span class="col-xs-3">Vendor</span>
+              <span class="col-xs-3">Department</span>
+              <span class="col-xs-3">F.Year</span>
+              <span class="col-xs-3">Value $</span>
             </div>
-            <div class="search-result row" data-ng-repeat="result in currentPageItems">
+            <div class="search-result" data-ng-repeat="result in currentPageItems">
               <div
   							ng-include="'app/search/search-templates/result-list.html'">
   						</div>
@@ -28,3 +28,59 @@
     </div>
   </div>
 </div>
+
+<style type="text/css">
+  .page-search .search-header span,
+  .page-search .search-result-row span {
+    font-size: 11px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .page-search .search-result-row {
+    border-bottom: 1px solid #575757;
+  }
+
+  .page-search .search-result-panel{
+    background: #464646;
+    box-shadow: none;
+  }
+  .page-search .search-result-panel:hover{
+    box-shadow: none;
+  }
+
+  .page-search .accordion-container {
+    margin: 0;
+  }
+
+  .page-search .accordion-container .result-title {
+    margin: 10px 0;
+  }
+
+  .page-search .accordion-container .highcharts-container{
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0;
+  }
+
+  .page-search .results-container .searched-vendor{
+    margin-bottom:10px;
+  }
+
+  .page-search .search-field-container{
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 25px;
+  }
+
+  .page-search .search-field input{
+    color: #ddd;
+    background-color: transparent;
+    border: 1px solid #555f67;
+  }
+
+  .page-search .accordion-container .result-title h5{
+    font-size: 16px;
+  }
+
+</style>
