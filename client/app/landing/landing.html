@@ -13,27 +13,30 @@
   <div ng-include="'app/landing/field-sales-template.html'" ng-if="userRole == 'FLDSL'"/>
 
   <div class="bottom-section">
-    <ul class="icons-list row hidden">
-      <li class="icon-item col-xs-4">
-        <a href="javascript://" ng-click="navigateTo('/team-performance')">
-          <div class="icon profile-icon"></div>
-          <div class="count badge badge-info">7</div>
+    <ul class="icons-list row">
+      <li class="icon-item col-xs-4 text-center">
+        <a href="javascript://">
+          <div class="icon vendors-icon"></div>
+          <div class="count badge badge-info hidden">7</div>
+          <h5>Vendors</h5>
         </a>
       </li>
-      <li class="icon-item col-xs-4">
+      <li class="icon-item col-xs-4 text-center br-rl">
         <a href="javascript://">
-          <div class="icon car-icon"></div>
-          <div class="count badge badge-info">1</div>
+          <div class="icon mail-icon"></div>
+          <div class="count badge badge-info hidden">1</div>
+          <h5>Mail</h5>
         </a>
       </li>
-      <li class="icon-item col-xs-4">
+      <li class="icon-item col-xs-4 text-center">
         <a href="javascript://">
-          <div class="icon search-icon"></div>
-          <div class="count badge badge-info">5</div>
+          <div class="icon aljazeera-icon"></div>
+          <div class="count badge badge-info hidden">5</div>
+          <h5>News</h5>
         </a>
       </li>
     </ul>
-    <button class="btn-block btn-info btn-lg btn-rounded" ng-click="navigateTo('/search')">
+    <button class="btn-block btn-info btn-lg btn-rounded hidden" ng-click="navigateTo('/search')">
       <i class="fa fa-search"/>&nbsp;Search Vendors
     </button>
   </div>

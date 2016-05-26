@@ -9,7 +9,7 @@
     </div>
 
     <div class="main-body" ng-if="showPage">
-      <div class="container login-form-container">
+      <div class="container">
           <div class="row" ng-show="loginCtrl.signInError">
               <center>
                 <div class="col-md-offset-4 col-sm-offset-3 col-md-4 col-sm-6 alert alert-danger" >
@@ -49,7 +49,7 @@
                           </div>
                       </div>
                       <div class="form-group">
-                        <div class="col-md-5 col-xs-12 pr-0 pl-0">
+                        <div class="col-xs-12 pr-0 pl-0 text-center">
                           <button class="btn btn-block btn-info btn-lg btn-signin btn-rounded">
                             LOGIN <span><img src="images/login.png"/></span>
                           </button>
@@ -58,10 +58,10 @@
                   </fieldset>
               </form>
               <div class="form-group">
-                <div class="col-md-2 col-xs-12 text-center">
+                <div class="col-xs-12 text-center">
                   <h4 class="or-separator">OR</h4>
                 </div>
-                <div class="col-md-5 col-xs-12 text-right pl-0 pr-0">
+                <div class="col-xs-12 text-right pl-0 pr-0">
                   <button class="btn btn-block btn-lg btn-signin btn-w-md btn-gap-v btn-line-info btn-rounded" ng-click="doADLogin();">
                     Active Directory
                   </button>
