@@ -1323,8 +1323,10 @@ body {
   margin: 15px 0;
 }
 .revenue-container {
-  background: #3e3e40;
+  background: #2A2A2B;
+  margin-top: 15px;
 }
+
 .revenue-container h1 {
     font-family: 'Teko', sans-serif;
     font-weight: 300;

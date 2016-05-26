@@ -8,7 +8,7 @@
         <div class="results-section" ng-show="currentPageItems.length > 0">
           <div class="results-container">
             <div class="searched-vendor">
-              <span class="h5">Search Results for</span> <span class="h4">{{searchedVendor}}</span>
+              <span class="title">Search Results for</span> <span class="h4">{{searchedVendor}}</span>
             </div>
             <div class="search-header row" style="background-color:#232323;">
               <span class="col-xs-3">Vendor</span>
@@ -30,6 +30,11 @@
 </div>
 
 <style type="text/css">
+  .page-search {
+    color: white;
+    font-family: "Roboto Condensed";
+  }
+
   .page-search .search-header span,
   .page-search .search-result-row span {
     font-size: 11px;
@@ -37,50 +42,165 @@
     padding-bottom: 10px;
   }
 
+  .page-search .search-result-row span:first-child {
+    color: white;
+  }
+
+  .page-search .results-container .searched-vendor {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .page-search .results-container .searched-vendor .title {
+    font-size: 11px;
+    color: #aaa;
+  }
+
+  .page-search .search-field-container {
+    padding: 17px 0 0 15px;
+  }
+
+  .page-search .search-field input {
+    color: #ddd;
+    background-color: transparent;
+    border: 1px solid #555f67;
+  }
+
+  .page-search .accordion-container .result-title h5 {
+    font-size: 16px;
+  }
+
+  .page-search .result-details {
+    color: #333;
+  }
+
+  .page-search .search-db-heading {
+    background: url(../images/right-search.png) no-repeat top right;
+    background-size: contain;
+    height: 67px;
+  }
+
   .page-search .search-result-row {
     border-bottom: 1px solid #575757;
   }
 
-  .page-search .search-result-panel{
+  .page-search .search-result {
+    position: relative;
+    color: #aaa;
+  }
+
+  .page-search .search-result .profile-link {
+    position: absolute;
+    top: 6px;
+    right: 0;
+    z-index: 1;
+  }
+
+  .page-search .search-result-panel .panel {
+    background: #E7E4AC;
+  }
+
+  .page-search .search-result-panel {
     background: #464646;
     box-shadow: none;
   }
-  .page-search .search-result-panel:hover{
-    box-shadow: none;
+
+  .page-search .panel-group {
+    margin: 0;
   }
 
-  .page-search .accordion-container {
+  .page-search .accordion-container .panel-heading {
+    display: none;
+  }
+
+  .page-search .search-result .key-word {
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  .page-search .search-result .currency-value {
+    font-size: 28px;
+    display: inline-block;
+    position: relative;
+    padding-left: 5px;
+  }
+
+  .page-search .search-result .currency-value .currency-label {
+    font-size: 12px;
+    font-weight: normal;
+    position: absolute;
+    left: -1px;
+    top: 2px;
+  }
+
+  .page-search .search-result .currency-value .value-label {
+    font-size: 13px;
+    font-weight: normal;
+  }
+
+  .page-search .search-result .contract-title {
+    font-size: 13px;
+  }
+
+  .page-search .search-result .contract-type {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #464646;
+  }
+
+  .page-search .search-result .duration-title {
+    font-size: 12px;
+    display: inline-block;
     margin: 0;
+    width: 50px;
+    font-weight: normal;
+  }
+
+  .page-search .search-result .duration-value {
+    font-size: 23px;
+    display: inline-block;
+    margin: 0;
+    font-weight: bold;
+    color: #464646;
+  }
+
+  .page-search .search-result .renewals-date-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .page-search .search-result .renewals-date-container .start-date,
+  .page-search .search-result .renewals-date-container .expire-date {
+    font-weight: bold;
+  }
+
+  .page-search .search-result .renewals-date-container .title {
+    font-weight: normal;
+  }
+
+  .page-search .search-result-panel:hover {
+    box-shadow: none;
   }
 
   .page-search .accordion-container .result-title {
     margin: 10px 0;
   }
 
-  .page-search .accordion-container .highcharts-container{
+  .page-search .search-field-wrapper {
+    background: #2A2A2B;
+    margin-top: 15px;
+  }
+
+  .page-search .accordion-container .highcharts-container {
     width: 100% !important;
     height: 100% !important;
     margin: 0;
   }
 
-  .page-search .results-container .searched-vendor{
-    margin-bottom:10px;
-  }
-
-  .page-search .search-field-container{
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 25px;
-  }
-
-  .page-search .search-field input{
-    color: #ddd;
-    background-color: transparent;
-    border: 1px solid #555f67;
-  }
-
-  .page-search .accordion-container .result-title h5{
-    font-size: 16px;
+  .page-search .result-timeline.ng-scope {
+    margin-left: -10px;
+    margin-right: -10px;
   }
 
 </style>
