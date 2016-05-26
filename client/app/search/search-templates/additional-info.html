@@ -2,35 +2,35 @@
   <uib-accordion close-others="true" class="ui-accordion">
     <uib-accordion-group is-open="result.isFirstOpen">
       <div class="result-details">
-        <div class="col-xs-12 result-title">
-          <span class="h3">{{result.vendor.title}}</span> - <span class="h5">{{result.contract.title}}</span>
+        <div class="result-title">
+          <span class="key-word">{{result.vendor.title}}</span> - <span class="contract-title">{{result.contract.title}}</span>
         </div>
-        <div class="col-xs-12">
-          <div class="col-xs-4">
-            <h5 class="display-inline-block col-xs-2">$ {{abbreviateNumber(result.contract.value,2)}}</h5>
+        <div class="row">
+          <div class="col-xs-6">
+            <h5 class="currency-value">
+              <span class="currency-label">$</span>
+              {{abbreviateNumber(result.contract.value,2)}}
+              <span class="value-label">value</span>
+           </h5>
           </div>
-          
-          <div class="col-xs-4">
-            <div>
-              Start: {{result.contract.startDate}}
-            </div>
-            <div>
-              Exp: {{result.contract.endDate}}
+
+          <div class="col-xs-6">
+            <h5 class="contract-type"> {{result.contract.type}} </h5>
+            <div class="renewal-duration">
+              <h3 class="duration-title">Days to Renewal</h3>
+              <h2 class="duration-value">{{result.contract.daysToRenewal}}</h2>
             </div>
           </div>
-          
-          <div class="col-xs-4">
-            <div>
-              <h5> {{result.contract.type}} </h5>
-            </div>
-            <div>
-              <span>
-                Days to Renewal
-              </span>
-              <span>
-                {{result.contract.daysToRenewal}}
-              </span>
-            </div>
+        </div>
+
+        <div class="row renewals-date-container">
+          <div class="start-date col-xs-6">
+            <span class="title">Start:</span>
+            {{result.contract.startDate}}
+          </div>
+          <div class="expire-date col-xs-6">
+            <span class="title">Exp:</span>
+            {{result.contract.endDate}}
           </div>
         </div>
       </div>

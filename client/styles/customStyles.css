@@ -97,58 +97,13 @@ a:hover {
 /*-------*/
 
 /*SEARCH PAGE STYLES*/
-.page-search .search-result-panel{
-  background: #464646;
-  box-shadow: none;
-}
-.page-search .search-result-panel:hover{
-  box-shadow: none;
-}
 
-.page-search .accordion-container {
-  margin: 0;
-}
-
-.page-search .accordion-container .result-title {
-  margin: 10px 0;
-}
-
-.page-search .accordion-container .highcharts-container{
-  width: 100% !important;
-  height: 100% !important;
-  margin: 0;
-}
-
-.page-search .results-container .searched-vendor{
-  margin-bottom:10px;
-}
-
-.page-search .search-field-container{
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 25px;
-}
-
-.page-search .search-field input{
-  color: #ddd;
-  background-color: transparent;
-  border: 1px solid #555f67;
-}
-
-.page-search .accordion-container .result-title h5{
-  font-size: 16px;
-}
-
-.results-container{
-	border: 1px solid #DCDCDC;
+.results-container {
+  border: 1px solid #DCDCDC;
   border: 0;
   border-left: 0;
   margin-top: 10px;
   box-shadow: -5px 0 7px -5px #333;
-}
-
-.search-result{
-  margin: 10px 0 10px 0;
 }
 
 .search-result:not(:last-child) > .desc-col .optional-links,
@@ -1368,8 +1323,10 @@ body {
   margin: 15px 0;
 }
 .revenue-container {
-  background: #3e3e40;
+  background: #2A2A2B;
+  margin-top: 15px;
 }
+
 .revenue-container h1 {
     font-family: 'Teko', sans-serif;
     font-weight: 300;
@@ -1709,10 +1666,6 @@ body {
     right: -42px;
   }
 
-  .page-hr .circles-text {
-    color: #323232;
-  }
-
   .page-hr .status-value{
     color: #323232;
   }
@@ -1958,7 +1911,7 @@ body {
     margin: 8px 0px;
   }
   .page-hr div.circle-container{
-    width: 90px;
+    width: 70px;
   }
   .page-dashboard-customer .dept-summary-section div.circle-container{
     width: 80px;
