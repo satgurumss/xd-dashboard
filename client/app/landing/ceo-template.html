@@ -5,11 +5,11 @@
         <div class="section-inner">
           <h4 class="heading-v1 text-center">Upcoming Revewals</h4>
           <h1 class="heading-value">
-            <span class="pull-left value-one">98</span>
+            <span class="pull-left value-one">{{organization.upcomingRenewalsR4}}</span>
             <div class="pull-left lh-18">
               <span class="value-title color-black">contracts</span>
               <span class="dollar-sign">$</span>
-              <span class="value-sec">42.01M</span>
+              <span class="value-sec">{{formatNumberFromString(organization.upcomingRenewalsValue)}}</span>
             </div>
           </h1>
         </div>
@@ -17,7 +17,7 @@
       <div class="section section-contents col-xs-3">
         <div class="section-inner">
           <div class="circle-container">
-           <div ng-circles value="gauges.organization.percent" text="{{gauges.organization.text}}" width="20" colors="['#FFF', gauges.organization.colors[1]]"></div>
+           <div ng-circles value="gauges.organization.percent" width="20" colors="['#FFF', gauges.organization.colors[1]]"></div>
           </div>
         </div>
       </div>
@@ -56,11 +56,11 @@
         <div class="section-inner">
           <h4 class="heading-v1 text-center">Overview</h4>
           <h1 class="heading-value">
-            <span class="pull-left value-one">200</span>
+            <span class="pull-left value-one">{{organization.vendors}}</span>
             <div class="pull-left lh-18">
               <span class="value-title color-light-orange">vendors</span>
               <span class="dollar-sign">$</span>
-              <span class="value-sec">42.01M</span>
+              <span class="value-sec">{{formatNumberFromString(organization.contractValue)}}</span>
             </div>
           </h1>
         </div>
@@ -78,9 +78,6 @@
           <div class="sec-icon hidden"><img src="images/vendor-icon.png" height="46" width="50" border="0" /></div>
           <h6 class="value-small hidden">VENDORS</h6>
         </div>
-      </div>
-      <div class=" col-xs-12 section-shadow text-right">
-        <div class="rc rc-people hidden"></div>
       </div>
     </a>
   </li>

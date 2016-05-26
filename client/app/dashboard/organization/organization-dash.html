@@ -1,13 +1,14 @@
-<div class="container page-dashboard organization-dashboard" data-ng-controller="OrganizationDashCtrl" ng-init="init()">
+<div class="container page-dashboard organization-dashboard" data-ng-controller="OrganizationDashCtrl" 
+ng-init="init()">
     <div class="panel-container">
 
       <div class="panel-body" style="padding: 0 15px 0 15px;">
         <div class="row revenue-container">
           <div class="col-xs-8 left-contents">
-            <h1 class="renewal-value">200</h1>
+            <h1 class="renewal-value">{{organization.vendors}}</h1>
             <div class="inner-contents">
               <h3 class="renewal-label">vendors</h3>
-              <h3 class="currency-value">$42.01M</h3>
+              <h3 class="currency-value">${{formatNumberFromString(organization.contractValue)}}</h3>
             </div>
           </div>
           <div class="col-xs-4 finance-db-heading">
@@ -16,27 +17,28 @@
 
         <div class="row vendors-progress">
           <div class="contents-left col-sm-7 col-xs-7">
-            <div class="circle-container circle-white">
-              <div ng-circles value="gauges.hr.percent" width="20" colors="gauges.hr.colors"></div>
+            <div class="circle-container circle-white" ng-if='gauges.organization.percent'>
+              <div ng-circles value="gauges.organization.percent" width="20" colors="gauges.organization.colors">
+              </div>
             </div>
 
             <div class="inner-contents">
               <h3 class="session-value">2016</h3>
               <h3 class="session-value">Budget vs Spent</h3>
-              <h3 class="currency-value">$ 42.01M</h3>
-              <h3 class="currency-value">$ 42.01M</h3>
+              <h3 class="currency-value">$ {{formatNumberFromString(organization.Budget)}}</h3>
+              <h3 class="currency-value">$ {{formatNumberFromString(organization.Spend)}}</h3>
             </div>
           </div>
 
           <div class="contents-right col-sm-5 col-xs-5">
             <div class="inner-contents">
-              <h1 class="renewal-value">98</h1>
+              <h1 class="renewal-value">{{organization.upcomingRenewalsR4}}</h1>
               <div class="inner-contents">
                 <h3 class="renewal-label">renewals</h3>
-                <h3 class="currency-value">$42.01M</h3>
+                <h3 class="currency-value">$ {{formatNumberFromString(organization.upcomingRenewalsValue)}}</h3>
               </div>
             </div>
-            <div class="progress-container">
+            <div class="progress-container" ng-if="vendorsProgress.percent">
               <progress-bar options="vendorsProgress" apply-threshold="true"/>
             </div>
           </div>
@@ -56,31 +58,31 @@
           </div>
           <div class="clearfix">
             <div class="col-xs-3 text-center">
-              <div class="circle-container">
+              <div class="circle-container" ng-if='gauges.hr.percent'>
                <div ng-circles value="gauges.hr.percent" width="20" colors="gauges.hr.colors"></div>
               </div>
-              <span>$10 M</span>
+              <span>${{formatNumberFromString(deptBudget.hr)}}</span>
             </div>
 
             <div class="col-xs-3 text-center">
-              <div class="circle-container">
+              <div class="circle-container" ng-if='gauges.broadcast.percent'>
                <div ng-circles value="gauges.broadcast.percent" width="20" colors="gauges.broadcast.colors"></div>
               </div>
-              <span>$10 M</span>
+              <span>${{formatNumberFromString(deptBudget.broadcast)}}</span>
             </div>
 
             <div class="col-xs-3 text-center">
-              <div class="circle-container">
+              <div class="circle-container" ng-if='gauges.finance.percent'>
                <div ng-circles value="gauges.finance.percent" width="20" colors="gauges.finance.colors"></div>
               </div>
-              <span>$10 M</span>
+              <span>${{formatNumberFromString(deptBudget.finance)}}</span>
             </div>
 
             <div class="col-xs-3 text-center">
-              <div class="circle-container">
+              <div class="circle-container" ng-if='gauges.technical.percent'>
                <div ng-circles value="gauges.technical.percent" width="20" colors="gauges.technical.colors"></div>
               </div>
-              <span>$10 M</span>
+              <span>${{formatNumberFromString(deptBudget.technical)}}</span>
             </div>
           </div>
         </div>

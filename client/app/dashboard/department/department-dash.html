@@ -4,14 +4,13 @@
     <div class="panel-container">
 
       <div class="panel-body" style="padding: 0 15px 0 15px;">
-
         <div class="row depart-db-heading">
           <div class="col-xs-12 pl-0 pr-0">
             <uib-tabset class="ui-tab">
-              <uib-tab heading="HR">HR Static content here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, quidem, officiis, et ex laudantium sed cupiditate voluptatum libero nobis sit illum voluptates beatae ab et at.</uib-tab>
-              <uib-tab heading="TECH">Tech Static content here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, quidem, officiis, et ex laudantium sed cupiditate voluptatum libero nobis sit illum voluptates beatae ab et at.</uib-tab>
-              <uib-tab heading="BRD">BRD Static content here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, quidem, officiis, et ex laudantium sed cupiditate voluptatum libero nobis sit illum voluptates beatae ab et at.</uib-tab>
-              <uib-tab heading="FIN">FIN Static content here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, quidem, officiis, et ex laudantium sed cupiditate voluptatum libero nobis sit illum voluptates beatae ab et at.</uib-tab>
+              <uib-tab heading="HR" ng-click="setActiveTab('HR')"></uib-tab>
+              <uib-tab heading="TECH" ng-click="setActiveTab('Tech')"></uib-tab>
+              <uib-tab heading="BRD" ng-click="setActiveTab('Broadcast')"></uib-tab>
+              <uib-tab heading="FIN" ng-click="setActiveTab('Finance')"></uib-tab>
             </uib-tabset>
           </div>
           <div class="col-xs-6 text-right db-heading customers-db-heading hidden">
@@ -23,21 +22,21 @@
           <div class="dept-info-section col-xs-5">
             <div class="count-sec-container clearfix hr-line">
               <h1 class="heading-value">
-                <span class="pull-left value-one ff-rc">50</span>
+                <span class="pull-left value-one ff-rc">{{tab.vendors}}</span>
                 <div class="pull-left lh-18">
                   <span class="value-title color-white ff-rc">vendors</span>
                   <span class="dollar-sign ff-rc">$</span>
-                  <span class="value-sec ff-rc">42.01M</span>
+                  <span class="value-sec ff-rc">{{formatNumberFromString(tab.contractValue)}}</span>
                 </div>
               </h1>
             </div>
             <div class="count-sec-container clearfix">
               <h1 class="heading-value">
-                <span class="pull-left value-one ff-rc color-blue">98</span>
+                <span class="pull-left value-one ff-rc color-blue">{{tab.upcomingRenewalsR4}}</span>
                 <div class="pull-left lh-16">
                   <span class="value-title color-blue ff-rc">renewals</span>
                   <span class="dollar-sign ff-rc color-blue">$</span>
-                  <span class="value-sec ff-rc color-blue">42.01M</span>
+                  <span class="value-sec ff-rc color-blue">{{formatNumberFromString(tab.upcomingRenewalsValue)}}</span>
                 </div>
               </h1>
             </div>
@@ -49,14 +48,14 @@
                   Budget vs Spent
                 </h5>
                 <h5 class="lh-18">
-                  $ 42.01M<br />
-                  $ 42.01M
+                  $ {{formatNumberFromString(tab.Budget)}}<br />
+                  $ {{formatNumberFromString(tab.Spend)}}
                 </h5>
             </div>
             <div class="dept-alignment col-xs-5">
-              <div class="circle-container circle-white">
-               <div ng-circles value="alignmentGauges.hr.percent" width="20"
-                colors="['#FFF', alignmentGauges.hr.colors[1]]"></div>
+              <div class="circle-container circle-white" ng-if="deptAlignment.percent">
+               <div ng-circles value="deptAlignment.percent" width="20"
+                colors="deptAlignment.colors"></div>
               </div>
             </div>
           </div>
@@ -66,7 +65,7 @@
         </div>
         <div class="row vendors-progress">
           <div class="progress-container">
-            <progress-bar options="vendorsProgress.hr"/>
+            <progress-bar options="vendorsProgress"/>
           </div>
         </div>
         <div class="row vendors-row">
@@ -94,7 +93,6 @@
             </ul>
           </div>
         </div>
-
       </div>
 
     </div>

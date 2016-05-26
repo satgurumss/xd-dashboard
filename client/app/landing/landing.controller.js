@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .controller('LandingCtrl', ['$scope', '$http', '$location', "gaugesService", "loggedInUser", LandingCtrl])
+    .controller('LandingCtrl', ['$scope', '$http', '$location', "gaugesService", "loggedInUser", "utils", "XDENSITY", LandingCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
         if (isNaN(input)) return input;
@@ -10,9 +10,10 @@
       };
     });
 
-  function LandingCtrl($scope, $http, $location, gaugesService, loggedInUser) {
+  function LandingCtrl($scope, $http, $location, gaugesService, loggedInUser, utils, XDENSITY) {
     $scope.userRole = "";
     $scope.gauges = {};
+    $scope.organization = {};
 
     $scope.deptBarChartOptions = {
       colors: ["#C9C9C9", "#5494AB", "#C82E12"],
@@ -20,7 +21,7 @@
       chart: {
         type: "columnrange",
         inverted: true,
-        height: 100,
+        height: 90,
         width: 200,
         style: {
           fontFamily: "sans-serif"
@@ -43,7 +44,7 @@
 
       plotOptions: {
         bar: {
-          pointWidth: 10,
+          pointWidth: 5,
           pointPadding: 0,
           dataLabels: {
             color: '#707073',
@@ -196,62 +197,73 @@
       loggedInUser.fetchCurrentUser()
         .success(function(data, status, headers, config) {
           $scope.userRole = data.userRole
-          populateGaugeData($scope.userRole);
+          populateData();
         })
         .error(function(data, status, headers, config) {
           $location.url("#/")
         })
+    };
+
+    $scope.formatNumberFromString = function(value) {
+      return utils.formatNumberFromString(value)
     }
 
-    var populateGaugeData = function(userRole) {
+    var populateData = function(userRole) {
 
-      switch (userRole) {
-        case "CEO":
-          $scope.gauges = {
-            organization: {
-              percent: 25,
-              text: 30
-            },
-            hr_dept: {
-              percent: 50
-            },
-            fin_dept: {
-              percent: 80
-            },
-            brd_dept: {
-              percent: 25
-            },
-            tech_dept: {
-              percent: 70
-            },
-            vendors: {
-              percent: 50
-            }
-          };
-          break
+      $scope.gauges["organization"] = {};
+      $scope.gauges["vendors"] = {};
 
-        case "SLMGR":
-        case "FLDSL":
-          $scope.gauges = {
-            finance: {
-              percent: 50
-            },
-            customers: {
-              percent: 75
-            },
-            people: {
-              percent: 80,
-              text: "15d"
-            },
-            projects: {
-              percent: 50
-            }
-          };
-          break
-      }
+      $scope.gauges.organization["percent"] = utils.getGaugePercent("Organization");
+      $scope.gauges.vendors["percent"] = utils.getVendorsAlignment("Organization");
+
+      $scope.organization = utils.getDeptData("Organization");
+
+      //formatDeptChartData();
+
       $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
     }
 
-  }
+    function formatDeptChartData() {
+      var series = {
+        budget: [],
+        spent: [],
+        overSpent: []
+      };
 
+      _.each(XDENSITY.sheets.departments.data, function(dept) {
+        debugger
+        var budget = dept.Budget,
+          spent = dept.Spend,
+          diff = 0,
+          budgetData = spentData = overSpentData = {
+            low: 0,
+            high: 0
+          };
+
+        budget = formatNumberToSD(parseInt(budget.replace(/,/g, "")), 2);
+        spent = formatNumberToSD(parseInt(spent.replace(/,/g, "")), 2);
+        diff = budget - spent;
+
+        if (diff > 0) {
+          budgetData.low = spent;
+          budgetData.high = budget;
+
+          spentData.high = spent;
+        } else if (diff < 0) {
+          budgetData.high = budget;
+          
+          overSpentData.low = budget;
+          overSpentData.high = budget + -1(diff);
+        }
+
+        series.budget.push(budgetData);
+        series.spent.push(spentData);
+        series.overSpent.push(overSpentData);
+      });
+
+      $scope.deptBarChartOptions.series[0].data = series.budget
+      $scope.deptBarChartOptions.series[1].data = series.spent
+      $scope.deptBarChartOptions.series[2].data = series.overSpent
+    }
+  }
 })();

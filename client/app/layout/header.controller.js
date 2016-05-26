@@ -2,16 +2,16 @@
   'use strict';
 
   angular.module('app')
-    .controller('HeaderCtrl', ['$scope', '$rootScope', '$http', '$location', 'loggedInUser', HeaderCtrl])
+    .controller('HeaderCtrl', ['$scope', '$rootScope', '$http', '$location', 'loggedInUser', "spreadSheetService", HeaderCtrl])
 
-  function HeaderCtrl($scope, $rootScope, $http, $location, loggedInUser) {
+  function HeaderCtrl($scope, $rootScope, $http, $location, loggedInUser, spreadSheetService) {
     $scope.userRole = "";
 
     $scope.$on('userLoggedIn', function(event, args) {
       $scope.userRole = args.userRole;
     });
 
-/*    $scope.init = function() {
+    /*    $scope.init = function() {
       loggedInUser.fetchCurrentUser()
         .success(function(data, status, headers, config) {
           $scope.userRole = data.userRole;

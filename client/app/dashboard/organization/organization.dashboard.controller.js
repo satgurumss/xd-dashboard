@@ -2,29 +2,10 @@
   'use strict';
 
   angular.module('app')
-    .controller('OrganizationDashCtrl', ['$scope', '$http', '$location', "gaugesService", "CONST", "loggedInUser", OrganizationDashCtrl])
+    .controller('OrganizationDashCtrl', ['$scope', '$http', '$location', "gaugesService", "CONST", "loggedInUser", 'utils', "XDENSITY", "$log", OrganizationDashCtrl])
 
-  function OrganizationDashCtrl($scope, $http, $location, gaugesService, CONST, loggedInUser) {
-
-    $scope.gauges = {
-      hr: {
-        percent: 10,
-        colors: ['#BCBCBC', '#5B9B08']
-      },
-      broadcast: {
-        percent: 30,
-        colors: ['#BCBCBC', '#5B9B08']
-      },
-      finance: {
-        percent: 60,
-        colors: ['#BCBCBC', '#5B9B08']
-      },
-      technical: {
-        percent: 40,
-        colors: ['#BCBCBC', '#5B9B08']
-      }
-    };
-
+  function OrganizationDashCtrl($scope, $http, $location, gaugesService, CONST, loggedInUser, utils, XDENSITY, $log) {
+    $scope.gauges ={}
     $scope.chartConfig = {
       colors: ["#28bdc6", "rgba(144,228,173, .3)", "rgba(204, 230, 121, .3)"],
       chart: {
@@ -204,44 +185,108 @@
       barValue: "$ 20.45 M"
     }
 
-    $scope.vendorsProgress = {
-      percent: 50,
-      barLabel: "Vendors Aligned",
-      barValue: "5"
+    $scope.formatNumberFromString = function(value) {
+      return utils.formatNumberFromString(value)
     }
-
-    $scope.dashboardTitle = "";
 
     $scope.init = function() {
       loggedInUser.fetchCurrentUser()
         .success(function(data, status, headers, config) {
           loggedInUser.isLoggedIn("/organization-dashboard");
-          $scope.userRole = data.userRole
-
-          populatePageLabels($scope.userRole);
+          $scope.userRole = data.userRole;
+          $log.info("population")
+          populateData($scope.userRole);
         })
         .error(function(data, status, headers, config) {
           $location.url("#/")
         })
 
-     /* $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));*/
+      /* $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));*/
     }
 
-    var populatePageLabels = function(userRole) {
+    var populateData = function(userRole) {
 
-      switch (userRole) {
-        case "CEO":
-          $scope.dashboardTitle = "ORGANIZATION";
-          break
+      $scope.gauges["organization"] = {};
+      $scope.gauges["hr"] = {};
+      $scope.gauges["broadcast"] = {};
+      $scope.gauges["technical"] = {};
+      $scope.gauges["finance"] = {};
 
-        case "SLMGR":
-        case "FLDSL":
-          $scope.dashboardTitle = "MY SALES";
-          break
+      $scope.gauges.organization["colors"] = ['#BCBCBC', '#5B9B08']
+      $scope.gauges.hr["colors"] = ['#BCBCBC', '#5B9B08']
+      $scope.gauges.finance["colors"] = ['#BCBCBC', '#5B9B08']
+      $scope.gauges.technical["colors"] = ['#BCBCBC', '#5B9B08']
+      $scope.gauges.broadcast["colors"] = ['#BCBCBC', '#5B9B08']
+
+      $scope.gauges.organization["percent"] = utils.getGaugePercent("Organization");
+      $scope.gauges.hr["percent"] = utils.getGaugePercent("HR");
+      $scope.gauges.finance["percent"] = utils.getGaugePercent("Finance");
+      $scope.gauges.technical["percent"] = utils.getGaugePercent("Tech");
+      $scope.gauges.broadcast["percent"] = utils.getGaugePercent("Broadcast");
+
+      $scope.organization = utils.getDeptData("Organization");
+      
+      $scope.vendorsProgress = {
+        percent: utils.getVendorsAlignment("Organization"),
+        barLabel: "Vendors Aligned",
+        barValue: $scope.organization.fYAlignment
       }
+
+      $scope.deptBudget = {
+        hr: utils.getDeptData("HR").Budget,
+        broadcast: utils.getDeptData("Broadcast").Budget,
+        finance: utils.getDeptData("Finance").Budget,
+        technical: utils.getDeptData("Tech").Budget,
+      }
+
+
+      //formatDeptChartData();
+
+      //$scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
     }
 
+    function formatDeptChartData() {
+      var series = {
+        budget: [],
+        spent: [],
+        overSpent: []
+      };
 
+      _.each(XDENSITY.sheets.departments.data, function(dept) {
+        debugger
+        var budget = dept.Budget,
+          spent = dept.Spend,
+          diff = 0,
+          budgetData = spentData = overSpentData = {
+            low: 0,
+            high: 0
+          };
+
+        budget = formatNumberToSD(parseInt(budget.replace(/,/g, "")), 2);
+        spent = formatNumberToSD(parseInt(spent.replace(/,/g, "")), 2);
+        diff = budget - spent;
+
+        if (diff > 0) {
+          budgetData.low = spent;
+          budgetData.high = budget;
+
+          spentData.high = spent;
+        } else if (diff < 0) {
+          budgetData.high = budget;
+
+          overSpentData.low = budget;
+          overSpentData.high = budget + -1(diff);
+        }
+
+        series.budget.push(budgetData);
+        series.spent.push(spentData);
+        series.overSpent.push(overSpentData);
+      });
+
+      $scope.deptBarChartOptions.series[0].data = series.budget
+      $scope.deptBarChartOptions.series[1].data = series.spent
+      $scope.deptBarChartOptions.series[2].data = series.overSpent
+    }
   }
 
 })();
