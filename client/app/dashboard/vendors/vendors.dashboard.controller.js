@@ -183,7 +183,7 @@
       }]
     };
 
-    $scope.vendorsChartOptions = {
+    $scope.topVendorsChart = {
       colors: ["#72B6D7"],
 
       chart: {
@@ -327,16 +327,20 @@
     }
 
     var populateData = function(userRole) {
-
+      var vendorsTrend =[];
       $scope.vendors = {};
+      $scope.topVendors = utils.getTopVendors("Organization");
 
       $scope.vendors["percent"] = utils.getVendorsAlignment("Organization");
       $scope.vendors["colors"] = ['#BCBCBC', '#4792C1']
 
       $scope.organization = utils.getDeptData("Organization");
 
-      //formatDeptChartData();
-
+      $scope.topVendorsChart.series[0].data = [];
+      _.each($scope.topVendors, function(vendor){
+        vendorsTrend.push(vendor.contractValue);
+      });
+      $scope.topVendorsChart.series[0].data = vendorsTrend;
       //$scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
     }
   }

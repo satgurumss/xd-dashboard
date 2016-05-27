@@ -326,7 +326,6 @@
       $scope.deptTrendChart.series[0].data = [];
       $scope.deptTrendChart.series[0].data = [trendData["2014"].spend, trendData["2015"].spend, trendData["2016"].spend]
 
-
       $scope.topVendorsChart.series[0].data = [];
       _.each($scope.topVendors, function(vendor){
         vendorsTrend.push(vendor.contractValue);

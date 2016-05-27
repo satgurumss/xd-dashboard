@@ -479,9 +479,15 @@
 
     function getTopVendors(deptName) {
       var topVendors = [],
+        deptVendors = [];
+
+      if(deptName !== "Organization"){
         deptVendors = _.filter(XDENSITY.sheets.vendors.data, function(vendor) {
           return vendor.businessVertical === deptName;
         });
+      } else {
+        deptVendors = XDENSITY.sheets.vendors.data;
+      }
 
       deptVendors = _.sortBy(deptVendors, function(vendor){
         vendor.contractValue = angular.copy( parseInt( vendor.contractValue2016.replace(/,/g, "") ) )/ 1000000;

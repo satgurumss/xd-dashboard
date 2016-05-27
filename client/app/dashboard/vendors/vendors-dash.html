@@ -44,24 +44,12 @@
       <div class="row vendors-row">
           <h3 class="vendors-heading text-center">Top 5 Vendors</h3>
           <div class="col-xs-4 margin-t10">
-            <hc-chart options="vendorsChartOptions"/>
+            <hc-chart options="topVendorsChart"/>
           </div>
           <div class="col-xs-8 margin-t10">
             <ul>
-              <li>
-                Acme Corporation
-              </li>
-              <li>
-                Mercury Consulting
-              </li>
-              <li>
-                Omega Technologies
-              </li>
-              <li>
-                Starlight Systems
-              </li>
-              <li>
-                Platinum Consulting
+              <li ng-repeat ="vendor in topVendors">
+                {{vendor.vendorName}}
               </li>
             </ul>
           </div>
