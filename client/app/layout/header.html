@@ -25,11 +25,11 @@
             
             <!-- custom dashboards section based on user roles -->
             <li ng-include="'app/layout/nav-bar-templates/ceo-dashboards.html'" 
-              ng-if="userRole == 'CEO' || userRole == 'CTO' "/>
-            <li ng-include="'app/layout/nav-bar-templates/sales-mgr-dashboards.html'" 
+              ng-if="userRole == 'CEO' || userRole == 'CTO' || userRole == 'SLMGR' || userRole == 'FLDSL' "/>
+            <!-- <li ng-include="'app/layout/nav-bar-templates/sales-mgr-dashboards.html'" 
               ng-if="userRole == 'SLMGR'"/>
             <li ng-include="'app/layout/nav-bar-templates/field-sales-dashboards.html'" 
-              ng-if="userRole == 'FLDSL'"/>
+              ng-if="userRole == 'FLDSL'"/> -->
             <!--#############-->
 
             <li class="nav-item">

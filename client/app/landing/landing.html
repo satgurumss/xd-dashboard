@@ -6,10 +6,10 @@
       </div>
     </div>
   </div>
-  <div ng-include="'app/landing/ceo-template.html'" ng-if="userRole == 'CEO'"/>
-  <div ng-include="'app/landing/cto-template.html'" ng-if="userRole == 'CTO'"/>
+  <div ng-include="'app/landing/ceo-template.html'" ng-if="userRole == 'CEO' || userRole == 'CTO' || userRole == 'SLMGR' || userRole == 'FLDSL'"/>
+  <!-- <div ng-include="'app/landing/cto-template.html'" ng-if="userRole == 'CTO'"/>
   <div ng-include="'app/landing/sales-mgr-template.html'" ng-if="userRole == 'SLMGR'"/>
-  <div ng-include="'app/landing/field-sales-template.html'" ng-if="userRole == 'FLDSL'"/>
+  <div ng-include="'app/landing/field-sales-template.html'" ng-if="userRole == 'FLDSL'"/> -->
 
   <div class="bottom-section">
     <ul class="icons-list row">

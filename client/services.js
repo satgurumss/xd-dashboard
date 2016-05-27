@@ -39,14 +39,15 @@
               $location.url("/signin");
             } else {
 
-              if (!usingHypr)
+              if (!usingHypr) {
                 $rootScope.$broadcast("userLoggedIn", {
                   "userRole": data.user.userRole
                 });
-              else
+              } else {
                 $rootScope.$broadcast("userLoggedIn", {
                   "userRole": "CEO"
                 });
+              }
 
               $location.url(route)
             }
@@ -422,7 +423,7 @@
 
     function formatNumberFromString(number) {
       var formattedNumber = abbreviateNumber(parseInt(number.replace(/,/g, "")));
-      return ! _.isNaN(formattedNumber) ? formattedNumber : "-";
+      return !_.isNaN(formattedNumber) ? formattedNumber : "-";
     }
 
     function getVendorsAlignment(property) {
@@ -482,7 +483,7 @@
       var topVendors = [],
         deptVendors = [];
 
-      if(deptName !== "Organization"){
+      if (deptName !== "Organization") {
         deptVendors = _.filter(XDENSITY.sheets.vendors.data, function(vendor) {
           return vendor.businessVertical === deptName;
         });
@@ -490,25 +491,25 @@
         deptVendors = XDENSITY.sheets.vendors.data;
       }
 
-      deptVendors = _.sortBy(deptVendors, function(vendor){
-        vendor.contractValue = angular.copy( parseInt( vendor.contractValue2016.replace(/,/g, "") ) )/ 1000000;
+      deptVendors = _.sortBy(deptVendors, function(vendor) {
+        vendor.contractValue = angular.copy(parseInt(vendor.contractValue2016.replace(/,/g, ""))) / 1000000;
         vendor.contractValue = parseFloat(vendor.contractValue.toFixed(2));
         return vendor.contractValue;
       }).reverse();
 
-      topVendors = deptVendors.splice(0,5);
+      topVendors = deptVendors.splice(0, 5);
 
-/*      _.each(topVendors, function(vendor){
+      /*      _.each(topVendors, function(vendor){
         vendor.contractValue = formatNumberToSD(vendor.contractValue);
       });*/
 
       return topVendors;
     }
 
-    function validateExcelData(callback){
-      if(XDENSITY.isLoaded)
+    function validateExcelData(callback) {
+      if (XDENSITY.isLoaded)
         callback()
-      else{
+      else {
         spreadSheetService.fetchData(XDENSITY.spreadSheetId, XDENSITY.sheets, callback);
         XDENSITY.isLoaded = true;
       }
@@ -520,12 +521,12 @@
       getDeptData: getDeptData,
       getDeptTrendData: getDeptTrendData,
       formatNumberFromString: formatNumberFromString,
-      getTopVendors:getTopVendors,
+      getTopVendors: getTopVendors,
       getVendorsAlignment: getVendorsAlignment,
       getDataFromDepartments: getDataFromDepartments,
       getAutoCompleteData: getAutoCompleteData,
       searchVendors: searchVendors,
-      validateExcelData : validateExcelData
+      validateExcelData: validateExcelData
     }
   }
 

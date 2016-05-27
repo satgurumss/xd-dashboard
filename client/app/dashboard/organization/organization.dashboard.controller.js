@@ -232,7 +232,7 @@
 
       $scope.vendorsProgress = {
         percent: utils.getVendorsAlignment("Organization"),
-        barLabel: "Vendors Aligned",
+        barLabel: "% Aligned",
         barValue: $scope.organization.fYAlignment
       }
 
