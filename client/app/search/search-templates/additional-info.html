@@ -7,10 +7,10 @@
         </div>
         <div class="row">
           <div class="col-xs-6">
-            <h5 class="currency-value">
+            <h5 class="value-label" style="margin: 0 0 3px;">VALUE</h5>
+            <h5 class="currency-value" style="margin: 0;">
               <span class="currency-label">$</span>
               {{abbreviateNumber(result.contract.value,2)}}
-              <span class="value-label">value</span>
            </h5>
           </div>
 
@@ -39,7 +39,7 @@
         <img src="images/timeline.jpg" class="img-responsive">
       </div>
 
-      <div class="result-trend" style="padding: 10px 15px;">
+      <div class="result-trend" style="padding: 10px 0;">
         <hc-chart-dynamic options="resultTrendInfo" series="result.contract.valueTrend"/>
       </div>
     </uib-accordion-group>

@@ -225,7 +225,7 @@
       $scope.gauges.broadcast["percent"] = utils.getGaugePercent("Broadcast");
 
       $scope.organization = utils.getDeptData("Organization");
-      
+
       $scope.vendorsProgress = {
         percent: utils.getVendorsAlignment("Organization"),
         barLabel: "Vendors Aligned",
