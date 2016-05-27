@@ -19,11 +19,11 @@
           </div>
         </div>
         <div class="row dept-summary-section">
-          <div class="dept-info-section col-xs-5">
+          <div class="dept-info-section col-xs-5 pr-0">
             <div class="count-sec-container clearfix hr-line">
-              <h1 class="heading-value">
-                <span class="pull-left value-one ff-rc">{{tab.vendors}}</span>
-                <div class="pull-left lh-18">
+              <h1 class="heading-value text-center">
+                <span class="value-one display-inline-block ff-rc">{{tab.vendors}}</span>
+                <div class="lh-16 display-inline-block text-left">
                   <span class="value-title color-white ff-rc">vendors</span>
                   <span class="dollar-sign ff-rc">$</span>
                   <span class="value-sec ff-rc" ng-if="tab">{{formatNumberFromString(tab.contractValue)}}</span>
@@ -31,9 +31,9 @@
               </h1>
             </div>
             <div class="count-sec-container clearfix">
-              <h1 class="heading-value">
-                <span class="pull-left value-one ff-rc color-blue">{{tab.upcomingRenewalsR4}}</span>
-                <div class="pull-left lh-16">
+              <h1 class="heading-value text-center">
+                <span class="value-one display-inline-block ff-rc color-blue">{{tab.upcomingRenewalsR4}}</span>
+                <div class="lh-16 display-inline-block text-left">
                   <span class="value-title color-blue ff-rc">renewals</span>
                   <span class="dollar-sign ff-rc color-blue">$</span>
                   <span class="value-sec ff-rc color-blue" ng-if="tab">
@@ -42,7 +42,6 @@
                 </div>
               </h1>
             </div>
-
           </div>
           <div class="dept-alignment-section col-xs-7">
             <div class="dept-renewals col-xs-7 big-number text-right">
@@ -71,12 +70,12 @@
           </div>
         </div>
         <div class="row vendors-row">
-          <h3 class="vendors-heading text-center">Top 5 Vendors</h3>
-          <div class="col-xs-4 margin-t10">
+          <h4 class="vendors-heading text-center">Top 5 Vendors</h4>
+          <div class="col-xs-5 margin-t10">
             <hc-chart options="topVendorsChart"/>
           </div>
-          <div class="col-xs-8 margin-t10">
-            <ul>
+          <div class="col-xs-7 margin-t10">
+            <ul class="top-venters-labels">
               <li ng-repeat = "vendor in topVendors">
                 {{vendor.vendorName}}
               </li>
@@ -91,4 +90,24 @@
 </div>
 
 <style type="text/css">
+
+.page-dashboard-customer .vendors-row {
+  background: #EDEDED;
+  padding: 10px 0;
+  color: #2A2A2B;
+  font-family: "roboto condensed", sans-serif;
+}
+.page-dashboard-customer .vendors-row ul {
+  font-size: 12px;
+  margin-left: 10px;
+}
+.page-dashboard-customer .vendors-row ul li {
+  padding: 1px 0;
+  line-height: 18px;
+}
+.page-dashboard-customer .vendors-row .vendors-heading {
+  font-size: 18px;
+  font-family: "Droid Sans";
+  margin: 10px 0;
+}
 </style>

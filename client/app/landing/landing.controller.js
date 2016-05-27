@@ -101,6 +101,7 @@
         lineColor: 'transparent',
         minorTickLength: 0,
         tickLength: 0,
+        min:0,
         gridLineColor: 'transparent',
       },
 

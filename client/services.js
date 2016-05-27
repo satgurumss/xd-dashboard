@@ -421,7 +421,8 @@
     }
 
     function formatNumberFromString(number) {
-      return abbreviateNumber(parseInt(number.replace(/,/g, "")));
+      var formattedNumber = abbreviateNumber(parseInt(number.replace(/,/g, "")));
+      return ! _.isNaN(formattedNumber) ? formattedNumber : "-";
     }
 
     function getVendorsAlignment(property) {

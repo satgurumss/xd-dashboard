@@ -1,4 +1,4 @@
-<div class="container page-dashboard organization-dashboard" data-ng-controller="OrganizationDashCtrl" 
+<div class="container page-dashboard organization-dashboard" data-ng-controller="OrganizationDashCtrl"
 ng-init="init()">
     <div class="panel-container">
 
@@ -106,19 +106,20 @@ ng-init="init()">
   }
 
   .organization-dashboard .revenue-container .left-contents {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 9px;
   }
 
   .organization-dashboard .revenue-container .finance-db-heading {
     background: url(../images/right-organization.png) no-repeat top right;
     background-size: contain;
-    height: 67px;
+    height: 72px;
   }
 
   .organization-dashboard .revenue-container h1 {
     font-family: "Roboto Condensed";
     font-weight: bold;
+    font-size: 42px;
+    color: #82B73C;
   }
 
   .organization-dashboard .vendors-progress {
@@ -147,6 +148,7 @@ ng-init="init()">
   .organization-dashboard .renewal-value {
     display: inline-block;
     margin: 4px 0;
+    font-size: 42px;
   }
 
   .organization-dashboard .vendors-progress .inner-contents .session-value,
@@ -161,6 +163,7 @@ ng-init="init()">
   .organization-dashboard .vendors-progress .label-out {
     display: block;
     width: 100%;
+    text-align: right;
   }
 
   .organization-dashboard .dept-charts-container {
@@ -174,6 +177,7 @@ ng-init="init()">
     text-align: center;
     margin: 0 0 10px;
     font-size: 18px;
+    font-family: "Droid Sans";
   }
 
   .organization-dashboard .dept-charts-container .titles-container {
@@ -185,9 +189,10 @@ ng-init="init()">
   .organization-dashboard .dept-charts-container .titles-container span {
     position: relative;
     padding: 5px 0;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     text-align: center;
+    font-family: "Droid Sans";
   }
 
   .organization-dashboard .dept-charts-container .titles-container span:after {
@@ -198,6 +203,9 @@ ng-init="init()">
     top: 100%;
     left: 50%;
     margin-left: -8px;
+  }
+  .organization-dashboard .revenue-container h3 {
+    color: #82B73C;
   }
 
 </style>

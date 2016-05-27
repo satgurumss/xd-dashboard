@@ -20,6 +20,86 @@
     $scope.resultsList = [{
       vendor: {
         id: 1,
+        title: "American Express"
+      },
+      contract: {
+        title: "Account Management",
+        type: "Finance",
+        dept: "Finance",
+        startDate: "01 Sep 2015",
+        endDate: "31 Aug 2016",
+        daysToRenewal: 60,
+        fiscalYear: "Jun 2016",
+        value: 8500000,
+        valueTrend: [46, 75, 80]
+      }
+    },{
+      vendor: {
+        id: 1,
+        title: "American Express"
+      },
+      contract: {
+        title: "Account Management",
+        type: "Finance",
+        dept: "Finance",
+        startDate: "01 Sep 2015",
+        endDate: "31 Aug 2016",
+        daysToRenewal: 60,
+        fiscalYear: "Jun 2016",
+        value: 8500000,
+        valueTrend: [46, 75, 80]
+      }
+    },{
+      vendor: {
+        id: 1,
+        title: "American Express"
+      },
+      contract: {
+        title: "Account Management",
+        type: "Finance",
+        dept: "Finance",
+        startDate: "01 Sep 2015",
+        endDate: "31 Aug 2016",
+        daysToRenewal: 60,
+        fiscalYear: "Jun 2016",
+        value: 8500000,
+        valueTrend: [46, 75, 80]
+      }
+    },{
+      vendor: {
+        id: 1,
+        title: "American Express"
+      },
+      contract: {
+        title: "Account Management",
+        type: "Finance",
+        dept: "Finance",
+        startDate: "01 Sep 2015",
+        endDate: "31 Aug 2016",
+        daysToRenewal: 60,
+        fiscalYear: "Jun 2016",
+        value: 8500000,
+        valueTrend: [46, 75, 80]
+      }
+    },{
+      vendor: {
+        id: 1,
+        title: "American Express"
+      },
+      contract: {
+        title: "Account Management",
+        type: "Finance",
+        dept: "Finance",
+        startDate: "01 Sep 2015",
+        endDate: "31 Aug 2016",
+        daysToRenewal: 60,
+        fiscalYear: "Jun 2016",
+        value: 8500000,
+        valueTrend: [46, 75, 80]
+      }
+    },{
+      vendor: {
+        id: 1,
         title: "Microsoft"
       },
       contract: {
@@ -119,7 +199,7 @@
       colors: ["#28bdc6", "rgba(144,228,173, .3)", "rgba(204, 230, 121, .3)"],
       chart: {
         width: 290,
-        height: 300,
+        height: 290,
         spacingRight: 20,
         spacingTop: 20,
         backgroundColor: {

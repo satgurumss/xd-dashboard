@@ -184,6 +184,7 @@
         style: {
           fontFamily: "sans-serif"
         },
+        backgroundColor: "#EDEDED",
         plotBorderColor: '#606063',
         spacingTop: 0,
         spacingBottom: 0,

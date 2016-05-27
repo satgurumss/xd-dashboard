@@ -1,9 +1,9 @@
 var Sequelize = require('sequelize'),
-	sequelize = new Sequelize('xdensity-db', 'root', null, {
+	sequelize = new Sequelize('xdensitydb', 'root', 'root', {
 		dialect: "mysql",
 		// or 'sqlite', 'postgres', 'mariadb'
 		host: 'localhost',
-		port: 3306, // or 5432 (for postgres)
+		port: 8889, // or 5432 (for postgres)
 		logging: false
 	});
 
@@ -447,7 +447,7 @@ TeamModel.belongsToMany(EmployeeModel, {
 // REF_LEAVE RELATIONS
 EmployeeLeaveModel.belongsTo(RefLeaveModel,{
 	foreignKey: "leaveType"
-}); 
+});
 
 //CUSTOMERS RELATIONS
 CustomerModel.hasMany(CustomerFeedbackModel, {
@@ -465,7 +465,7 @@ CustomerModel.hasMany(SaleModel, {
 // REF_LEAVE RELATIONS
 CustomerModel.belongsTo(RefCountryCodeModel,{
 	foreignKey: "customer_country_code"
-}); 
+});
 
 
 //DEPT RELATIONS
