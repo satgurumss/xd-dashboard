@@ -33,7 +33,7 @@
         value: 8500000,
         valueTrend: [46, 75, 80]
       }
-    },{
+    }, {
       vendor: {
         id: 1,
         title: "American Express"
@@ -49,7 +49,7 @@
         value: 8500000,
         valueTrend: [46, 75, 80]
       }
-    },{
+    }, {
       vendor: {
         id: 1,
         title: "American Express"
@@ -65,7 +65,7 @@
         value: 8500000,
         valueTrend: [46, 75, 80]
       }
-    },{
+    }, {
       vendor: {
         id: 1,
         title: "American Express"
@@ -81,7 +81,7 @@
         value: 8500000,
         valueTrend: [46, 75, 80]
       }
-    },{
+    }, {
       vendor: {
         id: 1,
         title: "American Express"
@@ -97,7 +97,7 @@
         value: 8500000,
         valueTrend: [46, 75, 80]
       }
-    },{
+    }, {
       vendor: {
         id: 1,
         title: "Microsoft"
@@ -389,9 +389,10 @@
       //$scope.numberToFetch[0] = ($scope.currentPage - 1) * $scope.numPerPage;
       $scope.searchedVendor = angular.copy($scope.queryText);
       $scope.firstSearch = false;
-      $scope.currentPageItems = _.filter($scope.resultsList, function(item) {
+      $scope.currentPageItems = [];
+      $scope.currentPageItems = angular.copy(_.filter($scope.resultsList, function(item) {
         return item.vendor.title === $scope.queryText
-      });
+      }));
 
       /*$scope.currentPageItems = utils.searchVendors($scope.queryText);
 
@@ -452,15 +453,15 @@
       }
     }
 
-    $scope.openDetails = function(index) {
-      $scope.resultsList[index].isFirstOpen = !$scope.resultsList[index].isFirstOpen;
+    $scope.openDetails = function(result) {
+      result.isFirstOpen = true;
 
       $scope.resultTrendInfo.series[0].data = [];
-      $scope.resultTrendInfo.series[0].data = angular.copy($scope.resultsList[index].contract.valueTrend);
+      $scope.resultTrendInfo.series[0].data = angular.copy(result.contract.valueTrend);
     }
 
-    $scope.closeDetails = function(index) {
-      $scope.resultsList[index].isFirstOpen = !$scope.resultsList[index].isFirstOpen;
+    $scope.closeDetails = function(result) {
+      result.isFirstOpen = false;
     }
   }
 })();
