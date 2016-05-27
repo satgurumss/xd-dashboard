@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .controller('DepartmentDashCtrl', ['$scope', '$http', '$location', 'gaugesService', "CONST", "loggedInUser", "utils", DepartmentDashCtrl])
+    .controller('DepartmentDashCtrl', ['$scope', '$http', '$location', 'gaugesService', "CONST", "loggedInUser", "utils", "$log", DepartmentDashCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
         if (isNaN(input)) return input;
@@ -10,9 +10,9 @@
       };
     });
 
-  function DepartmentDashCtrl($scope, $http, $location, gaugesService, CONST, loggedInUser, utils) {
+  function DepartmentDashCtrl($scope, $http, $location, gaugesService, CONST, loggedInUser, utils, $log) {
 
-    $scope.chartConfig = {
+    $scope.deptTrendChart = {
       colors: ["#28bdc6", "rgba(144,228,173, .3)", "rgba(204, 230, 121, .3)"],
       chart: {
         height: 225,
@@ -164,7 +164,7 @@
         type: 'area',
         fillColor: "rgba(40, 189, 198, 0.3)",
         name: 'Spent',
-        data: [10.0, 14.5, 18.3],
+        data: [10, 10, 10],
         marker: {
           symbol: 'circle',
           fillColor: '#303031',
@@ -174,7 +174,7 @@
       }]
     };
 
-    $scope.vendorsChartOptions = {
+    $scope.topVendorsChart = {
       colors: ["#72B6D7"],
 
       chart: {
@@ -294,19 +294,27 @@
     };
 
     $scope.init = function(argument) {
-      loggedInUser.isLoggedIn("/department-dashboard");
-      loggedInUser.fetchCurrentUser()
-        .success(function(data, status, headers, config) {
-          $scope.userRole = data.userRole
-          $scope.setActiveTab("HR")
-        })
-        .error(function(data, status, headers, config) {
-          $location.url("#/")
-        })
-      //$scope.alignmentGauges = angular.copy(gaugesService.updateGaugeState($scope.alignmentGauges));
+      utils.validateExcelData(function() {
+        loggedInUser.isLoggedIn("/department-dashboard");
+        loggedInUser.fetchCurrentUser()
+          .success(function(data, status, headers, config) {
+            $scope.userRole = data.userRole;
+            $scope.setActiveTab("HR");
+          })
+          .error(function(data, status, headers, config) {
+            $location.url("#/")
+          })
+        //$scope.alignmentGauges = angular.copy(gaugesService.updateGaugeState($scope.alignmentGauges));
+      });
     }
 
     $scope.setActiveTab = function(activeTab) {
+      var trendData = utils.getDeptTrendData(activeTab),
+          vendorsTrend = [];
+      
+      $scope.topVendors = utils.getTopVendors(activeTab);
+      $log.info($scope.topVendors);
+      $log.info($scope.topVendors);
       $scope.tab = angular.copy(utils.getDeptData(activeTab));
 
       $scope.vendorsProgress = {
@@ -315,9 +323,19 @@
         barValue: $scope.tab.fYAlignment
       }
 
+      $scope.deptTrendChart.series[0].data = [];
+      $scope.deptTrendChart.series[0].data = [trendData["2014"].spend, trendData["2015"].spend, trendData["2016"].spend]
+
+
+      $scope.topVendorsChart.series[0].data = [];
+      _.each($scope.topVendors, function(vendor){
+        vendorsTrend.push(vendor.contractValue);
+      });
+      $scope.topVendorsChart.series[0].data = vendorsTrend;
+
       $scope.deptAlignment = {
         percent: utils.getGaugePercent(activeTab),
-        colors:['#BCBCBC', '#4792C1']
+        colors: ['#BCBCBC', '#4792C1']
       };
     }
 

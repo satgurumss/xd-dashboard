@@ -11,6 +11,7 @@
     });
 
   function VendorsDashCtrl($scope, $http, $location, gaugesService, CONST, loggedInUser, utils) {
+
     $scope.chartConfig = {
       colors: ["#28bdc6", "rgba(144,228,173, .3)", "rgba(204, 230, 121, .3)"],
       chart: {
@@ -192,7 +193,7 @@
         style: {
           fontFamily: "sans-serif"
         },
-        backgroundColor:"#EDEDED",
+        backgroundColor: "#EDEDED",
         plotBorderColor: '#EDEDED',
         spacingTop: 0,
         spacingBottom: 0,
@@ -303,16 +304,18 @@
     };
 
     $scope.init = function() {
-      loggedInUser.isLoggedIn("/vendors-dashboard");
+      utils.validateExcelData(function() {
+        loggedInUser.isLoggedIn("/vendors-dashboard");
 
-      loggedInUser.fetchCurrentUser()
-        .success(function(data, status, headers, config) {
-          $scope.userRole = data.userRole;
-          populateData($scope.userRole);
-        })
-        .error(function(data, status, headers, config) {
-          $location.url("#/")
-        })
+        loggedInUser.fetchCurrentUser()
+          .success(function(data, status, headers, config) {
+            $scope.userRole = data.userRole;
+            populateData($scope.userRole);
+          })
+          .error(function(data, status, headers, config) {
+            $location.url("#/")
+          })
+      });
     }
 
     $scope.goToSearchVendors = function() {

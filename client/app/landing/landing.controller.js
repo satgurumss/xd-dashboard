@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .controller('LandingCtrl', ['$scope', '$http', '$location', "gaugesService", "loggedInUser", "utils", "XDENSITY", LandingCtrl])
+    .controller('LandingCtrl', ['$scope', '$http', '$location', "gaugesService", "loggedInUser", "utils", "XDENSITY", "$log", "spreadSheetService", LandingCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
         if (isNaN(input)) return input;
@@ -10,7 +10,8 @@
       };
     });
 
-  function LandingCtrl($scope, $http, $location, gaugesService, loggedInUser, utils, XDENSITY) {
+  function LandingCtrl($scope, $http, $location, gaugesService, loggedInUser, utils, XDENSITY, $log, spreadSheetService) {
+
     $scope.userRole = "";
     $scope.gauges = {};
     $scope.organization = {};
@@ -104,7 +105,7 @@
       },
 
       xAxis: {
-        categories: ['HR', 'Broadcast', 'Financial', 'Technical'],
+        categories: ['Broadcast', 'Financial', 'HR', 'Technical'],
         min: 0,
         max: 3,
         title: {
@@ -192,16 +193,19 @@
     }
 
     $scope.init = function() {
-      loggedInUser.isLoggedIn("/landing");
+      utils.validateExcelData(function() {
+        //XDENSITY.isLoaded = true;
+        loggedInUser.isLoggedIn("/landing");
 
-      loggedInUser.fetchCurrentUser()
-        .success(function(data, status, headers, config) {
-          $scope.userRole = data.userRole
-          populateData();
-        })
-        .error(function(data, status, headers, config) {
-          $location.url("#/")
-        })
+        loggedInUser.fetchCurrentUser()
+          .success(function(data, status, headers, config) {
+            $scope.userRole = data.userRole;
+            populateData();
+          })
+          .error(function(data, status, headers, config) {
+            $location.url("#/")
+          })
+      });
     };
 
     $scope.formatNumberFromString = function(value) {
@@ -218,7 +222,7 @@
 
       $scope.organization = utils.getDeptData("Organization");
 
-      //formatDeptChartData();
+      formatDeptChartData();
 
       $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
     }
@@ -230,35 +234,53 @@
         overSpent: []
       };
 
-      _.each(XDENSITY.sheets.departments.data, function(dept) {
-        debugger
-        var budget = dept.Budget,
-          spent = dept.Spend,
-          diff = 0,
-          budgetData = spentData = overSpentData = {
-            low: 0,
-            high: 0
-          };
+      var departments = _.filter(XDENSITY.sheets.departments.data, function(dept, key) {
+        return key !== "Organization"
+      });
+      _.each(departments, function(dept) {
+        if (dept.department != "Organization") {
+          $log.info("Current department")
+          $log.info(dept)
 
-        budget = formatNumberToSD(parseInt(budget.replace(/,/g, "")), 2);
-        spent = formatNumberToSD(parseInt(spent.replace(/,/g, "")), 2);
-        diff = budget - spent;
+          var budget = dept.Budget,
+            spent = dept.Spend,
+            diff = 0,
+            budgetData = {
+              low: 0,
+              high: 0
+            },
+            spentData = {
+              low: 0,
+              high: 0
+            },
+            overSpentData = {
+              low: 0,
+              high: 0
+            };
 
-        if (diff > 0) {
-          budgetData.low = spent;
-          budgetData.high = budget;
+          budget = parseInt(budget.replace(/,/g, "")) / 1000000;
+          spent = parseInt(spent.replace(/,/g, "")) / 1000000;
 
-          spentData.high = spent;
-        } else if (diff < 0) {
-          budgetData.high = budget;
-          
-          overSpentData.low = budget;
-          overSpentData.high = budget + -1(diff);
+          budget = parseFloat(budget.toFixed(2));
+          spent = parseFloat(spent.toFixed(2));
+          diff = budget - spent;
+
+          if (diff > 0) {
+            budgetData.low = spent;
+            budgetData.high = budget;
+
+            spentData.high = spent;
+          } else if (diff < 0) {
+            budgetData.high = budget;
+
+            overSpentData.low = budget;
+            overSpentData.high = budget + -1 * (diff);
+          }
+
+          series.budget.push(budgetData);
+          series.spent.push(spentData);
+          series.overSpent.push(overSpentData);
         }
-
-        series.budget.push(budgetData);
-        series.spent.push(spentData);
-        series.overSpent.push(overSpentData);
       });
 
       $scope.deptBarChartOptions.series[0].data = series.budget
