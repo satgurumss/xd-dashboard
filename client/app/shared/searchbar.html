@@ -4,7 +4,7 @@
     <div class="ui-typeahead search-field">
       <input
         type="text"
-        uib-typeahead="vendor for vendor in vendorsList"
+        uib-typeahead="entry.vendorName for entry in fetchAutoComplete($viewValue) "
         typeahead-focus-first = "false"
         typeahead-on-select = "onAutoCompleteSelect($item, $model, $label)"
         class="form-control btn-rounded"

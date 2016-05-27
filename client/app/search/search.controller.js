@@ -2,9 +2,9 @@
   'use strict';
 
   angular.module('app')
-    .controller('SearchCtrl', ['$scope', '$http', '$location', 'loggedInUser', '$log', SearchCtrl])
+    .controller('SearchCtrl', ['$scope', '$http', '$location', 'loggedInUser', '$log', "XDENSITY", "utils", SearchCtrl])
 
-  function SearchCtrl($scope, $http, $location, loggedInUser, $log) {
+  function SearchCtrl($scope, $http, $location, loggedInUser, $log, XDENSITY, utils) {
 
     $scope.blankslateMsg = "Please enter search keywords above to begin";
     $scope.numPerPageOpt = [3, 5, 10];
@@ -47,7 +47,7 @@
         daysToRenewal: 60,
         fiscalYear: "Jun 2016",
         value: 8500000,
-        valueTrend: [80,46,75]
+        valueTrend: [80, 46, 75]
       }
     }, {
       vendor: {
@@ -63,7 +63,7 @@
         daysToRenewal: 60,
         fiscalYear: "Jun 2016",
         value: 8500000,
-        valueTrend: [30,75,90]
+        valueTrend: [30, 75, 90]
       }
     }, {
       vendor: {
@@ -120,8 +120,8 @@
       chart: {
         width: 290,
         height: 300,
-        spacingRight:20,
-        spacingTop:20,
+        spacingRight: 20,
+        spacingTop: 20,
         backgroundColor: {
           linearGradient: {
             x1: 1,
@@ -287,7 +287,17 @@
     };
 
     $scope.init = function() {
-      loggedInUser.isLoggedIn("/search");
+      utils.validateExcelData(function() {
+        loggedInUser.isLoggedIn("/search");
+
+        loggedInUser.fetchCurrentUser()
+          .success(function(data, status, headers, config) {
+            $scope.userRole = data.userRole;
+          })
+          .error(function(data, status, headers, config) {
+            $location.url("#/")
+          })
+      });
     }
 
     $scope.searchBar = function() {
@@ -302,6 +312,11 @@
       $scope.currentPageItems = _.filter($scope.resultsList, function(item) {
         return item.vendor.title === $scope.queryText
       });
+
+      /*$scope.currentPageItems = utils.searchVendors($scope.queryText);
+
+      $log.info("Search Results")
+      $log.info($scope.currentPageItems);*/
     };
 
     $scope.onAutoCompleteSelect = function($item, $model, $label) {
@@ -315,11 +330,11 @@
       $scope.queryText = queryText;
     }
 
-    /* $scope.fetchAutoComplete = function(queryText) {
-      return backendApi.getAutocompleteData(queryText).then(function(res) {
-        return res.data;
-      });
-    }*/
+    $scope.fetchAutoComplete = function(queryText) {
+      var autcompleteData = utils.getAutoCompleteData(queryText);
+
+      return autcompleteData;
+    }
 
     $scope.abbreviateNumber = function(num, digits) {
       var si = [{
@@ -357,14 +372,14 @@
       }
     }
 
-    $scope.openDetails = function(index){
+    $scope.openDetails = function(index) {
       $scope.resultsList[index].isFirstOpen = !$scope.resultsList[index].isFirstOpen;
 
       $scope.resultTrendInfo.series[0].data = [];
       $scope.resultTrendInfo.series[0].data = angular.copy($scope.resultsList[index].contract.valueTrend);
     }
 
-    $scope.closeDetails = function(index){
+    $scope.closeDetails = function(index) {
       $scope.resultsList[index].isFirstOpen = !$scope.resultsList[index].isFirstOpen;
     }
   }

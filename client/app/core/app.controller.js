@@ -9,7 +9,7 @@
         gaugeYellow: ['#777777', '#cce679'],
         gaugeDanger: ['#777777', '#da1b1b'],
         gaugeWarning: ['#777777', '#ff8400'],
-        gaugeSuccess: ['#777777', '#157c3e'],
+        gaugeSuccess: ['#777777', '#157c3e']
     })
 
     .value("XDENSITY", {
@@ -19,11 +19,6 @@
                 name: 'Vendors',
                 id: '720555477',
                 isArray: true
-            },
-            vendorsJSON: {
-                name: 'Vendors',
-                id: '720555477',
-                isArray: false
             },
             departments: {
                 name: 'Departments',
@@ -39,7 +34,8 @@
         urls: {
             googleSheetUrl1: 'http://docs.google.com/spreadsheets/d/',
             googleSheetUrl2: '/pub?output=csv&gid='
-        }
+        },
+        isLoaded: false
     });
 
     function AppCtrl($scope, $rootScope, $route, $document, appConfig, $window, $timeout, WebViewService, spreadSheetService, XDENSITY, $log) {
@@ -104,7 +100,11 @@
             $document.scrollTo(0, 0);
         });
 
-        spreadSheetService.fetchData(XDENSITY.spreadSheetId, XDENSITY.sheets);
+        $log.info("in app ctrl");
+
+        spreadSheetService.fetchData(XDENSITY.spreadSheetId, XDENSITY.sheets, function() {
+            $log.info(XDENSITY);
+        });
     }
 
 })();

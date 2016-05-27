@@ -26,7 +26,7 @@
                 <div class="lh-16 display-inline-block text-left">
                   <span class="value-title color-white ff-rc">vendors</span>
                   <span class="dollar-sign ff-rc">$</span>
-                  <span class="value-sec ff-rc">{{formatNumberFromString(tab.contractValue)}}</span>
+                  <span class="value-sec ff-rc" ng-if="tab">{{formatNumberFromString(tab.contractValue)}}</span>
                 </div>
               </h1>
             </div>
@@ -36,7 +36,9 @@
                 <div class="lh-16 display-inline-block text-left">
                   <span class="value-title color-blue ff-rc">renewals</span>
                   <span class="dollar-sign ff-rc color-blue">$</span>
-                  <span class="value-sec ff-rc color-blue">{{formatNumberFromString(tab.upcomingRenewalsValue)}}</span>
+                  <span class="value-sec ff-rc color-blue" ng-if="tab">
+                    {{formatNumberFromString(tab.upcomingRenewalsValue)}}
+                  </span>
                 </div>
               </h1>
             </div>
@@ -46,7 +48,7 @@
                 <h5 class="lh-18">2016<br />
                   Budget vs Spent
                 </h5>
-                <h5 class="lh-18">
+                <h5 class="lh-18" ng-if="tab">
                   $ {{formatNumberFromString(tab.Budget)}}<br />
                   $ {{formatNumberFromString(tab.Spend)}}
                 </h5>
@@ -60,7 +62,7 @@
           </div>
         </div>
         <div class="row revenue-title">
-          <hc-chart options="chartConfig" class="chart-container span10"/>
+          <hc-chart options="deptTrendChart" class="chart-container span10"/>
         </div>
         <div class="row vendors-progress">
           <div class="progress-container">
@@ -69,25 +71,13 @@
         </div>
         <div class="row vendors-row">
           <h4 class="vendors-heading text-center">Top 5 Vendors</h4>
-          <div class="col-xs-5 margin-t10">
-            <hc-chart options="vendorsChartOptions"/>
+          <div class="col-xs-4 margin-t10">
+            <hc-chart options="topVendorsChart"/>
           </div>
           <div class="col-xs-7 margin-t10">
             <ul>
-              <li>
-                Acme Corporation
-              </li>
-              <li>
-                Mercury Consulting
-              </li>
-              <li>
-                Omega Technologies
-              </li>
-              <li>
-                Starlight Systems
-              </li>
-              <li>
-                Platinum Consulting
+              <li ng-repeat = "vendor in topVendors">
+                {{vendor.vendorName}}
               </li>
             </ul>
           </div>

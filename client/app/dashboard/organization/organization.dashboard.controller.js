@@ -5,8 +5,9 @@
     .controller('OrganizationDashCtrl', ['$scope', '$http', '$location', "gaugesService", "CONST", "loggedInUser", 'utils', "XDENSITY", "$log", OrganizationDashCtrl])
 
   function OrganizationDashCtrl($scope, $http, $location, gaugesService, CONST, loggedInUser, utils, XDENSITY, $log) {
-    $scope.gauges ={}
-    $scope.chartConfig = {
+
+    $scope.gauges = {}
+    $scope.trendChart = {
       colors: ["#28bdc6", "rgba(144,228,173, .3)", "rgba(204, 230, 121, .3)"],
       chart: {
         height: 225,
@@ -190,18 +191,21 @@
     }
 
     $scope.init = function() {
-      loggedInUser.fetchCurrentUser()
-        .success(function(data, status, headers, config) {
-          loggedInUser.isLoggedIn("/organization-dashboard");
-          $scope.userRole = data.userRole;
-          $log.info("population")
-          populateData($scope.userRole);
-        })
-        .error(function(data, status, headers, config) {
-          $location.url("#/")
-        })
+      utils.validateExcelData(function() {
+        //XDENSITY.isLoaded = true;
 
-      /* $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));*/
+        loggedInUser.fetchCurrentUser()
+          .success(function(data, status, headers, config) {
+            loggedInUser.isLoggedIn("/organization-dashboard");
+            $scope.userRole = data.userRole;
+            populateData($scope.userRole);
+          })
+          .error(function(data, status, headers, config) {
+            $location.url("#/")
+          });
+
+        /* $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));*/
+      });
     }
 
     var populateData = function(userRole) {
@@ -239,8 +243,12 @@
         technical: utils.getDeptData("Tech").Budget,
       }
 
+      var trendData = utils.getDeptTrendData("Organization");
+      $scope.trendChart.series[0].data = [];
+      $scope.trendChart.series[0].data = [trendData["2014"].budget, trendData["2015"].budget, trendData["2016"].budget];
 
-      //formatDeptChartData();
+      $scope.trendChart.series[1].data = [];
+      $scope.trendChart.series[1].data = [trendData["2014"].spend, trendData["2015"].spend, trendData["2016"].spend];
 
       //$scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
     }

@@ -135,7 +135,7 @@
     }
   }
 
-  function spreadSheetService(XDENSITY, $http, $log) {
+  function spreadSheetService(XDENSITY, $http, $log, $rootScope) {
     // This will read data for all the sheets
     function readGoogleSpreadSheet(spreadSheetId, sheets, callback) {
       console.log("fetching data");
@@ -148,11 +148,11 @@
       }
 
       Promise.all(promises)
-        .then(function() {
-          console.log("data fetched");
-          console.log(XDENSITY);
-        })
+        .then(callback)
         .catch(function(err) {
+          $rootScope.$broadcast("excelDataLoaded", {
+            "isLoaded": XDENSITY.isLoaded
+          });
           console.log(err);
         });
     }
@@ -329,7 +329,7 @@
     }
   }
 
-  function utils(XDENSITY) {
+  function utils(XDENSITY, spreadSheetService) {
     var sheets = XDENSITY.sheets;
 
     function abbreviateNumber(num, digits) {
@@ -395,10 +395,10 @@
 
         for (i = 0; i < si.length; i++) {
           if (num >= si[i].value) {
-            return (num / si[i].value).toFixed(digits);
+            return parseInt((num / si[i].value).toFixed(digits));
           }
         }
-      } 
+      }
       return num;
     };
 
@@ -406,9 +406,9 @@
       console.log(property);
       var budget = sheets.departments.data[property].Budget,
         spent = sheets.departments.data[property].Spend;
-        
-        console.log(budget)
-        console.log(spent)
+
+      console.log(budget)
+      console.log(spent)
 
       budget = parseInt(budget.replace(/,/g, ""));
       spent = parseInt(spent.replace(/,/g, ""));
@@ -438,13 +438,87 @@
       return parseInt(sheets.departments.data[dept][value].replace(/,/g, ""))
     }
 
+    function getAutoCompleteData(queryText) {
+      queryText = queryText.toLowerCase();
+
+      return _.filter(XDENSITY.sheets.vendors.data, function(vendor) {
+        var vendorName = angular.copy(vendor.vendorName.toLowerCase());
+        return vendorName.includes(queryText);
+      })
+    }
+
+    function searchVendors(queryText) {
+      return _.filter(XDENSITY.sheets.vendors.data, function(vendor) {
+        return vendor.vendorName === queryText
+      });
+    }
+
+    function getDeptTrendData(deptName) {
+      function getYearData(year) {
+        var data = _.map(_.where(XDENSITY.sheets.spend.data, {
+          department: deptName,
+          year: year
+        }), function(object) {
+          return {
+            budget: formatNumberToSD(parseInt(object.budget.replace(/,/g, ""))),
+            spend: formatNumberToSD(parseInt(object.spend.replace(/,/g, "")))
+          };
+        });
+        return data;
+      }
+
+      var trendData = {
+        "2014": getYearData("2014")[0],
+        "2015": getYearData("2015")[0],
+        "2016": getYearData("2016")[0]
+      };
+
+      console.log(trendData)
+      return trendData;
+    }
+
+    function getTopVendors(deptName) {
+      var topVendors = [],
+        deptVendors = _.filter(XDENSITY.sheets.vendors.data, function(vendor) {
+          return vendor.businessVertical === deptName;
+        });
+
+      deptVendors = _.sortBy(deptVendors, function(vendor){
+        vendor.contractValue = angular.copy( parseInt( vendor.contractValue2016.replace(/,/g, "") ) )/ 1000000;
+        vendor.contractValue = parseFloat(vendor.contractValue.toFixed(2));
+        return vendor.contractValue;
+      }).reverse();
+
+      topVendors = deptVendors.splice(0,5);
+
+/*      _.each(topVendors, function(vendor){
+        vendor.contractValue = formatNumberToSD(vendor.contractValue);
+      });*/
+
+      return topVendors;
+    }
+
+    function validateExcelData(callback){
+      if(XDENSITY.isLoaded)
+        callback()
+      else{
+        spreadSheetService.fetchData(XDENSITY.spreadSheetId, XDENSITY.sheets, callback);
+        XDENSITY.isLoaded = true;
+      }
+    }
+
     return {
       abbreviateNumber: abbreviateNumber,
       getGaugePercent: calculateGaugePercentage,
       getDeptData: getDeptData,
+      getDeptTrendData: getDeptTrendData,
       formatNumberFromString: formatNumberFromString,
+      getTopVendors:getTopVendors,
       getVendorsAlignment: getVendorsAlignment,
-      getDataFromDepartments: getDataFromDepartments
+      getDataFromDepartments: getDataFromDepartments,
+      getAutoCompleteData: getAutoCompleteData,
+      searchVendors: searchVendors,
+      validateExcelData : validateExcelData
     }
   }
 
