@@ -216,11 +216,11 @@
       $scope.gauges["technical"] = {};
       $scope.gauges["finance"] = {};
 
-      $scope.gauges.organization["colors"] = ['#BCBCBC', '#5B9B08']
-      $scope.gauges.hr["colors"] = ['#BCBCBC', '#5B9B08']
-      $scope.gauges.finance["colors"] = ['#BCBCBC', '#5B9B08']
-      $scope.gauges.technical["colors"] = ['#BCBCBC', '#5B9B08']
-      $scope.gauges.broadcast["colors"] = ['#BCBCBC', '#5B9B08']
+      $scope.gauges.organization["colors"] = ['#DDD', '#5B9B08']
+      $scope.gauges.hr["colors"] = ['#DDD', '#5B9B08']
+      $scope.gauges.finance["colors"] = ['#DDD', '#5B9B08']
+      $scope.gauges.technical["colors"] = ['#DDD', '#5B9B08']
+      $scope.gauges.broadcast["colors"] = ['#DDD', '#5B9B08']
 
       $scope.gauges.organization["percent"] = utils.getGaugePercent("Organization");
       $scope.gauges.hr["percent"] = utils.getGaugePercent("HR");
@@ -230,9 +230,10 @@
 
       $scope.organization = utils.getDeptData("Organization");
 
+      var vendorPercent = utils.getVendorsAlignment("Organization");
       $scope.vendorsProgress = {
-        percent: utils.getVendorsAlignment("Organization"),
-        barLabel: "% Aligned",
+        percent: vendorPercent,
+        barLabel: vendorPercent + "% Aligned (FY)",
         barValue: $scope.organization.fYAlignment
       }
 
@@ -261,7 +262,6 @@
       };
 
       _.each(XDENSITY.sheets.departments.data, function(dept) {
-        debugger
         var budget = dept.Budget,
           spent = dept.Spend,
           diff = 0,

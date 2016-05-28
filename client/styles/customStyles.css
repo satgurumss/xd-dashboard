@@ -1417,7 +1417,7 @@ body {
     bottom: 2px;
     right: 4px;
     z-index: 3;
-    font-size: 8px;
+    font-size: 11px;
     line-height: 11px;
     font-weight: bold;
   }
@@ -2052,6 +2052,7 @@ body {
   margin-left: 3%;
   width: 12%;
   margin-top: 3px;
+  white-space: nowrap;
 }
 
 .tab-progress-container{

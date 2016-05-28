@@ -39,7 +39,7 @@ ng-init="init()">
               </div>
             </div>
             <div class="progress-container" ng-if="vendorsProgress.percent">
-              <progress-bar options="vendorsProgress" apply-threshold="true"/>
+              <progress-bar options="vendorsProgress"/>
             </div>
           </div>
         </div>
@@ -145,6 +145,14 @@ ng-init="init()">
     font-size: 14px;
     margin: 4px;
   }
+
+  .organization-dashboard .currency-value {
+    font-weight: 100;
+  }
+  ..organization-dashboard .vendors-progress .contents-left h3.session-value {
+    font-weight: bold !important;
+  }
+
   .organization-dashboard .renewal-value {
     display: inline-block;
     margin: 4px 0;
@@ -207,5 +215,7 @@ ng-init="init()">
   .organization-dashboard .revenue-container h3 {
     color: #82B73C;
   }
-
+  .organization-dashboard .revenue-container h3.renewal-label {
+    color: #DDD;
+  }
 </style>

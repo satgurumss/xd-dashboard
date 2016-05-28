@@ -318,9 +318,10 @@
       $log.info($scope.topVendors);
       $scope.tab = angular.copy(utils.getDeptData(activeTab));
 
+      var vendorPercent = utils.getVendorsAlignment(activeTab);
       $scope.vendorsProgress = {
-        percent: utils.getVendorsAlignment(activeTab),
-        barLabel: "% Aligned",
+        percent: vendorPercent,
+        barLabel: vendorPercent + "% Aligned (FY)",
         barValue: $scope.tab.fYAlignment
       }
 

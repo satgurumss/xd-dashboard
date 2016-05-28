@@ -70,7 +70,7 @@
 
       labels: {
         style: {
-          color: '#707073'
+          color: '#000'
         }
       },
 
@@ -115,7 +115,7 @@
         gridLineColor: '#707073',
         labels: {
           style: {
-            color: '#707073',
+            color: '#000',
             fontSize: "12px",
             enabled: false
           }

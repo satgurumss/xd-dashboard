@@ -45,10 +45,10 @@
           </div>
           <div class="dept-alignment-section col-xs-7">
             <div class="dept-renewals col-xs-7 big-number text-right">
-                <h5 class="lh-18">2016<br />
+                <h5 class="lh-18 session-value">2016<br />
                   Budget vs Spent
                 </h5>
-                <h5 class="lh-18" ng-if="tab">
+                <h5 class="lh-18 currency-value" ng-if="tab">
                   $ {{formatNumberFromString(tab.Budget)}}<br />
                   $ {{formatNumberFromString(tab.Spend)}}
                 </h5>
@@ -109,5 +109,12 @@
   font-size: 18px;
   font-family: "Droid Sans";
   margin: 10px 0;
+}
+
+.page-dashboard-customer .currency-value {
+  font-weight: 100;
+}
+.page-dashboard-customer .dept-alignment-section .dept-renewals .session-value {
+  font-weight: bold;
 }
 </style>
