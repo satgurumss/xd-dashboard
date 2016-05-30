@@ -23,7 +23,6 @@
         type: "columnrange",
         inverted: true,
         height: 90,
-        width: 200,
         style: {
           fontFamily: "sans-serif"
         },
@@ -31,7 +30,7 @@
         spacingTop: 0,
         spacingBottom: 0,
         spacingLeft: 0,
-        spacingRight: 10
+        marginRight: 65
       },
 
       tooltip: {
@@ -60,7 +59,10 @@
         },
         series: {
           groupPadding: 0,
-          stacking: "normal"
+          stacking: "normal",
+          marker: {
+            enabled: true
+          }
         }
       },
 
@@ -75,12 +77,19 @@
       },
 
       legend: {
-        enabled: false,
-        lineHeight: 10,
+        enabled: true,
+        floating: true,
+        width: 100,
+        x: 95,
+        y: 0,
+        lineHeight: 12,
         margin: 5,
         itemStyle: {
-          fontSize: '9px'
-        }
+          fontSize: '10px'
+        },
+        symbolHeight: 8,
+        symbolWidth: 8,
+        symbolRadius: 6
       },
 
       title: {
@@ -101,7 +110,7 @@
         lineColor: 'transparent',
         minorTickLength: 0,
         tickLength: 0,
-        min:0,
+        min: 0,
         gridLineColor: 'transparent',
       },
 
@@ -143,10 +152,7 @@
         }, {
           low: 3,
           high: 5
-        }],
-        marker: {
-          symbol: 'circle'
-        }
+        }]
       }, {
         groupPadding: 0,
         name: "Spent",
@@ -163,9 +169,6 @@
           low: 0,
           high: 3
         }],
-        marker: {
-          symbol: 'circle'
-        }
       }, {
         groupPadding: 0,
         name: "Over Spent",
@@ -181,10 +184,7 @@
         }, {
           low: 0,
           high: 0
-        }],
-        marker: {
-          symbol: 'circle'
-        }
+        }]
       }]
     };
 

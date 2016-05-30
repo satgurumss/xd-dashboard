@@ -1,9 +1,9 @@
 var Sequelize = require('sequelize'),
-	sequelize = new Sequelize('xdensitydb', 'root', 'root', {
+	sequelize = new Sequelize('xdensity-db', 'root', null, {
 		dialect: "mysql",
 		// or 'sqlite', 'postgres', 'mariadb'
 		host: 'localhost',
-		port: 8889, // or 5432 (for postgres)
+		port: 3306, // or 5432 (for postgres)
 		logging: false
 	});
 

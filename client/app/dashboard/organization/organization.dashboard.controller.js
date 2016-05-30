@@ -112,7 +112,7 @@
           }
         },
         lineColor: '#707073',
-        tickInterval: '5',
+        tickInterval: 25,
         tickColor: '#707073',
         tickWidth: 1,
         title: {

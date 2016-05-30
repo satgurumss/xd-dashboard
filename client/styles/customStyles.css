@@ -2849,6 +2849,9 @@ body {
   .page-hr .vendor-charts-container .contents-right {
     padding: 0;
   }
+  .page-vendor .contents-left{
+    padding:0;
+  }
   .page-landing .finance-nav .section-contents .sec-title,
   .page-landing .finance-nav .section-contents .sec-cont {
     display: none;

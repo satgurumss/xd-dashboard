@@ -216,7 +216,7 @@
           pointPadding: 0,
           borderRadius: 4,
           dataLabels: {
-            color: '#707073',
+            color: '#000',
             verticalAlign: 'middle',
             align: "right",
             formatter: function() {

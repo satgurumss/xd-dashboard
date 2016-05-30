@@ -163,6 +163,17 @@
       series: [{
         type: 'area',
         fillColor: "rgba(40, 189, 198, 0.3)",
+        name: 'Budget',
+        data: [10, 10, 10],
+        marker: {
+          symbol: 'circle',
+          fillColor: '#303031',
+          lineWidth: 1,
+          lineColor: '#28bdc6'
+        }
+      }, {
+        type: 'area',
+        fillColor: "rgba(40, 189, 198, 0.3)",
         name: 'Spent',
         data: [10, 10, 10],
         marker: {
@@ -207,7 +218,7 @@
           pointPadding: 0,
           borderRadius: 4,
           dataLabels: {
-            color: '#707073',
+            color: '#000',
             verticalAlign: 'middle',
             align: "right",
             formatter: function() {
@@ -220,12 +231,6 @@
       },
       credits: {
         enabled: false
-      },
-
-      labels: {
-        style: {
-          color: '#707073'
-        }
       },
 
       legend: {
@@ -260,6 +265,7 @@
         minorTickLength: 0,
         tickLength: 0,
         gridLineColor: 'transparent',
+        tickInterval: 25
       },
 
       xAxis: {
@@ -311,8 +317,8 @@
 
     $scope.setActiveTab = function(activeTab) {
       var trendData = utils.getDeptTrendData(activeTab),
-          vendorsTrend = [];
-      
+        vendorsTrend = [];
+
       $scope.topVendors = utils.getTopVendors(activeTab);
       $log.info($scope.topVendors);
       $log.info($scope.topVendors);
@@ -326,10 +332,13 @@
       }
 
       $scope.deptTrendChart.series[0].data = [];
-      $scope.deptTrendChart.series[0].data = [trendData["2014"].spend, trendData["2015"].spend, trendData["2016"].spend]
+      $scope.deptTrendChart.series[0].data = [trendData["2014"].budget, trendData["2015"].budget, trendData["2016"].budget];
+
+      $scope.deptTrendChart.series[1].data = [];
+      $scope.deptTrendChart.series[1].data = [trendData["2014"].spend, trendData["2015"].spend, trendData["2016"].spend];
 
       $scope.topVendorsChart.series[0].data = [];
-      _.each($scope.topVendors, function(vendor){
+      _.each($scope.topVendors, function(vendor) {
         vendorsTrend.push(vendor.contractValue);
       });
       $scope.topVendorsChart.series[0].data = vendorsTrend;
