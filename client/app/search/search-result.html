@@ -10,10 +10,19 @@
             <div class="searched-vendor">
               <span class="title">Search Results for</span> <span class="h4">{{searchedVendor}}</span>
             </div>
-            <div class="search-header row" style="background-color:#232323;">
-              <span class="col-xs-3">Vendor</span>
-              <span class="col-xs-3">Department</span>
-              <span class="col-xs-3">F.Year</span>
+            <div class="search-filters row">
+              <div class="col-xs-12">
+                <label class="ui-checkbox"><input name="checkbox1" type="checkbox" value="option1" ><span>R-4</span></label>
+                <label class="ui-checkbox"><input name="checkbox1" type="checkbox" value="option1" ><span>Brd</span></label>
+                <label class="ui-checkbox"><input name="checkbox1" type="checkbox" value="option1" ><span>HR</span></label>
+                <label class="ui-checkbox"><input name="checkbox1" type="checkbox" value="option1" ><span>Tech</span></label>
+                <label class="ui-checkbox"><input name="checkbox1" type="checkbox" value="option1" ><span>Fin</span></label>
+              </div>
+            </div>
+            <div class="search-header row">
+              <span class="col-xs-3">Contracts</span>
+              <span class="col-xs-3">Division</span>
+              <span class="col-xs-3">Exp</span>
               <span class="col-xs-3">Value $</span>
             </div>
             <div class="search-result" data-ng-repeat="result in currentPageItems">
@@ -31,15 +40,21 @@
 
 <style type="text/css">
   .page-search {
-    color: white;
-    font-family: "Roboto Condensed";
+    color: #FFF;
   }
-
+  .page-search .search-filters {
+    background-color:#232323;
+    color: #FFF;
+  }
+  .page-search .search-header {
+    background-color:#9dc3e7;
+    color: #333;
+  }
+  .page-search .search-filters div,
   .page-search .search-header span,
   .page-search .search-result-row span {
     font-size: 11px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 7px 10px;
   }
 
   .page-search .search-result-row span:first-child {
@@ -203,5 +218,19 @@
     margin-left: -10px;
     margin-right: -10px;
   }
+  .ui-checkbox input[type=checkbox]+span:before {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    margin-left: -10px;
+  }
+  .page-search .ui-checkbox input[type=checkbox]:checked+span:after {
+    top: 5px;
+    left: -6px;
+  }
+  .page-search .ui-checkbox {
+    position: relative;
+    margin: 0 10px 0;
+}
 
 </style>

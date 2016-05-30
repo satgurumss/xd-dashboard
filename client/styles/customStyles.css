@@ -1360,19 +1360,7 @@ body {
 
   .page-landing .navs-list .nav-item {
     background: #575B61;
-    -webkit-border-top-right-radius: 20px;
-    -moz-border-top-right-radius: 20px;
-    -o-border-top-right-radius: 20px;
-    border-top-right-radius: 20px;
   }
-
-  .page-landing .navs-list .nav-item {
-     -webkit-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
-    -moz-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
-    -o-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
-    box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
-  }
-
   .page-landing .finance-nav .section {
     background: #82B73C;
   }
@@ -1395,10 +1383,9 @@ body {
     padding-bottom: 10px;
     position: relative;
   }
-  .page-landing .section-inner {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: relative;
+  .page-landing .customers-nav .section-inner {
+    padding-top: 7px;
+    padding-bottom: 7px;
   }
   .page-landing .finance-nav .section-contents {
     position: relative;
@@ -1420,6 +1407,14 @@ body {
     font-size: 11px;
     line-height: 11px;
     font-weight: bold;
+  }
+  .page-landing .finance-nav .section-title,
+  .page-landing .customers-nav .section-title,
+  .page-landing .people-nav .section-title {
+     -webkit-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
+    -moz-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
+    -o-box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
+    box-shadow: inset 0 14px 5px -9px rgba(0,0,0,0.2);
   }
 
   .page-landing .finance-nav .section-title {
@@ -1701,7 +1696,7 @@ body {
   /*department gauge width*/
   .page-landing .customers-nav .section-contents{
     padding: 0 5px;
-    width: 68.74%;
+    width: 68.73%;
   }
 
   .page-landing .customers-nav div.circle-container{
@@ -2806,8 +2801,14 @@ body {
 /*-------*/
 
 
-
-
+@media only screen and (max-width: 360px) {
+  .page-hr .vendor-charts-container .contents-right {
+    padding: 0;
+  }
+  .page-vendor .contents-left{
+    padding:0;
+  }
+}
 /* smaller then 354  */
 
 @media only screen and (max-width: 354px) {
@@ -2855,5 +2856,20 @@ body {
   .page-landing .finance-nav .section-contents .sec-title,
   .page-landing .finance-nav .section-contents .sec-cont {
     display: none;
+  }
+  .page-landing .finance-nav .section-title,
+  .page-landing .customers-nav .section-title,
+  .page-landing .people-nav .section-title {
+    background-size: 95% 100%;
+  }
+  .page-hr .vendors-row ul.top-venters-labels,
+  .page-dashboard-customer .vendors-row ul.top-venters-labels {
+    margin-left: 25px;
+  }
+  .page-hr .vendors-row ul li,
+  .page-dashboard-customer .vendors-row ul li {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 }
