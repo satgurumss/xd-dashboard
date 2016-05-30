@@ -1,9 +1,9 @@
 <div class="search-result-row row" ng-show="!result.isFirstOpen">
-	<span class="col-xs-3">{{result.contract.title}}</span>
-	<span class="col-xs-3">{{result.contract.dept}}</span>
-	<span class="col-xs-3">{{result.contract.fiscalYear}}</span>
+	<span class="col-xs-3">{{result.contractName}}</span>
+	<span class="col-xs-3">{{result.businessVertical}}</span>
+	<span class="col-xs-3">{{result.fYDate | date:'MMM-yy'}}</span>
 	<span class="col-xs-3">
-		{{abbreviateNumber(result.contract.value,2)}}
+		${{abbreviateNumber(result.contractValue2016,2)}}
 	</span>
 </div>
 <span class="profile-link">

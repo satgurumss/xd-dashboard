@@ -390,14 +390,20 @@
       $scope.searchedVendor = angular.copy($scope.queryText);
       $scope.firstSearch = false;
       $scope.currentPageItems = [];
-      $scope.currentPageItems = angular.copy(_.filter($scope.resultsList, function(item) {
+      /*$scope.currentPageItems = angular.copy(_.filter($scope.resultsList, function(item) {
         return item.vendor.title === $scope.queryText
-      }));
+      }));*/
 
-      /*$scope.currentPageItems = utils.searchVendors($scope.queryText);
+      $scope.currentPageItems = angular.copy(utils.searchVendors($scope.queryText));
+
+      _.each($scope.currentPageItems, function(result) {
+        result.valueTrend = [];
+
+        result.valueTrend = getTrendData(result);
+      });
 
       $log.info("Search Results")
-      $log.info($scope.currentPageItems);*/
+      $log.info($scope.currentPageItems);
     };
 
     $scope.onAutoCompleteSelect = function($item, $model, $label) {
@@ -439,7 +445,8 @@
         }],
         i;
 
-      num = typeof num !== "undefined" ? parseInt(num) : "";
+
+      num = typeof num !== "undefined" || num != '-' ? parseInt(num.replace(/,/g, "")) : "";
       if (num > 0 && num != "") {
 
         for (i = 0; i < si.length; i++) {
@@ -463,5 +470,34 @@
     $scope.closeDetails = function(result) {
       result.isFirstOpen = false;
     }
+
+    $scope.calculateDaysToRenewal = function(endDate) {
+      var startDate = new Date(),
+        endDate = new Date(endDate),
+
+        timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
+
+      return Math.ceil(timeDiff / (1000 * 3600 * 24));
+    }
+
+    var formatString = function(string) {
+      var day = parseInt(string.substring(0, 2));
+      var month = parseInt(string.substring(3, 5));
+      var year = parseInt(string.substring(6, 10));
+      var date = new Date(year, month - 1, day);
+      return date;
+    };
+
+    var getTrendData = function(result) {
+     
+      var contractValue2014 = utils.formatNumberToSD(parseInt(result.contractValue2014.replace(/,/g, "")));
+      var contractValue2015 = utils.formatNumberToSD(parseInt(result.contractValue2015.replace(/,/g, "")));
+      var contractValue2016 = utils.formatNumberToSD(parseInt(result.contractValue2016.replace(/,/g, "")));
+      
+      var trendData = [contractValue2014,contractValue2015,contractValue2016]
+
+      return trendData;
+    }
+
   }
 })();

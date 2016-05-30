@@ -330,6 +330,15 @@
     }
   }
 
+  /*function spreadSheetService($http) {
+
+    return {
+      fetchData: function(){
+        return $http.get("/fetchExcelData")
+      }
+    }
+  }*/
+
   function utils(XDENSITY, spreadSheetService) {
     var sheets = XDENSITY.sheets;
 
@@ -526,7 +535,8 @@
       getDataFromDepartments: getDataFromDepartments,
       getAutoCompleteData: getAutoCompleteData,
       searchVendors: searchVendors,
-      validateExcelData: validateExcelData
+      validateExcelData: validateExcelData,
+      formatNumberToSD :formatNumberToSD
     }
   }
 

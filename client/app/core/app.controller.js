@@ -33,7 +33,7 @@
         },
         urls: {
             googleSheetUrl1: 'http://docs.google.com/spreadsheets/d/',
-            googleSheetUrl2: '/pub?output=csv&gid='
+            googleSheetUrl2: '/pub?output=csv&gid=',
         },
         isLoaded: false
     });
@@ -105,6 +105,9 @@
         spreadSheetService.fetchData(XDENSITY.spreadSheetId, XDENSITY.sheets, function() {
             $log.info(XDENSITY);
         });
-    }
 
+        /*spreadSheetService.fetchData().then(function(res) {
+            XDENSITY = angular.copy(res);
+        });*/
+    }
 })();
