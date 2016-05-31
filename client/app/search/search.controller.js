@@ -223,7 +223,7 @@
 
       $scope.totalResults = angular.copy(utils.searchVendors($scope.queryText));
 
-      _.each($scope.currentPageItems, function(result) {
+      _.each($scope.totalResults, function(result) {
         var timeLine = {
           renewalDate: result.endDate,
           fYDate: result.fYDate,
