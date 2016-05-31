@@ -102,12 +102,15 @@
 
         $log.info("in app ctrl");
 
-        spreadSheetService.fetchData(XDENSITY.spreadSheetId, XDENSITY.sheets, function() {
+        /*spreadSheetService.fetchData(XDENSITY.spreadSheetId, XDENSITY.sheets, function() {
+            $log.info(XDENSITY);
+        });*/
+
+        spreadSheetService.fetchData().then(function(res) {
+            $log.info("data loaded");
+            XDENSITY = angular.copy(res.data);
+
             $log.info(XDENSITY);
         });
-
-        /*spreadSheetService.fetchData().then(function(res) {
-            XDENSITY = angular.copy(res);
-        });*/
     }
 })();

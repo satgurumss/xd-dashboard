@@ -191,7 +191,7 @@
       chart: {
         type: "bar",
         height: 120,
-        width: 250,
+        width: 220,
         style: {
           fontFamily: "sans-serif"
         },

@@ -136,7 +136,7 @@
     }
   }
 
-  function spreadSheetService(XDENSITY, $http, $log, $rootScope) {
+  /*function spreadSheetService(XDENSITY, $http, $log, $rootScope) {
     // This will read data for all the sheets
     function readGoogleSpreadSheet(spreadSheetId, sheets, callback) {
       console.log("fetching data");
@@ -328,19 +328,18 @@
     return {
       fetchData: readGoogleSpreadSheet
     }
-  }
+  }*/
 
-  /*function spreadSheetService($http) {
+  function spreadSheetService($http) {
 
     return {
-      fetchData: function(){
+      fetchData: function() {
         return $http.get("/fetchExcelData")
       }
     }
-  }*/
+  }
 
-  function utils(XDENSITY, spreadSheetService) {
-    var sheets = XDENSITY.sheets;
+  function utils(XDENSITY, spreadSheetService, $log) {
 
     function abbreviateNumber(num, digits) {
       var si = [{
@@ -414,8 +413,8 @@
 
     function calculateGaugePercentage(property) {
       console.log(property);
-      var budget = sheets.departments.data[property].Budget,
-        spent = sheets.departments.data[property].Spend;
+      var budget = XDENSITY.sheets.departments.data[property].Budget,
+        spent = XDENSITY.sheets.departments.data[property].Spend;
 
       console.log(budget)
       console.log(spent)
@@ -427,7 +426,7 @@
     };
 
     function getDeptData(property) {
-      return sheets.departments.data[property]
+      return XDENSITY.sheets.departments.data[property]
     }
 
     function formatNumberFromString(number) {
@@ -436,8 +435,8 @@
     }
 
     function getVendorsAlignment(property) {
-      var total = sheets.departments.data[property].vendors,
-        aligned = sheets.departments.data[property].fYAlignment;
+      var total = XDENSITY.sheets.departments.data[property].vendors,
+        aligned = XDENSITY.sheets.departments.data[property].fYAlignment;
 
       total = parseInt(total.replace(/,/g, ""));
       aligned = parseInt(aligned.replace(/,/g, ""));
@@ -446,7 +445,7 @@
     }
 
     function getDataFromDepartments(dept, value) {
-      return parseInt(sheets.departments.data[dept][value].replace(/,/g, ""))
+      return parseInt(XDENSITY.sheets.departments.data[dept][value].replace(/,/g, ""))
     }
 
     function getAutoCompleteData(queryText) {
@@ -462,7 +461,7 @@
       if (_.isEmpty(queryText)) {
         return XDENSITY.sheets.vendors.data
       };
-      
+
       return _.filter(XDENSITY.sheets.vendors.data, function(vendor) {
         return vendor.vendorName === queryText
       });
@@ -519,12 +518,78 @@
       return topVendors;
     }
 
+    function formatDeptChartData() {
+      $log.info("formatDeptChartData")
+      var series = {
+        budget: [],
+        spent: [],
+        overSpent: []
+      };
+
+      var departments = _.filter(XDENSITY.sheets.departments.data, function(dept, key) {
+        return key !== "Organization"
+      });
+
+      $log.info(departments)
+      _.each(departments, function(dept) {
+        $log.info("Current department")
+        $log.info(dept)
+
+        var budget = dept.Budget,
+          spent = dept.Spend,
+          diff = 0,
+          budgetData = {
+            low: 0,
+            high: 0
+          },
+          spentData = {
+            low: 0,
+            high: 0
+          },
+          overSpentData = {
+            low: 0,
+            high: 0
+          };
+
+        budget = parseInt(budget.replace(/,/g, "")) / 1000000;
+        spent = parseInt(spent.replace(/,/g, "")) / 1000000;
+
+        budget = parseFloat(budget.toFixed(2));
+        spent = parseFloat(spent.toFixed(2));
+        diff = budget - spent;
+
+        if (diff > 0) {
+          budgetData.low = spent;
+          budgetData.high = budget;
+
+          spentData.high = spent;
+        } else if (diff < 0) {
+          budgetData.high = budget;
+
+          overSpentData.low = budget;
+          overSpentData.high = budget + -1 * (diff);
+        }
+
+        series.budget.push(budgetData);
+        series.spent.push(spentData);
+        series.overSpent.push(overSpentData);
+      });
+      return series;
+    }
+
     function validateExcelData(callback) {
+      $log.info(XDENSITY.isLoaded)
       if (XDENSITY.isLoaded)
         callback()
       else {
-        spreadSheetService.fetchData(XDENSITY.spreadSheetId, XDENSITY.sheets, callback);
-        XDENSITY.isLoaded = true;
+        //spreadSheetService.fetchData(XDENSITY.spreadSheetId, XDENSITY.sheets, callback);
+        spreadSheetService.fetchData().then(function(res) {
+          $log.info("data loaded on reload");
+          XDENSITY = angular.copy(res.data);
+
+          $log.info(XDENSITY);
+          callback()
+        });
       }
     }
 
@@ -540,7 +605,8 @@
       getAutoCompleteData: getAutoCompleteData,
       searchVendors: searchVendors,
       validateExcelData: validateExcelData,
-      formatNumberToSD: formatNumberToSD
+      formatNumberToSD: formatNumberToSD,
+      formatDeptChartData : formatDeptChartData
     }
   }
 

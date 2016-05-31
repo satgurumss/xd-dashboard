@@ -214,7 +214,7 @@
     }
 
     var populateData = function(userRole) {
-
+      var series = utils.formatDeptChartData();
       $scope.gauges["organization"] = {};
       $scope.gauges["vendors"] = {};
 
@@ -223,70 +223,11 @@
 
       $scope.organization = utils.getDeptData("Organization");
 
-      formatDeptChartData();
+      $scope.deptBarChartOptions.series[0].data = series.budget;
+      $scope.deptBarChartOptions.series[1].data = series.spent;
+      $scope.deptBarChartOptions.series[2].data = series.overSpent;
 
       $scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
-    }
-
-    function formatDeptChartData() {
-      var series = {
-        budget: [],
-        spent: [],
-        overSpent: []
-      };
-
-      var departments = _.filter(XDENSITY.sheets.departments.data, function(dept, key) {
-        return key !== "Organization"
-      });
-      _.each(departments, function(dept) {
-        if (dept.department != "Organization") {
-          $log.info("Current department")
-          $log.info(dept)
-
-          var budget = dept.Budget,
-            spent = dept.Spend,
-            diff = 0,
-            budgetData = {
-              low: 0,
-              high: 0
-            },
-            spentData = {
-              low: 0,
-              high: 0
-            },
-            overSpentData = {
-              low: 0,
-              high: 0
-            };
-
-          budget = parseInt(budget.replace(/,/g, "")) / 1000000;
-          spent = parseInt(spent.replace(/,/g, "")) / 1000000;
-
-          budget = parseFloat(budget.toFixed(2));
-          spent = parseFloat(spent.toFixed(2));
-          diff = budget - spent;
-
-          if (diff > 0) {
-            budgetData.low = spent;
-            budgetData.high = budget;
-
-            spentData.high = spent;
-          } else if (diff < 0) {
-            budgetData.high = budget;
-
-            overSpentData.low = budget;
-            overSpentData.high = budget + -1 * (diff);
-          }
-
-          series.budget.push(budgetData);
-          series.spent.push(spentData);
-          series.overSpent.push(overSpentData);
-        }
-      });
-
-      $scope.deptBarChartOptions.series[0].data = series.budget
-      $scope.deptBarChartOptions.series[1].data = series.spent
-      $scope.deptBarChartOptions.series[2].data = series.overSpent
-    }
+    }   
   }
 })();

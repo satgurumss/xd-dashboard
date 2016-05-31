@@ -15,6 +15,7 @@ var config = require('./ad-config');
 var _appPath = '../dist';
 var db_xdensity = require('./db-definitions.js');
 var loginModule = require("./actions/loginModule");
+var excelModule = require("./actions/excelModule");
 
 // Start QuickStart here
 
@@ -127,6 +128,9 @@ app.all('/*', function(req, res, next) {
 });
 
 //Routes (Section 4)
+app.get('/helloworld', function(req, res) {
+  res.send("Hello World!");
+});
 
 app.get('/', function(req, res) {
   res.render('index', {
@@ -173,9 +177,11 @@ app.post('/loginAd/return',
 
 app.post('/logout', loginModule.logOut);
 
-app.get("/isLoggedInUser", loginModule.isUserLoggedIn)
+app.get("/isLoggedInUser", loginModule.isUserLoggedIn);
 
-app.get("/fetch-current-user", loginModule.fetchCurrentUser)
+app.get("/fetch-current-user", loginModule.fetchCurrentUser);
+
+app.get("/fetchExcelData", excelModule.fetchData)
 
 
 //using wild cards
