@@ -2734,6 +2734,184 @@ body {
   }
 }
 
+
+/* custom time line styling */
+
+  .custom-time-line {
+    padding: 50px 0;
+    margin: 0;
+    margin-top: -8px;
+    position: relative;
+    margin-left: 7%;
+  }
+
+  .custom-time-line li {
+    width: 8.5%;
+    height: 2px;
+    background: #B2B2B2;
+    display: inline-block;
+    position: relative;
+  }
+
+  .custom-time-line li:first-child {
+    width: 0;
+  }
+
+  .custom-time-line li:first-child:before,
+  .custom-time-line li:last-child:before {
+    background: #3C3C3B;
+  }
+
+  .custom-time-line li:before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    background: #B2B2B2;
+    border-radius: 50%;
+    top: -2px;
+    right: 0;
+  }
+
+  .custom-time-line  li.renewal:before,
+  .custom-time-line  li.today:before,
+  .custom-time-line  li.fiscal:before {
+    height: 12px;
+    width: 12px;
+    top: -5px;
+    border: 1px solid #3C3C3B;
+  }
+
+  .custom-time-line li.today:before {
+    background: #439EA4;
+  }
+
+  .custom-time-line li.fiscal:before {
+    background: #E27000;
+    z-index: 1;
+  }
+
+  .custom-time-line li.renewal:before {
+    background: #97D400;
+    z-index: 2
+  }
+
+  .custom-time-line  li.renewal:after,
+  .custom-time-line  li.today:after,
+  .custom-time-line  li.fiscal:after {
+    content: '';
+    height: 25px;
+    position: absolute;
+    width: 1px;
+    background: #3C3C3B;
+    bottom: 100%;
+    left: 100%;
+    margin-left: -7px;
+    margin-bottom: 4px;
+  }
+
+  .custom-time-line li.renewal:after,
+  .custom-time-line li.fiscal:after {
+    bottom: auto;
+    top: 100%;
+    margin-top: 4px;
+  }
+
+  .custom-time-line .date-info-wrapper {
+    position: absolute;
+    top: -53px;
+    left: 50%;
+    margin-left: -22px;
+    font-size: 9px;
+    text-align: center;
+    width: 60px;
+    color: #3C3C3B;
+  }
+
+  .custom-time-line .renewal-marker-container .date-info-wrapper,
+  .custom-time-line .fy-marker-container .date-info-wrapper {
+    top: auto;
+    bottom: -57px;
+  }
+
+  .custom-time-line .renewal-fy-marker-container .date-info-wrapper {
+    top: auto;
+    bottom: -64px;
+    text-align: left;
+  }
+
+  .custom-time-line li:first-child .date-info-wrapper {
+    left: -14px;
+  }
+
+  .custom-time-line .icon-renewal {
+    background: url(../images/icon-renewal.png);
+  }
+
+  .custom-time-line .icon-fiscal {
+    background: url(../images/icon-fiscal.png);
+  }
+
+  .custom-time-line .icon-today {
+    background: url(../images/icon-today.png);
+  }
+
+  .custom-time-line .icon-renewal,
+  .custom-time-line .icon-fiscal,
+  .custom-time-line .icon-today {
+    display: block;
+    width: 100%;
+    height: 12px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .custom-time-line li.renewal.fiscal .icon-renewal,
+  .custom-time-line li.renewal.fiscal .icon-fiscal {
+    display: inline-block;
+    width: 12px;
+  }
+
+  .custom-time-line .date-text {
+    position: absolute;
+    font-size: 9px;
+    width: 48px;
+    top: 10px;
+    color: #3C3C3B;
+    left: 50%;
+    margin-left: -5px;
+  }
+
+  .custom-time-line li:first-child .date-text {
+    left: -14px;
+  }
+
+  .custom-time-line li.renewal .date-text,
+  .custom-time-line li.fiscal .date-text {
+    top: auto;
+    bottom: 10px;
+  }
+
+  .custom-time-line .month-name {
+    font-size: 9px;
+    position: absolute;
+    color: #3B3B3B;
+    top: 8px;
+    right: 0;
+  }
+
+  @media (min-width: 600px) {
+
+    .custom-time-line .date-info-wrapper {
+      margin-left: -10px;
+    }
+
+    .custom-time-line li:first-child .date-info-wrapper {
+      left: -23px;
+    }
+  }
+
 /*up to iPad*/
 @media only screen and (max-width: 768px) {
   .panel-body {
@@ -2873,3 +3051,4 @@ body {
     white-space: nowrap;
   }
 }
+

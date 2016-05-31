@@ -397,8 +397,15 @@
       $scope.currentPageItems = angular.copy(utils.searchVendors($scope.queryText));
 
       _.each($scope.currentPageItems, function(result) {
-        result.valueTrend = [];
+        var timeLine = {
+          renewalDate: result.endDate,
+          fYDate: result.fYDate,
+          today: new Date()
+        };
 
+        result['timeLine'] = timeLine;
+
+        result.valueTrend = [];
         result.valueTrend = getTrendData(result);
       });
 
@@ -489,11 +496,11 @@
     };
 
     var getTrendData = function(result) {
-     
+
       var contractValue2014 = utils.formatNumberToSD(parseInt(result.contractValue2014.replace(/,/g, "")));
       var contractValue2015 = utils.formatNumberToSD(parseInt(result.contractValue2015.replace(/,/g, "")));
       var contractValue2016 = utils.formatNumberToSD(parseInt(result.contractValue2016.replace(/,/g, "")));
-      
+
       var trendData = [contractValue2014,contractValue2015,contractValue2016]
 
       return trendData;

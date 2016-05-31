@@ -1,5 +1,40 @@
-<ul class="months-list">
-  <li class="month" ng-repeat="month in arrayOfMonths">
-    Time line
+<ul class="months-list clearfix">
+  <li class="month" ng-repeat="month in arrayOfMonths" ng-class="addMarker($index).markerClass">
+    <div class="month-name" ng-if="$index == 0">Jan</div>
+    <div class="month-name" ng-if="$index == 11">Dec</div>
+    <div class="renewal-marker-container" ng-if="addMarker($index).isRenewal && !addMarker($index).isFiscal">
+    <div class="date-text">{{ addMarker($index).markerDate | date:'dd-MMM-yy' }}</div>
+      <div class="date-info-wrapper">
+        <label>Renewal</label>
+        <div class="icon-renewal"></div>
+      </div>
+    </div>
+    <div class="fy-marker-container" ng-if="addMarker($index).isFiscal && !addMarker($index).isRenewal">
+      <div class="date-text">{{ addMarker($index).markerDate | date:'dd-MMM-yy' }}</div>
+      <div class="date-info-wrapper">
+        <label>Fiscal</label>
+        <div class="icon-fiscal"></div>
+      </div>
+    </div>
+    <div class="renewal-fy-marker-container" ng-if="addMarker($index).isFiscal && addMarker($index).isRenewal">
+      <div class="date-text">{{ addMarker($index).markerDate | date:'dd-MMM-yy' }}</div>
+      <div class="date-info-wrapper">
+        <div class="date-info">
+          <div class="icon-renewal"></div>
+          <label>Renewal</label>
+        </div>
+        <div class="date-info">
+          <div class="icon-fiscal"></div>
+          <label>Fiscal</label>
+        </div>
+      </div>
+    </div>
+    <div class="today-marker-container" ng-if="addMarker($index).isToday">
+      <div class="date-info-wrapper">
+        <div class="icon-today"></div>
+        <label>Today</label>
+      </div>
+      <div class="date-text">{{ addMarker($index).markerDate | date:'dd-MMM-yy' }}</div>
+    </div>
   </li>
 </ul>
