@@ -190,13 +190,13 @@
 
       chart: {
         type: "bar",
-        height: 100,
-        width: 200,
+        height: 120,
+        width: 250,
         style: {
           fontFamily: "sans-serif"
         },
         backgroundColor: "#EDEDED",
-        plotBorderColor: '#606063',
+        plotBorderColor: '#EDEDED',
         spacingTop: 0,
         spacingBottom: 0,
         spacingLeft: 0,
@@ -229,8 +229,15 @@
           }
         },
       },
+      
       credits: {
         enabled: false
+      },
+
+      labels: {
+        style: {
+          color: '#707073'
+        }
       },
 
       legend: {
@@ -265,7 +272,6 @@
         minorTickLength: 0,
         tickLength: 0,
         gridLineColor: 'transparent',
-        tickInterval: 25
       },
 
       xAxis: {
@@ -320,8 +326,7 @@
         vendorsTrend = [];
 
       $scope.topVendors = utils.getTopVendors(activeTab);
-      $log.info($scope.topVendors);
-      $log.info($scope.topVendors);
+
       $scope.tab = angular.copy(utils.getDeptData(activeTab));
 
       var vendorPercent = utils.getVendorsAlignment(activeTab);
@@ -341,6 +346,8 @@
       _.each($scope.topVendors, function(vendor) {
         vendorsTrend.push(vendor.contractValue);
       });
+
+      $log.info(vendorsTrend);
       $scope.topVendorsChart.series[0].data = vendorsTrend;
 
       $scope.deptAlignment = {

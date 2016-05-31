@@ -2,204 +2,30 @@
   'use strict';
 
   angular.module('app')
-    .controller('SearchCtrl', ['$scope', '$http', '$location', 'loggedInUser', '$log', "XDENSITY", "utils", SearchCtrl])
+    .controller('SearchCtrl', ['$scope', '$http', '$location', 'loggedInUser', '$log', "XDENSITY", "utils", "$filter", SearchCtrl])
+    .filter("filterResults", ['$log', filterResults]);
 
-  function SearchCtrl($scope, $http, $location, loggedInUser, $log, XDENSITY, utils) {
+  function SearchCtrl($scope, $http, $location, loggedInUser, $log, XDENSITY, utils, $filter) {
+
+    $scope.searchFilters = [];
+    $scope.queryText = "";
 
     $scope.blankslateMsg = "Please enter search keywords above to begin";
     $scope.numPerPageOpt = [3, 5, 10];
     $scope.numPerPage = $scope.numPerPageOpt[2];
     $scope.numberToFetch = [0];
     $scope.currentPage = 1;
+    $scope.resultsList = [];
     $scope.currentPageItems = [];
-    $scope.filteredItems = [];
-    $scope.sortOrder = ".score";
+
     $scope.firstSearch = true;
     $scope.vendorsList = ["Microsoft", "Cisco", "Fujitsu", "HP", "IBM", "XDensity", "Oreedo", "Woodworks", "Netapp", "Broadtech", "Fintech", "SAP"];
-
-    $scope.resultsList = [{
-      vendor: {
-        id: 1,
-        title: "American Express"
-      },
-      contract: {
-        title: "Account Management",
-        type: "Finance",
-        dept: "Finance",
-        startDate: "01 Sep 2015",
-        endDate: "31 Aug 2016",
-        daysToRenewal: 60,
-        fiscalYear: "Jun 2016",
-        value: 8500000,
-        valueTrend: [46, 75, 80]
-      }
-    }, {
-      vendor: {
-        id: 1,
-        title: "American Express"
-      },
-      contract: {
-        title: "Account Management",
-        type: "Finance",
-        dept: "Finance",
-        startDate: "01 Sep 2015",
-        endDate: "31 Aug 2016",
-        daysToRenewal: 60,
-        fiscalYear: "Jun 2016",
-        value: 8500000,
-        valueTrend: [46, 75, 80]
-      }
-    }, {
-      vendor: {
-        id: 1,
-        title: "American Express"
-      },
-      contract: {
-        title: "Account Management",
-        type: "Finance",
-        dept: "Finance",
-        startDate: "01 Sep 2015",
-        endDate: "31 Aug 2016",
-        daysToRenewal: 60,
-        fiscalYear: "Jun 2016",
-        value: 8500000,
-        valueTrend: [46, 75, 80]
-      }
-    }, {
-      vendor: {
-        id: 1,
-        title: "American Express"
-      },
-      contract: {
-        title: "Account Management",
-        type: "Finance",
-        dept: "Finance",
-        startDate: "01 Sep 2015",
-        endDate: "31 Aug 2016",
-        daysToRenewal: 60,
-        fiscalYear: "Jun 2016",
-        value: 8500000,
-        valueTrend: [46, 75, 80]
-      }
-    }, {
-      vendor: {
-        id: 1,
-        title: "American Express"
-      },
-      contract: {
-        title: "Account Management",
-        type: "Finance",
-        dept: "Finance",
-        startDate: "01 Sep 2015",
-        endDate: "31 Aug 2016",
-        daysToRenewal: 60,
-        fiscalYear: "Jun 2016",
-        value: 8500000,
-        valueTrend: [46, 75, 80]
-      }
-    }, {
-      vendor: {
-        id: 1,
-        title: "Microsoft"
-      },
-      contract: {
-        title: "Hardware Maintenance",
-        type: "Technology",
-        dept: "HR",
-        startDate: "01 Sep 2015",
-        endDate: "31 Aug 2016",
-        daysToRenewal: 60,
-        fiscalYear: "Jun 2016",
-        value: 8500000,
-        valueTrend: [46, 75, 80]
-      }
-    }, {
-      vendor: {
-        id: 1,
-        title: "Microsoft"
-      },
-      contract: {
-        title: "Hardware Maintenance",
-        type: "Technology",
-        dept: "Technical",
-        startDate: "01 Sep 2015",
-        endDate: "31 Aug 2016",
-        daysToRenewal: 60,
-        fiscalYear: "Jun 2016",
-        value: 8500000,
-        valueTrend: [80, 46, 75]
-      }
-    }, {
-      vendor: {
-        id: 1,
-        title: "Microsoft"
-      },
-      contract: {
-        title: "Hardware Maintenance",
-        type: "Technology",
-        dept: "Finance",
-        startDate: "01 Sep 2015",
-        endDate: "31 Aug 2016",
-        daysToRenewal: 60,
-        fiscalYear: "Jun 2016",
-        value: 8500000,
-        valueTrend: [30, 75, 90]
-      }
-    }, {
-      vendor: {
-        id: 1,
-        title: "Microsoft"
-      },
-      contract: {
-        title: "Hardware Maintenance",
-        type: "Technology",
-        dept: "Broadcast",
-        startDate: "01 Sep 2015",
-        endDate: "31 Aug 2016",
-        daysToRenewal: 60,
-        fiscalYear: "Jun 2016",
-        value: 8500000,
-        valueTrend: [46, 50, 80]
-      }
-    }, {
-      vendor: {
-        id: 1,
-        title: "Microsoft"
-      },
-      contract: {
-        title: "Hardware Maintenance",
-        type: "Technology",
-        dept: "HR",
-        startDate: "01 Sep 2015",
-        endDate: "31 Aug 2016",
-        daysToRenewal: 60,
-        fiscalYear: "Jun 2016",
-        value: 8500000,
-        valueTrend: [75, 60, 80]
-      }
-    }, {
-      vendor: {
-        id: 1,
-        title: "Microsoft"
-      },
-      contract: {
-        title: "Hardware Maintenance",
-        type: "Technology",
-        dept: "HR",
-        startDate: "01 Sep 2015",
-        endDate: "31 Aug 2016",
-        daysToRenewal: 60,
-        fiscalYear: "Jun 2016",
-        value: 8500000,
-        valueTrend: [46, 75, 80]
-      }
-    }];
 
     $scope.resultTrendInfo = {
       colors: ["#28bdc6", "rgba(144,228,173, .3)", "rgba(204, 230, 121, .3)"],
       chart: {
-        width: 290,
-        height: 290,
+        width: 300,
+        height: 300,
         spacingRight: 20,
         spacingTop: 20,
         backgroundColor: {
@@ -373,6 +199,7 @@
         loggedInUser.fetchCurrentUser()
           .success(function(data, status, headers, config) {
             $scope.userRole = data.userRole;
+            //$scope.search()
           })
           .error(function(data, status, headers, config) {
             $location.url("#/")
@@ -389,12 +216,12 @@
       //$scope.numberToFetch[0] = ($scope.currentPage - 1) * $scope.numPerPage;
       $scope.searchedVendor = angular.copy($scope.queryText);
       $scope.firstSearch = false;
-      $scope.currentPageItems = [];
+      $scope.totalResults = [];
       /*$scope.currentPageItems = angular.copy(_.filter($scope.resultsList, function(item) {
         return item.vendor.title === $scope.queryText
       }));*/
 
-      $scope.currentPageItems = angular.copy(utils.searchVendors($scope.queryText));
+      $scope.totalResults = angular.copy(utils.searchVendors($scope.queryText));
 
       _.each($scope.currentPageItems, function(result) {
         var timeLine = {
@@ -410,7 +237,9 @@
       });
 
       $log.info("Search Results")
-      $log.info($scope.currentPageItems);
+      $log.info($scope.totalResults);
+
+      $scope.currentPageItems = angular.copy($scope.totalResults);
     };
 
     $scope.onAutoCompleteSelect = function($item, $model, $label) {
@@ -478,13 +307,33 @@
       result.isFirstOpen = false;
     }
 
-    $scope.calculateDaysToRenewal = function(endDate) {
+    $scope.calculateDaysToRenewal = function(result) {
       var startDate = new Date(),
-        endDate = new Date(endDate),
+        endDate = new Date(result.endDate),
 
         timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
 
-      return Math.ceil(timeDiff / (1000 * 3600 * 24));
+      result.renewalDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+      return result.renewalDays;
+    }
+
+    $scope.applyFilters = function($event) {
+      $log.info("applyingFilters")
+      var option = $event.target.value,
+        optionIsSelected = $event.target.checked;
+      $log.info(option)
+      $log.info(option)
+
+      if (optionIsSelected) {
+        $scope.searchFilters.push(option);
+      } else {
+        $scope.searchFilters.splice($scope.searchFilters.indexOf(option),1);
+      }
+
+      $log.info($scope.searchFilters)
+
+      $scope.currentPageItems = angular.copy($filter("filterResults")($scope.totalResults, $scope.searchFilters));
     }
 
     var formatString = function(string) {
@@ -501,10 +350,37 @@
       var contractValue2015 = utils.formatNumberToSD(parseInt(result.contractValue2015.replace(/,/g, "")));
       var contractValue2016 = utils.formatNumberToSD(parseInt(result.contractValue2016.replace(/,/g, "")));
 
-      var trendData = [contractValue2014,contractValue2015,contractValue2016]
+      var trendData = [contractValue2014, contractValue2015, contractValue2016]
 
       return trendData;
     }
+  }
 
+  function filterResults($log) {
+    return function(totalResults, searchFilters) {
+      $log.info("filterResults")
+      var deptFilters = [],
+        renewalDayFilter = "",
+        filteredResults = angular.copy(totalResults);
+
+        deptFilters = angular.copy( _.filter(searchFilters, function(filter){return filter != "renewalDays"}) );
+
+        renewalDayFilter = angular.copy( _.filter(searchFilters, function(filter){return filter === "renewalDays"}) );
+
+      $log.info(deptFilters)
+      if (renewalDayFilter != "") {
+        filteredResults = _.filter(totalResults, function(result) {
+          return result.renewalDays <= 90;
+        })
+      }
+
+      if (! _.isEmpty(deptFilters) ){
+        filteredResults = _.filter(totalResults, function(result) {
+          return _.contains(deptFilters, result.businessVertical);
+        })
+      }
+
+      return filteredResults;
+    }
   }
 })();

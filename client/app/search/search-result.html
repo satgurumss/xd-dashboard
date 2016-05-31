@@ -4,27 +4,31 @@
       <div data-ng-include="'app/shared/searchbar.html'"></div>
       <div ng-show="firstSearch"><h5 class="text-center">{{blankslateMsg}}</h5></div>
       <div class="results-panel" ng-show = "!firstSearch">
-        <h5 class="text-center" ng-show="currentPageItems.length == 0">No results found. Please try again.</h5>
-        <div class="results-section" ng-show="currentPageItems.length > 0">
+        <div class="results-section">
           <div class="results-container">
             <div class="searched-vendor">
               <span class="title">Search Results for</span> <span class="h4">{{searchedVendor}}</span>
             </div>
             <div class="search-filters row">
               <div class="col-xs-12">
-                <label class="ui-checkbox"><input name="resultFilter" type="checkbox" value="renewalDays" >
+                <label class="ui-checkbox">
+                  <input name="resultFilter" type="checkbox" value="renewalDays" ng-click="applyFilters($event)"/>
                   <span>R-4</span>
                 </label>
-                <label class="ui-checkbox"><input name="resultFilter" type="checkbox" value="Broadcast" >
+                <label class="ui-checkbox">
+                  <input name="resultFilter" type="checkbox" value="Broadcast" ng-click="applyFilters($event)"/>
                   <span>BRD</span>
                 </label>
-                <label class="ui-checkbox"><input name="resultFilter" type="checkbox" value="HR" >
+                <label class="ui-checkbox">
+                  <input name="resultFilter" type="checkbox" value="HR" ng-click="applyFilters($event)"/>
                   <span>HR</span>
                 </label>
-                <label class="ui-checkbox"><input name="resultFilter" type="checkbox" value="Tech" >
+                <label class="ui-checkbox">
+                  <input name="resultFilter" type="checkbox" value="Tech" ng-click="applyFilters($event)"/>
                   <span>TECH</span>
                 </label>
-                <label class="ui-checkbox"><input name="resultFilter" type="checkbox" value="Finance" >
+                <label class="ui-checkbox">
+                  <input name="resultFilter" type="checkbox" value="Finance" ng-click="applyFilters($event)"/>
                   <span>FIN</span>
                 </label>
               </div>
@@ -35,7 +39,9 @@
               <span class="col-xs-3">Exp</span>
               <span class="col-xs-3">Value $</span>
             </div>
-            <div class="search-result" data-ng-repeat="result in currentPageItems">
+            <h5 class="text-center" ng-show="currentPageItems.length == 0">No results found. Please try again.</h5>
+            <div class="search-result" data-ng-repeat="result in currentPageItems" 
+            ng-show="currentPageItems.length > 0">
               <div
   							ng-include="'app/search/search-templates/result-list.html'">
   						</div>

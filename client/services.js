@@ -459,6 +459,10 @@
     }
 
     function searchVendors(queryText) {
+      if (_.isEmpty(queryText)) {
+        return XDENSITY.sheets.vendors.data
+      };
+      
       return _.filter(XDENSITY.sheets.vendors.data, function(vendor) {
         return vendor.vendorName === queryText
       });
@@ -536,7 +540,7 @@
       getAutoCompleteData: getAutoCompleteData,
       searchVendors: searchVendors,
       validateExcelData: validateExcelData,
-      formatNumberToSD :formatNumberToSD
+      formatNumberToSD: formatNumberToSD
     }
   }
 
