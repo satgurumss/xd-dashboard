@@ -196,7 +196,7 @@
           fontFamily: "sans-serif"
         },
         backgroundColor: "#EDEDED",
-        plotBorderColor: '#606063',
+        plotBorderColor: '#EDEDED',
         spacingTop: 0,
         spacingBottom: 0,
         spacingLeft: 0,
@@ -229,8 +229,15 @@
           }
         },
       },
+      
       credits: {
         enabled: false
+      },
+
+      labels: {
+        style: {
+          color: '#707073'
+        }
       },
 
       legend: {
@@ -265,7 +272,6 @@
         minorTickLength: 0,
         tickLength: 0,
         gridLineColor: 'transparent',
-        tickInterval: 25
       },
 
       xAxis: {
@@ -294,7 +300,10 @@
         gridLineColor: 'transparent'
       },
 
-      series: [{data:[]}]
+      series: [{
+        groupPadding: 0,
+        data: [22, 20, 15, 12, 10]
+      }]
     };
 
     $scope.init = function(argument) {
@@ -337,6 +346,8 @@
       _.each($scope.topVendors, function(vendor) {
         vendorsTrend.push(vendor.contractValue);
       });
+
+      $log.info(vendorsTrend);
       $scope.topVendorsChart.series[0].data = vendorsTrend;
 
       $scope.deptAlignment = {

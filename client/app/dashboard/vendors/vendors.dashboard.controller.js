@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .controller('VendorsDashCtrl', ['$scope', '$http', '$location', 'gaugesService', 'CONST', "loggedInUser", "utils", VendorsDashCtrl])
+    .controller('VendorsDashCtrl', ['$scope', '$http', '$location', 'gaugesService', 'CONST', "loggedInUser", "utils", "$log", VendorsDashCtrl])
     .filter('singleDecimal', function($filter) {
       return function(input) {
         if (isNaN(input)) return input;
@@ -10,7 +10,7 @@
       };
     });
 
-  function VendorsDashCtrl($scope, $http, $location, gaugesService, CONST, loggedInUser, utils) {
+  function VendorsDashCtrl($scope, $http, $location, gaugesService, CONST, loggedInUser, utils, $log) {
 
     $scope.chartConfig = {
       colors: ["#28bdc6", "rgba(144,228,173, .3)", "rgba(204, 230, 121, .3)"],
@@ -341,6 +341,7 @@
       _.each($scope.topVendors, function(vendor){
         vendorsTrend.push(vendor.contractValue);
       });
+      $log.info(vendorsTrend)
       $scope.topVendorsChart.series[0].data = vendorsTrend;
       //$scope.gauges = angular.copy(gaugesService.updateGaugeState($scope.gauges));
     }
