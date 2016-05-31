@@ -8,7 +8,8 @@
     .directive('hcChartDark', ['$window', hcChartDark])
     .directive('hcChartDynamic', ['$window', hcChartDynamic])
     .directive("progressBar", progressBar)
-    .directive("trainingList", trainingList);
+    .directive("trainingList", trainingList)
+    .directive("customTimeLine", customTimeLine);
 
   function enterDirective() {
     return function(scope, element, attrs) {
@@ -446,9 +447,9 @@
           var tempScrollTop = $($window).scrollTop();
           Highcharts.chart(element[0], scope.options);
           $($window).scrollTop(tempScrollTop);
-          
+
           scope.readonly = angular.isDefined(scope.readonly) ? scope.readonly : false;
-          
+
           if(scope.readonly){
             $(element[0]).click(function() { return false; });
             $(element[0]).children().click(function() { return false; });
@@ -478,12 +479,12 @@
         var renderChart = function() {
           var tempScrollTop = $($window).scrollTop();
           scope.options().series[0].data = scope.series();
-          
+
           Highcharts.chart(element[0], scope.options());
           $($window).scrollTop(tempScrollTop);
-          
+
           scope.readonly = angular.isDefined(scope.readonly) ? scope.readonly : false;
-          
+
           if(scope.readonly){
             $(element[0]).click(function() { return false; });
             $(element[0]).children().click(function() { return false; });
@@ -792,6 +793,62 @@
             return '/app/training/completed-training-list.html'
           }
         }
+      }
+    };
+  }
+
+  function customTimeLine(){
+    return {
+      restrict: 'E',
+      templateUrl: '/app/directives/custom-time-line.html',
+      replace: true,
+      scope: {
+        data: '='
+      },
+      link: function(scope, element, attrs) {
+        scope.arrayOfMonths = [1,2,3,4,5,6,7,8,9,10,11,12];
+
+        // var el = angular.element('<span/>');
+        // switch(scope.input.inputType) {
+        //   case 'checkbox':
+        //     el.append('<input type="checkbox" ng-model="input.checked"/><button ng-if="input.checked" ng-click="input.checked=false; doSomething()">X</button>');
+        //     break;
+        //   case 'text':
+        //     el.append('<input type="text" ng-model="input.value"/><button ng-if="input.value" ng-click="input.value=\'\'; doSomething()">X</button>');
+        //     break;
+        // }
+        // $compile(el)(scope);
+        // element.append(el);
+
+        scope.addMarker = function(monthInArray){
+          var markerTemplate = {};
+          markerTemplate.markerClass = [];
+
+          _.each(scope.data, function(markerDate, key){
+            var date = new Date(markerDate),
+              markerMonth = date.getMonth();
+
+            if(monthInArray === markerMonth){
+              markerTemplate.markerDate = date;
+
+              switch(key){
+                case "renewalDate":
+                  markerTemplate.isRenewal = true;
+                  markerTemplate.markerClass.push("renewal");
+                break;
+                case "fYDate":
+                  markerTemplate.isFiscal = true;
+                  markerTemplate.markerClass.push("fiscal");
+                break;
+                case "today":
+                  markerTemplate.isToday = true;
+                  markerTemplate.markerClass.push("today");
+                break;
+              };
+            }
+          });
+          return markerTemplate;
+        };
       }
     };
   }

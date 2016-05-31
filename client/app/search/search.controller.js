@@ -224,8 +224,15 @@
       $scope.totalResults = angular.copy(utils.searchVendors($scope.queryText));
 
       _.each($scope.totalResults, function(result) {
-        result.valueTrend = [];
+        var timeLine = {
+          renewalDate: result.endDate,
+          fYDate: result.fYDate,
+          today: new Date()
+        };
 
+        result['timeLine'] = timeLine;
+
+        result.valueTrend = [];
         result.valueTrend = getTrendData(result);
       });
 
@@ -355,7 +362,7 @@
       var deptFilters = [],
         renewalDayFilter = "",
         filteredResults = angular.copy(totalResults);
-        
+
         deptFilters = angular.copy( _.filter(searchFilters, function(filter){return filter != "renewalDays"}) );
 
         renewalDayFilter = angular.copy( _.filter(searchFilters, function(filter){return filter === "renewalDays"}) );
