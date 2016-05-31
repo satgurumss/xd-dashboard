@@ -8,7 +8,7 @@
 
     $scope.gauges = {}
     $scope.trendChart = {
-      colors: ["#28bdc6", "rgba(144,228,173, .3)", "rgba(204, 230, 121, .3)"],
+      colors: ["#4d6251", "#799e72"],
       chart: {
         height: 225,
         backgroundColor: {
@@ -157,25 +157,25 @@
 
       series: [{
         type: 'area',
-        fillColor: "rgba(40, 189, 198, 0.3)",
+        fillColor: "rgba(121, 158, 114, 0.3)",
         name: 'Budget',
-        data: [10.0, 14.5, 18.3],
-        marker: {
-          symbol: 'circle',
-          fillColor: '#303031',
-          lineWidth: 1,
-          lineColor: '#28bdc6'
-        }
-      }, {
-        type: 'area',
-        fillColor: "rgba(144,228,173, 0.3)",
-        name: 'Spent',
         data: [15.0, 17.0, 19],
         marker: {
           symbol: 'circle',
           fillColor: '#303031',
           lineWidth: 1,
-          lineColor: 'rgba(144,228,173, .6)'
+          lineColor: '#799e72'
+        }
+      }, {
+        type: 'area',
+        fillColor: "rgba(77, 98, 81, 0.3)",
+        name: 'Spent',
+        data: [10.0, 14.5, 18.3],
+        marker: {
+          symbol: 'circle',
+          fillColor: '#303031',
+          lineWidth: 1,
+          lineColor: '#4d6251'
         }
       }]
     };

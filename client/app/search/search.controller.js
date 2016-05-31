@@ -8,6 +8,7 @@
   function SearchCtrl($scope, $http, $location, loggedInUser, $log, XDENSITY, utils, $filter) {
 
     $scope.searchFilters = [];
+    $scope.queryText = "";
 
     $scope.blankslateMsg = "Please enter search keywords above to begin";
     $scope.numPerPageOpt = [3, 5, 10];
@@ -23,8 +24,8 @@
     $scope.resultTrendInfo = {
       colors: ["#28bdc6", "rgba(144,228,173, .3)", "rgba(204, 230, 121, .3)"],
       chart: {
-        width: 290,
-        height: 290,
+        width: 300,
+        height: 300,
         spacingRight: 20,
         spacingTop: 20,
         backgroundColor: {
@@ -198,6 +199,7 @@
         loggedInUser.fetchCurrentUser()
           .success(function(data, status, headers, config) {
             $scope.userRole = data.userRole;
+            //$scope.search()
           })
           .error(function(data, status, headers, config) {
             $location.url("#/")

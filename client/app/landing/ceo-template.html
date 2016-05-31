@@ -1,80 +1,80 @@
 <ul class="navs-list">
   <li class="nav-item row finance-nav">
-    <a href="javascript://" class="tab-section" ng-click="navigateTo('/organization-dashboard')">
-      <div class="section section-info col-xs-5">
-        <div class="section-inner">
-          <h4 class="heading-v1 text-center">Upcoming Renewals</h4>
-          <h1 class="heading-value text-center">
-            <span class="value-one">{{organization.upcomingRenewalsR4}}</span>
-            <div class="lh-18 display-inline-block text-left">
-              <span class="value-title color-black">contracts</span>
-              <span class="dollar-sign">$</span>
-              <span class="value-sec">{{formatNumberFromString(organization.upcomingRenewalsValue)}}</span>
-            </div>
-          </h1>
-        </div>
-      </div>
-      <div class="section section-contents col-xs-3">
-        <div class="sec-title text-center">Budget vs Spent</div>
-        <div class="sec-cont">${{formatNumberFromString(organization.Budget)}}<br />${{formatNumberFromString(organization.Spend)}}</div>
-        <div class="section-inner">
-          <div class="circle-container">
-           <div ng-circles value="gauges.organization.percent" width="20" colors="['#FFF', gauges.organization.colors[1]]"></div>
+    <div class="section section-info col-xs-5">
+      <div class="section-inner">
+        <h4 class="heading-v1 text-center">Upcoming Renewals</h4>
+        <h1 class="heading-value text-center">
+          <span class="value-one">{{organization.upcomingRenewalsR4}}</span>
+          <div class="lh-18 display-inline-block text-left">
+            <span class="value-title color-black">contracts</span>
+            <span class="dollar-sign">$</span>
+            <span class="value-sec">{{formatNumberFromString(organization.upcomingRenewalsValue)}}</span>
           </div>
+        </h1>
+      </div>
+    </div>
+    <div class="section section-contents col-xs-3">
+      <div class="sec-title text-center">Budget vs Spent</div>
+      <div class="sec-cont">${{formatNumberFromString(organization.Budget)}}<br />${{formatNumberFromString(organization.Spend)}}</div>
+      <div class="section-inner">
+        <div class="circle-container">
+         <div ng-circles value="gauges.organization.percent" width="20" colors="['#FFF', gauges.organization.colors[1]]"></div>
         </div>
       </div>
+    </div>
+    <a href="javascript://" class="tab-section" ng-click="navigateTo('/organization-dashboard')">
       <div class="section section-title col-xs-4">
         <div class="section-inner">
         </div>
       </div>
-      <div class=" col-xs-12 section-shadow text-right">
-        <div class="rc rc-finance hidden"></div>
-      </div>
     </a>
+    <div class=" col-xs-12 section-shadow text-right">
+      <div class="rc rc-finance hidden"></div>
+    </div>
   </li>
   <li class="nav-item row customers-nav">
-    <a href="javascript://" class="tab-section" ng-click="navigateTo('/department-dashboard')">
-      <div class="section section-contents col-xs-8">
-        <div class="section-inner">
-          <hc-chart options="deptBarChartOptions" readonly="true"/>
-        </div>
+    <div class="section section-contents col-xs-8">
+      <div class="section-inner">
+        <hc-chart options="deptBarChartOptions" readonly="true"/>
       </div>
+    </div>
+    <a href="javascript://" class="tab-section" ng-click="navigateTo('/department-dashboard')">
       <div class="section section-title col-xs-4">
         <div class="section-inner">
         </div>
       </div>
-      <div class=" col-xs-12 section-shadow text-right">
-        <div class="rc rc-customers hidden"></div>
-      </div>
     </a>
+    <div class=" col-xs-12 section-shadow text-right">
+      <div class="rc rc-customers hidden"></div>
+    </div>
   </li>
   <li class="nav-item row people-nav">
-    <a href="javascript://" class="tab-section" ng-click="navigateTo('/vendors-dashboard')">
-      <div class="section section-info col-xs-5">
-        <div class="section-inner">
-          <h4 class="heading-v1 text-center">Overview</h4>
-          <h1 class="heading-value text-center">
-            <span class="value-one">{{organization.vendors}}</span>
-            <div class="text-left display-inline-block lh-18">
-              <span class="value-title color-light-orange">vendors</span>
-              <span class="dollar-sign">$</span>
-              <span class="value-sec">{{formatNumberFromString(organization.contractValue)}}</span>
-            </div>
-          </h1>
-        </div>
-      </div>
-      <div class="section section-contents col-xs-3">
-        <div class="section-inner text-center">
-          <div class="circle-container">
-           <div ng-circles value="gauges.vendors.percent" width="20" colors="['#FFF', gauges.vendors.colors[1]]"></div>
+    <div class="section section-info col-xs-5">
+      <div class="section-inner">
+        <h4 class="heading-v1 text-center">Overview</h4>
+        <h1 class="heading-value text-center">
+          <span class="value-one">{{organization.vendors}}</span>
+          <div class="text-left display-inline-block lh-18">
+            <span class="value-title color-light-orange">vendors</span>
+            <span class="dollar-sign">$</span>
+            <span class="value-sec">{{formatNumberFromString(organization.contractValue)}}</span>
           </div>
+        </h1>
+      </div>
+    </div>
+    <div class="section section-contents col-xs-3">
+      <div class="section-inner text-center">
+        <div class="circle-container">
+         <div ng-circles value="gauges.vendors.percent" width="20" colors="['#FFF', gauges.vendors.colors[1]]"></div>
         </div>
       </div>
+    </div>
+    <a href="javascript://" class="tab-section" ng-click="navigateTo('/vendors-dashboard')">
       <div class="section section-title col-xs-4">
         <div class="section-inner">
         </div>
       </div>
-      <div class=" col-xs-12 section-shadow text-right"></div>
     </a>
+    <div class=" col-xs-12 section-shadow text-right"></div>
   </li>
 </ul>

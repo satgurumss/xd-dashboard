@@ -31,7 +31,8 @@
         style: {
           fontFamily: "sans-serif"
         },
-        plotBorderColor: '#606063'
+        plotBorderColor: '#606063',
+        spacingBottom: 30
       },
 
       tooltip: {
@@ -106,7 +107,7 @@
         },
         verticalAlign: 'bottom',
         align: 'center',
-        useHTML: true
+        y:20
       },
 
       subtitle: {

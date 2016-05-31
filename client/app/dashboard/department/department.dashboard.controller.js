@@ -190,8 +190,8 @@
 
       chart: {
         type: "bar",
-        height: 100,
-        width: 200,
+        height: 120,
+        width: 250,
         style: {
           fontFamily: "sans-serif"
         },
@@ -294,10 +294,7 @@
         gridLineColor: 'transparent'
       },
 
-      series: [{
-        groupPadding: 0,
-        data: [22, 20, 15, 12, 10]
-      }]
+      series: [{data:[]}]
     };
 
     $scope.init = function(argument) {
@@ -320,8 +317,7 @@
         vendorsTrend = [];
 
       $scope.topVendors = utils.getTopVendors(activeTab);
-      $log.info($scope.topVendors);
-      $log.info($scope.topVendors);
+
       $scope.tab = angular.copy(utils.getDeptData(activeTab));
 
       var vendorPercent = utils.getVendorsAlignment(activeTab);
