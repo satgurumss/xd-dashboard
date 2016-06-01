@@ -2,18 +2,17 @@
   'use strict';
 
   angular.module('app')
-    .controller('SearchCtrl', ['$scope', '$http', '$location', 'loggedInUser', '$log', "XDENSITY", "utils", "$filter", SearchCtrl])
+    .controller('SearchCtrl', ['$scope', '$http', '$location', 'loggedInUser', '$log', "XDENSITY", "utils", "$filter", 'usSpinnerService', SearchCtrl])
     .filter("filterResults", ['$log', filterResults]);
 
-  function SearchCtrl($scope, $http, $location, loggedInUser, $log, XDENSITY, utils, $filter) {
+  function SearchCtrl($scope, $http, $location, loggedInUser, $log, XDENSITY, utils, $filter, spinnerService) {
 
     $scope.searchFilters = [];
     $scope.queryText = "";
 
     $scope.blankslateMsg = "Please enter search keywords above to begin";
-    $scope.numPerPageOpt = [3, 5, 10];
-    $scope.numPerPage = $scope.numPerPageOpt[2];
-    $scope.numberToFetch = [0];
+    $scope.numPerPageOpt = [20, 50, 100];
+    $scope.numPerPage = $scope.numPerPageOpt[1];
     $scope.currentPage = 1;
     $scope.resultsList = [];
     $scope.currentPageItems = [];
@@ -199,7 +198,7 @@
         loggedInUser.fetchCurrentUser()
           .success(function(data, status, headers, config) {
             $scope.userRole = data.userRole;
-            //$scope.search()
+            $scope.search()
           })
           .error(function(data, status, headers, config) {
             $location.url("#/")
@@ -214,16 +213,27 @@
 
     $scope.search = function() {
       //$scope.numberToFetch[0] = ($scope.currentPage - 1) * $scope.numPerPage;
+      spinnerService.spin("resultsSpinner");
       $scope.searchedVendor = angular.copy($scope.queryText);
       $scope.firstSearch = false;
       $scope.totalResults = [];
       /*$scope.currentPageItems = angular.copy(_.filter($scope.resultsList, function(item) {
         return item.vendor.title === $scope.queryText
       }));*/
-
       $scope.totalResults = angular.copy(utils.searchVendors($scope.queryText));
+      $scope.filteredItems = angular.copy($scope.totalResults)
+      $scope.select($scope.currentPage);
+    };
 
-      _.each($scope.totalResults, function(result) {
+    $scope.select = function(page) {
+      
+      var start = (page - 1) * $scope.numPerPage;
+      var end = start + $scope.numPerPage;
+
+      $scope.currentPageItems = [];
+      $scope.currentPageItems = $scope.filteredItems.slice(start, end);
+
+      _.each($scope.currentPageItems, function(result) {
         var timeLine = {
           renewalDate: result.endDate,
           fYDate: result.fYDate,
@@ -236,11 +246,8 @@
         result.valueTrend = getTrendData(result);
       });
 
-      $log.info("Search Results")
-      $log.info($scope.totalResults);
-
-      $scope.currentPageItems = angular.copy($scope.totalResults);
-    };
+      spinnerService.stop("resultsSpinner");
+    }
 
     $scope.onAutoCompleteSelect = function($item, $model, $label) {
       $scope.queryText = $model;
@@ -251,6 +258,9 @@
 
     $scope.updateCtrlModel = function(queryText) {
       $scope.queryText = queryText;
+
+      if ($scope.queryText === "")
+        $scope.search()
     }
 
     $scope.fetchAutoComplete = function(queryText) {
@@ -298,12 +308,14 @@
 
     $scope.openDetails = function(result) {
       result.isFirstOpen = true;
+      result.openDetails = true;
 
       $scope.resultTrendInfo.series[0].data = [];
       $scope.resultTrendInfo.series[0].data = angular.copy(result.contract.valueTrend);
     }
 
     $scope.closeDetails = function(result) {
+      result.openDetails = false;
       result.isFirstOpen = false;
     }
 
@@ -320,20 +332,19 @@
 
     $scope.applyFilters = function($event) {
       $log.info("applyingFilters")
+      spinnerService.spin("resultsSpinner");
       var option = $event.target.value,
         optionIsSelected = $event.target.checked;
-      $log.info(option)
-      $log.info(option)
 
       if (optionIsSelected) {
         $scope.searchFilters.push(option);
       } else {
-        $scope.searchFilters.splice($scope.searchFilters.indexOf(option),1);
+        $scope.searchFilters.splice($scope.searchFilters.indexOf(option), 1);
       }
 
-      $log.info($scope.searchFilters)
-
-      $scope.currentPageItems = angular.copy($filter("filterResults")($scope.totalResults, $scope.searchFilters));
+      $scope.filteredItems = angular.copy($filter("filterResults")($scope.totalResults, $scope.searchFilters));
+      $scope.currentPage = 1
+      $scope.select($scope.currentPage);
     }
 
     var formatString = function(string) {
@@ -360,27 +371,31 @@
     return function(totalResults, searchFilters) {
       $log.info("filterResults")
       var deptFilters = [],
-        renewalDayFilter = "",
-        filteredResults = angular.copy(totalResults);
+        renewalDayFilter = [],
+        resultsToFilter = angular.copy(totalResults),
+        filteredResults =[];
 
-        deptFilters = angular.copy( _.filter(searchFilters, function(filter){return filter != "renewalDays"}) );
-
-        renewalDayFilter = angular.copy( _.filter(searchFilters, function(filter){return filter === "renewalDays"}) );
-
+      _.each(searchFilters, function(filter) {
+        if (filter === "renewalDays")
+          renewalDayFilter.push(filter)
+        else {
+          deptFilters.push(filter)
+        }
+      })
+      $log.info(renewalDayFilter)
       $log.info(deptFilters)
-      if (renewalDayFilter != "") {
-        filteredResults = _.filter(totalResults, function(result) {
-          return result.renewalDays <= 90;
-        })
-      }
 
-      if (! _.isEmpty(deptFilters) ){
-        filteredResults = _.filter(totalResults, function(result) {
-          return _.contains(deptFilters, result.businessVertical);
-        })
-      }
+      _.each(resultsToFilter, function(result){
+        if (!_.isEmpty(renewalDayFilter) && result.renewalDays <= 90) {
+          filteredResults.push(result);
+        }
 
-      return filteredResults;
+        if (!_.isEmpty(deptFilters) && _.contains(deptFilters, result.businessVertical)) {
+          filteredResults.push(result);
+        }
+      })
+
+      return renewalDayFilter.length != 0  || deptFilters.length != 0 ? filteredResults : resultsToFilter;
     }
   }
 })();

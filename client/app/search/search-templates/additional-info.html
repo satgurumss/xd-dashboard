@@ -1,47 +1,41 @@
-<div class="row accordion-container">
-  <uib-accordion close-others="true" class="ui-accordion">
-    <uib-accordion-group is-open="result.isFirstOpen">
-      <div class="result-details">
-        <div class="result-title">
-          <span class="key-word">{{result.vendorName}}</span> - <span class="contract-title">{{result.contractName}}</span>
-        </div>
-        <div class="row">
-          <div class="col-xs-6">
-            <h5 class="value-label" style="margin: 0 0 3px;">VALUE</h5>
-            <h5 class="currency-value" style="margin: 0;">
-              <span class="currency-label">$</span>
-              {{abbreviateNumber(result.contractValue2016,2)}}
-           </h5>
-          </div>
+<div class="result-details">
+  <div class="result-title">
+    <span class="key-word">{{result.vendorName}}</span> - <span class="contract-title">{{result.contractName}}</span>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <h5 class="value-label" style="margin: 0 0 3px;">VALUE</h5>
+      <h5 class="currency-value" style="margin: 0;">
+        <span class="currency-label">$</span>
+        {{abbreviateNumber(result.contractValue2016,2)}}
+     </h5>
+    </div>
 
-          <div class="col-xs-6">
-            <h5 class="contract-type"> {{result.businessVertical}} </h5>
-            <div class="renewal-duration">
-              <h3 class="duration-title">Days to Renewal</h3>
-              <h2 class="duration-value">{{calculateDaysToRenewal(result)}}</h2>
-            </div>
-          </div>
-        </div>
-
-        <div class="row renewals-date-container">
-          <div class="start-date col-xs-6">
-            <span class="title">Start:</span>
-            {{result.startDate | date:'dd-MMM-yy'}}
-          </div>
-          <div class="expire-date col-xs-6">
-            <span class="title">Exp:</span>
-            {{result.endDate | date:'dd-MMM-yy'}}
-          </div>
-        </div>
+    <div class="col-xs-6">
+      <h5 class="contract-type"> {{result.businessVertical}} </h5>
+      <div class="renewal-duration">
+        <h3 class="duration-title">Days to Renewal</h3>
+        <h2 class="duration-value">{{calculateDaysToRenewal(result)}}</h2>
       </div>
+    </div>
+  </div>
 
-      <div class="result-timeline">
-        <custom-time-line class="custom-time-line" data="result.timeLine"/>
-      </div>
+  <div class="row renewals-date-container">
+    <div class="start-date col-xs-6">
+      <span class="title">Start:</span>
+      {{result.startDate | date:'dd-MMM-yy'}}
+    </div>
+    <div class="expire-date col-xs-6">
+      <span class="title">Exp:</span>
+      {{result.endDate | date:'dd-MMM-yy'}}
+    </div>
+  </div>
+</div>
 
-      <div class="result-trend" style="padding: 10px 0;">
-        <hc-chart-dynamic options="resultTrendInfo" series="result.valueTrend"/>
-      </div>
-    </uib-accordion-group>
-  </uib-accordion>
+<div class="result-timeline">
+  <custom-time-line class="custom-time-line" data="result.timeLine"/>
+</div>
+
+<div class="result-trend" style="padding: 10px 0;">
+  <hc-chart-dynamic options="resultTrendInfo" series="result.valueTrend"/>
 </div>

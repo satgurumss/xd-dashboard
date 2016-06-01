@@ -31,6 +31,7 @@
         'angularAwesomeSlider',
         'angular-circles',
         'mwl.calendar',
+        'angularSpinner',
 
         // Custom modules
         'app.custom.services',

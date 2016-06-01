@@ -6,10 +6,10 @@
       <div class="results-panel" ng-show = "!firstSearch">
         <div class="results-section">
           <div class="results-container">
-            <div class="searched-vendor">
+            <div class="searched-vendor" ng-if="searchedVendor.length > 0">
               <span class="title">Search Results for</span> <span class="h4">{{searchedVendor}}</span>
             </div>
-            <div class="search-filters row">
+            <div class="search-filters row text-center">
               <div class="col-xs-12">
                 <label class="ui-checkbox">
                   <input name="resultFilter" type="checkbox" value="renewalDays" ng-click="applyFilters($event)"/>
@@ -38,7 +38,7 @@
               <span class="col-xs-3">Division</span>
               <span class="col-xs-3">Exp</span>
               <span class="col-xs-3">Value $</span>
-            </div>
+            </div><span us-spinner="{radius:8, width:2, length: 5}" spinner-key="resultsSpinner"></span>
             <h5 class="text-center" ng-show="currentPageItems.length == 0">No results found. Please try again.</h5>
             <div class="search-result" data-ng-repeat="result in currentPageItems" 
             ng-show="currentPageItems.length > 0">
@@ -49,6 +49,22 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="row text-right" ng-show="currentPageItems.length > 0">
+        <span class="pull-left total-records">Total&nbsp;{{filteredItems.length}}&nbsp;Vendors</span>
+        <uib-pagination class="pagination-sm"
+          ng-model="currentPage"
+          total-items="filteredItems.length"
+          max-size="4"
+          first-text ="&laquo;"
+          previous-text="&lsaquo;"
+          next-text="&rsaquo;"
+          last-text="&raquo;"
+          ng-change="select(currentPage)"
+          items-per-page="numPerPage"
+          rotate="false"
+          boundary-links="true">
+        </uib-pagination>
       </div>
     </div>
   </div>

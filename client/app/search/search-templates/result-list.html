@@ -1,4 +1,4 @@
-<div class="search-result-row row" ng-show="!result.isFirstOpen">
+<div class="search-result-row row" ng-show="!result.openDetails">
 	<span class="col-xs-3">{{result.contractName}}</span>
 	<span class="col-xs-3">{{result.businessVertical}}</span>
 	<span class="col-xs-3">{{result.fYDate | date:'MMM-yy'}}</span>
@@ -7,11 +7,17 @@
 	</span>
 </div>
 <span class="profile-link">
-	<a href="javascript:;" ng-click="openDetails(result)" ng-show="!result.isFirstOpen">
+	<a href="javascript:;" ng-click="openDetails(result)" ng-show="!result.openDetails">
 		<i class="fa fa-chevron-down fa-2"/>
 	</a>
-	<a href="javascript:;" ng-click="closeDetails(result)" ng-show="result.isFirstOpen">
+	<a href="javascript:;" ng-click="closeDetails(result)" ng-show="result.openDetails">
 	 <i class="fa fa-chevron-up fa-2"/>
 	</a>
 </span>
-<div ng-include="'app/search/search-templates/additional-info.html'"></div>
+ <div class="row accordion-container">
+  <uib-accordion close-others="true" class="ui-accordion">
+    <uib-accordion-group is-open="result.openDetails">
+    	<div ng-include="'app/search/search-templates/additional-info.html'" ng-if="result.isFirstOpen"></div>
+    </uib-accordion-group>
+  </uib-accordion>
+</div>
