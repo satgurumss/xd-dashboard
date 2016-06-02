@@ -310,7 +310,7 @@
               "styles/img/**/*",
               "styles/ui/images/*",
               "app/**/*.html",
-              "app/sampleData/middle-east.json",
+              "app/sampleData/*",
               "services.js",
               "circles.js",
               "angular-awesome-slider.css",

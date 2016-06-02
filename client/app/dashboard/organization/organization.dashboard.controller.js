@@ -180,11 +180,193 @@
       }]
     };
 
+    $scope.options = {
+      from: 1,
+      to: 4,
+      step: 1,
+      dimension: " quarter",
+      smooth: false,
+      css: {
+        background: {
+          "background-color": "#666666"
+        },
+        default: {
+          "background-color": "white"
+        },
+        after: {
+          "background-color": "#7cb5ec"
+        },
+        pointer: {
+          "background-color": "54627b"
+        }
+      },
+      scale: ["Jan", "Apr", "Jul", "Oct"]
+    };
+
+    $scope.qtrToDisplay = "1";
+
     $scope.organizationProgress = {
       percent: 47,
       barLabel: "Spent",
       barValue: "$ 20.45 M"
     }
+
+    $scope.mapData = [{
+      code: "us-ma",
+      z: 0
+    }, {
+      code: "us-wa",
+      z: 1
+    }, {
+      code: "us-ca",
+      z: 2
+    }, {
+      code: "us-or",
+      z: 3
+    }, {
+      code: "us-wi",
+      z: 4
+    }, {
+      code: "us-me",
+      z: 5
+    }, {
+      code: "us-mi",
+      z: 6
+    }, {
+      code: "us-nv",
+      z: 7
+    }, {
+      code: "us-nm",
+      z: 8
+    }, {
+      code: "us-co",
+      z: 9
+    }, {
+      code: "us-wy",
+      z: 10
+    }, {
+      code: "us-ks",
+      z: 11
+    }, {
+      code: "us-ne",
+      z: 12
+    }, {
+      code: "us-ok",
+      z: 13
+    }, {
+      code: "us-mo",
+      z: 14
+    }, {
+      code: "us-il",
+      z: 15
+    }, {
+      code: "us-in",
+      z: 16
+    }, {
+      code: "us-vt",
+      z: 17
+    }, {
+      code: "us-ar",
+      z: 18
+    }, {
+      code: "us-tx",
+      z: 19
+    }, {
+      code: "us-ri",
+      z: 20
+    }, {
+      code: "us-al",
+      z: 21
+    }, {
+      code: "us-ms",
+      z: 22
+    }, {
+      code: "us-nc",
+      z: 23
+    }, {
+      code: "us-va",
+      z: 24
+    }, {
+      code: "us-ia",
+      z: 25
+    }, {
+      code: "us-md",
+      z: 26
+    }, {
+      code: "us-de",
+      z: 27
+    }, {
+      code: "us-pa",
+      z: 28
+    }, {
+      code: "us-nj",
+      z: 29
+    }, {
+      code: "us-ny",
+      z: 30
+    }, {
+      code: "us-id",
+      z: 31
+    }, {
+      code: "us-sd",
+      z: 32
+    }, {
+      code: "us-ct",
+      z: 33
+    }, {
+      code: "us-nh",
+      z: 34
+    }, {
+      code: "us-ky",
+      z: 35
+    }, {
+      code: "us-oh",
+      z: 36
+    }, {
+      code: "us-tn",
+      z: 37
+    }, {
+      code: "us-wv",
+      z: 38
+    }, {
+      code: "us-dc",
+      z: 39
+    }, {
+      code: "us-la",
+      z: 40
+    }, {
+      code: "us-fl",
+      z: 41
+    }, {
+      code: "us-ga",
+      z: 42
+    }, {
+      code: "us-sc",
+      z: 43
+    }, {
+      code: "us-mn",
+      z: 44
+    }, {
+      code: "us-mt",
+      z: 45
+    }, {
+      code: "us-nd",
+      z: 46
+    }, {
+      code: "us-az",
+      z: 47
+    }, {
+      code: "us-ut",
+      z: 48
+    }, {
+      code: "us-hi",
+      z: 49
+    }, {
+      code: "us-ak",
+      z: 50
+    }, {
+      z: 51
+    }];
 
     $scope.formatNumberFromString = function(value) {
       return utils.formatNumberFromString(value)

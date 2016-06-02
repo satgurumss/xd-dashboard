@@ -28,13 +28,13 @@
   function hcMap($http, $window) {
     return {
       restrict: "E",
-      template: '<div></div>',
+      template: '<div class="map-container"></div>',
       replace: true,
       scope: {
         data: '='
       },
       link: function(scope, element) {
-        $http.get("app/sampleData/middle-east.json").success(function(mapData) {
+        $http.get("app/sampleData/us-all.json").success(function(mapData) {
           // Load the fonts
           Highcharts.createElement('link', {
             href: 'https://fonts.googleapis.com/css?family=Unica+One',
@@ -252,7 +252,7 @@
             var options = {
                 chart: {
                   borderWidth: 1,
-                  height: 200,
+                  height: 300,
                   spacingTop: 0,
                   spacingBottom: 0,
                   spacingLeft: 0,
@@ -260,7 +260,7 @@
                 },
 
                 title: {
-                  text: 'Customer Distribution'
+                  text: null
                 },
 
                 credits: {
@@ -271,12 +271,6 @@
                   enabled: false
                 },
 
-                mapNavigation: {
-                  enabled: false,
-                  buttonOptions: {
-                    verticalAlign: 'bottom'
-                  }
-                },
                 yAxis: {
                   enabled: false
                 },
@@ -285,15 +279,19 @@
                   name: 'Countries',
                   mapData: mapData,
                   color: '#E0E0E0',
-                  enableMouseTracking: false
+                  enableMouseTracking: false,
+                  dataLabels: {
+                    enabled: true,
+                    format: '{point.code}'
+                  }
                 }, {
                   type: 'mapbubble',
                   mapData: mapData,
                   name: '# of Customers',
-                  joinBy: ['iso-a2', 'code'],
+                  joinBy: ['hc-key', 'code'],
                   data: scope.data,
                   minSize: 10,
-                  maxSize: '25%',
+                  maxSize: '15%',
                   tooltip: {
                     pointFormat: '{point.name} - {point.z}'
                   }
@@ -450,9 +448,13 @@
 
           scope.readonly = angular.isDefined(scope.readonly) ? scope.readonly : false;
 
-          if(scope.readonly){
-            $(element[0]).click(function() { return false; });
-            $(element[0]).children().click(function() { return false; });
+          if (scope.readonly) {
+            $(element[0]).click(function() {
+              return false;
+            });
+            $(element[0]).children().click(function() {
+              return false;
+            });
           }
         };
 
@@ -485,9 +487,13 @@
 
           scope.readonly = angular.isDefined(scope.readonly) ? scope.readonly : false;
 
-          if(scope.readonly){
-            $(element[0]).click(function() { return false; });
-            $(element[0]).children().click(function() { return false; });
+          if (scope.readonly) {
+            $(element[0]).click(function() {
+              return false;
+            });
+            $(element[0]).children().click(function() {
+              return false;
+            });
           }
         };
 
@@ -732,9 +738,13 @@
 
           scope.readonly = angular.isDefined(scope.readonly) ? scope.readonly : false;
 
-          if(scope.readonly){
-            $(element[0]).click(function() { return false; });
-            $(element[0]).children().click(function() { return false; });
+          if (scope.readonly) {
+            $(element[0]).click(function() {
+              return false;
+            });
+            $(element[0]).children().click(function() {
+              return false;
+            });
           }
         };
 
@@ -747,7 +757,7 @@
     };
   }
 
-  function progressBar(){
+  function progressBar() {
     return {
       restrict: 'E',
       templateUrl: '/app/directives/progress-bar.html',
@@ -776,7 +786,7 @@
     };
   }
 
-  function trainingList(){
+  function trainingList() {
     return {
       restrict: 'E',
       template: '<ng-include src="getTemplateUrl()"/>',
@@ -785,9 +795,9 @@
         list: '=',
         type: "="
       },
-      controller: function($scope){
-        $scope.getTemplateUrl = function(){
-          if($scope.type === "avaiable"){
+      controller: function($scope) {
+        $scope.getTemplateUrl = function() {
+          if ($scope.type === "avaiable") {
             return '/app/training/available-training-list.html'
           } else if ($scope.type === "completed") {
             return '/app/training/completed-training-list.html'
@@ -797,7 +807,7 @@
     };
   }
 
-  function customTimeLine(){
+  function customTimeLine() {
     return {
       restrict: 'E',
       templateUrl: '/app/directives/custom-time-line.html',
@@ -806,7 +816,7 @@
         data: '='
       },
       link: function(scope, element, attrs) {
-        scope.arrayOfMonths = [1,2,3,4,5,6,7,8,9,10,11,12];
+        scope.arrayOfMonths = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
         // var el = angular.element('<span/>');
         // switch(scope.input.inputType) {
@@ -820,30 +830,30 @@
         // $compile(el)(scope);
         // element.append(el);
 
-        scope.addMarker = function(monthInArray){
+        scope.addMarker = function(monthInArray) {
           var markerTemplate = {};
           markerTemplate.markerClass = [];
 
-          _.each(scope.data, function(markerDate, key){
+          _.each(scope.data, function(markerDate, key) {
             var date = new Date(markerDate),
               markerMonth = date.getMonth();
 
-            if(monthInArray === markerMonth){
+            if (monthInArray === markerMonth) {
               markerTemplate.markerDate = date;
 
-              switch(key){
+              switch (key) {
                 case "renewalDate":
                   markerTemplate.isRenewal = true;
                   markerTemplate.markerClass.push("renewal");
-                break;
+                  break;
                 case "fYDate":
                   markerTemplate.isFiscal = true;
                   markerTemplate.markerClass.push("fiscal");
-                break;
+                  break;
                 case "today":
                   markerTemplate.isToday = true;
                   markerTemplate.markerClass.push("today");
-                break;
+                  break;
               };
             }
           });
