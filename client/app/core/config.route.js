@@ -62,8 +62,8 @@
         .when('/my-training', {
           templateUrl: 'app/training/my-training-dash.html'
         })
-        .when('/organization-dashboard', {
-          templateUrl: 'app/dashboard/organization/organization-dash.html'
+        .when('/customers-dashboard', {
+          templateUrl: 'app/dashboard/customers/customers-dash.html'
         })
         .when('/department-dashboard', {
           templateUrl: 'app/dashboard/department/department-dash.html'

@@ -2,31 +2,24 @@
   'use strict';
 
   angular.module('app')
-    .controller('OrganizationDashCtrl', ['$scope', '$http', '$location', "gaugesService", "CONST", "loggedInUser", 'utils', "XDENSITY", "$log", OrganizationDashCtrl])
+    .controller('CustomersDashCtrl', ['$scope', '$http', '$location', "gaugesService", "CONST", "loggedInUser", 'utils', "XDENSITY", "$log", CustomersDashCtrl])
 
-  function OrganizationDashCtrl($scope, $http, $location, gaugesService, CONST, loggedInUser, utils, XDENSITY, $log) {
+  function CustomersDashCtrl($scope, $http, $location, gaugesService, CONST, loggedInUser, utils, XDENSITY, $log) {
+    $scope.sourceCustomerBarChart = {
+      colors: ["#688E49"],
 
-    $scope.gauges = {}
-    $scope.trendChart = {
-      colors: ["#4d6251", "#799e72"],
       chart: {
-        height: 225,
-        backgroundColor: {
-          linearGradient: {
-            x1: 1,
-            y1: 1,
-            x2: 1,
-            y2: 1
-          },
-          stops: [
-            [0, '#2a2a2b'],
-            [1, '#3e3e40']
-          ]
-        },
+        type: "bar",
+        height: 120,
         style: {
           fontFamily: "sans-serif"
         },
-        plotBorderColor: '#606063'
+        backgroundColor: "#464646",
+        plotBorderColor: '#464646',
+        spacingTop: 0,
+        spacingBottom: 0,
+        spacingLeft: 0,
+        spacingRight: 10
       },
 
       tooltip: {
@@ -34,46 +27,27 @@
         style: {
           color: '#F0F0F0'
         },
-        valueSuffix: 'M'
+        valueSuffix: 'M',
+        enabled: false
       },
 
       plotOptions: {
-        series: {
+        bar: {
+          pointWidth: 18,
+          pointPadding: 0,
+          borderRadius: 8,
+          borderColor: "#688E49",
           dataLabels: {
-            color: '#B0B0B3'
-          },
-          marker: {
-            lineColor: '#333'
+            color: '#000',
+            verticalAlign: 'middle',
+            align: "right",
+            formatter: function() {
+              return "$ " + this.point.y + " M"
+                //return this.point.category
+            },
+            enabled: true,
           }
         },
-        boxplot: {
-          fillColor: '#505053'
-        },
-        candlestick: {
-          lineColor: 'white'
-        },
-        errorbar: {
-          color: 'white'
-        }
-      },
-
-      legend: {
-        itemStyle: {
-          color: '#E0E0E3',
-          fontSize: '10px'
-        },
-        itemHoverStyle: {
-          color: '#FFF'
-        },
-        itemHiddenStyle: {
-          color: '#606063'
-        },
-        layout: 'horizontal',
-        align: "center",
-        borderWidth: 0,
-        symbolHeight: 10,
-        symbolWidth: 10,
-        symbolRadius: 6
       },
 
       credits: {
@@ -86,51 +60,39 @@
         }
       },
 
+      legend: {
+        enabled: false
+      },
+
       title: {
         text: null,
         style: {
           color: '#E0E0E3',
-          fontSize: '16px',
+          textTransform: 'uppercase',
+          fontSize: '20px'
         },
-        verticalAlign: 'bottom',
-        align: 'center',
         useHTML: true
       },
 
-      subtitle: {
-        style: {
-          color: '#E0E0E3',
-          textTransform: 'uppercase'
-        }
-      },
-
       yAxis: {
-        gridLineColor: '#707073',
+        title: null,
         labels: {
-          style: {
-            color: '#E0E0E3'
-          }
+          enabled: false
         },
-        lineColor: '#707073',
-        tickInterval: 25,
-        tickColor: '#707073',
-        tickWidth: 1,
-        title: {
-          text: 'Millions ($)',
-          style: {
-            color: '#A0A0A3'
-          }
-        },
-        plotLines: [{
-          value: 0,
-          width: 1,
-          color: '#808080'
-        }]
+        lineWidth: 0,
+        minorGridLineWidth: 0,
+        lineColor: 'transparent',
+        minorTickLength: 0,
+        tickLength: 0,
+        gridLineColor: 'transparent',
       },
 
       xAxis: {
-        categories: ['2014', '2015', '2016'],
+        categories: ['Acme Corporation', 'Mercury Consulting', 'Omega Technologies', 'Starlight Systems', 'Platinum Consulting'],
+        tickWidth: 0,
+        tickPixelInterval: 20,
         title: {
+          text: null,
           style: {
             color: '#A0A0A3'
           }
@@ -138,45 +100,22 @@
         gridLineColor: '#707073',
         labels: {
           style: {
-            color: '#E0E0E3'
+            color: '#fff',
+            fontSize: "14px",
+            enabled: false
           }
         },
-        lineColor: '#707073',
-        minorGridLineColor: '#505053',
-        tickColor: '#707073',
-        tickInterval: 1,
-        tickmarkPlacement: "on",
-        min: 0,
-        max: 2,
-        startOnTick: true,
-        endOnTick: true,
-        minPadding: 0,
-        maxPadding: 0,
-        align: "left"
+        lineWidth: 0,
+        minorGridLineWidth: 0,
+        lineColor: 'transparent',
+        minorTickLength: 0,
+        tickLength: 0,
+        gridLineColor: 'transparent'
       },
 
       series: [{
-        type: 'area',
-        fillColor: "rgba(121, 158, 114, 0.3)",
-        name: 'Budget',
-        data: [15.0, 17.0, 19],
-        marker: {
-          symbol: 'circle',
-          fillColor: '#303031',
-          lineWidth: 1,
-          lineColor: '#799e72'
-        }
-      }, {
-        type: 'area',
-        fillColor: "rgba(77, 98, 81, 0.3)",
-        name: 'Spent',
-        data: [10.0, 14.5, 18.3],
-        marker: {
-          symbol: 'circle',
-          fillColor: '#303031',
-          lineWidth: 1,
-          lineColor: '#4d6251'
-        }
+        groupPadding: 0,
+        data: [22, 20, 15, 12, 10]
       }]
     };
 
@@ -186,6 +125,7 @@
       step: 1,
       dimension: " quarter",
       smooth: false,
+      limits:false,
       css: {
         background: {
           "background-color": "#666666"
@@ -204,12 +144,6 @@
     };
 
     $scope.qtrToDisplay = "1";
-
-    $scope.organizationProgress = {
-      percent: 47,
-      barLabel: "Spent",
-      barValue: "$ 20.45 M"
-    }
 
     $scope.mapData = [{
       code: "us-ma",
@@ -378,7 +312,7 @@
 
         loggedInUser.fetchCurrentUser()
           .success(function(data, status, headers, config) {
-            loggedInUser.isLoggedIn("/organization-dashboard");
+            loggedInUser.isLoggedIn("/customers-dashboard");
             $scope.userRole = data.userRole;
             populateData($scope.userRole);
           })
@@ -391,40 +325,40 @@
     }
 
     var populateData = function(userRole) {
+      $scope.gauges = {};
+      $scope.gauges["phone"] = {};
+      $scope.gauges["web"] = {};
+      $scope.gauges["events"] = {};
 
-      $scope.gauges["organization"] = {};
-      $scope.gauges["hr"] = {};
-      $scope.gauges["broadcast"] = {};
-      $scope.gauges["technical"] = {};
-      $scope.gauges["finance"] = {};
 
-      $scope.gauges.organization["colors"] = ['#DDD', '#5B9B08']
-      $scope.gauges.hr["colors"] = ['#DDD', '#5B9B08']
-      $scope.gauges.finance["colors"] = ['#DDD', '#5B9B08']
-      $scope.gauges.technical["colors"] = ['#DDD', '#5B9B08']
-      $scope.gauges.broadcast["colors"] = ['#DDD', '#5B9B08']
+      $scope.gauges.phone["colors"] = ['#DDD', '#77AC4A']
+      $scope.gauges.web["colors"] = ['#DDD', '#77AC4A']
+      $scope.gauges.events["colors"] = ['#DDD', '#77AC4A']
 
-      $scope.gauges.organization["percent"] = utils.getGaugePercent("Organization");
-      $scope.gauges.hr["percent"] = utils.getGaugePercent("HR");
-      $scope.gauges.finance["percent"] = utils.getGaugePercent("Finance");
-      $scope.gauges.technical["percent"] = utils.getGaugePercent("Tech");
-      $scope.gauges.broadcast["percent"] = utils.getGaugePercent("Broadcast");
+      $scope.gauges.phone["percent"] = 20;
+      $scope.gauges.web["percent"] = 30;
+      $scope.gauges.events["percent"] = 50;
 
       $scope.organization = utils.getDeptData("Organization");
 
-      var vendorPercent = utils.getVendorsAlignment("Organization");
-      $scope.vendorsProgress = {
-        percent: vendorPercent,
-        barLabel: vendorPercent + "% Aligned (FY)",
-        barValue: $scope.organization.fYAlignment
-      }
-
-      $scope.deptBudget = {
-        hr: utils.getDeptData("HR").Budget,
-        broadcast: utils.getDeptData("Broadcast").Budget,
-        finance: utils.getDeptData("Finance").Budget,
-        technical: utils.getDeptData("Tech").Budget,
-      }
+      $scope.sourceRevenues = {
+        phone: {
+          ytd: "30.00 M",
+          avg: "50.45 M"
+        },
+        web: {
+          ytd: "30.00 M",
+          avg: "50.45 M"
+        },
+        events: {
+          ytd: "30.00 M",
+          avg: "50.45 M"
+        },
+        technical: {
+          ytd: "30.00 M",
+          avg: "50.45 M"
+        }
+      };
 
       var trendData = utils.getDeptTrendData("Organization");
       $scope.trendChart.series[0].data = [];

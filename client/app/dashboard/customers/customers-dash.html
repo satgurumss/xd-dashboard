@@ -1,0 +1,83 @@
+<div class="container page-dashboard customers-dashboard" data-ng-controller="CustomersDashCtrl" ng-init="init()">
+  <div class="panel-container">
+    <div class="panel-body" style="padding: 0 15px 0 15px;">
+      <div class="row revenue-container">
+        <div class="col-xs-8 left-contents">
+          <h1 class="renewal-value">{{organization.vendors}}</h1>
+          <div class="inner-contents">
+            <h3 class="renewal-label">Total</h3>
+            <h3 class="renewal-label">Customers</h3>
+          </div>
+        </div>
+        <div class="col-xs-4 finance-db-heading">
+        </div>
+      </div>
+
+      <div class="row graph-container text-center">
+        <h4>CUSTOMERS DISTRIBUTION</h4>
+        <div class="ui-tab-container ui-tab-horizontal graph-selection">
+          <uib-tabset justified="true" class="ui-tab">
+            <uib-tab heading="Existing" ng-click="loadCustomersData('Existing')">
+            </uib-tab>
+            <uib-tab heading="New" ng-click="loadCustomersData('New')">
+            </uib-tab>
+          </uib-tabset>
+        </div>
+        <hc-map data="mapData"></hc-map>
+      </div>
+
+      <div class="row range-container">
+        <div class="slider-wrapper no-labels">
+          <input ng-model="qtrToDisplay" type="text" slider options="options" />
+        </div>
+      </div>
+
+      <div class="row dcharts-container">
+        <div class="col-xs-4 text-center">
+          <div class="circle-container circle-white" ng-if="gauges.phone.percent">
+           <div ng-circles value="gauges.phone.percent" width="15" colors="gauges.phone.colors"></div>
+          </div>
+        </div>
+
+        <div class="col-xs-4 text-center">
+          <div class="circle-container circle-white" ng-if="gauges.web.percent">
+           <div ng-circles value="gauges.web.percent" width="15" colors="gauges.web.colors"></div>
+          </div>
+        </div>
+
+        <div class="col-xs-4 text-center">
+          <div class="circle-container  circle-white" ng-if="gauges.events.percent">
+           <div ng-circles value="gauges.events.percent" width="15" colors="gauges.events.colors"></div>
+          </div>
+        </div>
+      </div>
+
+      <div data-ng-controller="TabsDemoCtrl">
+        <div class="row sources-tabs">
+          <div class="ui-tab-container ui-tab-horizontal">
+            <uib-tabset justified="true" class="ui-tab">
+              <uib-tab>
+                <uib-tab-heading>
+                  <i class="fa fa-phone"></i>&nbsp;&nbsp;PHONE
+                </uib-tab-heading>
+                <ng-include src="'app/dashboard/tab-templates/sources-tabs.html'"/>
+              </uib-tab>
+              <uib-tab>
+                <uib-tab-heading>
+                  <i class="fa fa-globe"></i>&nbsp;&nbsp;WEB
+                </uib-tab-heading>
+                <ng-include src="'app/dashboard/tab-templates/sources-tabs.html'"/>
+              </uib-tab>
+              <uib-tab>
+                <uib-tab-heading>
+                  <i class="fa fa-calendar"></i>&nbsp;&nbsp;EVENTS
+                </uib-tab-heading>
+                <ng-include src="'app/dashboard/tab-templates/sources-tabs.html'"/>
+              </uib-tab>
+            </uib-tabset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

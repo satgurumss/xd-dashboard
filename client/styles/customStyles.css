@@ -22,6 +22,9 @@
 .pad-r-5{
   padding-right: 5px;
 }
+.pad-l-8{
+  padding-left: 8px;
+}
 .pad-25{
 	padding: 25px;
 }
@@ -919,11 +922,11 @@ body {
 .ui-tab-horizontal .nav-tabs > li.active:hover > a,
 .ui-tab-horizontal .nav-tabs > li.active:focus > a {
   color: #FFF;
-  background-color: #5B9BD5;
+  background-color: #00A5C6;
 }
 
 .ui-tab-container .tab-content {
-  background: #FFF;
+  background: transparent;
 }
 
 .ui-tab-container .nav-tabs > li.active:after {
@@ -932,7 +935,7 @@ body {
     top: -29px;
     left: 50%;
     border: 14px solid transparent;
-    border-bottom: 16px solid #5B9BD5;
+    border-bottom: 16px solid #00A5C6;
     z-index: 1;
     margin-left: -14px;
 }
@@ -946,11 +949,6 @@ body {
 }
 .header-container > .top-header .logo > a {
   background: transparent;
-}
-
-.dept-charts-container {
-  background: #3e3e40;
-  padding: 15px 0;
 }
 
 .vendor-charts-container {
@@ -1207,10 +1205,6 @@ body {
   background: #2a2a2b;
 }
 
-.range-container {
-  background: #2a2a2b;
-  padding: 0 0 15px;
-}
 .dept-charts-container h5.title {
   margin-bottom: 0px;
   margin-top: 15px;
@@ -1317,7 +1311,6 @@ body {
 
 .range-container .slider-wrapper {
   max-width: 250px;
-  padding-top: 10px;
   height: 30px;
   display: inline-block;
 }
@@ -2685,6 +2678,193 @@ body {
   padding: 15px;
 }
 
+.customers-dashboard {
+  color: white;
+  font-family: "Roboto Condensed";
+}
+
+.customers-dashboard .panel-container {
+  background: transparent;
+}
+
+.customers-dashboard .revenue-container .left-contents {
+  padding-top: 9px;
+}
+
+.customers-dashboard .revenue-container .finance-db-heading {
+  background: url(../images/right-organization.png) no-repeat top right;
+  background-size: contain;
+  height: 72px;
+}
+
+.customers-dashboard .revenue-container h1 {
+  font-family: "Roboto Condensed";
+  font-weight: bold;
+  font-size: 42px;
+  color: #82B73C;
+}
+
+.customers-dashboard .vendors-progress {
+  background: transparent;
+}
+
+.customers-dashboard .vendors-progress .contents-left,
+.customers-dashboard .vendors-progress .contents-right {
+  padding: 0;
+}
+
+.customers-dashboard .inner-contents {
+  display: inline-block;
+}
+
+.customers-dashboard .session-value,
+.customers-dashboard .renewal-label,
+.customers-dashboard .currency-value {
+  font-size: 14px;
+  margin: 4px;
+}
+
+.customers-dashboard .currency-value {
+  font-weight: 100;
+}
+.customers-dashboard .vendors-progress .contents-left h3.session-value {
+  font-weight: bold !important;
+}
+
+.customers-dashboard .renewal-value {
+  display: inline-block;
+  margin: 4px 0;
+  font-size: 42px;
+}
+
+.customers-dashboard .vendors-progress .inner-contents .session-value,
+.customers-dashboard .vendors-progress .inner-contents .renewal-label {
+  font-weight: normal;
+}
+
+.customers-dashboard .vendors-progress .contents-right .prog-bar-containter {
+  width: 100%;
+}
+
+.customers-dashboard .vendors-progress .label-out {
+  display: block;
+  width: 100%;
+  text-align: right;
+}
+
+.customers-dashboard .dept-charts-container {
+  background: white;
+  padding: 10px 0;
+  color: #2A2A2B;
+  font-family: "roboto condensed", sans-serif;
+}
+
+.customers-dashboard .dept-charts-container .dept-chart-heading {
+  text-align: center;
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-family: "Droid Sans";
+}
+
+.customers-dashboard .dept-charts-container .titles-container {
+  background: #5B9B08;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.customers-dashboard .dept-charts-container .titles-container span {
+  position: relative;
+  padding: 5px 0;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Droid Sans";
+}
+
+.customers-dashboard .dept-charts-container .titles-container span:after {
+  content: '';
+  border: 7px solid transparent;
+  border-top: 8px solid #5B9B08;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+}
+.customers-dashboard .revenue-container h3 {
+  color: #82B73C;
+}
+.customers-dashboard .revenue-container h3.renewal-label {
+  color: #DDD;
+}
+
+.customer-switch :not(:checked)+i {
+  box-shadow: inset 0 0 1px rgba(0,0,0,0.5), inset 0 0 40px #bcbcbc;
+}
+
+.range-container .slider-wrapper.no-labels span.mainSliderClass .jslider div.jslider-value {
+  display:none !important;
+}
+
+.customers-dashboard .sources-tabs .source-revenue-container {
+  padding:0;
+}
+.customers-dashboard .sources-tabs .source-revenue {
+  position: relative;
+}
+
+.customers-dashboard .sources-tabs .source-revenue .sign {
+  font-size: 14px;
+  position: absolute;
+  left: -10px;
+  top: 7px;
+}
+
+.customers-dashboard .sources-tabs .source-revenue-container .inner-contents {
+  position: absolute;
+  bottom: -25%;
+  right: -18%;
+}
+
+.customers-dashboard .sources-tabs .source-revenue-container .inner-contents .revenue-label {
+  font-size: 13px;
+  color: #DDD;
+  width: 60%;
+  display:inline-block;
+}
+
+.switch-label{
+  position: relative;
+  top: -8px;
+}
+
+.dcharts-container {
+  padding: 15px 0;
+  background: #2A2A2C;
+}
+
+.graph-container .graph-selection.ui-tab-container ul{
+  width: 215px;
+  display: inline-block;
+}
+
+.graph-container .graph-selection.ui-tab-container li{
+  width:50%;
+}
+
+.graph-container .graph-selection.ui-tab-container li a{
+  letter-spacing: 0.5px;
+}
+
+.graph-container .graph-selection.ui-tab-container .nav-tabs>li.active:after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: 14px solid transparent;
+  border-top: 16px solid #00A5C6;
+  z-index: 1;
+  margin-left: -14px;
+}
 
 
 /*-------*/
@@ -3005,7 +3185,7 @@ body {
   .count-sec-container .heading-value .value-one {
     font-size: 36px;
   }
-  .organization-dashboard .vendors-progress .contents-left .session-value {
+  .customers-dashboard .vendors-progress .contents-left .session-value {
     font-size: 12px;
     margin: 4px 0;
   }
@@ -3050,5 +3230,15 @@ body {
     overflow: hidden;
     white-space: nowrap;
   }
-}
 
+  .customers-dashboard .sources-tabs .source-revenue-container .inner-contents {
+    position: absolute !important;
+    bottom: -36% !important;
+    right: 35% !important;
+  }
+
+  .customers-dashboard .sources-tabs .source-revenue-container .inner-contents .revenue-label {
+    display: initial !important;
+  }
+
+}
